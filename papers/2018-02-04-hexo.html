@@ -114,7 +114,7 @@
 <meta property="og:site_name" content="DGBlog">
 <meta property="og:description" content="1  12345建立空仓库git clone git@github.com:ghxdghxd/ghxdghxd.github.io.gitcd ghxdghxd.github.io建立分支并切换git checkout hexo  2  12345678910初始化hexomkdir Blognpm install hexohexo initnpm installcp -a Blog/* ghx">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-26T09:43:28.677Z">
+<meta property="og:updated_time" content="2018-02-26T14:15:24.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo安装配置">
 <meta name="twitter:description" content="1  12345建立空仓库git clone git@github.com:ghxdghxd/ghxdghxd.github.io.gitcd ghxdghxd.github.io建立分支并切换git checkout hexo  2  12345678910初始化hexomkdir Blognpm install hexohexo initnpm installcp -a Blog/* ghx">
@@ -402,9 +402,13 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修改_config.yml, 用git可以免密码，如用https:则不免密码</span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: git@github.com:ghxdghxd/ghxdghxd.github.io.git</span><br></pre></td></tr></table></figure>
 <ul>
-<li>4 插件</li>
+<li>4 pdf插件</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">直接插入并显示pdf</span><br><span class="line">npm install hexo-pdf</span><br><span class="line">&#123;% pdf /images/name.pdf %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>5 插入脚注(reference)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-reference --save</span><br><span class="line">例：</span><br><span class="line">basic footnote[^1]</span><br><span class="line">here is an inline footnote[^2](inline footnote)</span><br><span class="line">and another one[^3]</span><br><span class="line">and another one[^4]</span><br><span class="line"></span><br><span class="line">[^1]: basic footnote content</span><br><span class="line">[^3]: paragraph</span><br><span class="line">footnote</span><br><span class="line">content</span><br><span class="line">[^4]: footnote content with some [markdown](https://en.wikipedia.org/wiki/Markdown)</span><br></pre></td></tr></table></figure>
       
     </div>
     

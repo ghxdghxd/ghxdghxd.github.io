@@ -4,8 +4,11 @@
     
     <entry>
       <title><![CDATA[meta Analysis]]></title>
-      <url>/papers/2018-02-26-metaAnalysis.html</url>
-      <content type="html"><![CDATA[<h1 id="An-Overview-of-Functions-in-the-metafor-Package"><a href="#An-Overview-of-Functions-in-the-metafor-Package" class="headerlink" title="An Overview of Functions in the metafor Package"></a>An Overview of Functions in the metafor Package</h1>
+      <url>/papers/2018-02-26-meta-analysis.html</url>
+      <content type="html"><![CDATA[<h1 id="metafor-document"><a href="#metafor-document" class="headerlink" title="metafor document"></a>metafor document</h1><ul>
+<li>An Overview of Functions in the metafor Package</li>
+</ul>
+
 
 	<div class="row">
     <embed src="/documents/metafor_diagram.pdf" width="100%" height="550" type="application/pdf">
@@ -13,6 +16,9 @@
 
 
 
+<ul>
+<li>Viechtbauer gesis ma with metafor</li>
+</ul>
 
 
 	<div class="row">
@@ -20,7 +26,8 @@
 	</div>
 
 
-]]></content>
+
+<h2 id="meta-analysis-from-odds-ratios-and-confidence-intervals-using-metafor"><a href="#meta-analysis-from-odds-ratios-and-confidence-intervals-using-metafor" class="headerlink" title="meta-analysis from odds ratios and confidence intervals using metafor"></a>meta-analysis from odds ratios and confidence intervals using metafor</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dm&lt;-structure(list(or = c(<span class="number">1.6</span>, <span class="number">4.4</span>, <span class="number">1.14</span>, <span class="number">1.3</span>, <span class="number">4.5</span>), cill = c(<span class="number">1.2</span>, </span><br><span class="line"><span class="number">2.9</span>, <span class="number">0.45</span>, <span class="number">0.6</span>, <span class="number">3.2</span>), ciul = c(<span class="number">2</span>, <span class="number">6.9</span>, <span class="number">2.86</span>, <span class="number">2.7</span>, <span class="number">6.1</span>)), .Names = c(<span class="string">"or"</span>, </span><br><span class="line"><span class="string">"cill"</span>, <span class="string">"ciul"</span>), class = <span class="string">"data.frame"</span>, row.names = c(<span class="literal">NA</span>, -<span class="number">5L</span>))</span><br><span class="line"></span><br><span class="line">dm$logor&lt;-log(dm$or)</span><br><span class="line">dm$se1&lt;-(log(dm$ciul)-dm$logor)/<span class="number">1.96</span></span><br><span class="line">dm$se2&lt;-(dm$logor-log(dm$cill))/<span class="number">1.96</span></span><br><span class="line">dm$se&lt;-(dm$se1+dm$se2)/<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">library</span>(metafor)</span><br><span class="line">dmres&lt;-rma.uni(yi=logor, sei=se, data=dm)</span><br><span class="line">forest(dmres, atransf=exp)</span><br></pre></td></tr></table></figure>]]></content>
       
         <categories>
             
@@ -67,14 +74,17 @@
     
     <entry>
       <title><![CDATA[Install R and rstudio]]></title>
-      <url>/papers/2018-02-10-Install_R_and_rstudio.html</url>
-      <content type="html"><![CDATA[<p>File failed to load: /extensions/MathZoom.js<br>export CFLAGS=”-I/share/apps/R_depends/include”<br>export LDFLAGS=”-L/share/apps/R_depends/lib”</p>
-<h1 id="install-R"><a href="#install-R" class="headerlink" title="install R"></a>install R</h1><h2 id="configure"><a href="#configure" class="headerlink" title="./configure"></a>./configure</h2><pre><code>./configure --prefix=/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk
-</code></pre><h4 id="1-configure-error-No-F77-compiler-found"><a href="#1-configure-error-No-F77-compiler-found" class="headerlink" title="1. configure: error: No F77 compiler found"></a>1. configure: error: No F77 compiler found</h4><pre><code>sudo apt-get install gfortran
-</code></pre><h4 id="2-configure-error-–with-readline"><a href="#2-configure-error-–with-readline" class="headerlink" title="2. configure: error: –with-readline"></a>2. configure: error: –with-readline</h4><pre><code>sudo apt-get install libreadline-dev
-</code></pre><h4 id="3-configure-error-–with-x-yes"><a href="#3-configure-error-–with-x-yes" class="headerlink" title="3. configure: error: –with-x=yes"></a>3. configure: error: –with-x=yes</h4><pre><code>sudo apt-get install libxt-dev
-</code></pre><h4 id="4-checking-whether-zlib-support-suffices"><a href="#4-checking-whether-zlib-support-suffices" class="headerlink" title="4. checking whether zlib support suffices."></a>4. checking whether zlib support suffices.</h4><pre><code>sudo apt-get install zlib1g-dev
-</code></pre><h4 id="5-checking-whether-bzip2-support-suffices"><a href="#5-checking-whether-bzip2-support-suffices" class="headerlink" title="5. checking whether bzip2 support suffices"></a>5. checking whether bzip2 support suffices</h4><pre><code>wget &lt;http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz&gt;
+      <url>/papers/2018-02-10-Install-R-and-rstudio.html</url>
+      <content type="html"><![CDATA[<h1 id="install-R"><a href="#install-R" class="headerlink" title="install R"></a>install R</h1><ul>
+<li>error</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">File failed to load: /extensions/MathZoom.js</span><br><span class="line"><span class="built_in">export</span> CFLAGS=<span class="string">"-I/share/apps/R_depends/include"</span></span><br><span class="line"><span class="built_in">export</span> LDFLAGS=<span class="string">"-L/share/apps/R_depends/lib"</span></span><br></pre></td></tr></table></figure>
+<h2 id="configure"><a href="#configure" class="headerlink" title="./configure"></a>./configure</h2><pre><code>./configure --prefix=/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk
+</code></pre><h3 id="1-configure-error-No-F77-compiler-found"><a href="#1-configure-error-No-F77-compiler-found" class="headerlink" title="1. configure: error: No F77 compiler found"></a>1. configure: error: No F77 compiler found</h3><pre><code>sudo apt-get install gfortran
+</code></pre><h3 id="2-configure-error-–with-readline"><a href="#2-configure-error-–with-readline" class="headerlink" title="2. configure: error: –with-readline"></a>2. configure: error: –with-readline</h3><pre><code>sudo apt-get install libreadline-dev
+</code></pre><h3 id="3-configure-error-–with-x-yes"><a href="#3-configure-error-–with-x-yes" class="headerlink" title="3. configure: error: –with-x=yes"></a>3. configure: error: –with-x=yes</h3><pre><code>sudo apt-get install libxt-dev
+</code></pre><h3 id="4-checking-whether-zlib-support-suffices"><a href="#4-checking-whether-zlib-support-suffices" class="headerlink" title="4. checking whether zlib support suffices."></a>4. checking whether zlib support suffices.</h3><pre><code>sudo apt-get install zlib1g-dev
+</code></pre><h3 id="5-checking-whether-bzip2-support-suffices"><a href="#5-checking-whether-bzip2-support-suffices" class="headerlink" title="5. checking whether bzip2 support suffices"></a>5. checking whether bzip2 support suffices</h3><pre><code>wget &lt;http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz&gt;
 
 tar xvf bzip2-1.0.6.tar.gz
 
@@ -93,8 +103,8 @@ make -n install PREFIX=$R_depends
 make install PREFIX=$R_depends
 
 install bzip2-lib
-</code></pre><h4 id="6-configure-error-“liblzma"><a href="#6-configure-error-“liblzma" class="headerlink" title="6. configure: error: “liblzma"></a>6. configure: error: “liblzma</h4><pre><code>sudo apt-get install liblzma-dev
-</code></pre><h4 id="7-configure-error-pcre-gt-8-10"><a href="#7-configure-error-pcre-gt-8-10" class="headerlink" title="7. configure: error: pcre &gt;= 8.10"></a>7. configure: error: pcre &gt;= 8.10</h4><pre><code>wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz
+</code></pre><h3 id="6-configure-error-“liblzma"><a href="#6-configure-error-“liblzma" class="headerlink" title="6. configure: error: “liblzma"></a>6. configure: error: “liblzma</h3><pre><code>sudo apt-get install liblzma-dev
+</code></pre><h3 id="7-configure-error-pcre-gt-8-10"><a href="#7-configure-error-pcre-gt-8-10" class="headerlink" title="7. configure: error: pcre &gt;= 8.10"></a>7. configure: error: pcre &gt;= 8.10</h3><pre><code>wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz
 
 tar xvf pcre-8.39.tar.gz
 
@@ -103,8 +113,7 @@ cd pcre-8.39
 ./configure --enable-utf8 --prefix=$R_depends
 
 make &amp;amp; sudo make install
-</code></pre><h4 id="8-libcurl-gt-7-28-0-library-and-headers-are-required-with-support-for"><a href="#8-libcurl-gt-7-28-0-library-and-headers-are-required-with-support-for" class="headerlink" title="8. libcurl &gt;= 7.28.0 library and headers are required with support for"></a>8. libcurl &gt;= 7.28.0 library and headers are required with support for</h4><p>https</p>
-<pre><code>wget https://www.openssl.org/source/openssl-1.1.0b.tar.gz
+</code></pre><h3 id="8-libcurl-gt-7-28-0-library-and-headers-are-required-with-support-for-https"><a href="#8-libcurl-gt-7-28-0-library-and-headers-are-required-with-support-for-https" class="headerlink" title="8. libcurl &gt;= 7.28.0 library and headers are required with support for https"></a>8. libcurl &gt;= 7.28.0 library and headers are required with support for https</h3><pre><code>wget https://www.openssl.org/source/openssl-1.1.0b.tar.gz
 
 tar xvf openssl-1.1.0b.tar.gz
 
@@ -123,10 +132,9 @@ cd curl-7.50.3
 ./configure --with-ssl=/usr/local/ssl/
 
 make &amp;amp; sudo make install
-</code></pre><h4 id="9-configure-WARNING-you-cannot-build-info-or-HTML-versions-of-the-R-manuals"><a href="#9-configure-WARNING-you-cannot-build-info-or-HTML-versions-of-the-R-manuals" class="headerlink" title="9.configure: WARNING: you cannot build info or HTML versions of the R manuals"></a>9.configure: WARNING: you cannot build info or HTML versions of the R manuals</h4><pre><code>sudo apt-get install texinfo
-</code></pre><h4 id="10-configure-WARNING-you-cannot-build-PDF-versions-of-the-R-manuals"><a href="#10-configure-WARNING-you-cannot-build-PDF-versions-of-the-R-manuals" class="headerlink" title="10. configure: WARNING: you cannot build PDF versions of the R manuals"></a>10. configure: WARNING: you cannot build PDF versions of the R manuals</h4><h4 id="configure-WARNING-you-cannot-build-PDF-versions-of-vignettes-and-help-pages"><a href="#configure-WARNING-you-cannot-build-PDF-versions-of-vignettes-and-help-pages" class="headerlink" title="configure: WARNING: you cannot build PDF versions of vignettes and help pages"></a>configure: WARNING: you cannot build PDF versions of vignettes and help pages</h4><pre><code>sudo apt-get install texlive
-</code></pre><h4 id="11-configure-WARNING-neither-inconsolata-sty-nor-zi4-sty-found-PDF"><a href="#11-configure-WARNING-neither-inconsolata-sty-nor-zi4-sty-found-PDF" class="headerlink" title="11. configure: WARNING: neither inconsolata.sty nor zi4.sty found: PDF"></a>11. configure: WARNING: neither inconsolata.sty nor zi4.sty found: PDF</h4><p>vignettes and package manuals will not be rendered optimally</p>
-<pre><code>wget &lt;http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip&gt;
+</code></pre><h3 id="9-configure-WARNING-you-cannot-build-info-or-HTML-versions-of-the-R-manuals"><a href="#9-configure-WARNING-you-cannot-build-info-or-HTML-versions-of-the-R-manuals" class="headerlink" title="9.configure: WARNING: you cannot build info or HTML versions of the R manuals"></a>9.configure: WARNING: you cannot build info or HTML versions of the R manuals</h3><pre><code>sudo apt-get install texinfo
+</code></pre><h3 id="10-configure-WARNING-you-cannot-build-PDF-versions-of-the-R-manuals-configure-WARNING-you-cannot-build-PDF-versions-of-vignettes-and-help-pages"><a href="#10-configure-WARNING-you-cannot-build-PDF-versions-of-the-R-manuals-configure-WARNING-you-cannot-build-PDF-versions-of-vignettes-and-help-pages" class="headerlink" title="10. configure: WARNING: you cannot build PDF versions of the R manuals, configure: WARNING: you cannot build PDF versions of vignettes and help pages"></a>10. configure: WARNING: you cannot build PDF versions of the R manuals, configure: WARNING: you cannot build PDF versions of vignettes and help pages</h3><pre><code>sudo apt-get install texlive
+</code></pre><h3 id="11-configure-WARNING-neither-inconsolata-sty-nor-zi4-sty-found-PDF-vignettes-and-package-manuals-will-not-be-rendered-optimally"><a href="#11-configure-WARNING-neither-inconsolata-sty-nor-zi4-sty-found-PDF-vignettes-and-package-manuals-will-not-be-rendered-optimally" class="headerlink" title="11. configure: WARNING: neither inconsolata.sty nor zi4.sty found: PDF vignettes and package manuals will not be rendered optimally"></a>11. configure: WARNING: neither inconsolata.sty nor zi4.sty found: PDF vignettes and package manuals will not be rendered optimally</h3><pre><code>wget &lt;http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip&gt;
 
 sudo mv inconsolata.tds.zip /usr/share/texlive/texmf-dist/tex/latex
 
@@ -135,10 +143,10 @@ cd /usr/share/texlive/texmf-dist/tex/latex
 unzip inconsolata.tds.zip
 
 sudo mktexlsr
-</code></pre><h4 id="12-本版本不支持png"><a href="#12-本版本不支持png" class="headerlink" title="12. 本版本不支持png"></a>12. 本版本不支持png</h4><pre><code>sudo apt-get install libpng16-dev
+</code></pre><h3 id="12-本版本不支持png"><a href="#12-本版本不支持png" class="headerlink" title="12. 本版本不支持png"></a>12. 本版本不支持png</h3><pre><code>sudo apt-get install libpng16-dev
 
 sudo apt-get install libtiff5-dev
-</code></pre><h2 id="make"><a href="#make" class="headerlink" title="make"></a>make</h2><h4 id="1-usr-local-lib-libbz2-a-无法添加符号-错误的值"><a href="#1-usr-local-lib-libbz2-a-无法添加符号-错误的值" class="headerlink" title="1./usr/local/lib/libbz2.a: 无法添加符号: 错误的值"></a>1./usr/local/lib/libbz2.a: 无法添加符号: 错误的值</h4><pre><code>rm /usr/local/lib/libbz2.a
+</code></pre><h2 id="make"><a href="#make" class="headerlink" title="make"></a>make</h2><h3 id="1-usr-local-lib-libbz2-a-无法添加符号-错误的值"><a href="#1-usr-local-lib-libbz2-a-无法添加符号-错误的值" class="headerlink" title="1./usr/local/lib/libbz2.a: 无法添加符号: 错误的值"></a>1./usr/local/lib/libbz2.a: 无法添加符号: 错误的值</h3><pre><code>rm /usr/local/lib/libbz2.a
 
 wget &lt;http://zlib.net/zlib-1.2.8.tar.gz&gt;
 
@@ -149,36 +157,33 @@ CC=&apos;gcc -fPIC&apos;
 ./configure; make test
 
 sudo make install
-</code></pre><h4 id="2-usr-bin-ld-cannot-find-lbz2-collect2-error-ld-returned-1-exit"><a href="#2-usr-bin-ld-cannot-find-lbz2-collect2-error-ld-returned-1-exit" class="headerlink" title="2./usr/bin/ld: cannot find -lbz2 ;  collect2: error: ld returned 1 exit"></a>2./usr/bin/ld: cannot find -lbz2 ;  collect2: error: ld returned 1 exit</h4><p>status</p>
-<pre><code>sudo apt-get install libbz2-dev
+</code></pre><h3 id="2-usr-bin-ld-cannot-find-lbz2-collect2-error-ld-returned-1-exit-status"><a href="#2-usr-bin-ld-cannot-find-lbz2-collect2-error-ld-returned-1-exit-status" class="headerlink" title="2./usr/bin/ld: cannot find -lbz2 ;  collect2: error: ld returned 1 exit status"></a>2./usr/bin/ld: cannot find -lbz2 ;  collect2: error: ld returned 1 exit status</h3><pre><code>sudo apt-get install libbz2-dev
 会用到make CC=&apos;gcc -fPIC&apos;
      make install PREFIX=/software/packages
-</code></pre><h2 id="make-install"><a href="#make-install" class="headerlink" title="make install"></a>make install</h2><h4 id="1-conftest-c-1-17-fatal-error-jni-h"><a href="#1-conftest-c-1-17-fatal-error-jni-h" class="headerlink" title="1.conftest.c:1:17: fatal error: jni.h"></a>1.conftest.c:1:17: fatal error: jni.h</h4><pre><code>cd R-3.3.1/doc
+</code></pre><h2 id="make-install"><a href="#make-install" class="headerlink" title="make install"></a>make install</h2><h3 id="1-conftest-c-1-17-fatal-error-jni-h"><a href="#1-conftest-c-1-17-fatal-error-jni-h" class="headerlink" title="1.conftest.c:1:17: fatal error: jni.h"></a>1.conftest.c:1:17: fatal error: jni.h</h3><pre><code>cd R-3.3.1/doc
 
 wget &lt;https://cran.r-project.org/doc/manuals/r-release/NEWS.pdf&gt;
-</code></pre><h1 id="install-rstudio"><a href="#install-rstudio" class="headerlink" title="install rstudio"></a>install rstudio</h1><pre><code>sudo apt-get install libjpeg62-dev
+</code></pre><h2 id="install-rstudio"><a href="#install-rstudio" class="headerlink" title="install rstudio"></a>install rstudio</h2><pre><code>sudo apt-get install libjpeg62-dev
 
 sudo apt-get install libgstreamer0.10-0
 
 sudo apt-get install libgstreamer-plugins-base0.10-0
 
 export RSTUDIO_WHICH_R=&quot;/opt/R-3.3.1/bin/R&quot; 添加到/etc/profile或~/.profile
-</code></pre><h1 id="run-R"><a href="#run-R" class="headerlink" title="run R"></a>run R</h1><h2 id="Error-in-grid-Call-L-textBounds-as-graphicsAnnot-xlabel-xlabel-x"><a href="#Error-in-grid-Call-L-textBounds-as-graphicsAnnot-xlabel-xlabel-x" class="headerlink" title="Error in grid.Call(L_textBounds, as.graphicsAnnot(xlabel),xlabel),x"></a>Error in grid.Call(L_textBounds, as.graphicsAnnot(xlabel),xlabel),x</h2><p>x, x$y, :无法载入X11字面为2,大小为20的字形-<em>-courier-%s-%s-</em>-<em>-%d-</em>-<em>-</em>-<em>-</em>-<em>-</em></p>
-<pre><code>sudo apt-get install t1-xfree86-nonfree ttf-xfree86-nonfree ttf-xfree86-nonfree-syriac
+</code></pre><h3 id="run-R"><a href="#run-R" class="headerlink" title="run R"></a>run R</h3><h3 id="Error-in-grid-Call-L-textBounds-as-graphicsAnnot-xlabel-xlabel-x-x-x-y-无法载入X11字面为2-大小为20的字形-courier-s-s-d"><a href="#Error-in-grid-Call-L-textBounds-as-graphicsAnnot-xlabel-xlabel-x-x-x-y-无法载入X11字面为2-大小为20的字形-courier-s-s-d" class="headerlink" title="Error in grid.Call(L_textBounds, as.graphicsAnnot(xlabel),xlabel),x x, x$y, :无法载入X11字面为2,大小为20的字形--courier-%s-%s---%d-------"></a>Error in grid.Call(L_textBounds, as.graphicsAnnot(xlabel),xlabel),x x, x$y, :无法载入X11字面为2,大小为20的字形-<em>-courier-%s-%s-</em>-<em>-%d-</em>-<em>-</em>-<em>-</em>-<em>-</em></h3><pre><code>sudo apt-get install t1-xfree86-nonfree ttf-xfree86-nonfree ttf-xfree86-nonfree-syriac
 
 sudo apt-get install xfonts-75dpi
 sudo apt-get install xfonts-100dpi
 sudo apt-get install mesa-utils
 sudo apt-get install libxtst-dev
-</code></pre><h1 id="using-R"><a href="#using-R" class="headerlink" title="using R"></a>using R</h1><h2 id="无法载入共享目标对象-stringi-so"><a href="#无法载入共享目标对象-stringi-so" class="headerlink" title="无法载入共享目标对象 stringi.so"></a>无法载入共享目标对象 stringi.so</h2><pre><code>install.packages(stringi)
-</code></pre><h2 id="R-install-packages-returns-“failed-to-create-lock-directory”"><a href="#R-install-packages-returns-“failed-to-create-lock-directory”" class="headerlink" title="R install.packages returns “failed to create lock directory”"></a>R install.packages returns “failed to create lock directory”</h2><pre><code>R CMD INSTALL --no-lock &amp;lt;pkg&amp;gt;
+</code></pre><h3 id="using-R"><a href="#using-R" class="headerlink" title="using R"></a>using R</h3><h3 id="无法载入共享目标对象-stringi-so"><a href="#无法载入共享目标对象-stringi-so" class="headerlink" title="无法载入共享目标对象 stringi.so"></a>无法载入共享目标对象 stringi.so</h3><pre><code>install.packages(stringi)
+</code></pre><h3 id="R-install-packages-returns-“failed-to-create-lock-directory”"><a href="#R-install-packages-returns-“failed-to-create-lock-directory”" class="headerlink" title="R install.packages returns “failed to create lock directory”"></a>R install.packages returns “failed to create lock directory”</h3><pre><code>R CMD INSTALL --no-lock &amp;lt;pkg&amp;gt;
 
 OR
 
 install.packages(&quot;Rcpp&quot;, dependencies=TRUE, INSTALL_opts = c(&apos;\--no-lock&apos;))
-</code></pre><h2 id="An-irrecoverable-exception-occurred-R-is-aborting-now-…-ERROR-loading"><a href="#An-irrecoverable-exception-occurred-R-is-aborting-now-…-ERROR-loading" class="headerlink" title="An irrecoverable exception occurred. R is aborting now … ERROR: loading"></a>An irrecoverable exception occurred. R is aborting now … ERROR: loading</h2><p>failed</p>
-<pre><code>R CMD INSTALL --no-test-load *packages*
-</code></pre><h2 id="nlopt"><a href="#nlopt" class="headerlink" title="nlopt"></a>nlopt</h2><pre><code>./configure --enable-shared
+</code></pre><h3 id="An-irrecoverable-exception-occurred-R-is-aborting-now-…-ERROR-loading-failed"><a href="#An-irrecoverable-exception-occurred-R-is-aborting-now-…-ERROR-loading-failed" class="headerlink" title="An irrecoverable exception occurred. R is aborting now … ERROR: loading failed"></a>An irrecoverable exception occurred. R is aborting now … ERROR: loading failed</h3><pre><code>R CMD INSTALL --no-test-load *packages*
+</code></pre><h3 id="nlopt"><a href="#nlopt" class="headerlink" title="nlopt"></a>nlopt</h3><pre><code>./configure --enable-shared
 
 make
 
@@ -286,9 +291,13 @@ make install
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修改_config.yml, 用git可以免密码，如用https:则不免密码</span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: git@github.com:ghxdghxd/ghxdghxd.github.io.git</span><br></pre></td></tr></table></figure>
 <ul>
-<li>4 插件</li>
+<li>4 pdf插件</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">直接插入并显示pdf</span><br><span class="line">npm install hexo-pdf</span><br><span class="line">&#123;% pdf /images/name.pdf %&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">直接插入并显示pdf</span><br><span class="line">npm install hexo-pdf</span><br><span class="line">&#123;% pdf /images/name.pdf %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>5 插入脚注(reference)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-reference --save</span><br><span class="line">例：</span><br><span class="line">basic footnote[^1]</span><br><span class="line">here is an inline footnote[^2](inline footnote)</span><br><span class="line">and another one[^3]</span><br><span class="line">and another one[^4]</span><br><span class="line"></span><br><span class="line">[^1]: basic footnote content</span><br><span class="line">[^3]: paragraph</span><br><span class="line">footnote</span><br><span class="line">content</span><br><span class="line">[^4]: footnote content with some [markdown](https://en.wikipedia.org/wiki/Markdown)</span><br></pre></td></tr></table></figure>]]></content>
       
         
     </entry>
