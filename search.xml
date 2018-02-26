@@ -5,13 +5,19 @@
     <entry>
       <title><![CDATA[meta Analysis]]></title>
       <url>/papers/2018-02-26-metaAnalysis.html</url>
-      <content type="html"><![CDATA[<h1 id="An-Overview-of-Functions-in-the-metafor-Package"><a href="#An-Overview-of-Functions-in-the-metafor-Package" class="headerlink" title="An Overview of Functions in the metafor Package"></a>An Overview of Functions in the metafor Package</h1><!-- <embed src="" width="100%" height="550" type=/images/metafor_diagram.pdf> -->
+      <content type="html"><![CDATA[<h1 id="An-Overview-of-Functions-in-the-metafor-Package"><a href="#An-Overview-of-Functions-in-the-metafor-Package" class="headerlink" title="An Overview of Functions in the metafor Package"></a>An Overview of Functions in the metafor Package</h1>
+
+	<div class="row">
+    <embed src="/documents/metafor_diagram.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
 
 
 	<div class="row">
-    <embed src="/images/metafor_diagram.pdf" width="100%" height="550" type="application/pdf">
+    <embed src="/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf" width="100%" height="550" type="application/pdf">
 	</div>
-
 
 
 ]]></content>
