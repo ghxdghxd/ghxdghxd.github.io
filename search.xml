@@ -425,7 +425,9 @@ make install
 <p>　　（3）规则：</p>
 <p>/*<br>!.gitignore<br>!/fw/bin/<br>!/fw/sf/</p>
 <p>说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；</p>
-]]></content>
+<h2 id="warning-LF-will-be-replaced-by-CRLF"><a href="#warning-LF-will-be-replaced-by-CRLF" class="headerlink" title="warning: LF will be replaced by CRLF"></a>warning: LF will be replaced by CRLF</h2><p>在Windows环境下使用git进行add的时候，会提示如下warning: “warning:LF will be replacee by CRLF”。</p>
+<p>这是因为在Windows中的换行符为CRLF，而在Linux中的换行符为LF。<br>在git创建的项目中换行符为LF，而执行git add时，系统会提示LF将被转换为CRLF。<br>解决的办法很简单，禁止git的自动转换即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">false</span> //禁用自动转换</span><br></pre></td></tr></table></figure>]]></content>
       
         <categories>
             
