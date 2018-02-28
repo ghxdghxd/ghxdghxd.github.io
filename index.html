@@ -554,7 +554,7 @@
       
         
           
-          dockercentos yum install docker123456789101112131415161718tee /etc/yum.repos.d/docker.repo &lt;&lt;-'EOF'[dockerrepo]name=Docker Repositorybaseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/enabled=1gpgcheck=1gpgkey=https://yum.dockerproject.org/gpgEOFsed -i 's/other_args=\"\"/other_args=\"--graph=\/share\/apps\/docker\"/g' /etc/sysconfig/dockerfor i in `seq 1 8`;do    sudo scp /etc/yum.repos.d/docker.repo compute-0-$i:/etc/yum.repos.d/docker.repodonerocks run host "yum install d
+          dockercentos yum install docker123456789101112131415161718tee /etc/yum.repos.d/docker.repo &lt;&lt;-'EOF'[dockerrepo]name=Docker Repositorybaseurl=htt
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -916,7 +916,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/papers/2018-02-06-bioinfomatic.html" itemprop="url">生物信息学</a></h1>
+                <a class="post-title-link" href="/papers/2018-02-06-bioinfomatic.html" itemprop="url">Bioinfomatics</a></h1>
         
 
         <div class="post-meta">
@@ -984,10 +984,12 @@
 
       
         
-          生物信息资源
+          
+          What is BioinfomaticsBioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data.As an int
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/papers/2018-02-06-bioinfomatic.html">
+            <a class="btn" href="/papers/2018-02-06-bioinfomatic.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1129,9 +1131,7 @@
         
           
           echo显示带颜色，需要使用参数-e格式如下:echo -e “\033[字背景颜色;文字颜色m字符串\033[0m”例如:echo -e “\033[41;37m TonyZhang \033[0m”其中41的位置代表底色, 37的位置是代表字的颜色
- 注：1、字背景颜色和文字颜色之间是英文的“”””2、文字颜色后面有个m3、字符串前后可以没有空格，如果有的话，输出也是同样有空格
-下面看几个例子：echo -e “\033[30m 黑色字 \033[0m”echo -e “\033[31m 红色字 \033[0m”echo -e “\033[32m 绿色字 \033[0m”echo -e “\033[33m 黄色字 \033[0m”echo -e “\033[34m 蓝色字 \033[0m”echo -e “\033[35m 紫色字 \033[0m”echo -e “\033[36m 天蓝字 \033[0m”echo -e “\033[37m 白色字 \033[0m”
-echo -e “\033[40;37m 黑底白字 \033[0m”echo -e “\033[41;37m 红底白
+ 注：1、字背景颜色和文字颜色之间是英文的“”
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1265,17 +1265,7 @@ echo -e “\033[40;37m 黑底白字 \033[0m”echo -e “\033[41;37m 红底白
 
 2
 
-12345678910初始化hexomkdir Blognpm install hexohexo initnpm installcp -a Blog/* ghxdghxd.github.iorm -r Blogmv ghxdghxd.github.io Blogcd Blognpm install hexo-deployer-git
-
-3
-
-1234修改_config.yml, 用git可以免密码，如用https:则不免密码deploy:  type: git  repository: git@github.com:ghxdghxd/ghxdghxd.github.io.git
-
-4 pdf插件
-
-123直接插入并显示pdfnpm install hexo-pdf&#123;% pdf /images/name.pdf %&#125;
-
-5 插入脚注
+12345678910初始化hexomkdir Blognp
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1429,15 +1419,7 @@ echo -e “\033[40;37m 黑底白字 \033[0m”echo -e “\033[41;37m 红底白
 数日子过年
 在距今已经很久远的那一天，我们就约定好了重逢。我知道，我会找到你。《与之彼端，约定的地方》
 
-人们的思维容易出现定势效应(set effect), 因为人们倾向于利用原有的方式解决问题，且会被困在这个思维里，无法跳出。如果中途停下来处理其他事情，或中断了原来的情景，即使没有带着答案回来，也能在潜意识中明白一点，原来的思维方式可能是错的，或有新的思考方向。这就是酝酿效应（incubation effect），指将问题搁置在一旁，能使得原有不合适的知识基础的活动性降低（减少思维定势），并采用新的方法考虑或解决问题。
-
-定性，知事，选梦; 遇人，择城，终老。
-今天是余生中最年轻的一天，想玩就玩去
-爱情也许会过时，但“爱你”不会
-此为月圆是月缺，彼是月缺为月圆，月圆盼月缺，月缺待月圆。
-风起一阵知秋意，
-时不时遇见，面对面错过。
-三十而立，不是表面的成家或者立业，你立的，是成熟的思维模式，是独立而纵深的思考能力。
+人们的思维容易出现定势
           ...
           <!--noindex-->
           <div class="post-button text-center">
