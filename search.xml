@@ -3,6 +3,44 @@
   
     
     <entry>
+      <title><![CDATA[archlinux.md]]></title>
+      <url>/papers/2018-03-08-archlinux.html</url>
+      <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="archlinux安装与配置"><a href="#archlinux安装与配置" class="headerlink" title="archlinux安装与配置"></a>archlinux安装与配置</h1><h2 id="archlinux安装"><a href="#archlinux安装" class="headerlink" title="archlinux安装"></a>archlinux安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>u盘启动后</span><br><span class="line">wifi-memu # 连接网络</span><br><span class="line">mount /dev/sda1 /mnt</span><br><span class="line">mkdir -p /mnt/home</span><br><span class="line">mount /dev/sda2 /mnt/home</span><br><span class="line">vi /ect/pacman.d/mirrorlist # 修改中国镜像源,如163.com</span><br><span class="line">pacstrap -i /mnt base base-devel</span><br><span class="line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab #生成挂载文件fstab</span><br></pre></td></tr></table></figure>
+<h2 id="archlinux-初步配置"><a href="#archlinux-初步配置" class="headerlink" title="archlinux 初步配置"></a>archlinux 初步配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt /bin/bash #切换到archlinux</span><br></pre></td></tr></table></figure>
+<ul>
+<li>本地语言</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/locale.gen</span><br><span class="line">    en_US.UTF-8 UTF-8</span><br><span class="line">    zh_CN.UTF-8 UTF-8</span><br><span class="line"></span><br><span class="line">locale-gen #生效</span><br><span class="line">echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时区</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">或</span><br><span class="line">tzselect #按提示选择时区</span><br><span class="line"></span><br><span class="line">hwclock --systohc --utc #设置硬件时间</span><br></pre></td></tr></table></figure>
+<ul>
+<li>grub引导系统</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S grub efibootmgr # 支持grub和EFI，可只选grup</span><br><span class="line">grub-install --target=i386-pc --recheck --debug /dev/sda</span><br><span class="line">grup-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
+<ul>
+<li>网络配置</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable dhcpcd.service #有线</span><br><span class="line">pacman -S iw wpa_supplicant dialog #无线</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> -operation -interest </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> -linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[meta Analysis]]></title>
       <url>/papers/2018-02-26-meta-analysis.html</url>
       <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="metafor-document"><a href="#metafor-document" class="headerlink" title="metafor document"></a>metafor document</h1><ul>
@@ -69,6 +107,30 @@
             
         </categories>
         
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tennis racquet]]></title>
+      <url>/papers/2018-02-10-tennis-racquet.html</url>
+      <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="网球拍平衡点测量"><a href="#网球拍平衡点测量" class="headerlink" title="网球拍平衡点测量"></a>网球拍平衡点测量</h1><p>这个是每份点得出来的公式（pts点，inch英寸）<br>1pts = 1/8 inch = 1/8 * 2.54cm = 0.3175cm<br>下面以标准拍子27英寸长度为例，换算出是68.5cm，那中心点就是34.25cm。然后假设你所量出平衡点到拍底的距离为h。<br>如果大于34.25，则是（h-34.25）/0.3175=T，就是T点头重<br>如果小于34.25，则是（34.25-h）/0.3175=T，就是T点头轻</p>
+<p><img src="/images/平衡点.jpg" alt="平衡点"></p>
+<p>图中可知，此时拍子是完全平衡状态，只需测量纸片到底盖的距离就可以了，按这个方法测量出我的拍子是32.34cm，套用公式:<br>（34.25-32.34）÷0.3175=6.015，也就是6点头轻了！</p>
+<p>另附上球拍头轻和头重的优劣:<br>头轻拍更灵活易于控制，能让选手在网前有不错的表现，但是不能提供足够大的力量。头重拍，灵活性差，但能提供额外的力量更有利于底线的击球。一般专业的球拍都是头轻拍或者是平衡拍，因为这样更利于网前技术的发挥，而且专业球员都有很好的身体素质可以自身去发力。而初学拍比较多的是头重拍，这样能使初学者并不需要太多的发力就能击出力量较大的球。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> interest </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> tennis </tag>
+            
+        </tags>
         
     </entry>
     
@@ -206,35 +268,15 @@ make install
     </entry>
     
     <entry>
-      <title><![CDATA[tennis racquet]]></title>
-      <url>/papers/2018-02-10-tennis-racquet.html</url>
-      <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="网球拍平衡点测量"><a href="#网球拍平衡点测量" class="headerlink" title="网球拍平衡点测量"></a>网球拍平衡点测量</h1><p>这个是每份点得出来的公式（pts点，inch英寸）<br>1pts = 1/8 inch = 1/8 * 2.54cm = 0.3175cm<br>下面以标准拍子27英寸长度为例，换算出是68.5cm，那中心点就是34.25cm。然后假设你所量出平衡点到拍底的距离为h。<br>如果大于34.25，则是（h-34.25）/0.3175=T，就是T点头重<br>如果小于34.25，则是（34.25-h）/0.3175=T，就是T点头轻</p>
-<p><img src="/images/平衡点.jpg" alt="平衡点"></p>
-<p>图中可知，此时拍子是完全平衡状态，只需测量纸片到底盖的距离就可以了，按这个方法测量出我的拍子是32.34cm，套用公式:<br>（34.25-32.34）÷0.3175=6.015，也就是6点头轻了！</p>
-<p>另附上球拍头轻和头重的优劣:<br>头轻拍更灵活易于控制，能让选手在网前有不错的表现，但是不能提供足够大的力量。头重拍，灵活性差，但能提供额外的力量更有利于底线的击球。一般专业的球拍都是头轻拍或者是平衡拍，因为这样更利于网前技术的发挥，而且专业球员都有很好的身体素质可以自身去发力。而初学拍比较多的是头重拍，这样能使初学者并不需要太多的发力就能击出力量较大的球。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> interest </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> tennis </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Bioinfomatics]]></title>
-      <url>/papers/2018-02-06-bioinfomatic.html</url>
-      <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="What-is-Bioinfomatics"><a href="#What-is-Bioinfomatics" class="headerlink" title="What is Bioinfomatics"></a>What is Bioinfomatics</h1><p>Bioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data.As an interdisciplinary field of science, bioinformatics combines Computer Science, Biology, Mathematics, and Engineering to analyze and interpret biological data. Bioinformatics has been used for in silico analyses of biological queries using mathematical and statistical techniques. More broadly, bioinformatics is applied statistics and computing to biological science.</p>
-<p>Bioinformatics is both an umbrella term for the body of biological studies that use computer programming as part of their methodology, as well as a reference to specific analysis “pipelines” that are repeatedly used, particularly in the field of genomics. Common uses of bioinformatics include the identification of candidate genes and single nucleotide polymorphisms (SNPs). Often, such identification is made with the aim of better understanding the genetic basis of disease, unique adaptations, desirable properties (esp. in agricultural species), or differences between populations. In a less formal way, bioinformatics also tries to understand the organisational principles within nucleic acid and protein sequences, called proteomics.<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top-right hint--error hint--large" aria-label="basic footnote content">[1]</span></a></sup></p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">basic footnote content<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>]]></content>
+      <title><![CDATA[Bioinformatics]]></title>
+      <url>/papers/2018-02-06-bioinformatic.html</url>
+      <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="the-story"><a href="#the-story" class="headerlink" title="the story"></a>the story</h1><p>I should tell you one story which I experienced.</p>
+<h2 id="What-is-Bioinfomatics"><a href="#What-is-Bioinfomatics" class="headerlink" title="What is Bioinfomatics"></a>What is Bioinfomatics</h2><p>Bioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data.As an interdisciplinary field of science, bioinformatics combines Computer Science, Biology, Mathematics, and Engineering to analyze and interpret biological data. Bioinformatics has been used for in silico analyses of biological queries using mathematical and statistical techniques. More broadly, bioinformatics is applied statistics and computing to biological science.</p>
+<p>Bioinformatics is both an umbrella term for the body of biological studies that use computer programming as part of their methodology, as well as a reference to specific analysis “pipelines” that are repeatedly used, particularly in the field of genomics. Common uses of bioinformatics include the identification of candidate genes and single nucleotide polymorphisms (SNPs). Often, such identification is made with the aim of better understanding the genetic basis of disease, unique adaptations, desirable properties (esp. in agricultural species), or differences between populations. In a less formal way, bioinformatics also tries to understand the organisational principles within nucleic acid and protein sequences, called proteomics.<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top-right hint--error hint--large" aria-label="
+">[1]</span></a></sup></p>
+<p>big data is noisy datasets<br>大数据就像是一片脏乱的海，<br>实验科学是钓鱼(bioexperiment fishes with hook)，生物信息是网鱼(bioinformatics fishes with nets)。</p>
+<p>move the ships, fishing net</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>]]></content>
       
         <categories>
             
@@ -338,6 +380,7 @@ make install
 <li>可否，少些理智，享受一下脱轨的惊喜</li>
 <li>真正的离开，是没有告别的</li>
 <li>最好的修养，是明知不问</li>
+<li>健康大于一切</li>
 </ol>
 ]]></content>
       
