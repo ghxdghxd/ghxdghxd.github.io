@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="DGBlog">
 <meta property="og:description" content="archlinux安装与配置archlinux安装12345678#u盘启动后wifi-memu # 连接网络mount /dev/sda1 /mntmkdir -p /mnt/homemount /dev/sda2 /mnt/homevi /ect/pacman.d/mirrorlist # 修改中国镜像源,如163.compacstrap -i /mnt base base-develgenf">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-08T06:16:19.803Z">
+<meta property="og:updated_time" content="2018-03-08T13:57:55.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="archlinux.md">
 <meta name="twitter:description" content="archlinux安装与配置archlinux安装12345678#u盘启动后wifi-memu # 连接网络mount /dev/sda1 /mntmkdir -p /mnt/homemount /dev/sda2 /mnt/homevi /ect/pacman.d/mirrorlist # 修改中国镜像源,如163.compacstrap -i /mnt base base-develgenf">
@@ -423,10 +423,14 @@
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S grub efibootmgr # 支持grub和EFI，可只选grup</span><br><span class="line">grub-install --target=i386-pc --recheck --debug /dev/sda</span><br><span class="line">grup-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
 <ul>
+<li>主机名</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo Garch &gt;&gt; /etc/hostname</span><br></pre></td></tr></table></figure>
+<ul>
 <li>网络配置</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable dhcpcd.service #有线</span><br><span class="line">pacman -S iw wpa_supplicant dialog #无线</span><br></pre></td></tr></table></figure>
-
+<h2 id="archlinux-配置X"><a href="#archlinux-配置X" class="headerlink" title="archlinux 配置X"></a>archlinux 配置X</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>最小安装</span><br><span class="line">pacman -S xorg-server # X桌面</span><br><span class="line">pacman -S xf86-video-ati # 显卡驱动</span><br><span class="line">pacman -S gnome gnome-tweak-tool</span><br><span class="line"><span class="meta">#</span> 可选</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -652,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#archlinux安装与配置"><span class="nav-number">1.</span> <span class="nav-text">archlinux安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#archlinux安装"><span class="nav-number">1.1.</span> <span class="nav-text">archlinux安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#archlinux-初步配置"><span class="nav-number">1.2.</span> <span class="nav-text">archlinux 初步配置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#archlinux安装与配置"><span class="nav-number">1.</span> <span class="nav-text">archlinux安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#archlinux安装"><span class="nav-number">1.1.</span> <span class="nav-text">archlinux安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#archlinux-初步配置"><span class="nav-number">1.2.</span> <span class="nav-text">archlinux 初步配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#archlinux-配置X"><span class="nav-number">1.3.</span> <span class="nav-text">archlinux 配置X</span></a></li></ol></li></ol></div>
             
 
           </div>
