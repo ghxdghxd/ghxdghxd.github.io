@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html land="zh">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>
+docker安装与配置 | NoteBox    </title>
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygment.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="Shortcut Icon" type="image/x-icon" href="/theme/images/favicon.ico" />
+    <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="body_container">
+    <div id="header">
+        <div class="site-name">
+            <a id="logo" href="/."> NoteBox </a>
+            <!-- <img id="short_image" src="/theme/images/Logo.jpg"/> -->
+            <!-- notebox + logo_image -->
+        </div>
+        <div id="nav-menu">
+            <a href="/." class="current"><i class="fa fa-home"> Home</i></a>
+            <a href="/archives.html"><i class="fa fa-archive"> Archive</i></a>
+            <a href="/pages/about.html"><i class="fa fa-user"> About</i></a>
+        </div>
+    </div>
+    <div id="layout" class="pure-g">
+        <div class="pure-u-1 pure-u-md-3-4"><div class="content_container">
+<div class="post">
+    <h1 class="post-title">docker安装与配置</h1>
+    <div class="post-meta">11月 03, 2017
+    <span> | </span> <span>operation</span>
+    </div>
+    <div class="post-content">
+        <h1>docker</h1>
+<h2>centos yum install docker</h2>
+<div class="highlight"><pre><span></span>tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-&#39;EOF&#39;</span>
+<span class="s">[dockerrepo]</span>
+<span class="s">name=Docker Repository</span>
+<span class="s">baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/</span>
+<span class="s">enabled=1</span>
+<span class="s">gpgcheck=1</span>
+<span class="s">gpgkey=https://yum.dockerproject.org/gpg</span>
+<span class="s">EOF</span>
+
+sed -i <span class="s1">&#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39;</span> /etc/sysconfig/docker
+
+<span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">8</span><span class="sb">`</span><span class="p">;</span>
+<span class="k">do</span>
+    sudo scp /etc/yum.repos.d/docker.repo compute-0-<span class="nv">$i</span>:/etc/yum.repos.d/docker.repo
+<span class="k">done</span>
+
+rocks run host <span class="s2">&quot;yum install docker-engine&quot;</span>
+rocks run host <span class="s2">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span>
+</pre></div>
+
+
+<!--more-->
+
+<h2>手动安装</h2>
+<div class="highlight"><pre><span></span>手动安装centos6.5 一些需要安装
+yum remove docker-engine
+<span class="nb">cd</span> /share/apps/until/docker/
+yum install ./lua-filesystem-1.4.2-1.el6.x86_64.rpm
+yum install ./lxc-libs-1.0.11-1.el6.x86_64.rpm
+yum install ./lua-lxc-1.0.11-1.el6.x86_64.rpm
+yum install ./lua-alt-getopt-0.7.0-1.el6.noarch.rpm
+yum install ./lxc-1.0.11-1.el6.x86_64.rpm
+yum install ./docker-io-1.7.1-2.el6.x86_64.rpm
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+yum install device-mapper-event-libs
+service docker restart
+</pre></div>
+
+
+<h3>安装错误</h3>
+<div class="highlight"><pre><span></span>下面错误：
+/usr/bin/docker: relocation error: /usr/bin/docker: symbol dm_task_get_info_with_deferred_remove, version Base not defined in file libdevmapper.so.1.02 with link <span class="nb">time</span> reference
+fix: $ sudo yum install device-mapper-event-libs
+如果无法安装，重新更新
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+然后再安装
+</pre></div>
+
+
+<h2>docker应用</h2>
+<h3>启动docker</h3>
+<div class="highlight"><pre><span></span>service docker start
+</pre></div>
+
+
+<h3>添加用户</h3>
+<div class="highlight"><pre><span></span>添加docker group：
+sudo groupadd docker
+
+将当前用户添加到docker组：
+sudo gpasswd -a <span class="si">${</span><span class="nv">USER</span><span class="si">}</span> docker
+
+重启docker服务：
+sudo service docker restart
+开机启动
+chkconfig docker on
+</pre></div>
+
+
+<h3>修改镜像和容器的存放路径</h3>
+<div class="highlight"><pre><span></span>/etc/sysconfig/docker加入：
+<span class="nv">other_args</span><span class="o">=</span><span class="s2">&quot;--graph=/data/docker&quot;</span>
+
+停止Docker服务
+service docker stop
+备份数据到新的存放路径
+cp -rf /var/lib/docker /data/
+修改备份/var/lib/docker路径
+mv /var/lib/docker<span class="o">{</span>,.bak<span class="o">}</span>
+启动Docker服务
+service docker start
+测试Docker服务
+docker info
+</pre></div>
+
+
+<h3>用法</h3>
+<ul>
+<li>查看镜像 docker images</li>
+<li>查找镜像 docker search</li>
+<li>查看容器 docker ps -a</li>
+<li>运行容器 docker run</li>
+<li>将宿主机的/var/data挂载到容器中的/data: docker run -tdi -v /var/data:/data centos</li>
+</ul>
+<p>如果ls: cannot open directory '.': Permission denied
+修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled</p>
+
+        <div class="tags">
+        <a href="/tag/awesome.html">awesome</a>
+        <a href="/tag/interest.html">interest</a>
+        </div>
+
+
+    </div>
+</div>
+        </div></div>
+        <div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar">
+<div class="widget">
+    <form action="search.html" accept-charset="utf-8" class="search-form">
+        <input type="text" name="q" id="tipue_search_input" placeholder="Search">
+        <input type="hidden" name="sitesearch" value="" />
+        <div style="clear: both;"></div>
+    </form>
+</div><div class="widget">
+    <div class="widget-title">
+        <i class="fa fa-heart-o"> 好记性不如烂键盘</i>
+    </div>
+    <img id="logo_image" src="/theme/images/Logo.jpg" />
+</div>
+<div class="widget">
+    <div class="widget-title">
+        <i class="fa fa-folder-o"> Categories</i>
+    </div>
+    <ul class="category-list">
+        <li class="category-list-item"><a class="category-list-link" href="/category/coding.html">coding</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/git.html">git</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/interest.html">interest</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/linux.html">linux</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/lu-you-qi.html">路由器</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/operation.html">operation</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/sheng-xin.html">生信</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji.html">统计</a></li>
+    </ul>
+</div><div class="widget">
+    <div class="widget-title"><i class="fa fa-star-o"> Tags</i></div>
+    <div class="tagcloud">
+    <a href="/tag/git.html" style="font-size: 12px">git</a>
+    <a href="/tag/r.html" style="font-size: 12px">R</a>
+    <a href="/tag/awesome.html" style="font-size: 12px">awesome</a>
+    <a href="/tag/interest.html" style="font-size: 12px">interest</a>
+    <a href="/tag/operation.html" style="font-size: 12px">operation</a>
+    <a href="/tag/tennis.html" style="font-size: 12px">tennis</a>
+    <a href="/tag/linux.html" style="font-size: 12px">linux</a>
+    <a href="/tag/ge-ren.html" style="font-size: 12px">个人</a>
+    </div>
+</div><div class="widget">
+    <div class="widget-title"><i class="fa fa-file-o"> Recent</i></div>
+    <ul class="post-list">
+        <li class="post-list-item">
+        <a class="post-list-link" href="/git-submodule.html">git submodule的用法</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/meta.html">meta Analysis</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/bioinfo.html">生物信息</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/archlinux.html">archlinux安装与配置</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/docker.html">docker安装与配置</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/tennis-racquet.html">网球拍的平衡点</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/terminal-color.html">终端显示颜色</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/git.html">git的一般用法</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/mine.html">之感</a>
+        </li>
+    </ul>
+</div><div class="widget">
+    <div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div>
+    <ul></ul>
+    <a href="http://getpelican.com/" title="Pelican" target="_blank">Pelican</a>
+    <ul></ul>
+    <a href="http://python.org/" title="Python.org" target="_blank">Python.org</a>
+    <ul></ul>
+    <a href="http://jinja.pocoo.org/" title="Jinja2" target="_blank">Jinja2</a>
+    <ul></ul>
+    <a href="#" title="You can modify those links in your config file" target="_blank">You can modify those links in your config file</a>
+</div>
+        </div></div>
+        <div class="pure-u-1 pure-u-md-3-4">
+<div id="footer">Copyright © 2018 <a href="/." rel="nofollow">NoteBox.</a> Powered by <a rel="nofollow" target="_blank" href="https://getpelican.com/">Pelican</a> and <a rel="nofollow", target="_blank", href="https://github.com/wormtooth/maupassant-pelican">maupassant</a>.</div>        </div>
+    </div>
+
+<a id="rocket" href="#top" class="show"></a>
+<script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
+<script type="text/javascript" src="/theme/js/fancybox.js" async></script>
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
+
+</body>

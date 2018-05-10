@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>NoteBox - git</title><link href="/" rel="alternate"></link><link href="/feeds/git.atom.xml" rel="self"></link><id>/</id><updated>2018-02-03T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone &amp;lt;repository&amp;gt; --recursive 递归的方式克隆整个项目
+git submodule add &amp;lt;repository&amp;gt;&amp;lt;path&amp;gt; 添加子模块
+git submodule init 初始化子模块
+git submodule update 更新子模块
+git submodule foreach git pull 拉取所有子模块
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;如何使用&lt;/h2&gt;
+&lt;h3&gt;1. 创建带子模块的版本库&lt;/h3&gt;
+&lt;p&gt;例如我们要创建如下结构的项目&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;project
+    &lt;span class="p"&gt;|&lt;/span&gt;--moduleA
+    &lt;span class="p"&gt;|&lt;/span&gt;--readme.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;创建project版本库，并提交readme.txt文件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init --bare project.git
+git clone project.git project1cd project1
+echo&lt;span class="s2"&gt;&amp;quot;This is a project.&amp;quot;&lt;/span&gt; &amp;gt; readme.txt
+git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;add readme.txt&amp;quot;&lt;/span&gt;
+git push origin master
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--more--&gt;
+
+&lt;p&gt;创建moduleA版本库，并提交a.txt文件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init --bare moduleA.git
+git clone moduleA.git moduleA1
+&lt;span class="nb"&gt;cd&lt;/span&gt; moduleA1
+echo&lt;span class="s2"&gt;&amp;quot;This is a submodule.&amp;quot;&lt;/span&gt; &amp;gt; a.txt
+git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;add a.txt&amp;quot;&lt;/span&gt;
+git push origin mastercd ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在project项目中引入子模块moduleA，并提交子模块信息&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project1
+git submodule add ../moduleA.git moduleA
+git statusgit diff
+git add .
+git commit -m&lt;span class="s2"&gt;&amp;quot;add submodule&amp;quot;&lt;/span&gt;
+git push origin master
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;使用git status可以看到多了两个需要提交的文件，其中.gitmodules指定submodule的主要信息，包括子模块的路径和地址信息，moduleA指定了子模块的commit id，使用git diff可以看到这两项的内容。这里需要指出父项目的git并不会记录submodule的文件变动，它是按照commit id指定submodule的git header，所以.gitmodules和moduleA这两项是需要提交到父项目的远程仓库的。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;On branch master
+Your branch is up-to-datewith&lt;span class="s1"&gt;&amp;#39;origin/master&amp;#39;&lt;/span&gt;.
+Changes to be committed:  &lt;span class="o"&gt;(&lt;/span&gt;use &lt;span class="s2"&gt;&amp;quot;git reset HEAD ...&amp;quot;&lt;/span&gt;to unstage&lt;span class="o"&gt;)&lt;/span&gt;
+    new file:   .gitmodules
+    new file:   moduleA
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2. 克隆带子模块的版本库&lt;/h3&gt;
+&lt;p&gt;方法一，先clone父项目，再初始化submodule，最后更新submodule，初始化只需要做一次，之后每次只需要直接update就可以了，需要注意submodule默认是不在任何分支上的，它指向父项目存储的submodule commit id。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone project.git project2
+&lt;span class="nb"&gt;cd&lt;/span&gt; project2
+git submodule init
+git submodule updatecd ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;方法二，采用递归参数--recursive，需要注意同样submodule默认是不在任何分支上的，它指向父项目存储的submodule commit id。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone project.git project3 --recursive
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3. 修改子模块&lt;/h3&gt;
+&lt;p&gt;修改子模块之后只对子模块的版本库产生影响，对父项目的版本库不会产生任何影响，如果父项目需要用到最新的子模块代码，我们需要更新父项目中submodule commit id，默认的我们使用git status就可以看到父项目中submodule commit id已经改变了，我们只需要再次提交就可以了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project1/moduleA
+git branch
+echo&lt;span class="s2"&gt;&amp;quot;This is a submodule.&amp;quot;&lt;/span&gt; &amp;gt; b.txt
+git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;add b.txt&amp;quot;&lt;/span&gt;
+git push origin master
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+git status
+git diff
+git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;update submodule add b.txt&amp;quot;&lt;/span&gt;
+git push origin master
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;4. 更新子模块&lt;/h3&gt;
+&lt;p&gt;更新子模块的时候要注意子模块的分支默认不是master。
+方法一，先pull父项目，然后执行&lt;code&gt;git submodule update&lt;/code&gt;，注意moduleA的分支始终不是master。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project2
+git pull
+git submodule updatecd ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;方法二，先进入子模块，然后切换到需要的分支，这里是master分支，然后对子模块pull，这种方法会改变子模块的分支。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project3/moduleA
+git checkout master
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+git submodule foreach git pull
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;5. 删除子模块&lt;/h3&gt;
+&lt;p&gt;网上有好多用的是下面这种方法&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm --cached moduleA
+rm -rf moduleA
+rm .gitmodules
+vim .git/config
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;删除submodule相关的内容，例如下面的内容&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;submodule &lt;span class="s2"&gt;&amp;quot;moduleA&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;      &lt;span class="nv"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; /Users/nick/dev/nick-doc/testGitSubmodule/moduleA.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后提交到远程服务器&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add .
+git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是我自己本地实验的时候，发现用下面的方式也可以，服务器记录的是.gitmodules和moduleA，本地只要用git的删除命令删除moduleA，再用git status查看状态就会发现.gitmodules和moduleA这两项都已经改变了，至于.git/config，仍会记录submodule信息，但是本地使用也没发现有什么影响，如果重新从服务器克隆则.git/config中不会有submodule信息。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm moduleA
+git status
+git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/span&gt;
+git push origin master
+&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>git的一般用法</title><link href="/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
+&lt;h2&gt;1 建立仓库&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;远程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git remote add origin git@github.com:ghxdghxd/&lt;span class="nv"&gt;$NAME&lt;/span&gt;.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;本地(初始化)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2 常用操作&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;拉取&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git pull origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;提交&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add *.py
+git commit -m &lt;span class="s2"&gt;&amp;quot;message&amp;quot;&lt;/span&gt;
+git push origin master/dev/develop
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--more--&gt;
+
+&lt;ul&gt;
+&lt;li&gt;重命令与删除&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm
+git mv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;3 分支操作&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;主支&lt;/th&gt;
+&lt;th align="center"&gt;修补&lt;/th&gt;
+&lt;th align="center"&gt;发布&lt;/th&gt;
+&lt;th align="center"&gt;开发&lt;/th&gt;
+&lt;th align="center"&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;master&lt;/td&gt;
+&lt;td align="center"&gt;hotfix&lt;/td&gt;
+&lt;td align="center"&gt;release&lt;/td&gt;
+&lt;td align="center"&gt;develop&lt;/td&gt;
+&lt;td align="center"&gt;feature&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git branch  /-a/r      &lt;span class="c1"&gt;# 查看本地/全部/远程分支&lt;/span&gt;
+git branch &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;      &lt;span class="c1"&gt;# 建立分支&lt;/span&gt;
+git branch -d &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;   &lt;span class="c1"&gt;# 删除分支&lt;/span&gt;
+
+git checkout -b &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt; origin/develop  &lt;span class="c1"&gt;# 建立并切换开发分支&lt;/span&gt;
+git checkout &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;       &lt;span class="c1"&gt;# 切换分支&lt;/span&gt;
+git merge --no-ff &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;  &lt;span class="c1"&gt;# 合并分支&lt;/span&gt;
+
+git push origin dev:develop &lt;span class="c1"&gt;# 本地分支提交到远程&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;push命令用于将本地分支的更新，推送到远程主机。&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;git pull类似:
+    git pull &amp;lt;远程分支&amp;gt;:&amp;lt;本地分支&amp;gt;&lt;/p&gt;
+&lt;p&gt;注意，分支推送顺序的写法是&amp;lt;来源地&amp;gt;:&amp;lt;目的地&amp;gt;，
+所以git pull是&amp;lt;远程分支&amp;gt;:&amp;lt;本地分支&amp;gt;，而git push是&amp;lt;本地分支&amp;gt;:&amp;lt;远程分支&amp;gt;。
+如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支(通常两者同名)，如果该远程分支不存在，则会被新建。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面命令表示，将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。&lt;/p&gt;
+&lt;p&gt;如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin :master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;等同于&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin --delete master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面命令表示删除origin主机的master分支。&lt;/p&gt;
+&lt;p&gt;如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面命令表示，将当前分支推送到origin主机的对应分支。&lt;/p&gt;
+&lt;p&gt;如果当前分支只有一个追踪分支，那么主机名都可以省略。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push -u origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。&lt;/p&gt;
+&lt;p&gt;不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用git config命令。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global push.default matching
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;或者&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global push.default simple
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push --all origin
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面命令表示，将所有本地分支都推送到origin主机。&lt;/p&gt;
+&lt;p&gt;如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用–force选项。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push --force origin
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面命令使用–force选项，结果导致在远程主机产生一个”非直进式”的合并(non-fast-forward merge)。除非你很确定要这样做，否则应该尽量避免使用–force选项。&lt;/p&gt;
+&lt;p&gt;最后，git push不会推送标签(tag)，除非使用–tags选项。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin --tags
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;中文乱码&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    git config --global core.quotepath &lt;span class="nb"&gt;false&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常。&lt;/p&gt;
+&lt;h2&gt;gitignore忽略文件&lt;/h2&gt;
+&lt;p&gt;1、配置语法：&lt;/p&gt;
+&lt;p&gt;以斜杠“/”开头表示目录；&lt;/p&gt;
+&lt;p&gt;以星号“*”通配多个字符；&lt;/p&gt;
+&lt;p&gt;以问号“?”通配单个字符&lt;/p&gt;
+&lt;p&gt;以方括号“[]”包含单个字符的匹配列表；&lt;/p&gt;
+&lt;p&gt;以叹号“!”表示不忽略(跟踪)匹配到的文件或目录；&lt;/p&gt;
+&lt;p&gt;此外，git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；&lt;/p&gt;
+&lt;p&gt;2、示例：&lt;/p&gt;
+&lt;p&gt;（1）规则：fd1/*
+　　　　  说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；&lt;/p&gt;
+&lt;p&gt;（2）规则：/fd1/*
+　　　　  说明：忽略根目录下的 /fd1/ 目录的全部内容；&lt;/p&gt;
+&lt;p&gt;（3）规则：&lt;/p&gt;
+&lt;p&gt;/*
+!.gitignore
+!/fw/bin/
+!/fw/sf/&lt;/p&gt;
+&lt;p&gt;说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；&lt;/p&gt;
+&lt;h2&gt;warning: LF will be replaced by CRLF&lt;/h2&gt;
+&lt;p&gt;在Windows环境下使用git进行add的时候，会提示如下warning: “warning:LF will be replacee by CRLF”。&lt;/p&gt;
+&lt;p&gt;这是因为在Windows中的换行符为CRLF，而在Linux中的换行符为LF。
+在git创建的项目中换行符为LF，而执行git add时，系统会提示LF将被转换为CRLF。
+解决的办法很简单，禁止git的自动转换即可。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.autocrlf &lt;span class="nb"&gt;false&lt;/span&gt; //禁用自动转换
+&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry></feed>

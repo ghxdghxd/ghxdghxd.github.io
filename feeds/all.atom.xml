@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>NoteBox</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2018-02-05T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone &amp;lt;repository&amp;gt; --recursive 递归的方式克隆整个项目
+git submodule add &amp;lt;repository&amp;gt;&amp;lt;path&amp;gt; 添加子模块
+git submodule init 初始化子模块
+git submodule update 更新子模块
+git submodule foreach git pull 拉取所有子模块
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;如何使用&lt;/h2&gt;
+&lt;h3&gt;1. 创建带子模块的版本库&lt;/h3&gt;
+&lt;p&gt;例如我们要创建如下结构的项目&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;project
+    &lt;span class="p"&gt;|&lt;/span&gt;--moduleA
+    &lt;span class="p"&gt;|&lt;/span&gt;--readme.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;创建project版本库，并提交readme.txt文件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init --bare project.git
+git clone project.git project1cd project1
+echo&lt;span class="s2"&gt;&amp;quot;This is a project.&amp;quot;&lt;/span&gt; &amp;gt; readme.txt
+git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;add readme.txt&amp;quot;&lt;/span&gt;
+git push origin master
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--more--&gt;
+
+&lt;p&gt;创建moduleA版本库，并提交a.txt文件&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init --bare moduleA.git
+git clone moduleA.git moduleA1
+&lt;span class="nb"&gt;cd&lt;/span&gt; moduleA1
+echo&lt;span class="s2"&gt;&amp;quot;This is a submodule.&amp;quot;&lt;/span&gt; &amp;gt; a.txt
+git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;add a.txt&amp;quot;&lt;/span&gt;
+git push origin mastercd ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在project项目中引入子模块moduleA，并提交子模块信息&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project1
+git submodule add ../moduleA.git moduleA
+git statusgit diff
+git add .
+git commit -m&lt;span class="s2"&gt;&amp;quot;add submodule&amp;quot;&lt;/span&gt;
+git push origin master
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;使用git status可以看到多了两个需要提交的文件，其中.gitmodules指定submodule的主要信息，包括子模块的路径和地址信息，moduleA指定了子模块的commit id，使用git diff可以看到这两项的内容。这里需要指出父项目的git并不会记录submodule的文件变动，它是按照commit id指定submodule的git header，所以.gitmodules和moduleA这两项是需要提交到父项目的远程仓库的。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;On branch master
+Your branch is up-to-datewith&lt;span class="s1"&gt;&amp;#39;origin/master&amp;#39;&lt;/span&gt;.
+Changes to be committed:  &lt;span class="o"&gt;(&lt;/span&gt;use &lt;span class="s2"&gt;&amp;quot;git reset HEAD ...&amp;quot;&lt;/span&gt;to unstage&lt;span class="o"&gt;)&lt;/span&gt;
+    new file:   .gitmodules
+    new file:   moduleA
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2. 克隆带子模块的版本库&lt;/h3&gt;
+&lt;p&gt;方法一，先clone父项目，再初始化submodule，最后更新submodule，初始化只需要做一次，之后每次只需要直接update就可以了，需要注意submodule默认是不在任何分支上的，它指向父项目存储的submodule commit id。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone project.git project2
+&lt;span class="nb"&gt;cd&lt;/span&gt; project2
+git submodule init
+git submodule updatecd ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;方法二，采用递归参数--recursive，需要注意同样submodule默认是不在任何分支上的，它指向父项目存储的submodule commit id。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone project.git project3 --recursive
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3. 修改子模块&lt;/h3&gt;
+&lt;p&gt;修改子模块之后只对子模块的版本库产生影响，对父项目的版本库不会产生任何影响，如果父项目需要用到最新的子模块代码，我们需要更新父项目中submodule commit id，默认的我们使用git status就可以看到父项目中submodule commit id已经改变了，我们只需要再次提交就可以了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project1/moduleA
+git branch
+echo&lt;span class="s2"&gt;&amp;quot;This is a submodule.&amp;quot;&lt;/span&gt; &amp;gt; b.txt
+git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;add b.txt&amp;quot;&lt;/span&gt;
+git push origin master
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+git status
+git diff
+git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;update submodule add b.txt&amp;quot;&lt;/span&gt;
+git push origin master
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;4. 更新子模块&lt;/h3&gt;
+&lt;p&gt;更新子模块的时候要注意子模块的分支默认不是master。
+方法一，先pull父项目，然后执行&lt;code&gt;git submodule update&lt;/code&gt;，注意moduleA的分支始终不是master。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project2
+git pull
+git submodule updatecd ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;方法二，先进入子模块，然后切换到需要的分支，这里是master分支，然后对子模块pull，这种方法会改变子模块的分支。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project3/moduleA
+git checkout master
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+git submodule foreach git pull
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;5. 删除子模块&lt;/h3&gt;
+&lt;p&gt;网上有好多用的是下面这种方法&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm --cached moduleA
+rm -rf moduleA
+rm .gitmodules
+vim .git/config
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;删除submodule相关的内容，例如下面的内容&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;submodule &lt;span class="s2"&gt;&amp;quot;moduleA&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;      &lt;span class="nv"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; /Users/nick/dev/nick-doc/testGitSubmodule/moduleA.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后提交到远程服务器&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add .
+git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是我自己本地实验的时候，发现用下面的方式也可以，服务器记录的是.gitmodules和moduleA，本地只要用git的删除命令删除moduleA，再用git status查看状态就会发现.gitmodules和moduleA这两项都已经改变了，至于.git/config，仍会记录submodule信息，但是本地使用也没发现有什么影响，如果重新从服务器克隆则.git/config中不会有submodule信息。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm moduleA
+git status
+git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/span&gt;
+git push origin master
+&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>meta Analysis</title><link href="/meta.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2018-02-03:/meta.html</id><summary type="html">&lt;p&gt;meta analysis with metafor&lt;/p&gt;</summary><content type="html">&lt;h1&gt;metafor document&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;An Overview of Functions in the metafor Package&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;{% pdf /documents/metafor_diagram.pdf %}
+&lt;a href="/documents/metafor_diagram.pdf"&gt;pdf&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Viechtbauer gesis ma with metafor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;{% pdf /documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf %}&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;h2&gt;meta-analysis from odds ratios and confidence intervals using metafor&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dm&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="kp"&gt;structure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;or &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1.6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;4.4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1.14&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1.3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;4.5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; cill &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1.2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2.9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.45&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;3.2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; ciul &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;6.9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2.86&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2.7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;6.1&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="m"&gt;.&lt;/span&gt;Names &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;or&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;cill&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ciul&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; class &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;data.frame&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; row.names &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;NA&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;-5L&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+dm&lt;span class="o"&gt;$&lt;/span&gt;logor&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="kp"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;or&lt;span class="p"&gt;)&lt;/span&gt;
+dm&lt;span class="o"&gt;$&lt;/span&gt;se1&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;ciul&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;logor&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="m"&gt;1.96&lt;/span&gt;
+dm&lt;span class="o"&gt;$&lt;/span&gt;se2&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;logor&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kp"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;cill&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="m"&gt;1.96&lt;/span&gt;
+dm&lt;span class="o"&gt;$&lt;/span&gt;se&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;se1&lt;span class="o"&gt;+&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;se2&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;
+
+&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;metafor&lt;span class="p"&gt;)&lt;/span&gt;
+dmres&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;rma.uni&lt;span class="p"&gt;(&lt;/span&gt;yi&lt;span class="o"&gt;=&lt;/span&gt;logor&lt;span class="p"&gt;,&lt;/span&gt; sei&lt;span class="o"&gt;=&lt;/span&gt;se&lt;span class="p"&gt;,&lt;/span&gt; data&lt;span class="o"&gt;=&lt;/span&gt;dm&lt;span class="p"&gt;)&lt;/span&gt;
+pdf&lt;span class="p"&gt;()&lt;/span&gt;
+forest&lt;span class="p"&gt;(&lt;/span&gt;dmres&lt;span class="p"&gt;,&lt;/span&gt; atransf&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kp"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; showweights &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; mlab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;rsid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; slab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;paste0&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;study&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+dev.off&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category></entry><entry><title>生物信息</title><link href="/bioinfo.html" rel="alternate"></link><published>2018-01-03T10:20:00+08:00</published><updated>2018-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2018-01-03:/bioinfo.html</id><summary type="html">&lt;p&gt;生物信息学&lt;/p&gt;</summary><content type="html">&lt;h1&gt;What is Bioinfomatics&lt;/h1&gt;
+&lt;p&gt;Bioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data.As an interdisciplinary field of science, bioinformatics combines Computer Science, Biology, Mathematics, and Engineering to analyze and interpret biological data. Bioinformatics has been used for in silico analyses of biological queries using mathematical and statistical techniques. More broadly, bioinformatics is applied statistics and computing to biological science.&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;Bioinformatics is both an umbrella term for the body of biological studies that use computer programming as part of their methodology, as well as a reference to specific analysis "pipelines" that are repeatedly used, particularly in the field of genomics. Common uses of bioinformatics include the identification of candidate genes and single nucleotide polymorphisms (SNPs). Often, such identification is made with the aim of better understanding the genetic basis of disease, unique adaptations, desirable properties (esp. in agricultural species), or differences between populations. In a less formal way, bioinformatics also tries to understand the organisational principles within nucleic acid and protein sequences, called proteomics.&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;big data is noisy datasets
+大数据就像是一片脏乱的海，
+实验科学是钓鱼(bioexperiment fishes with hook)，生物信息是网鱼(bioinformatics fishes with nets)。&lt;/p&gt;
+&lt;p&gt;move the ships, fishing net&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn-1"&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="awesome"></category><category term="interest"></category></entry><entry><title>archlinux安装与配置</title><link href="/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;archlinux安装&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#u盘启动后&lt;/span&gt;
+wifi-memu &lt;span class="c1"&gt;# 连接网络&lt;/span&gt;
+mount /dev/sda1 /mnt
+mkdir -p /mnt/home
+mount /dev/sda2 /mnt/home
+vi /ect/pacman.d/mirrorlist &lt;span class="c1"&gt;# 修改中国镜像源,如163.com&lt;/span&gt;
+pacstrap -i /mnt base base-devel
+genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab &lt;span class="c1"&gt;#生成挂载文件fstab&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;archlinux 初步配置&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;arch-chroot /mnt /bin/bash &lt;span class="c1"&gt;#切换到archlinux&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;本地语言&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vi /etc/locale.gen
+    en_US.UTF-8 UTF-8
+    zh_CN.UTF-8 UTF-8
+
+locale-gen &lt;span class="c1"&gt;#生效&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;en_US.UTF-8 &amp;gt; /etc/locale.conf
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--more--&gt;
+
+&lt;ul&gt;
+&lt;li&gt;时区&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+或
+tzselect &lt;span class="c1"&gt;#按提示选择时区&lt;/span&gt;
+
+hwclock --systohc --utc &lt;span class="c1"&gt;#设置硬件时间&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;grub引导系统&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S grub efibootmgr &lt;span class="c1"&gt;# 支持grub和EFI，可只选grup&lt;/span&gt;
+grub-install --target&lt;span class="o"&gt;=&lt;/span&gt;i386-pc --recheck --debug /dev/sda
+grup-mkconfig -o /boot/grub/grub.cfg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;主机名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; Garch &amp;gt;&amp;gt; /etc/hostname
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;网络配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; dhcpcd.service &lt;span class="c1"&gt;#有线&lt;/span&gt;
+pacman -S iw wpa_supplicant dialog &lt;span class="c1"&gt;#无线&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;archlinux 配置&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#最小安装&lt;/span&gt;
+pacman -S xorg-server &lt;span class="c1"&gt;# X桌面&lt;/span&gt;
+pacman -S xf86-video-ati &lt;span class="c1"&gt;# 显卡驱动&lt;/span&gt;
+pacman -S gnome gnome-tweak-tool
+pacman -S ttf-ubuntu
+&lt;span class="c1"&gt;# 可选&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="operation"></category><category term="interest"></category></entry><entry><title>docker安装与配置</title><link href="/docker.html" rel="alternate"></link><published>2017-11-03T10:20:00+08:00</published><updated>2017-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-11-03:/docker.html</id><summary type="html">&lt;p&gt;docker的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;docker&lt;/h1&gt;
+&lt;h2&gt;centos yum install docker&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tee /etc/yum.repos.d/docker.repo &lt;span class="s"&gt;&amp;lt;&amp;lt;-&amp;#39;EOF&amp;#39;&lt;/span&gt;
+&lt;span class="s"&gt;[dockerrepo]&lt;/span&gt;
+&lt;span class="s"&gt;name=Docker Repository&lt;/span&gt;
+&lt;span class="s"&gt;baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/&lt;/span&gt;
+&lt;span class="s"&gt;enabled=1&lt;/span&gt;
+&lt;span class="s"&gt;gpgcheck=1&lt;/span&gt;
+&lt;span class="s"&gt;gpgkey=https://yum.dockerproject.org/gpg&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
+
+sed -i &lt;span class="s1"&gt;&amp;#39;s/other_args=\&amp;quot;\&amp;quot;/other_args=\&amp;quot;--graph=\/share\/apps\/docker\&amp;quot;/g&amp;#39;&lt;/span&gt; /etc/sysconfig/docker
+
+&lt;span class="k"&gt;for&lt;/span&gt; i in &lt;span class="sb"&gt;`&lt;/span&gt;seq &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;do&lt;/span&gt;
+    sudo scp /etc/yum.repos.d/docker.repo compute-0-&lt;span class="nv"&gt;$i&lt;/span&gt;:/etc/yum.repos.d/docker.repo
+&lt;span class="k"&gt;done&lt;/span&gt;
+
+rocks run host &lt;span class="s2"&gt;&amp;quot;yum install docker-engine&amp;quot;&lt;/span&gt;
+rocks run host &lt;span class="s2"&gt;&amp;quot;sed -i &amp;#39;s/other_args=\&amp;quot;\&amp;quot;/other_args=\&amp;quot;--graph=\/share\/apps\/docker\&amp;quot;/g&amp;#39; /etc/sysconfig/docker&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--more--&gt;
+
+&lt;h2&gt;手动安装&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;手动安装centos6.5 一些需要安装
+yum remove docker-engine
+&lt;span class="nb"&gt;cd&lt;/span&gt; /share/apps/until/docker/
+yum install ./lua-filesystem-1.4.2-1.el6.x86_64.rpm
+yum install ./lxc-libs-1.0.11-1.el6.x86_64.rpm
+yum install ./lua-lxc-1.0.11-1.el6.x86_64.rpm
+yum install ./lua-alt-getopt-0.7.0-1.el6.noarch.rpm
+yum install ./lxc-1.0.11-1.el6.x86_64.rpm
+yum install ./docker-io-1.7.1-2.el6.x86_64.rpm
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+yum install device-mapper-event-libs
+service docker restart
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;安装错误&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;下面错误：
+/usr/bin/docker: relocation error: /usr/bin/docker: symbol dm_task_get_info_with_deferred_remove, version Base not defined in file libdevmapper.so.1.02 with link &lt;span class="nb"&gt;time&lt;/span&gt; reference
+fix: $ sudo yum install device-mapper-event-libs
+如果无法安装，重新更新
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+然后再安装
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;docker应用&lt;/h2&gt;
+&lt;h3&gt;启动docker&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;service docker start
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;添加用户&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;添加docker group：
+sudo groupadd docker
+
+将当前用户添加到docker组：
+sudo gpasswd -a &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; docker
+
+重启docker服务：
+sudo service docker restart
+开机启动
+chkconfig docker on
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;修改镜像和容器的存放路径&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/etc/sysconfig/docker加入：
+&lt;span class="nv"&gt;other_args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;--graph=/data/docker&amp;quot;&lt;/span&gt;
+
+停止Docker服务
+service docker stop
+备份数据到新的存放路径
+cp -rf /var/lib/docker /data/
+修改备份/var/lib/docker路径
+mv /var/lib/docker&lt;span class="o"&gt;{&lt;/span&gt;,.bak&lt;span class="o"&gt;}&lt;/span&gt;
+启动Docker服务
+service docker start
+测试Docker服务
+docker info
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;用法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;查看镜像 docker images&lt;/li&gt;
+&lt;li&gt;查找镜像 docker search&lt;/li&gt;
+&lt;li&gt;查看容器 docker ps -a&lt;/li&gt;
+&lt;li&gt;运行容器 docker run&lt;/li&gt;
+&lt;li&gt;将宿主机的/var/data挂载到容器中的/data: docker run -tdi -v /var/data:/data centos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果ls: cannot open directory '.': Permission denied
+修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled&lt;/p&gt;</content><category term="awesome"></category><category term="interest"></category></entry><entry><title>网球拍的平衡点</title><link href="/tennis-racquet.html" rel="alternate"></link><published>2017-04-03T10:20:00+08:00</published><updated>2017-04-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-04-03:/tennis-racquet.html</id><summary type="html">&lt;p&gt;网球拍的平衡点&lt;/p&gt;</summary><content type="html">&lt;h1&gt;网球拍平衡点测量&lt;/h1&gt;
+&lt;p&gt;这个是每份点得出来的公式（pts点，inch英寸）
+1pts = 1/8 inch = 1/8 * 2.54cm = 0.3175cm
+下面以标准拍子27英寸长度为例，换算出是68.5cm，那中心点就是34.25cm。然后假设你所量出平衡点到拍底的距离为h。
+如果大于34.25，则是（h-34.25）/0.3175=T，就是T点头重
+如果小于34.25，则是（34.25-h）/0.3175=T，就是T点头轻&lt;/p&gt;
+&lt;p&gt;&lt;img alt="平衡点" src="/images/平衡点.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;图中可知，此时拍子是完全平衡状态，只需测量纸片到底盖的距离就可以了，按这个方法测量出我的拍子是32.34cm，套用公式:
+（34.25-32.34）÷0.3175=6.015，也就是6点头轻了！&lt;/p&gt;
+&lt;p&gt;另附上球拍头轻和头重的优劣:
+头轻拍更灵活易于控制，能让选手在网前有不错的表现，但是不能提供足够大的力量。头重拍，灵活性差，但能提供额外的力量更有利于底线的击球。一般专业的球拍都是头轻拍或者是平衡拍，因为这样更利于网前技术的发挥，而且专业球员都有很好的身体素质可以自身去发力。而初学拍比较多的是头重拍，这样能使初学者并不需要太多的发力就能击出力量较大的球。&lt;/p&gt;</content><category term="tennis"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="/R-and-Rstudio.html" rel="alternate"></link><published>2017-02-03T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-02-03:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;R与Rstudio的安装&lt;/p&gt;</summary><content type="html">&lt;h1&gt;install R&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;error&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;File failed to load: /extensions/MathZoom.js
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-I/share/apps/R_depends/include&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LDFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-L/share/apps/R_depends/lib&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--more--&gt;
+
+&lt;h2&gt;./configure&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;./configure --prefix=/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1. configure: error: No F77 compiler found&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install gfortran
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2. configure: error: --with-readline&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install libreadline-dev
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3. configure: error: --with-x=yes&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install libxt-dev
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;4. checking whether zlib support suffices&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install zlib1g-dev
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;5. checking whether bzip2 support suffices&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget &amp;lt;http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz&amp;gt;
+
+tar xvf bzip2-1.0.6.tar.gz
+
+cd bzip2-1.0.6
+
+sudo make install
+
+OR
+
+make -f Makefile-libbz2_so
+
+make clean
+
+make -n install PREFIX=$R_depends
+
+make install PREFIX=$R_depends
+
+install bzip2-lib
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;6. configure: error: "liblzma&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install liblzma-dev
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;7. configure: error: pcre &amp;gt;= 8.10&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz
+
+tar xvf pcre-8.39.tar.gz
+
+cd pcre-8.39
+
+./configure --enable-utf8 --prefix=$R_depends
+
+make &amp;amp;amp; sudo make install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;8. libcurl &amp;gt;= 7.28.0 library and headers are required with support for https&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget https://www.openssl.org/source/openssl-1.1.0b.tar.gz
+
+tar xvf openssl-1.1.0b.tar.gz
+
+cd openssl-1.1.0b
+
+./config
+
+make &amp;amp;amp;  sudo make install
+
+wget &amp;lt;https://curl.haxx.se/download/curl-7.50.3.tar.gz&amp;gt;
+
+tar xvf curl-7.50.3.tar.gz
+
+cd curl-7.50.3
+
+./configure --with-ssl=/usr/local/ssl/
+
+make &amp;amp;amp; sudo make install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;9.configure: WARNING: you cannot build info or HTML versions of the R manuals&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install texinfo
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;10. configure: WARNING: you cannot build PDF versions of the R manuals, configure: WARNING: you cannot build PDF versions of vignettes and help pages&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install texlive
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;11. configure: WARNING: neither inconsolata.sty nor zi4.sty found: PDF vignettes and package manuals will not be rendered optimally&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget &amp;lt;http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip&amp;gt;
+
+sudo mv inconsolata.tds.zip /usr/share/texlive/texmf-dist/tex/latex
+
+cd /usr/share/texlive/texmf-dist/tex/latex
+
+unzip inconsolata.tds.zip
+
+sudo mktexlsr
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;12. 本版本不支持png&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install libpng16-dev
+
+sudo apt-get install libtiff5-dev
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;make&lt;/h2&gt;
+&lt;h3&gt;1./usr/local/lib/libbz2.a: 无法添加符号: 错误的值&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rm /usr/local/lib/libbz2.a
+
+wget &amp;lt;http://zlib.net/zlib-1.2.8.tar.gz&amp;gt;
+
+tar xvf zlib-1.2.8.tar.gz
+
+cd zlib-1.2.8
+CC=&amp;#39;gcc -fPIC&amp;#39;
+./configure; make test
+
+sudo make install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2./usr/bin/ld: cannot find -lbz2 ;  collect2: error: ld returned 1 exit status&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install libbz2-dev
+会用到make CC=&amp;#39;gcc -fPIC&amp;#39;
+     make install PREFIX=/software/packages
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;make install&lt;/h2&gt;
+&lt;h3&gt;1.conftest.c:1:17: fatal error: jni.h&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd R-3.3.1/doc
+
+wget &amp;lt;https://cran.r-project.org/doc/manuals/r-release/NEWS.pdf&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;install rstudio&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install libjpeg62-dev
+
+sudo apt-get install libgstreamer0.10-0
+
+sudo apt-get install libgstreamer-plugins-base0.10-0
+
+export RSTUDIO_WHICH_R=&amp;quot;/opt/R-3.3.1/bin/R&amp;quot; 添加到/etc/profile或~/.profile
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;run R&lt;/h3&gt;
+&lt;h3&gt;Error in grid.Call(L_textBounds, as.graphicsAnnot(xlabel),xlabel),x x, x$y, :无法载入X11字面为2,大小为20的字形-&lt;em&gt;-courier-%s-%s-&lt;/em&gt;-&lt;em&gt;-%d-&lt;/em&gt;-&lt;em&gt;-&lt;/em&gt;-&lt;em&gt;-&lt;/em&gt;-&lt;em&gt;-&lt;/em&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install t1-xfree86-nonfree ttf-xfree86-nonfree ttf-xfree86-nonfree-syriac
+
+sudo apt-get install xfonts-75dpi
+sudo apt-get install xfonts-100dpi
+sudo apt-get install mesa-utils
+sudo apt-get install libxtst-dev
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;using R&lt;/h3&gt;
+&lt;h3&gt;无法载入共享目标对象 stringi.so&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;install.packages(stringi)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;R install.packages returns "failed to create lock directory"&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;R CMD INSTALL --no-lock &amp;amp;lt;pkg&amp;amp;gt;
+
+OR
+
+install.packages(&amp;quot;Rcpp&amp;quot;, dependencies=TRUE, INSTALL_opts = c(&amp;#39;\--no-lock&amp;#39;))
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;An irrecoverable exception occurred. R is aborting now ... ERROR: loading failed&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;R CMD INSTALL --no-test-load *packages*
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;nlopt&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;./configure --enable-shared
+
+make
+
+make install
+&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category></entry><entry><title>终端显示颜色</title><link href="/terminal-color.html" rel="alternate"></link><published>2017-01-03T10:20:00+08:00</published><updated>2017-01-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-01-03:/terminal-color.html</id><summary type="html">&lt;p&gt;终端显示颜色&lt;/p&gt;</summary><content type="html">&lt;p&gt;echo显示带颜色，需要使用参数-e
+格式如下:
+echo -e "\033[字背景颜色;文字颜色m字符串\033[0m"
+例如:
+echo -e "\033[41;37m TonyZhang \033[0m"
+其中41的位置代表底色, 37的位置是代表字的颜色&lt;/p&gt;
+&lt;p&gt;注：
+1、字背景颜色和文字颜色之间是英文的“""”
+2、文字颜色后面有个m
+3、字符串前后可以没有空格，如果有的话，输出也是同样有空格&lt;/p&gt;
+&lt;p&gt;下面看几个例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[30m 黑色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[31m 红色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[32m 绿色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[33m 黄色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[34m 蓝色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[35m 紫色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[36m 天蓝字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[37m 白色字 \033[0m&amp;quot;&lt;/span&gt;
+
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[40;37m 黑底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[41;37m 红底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[42;37m 绿底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[43;37m 黄底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[44;37m 蓝底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[45;37m 紫底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[46;37m 天蓝底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[47;30m 白底黑字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;控制选项说明 ：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;0m 关闭所有属性
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;1m 设置高亮度
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;4m 下划线
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;5m 闪烁
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;7m 反显
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;8m 消隐
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;30m -- &lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;37m 设置前景色
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;40m -- &lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;47m 设置背景色
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;nA 光标上移n行
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;nB 光标下移n行
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;nC 光标右移n行
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;nD 光标左移n行
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;y&lt;span class="p"&gt;;&lt;/span&gt;xH设置光标位置
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;2J 清屏
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;K 清除从光标到行尾的内容
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;s 保存光标位置
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;u 恢复光标位置
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;?25l 隐藏光标
+&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;?25h 显示光标
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="interest"></category></entry><entry><title>git的一般用法</title><link href="/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
+&lt;h2&gt;1 建立仓库&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;远程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git remote add origin git@github.com:ghxdghxd/&lt;span class="nv"&gt;$NAME&lt;/span&gt;.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;本地(初始化)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2 常用操作&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;拉取&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git pull origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;提交&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add *.py
+git commit -m &lt;span class="s2"&gt;&amp;quot;message&amp;quot;&lt;/span&gt;
+git push origin master/dev/develop
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;!--more--&gt;
+
+&lt;ul&gt;
+&lt;li&gt;重命令与删除&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm
+git mv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;3 分支操作&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;主支&lt;/th&gt;
+&lt;th align="center"&gt;修补&lt;/th&gt;
+&lt;th align="center"&gt;发布&lt;/th&gt;
+&lt;th align="center"&gt;开发&lt;/th&gt;
+&lt;th align="center"&gt;功能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;master&lt;/td&gt;
+&lt;td align="center"&gt;hotfix&lt;/td&gt;
+&lt;td align="center"&gt;release&lt;/td&gt;
+&lt;td align="center"&gt;develop&lt;/td&gt;
+&lt;td align="center"&gt;feature&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git branch  /-a/r      &lt;span class="c1"&gt;# 查看本地/全部/远程分支&lt;/span&gt;
+git branch &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;      &lt;span class="c1"&gt;# 建立分支&lt;/span&gt;
+git branch -d &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;   &lt;span class="c1"&gt;# 删除分支&lt;/span&gt;
+
+git checkout -b &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt; origin/develop  &lt;span class="c1"&gt;# 建立并切换开发分支&lt;/span&gt;
+git checkout &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;       &lt;span class="c1"&gt;# 切换分支&lt;/span&gt;
+git merge --no-ff &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;  &lt;span class="c1"&gt;# 合并分支&lt;/span&gt;
+
+git push origin dev:develop &lt;span class="c1"&gt;# 本地分支提交到远程&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;push命令用于将本地分支的更新，推送到远程主机。&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;git pull类似:
+    git pull &amp;lt;远程分支&amp;gt;:&amp;lt;本地分支&amp;gt;&lt;/p&gt;
+&lt;p&gt;注意，分支推送顺序的写法是&amp;lt;来源地&amp;gt;:&amp;lt;目的地&amp;gt;，
+所以git pull是&amp;lt;远程分支&amp;gt;:&amp;lt;本地分支&amp;gt;，而git push是&amp;lt;本地分支&amp;gt;:&amp;lt;远程分支&amp;gt;。
+如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支(通常两者同名)，如果该远程分支不存在，则会被新建。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面命令表示，将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。&lt;/p&gt;
+&lt;p&gt;如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin :master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;等同于&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin --delete master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面命令表示删除origin主机的master分支。&lt;/p&gt;
+&lt;p&gt;如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面命令表示，将当前分支推送到origin主机的对应分支。&lt;/p&gt;
+&lt;p&gt;如果当前分支只有一个追踪分支，那么主机名都可以省略。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push -u origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。&lt;/p&gt;
+&lt;p&gt;不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用git config命令。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global push.default matching
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;或者&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global push.default simple
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push --all origin
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面命令表示，将所有本地分支都推送到origin主机。&lt;/p&gt;
+&lt;p&gt;如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用–force选项。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push --force origin
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面命令使用–force选项，结果导致在远程主机产生一个”非直进式”的合并(non-fast-forward merge)。除非你很确定要这样做，否则应该尽量避免使用–force选项。&lt;/p&gt;
+&lt;p&gt;最后，git push不会推送标签(tag)，除非使用–tags选项。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin --tags
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;中文乱码&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    git config --global core.quotepath &lt;span class="nb"&gt;false&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常。&lt;/p&gt;
+&lt;h2&gt;gitignore忽略文件&lt;/h2&gt;
+&lt;p&gt;1、配置语法：&lt;/p&gt;
+&lt;p&gt;以斜杠“/”开头表示目录；&lt;/p&gt;
+&lt;p&gt;以星号“*”通配多个字符；&lt;/p&gt;
+&lt;p&gt;以问号“?”通配单个字符&lt;/p&gt;
+&lt;p&gt;以方括号“[]”包含单个字符的匹配列表；&lt;/p&gt;
+&lt;p&gt;以叹号“!”表示不忽略(跟踪)匹配到的文件或目录；&lt;/p&gt;
+&lt;p&gt;此外，git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；&lt;/p&gt;
+&lt;p&gt;2、示例：&lt;/p&gt;
+&lt;p&gt;（1）规则：fd1/*
+　　　　  说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；&lt;/p&gt;
+&lt;p&gt;（2）规则：/fd1/*
+　　　　  说明：忽略根目录下的 /fd1/ 目录的全部内容；&lt;/p&gt;
+&lt;p&gt;（3）规则：&lt;/p&gt;
+&lt;p&gt;/*
+!.gitignore
+!/fw/bin/
+!/fw/sf/&lt;/p&gt;
+&lt;p&gt;说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；&lt;/p&gt;
+&lt;h2&gt;warning: LF will be replaced by CRLF&lt;/h2&gt;
+&lt;p&gt;在Windows环境下使用git进行add的时候，会提示如下warning: “warning:LF will be replacee by CRLF”。&lt;/p&gt;
+&lt;p&gt;这是因为在Windows中的换行符为CRLF，而在Linux中的换行符为LF。
+在git创建的项目中换行符为LF，而执行git add时，系统会提示LF将被转换为CRLF。
+解决的办法很简单，禁止git的自动转换即可。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.autocrlf &lt;span class="nb"&gt;false&lt;/span&gt; //禁用自动转换
+&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>之感</title><link href="/mine.html" rel="alternate"></link><published>2015-08-03T10:20:00+08:00</published><updated>2015-08-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2015-08-03:/mine.html</id><summary type="html">&lt;p&gt;想什么说什么&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+&lt;li&gt;话多应知，话少需明&lt;/li&gt;
+&lt;li&gt;前人看世界，后者品人生&lt;/li&gt;
+&lt;li&gt;棋逢对手 尽兴，将遇良才 榨干——干的漂亮&lt;/li&gt;
+&lt;li&gt;有点意思&lt;/li&gt;
+&lt;li&gt;一个男人在他该出现的时候，总也不出现，那有他和没有他，又有什么差别&lt;/li&gt;
+&lt;li&gt;数日子过年&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在距今已经很久远的那一天，我们就约定好了重逢。我知道，我会找到你。《与之彼端，约定的地方》&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;人们的思维容易出现定势效应(set effect), 因为人们倾向于利用原有的方式解决问题，且会被困在这个思维里，无法跳出。如果&lt;strong&gt;中途停下来处理其他事情，或中断了原来的情景&lt;/strong&gt;，即使没有带着答案回来，也能在潜意识中明白一点，原来的思维方式可能是错的，或有新的思考方向。&lt;strong&gt;这就是酝酿效应（incubation effect），指将问题搁置在一旁，能使得原有不合适的知识基础的活动性降低（减少思维定势），并采用新的方法考虑或解决问题。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;定性，知事，选梦; 遇人，择城，终老。&lt;/li&gt;
+&lt;li&gt;今天是余生中最年轻的一天，想玩就玩去&lt;/li&gt;
+&lt;li&gt;爱情也许会过时，但“爱你”不会&lt;/li&gt;
+&lt;li&gt;此为月圆是月缺，彼是月缺为月圆，月圆盼月缺，月缺待月圆。&lt;/li&gt;
+&lt;li&gt;风起一阵知秋意，&lt;/li&gt;
+&lt;li&gt;时不时遇见，面对面错过。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;三十而立，不是表面的成家或者立业，你立的，是成熟的思维模式，是独立而纵深的思考能力。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;寄君一曲，不问曲终人聚散。有说顺其自然？如果有，那是否从此山水不相逢，莫道佳人长与短？&lt;/li&gt;
+&lt;li&gt;什么是好工作：一不影响生活作息，二不影响家庭团聚，三能养家糊口。&lt;/li&gt;
+&lt;li&gt;28岁的你会不会被17岁的你嘲笑&lt;/li&gt;
+&lt;li&gt;只有当你拿起球拍，只有当你走进球场，你才会真正明白，为什么网球会如此受欢迎；只有当你背着行囊，只有当你远离一方，你才会真正明白，为什么过年如此备受期盼——数日子的日子&lt;/li&gt;
+&lt;li&gt;数日子的时间很慢，计时间的日子最快。看见的起点在远方，摸不着的终点在想…&lt;/li&gt;
+&lt;li&gt;活在梦想中&lt;/li&gt;
+&lt;li&gt;阳光不燥微风正好&lt;/li&gt;
+&lt;li&gt;我做好了要与你过一辈子的打算，也做好了你随时要走的准备&lt;/li&gt;
+&lt;li&gt;我却觉得这一大笔积分是我这辈子花的最值一次，因为我得到了钱买不来的东西……希望，从来都无法交易的东西&lt;/li&gt;
+&lt;li&gt;可否，少些理智，享受一下脱轨的惊喜&lt;/li&gt;
+&lt;li&gt;真正的离开，是没有告别的&lt;/li&gt;
+&lt;li&gt;最好的修养，是明知不问&lt;/li&gt;
+&lt;li&gt;健康大于一切&lt;/li&gt;
+&lt;/ol&gt;</content><category term="个人"></category></entry></feed>

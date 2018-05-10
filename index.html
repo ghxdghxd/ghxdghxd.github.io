@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html land="zh">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>
+    NoteBox    </title>
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygment.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="Shortcut Icon" type="image/x-icon" href="/theme/images/favicon.ico" />
+    <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="body_container">
+    <div id="header">
+        <div class="site-name">
+            <a id="logo" href="/."> NoteBox </a>
+            <!-- <img id="short_image" src="/theme/images/Logo.jpg"/> -->
+            <!-- notebox + logo_image -->
+        </div>
+        <div id="nav-menu">
+            <a href="/." class="current"><i class="fa fa-home"> Home</i></a>
+            <a href="/archives.html"><i class="fa fa-archive"> Archive</i></a>
+            <a href="/pages/about.html"><i class="fa fa-user"> About</i></a>
+        </div>
+    </div>
+    <div id="layout" class="pure-g">
+        <div class="pure-u-1 pure-u-md-3-4"><div class="content_container">
+<div class="post">
+    <h1 class="post-title"><a href="/git-submodule.html">git submodule的用法</a></h1>
+    <div class="post-meta">2018-02-03</div>
+    <div class="post-content">
+        <h1>常用命令</h1>
+<div class="highlight"><pre><span></span>git clone &lt;repository&gt; --recursive 递归的方式克隆整个项目
+git submodule add &lt;repository&gt;&lt;path&gt; 添加子模块
+git submodule init 初始化子模块
+git submodule update 更新子模块
+git submodule foreach git pull 拉取所有子模块
+</pre></div>
+
+
+<h2>如何使用</h2>
+<h3>1. 创建带子模块的版本库</h3>
+<p>例如我们要创建如下结构的项目</p>
+<div class="highlight"><pre><span></span>project
+    <span class="p">|</span>--moduleA
+    <span class="p">|</span>--readme.txt
+</pre></div>
+
+
+<p>创建project版本库，并提交readme.txt文件</p>
+<div class="highlight"><pre><span></span>git init --bare project.git
+git clone project.git project1cd project1
+echo<span class="s2">&quot;This is a project.&quot;</span> &gt; readme.txt
+git add .
+git commit -m <span class="s2">&quot;add readme.txt&quot;</span>
+git push origin master
+<span class="nb">cd</span> ..
+</pre></div>
+
+
+
+    </div>
+    <p class="readmore"><a href="/git-submodule.html">Read More</a></p>
+</div>
+<div class="post">
+    <h1 class="post-title"><a href="/meta.html">meta Analysis</a></h1>
+    <div class="post-meta">2018-02-03</div>
+    <div class="post-content">
+        <h1>metafor document</h1>
+<ul>
+<li>An Overview of Functions in the metafor Package</li>
+</ul>
+<p>{% pdf /documents/metafor_diagram.pdf %}
+<a href="/documents/metafor_diagram.pdf">pdf</a></p>
+<ul>
+<li>Viechtbauer gesis ma with metafor</li>
+</ul>
+<p>{% pdf /documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf %}</p>
+
+    </div>
+    <p class="readmore"><a href="/meta.html">Read More</a></p>
+</div>
+<div class="post">
+    <h1 class="post-title"><a href="/bioinfo.html">生物信息</a></h1>
+    <div class="post-meta">2018-01-03</div>
+    <div class="post-content">
+        <h1>What is Bioinfomatics</h1>
+<p>Bioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data.As an interdisciplinary field of science, bioinformatics combines Computer Science, Biology, Mathematics, and Engineering to analyze and interpret biological data. Bioinformatics has been used for in silico analyses of biological queries using mathematical and statistical techniques. More broadly, bioinformatics is applied statistics and computing to biological science.</p>
+
+    </div>
+    <p class="readmore"><a href="/bioinfo.html">Read More</a></p>
+</div>
+<div class="post">
+    <h1 class="post-title"><a href="/archlinux.html">archlinux安装与配置</a></h1>
+    <div class="post-meta">2017-12-03</div>
+    <div class="post-content">
+        <h1>archlinux安装</h1>
+<div class="highlight"><pre><span></span><span class="c1">#u盘启动后</span>
+wifi-memu <span class="c1"># 连接网络</span>
+mount /dev/sda1 /mnt
+mkdir -p /mnt/home
+mount /dev/sda2 /mnt/home
+vi /ect/pacman.d/mirrorlist <span class="c1"># 修改中国镜像源,如163.com</span>
+pacstrap -i /mnt base base-devel
+genfstab -U /mnt &gt;&gt; /mnt/etc/fstab <span class="c1">#生成挂载文件fstab</span>
+</pre></div>
+
+
+<h2>archlinux 初步配置</h2>
+<div class="highlight"><pre><span></span>arch-chroot /mnt /bin/bash <span class="c1">#切换到archlinux</span>
+</pre></div>
+
+
+<ul>
+<li>本地语言</li>
+</ul>
+<div class="highlight"><pre><span></span>vi /etc/locale.gen
+    en_US.UTF-8 UTF-8
+    zh_CN.UTF-8 UTF-8
+
+locale-gen <span class="c1">#生效</span>
+<span class="nb">echo</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 &gt; /etc/locale.conf
+</pre></div>
+
+
+
+    </div>
+    <p class="readmore"><a href="/archlinux.html">Read More</a></p>
+</div>
+<div class="post">
+    <h1 class="post-title"><a href="/docker.html">docker安装与配置</a></h1>
+    <div class="post-meta">2017-11-03</div>
+    <div class="post-content">
+        <h1>docker</h1>
+<h2>centos yum install docker</h2>
+<div class="highlight"><pre><span></span>tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-&#39;EOF&#39;</span>
+<span class="s">[dockerrepo]</span>
+<span class="s">name=Docker Repository</span>
+<span class="s">baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/</span>
+<span class="s">enabled=1</span>
+<span class="s">gpgcheck=1</span>
+<span class="s">gpgkey=https://yum.dockerproject.org/gpg</span>
+<span class="s">EOF</span>
+
+sed -i <span class="s1">&#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39;</span> /etc/sysconfig/docker
+
+<span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">8</span><span class="sb">`</span><span class="p">;</span>
+<span class="k">do</span>
+    sudo scp /etc/yum.repos.d/docker.repo compute-0-<span class="nv">$i</span>:/etc/yum.repos.d/docker.repo
+<span class="k">done</span>
+
+rocks run host <span class="s2">&quot;yum install docker-engine&quot;</span>
+rocks run host <span class="s2">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span>
+</pre></div>
+
+
+
+    </div>
+    <p class="readmore"><a href="/docker.html">Read More</a></p>
+</div>
+<div class="post">
+    <h1 class="post-title"><a href="/tennis-racquet.html">网球拍的平衡点</a></h1>
+    <div class="post-meta">2017-04-03</div>
+    <div class="post-content">
+        <p>网球拍的平衡点</p>
+    </div>
+    <p class="readmore"><a href="/tennis-racquet.html">Read More</a></p>
+</div>
+<div class="post">
+    <h1 class="post-title"><a href="/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a></h1>
+    <div class="post-meta">2017-02-03</div>
+    <div class="post-content">
+        <h1>install R</h1>
+<ul>
+<li>error</li>
+</ul>
+<div class="highlight"><pre><span></span>File failed to load: /extensions/MathZoom.js
+<span class="nb">export</span> <span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-I/share/apps/R_depends/include&quot;</span>
+<span class="nb">export</span> <span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">&quot;-L/share/apps/R_depends/lib&quot;</span>
+</pre></div>
+
+
+
+    </div>
+    <p class="readmore"><a href="/R-and-Rstudio.html">Read More</a></p>
+</div>
+<div class="post">
+    <h1 class="post-title"><a href="/terminal-color.html">终端显示颜色</a></h1>
+    <div class="post-meta">2017-01-03</div>
+    <div class="post-content">
+        <p>终端显示颜色</p>
+    </div>
+    <p class="readmore"><a href="/terminal-color.html">Read More</a></p>
+</div>
+<div class="post">
+    <h1 class="post-title"><a href="/git.html">git的一般用法</a></h1>
+    <div class="post-meta">2016-11-03</div>
+    <div class="post-content">
+        <h1>Git用法</h1>
+<h2>1 建立仓库</h2>
+<ul>
+<li>远程</li>
+</ul>
+<div class="highlight"><pre><span></span>git remote add origin git@github.com:ghxdghxd/<span class="nv">$NAME</span>.git
+</pre></div>
+
+
+<ul>
+<li>本地(初始化)</li>
+</ul>
+<div class="highlight"><pre><span></span>git init
+</pre></div>
+
+
+<h2>2 常用操作</h2>
+<ul>
+<li>拉取</li>
+</ul>
+<div class="highlight"><pre><span></span>git pull origin master
+</pre></div>
+
+
+<ul>
+<li>提交</li>
+</ul>
+<div class="highlight"><pre><span></span>git add *.py
+git commit -m <span class="s2">&quot;message&quot;</span>
+git push origin master/dev/develop
+</pre></div>
+
+
+
+    </div>
+    <p class="readmore"><a href="/git.html">Read More</a></p>
+</div>
+<div class="post">
+    <h1 class="post-title"><a href="/mine.html">之感</a></h1>
+    <div class="post-meta">2015-08-03</div>
+    <div class="post-content">
+        <p>想什么说什么</p>
+    </div>
+    <p class="readmore"><a href="/mine.html">Read More</a></p>
+</div>
+
+        </div></div>
+        <div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar">
+<div class="widget">
+    <form action="search.html" accept-charset="utf-8" class="search-form">
+        <input type="text" name="q" id="tipue_search_input" placeholder="Search">
+        <input type="hidden" name="sitesearch" value="" />
+        <div style="clear: both;"></div>
+    </form>
+</div><div class="widget">
+    <div class="widget-title">
+        <i class="fa fa-heart-o"> 好记性不如烂键盘</i>
+    </div>
+    <img id="logo_image" src="/theme/images/Logo.jpg" />
+</div>
+<div class="widget">
+    <div class="widget-title">
+        <i class="fa fa-folder-o"> Categories</i>
+    </div>
+    <ul class="category-list">
+        <li class="category-list-item"><a class="category-list-link" href="/category/coding.html">coding</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/git.html">git</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/interest.html">interest</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/linux.html">linux</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/lu-you-qi.html">路由器</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/operation.html">operation</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/sheng-xin.html">生信</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji.html">统计</a></li>
+    </ul>
+</div><div class="widget">
+    <div class="widget-title"><i class="fa fa-star-o"> Tags</i></div>
+    <div class="tagcloud">
+    <a href="/tag/git.html" style="font-size: 12px">git</a>
+    <a href="/tag/r.html" style="font-size: 12px">R</a>
+    <a href="/tag/awesome.html" style="font-size: 12px">awesome</a>
+    <a href="/tag/interest.html" style="font-size: 12px">interest</a>
+    <a href="/tag/operation.html" style="font-size: 12px">operation</a>
+    <a href="/tag/tennis.html" style="font-size: 12px">tennis</a>
+    <a href="/tag/linux.html" style="font-size: 12px">linux</a>
+    <a href="/tag/ge-ren.html" style="font-size: 12px">个人</a>
+    </div>
+</div><div class="widget">
+    <div class="widget-title"><i class="fa fa-file-o"> Recent</i></div>
+    <ul class="post-list">
+        <li class="post-list-item">
+        <a class="post-list-link" href="/git-submodule.html">git submodule的用法</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/meta.html">meta Analysis</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/bioinfo.html">生物信息</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/archlinux.html">archlinux安装与配置</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/docker.html">docker安装与配置</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/tennis-racquet.html">网球拍的平衡点</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/terminal-color.html">终端显示颜色</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/git.html">git的一般用法</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/mine.html">之感</a>
+        </li>
+    </ul>
+</div><div class="widget">
+    <div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div>
+    <ul></ul>
+    <a href="http://getpelican.com/" title="Pelican" target="_blank">Pelican</a>
+    <ul></ul>
+    <a href="http://python.org/" title="Python.org" target="_blank">Python.org</a>
+    <ul></ul>
+    <a href="http://jinja.pocoo.org/" title="Jinja2" target="_blank">Jinja2</a>
+    <ul></ul>
+    <a href="#" title="You can modify those links in your config file" target="_blank">You can modify those links in your config file</a>
+</div>
+        </div></div>
+        <div class="pure-u-1 pure-u-md-3-4">
+<div id="footer">Copyright © 2018 <a href="/." rel="nofollow">NoteBox.</a> Powered by <a rel="nofollow" target="_blank" href="https://getpelican.com/">Pelican</a> and <a rel="nofollow", target="_blank", href="https://github.com/wormtooth/maupassant-pelican">maupassant</a>.</div>        </div>
+    </div>
+
+<a id="rocket" href="#top" class="show"></a>
+<script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
+<script type="text/javascript" src="/theme/js/fancybox.js" async></script>
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
+
+</body>

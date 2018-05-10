@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html land="zh">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>
+git的一般用法 | NoteBox    </title>
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygment.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="Shortcut Icon" type="image/x-icon" href="/theme/images/favicon.ico" />
+    <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="body_container">
+    <div id="header">
+        <div class="site-name">
+            <a id="logo" href="/."> NoteBox </a>
+            <!-- <img id="short_image" src="/theme/images/Logo.jpg"/> -->
+            <!-- notebox + logo_image -->
+        </div>
+        <div id="nav-menu">
+            <a href="/." class="current"><i class="fa fa-home"> Home</i></a>
+            <a href="/archives.html"><i class="fa fa-archive"> Archive</i></a>
+            <a href="/pages/about.html"><i class="fa fa-user"> About</i></a>
+        </div>
+    </div>
+    <div id="layout" class="pure-g">
+        <div class="pure-u-1 pure-u-md-3-4"><div class="content_container">
+<div class="post">
+    <h1 class="post-title">git的一般用法</h1>
+    <div class="post-meta">11月 03, 2016
+    <span> | </span> <span>git</span>
+    </div>
+    <div class="post-content">
+        <h1>Git用法</h1>
+<h2>1 建立仓库</h2>
+<ul>
+<li>远程</li>
+</ul>
+<div class="highlight"><pre><span></span>git remote add origin git@github.com:ghxdghxd/<span class="nv">$NAME</span>.git
+</pre></div>
+
+
+<ul>
+<li>本地(初始化)</li>
+</ul>
+<div class="highlight"><pre><span></span>git init
+</pre></div>
+
+
+<h2>2 常用操作</h2>
+<ul>
+<li>拉取</li>
+</ul>
+<div class="highlight"><pre><span></span>git pull origin master
+</pre></div>
+
+
+<ul>
+<li>提交</li>
+</ul>
+<div class="highlight"><pre><span></span>git add *.py
+git commit -m <span class="s2">&quot;message&quot;</span>
+git push origin master/dev/develop
+</pre></div>
+
+
+<!--more-->
+
+<ul>
+<li>重命令与删除</li>
+</ul>
+<div class="highlight"><pre><span></span>git rm
+git mv
+</pre></div>
+
+
+<h2>3 分支操作</h2>
+<table>
+<thead>
+<tr>
+<th align="center">主支</th>
+<th align="center">修补</th>
+<th align="center">发布</th>
+<th align="center">开发</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">master</td>
+<td align="center">hotfix</td>
+<td align="center">release</td>
+<td align="center">develop</td>
+<td align="center">feature</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span>git branch  /-a/r      <span class="c1"># 查看本地/全部/远程分支</span>
+git branch <span class="o">[</span>name<span class="o">]</span>      <span class="c1"># 建立分支</span>
+git branch -d <span class="o">[</span>name<span class="o">]</span>   <span class="c1"># 删除分支</span>
+
+git checkout -b <span class="o">[</span>name<span class="o">]</span> origin/develop  <span class="c1"># 建立并切换开发分支</span>
+git checkout <span class="o">[</span>name<span class="o">]</span>       <span class="c1"># 切换分支</span>
+git merge --no-ff <span class="o">[</span>name<span class="o">]</span>  <span class="c1"># 合并分支</span>
+
+git push origin dev:develop <span class="c1"># 本地分支提交到远程</span>
+</pre></div>
+
+
+<h2>push命令用于将本地分支的更新，推送到远程主机。</h2>
+<div class="highlight"><pre><span></span>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;
+</pre></div>
+
+
+<p>git pull类似:
+    git pull &lt;远程分支&gt;:&lt;本地分支&gt;</p>
+<p>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，
+所以git pull是&lt;远程分支&gt;:&lt;本地分支&gt;，而git push是&lt;本地分支&gt;:&lt;远程分支&gt;。
+如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支(通常两者同名)，如果该远程分支不存在，则会被新建。</p>
+<div class="highlight"><pre><span></span>git push origin master
+</pre></div>
+
+
+<p>上面命令表示，将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。</p>
+<p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p>
+<div class="highlight"><pre><span></span>git push origin :master
+</pre></div>
+
+
+<p>等同于</p>
+<div class="highlight"><pre><span></span>git push origin --delete master
+</pre></div>
+
+
+<p>上面命令表示删除origin主机的master分支。</p>
+<p>如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p>
+<div class="highlight"><pre><span></span>git push origin
+</pre></div>
+
+
+<p>上面命令表示，将当前分支推送到origin主机的对应分支。</p>
+<p>如果当前分支只有一个追踪分支，那么主机名都可以省略。</p>
+<div class="highlight"><pre><span></span>git push
+</pre></div>
+
+
+<p>如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。</p>
+<div class="highlight"><pre><span></span>git push -u origin master
+</pre></div>
+
+
+<p>上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。</p>
+<p>不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用git config命令。</p>
+<div class="highlight"><pre><span></span>git config --global push.default matching
+</pre></div>
+
+
+<p>或者</p>
+<div class="highlight"><pre><span></span>git config --global push.default simple
+</pre></div>
+
+
+<p>还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。</p>
+<div class="highlight"><pre><span></span>git push --all origin
+</pre></div>
+
+
+<p>上面命令表示，将所有本地分支都推送到origin主机。</p>
+<p>如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用–force选项。</p>
+<div class="highlight"><pre><span></span>git push --force origin
+</pre></div>
+
+
+<p>上面命令使用–force选项，结果导致在远程主机产生一个”非直进式”的合并(non-fast-forward merge)。除非你很确定要这样做，否则应该尽量避免使用–force选项。</p>
+<p>最后，git push不会推送标签(tag)，除非使用–tags选项。</p>
+<div class="highlight"><pre><span></span>git push origin --tags
+</pre></div>
+
+
+<h2>中文乱码</h2>
+<div class="highlight"><pre><span></span>    git config --global core.quotepath <span class="nb">false</span>
+</pre></div>
+
+
+<p>core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常。</p>
+<h2>gitignore忽略文件</h2>
+<p>1、配置语法：</p>
+<p>以斜杠“/”开头表示目录；</p>
+<p>以星号“*”通配多个字符；</p>
+<p>以问号“?”通配单个字符</p>
+<p>以方括号“[]”包含单个字符的匹配列表；</p>
+<p>以叹号“!”表示不忽略(跟踪)匹配到的文件或目录；</p>
+<p>此外，git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；</p>
+<p>2、示例：</p>
+<p>（1）规则：fd1/*
+　　　　  说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；</p>
+<p>（2）规则：/fd1/*
+　　　　  说明：忽略根目录下的 /fd1/ 目录的全部内容；</p>
+<p>（3）规则：</p>
+<p>/*
+!.gitignore
+!/fw/bin/
+!/fw/sf/</p>
+<p>说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；</p>
+<h2>warning: LF will be replaced by CRLF</h2>
+<p>在Windows环境下使用git进行add的时候，会提示如下warning: “warning:LF will be replacee by CRLF”。</p>
+<p>这是因为在Windows中的换行符为CRLF，而在Linux中的换行符为LF。
+在git创建的项目中换行符为LF，而执行git add时，系统会提示LF将被转换为CRLF。
+解决的办法很简单，禁止git的自动转换即可。</p>
+<div class="highlight"><pre><span></span>git config --global core.autocrlf <span class="nb">false</span> //禁用自动转换
+</pre></div>
+
+        <div class="tags">
+        <a href="/tag/git.html">git</a>
+        </div>
+
+
+    </div>
+</div>
+        </div></div>
+        <div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar">
+<div class="widget">
+    <form action="search.html" accept-charset="utf-8" class="search-form">
+        <input type="text" name="q" id="tipue_search_input" placeholder="Search">
+        <input type="hidden" name="sitesearch" value="" />
+        <div style="clear: both;"></div>
+    </form>
+</div><div class="widget">
+    <div class="widget-title">
+        <i class="fa fa-heart-o"> 好记性不如烂键盘</i>
+    </div>
+    <img id="logo_image" src="/theme/images/Logo.jpg" />
+</div>
+<div class="widget">
+    <div class="widget-title">
+        <i class="fa fa-folder-o"> Categories</i>
+    </div>
+    <ul class="category-list">
+        <li class="category-list-item"><a class="category-list-link" href="/category/coding.html">coding</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/git.html">git</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/interest.html">interest</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/linux.html">linux</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/lu-you-qi.html">路由器</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/operation.html">operation</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/sheng-xin.html">生信</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji.html">统计</a></li>
+    </ul>
+</div><div class="widget">
+    <div class="widget-title"><i class="fa fa-star-o"> Tags</i></div>
+    <div class="tagcloud">
+    <a href="/tag/git.html" style="font-size: 12px">git</a>
+    <a href="/tag/r.html" style="font-size: 12px">R</a>
+    <a href="/tag/awesome.html" style="font-size: 12px">awesome</a>
+    <a href="/tag/interest.html" style="font-size: 12px">interest</a>
+    <a href="/tag/operation.html" style="font-size: 12px">operation</a>
+    <a href="/tag/tennis.html" style="font-size: 12px">tennis</a>
+    <a href="/tag/linux.html" style="font-size: 12px">linux</a>
+    <a href="/tag/ge-ren.html" style="font-size: 12px">个人</a>
+    </div>
+</div><div class="widget">
+    <div class="widget-title"><i class="fa fa-file-o"> Recent</i></div>
+    <ul class="post-list">
+        <li class="post-list-item">
+        <a class="post-list-link" href="/git-submodule.html">git submodule的用法</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/meta.html">meta Analysis</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/bioinfo.html">生物信息</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/archlinux.html">archlinux安装与配置</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/docker.html">docker安装与配置</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/tennis-racquet.html">网球拍的平衡点</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/terminal-color.html">终端显示颜色</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/git.html">git的一般用法</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/mine.html">之感</a>
+        </li>
+    </ul>
+</div><div class="widget">
+    <div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div>
+    <ul></ul>
+    <a href="http://getpelican.com/" title="Pelican" target="_blank">Pelican</a>
+    <ul></ul>
+    <a href="http://python.org/" title="Python.org" target="_blank">Python.org</a>
+    <ul></ul>
+    <a href="http://jinja.pocoo.org/" title="Jinja2" target="_blank">Jinja2</a>
+    <ul></ul>
+    <a href="#" title="You can modify those links in your config file" target="_blank">You can modify those links in your config file</a>
+</div>
+        </div></div>
+        <div class="pure-u-1 pure-u-md-3-4">
+<div id="footer">Copyright © 2018 <a href="/." rel="nofollow">NoteBox.</a> Powered by <a rel="nofollow" target="_blank" href="https://getpelican.com/">Pelican</a> and <a rel="nofollow", target="_blank", href="https://github.com/wormtooth/maupassant-pelican">maupassant</a>.</div>        </div>
+    </div>
+
+<a id="rocket" href="#top" class="show"></a>
+<script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
+<script type="text/javascript" src="/theme/js/fancybox.js" async></script>
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
+
+</body>
