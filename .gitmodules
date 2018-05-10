@@ -1,0 +1,3 @@
+[submodule "themes/maupassant-pelican"]
+	path = themes/maupassant-pelican
+	url = git@github.com:ghxdghxd/maupassant-pelican.git
