@@ -25,7 +25,7 @@ rocks run host &lt;span class="s"&gt;&amp;quot;sed -i &amp;#39;s/other_args=\&am
 &lt;!--more--&gt;
 
 &lt;h2&gt;手动安装&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;手动安装&lt;/span&gt;&lt;span class="n"&gt;centos6&lt;/span&gt;&lt;span class="mf"&gt;.5&lt;/span&gt; &lt;span class="err"&gt;一些需要安装&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# 手动安装centos6.5 一些需要安装&lt;/span&gt;
 &lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;remove&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;engine&lt;/span&gt;
 &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
 &lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lua&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;filesystem&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.4.2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="n"&gt;el6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;
@@ -41,12 +41,12 @@ rocks run host &lt;span class="s"&gt;&amp;quot;sed -i &amp;#39;s/other_args=\&am
 
 
 &lt;h3&gt;安装错误&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;下面错误：&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# 下面错误：&lt;/span&gt;
 &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;relocation&lt;/span&gt; &lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;symbol&lt;/span&gt; &lt;span class="n"&gt;dm_task_get_info_with_deferred_remove&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="n"&gt;Base&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;defined&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;libdevmapper&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;&lt;span class="mf"&gt;.1.02&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt; &lt;span class="n"&gt;reference&lt;/span&gt;
 &lt;span class="nl"&gt;fix:&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mapper&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;libs&lt;/span&gt;
-&lt;span class="err"&gt;如果无法安装，重新更新&lt;/span&gt;
+&lt;span class="cp"&gt;# 如果无法安装，重新更新&lt;/span&gt;
 &lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;O&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;yum&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;CentOS&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//mirrors.aliyun.com/repo/Centos-6.repo&lt;/span&gt;
-&lt;span class="err"&gt;然后再安装&lt;/span&gt;
+&lt;span class="cp"&gt;# 然后再安装&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -57,32 +57,32 @@ rocks run host &lt;span class="s"&gt;&amp;quot;sed -i &amp;#39;s/other_args=\&am
 
 
 &lt;h3&gt;添加用户&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;添加docker group：
+&lt;div class="highlight"&gt;&lt;pre&gt;# 添加docker group：
 sudo groupadd docker
 
-将当前用户添加到docker组：
+# 将当前用户添加到docker组：
 sudo gpasswd -a &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; docker
 
-重启docker服务：
+# 重启docker服务：
 sudo service docker restart
-开机启动
+# 开机启动
 chkconfig docker on
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;修改镜像和容器的存放路径&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sysconfig&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="err"&gt;加入：&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# /etc/sysconfig/docker加入：&lt;/span&gt;
 &lt;span class="n"&gt;other_args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;--graph=/data/docker&amp;quot;&lt;/span&gt;
 
-&lt;span class="err"&gt;停止&lt;/span&gt;&lt;span class="n"&gt;Docker&lt;/span&gt;&lt;span class="err"&gt;服务&lt;/span&gt;
+&lt;span class="cp"&gt;# 停止Docker服务&lt;/span&gt;
 &lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;
-&lt;span class="err"&gt;备份数据到新的存放路径&lt;/span&gt;
+&lt;span class="cp"&gt;# 备份数据到新的存放路径&lt;/span&gt;
 &lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rf&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
-&lt;span class="err"&gt;修改备份&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="err"&gt;路径&lt;/span&gt;
+&lt;span class="cp"&gt;# 修改备份/var/lib/docker路径&lt;/span&gt;
 &lt;span class="n"&gt;mv&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="p"&gt;{,.&lt;/span&gt;&lt;span class="n"&gt;bak&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="err"&gt;启动&lt;/span&gt;&lt;span class="n"&gt;Docker&lt;/span&gt;&lt;span class="err"&gt;服务&lt;/span&gt;
+&lt;span class="cp"&gt;# 启动Docker服务&lt;/span&gt;
 &lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;
-&lt;span class="err"&gt;测试&lt;/span&gt;&lt;span class="n"&gt;Docker&lt;/span&gt;&lt;span class="err"&gt;服务&lt;/span&gt;
+&lt;span class="cp"&gt;# 测试Docker服务&lt;/span&gt;
 &lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

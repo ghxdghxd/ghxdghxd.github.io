@@ -68,7 +68,7 @@ rocks run host <span class="s">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/oth
 <!--more-->
 
 <h2>手动安装</h2>
-<div class="highlight"><pre><span class="err">手动安装</span><span class="n">centos6</span><span class="mf">.5</span> <span class="err">一些需要安装</span>
+<div class="highlight"><pre><span class="cp"># 手动安装centos6.5 一些需要安装</span>
 <span class="n">yum</span> <span class="n">remove</span> <span class="n">docker</span><span class="o">-</span><span class="n">engine</span>
 <span class="n">cd</span> <span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">until</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span>
 <span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">lua</span><span class="o">-</span><span class="n">filesystem</span><span class="o">-</span><span class="mf">1.4.2</span><span class="o">-</span><span class="mf">1.</span><span class="n">el6</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
@@ -84,12 +84,12 @@ rocks run host <span class="s">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/oth
 
 
 <h3>安装错误</h3>
-<div class="highlight"><pre><span class="err">下面错误：</span>
+<div class="highlight"><pre><span class="cp"># 下面错误：</span>
 <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">docker</span><span class="o">:</span> <span class="n">relocation</span> <span class="n">error</span><span class="o">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">docker</span><span class="o">:</span> <span class="n">symbol</span> <span class="n">dm_task_get_info_with_deferred_remove</span><span class="p">,</span> <span class="n">version</span> <span class="n">Base</span> <span class="n">not</span> <span class="n">defined</span> <span class="n">in</span> <span class="n">file</span> <span class="n">libdevmapper</span><span class="p">.</span><span class="n">so</span><span class="mf">.1.02</span> <span class="n">with</span> <span class="n">link</span> <span class="n">time</span> <span class="n">reference</span>
 <span class="nl">fix:</span> <span class="err">$</span> <span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">device</span><span class="o">-</span><span class="n">mapper</span><span class="o">-</span><span class="n">event</span><span class="o">-</span><span class="n">libs</span>
-<span class="err">如果无法安装，重新更新</span>
+<span class="cp"># 如果无法安装，重新更新</span>
 <span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">yum</span><span class="p">.</span><span class="n">repos</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">CentOS</span><span class="o">-</span><span class="n">Base</span><span class="p">.</span><span class="n">repo</span> <span class="n">http</span><span class="o">:</span><span class="c1">//mirrors.aliyun.com/repo/Centos-6.repo</span>
-<span class="err">然后再安装</span>
+<span class="cp"># 然后再安装</span>
 </pre></div>
 
 
@@ -100,32 +100,32 @@ rocks run host <span class="s">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/oth
 
 
 <h3>添加用户</h3>
-<div class="highlight"><pre>添加docker group：
+<div class="highlight"><pre># 添加docker group：
 sudo groupadd docker
 
-将当前用户添加到docker组：
+# 将当前用户添加到docker组：
 sudo gpasswd -a <span class="cp">${</span><span class="n">USER</span><span class="cp">}</span> docker
 
-重启docker服务：
+# 重启docker服务：
 sudo service docker restart
-开机启动
+# 开机启动
 chkconfig docker on
 </pre></div>
 
 
 <h3>修改镜像和容器的存放路径</h3>
-<div class="highlight"><pre><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysconfig</span><span class="o">/</span><span class="n">docker</span><span class="err">加入：</span>
+<div class="highlight"><pre><span class="cp"># /etc/sysconfig/docker加入：</span>
 <span class="n">other_args</span><span class="o">=</span><span class="s">&quot;--graph=/data/docker&quot;</span>
 
-<span class="err">停止</span><span class="n">Docker</span><span class="err">服务</span>
+<span class="cp"># 停止Docker服务</span>
 <span class="n">service</span> <span class="n">docker</span> <span class="n">stop</span>
-<span class="err">备份数据到新的存放路径</span>
+<span class="cp"># 备份数据到新的存放路径</span>
 <span class="n">cp</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span>
-<span class="err">修改备份</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="err">路径</span>
+<span class="cp"># 修改备份/var/lib/docker路径</span>
 <span class="n">mv</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="p">{,.</span><span class="n">bak</span><span class="p">}</span>
-<span class="err">启动</span><span class="n">Docker</span><span class="err">服务</span>
+<span class="cp"># 启动Docker服务</span>
 <span class="n">service</span> <span class="n">docker</span> <span class="n">start</span>
-<span class="err">测试</span><span class="n">Docker</span><span class="err">服务</span>
+<span class="cp"># 测试Docker服务</span>
 <span class="n">docker</span> <span class="n">info</span>
 </pre></div>
 
