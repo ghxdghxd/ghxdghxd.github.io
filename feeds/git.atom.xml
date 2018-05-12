@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DGuo Blog - git</title><link href="/" rel="alternate"></link><link href="None/feeds/git.atom.xml" rel="self"></link><id>/</id><updated>2018-02-03T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DGuo Blog - git</title><link href="http://ghxdghxd.github.io/" rel="alternate"></link><link href="http://ghxdghxd.github.io/feeds/git.atom.xml" rel="self"></link><id>http://ghxdghxd.github.io/</id><updated>2018-02-03T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="http://ghxdghxd.github.io/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git clone &amp;lt;repository&amp;gt; --recursive 递归的方式克隆整个项目
 git submodule add &amp;lt;repository&amp;gt;&amp;lt;path&amp;gt; 添加子模块
 git submodule init 初始化子模块
@@ -136,7 +136,7 @@ git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/spa
 git status
 git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/span&gt;
 git push origin master
-&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>git的一般用法</title><link href="/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>git的一般用法</title><link href="http://ghxdghxd.github.io/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
 &lt;h2&gt;1 建立仓库&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;远程&lt;/li&gt;

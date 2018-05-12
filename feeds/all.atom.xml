@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DGuo Blog</title><link href="/" rel="alternate"></link><link href="None/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2018-02-05T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DGuo Blog</title><link href="http://ghxdghxd.github.io/" rel="alternate"></link><link href="http://ghxdghxd.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ghxdghxd.github.io/</id><updated>2018-02-05T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="http://ghxdghxd.github.io/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git clone &amp;lt;repository&amp;gt; --recursive 递归的方式克隆整个项目
 git submodule add &amp;lt;repository&amp;gt;&amp;lt;path&amp;gt; 添加子模块
 git submodule init 初始化子模块
@@ -136,7 +136,7 @@ git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/spa
 git status
 git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/span&gt;
 git push origin master
-&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>meta Analysis</title><link href="/meta.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2018-02-03:/meta.html</id><summary type="html">&lt;p&gt;meta analysis with metafor&lt;/p&gt;</summary><content type="html">&lt;h1&gt;metafor document&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>meta Analysis</title><link href="http://ghxdghxd.github.io/meta.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/meta.html</id><summary type="html">&lt;p&gt;meta analysis with metafor&lt;/p&gt;</summary><content type="html">&lt;h1&gt;metafor document&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;An Overview of Functions in the metafor Package&lt;/li&gt;
 &lt;/ul&gt;
@@ -161,7 +161,7 @@ dmres&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;rma.uni&lt;span class="p"&gt;(&
 pdf&lt;span class="p"&gt;()&lt;/span&gt;
 forest&lt;span class="p"&gt;(&lt;/span&gt;dmres&lt;span class="p"&gt;,&lt;/span&gt; atransf&lt;span class="o"&gt;=&lt;/span&gt;exp&lt;span class="p"&gt;,&lt;/span&gt; showweights &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k-Variable"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; mlab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;rsid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; slab &lt;span class="o"&gt;=&lt;/span&gt; paste0&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;study&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 dev.off&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category></entry><entry><title>生物信息</title><link href="/bioinfo.html" rel="alternate"></link><published>2018-01-03T10:20:00+08:00</published><updated>2018-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2018-01-03:/bioinfo.html</id><summary type="html">&lt;p&gt;生物信息学&lt;/p&gt;</summary><content type="html">&lt;h1&gt;What is Bioinfomatics&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category></entry><entry><title>生物信息</title><link href="http://ghxdghxd.github.io/bioinfo.html" rel="alternate"></link><published>2018-01-03T10:20:00+08:00</published><updated>2018-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-01-03:/bioinfo.html</id><summary type="html">&lt;p&gt;生物信息学&lt;/p&gt;</summary><content type="html">&lt;h1&gt;What is Bioinfomatics&lt;/h1&gt;
 &lt;p&gt;Bioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data.As an interdisciplinary field of science, bioinformatics combines Computer Science, Biology, Mathematics, and Engineering to analyze and interpret biological data. Bioinformatics has been used for in silico analyses of biological queries using mathematical and statistical techniques. More broadly, bioinformatics is applied statistics and computing to biological science.&lt;/p&gt;
 &lt;!--more--&gt;
 
@@ -175,7 +175,7 @@ dev.off&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;ol&gt;
 &lt;li id="fn-1"&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</content><category term="awesome"></category><category term="interest"></category></entry><entry><title>archlinux安装与配置</title><link href="/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;archlinux安装&lt;/h1&gt;
+&lt;/div&gt;</content><category term="awesome"></category><category term="interest"></category></entry><entry><title>archlinux安装与配置</title><link href="http://ghxdghxd.github.io/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;archlinux安装&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#u盘启动后&lt;/span&gt;
 &lt;span class="n"&gt;wifi&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;memu&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;连接网络&lt;/span&gt;
 &lt;span class="n"&gt;mount&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sda1&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt;
@@ -248,7 +248,7 @@ dev.off&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;gnome&lt;/span&gt; &lt;span class="n"&gt;gnome&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tweak&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tool&lt;/span&gt;
 &lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;ttf&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ubuntu&lt;/span&gt;
 &lt;span class="cp"&gt;# 可选&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="operation"></category><category term="interest"></category></entry><entry><title>docker安装与配置</title><link href="/docker.html" rel="alternate"></link><published>2017-11-03T10:20:00+08:00</published><updated>2017-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-11-03:/docker.html</id><summary type="html">&lt;p&gt;docker的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;docker&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="operation"></category><category term="interest"></category></entry><entry><title>docker安装与配置</title><link href="http://ghxdghxd.github.io/docker.html" rel="alternate"></link><published>2017-11-03T10:20:00+08:00</published><updated>2017-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-11-03:/docker.html</id><summary type="html">&lt;p&gt;docker的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;docker&lt;/h1&gt;
 &lt;h2&gt;centos yum install docker&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;tee &lt;span class="o"&gt;/&lt;/span&gt;etc&lt;span class="o"&gt;/&lt;/span&gt;yum.repos.d&lt;span class="o"&gt;/&lt;/span&gt;docker.repo &lt;span class="o"&gt;&amp;lt;&amp;lt;-&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;EOF&amp;#39;&lt;/span&gt;
 &lt;span class="p"&gt;[&lt;/span&gt;dockerrepo&lt;span class="p"&gt;]&lt;/span&gt;
@@ -345,7 +345,7 @@ chkconfig docker on
 &lt;li&gt;将宿主机的/var/data挂载到容器中的/data: docker run -tdi -v /var/data:/data centos&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;如果ls: cannot open directory '.': Permission denied
-修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled&lt;/p&gt;</content><category term="awesome"></category><category term="interest"></category></entry><entry><title>网球拍的平衡点</title><link href="/tennis-racquet.html" rel="alternate"></link><published>2017-04-03T10:20:00+08:00</published><updated>2017-04-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-04-03:/tennis-racquet.html</id><summary type="html">&lt;p&gt;网球拍的平衡点&lt;/p&gt;</summary><content type="html">&lt;h1&gt;网球拍平衡点测量&lt;/h1&gt;
+修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled&lt;/p&gt;</content><category term="awesome"></category><category term="interest"></category></entry><entry><title>网球拍的平衡点</title><link href="http://ghxdghxd.github.io/tennis-racquet.html" rel="alternate"></link><published>2017-04-03T10:20:00+08:00</published><updated>2017-04-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-04-03:/tennis-racquet.html</id><summary type="html">&lt;p&gt;网球拍的平衡点&lt;/p&gt;</summary><content type="html">&lt;h1&gt;网球拍平衡点测量&lt;/h1&gt;
 &lt;p&gt;这个是每份点得出来的公式（pts点，inch英寸）
 1pts = 1/8 inch = 1/8 * 2.54cm = 0.3175cm
 下面以标准拍子27英寸长度为例，换算出是68.5cm，那中心点就是34.25cm。然后假设你所量出平衡点到拍底的距离为h。
@@ -355,7 +355,7 @@ chkconfig docker on
 &lt;p&gt;图中可知，此时拍子是完全平衡状态，只需测量纸片到底盖的距离就可以了，按这个方法测量出我的拍子是32.34cm，套用公式:
 （34.25-32.34）÷0.3175=6.015，也就是6点头轻了！&lt;/p&gt;
 &lt;p&gt;另附上球拍头轻和头重的优劣:
-头轻拍更灵活易于控制，能让选手在网前有不错的表现，但是不能提供足够大的力量。头重拍，灵活性差，但能提供额外的力量更有利于底线的击球。一般专业的球拍都是头轻拍或者是平衡拍，因为这样更利于网前技术的发挥，而且专业球员都有很好的身体素质可以自身去发力。而初学拍比较多的是头重拍，这样能使初学者并不需要太多的发力就能击出力量较大的球。&lt;/p&gt;</content><category term="tennis"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="/R-and-Rstudio.html" rel="alternate"></link><published>2017-02-03T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-02-03:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;R与Rstudio的安装&lt;/p&gt;</summary><content type="html">&lt;h1&gt;install R&lt;/h1&gt;
+头轻拍更灵活易于控制，能让选手在网前有不错的表现，但是不能提供足够大的力量。头重拍，灵活性差，但能提供额外的力量更有利于底线的击球。一般专业的球拍都是头轻拍或者是平衡拍，因为这样更利于网前技术的发挥，而且专业球员都有很好的身体素质可以自身去发力。而初学拍比较多的是头重拍，这样能使初学者并不需要太多的发力就能击出力量较大的球。&lt;/p&gt;</content><category term="tennis"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="http://ghxdghxd.github.io/R-and-Rstudio.html" rel="alternate"></link><published>2017-02-03T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-02-03:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;R与Rstudio的安装&lt;/p&gt;</summary><content type="html">&lt;h1&gt;install R&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;error&lt;/li&gt;
 &lt;/ul&gt;
@@ -565,7 +565,7 @@ chkconfig docker on
 &lt;span class="n"&gt;make&lt;/span&gt;
 
 &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category></entry><entry><title>终端显示颜色</title><link href="/terminal-color.html" rel="alternate"></link><published>2017-01-03T10:20:00+08:00</published><updated>2017-01-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-01-03:/terminal-color.html</id><summary type="html">&lt;p&gt;终端显示颜色&lt;/p&gt;</summary><content type="html">&lt;p&gt;echo显示带颜色，需要使用参数-e
+&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category></entry><entry><title>终端显示颜色</title><link href="http://ghxdghxd.github.io/terminal-color.html" rel="alternate"></link><published>2017-01-03T10:20:00+08:00</published><updated>2017-01-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-03:/terminal-color.html</id><summary type="html">&lt;p&gt;终端显示颜色&lt;/p&gt;</summary><content type="html">&lt;p&gt;echo显示带颜色，需要使用参数-e
 格式如下:
 echo -e "\033[字背景颜色;文字颜色m字符串\033[0m"
 例如:
@@ -618,7 +618,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt; &lt;span class="err"&gt;恢复光标位置&lt;/span&gt;
 &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="mi"&gt;25l&lt;/span&gt; &lt;span class="err"&gt;隐藏光标&lt;/span&gt;
 &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="err"&gt;显示光标&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="interest"></category></entry><entry><title>git的一般用法</title><link href="/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="interest"></category></entry><entry><title>git的一般用法</title><link href="http://ghxdghxd.github.io/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
 &lt;h2&gt;1 建立仓库&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;远程&lt;/li&gt;
@@ -795,7 +795,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 在git创建的项目中换行符为LF，而执行git add时，系统会提示LF将被转换为CRLF。
 解决的办法很简单，禁止git的自动转换即可。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git config --global core.autocrlf &lt;span class="nb"&gt;false&lt;/span&gt; //禁用自动转换
-&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>之感</title><link href="/mine.html" rel="alternate"></link><published>2015-08-03T10:20:00+08:00</published><updated>2015-08-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2015-08-03:/mine.html</id><summary type="html">&lt;p&gt;想什么说什么&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>之感</title><link href="http://ghxdghxd.github.io/mine.html" rel="alternate"></link><published>2015-08-03T10:20:00+08:00</published><updated>2015-08-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-08-03:/mine.html</id><summary type="html">&lt;p&gt;想什么说什么&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
 &lt;li&gt;话多应知，话少需明&lt;/li&gt;
 &lt;li&gt;前人看世界，后者品人生&lt;/li&gt;
 &lt;li&gt;棋逢对手 尽兴，将遇良才 榨干——干的漂亮&lt;/li&gt;
