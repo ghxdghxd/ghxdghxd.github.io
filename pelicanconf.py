@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'JT Guo'
-SITENAME = 'NoteBox'
+SITENAME = 'DGuo Blog'
 SITEURL = 'http://ghxdghxd.github.io'
 GITHUB_URL = 'http://github.com/ghxdghxd'
 PATH = 'content'
@@ -16,7 +16,8 @@ EXTRA_PATH_METADATA = {
     'pages/about.md': {'path': 'about.html'} # about.md生成到output下, 表示about.html的路径
 }
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['tipue_search', "sitemap", "i18n_subsites"]
+PLUGINS = ['tipue_search', "sitemap", "i18n_subsites", "neighbors"]
+
 
 THEME = "themes/maupassant-pelican"
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'search']
@@ -62,8 +63,8 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
-PAGINATED_DIRECT_TEMPLATES = ['index', 'base']  # 分页
-DEFAULT_PAGINATION = 10
+PAGINATED_DIRECT_TEMPLATES = ['index']  # 分页
+DEFAULT_PAGINATION = 3
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
