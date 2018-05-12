@@ -11,13 +11,12 @@ PATH = 'content'
 TIMEZONE = 'Asia/Shanghai'
 DEFAULT_LANG = 'zh'
 
-STATIC_PATHS = ["pages",'theme/images', "documents"]
+STATIC_PATHS = ["pages",'theme/images', "documents", 'images']
 EXTRA_PATH_METADATA = {
     'pages/about.md': {'path': 'about.html'} # about.md生成到output下, 表示about.html的路径
 }
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['tipue_search', "sitemap", "i18n_subsites", "neighbors"]
-
 
 THEME = "themes/maupassant-pelican"
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'search']

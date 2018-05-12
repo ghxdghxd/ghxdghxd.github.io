@@ -14,8 +14,8 @@ Summary: git的一般用法
 
 + 远程
 
-```shell
-git remote add origin git@github.com:ghxdghxd/$NAME.git
+```bash
+git remote add origin git@github.com:ghxdghxd$NAME.git
 ```
 
 + 本地(初始化)
@@ -52,19 +52,18 @@ git mv
 ## 3 分支操作
 
 |主支|修补|发布|开发|功能|
-|:-:|:-:|:-:|:-:|:-:|
+|:---:|:---:|:---:|:---:|:---:|
 |master|hotfix|release|develop|feature|
 
-```shell
-git branch  /-a/r      # 查看本地/全部/远程分支
-git branch [name]      # 建立分支
-git branch -d [name]   # 删除分支
+```bash
+git branch  /-a/r       # 查看本地/全部/远程分支
+git branch [name]       # 建立分支
+git branch -d [name]    # 删除分支
 
-git checkout -b [name] origin/develop  # 建立并切换开发分支
-git checkout [name]       # 切换分支
-git merge --no-ff [name]  # 合并分支
-
-git push origin dev:develop # 本地分支提交到远程
+git checkout -b [name] origin/develop   # 建立并切换开发分支
+git checkout [name]                     # 切换分支
+git merge --no-ff [name]                # 合并分支
+git push origin dev:develop             # 本地分支提交到远程
 ```
 
 ## push命令用于将本地分支的更新，推送到远程主机。
