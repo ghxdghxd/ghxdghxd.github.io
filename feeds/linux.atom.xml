@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>NoteBox - linux</title><link href="/" rel="alternate"></link><link href="/feeds/linux.atom.xml" rel="self"></link><id>/</id><updated>2017-12-05T19:30:00+08:00</updated><entry><title>archlinux安装与配置</title><link href="/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;archlinux安装&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#u盘启动后&lt;/span&gt;
-wifi-memu &lt;span class="c1"&gt;# 连接网络&lt;/span&gt;
-mount /dev/sda1 /mnt
-mkdir -p /mnt/home
-mount /dev/sda2 /mnt/home
-vi /ect/pacman.d/mirrorlist &lt;span class="c1"&gt;# 修改中国镜像源,如163.com&lt;/span&gt;
-pacstrap -i /mnt base base-devel
-genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab &lt;span class="c1"&gt;#生成挂载文件fstab&lt;/span&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DGuo Blog - linux</title><link href="/" rel="alternate"></link><link href="/feeds/linux.atom.xml" rel="self"></link><id>/</id><updated>2017-12-05T19:30:00+08:00</updated><entry><title>archlinux安装与配置</title><link href="/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;archlinux安装&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#u盘启动后&lt;/span&gt;
+&lt;span class="n"&gt;wifi&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;memu&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;连接网络&lt;/span&gt;
+&lt;span class="n"&gt;mount&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sda1&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt;
+&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;
+&lt;span class="n"&gt;mount&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sda2&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;
+&lt;span class="n"&gt;vi&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ect&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pacman&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mirrorlist&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;修改中国镜像源&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="err"&gt;如&lt;/span&gt;&lt;span class="mf"&gt;163.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
+&lt;span class="n"&gt;pacstrap&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt; &lt;span class="n"&gt;base&lt;/span&gt; &lt;span class="n"&gt;base&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;devel&lt;/span&gt;
+&lt;span class="n"&gt;genfstab&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fstab&lt;/span&gt; &lt;span class="err"&gt;#生成挂载文件&lt;/span&gt;&lt;span class="n"&gt;fstab&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;archlinux 初步配置&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;arch-chroot /mnt /bin/bash &lt;span class="c1"&gt;#切换到archlinux&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;arch&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;chroot&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bash&lt;/span&gt; &lt;span class="err"&gt;#切换到&lt;/span&gt;&lt;span class="n"&gt;archlinux&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;本地语言&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vi /etc/locale.gen
-    en_US.UTF-8 UTF-8
-    zh_CN.UTF-8 UTF-8
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;vi&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;locale&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gen&lt;/span&gt;
+    &lt;span class="n"&gt;en_US&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UTF&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="n"&gt;UTF&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;
+    &lt;span class="n"&gt;zh_CN&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UTF&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="n"&gt;UTF&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;
 
-locale-gen &lt;span class="c1"&gt;#生效&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;en_US.UTF-8 &amp;gt; /etc/locale.conf
+&lt;span class="n"&gt;locale&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;gen&lt;/span&gt; &lt;span class="err"&gt;#生效&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="n"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;en_US&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UTF&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;locale&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -33,45 +33,45 @@ locale-gen &lt;span class="c1"&gt;#生效&lt;/span&gt;
 &lt;ul&gt;
 &lt;li&gt;时区&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-或
-tzselect &lt;span class="c1"&gt;#按提示选择时区&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ln&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;sf&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;zoneinfo&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Asia&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Shanghai&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;localtime&lt;/span&gt;
+&lt;span class="err"&gt;或&lt;/span&gt;
+&lt;span class="n"&gt;tzselect&lt;/span&gt; &lt;span class="err"&gt;#按提示选择时区&lt;/span&gt;
 
-hwclock --systohc --utc &lt;span class="c1"&gt;#设置硬件时间&lt;/span&gt;
+&lt;span class="n"&gt;hwclock&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;systohc&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;utc&lt;/span&gt; &lt;span class="err"&gt;#设置硬件时间&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;grub引导系统&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pacman -S grub efibootmgr &lt;span class="c1"&gt;# 支持grub和EFI，可只选grup&lt;/span&gt;
-grub-install --target&lt;span class="o"&gt;=&lt;/span&gt;i386-pc --recheck --debug /dev/sda
-grup-mkconfig -o /boot/grub/grub.cfg
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;grub&lt;/span&gt; &lt;span class="n"&gt;efibootmgr&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;支持&lt;/span&gt;&lt;span class="n"&gt;grub&lt;/span&gt;&lt;span class="err"&gt;和&lt;/span&gt;&lt;span class="n"&gt;EFI&lt;/span&gt;&lt;span class="err"&gt;，可只选&lt;/span&gt;&lt;span class="n"&gt;grup&lt;/span&gt;
+&lt;span class="n"&gt;grub&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;i386&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pc&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;recheck&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sda&lt;/span&gt;
+&lt;span class="n"&gt;grup&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mkconfig&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;boot&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;grub&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;grub&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cfg&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;主机名&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; Garch &amp;gt;&amp;gt; /etc/hostname
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="n"&gt;Garch&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hostname&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;网络配置&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; dhcpcd.service &lt;span class="c1"&gt;#有线&lt;/span&gt;
-pacman -S iw wpa_supplicant dialog &lt;span class="c1"&gt;#无线&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;systemctl&lt;/span&gt; &lt;span class="n"&gt;enable&lt;/span&gt; &lt;span class="n"&gt;dhcpcd&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="err"&gt;#有线&lt;/span&gt;
+&lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;iw&lt;/span&gt; &lt;span class="n"&gt;wpa_supplicant&lt;/span&gt; &lt;span class="n"&gt;dialog&lt;/span&gt; &lt;span class="err"&gt;#无线&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;archlinux 配置&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#最小安装&lt;/span&gt;
-pacman -S xorg-server &lt;span class="c1"&gt;# X桌面&lt;/span&gt;
-pacman -S xf86-video-ati &lt;span class="c1"&gt;# 显卡驱动&lt;/span&gt;
-pacman -S gnome gnome-tweak-tool
-pacman -S ttf-ubuntu
-&lt;span class="c1"&gt;# 可选&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#最小安装&lt;/span&gt;
+&lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;xorg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="err"&gt;桌面&lt;/span&gt;
+&lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;xf86&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;video&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ati&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;显卡驱动&lt;/span&gt;
+&lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;gnome&lt;/span&gt; &lt;span class="n"&gt;gnome&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tweak&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tool&lt;/span&gt;
+&lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;ttf&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ubuntu&lt;/span&gt;
+&lt;span class="cp"&gt;# 可选&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="operation"></category><category term="interest"></category></entry><entry><title>终端显示颜色</title><link href="/terminal-color.html" rel="alternate"></link><published>2017-01-03T10:20:00+08:00</published><updated>2017-01-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:None,2017-01-03:/terminal-color.html</id><summary type="html">&lt;p&gt;终端显示颜色&lt;/p&gt;</summary><content type="html">&lt;p&gt;echo显示带颜色，需要使用参数-e
 格式如下:
 echo -e "\033[字背景颜色;文字颜色m字符串\033[0m"
@@ -83,46 +83,46 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 2、文字颜色后面有个m
 3、字符串前后可以没有空格，如果有的话，输出也是同样有空格&lt;/p&gt;
 &lt;p&gt;下面看几个例子：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[30m 黑色字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[31m 红色字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[32m 绿色字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[33m 黄色字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[34m 蓝色字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[35m 紫色字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[36m 天蓝字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[37m 白色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[30m 黑色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[31m 红色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[32m 绿色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[33m 黄色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[34m 蓝色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[35m 紫色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[36m 天蓝字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[37m 白色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
 
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[40;37m 黑底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[41;37m 红底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[42;37m 绿底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[43;37m 黄底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[44;37m 蓝底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[45;37m 紫底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[46;37m 天蓝底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[47;30m 白底黑字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[40;37m 黑底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[41;37m 红底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[42;37m 绿底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[43;37m 黄底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[44;37m 蓝底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[45;37m 紫底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[46;37m 天蓝底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[47;30m 白底黑字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;!-- more --&gt;
 
 &lt;p&gt;控制选项说明 ：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;0m 关闭所有属性
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;1m 设置高亮度
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;4m 下划线
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;5m 闪烁
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;7m 反显
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;8m 消隐
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;30m -- &lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;37m 设置前景色
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;40m -- &lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;47m 设置背景色
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;nA 光标上移n行
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;nB 光标下移n行
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;nC 光标右移n行
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;nD 光标左移n行
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;y&lt;span class="p"&gt;;&lt;/span&gt;xH设置光标位置
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;2J 清屏
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;K 清除从光标到行尾的内容
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;s 保存光标位置
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;u 恢复光标位置
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;?25l 隐藏光标
-&lt;span class="se"&gt;\3&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;?25h 显示光标
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="err"&gt;关闭所有属性&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="err"&gt;设置高亮度&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="err"&gt;下划线&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="err"&gt;闪烁&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="err"&gt;反显&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="err"&gt;消隐&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;37&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="err"&gt;设置前景色&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;47&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="err"&gt;设置背景色&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;nA&lt;/span&gt; &lt;span class="err"&gt;光标上移&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="err"&gt;行&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;nB&lt;/span&gt; &lt;span class="err"&gt;光标下移&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="err"&gt;行&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;nC&lt;/span&gt; &lt;span class="err"&gt;光标右移&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="err"&gt;行&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;nD&lt;/span&gt; &lt;span class="err"&gt;光标左移&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="err"&gt;行&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;xH&lt;/span&gt;&lt;span class="err"&gt;设置光标位置&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="n"&gt;J&lt;/span&gt; &lt;span class="err"&gt;清屏&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;K&lt;/span&gt; &lt;span class="err"&gt;清除从光标到行尾的内容&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="err"&gt;保存光标位置&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt; &lt;span class="err"&gt;恢复光标位置&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="mi"&gt;25l&lt;/span&gt; &lt;span class="err"&gt;隐藏光标&lt;/span&gt;
+&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="mi"&gt;33&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="err"&gt;显示光标&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="interest"></category></entry></feed>

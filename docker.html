@@ -8,7 +8,7 @@
     <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
     <title>
-docker安装与配置 | NoteBox    </title>
+docker安装与配置 | DGuo Blog    </title>
     <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
     <link rel="stylesheet" type="text/css" href="/theme/css/pygment.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css" />
@@ -24,7 +24,7 @@ docker安装与配置 | NoteBox    </title>
 <div class="body_container">
     <div id="header">
         <div class="site-name">
-            <a id="logo" href="/."> NoteBox </a>
+            <a id="logo" href="/."> DGuo Blog </a>
             <!-- <img id="short_image" src="/theme/images/Logo.jpg"/> -->
             <!-- notebox + logo_image -->
         </div>
@@ -44,67 +44,67 @@ docker安装与配置 | NoteBox    </title>
     <div class="post-content">
         <h1>docker</h1>
 <h2>centos yum install docker</h2>
-<div class="highlight"><pre><span></span>tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-&#39;EOF&#39;</span>
-<span class="s">[dockerrepo]</span>
-<span class="s">name=Docker Repository</span>
-<span class="s">baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/</span>
-<span class="s">enabled=1</span>
-<span class="s">gpgcheck=1</span>
-<span class="s">gpgkey=https://yum.dockerproject.org/gpg</span>
-<span class="s">EOF</span>
+<div class="highlight"><pre>tee <span class="o">/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo <span class="o">&lt;&lt;-</span><span class="s">&#39;EOF&#39;</span>
+<span class="p">[</span>dockerrepo<span class="p">]</span>
+name<span class="o">=</span>Docker Repository
+baseurl<span class="o">=</span>https<span class="o">://</span>yum.dockerproject.org<span class="o">/</span>repo<span class="o">/</span>main<span class="o">/</span>centos<span class="o">/$</span>releasever<span class="o">/</span>
+enabled<span class="o">=</span><span class="m">1</span>
+gpgcheck<span class="o">=</span><span class="m">1</span>
+gpgkey<span class="o">=</span>https<span class="o">://</span>yum.dockerproject.org<span class="o">/</span>gpg
+EOF
 
-sed -i <span class="s1">&#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39;</span> /etc/sysconfig/docker
+sed <span class="o">-</span>i <span class="s">&#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39;</span> <span class="o">/</span>etc<span class="o">/</span>sysconfig<span class="o">/</span>docker
 
-<span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">8</span><span class="sb">`</span><span class="p">;</span>
-<span class="k">do</span>
-    sudo scp /etc/yum.repos.d/docker.repo compute-0-<span class="nv">$i</span>:/etc/yum.repos.d/docker.repo
-<span class="k">done</span>
+<span class="kr">for</span> i <span class="kr">in</span> <span class="sb">`seq 1 8`</span><span class="p">;</span>
+do
+    sudo scp <span class="o">/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo compute<span class="m">-0</span><span class="o">-$</span>i<span class="o">:/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo
+done
 
-rocks run host <span class="s2">&quot;yum install docker-engine&quot;</span>
-rocks run host <span class="s2">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span>
+rocks run host <span class="s">&quot;yum install docker-engine&quot;</span>
+rocks run host <span class="s">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span>
 </pre></div>
 
 
 <!--more-->
 
 <h2>手动安装</h2>
-<div class="highlight"><pre><span></span>手动安装centos6.5 一些需要安装
-yum remove docker-engine
-<span class="nb">cd</span> /share/apps/until/docker/
-yum install ./lua-filesystem-1.4.2-1.el6.x86_64.rpm
-yum install ./lxc-libs-1.0.11-1.el6.x86_64.rpm
-yum install ./lua-lxc-1.0.11-1.el6.x86_64.rpm
-yum install ./lua-alt-getopt-0.7.0-1.el6.noarch.rpm
-yum install ./lxc-1.0.11-1.el6.x86_64.rpm
-yum install ./docker-io-1.7.1-2.el6.x86_64.rpm
-wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
-yum install device-mapper-event-libs
-service docker restart
+<div class="highlight"><pre><span class="err">手动安装</span><span class="n">centos6</span><span class="mf">.5</span> <span class="err">一些需要安装</span>
+<span class="n">yum</span> <span class="n">remove</span> <span class="n">docker</span><span class="o">-</span><span class="n">engine</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">until</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">lua</span><span class="o">-</span><span class="n">filesystem</span><span class="o">-</span><span class="mf">1.4.2</span><span class="o">-</span><span class="mf">1.</span><span class="n">el6</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">lxc</span><span class="o">-</span><span class="n">libs</span><span class="o">-</span><span class="mf">1.0.11</span><span class="o">-</span><span class="mf">1.</span><span class="n">el6</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">lua</span><span class="o">-</span><span class="n">lxc</span><span class="o">-</span><span class="mf">1.0.11</span><span class="o">-</span><span class="mf">1.</span><span class="n">el6</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">lua</span><span class="o">-</span><span class="n">alt</span><span class="o">-</span><span class="n">getopt</span><span class="o">-</span><span class="mf">0.7.0</span><span class="o">-</span><span class="mf">1.</span><span class="n">el6</span><span class="p">.</span><span class="n">noarch</span><span class="p">.</span><span class="n">rpm</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">lxc</span><span class="o">-</span><span class="mf">1.0.11</span><span class="o">-</span><span class="mf">1.</span><span class="n">el6</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">io</span><span class="o">-</span><span class="mf">1.7.1</span><span class="o">-</span><span class="mf">2.</span><span class="n">el6</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
+<span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">yum</span><span class="p">.</span><span class="n">repos</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">CentOS</span><span class="o">-</span><span class="n">Base</span><span class="p">.</span><span class="n">repo</span> <span class="n">http</span><span class="o">:</span><span class="c1">//mirrors.aliyun.com/repo/Centos-6.repo</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">device</span><span class="o">-</span><span class="n">mapper</span><span class="o">-</span><span class="n">event</span><span class="o">-</span><span class="n">libs</span>
+<span class="n">service</span> <span class="n">docker</span> <span class="n">restart</span>
 </pre></div>
 
 
 <h3>安装错误</h3>
-<div class="highlight"><pre><span></span>下面错误：
-/usr/bin/docker: relocation error: /usr/bin/docker: symbol dm_task_get_info_with_deferred_remove, version Base not defined in file libdevmapper.so.1.02 with link <span class="nb">time</span> reference
-fix: $ sudo yum install device-mapper-event-libs
-如果无法安装，重新更新
-wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
-然后再安装
+<div class="highlight"><pre><span class="err">下面错误：</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">docker</span><span class="o">:</span> <span class="n">relocation</span> <span class="n">error</span><span class="o">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">docker</span><span class="o">:</span> <span class="n">symbol</span> <span class="n">dm_task_get_info_with_deferred_remove</span><span class="p">,</span> <span class="n">version</span> <span class="n">Base</span> <span class="n">not</span> <span class="n">defined</span> <span class="n">in</span> <span class="n">file</span> <span class="n">libdevmapper</span><span class="p">.</span><span class="n">so</span><span class="mf">.1.02</span> <span class="n">with</span> <span class="n">link</span> <span class="n">time</span> <span class="n">reference</span>
+<span class="nl">fix:</span> <span class="err">$</span> <span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">device</span><span class="o">-</span><span class="n">mapper</span><span class="o">-</span><span class="n">event</span><span class="o">-</span><span class="n">libs</span>
+<span class="err">如果无法安装，重新更新</span>
+<span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">yum</span><span class="p">.</span><span class="n">repos</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">CentOS</span><span class="o">-</span><span class="n">Base</span><span class="p">.</span><span class="n">repo</span> <span class="n">http</span><span class="o">:</span><span class="c1">//mirrors.aliyun.com/repo/Centos-6.repo</span>
+<span class="err">然后再安装</span>
 </pre></div>
 
 
 <h2>docker应用</h2>
 <h3>启动docker</h3>
-<div class="highlight"><pre><span></span>service docker start
+<div class="highlight"><pre><span class="n">service</span> <span class="n">docker</span> <span class="n">start</span>
 </pre></div>
 
 
 <h3>添加用户</h3>
-<div class="highlight"><pre><span></span>添加docker group：
+<div class="highlight"><pre>添加docker group：
 sudo groupadd docker
 
 将当前用户添加到docker组：
-sudo gpasswd -a <span class="si">${</span><span class="nv">USER</span><span class="si">}</span> docker
+sudo gpasswd -a <span class="cp">${</span><span class="n">USER</span><span class="cp">}</span> docker
 
 重启docker服务：
 sudo service docker restart
@@ -114,19 +114,19 @@ chkconfig docker on
 
 
 <h3>修改镜像和容器的存放路径</h3>
-<div class="highlight"><pre><span></span>/etc/sysconfig/docker加入：
-<span class="nv">other_args</span><span class="o">=</span><span class="s2">&quot;--graph=/data/docker&quot;</span>
+<div class="highlight"><pre><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysconfig</span><span class="o">/</span><span class="n">docker</span><span class="err">加入：</span>
+<span class="n">other_args</span><span class="o">=</span><span class="s">&quot;--graph=/data/docker&quot;</span>
 
-停止Docker服务
-service docker stop
-备份数据到新的存放路径
-cp -rf /var/lib/docker /data/
-修改备份/var/lib/docker路径
-mv /var/lib/docker<span class="o">{</span>,.bak<span class="o">}</span>
-启动Docker服务
-service docker start
-测试Docker服务
-docker info
+<span class="err">停止</span><span class="n">Docker</span><span class="err">服务</span>
+<span class="n">service</span> <span class="n">docker</span> <span class="n">stop</span>
+<span class="err">备份数据到新的存放路径</span>
+<span class="n">cp</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span>
+<span class="err">修改备份</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="err">路径</span>
+<span class="n">mv</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="p">{,.</span><span class="n">bak</span><span class="p">}</span>
+<span class="err">启动</span><span class="n">Docker</span><span class="err">服务</span>
+<span class="n">service</span> <span class="n">docker</span> <span class="n">start</span>
+<span class="err">测试</span><span class="n">Docker</span><span class="err">服务</span>
+<span class="n">docker</span> <span class="n">info</span>
 </pre></div>
 
 
@@ -146,6 +146,10 @@ docker info
         <a href="/tag/interest.html">interest</a>
         </div>
 
+        <div class="post-nav">
+            <a href="/tennis-racquet.html" class="pre">网球拍的平衡点</a>
+            <a href="/archlinux.html" class="next">archlinux安装与配置</a>
+        </div>
 
     </div>
 </div>
@@ -236,7 +240,7 @@ docker info
 </div>
         </div></div>
         <div class="pure-u-1 pure-u-md-3-4">
-<div id="footer">Copyright © 2018 <a href="/." rel="nofollow">NoteBox.</a> Powered by <a rel="nofollow" target="_blank" href="https://getpelican.com/">Pelican</a> and <a rel="nofollow", target="_blank", href="https://github.com/wormtooth/maupassant-pelican">maupassant</a>.</div>        </div>
+<div id="footer">Copyright © 2018 <a href="/." rel="nofollow">DGuo Blog.</a> Powered by <a rel="nofollow" target="_blank" href="https://getpelican.com/">Pelican</a> and <a rel="nofollow", target="_blank", href="https://github.com/wormtooth/maupassant-pelican">maupassant</a>.</div>        </div>
     </div>
 
 <a id="rocket" href="#top" class="show"></a>
