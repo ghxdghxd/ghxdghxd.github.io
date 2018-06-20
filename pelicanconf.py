@@ -5,8 +5,8 @@ from __future__ import unicode_literals
 AUTHOR = 'JT Guo'
 SITENAME = 'DGuo Blog'
 SITESUBTITLE = '好记性不如烂键盘'
-SITEURL = 'http://ghxdghxd.github.io'
-GITHUB_URL = 'http://github.com/ghxdghxd'
+SITEURL = 'https://ghxdghxd.github.io'
+GITHUB_URL = 'https://github.com/ghxdghxd'
 PATH = 'content'
 
 TIMEZONE = 'Asia/Shanghai'
