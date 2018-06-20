@@ -93,17 +93,6 @@ Search -     DGuo Blog | 好记性不如烂键盘
 <script type="text/javascript" src="http://ghxdghxd.github.io/theme/tipuesearch/tipuesearch_set.js"></script>
 <script type="text/javascript" src="http://ghxdghxd.github.io/theme/tipuesearch/tipuesearch.min.js"></script>
 
-<script>
-  $(document).ready(function () {
-    $('#tipue_search_input').tipuesearch({
-      'show': 10,
-      'mode': 'json',
-      'newWindow': false,
-      'contentLocation': 'http://ghxdghxd.github.io/tipuesearch_content.json'
-    });
-  });
-</script>
-
 <article>
   <div class="span8 offset2">
     <div id="tipue_search_content">
@@ -111,6 +100,18 @@ Search -     DGuo Blog | 好记性不如烂键盘
     </div>
   </div>
 </article>
+
+<script>
+  $(document).ready(function () {
+    $('#tipue_search_input').tipuesearch({
+      'show': 10,
+      'mode': 'json',
+      'newWindow': false,
+      'showURL': false,
+      'contentLocation': 'http://ghxdghxd.github.io/tipuesearch_content.json'
+    });
+  });
+</script>
         </div>
     </div>
 <a id="rocket" href="#top" class="show"></a>
