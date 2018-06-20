@@ -53,23 +53,23 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 2、文字颜色后面有个m
 3、字符串前后可以没有空格，如果有的话，输出也是同样有空格</p>
 <p>下面看几个例子：</p>
-<div class="highlight"><pre><span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[30m 黑色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[31m 红色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[32m 绿色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[33m 黄色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[34m 蓝色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[35m 紫色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[36m 天蓝字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[37m 白色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
+<div class="highlight"><pre><span></span><span class="nb">echo</span> -e <span class="s2">&quot;\033[30m 黑色字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[31m 红色字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[32m 绿色字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[33m 黄色字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[34m 蓝色字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[35m 紫色字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[36m 天蓝字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[37m 白色字 \033[0m&quot;</span>
 
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[40;37m 黑底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[41;37m 红底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[42;37m 绿底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[43;37m 黄底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[44;37m 蓝底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[45;37m 紫底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[46;37m 天蓝底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[47;30m 白底黑字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[40;37m 黑底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[41;37m 红底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[42;37m 绿底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[43;37m 黄底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[44;37m 蓝底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[45;37m 紫底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[46;37m 天蓝底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[47;30m 白底黑字 \033[0m&quot;</span>
 </pre></div>
 
 

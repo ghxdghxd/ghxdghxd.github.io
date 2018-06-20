@@ -44,89 +44,89 @@ docker安装与配置 | DGuo Blog    </title>
     <div class="post-content">
         <h1>docker</h1>
 <h2>centos yum install docker</h2>
-<div class="highlight"><pre>tee <span class="o">/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo <span class="o">&lt;&lt;-</span><span class="s">&#39;EOF&#39;</span>
-<span class="p">[</span>dockerrepo<span class="p">]</span>
-name<span class="o">=</span>Docker Repository
-baseurl<span class="o">=</span>https<span class="o">://</span>yum.dockerproject.org<span class="o">/</span>repo<span class="o">/</span>main<span class="o">/</span>centos<span class="o">/$</span>releasever<span class="o">/</span>
-enabled<span class="o">=</span><span class="m">1</span>
-gpgcheck<span class="o">=</span><span class="m">1</span>
-gpgkey<span class="o">=</span>https<span class="o">://</span>yum.dockerproject.org<span class="o">/</span>gpg
-EOF
+<div class="highlight"><pre><span></span>tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-&#39;EOF&#39;</span>
+<span class="s">[dockerrepo]</span>
+<span class="s">name=Docker Repository</span>
+<span class="s">baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/</span>
+<span class="s">enabled=1</span>
+<span class="s">gpgcheck=1</span>
+<span class="s">gpgkey=https://yum.dockerproject.org/gpg</span>
+<span class="s">EOF</span>
 
-sed <span class="o">-</span>i <span class="s">&#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39;</span> <span class="o">/</span>etc<span class="o">/</span>sysconfig<span class="o">/</span>docker
+sed -i <span class="s1">&#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39;</span> /etc/sysconfig/docker
 
-<span class="kr">for</span> i <span class="kr">in</span> <span class="sb">`seq 1 8`</span><span class="p">;</span>
-do
-    sudo scp <span class="o">/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo compute<span class="m">-0</span><span class="o">-$</span>i<span class="o">:/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo
-done
+<span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">8</span><span class="sb">`</span><span class="p">;</span>
+<span class="k">do</span>
+    sudo scp /etc/yum.repos.d/docker.repo compute-0-<span class="nv">$i</span>:/etc/yum.repos.d/docker.repo
+<span class="k">done</span>
 
-rocks run host <span class="s">&quot;yum install docker-engine&quot;</span>
-rocks run host <span class="s">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span>
+rocks run host <span class="s2">&quot;yum install docker-engine&quot;</span>
+rocks run host <span class="s2">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span>
 </pre></div>
 
 
 <!--more-->
 
 <h2>手动安装</h2>
-<div class="highlight"><pre><span class="cp"># 手动安装centos6.5 一些需要安装</span>
-<span class="n">yum</span> <span class="n">remove</span> <span class="n">docker</span><span class="o">-</span><span class="n">engine</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">until</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span>
-<span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">lua</span><span class="o">-</span><span class="n">filesystem</span><span class="o">-</span><span class="mf">1.4.2</span><span class="o">-</span><span class="mf">1.</span><span class="n">el6</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
-<span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">lxc</span><span class="o">-</span><span class="n">libs</span><span class="o">-</span><span class="mf">1.0.11</span><span class="o">-</span><span class="mf">1.</span><span class="n">el6</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
-<span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">lua</span><span class="o">-</span><span class="n">lxc</span><span class="o">-</span><span class="mf">1.0.11</span><span class="o">-</span><span class="mf">1.</span><span class="n">el6</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
-<span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">lua</span><span class="o">-</span><span class="n">alt</span><span class="o">-</span><span class="n">getopt</span><span class="o">-</span><span class="mf">0.7.0</span><span class="o">-</span><span class="mf">1.</span><span class="n">el6</span><span class="p">.</span><span class="n">noarch</span><span class="p">.</span><span class="n">rpm</span>
-<span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">lxc</span><span class="o">-</span><span class="mf">1.0.11</span><span class="o">-</span><span class="mf">1.</span><span class="n">el6</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
-<span class="n">yum</span> <span class="n">install</span> <span class="p">.</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">io</span><span class="o">-</span><span class="mf">1.7.1</span><span class="o">-</span><span class="mf">2.</span><span class="n">el6</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span>
-<span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">yum</span><span class="p">.</span><span class="n">repos</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">CentOS</span><span class="o">-</span><span class="n">Base</span><span class="p">.</span><span class="n">repo</span> <span class="n">http</span><span class="o">:</span><span class="c1">//mirrors.aliyun.com/repo/Centos-6.repo</span>
-<span class="n">yum</span> <span class="n">install</span> <span class="n">device</span><span class="o">-</span><span class="n">mapper</span><span class="o">-</span><span class="n">event</span><span class="o">-</span><span class="n">libs</span>
-<span class="n">service</span> <span class="n">docker</span> <span class="n">restart</span>
+<div class="highlight"><pre><span></span><span class="c1"># 手动安装centos6.5 一些需要安装</span>
+yum remove docker-engine
+<span class="nb">cd</span> /share/apps/until/docker/
+yum install ./lua-filesystem-1.4.2-1.el6.x86_64.rpm
+yum install ./lxc-libs-1.0.11-1.el6.x86_64.rpm
+yum install ./lua-lxc-1.0.11-1.el6.x86_64.rpm
+yum install ./lua-alt-getopt-0.7.0-1.el6.noarch.rpm
+yum install ./lxc-1.0.11-1.el6.x86_64.rpm
+yum install ./docker-io-1.7.1-2.el6.x86_64.rpm
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+yum install device-mapper-event-libs
+service docker restart
 </pre></div>
 
 
 <h3>安装错误</h3>
-<div class="highlight"><pre><span class="cp"># 下面错误：</span>
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">docker</span><span class="o">:</span> <span class="n">relocation</span> <span class="n">error</span><span class="o">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">docker</span><span class="o">:</span> <span class="n">symbol</span> <span class="n">dm_task_get_info_with_deferred_remove</span><span class="p">,</span> <span class="n">version</span> <span class="n">Base</span> <span class="n">not</span> <span class="n">defined</span> <span class="n">in</span> <span class="n">file</span> <span class="n">libdevmapper</span><span class="p">.</span><span class="n">so</span><span class="mf">.1.02</span> <span class="n">with</span> <span class="n">link</span> <span class="n">time</span> <span class="n">reference</span>
-<span class="nl">fix:</span> <span class="err">$</span> <span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">device</span><span class="o">-</span><span class="n">mapper</span><span class="o">-</span><span class="n">event</span><span class="o">-</span><span class="n">libs</span>
-<span class="cp"># 如果无法安装，重新更新</span>
-<span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">yum</span><span class="p">.</span><span class="n">repos</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">CentOS</span><span class="o">-</span><span class="n">Base</span><span class="p">.</span><span class="n">repo</span> <span class="n">http</span><span class="o">:</span><span class="c1">//mirrors.aliyun.com/repo/Centos-6.repo</span>
-<span class="cp"># 然后再安装</span>
+<div class="highlight"><pre><span></span><span class="c1"># 下面错误：</span>
+/usr/bin/docker: relocation error: /usr/bin/docker: symbol dm_task_get_info_with_deferred_remove, version Base not defined in file libdevmapper.so.1.02 with link <span class="nb">time</span> reference
+fix: $ sudo yum install device-mapper-event-libs
+<span class="c1"># 如果无法安装，重新更新</span>
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+<span class="c1"># 然后再安装</span>
 </pre></div>
 
 
 <h2>docker应用</h2>
 <h3>启动docker</h3>
-<div class="highlight"><pre><span class="n">service</span> <span class="n">docker</span> <span class="n">start</span>
+<div class="highlight"><pre><span></span>service docker start
 </pre></div>
 
 
 <h3>添加用户</h3>
-<div class="highlight"><pre># 添加docker group：
+<div class="highlight"><pre><span></span><span class="c1"># 添加docker group：</span>
 sudo groupadd docker
 
-# 将当前用户添加到docker组：
-sudo gpasswd -a <span class="cp">${</span><span class="n">USER</span><span class="cp">}</span> docker
+<span class="c1"># 将当前用户添加到docker组：</span>
+sudo gpasswd -a <span class="si">${</span><span class="nv">USER</span><span class="si">}</span> docker
 
-# 重启docker服务：
+<span class="c1"># 重启docker服务：</span>
 sudo service docker restart
-# 开机启动
+<span class="c1"># 开机启动</span>
 chkconfig docker on
 </pre></div>
 
 
 <h3>修改镜像和容器的存放路径</h3>
-<div class="highlight"><pre><span class="cp"># /etc/sysconfig/docker加入：</span>
-<span class="n">other_args</span><span class="o">=</span><span class="s">&quot;--graph=/data/docker&quot;</span>
+<div class="highlight"><pre><span></span><span class="c1"># /etc/sysconfig/docker加入：</span>
+<span class="nv">other_args</span><span class="o">=</span><span class="s2">&quot;--graph=/data/docker&quot;</span>
 
-<span class="cp"># 停止Docker服务</span>
-<span class="n">service</span> <span class="n">docker</span> <span class="n">stop</span>
-<span class="cp"># 备份数据到新的存放路径</span>
-<span class="n">cp</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span>
-<span class="cp"># 修改备份/var/lib/docker路径</span>
-<span class="n">mv</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="p">{,.</span><span class="n">bak</span><span class="p">}</span>
-<span class="cp"># 启动Docker服务</span>
-<span class="n">service</span> <span class="n">docker</span> <span class="n">start</span>
-<span class="cp"># 测试Docker服务</span>
-<span class="n">docker</span> <span class="n">info</span>
+<span class="c1"># 停止Docker服务</span>
+service docker stop
+<span class="c1"># 备份数据到新的存放路径</span>
+cp -rf /var/lib/docker /data/
+<span class="c1"># 修改备份/var/lib/docker路径</span>
+mv /var/lib/docker<span class="o">{</span>,.bak<span class="o">}</span>
+<span class="c1"># 启动Docker服务</span>
+service docker start
+<span class="c1"># 测试Docker服务</span>
+docker info
 </pre></div>
 
 
