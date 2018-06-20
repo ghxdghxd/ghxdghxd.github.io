@@ -4,224 +4,224 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://ghxdghxd.github.io/</loc>
-<lastmod>2018-06-20T16:55:17-00:00</lastmod>
+<loc>https://ghxdghxd.github.io/</loc>
+<lastmod>2018-06-20T17:02:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/archives.html</loc>
-<lastmod>2018-06-20T16:55:17-00:00</lastmod>
+<loc>https://ghxdghxd.github.io/archives.html</loc>
+<lastmod>2018-06-20T17:02:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/tags.html</loc>
-<lastmod>2018-06-20T16:55:17-00:00</lastmod>
+<loc>https://ghxdghxd.github.io/tags.html</loc>
+<lastmod>2018-06-20T17:02:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/categories.html</loc>
-<lastmod>2018-06-20T16:55:17-00:00</lastmod>
+<loc>https://ghxdghxd.github.io/categories.html</loc>
+<lastmod>2018-06-20T17:02:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/pages/about.html</loc>
+<loc>https://ghxdghxd.github.io/pages/about.html</loc>
 <lastmod>2014-12-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/git-submodule.html</loc>
+<loc>https://ghxdghxd.github.io/git-submodule.html</loc>
 <lastmod>2018-02-03T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/meta.html</loc>
+<loc>https://ghxdghxd.github.io/meta.html</loc>
 <lastmod>2018-02-03T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/bioinfo.html</loc>
+<loc>https://ghxdghxd.github.io/bioinfo.html</loc>
 <lastmod>2018-02-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/archlinux.html</loc>
+<loc>https://ghxdghxd.github.io/archlinux.html</loc>
 <lastmod>2017-12-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/docker.html</loc>
+<loc>https://ghxdghxd.github.io/docker.html</loc>
 <lastmod>2017-11-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/tennis-racquet.html</loc>
+<loc>https://ghxdghxd.github.io/tennis-racquet.html</loc>
 <lastmod>2017-04-03T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/R-and-Rstudio.html</loc>
+<loc>https://ghxdghxd.github.io/R-and-Rstudio.html</loc>
 <lastmod>2017-02-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/terminal-color.html</loc>
+<loc>https://ghxdghxd.github.io/terminal-color.html</loc>
 <lastmod>2017-01-03T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/git.html</loc>
+<loc>https://ghxdghxd.github.io/git.html</loc>
 <lastmod>2016-11-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/mine.html</loc>
+<loc>https://ghxdghxd.github.io/mine.html</loc>
 <lastmod>2015-08-03T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/category/coding.html</loc>
+<loc>https://ghxdghxd.github.io/category/coding.html</loc>
 <lastmod>2017-02-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/category/git.html</loc>
+<loc>https://ghxdghxd.github.io/category/git.html</loc>
 <lastmod>2018-02-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/category/interest.html</loc>
+<loc>https://ghxdghxd.github.io/category/interest.html</loc>
 <lastmod>2017-04-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/category/linux.html</loc>
+<loc>https://ghxdghxd.github.io/category/linux.html</loc>
 <lastmod>2017-12-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/category/lu-you-qi.html</loc>
+<loc>https://ghxdghxd.github.io/category/lu-you-qi.html</loc>
 <lastmod>2015-08-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/category/operation.html</loc>
+<loc>https://ghxdghxd.github.io/category/operation.html</loc>
 <lastmod>2017-11-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/category/sheng-xin.html</loc>
+<loc>https://ghxdghxd.github.io/category/sheng-xin.html</loc>
 <lastmod>2018-02-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/category/tong-ji.html</loc>
+<loc>https://ghxdghxd.github.io/category/tong-ji.html</loc>
 <lastmod>2018-02-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/tag/git.html</loc>
+<loc>https://ghxdghxd.github.io/tag/git.html</loc>
 <lastmod>2018-02-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/tag/r.html</loc>
+<loc>https://ghxdghxd.github.io/tag/r.html</loc>
 <lastmod>2018-02-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/tag/awesome.html</loc>
+<loc>https://ghxdghxd.github.io/tag/awesome.html</loc>
 <lastmod>2018-02-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/tag/interest.html</loc>
+<loc>https://ghxdghxd.github.io/tag/interest.html</loc>
 <lastmod>2018-02-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/tag/operation.html</loc>
+<loc>https://ghxdghxd.github.io/tag/operation.html</loc>
 <lastmod>2017-12-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/tag/tennis.html</loc>
+<loc>https://ghxdghxd.github.io/tag/tennis.html</loc>
 <lastmod>2017-04-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/tag/linux.html</loc>
+<loc>https://ghxdghxd.github.io/tag/linux.html</loc>
 <lastmod>2017-01-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/tag/ge-ren.html</loc>
+<loc>https://ghxdghxd.github.io/tag/ge-ren.html</loc>
 <lastmod>2015-08-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://ghxdghxd.github.io/author/jt-guo.html</loc>
+<loc>https://ghxdghxd.github.io/author/jt-guo.html</loc>
 <lastmod>2018-02-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
