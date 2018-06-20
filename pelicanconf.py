@@ -3,17 +3,18 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'JT Guo'
-SITENAME = 'DGuo Blog'
-SITEURL = 'http://ghxdghxd.github.io'
-GITHUB_URL = 'http://github.com/ghxdghxd'
+SITENAME = 'iKnowledgeBase'
+SITEURL = 'https://ghxdghxd.github.io'
+GITHUB_URL = 'https://github.com/ghxdghxd'
 PATH = 'content'
 
 TIMEZONE = 'Asia/Shanghai'
 DEFAULT_LANG = 'zh'
 
-STATIC_PATHS = ["pages",'theme/images', "documents", 'images']
+STATIC_PATHS = ["pages", 'theme/images', "documents", 'images']
 EXTRA_PATH_METADATA = {
-    'pages/about.md': {'path': 'about.html'} # about.md生成到output下, 表示about.html的路径
+    # about.md生成到output下, 表示about.html的路径
+    'pages/about.md': {'path': 'about.html'}
 }
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['tipue_search', "sitemap", "i18n_subsites", "neighbors"]
@@ -43,7 +44,7 @@ SITEMAP = {
     }
 }
 
-DISPLAY_CATEGORIES_ON_MENU = True # 显示分类
+DISPLAY_CATEGORIES_ON_MENU = True  # 显示分类
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -67,4 +68,3 @@ DEFAULT_PAGINATION = 3
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
-
