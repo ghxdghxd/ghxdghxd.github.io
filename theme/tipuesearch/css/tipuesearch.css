@@ -37,16 +37,25 @@ http://www.tipue.com/search
 
 #tipue_search_input
 {
-     color: #333;
-     max-width: 210px;
-	padding: 17px;
-	border: 1px solid #e3e3e3;
-	border-radius: 0;
-	-moz-appearance: none;
-	-webkit-appearance: none;
+    width: 100%;
+    padding-left: 50px;
+    border: 1px solid #e3e3e3;
+    border-radius: 50px 0px 0px 50px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
      box-shadow: none; 
-	outline: 0;
-	margin: 0;
+    outline: 0;
+    margin: 0;
+    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    border: 0;
+    background: #EEE;
+}
+#tipue_search_input:focus
+{
+    outline: 0;
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    border-radius: 50px 0px 0px 50px;
 }
 .tipue_search_icon
 {
@@ -63,24 +72,74 @@ http://www.tipue.com/search
      float: left;
 }
 
+.tipue_search_button
+{
+    width: 100px;
+    height: 40px;
+    margin-left: -10px;
+    /* background: #0073c6 url('../search.png') no-repeat center; */
+    /* background-size: 30px 30px; */
+    border: none;
+    border-radius: 0px 50px 50px 0px;
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: 0;
+    overflow: visible;
+    font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    color: white;
+    text-transform: uppercase;
+    background: #0073c6;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
+}
+.tipue_search_button:hover
+{
+    background-color: #0073c6;
+    cursor: pointer;
+}
+
+.tipue_search_button:active,
+.tipue_search_button:focus{   
+    background: #0073c6;
+    outline: 0;   
+}
+ 
+.tipue_search_button:before { /* left arrow */
+    content: '';
+    position: absolute;
+    border-width: 8px 8px 8px 0;
+    border-style: solid solid solid none;
+    border-color: transparent #0073c6 transparent;
+    top: 12px;
+    left: -6px;
+}
+ 
+.tipue_search_button:hover:before{
+    border-right-color: #0073c6;
+}
+ 
+.tipue_search_button:focus:before,
+.tipue_search_button:active:before{
+        border-right-color: #0073c6;
+}
+
 
 /* search results */
 
 
 #tipue_search_content
 {
-     max-width: 750px;
-	padding-top: 15px;
-	margin: 0;
+    max-width: 750px;
+    padding-top: 15px;
+    margin: 0;
 }
 #tipue_search_results_count
 {
-	color: #333;
+    color: #333;
 }
 #tipue_search_warning
 {
-     color: #333;    
-	margin: 7px 0;
+     color: #333;
+    margin: 7px 0;
 }
 #tipue_search_warning a
 {
@@ -94,7 +153,7 @@ http://www.tipue.com/search
 .tipue_search_content_title
 {
      color: #666;    
-	margin-top: 21px;
+    margin-top: 21px;
 }
 .tipue_search_content_title a
 {
@@ -121,7 +180,7 @@ http://www.tipue.com/search
 }
 .tipue_search_content_text
 {
-	color: #333;
+    color: #333;
      word-wrap: break-word;
      hyphens: auto;
      margin-top: 5px;
@@ -132,12 +191,12 @@ http://www.tipue.com/search
 }
 .tipue_search_content_debug
 {
-	color: #333;
+    color: #333;
      margin: 5px 0;
 }
 .tipue_search_related_title
 {
-	color: #333;
+    color: #333;
      margin: 26px 0 7px 0;
 }
 .tipue_search_related_cols
@@ -153,37 +212,37 @@ http://www.tipue.com/search
 }
 #tipue_search_foot_boxes
 {
-	padding: 0;
-	margin: 0;
-	cursor: pointer;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
 }
 #tipue_search_foot_boxes li
 {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: inline;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline;
 }
 #tipue_search_foot_boxes li a
 {
-	padding: 10px 17px 11px 17px;
+    padding: 10px 17px 11px 17px;
      background-color: #fff;
      border: 1px solid #e3e3e3;
      border-radius: 1px;
-	color: #333;
-	margin-right: 7px;
-	text-decoration: none;
-	text-align: center;
+    color: #333;
+    margin-right: 7px;
+    text-decoration: none;
+    text-align: center;
 }
 #tipue_search_foot_boxes li.current
 {
-	padding: 10px 17px 11px 17px;
+    padding: 10px 17px 11px 17px;
      background: #f6f6f6;
      border: 1px solid #e3e3e3;
      border-radius: 1px;
-	color: #333;
-	margin-right: 7px;
-	text-align: center;
+    color: #333;
+    margin-right: 7px;
+    text-align: center;
 }
 #tipue_search_foot_boxes li a:hover
 {
