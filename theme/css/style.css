@@ -32,6 +32,14 @@ body {
     margin: 0 auto;
 }
 
+#short_image {
+	border-radius: 50%;
+	max-width: 10%;
+	max-height: 10%;
+	padding-left: 2%;
+	padding-top: inherit;
+}
+
 #logo_image {
 	border-radius: 50%;
 	max-width: 80%;
@@ -42,9 +50,8 @@ body {
 }
 
 .content_container {
-    padding-left: 100px;
+    padding-right: 50px;
     padding-top: 20px;
-    position: fixed;
 }
 
 a, button.submit {
@@ -80,7 +87,7 @@ div {
 }
 
 #header .site-name {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 #header .site-name h1 {
@@ -100,9 +107,8 @@ div {
 }
 
 #header .site-name .description {
-    margin: 0 0 0 0px;
+    margin: .2em 0 0;
     color: #999;
-    vertical-align: bottom;
 }
 
 #header #nav-menu {
@@ -131,272 +137,16 @@ div {
     border-bottom-color: #fff;
 }
 
-/* new */
-.wikipedia {
-    min-height: 100%;
-    padding-bottom: 4em;
-}
-
-.wikipedia .header {
-    text-align: center;
-    padding-top: 7px;
-    padding-bottom: 80px;
-}
-
-.wikipedia .header .site-name {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.wikipedia .header .site-name #logo {
-    font: bold 38px/1.12 "Times New Roman", Georgia, Times, sans-serif;
-    color: #555;
-}
-
-.wikipedia .header .site-name #logo span, .wikipedia .header .site-name #logo:hover {
-    color: #777;
-}
-
-.wikipedia .header .site-name .navbar-desc {
-    /* font-family: Verdana, sans-serif; */
-    font-family: "TIBch","Classic Grotesque W01","Helvetica Neue",Arial,"Hiragino Sans GB","STHeiti","Microsoft YaHei","WenQuanYi Micro Hei",SimSun,sans-serif;
-    margin-top: -4px;
-    letter-spacing: 1px;
-    font-size: 13px;
-    color: #999; /* #f6f6eb;*/
-}
-
-.wikipedia .container {
-    width: 730px;
-    margin: 0 auto;
-}
-
-.wikipedia .post-header {
-    margin: 0px 0px 0px;
-    font-size: 26px;
-}
-
-.wikipedia .archive-header {
-    font-weight: 700;
-}
-
-.wikipedia .post-date {
-    font-family: "PT Serif", serif;
-    font-weight: bold;
-    color: #e0e0e0;
-    font-size: 20px;
-    margin-top: 3px;
-    margin-right: 3px;
-    letter-spacing: -2px;
-}
-
-.wikipedia .post-metadata {
-    clear: both;
-    font-size: 16px;
-    margin-top: 0px;
-    margin-left: 15px;
-}
-
-.wikipedia .post-metadata a {
-    text-transform: lowercase;
-}
-
-.wikipedia .post-comments {
-    clear: both;
-    margin-top: 25px;
-}
-
-.wikipedia .post-content {
-    clear: both;
-    padding-top: 15px;
-    font-size: 15px;
-    /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; */
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.wikipedia .recent-post-header {
-    margin: 0px 20px 14px;
-    padding-bottom: 4px;
-    background: url('../img/dotted-border.png') repeat-x scroll left bottom transparent;
-    clear: both;
-}
-
-.wikipedia .recent-post-header h4 {
-    font-size: 18px;
-    margin-top: 0px;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-    background: none;
-    float: left;
-}
-
-.wikipedia .recent-post-header .tags {
-    padding-top: 2px;
-    font-size: 16px;
-    letter-spacing: -0.3px;
-    text-align: right;
-    text-transform: lowercase;
-}
-
-a.header-link {
-    /* font-family: 'PT Serif', Georgia; */
-    font-family: "Times New Roman", Georgia, Times, sans-serif;
-    color: #4f4f4f;
-}
-
-a.header-link:hover {
-    text-decoration: none;
-    color: #000;
-}
-
-.central-featured-logo {
- position: relative;
- /* margin-top:20px;
- margin-bottom: 20px; */
- border-radius: 50%;
- -webkit-border-radius: 50%;
- -moz-border-radius: 50%;
- transition: 1.4s all;
-}
-
-/* 头像旋转 */
-.central-featured-logo:hover {
- transform: rotate(360deg);
- -webkit-transform: rotate(360deg); /* Safari 和 Chrome */
- -moz-transform: rotate(360deg); /* Firefox */
- -ms-transform: rotate(360deg); /* IE 9 */
- -o-transform:rotate(360deg); /* Opera */
-}
-
-.central-featured {
- position:relative;
- height:20px;
- height:20rem;
- width:330px;
- width:33rem;
- max-width:100%;
- margin:0 auto;
- text-align:center;
- vertical-align:middle
-}
-.central-featured-lang {
- position:absolute;
- width:156px;
- width:15.6rem
-}
-.central-featured-lang .link-box {
- display:block;
- padding:0;
- text-decoration:none;
- white-space:normal
-}
-.central-featured-lang .link-box:hover strong {
- text-decoration:underline
-}
-.central-featured-lang strong {
- display:block;
- font-size:larger
-}
-.central-featured-lang small {
- display:inline-block;
- font-size:8.04px;
- font-size:0.804rem;
- line-height:10.36px;
- line-height:1.036rem;
- color:#54595d
-}
-.central-featured-lang em {
- font-style:italic
-}
-.central-featured-lang .emNonItalicLang {
- font-style:normal
-}
-.lang1 {
- top:-10%;
- right:50%
-}
-.lang2 {
- top:-10%;
- left:50%
-}
-.lang3 {
- top:10%;
- right:60%
-}
-.lang4 {
- top:10%;
- left:60%
- }
-.lang5 {
- top:30%;
- right:65%
-}
-.lang6 {
- top:30%;
- left:65%
-}
-.lang7 {
- top:50%;
- right:60%
-}
-.lang8 {
- top:50%;
- left:60%
-}
-.lang9 {
- top:70%;
- right:50%
-}
-.lang10 {
- top:70%;
- left:50%
-}
-
-.search-box {
-    margin-bottom: 5%;
-    text-align: center;
-    white-space: nowrap;
-}
-
 #sidebar {
-    border-right: 1px solid #ddd;
-    /* padding-left: 35px; */
+    border-left: 1px solid #ddd;
+    padding-left: 35px;
     margin-top: 40px;
-    /* padding-bottom: 20px; */
+    padding-bottom: 20px;
     word-wrap: break-word;
-    position: fixed;
-    width: 15%;
 }
 
 #sidebar .widget {
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-#sidebar .widget .site-name {
-    margin-bottom: 5px;
-}
-
-#sidebar .widget .site-name h1 {
-    padding: 0;
-    margin: 0;
-    height: 0;
-    overflow: hidden;
-}
-
-#sidebar .widget .site-name #logo {
-    font: bold 25px/1.12 "Times New Roman", Georgia, Times, sans-serif;
-    color: #555;
-}
-
-#sidebar .widget .site-name #logo span, #sidebar .widget .site-name #logo:hover {
-    color: #777;
-}
-
-#sidebar .widget .site-name .description {
-    margin: 0 0 0 0px;
-    color: #999;
-    vertical-align: bottom;
+    margin-bottom: 30px;
 }
 
 #sidebar .widget .widget-title {
@@ -407,7 +157,6 @@ a.header-link:hover {
     border-bottom: 1px solid #ddd;
     display: block;
     font-weight: normal;
-    text-align: left;
 }
 
 #sidebar .widget .comments-title {
@@ -571,9 +320,6 @@ a.header-link:hover {
     text-justify: distribute;
     word-break: normal;
     border-bottom: 2px inset #ddd;
-    position: fixed;
-    height: 85%;
-    overflow: auto;
 }
 
 .post .post-content h2 {
@@ -662,7 +408,6 @@ a.header-link:hover {
 
 .post .tags {
     padding-bottom: 1em;
-    float: right;
 }
 
 .post .tags a {
@@ -769,7 +514,7 @@ a.header-link:hover {
     }
 
     .content_container {
-        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .hidden_mid_and_down {
@@ -805,7 +550,7 @@ a.header-link:hover {
     }
 
     .content_container {
-        padding-left: 0;
+        padding-right: 0;
     }
 }
 
