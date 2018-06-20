@@ -8,7 +8,12 @@
     <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
     <title>
-Categories | DGuo Blog    </title>
+ 
+<!-- Search - DGuo Blog -->
+Search -     DGuo Blog
+ | 好记性不如烂键盘
+
+    </title>
     <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
     <link rel="stylesheet" type="text/css" href="/theme/css/pygment.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css" />
@@ -92,19 +97,29 @@ Categories | DGuo Blog    </title>
 </div>        </div></div>
         <div class="pure-u-1 pure-u-md-3-4">
             <div class="content_container">
-<div class="post"><div class="post-archive">
-<h1 class="label-title">Categories on DGuo Blog</h1>
-<ul class="listing">
-    <li><a href="/category/coding.html">coding (1)</a></li>
-    <li><a href="/category/git.html">git (2)</a></li>
-    <li><a href="/category/interest.html">interest (1)</a></li>
-    <li><a href="/category/linux.html">linux (2)</a></li>
-    <li><a href="/category/lu-you-qi.html">路由器 (1)</a></li>
-    <li><a href="/category/operation.html">operation (1)</a></li>
-    <li><a href="/category/sheng-xin.html">生信 (1)</a></li>
-    <li><a href="/category/tong-ji.html">统计 (1)</a></li>
-</ul>
-</div></div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js">
+</script>
+<script type="text/javascript" src="http://ghxdghxd.github.io/theme/tipuesearch/tipuesearch_set.js"></script>
+<script type="text/javascript" src="http://ghxdghxd.github.io/theme/tipuesearch/tipuesearch.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('#tipue_search_input').tipuesearch({
+      'show': 10,
+      'mode': 'json',
+      'newWindow': false,
+      'contentLocation': 'http://ghxdghxd.github.io/tipuesearch_content.json'
+    });
+  });
+</script>
+
+<article>
+  <div class="span8 offset2">
+    <div id="tipue_search_content">
+      <div id="tipue_search_loading"></div>
+    </div>
+  </div>
+</article>
             </div>
         </div>
     </div>

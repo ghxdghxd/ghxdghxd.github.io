@@ -37,16 +37,21 @@ http://www.tipue.com/search
 
 #tipue_search_input
 {
-     color: #333;
-     max-width: 210px;
-	padding: 17px;
-	border: 1px solid #e3e3e3;
-	border-radius: 0;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-     box-shadow: none; 
-	outline: 0;
-	margin: 0;
+    color: #333;
+    padding-left: 20px;
+    width: 400px;
+    border: 1px solid #e2e2e2;
+    border-radius: 50px;
+    box-shadow: none; 
+    outline: 0;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    
+}
+#tipue_search_input:focus
+{
+    border: 1px solid #ccc;
 }
 .tipue_search_icon
 {
@@ -63,6 +68,24 @@ http://www.tipue.com/search
      float: left;
 }
 
+#tipue_search_button
+{
+    margin-left: -36px;
+    width: 70px;
+    height: 40px;
+    border: 0;
+    border-radius: 0 50px 50px 0;
+    background: #0073c6 url('../search.png') no-repeat center;
+    outline: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#tipue_search_button:hover
+{
+    background-color: #584f4f;
+    cursor: pointer;
+}
 
 /* search results */
 
@@ -79,7 +102,7 @@ http://www.tipue.com/search
 }
 #tipue_search_warning
 {
-     color: #333;    
+     color: #333;
 	margin: 7px 0;
 }
 #tipue_search_warning a

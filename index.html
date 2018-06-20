@@ -8,7 +8,7 @@
     <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
     <title>
-    DGuo Blog    </title>
+    DGuo Blog | 好记性不如烂键盘    </title>
     <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
     <link rel="stylesheet" type="text/css" href="/theme/css/pygment.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css" />
@@ -21,187 +21,151 @@
 </head>
 
 <body>
-<div class="body_container">
-    <div id="header">
-        <div class="site-name">
-            <a id="logo" href="/."> DGuo Blog </a>
-            <!-- <img id="short_image" src="/theme/images/Logo.jpg"/> -->
-            <!-- notebox + logo_image -->
+    <div class="wikipedia">
+        <div class="header">
+            <div class="site-name">
+                <a id="logo" href="/."> DGuo Blog </a>
+            </div>
+            <div class="navbar-desc">好记性不如烂键盘</div>
         </div>
-        <div id="nav-menu">
-            <a href="/." class="current"><i class="fa fa-home"> Home</i></a>
-            <a href="/archives.html"><i class="fa fa-archive"> Archive</i></a>
-            <a href="/pages/about.html"><i class="fa fa-user"> About</i></a>
+        <div class="central-featured" data-el-section="primary links">
+            <img class="central-featured-logo" src="/theme/images/Logo.jpg" class="center" width="200" height="200">
+            <div class="central-featured-lang lang1" dir="ltr" lang="zh">
+                <a id="js-link-box-zh" href="/category/coding.html" title=coding class="link-box" 
+                data-converttitle-hans=coding data-slogan=coding>
+                    <strong>coding<sup><small>1</small></sup></strong>
+                </a>
+            </div>
+            <div class="central-featured-lang lang2" dir="ltr" lang="zh">
+                <a id="js-link-box-zh" href="/category/git.html" title=git class="link-box" 
+                data-converttitle-hans=git data-slogan=git>
+                    <strong>git<sup><small>2</small></sup></strong>
+                </a>
+            </div>
+            <div class="central-featured-lang lang3" dir="ltr" lang="zh">
+                <a id="js-link-box-zh" href="/category/interest.html" title=interest class="link-box" 
+                data-converttitle-hans=interest data-slogan=interest>
+                    <strong>interest<sup><small>1</small></sup></strong>
+                </a>
+            </div>
+            <div class="central-featured-lang lang4" dir="ltr" lang="zh">
+                <a id="js-link-box-zh" href="/category/linux.html" title=linux class="link-box" 
+                data-converttitle-hans=linux data-slogan=linux>
+                    <strong>linux<sup><small>2</small></sup></strong>
+                </a>
+            </div>
+            <div class="central-featured-lang lang5" dir="ltr" lang="zh">
+                <a id="js-link-box-zh" href="/category/lu-you-qi.html" title=路由器 class="link-box" 
+                data-converttitle-hans=路由器 data-slogan=路由器>
+                    <strong>路由器<sup><small>1</small></sup></strong>
+                </a>
+            </div>
+            <div class="central-featured-lang lang6" dir="ltr" lang="zh">
+                <a id="js-link-box-zh" href="/category/operation.html" title=operation class="link-box" 
+                data-converttitle-hans=operation data-slogan=operation>
+                    <strong>operation<sup><small>1</small></sup></strong>
+                </a>
+            </div>
+            <div class="central-featured-lang lang7" dir="ltr" lang="zh">
+                <a id="js-link-box-zh" href="/category/sheng-xin.html" title=生信 class="link-box" 
+                data-converttitle-hans=生信 data-slogan=生信>
+                    <strong>生信<sup><small>1</small></sup></strong>
+                </a>
+            </div>
+            <div class="central-featured-lang lang8" dir="ltr" lang="zh">
+                <a id="js-link-box-zh" href="/category/tong-ji.html" title=统计 class="link-box" 
+                data-converttitle-hans=统计 data-slogan=统计>
+                    <strong>统计<sup><small>1</small></sup></strong>
+                </a>
+            </div>
         </div>
-    </div>
-    <div id="layout" class="pure-g">
-        <div class="pure-u-1 pure-u-md-3-4"><div class="content_container">
-<div class="post">
-    <h1 class="post-title"><a href="/git-submodule.html">git submodule的用法</a></h1>
-    <div class="post-meta">2018-02-03</div>
-    <div class="post-content">
-        <h1>常用命令</h1>
-<div class="highlight"><pre><span></span>git clone &lt;repository&gt; --recursive 递归的方式克隆整个项目
-git submodule add &lt;repository&gt;&lt;path&gt; 添加子模块
-git submodule init 初始化子模块
-git submodule update 更新子模块
-git submodule foreach git pull 拉取所有子模块
-</pre></div>
-
-
-<h2>如何使用</h2>
-<h3>1. 创建带子模块的版本库</h3>
-<p>例如我们要创建如下结构的项目</p>
-<div class="highlight"><pre><span></span>project
-    <span class="p">|</span>--moduleA
-    <span class="p">|</span>--readme.txt
-</pre></div>
-
-
-<p>创建project版本库，并提交readme.txt文件</p>
-<div class="highlight"><pre><span></span>git init --bare project.git
-git clone project.git project1cd project1
-echo<span class="s2">&quot;This is a project.&quot;</span> &gt; readme.txt
-git add .
-git commit -m <span class="s2">&quot;add readme.txt&quot;</span>
-git push origin master
-<span class="nb">cd</span> ..
-</pre></div>
-
-
-
-    </div>
-    <p class="readmore"><a href="/git-submodule.html">Read More</a></p>
-</div>
-<div class="post">
-    <h1 class="post-title"><a href="/meta.html">meta Analysis</a></h1>
-    <div class="post-meta">2018-02-03</div>
-    <div class="post-content">
-        <h1>metafor document</h1>
-<ul>
-<li>An Overview of Functions in the metafor Package</li>
-</ul>
-<p>{% pdf /documents/metafor_diagram.pdf %}
-<a href="/documents/metafor_diagram.pdf">pdf</a></p>
-<ul>
-<li>Viechtbauer gesis ma with metafor</li>
-</ul>
-<p>{% pdf /documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf %}</p>
-
-    </div>
-    <p class="readmore"><a href="/meta.html">Read More</a></p>
-</div>
-<div class="post">
-    <h1 class="post-title"><a href="/bioinfo.html">生物信息</a></h1>
-    <div class="post-meta">2018-01-03</div>
-    <div class="post-content">
-        <h1>What is Bioinfomatics</h1>
-<p>Bioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data.As an interdisciplinary field of science, bioinformatics combines Computer Science, Biology, Mathematics, and Engineering to analyze and interpret biological data. Bioinformatics has been used for in silico analyses of biological queries using mathematical and statistical techniques. More broadly, bioinformatics is applied statistics and computing to biological science.</p>
-
-    </div>
-    <p class="readmore"><a href="/bioinfo.html">Read More</a></p>
-</div>
-
+        <div class="container">
+<div class="search-box">
+  <form action="http://ghxdghxd.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+    <input type="text" class="search-query form-control" id="tipue_search_input" placeholder="输入以搜索..." name="q" autofocus style="height: 36px;">
+    <button type="submit" class="btn btn-default" id="tipue_search_button"></button>
+  </form>
+</div>            <h2 class="post-header"></h2>
+            <div class="post-content">
+                <div class="recent-post-header">
+                    <h4><a class="header-link" href="http://ghxdghxd.github.io/git-submodule.html">
+                        git submodule的用法
+                        <span class="link">&raquo;</span>
+                    </a></h4>
+                    <div class="tags">
+                        <a href="http://ghxdghxd.github.io/tag/git.html">git</a>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <div class="recent-post-header">
+                    <h4><a class="header-link" href="http://ghxdghxd.github.io/meta.html">
+                        meta Analysis
+                        <span class="link">&raquo;</span>
+                    </a></h4>
+                    <div class="tags">
+                        <a href="http://ghxdghxd.github.io/tag/r.html">R</a>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <div class="recent-post-header">
+                    <h4><a class="header-link" href="http://ghxdghxd.github.io/bioinfo.html">
+                        生物信息
+                        <span class="link">&raquo;</span>
+                    </a></h4>
+                    <div class="tags">
+                        <a href="http://ghxdghxd.github.io/tag/awesome.html">awesome</a>
+                        <a href="http://ghxdghxd.github.io/tag/interest.html">interest</a>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <div class="recent-post-header">
+                    <h4><a class="header-link" href="http://ghxdghxd.github.io/archlinux.html">
+                        archlinux安装与配置
+                        <span class="link">&raquo;</span>
+                    </a></h4>
+                    <div class="tags">
+                        <a href="http://ghxdghxd.github.io/tag/operation.html">operation</a>
+                        <a href="http://ghxdghxd.github.io/tag/interest.html">interest</a>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <div class="recent-post-header">
+                    <h4><a class="header-link" href="http://ghxdghxd.github.io/docker.html">
+                        docker安装与配置
+                        <span class="link">&raquo;</span>
+                    </a></h4>
+                    <div class="tags">
+                        <a href="http://ghxdghxd.github.io/tag/awesome.html">awesome</a>
+                        <a href="http://ghxdghxd.github.io/tag/interest.html">interest</a>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <div class="recent-post-header">
+                    <h4><a class="header-link" href="http://ghxdghxd.github.io/tennis-racquet.html">
+                        网球拍的平衡点
+                        <span class="link">&raquo;</span>
+                    </a></h4>
+                    <div class="tags">
+                        <a href="http://ghxdghxd.github.io/tag/tennis.html">tennis</a>
+                    </div>
+                </div>
+            </div>
 <div class="page-navigator">
     <span class="page-number current">1</span>
     <a class="page-number" href="/index2.html">2</a>
-    <a class="page-number" href="/index3.html">3</a>
-    <a class="page-number" href="/index4.html">4</a>
-    <a class="extend next" rel="next" href="index2.html">Next</a></nav>
-</div class="page-navigator">
-        </div></div>
-        <div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar">
-<div class="widget">
-    <form action="search.html" accept-charset="utf-8" class="search-form">
-        <input type="text" name="q" id="tipue_search_input" placeholder="Search">
-        <input type="hidden" name="sitesearch" value="http://ghxdghxd.github.io" />
-        <div style="clear: both;"></div>
-    </form>
-</div><div class="widget">
-    <div class="widget-title">
-        <i class="fa fa-heart-o"> 好记性不如烂键盘</i>
-    </div>
-    <img id="logo_image" src="/theme/images/Logo.jpg" />
+    <a class="extend next" rel="next" href="index2.html">Next</a>
 </div>
-<div class="widget">
-    <div class="widget-title">
-        <i class="fa fa-folder-o"> Categories</i>
+        </div>
     </div>
-    <ul class="category-list">
-        <li class="category-list-item"><a class="category-list-link" href="/category/coding.html">coding</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/git.html">git</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/interest.html">interest</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/linux.html">linux</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/lu-you-qi.html">路由器</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/operation.html">operation</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/sheng-xin.html">生信</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji.html">统计</a></li>
-    </ul>
-</div><div class="widget">
-    <div class="widget-title"><i class="fa fa-star-o"> Tags</i></div>
-    <div class="tagcloud">
-    <a href="/tag/git.html" style="font-size: 12px">git</a>
-    <a href="/tag/r.html" style="font-size: 12px">R</a>
-    <a href="/tag/awesome.html" style="font-size: 12px">awesome</a>
-    <a href="/tag/interest.html" style="font-size: 12px">interest</a>
-    <a href="/tag/operation.html" style="font-size: 12px">operation</a>
-    <a href="/tag/tennis.html" style="font-size: 12px">tennis</a>
-    <a href="/tag/linux.html" style="font-size: 12px">linux</a>
-    <a href="/tag/ge-ren.html" style="font-size: 12px">个人</a>
-    </div>
-</div><div class="widget">
-    <div class="widget-title"><i class="fa fa-file-o"> Recent</i></div>
-    <ul class="post-list">
-        <li class="post-list-item">
-        <a class="post-list-link" href="/git-submodule.html">git submodule的用法</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/meta.html">meta Analysis</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/bioinfo.html">生物信息</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/archlinux.html">archlinux安装与配置</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/docker.html">docker安装与配置</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/tennis-racquet.html">网球拍的平衡点</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/terminal-color.html">终端显示颜色</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/git.html">git的一般用法</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/mine.html">之感</a>
-        </li>
-    </ul>
-</div><div class="widget">
-    <div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div>
-    <ul></ul>
-    <a href="http://getpelican.com/" title="Pelican" target="_blank">Pelican</a>
-    <ul></ul>
-    <a href="http://python.org/" title="Python.org" target="_blank">Python.org</a>
-    <ul></ul>
-    <a href="http://jinja.pocoo.org/" title="Jinja2" target="_blank">Jinja2</a>
-    <ul></ul>
-    <a href="#" title="You can modify those links in your config file" target="_blank">You can modify those links in your config file</a>
-</div>
-        </div></div>
-        <div class="pure-u-1 pure-u-md-3-4">
-<div id="footer">Copyright © 2018 <a href="/." rel="nofollow">DGuo Blog.</a> Powered by <a rel="nofollow" target="_blank" href="https://getpelican.com/">Pelican</a> and <a rel="nofollow", target="_blank", href="https://github.com/wormtooth/maupassant-pelican">maupassant</a>.</div>        </div>
-    </div>
-
 <a id="rocket" href="#top" class="show"></a>
 <script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
 <script type="text/javascript" src="/theme/js/fancybox.js" async></script>
 <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
 
 </body>
+</html>
