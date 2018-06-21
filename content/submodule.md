@@ -86,13 +86,15 @@ Changes to be committed:  (use "git reset HEAD ..."to unstage)
 git clone project.git project2
 cd project2
 git submodule init
-git submodule updatecd ..
+git submodule update
+cd ..
 ```
 
 方法二，采用递归参数--recursive，需要注意同样submodule默认是不在任何分支上的，它指向父项目存储的submodule commit id。
 
 ```bash
 git clone project.git project3 --recursive
+git submodule update --init --recursive
 ```
 
 ### 3. 修改子模块
