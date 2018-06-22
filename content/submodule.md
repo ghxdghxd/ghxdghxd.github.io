@@ -95,6 +95,7 @@ cd ..
 
 ```bash
 git clone project.git project3 --recursive
+git submodule update --init --recursive
 ```
 
 ### 3. 修改子模块
