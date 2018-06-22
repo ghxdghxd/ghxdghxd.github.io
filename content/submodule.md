@@ -53,7 +53,8 @@ cd moduleA1
 echo"This is a submodule." > a.txt
 git add .
 git commit -m "add a.txt"
-git push origin mastercd ..
+git push origin master
+cd ..
 ```
 
 在project项目中引入子模块moduleA，并提交子模块信息
