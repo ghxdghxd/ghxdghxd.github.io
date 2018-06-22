@@ -101,7 +101,8 @@ git push origin master
 方法一，先pull父项目，然后执行&lt;code&gt;git submodule update&lt;/code&gt;，注意moduleA的分支始终不是master。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;project2
 git pull
-git submodule updatecd ..
+git submodule update
+&lt;span class="nb"&gt;cd&lt;/span&gt; ..
 &lt;/pre&gt;&lt;/div&gt;
 
 
