@@ -126,7 +126,8 @@ cd ..
 ```bash
 cd project2
 git pull
-git submodule updatecd ..
+git submodule update
+cd ..
 ```
 
 方法二，先进入子模块，然后切换到需要的分支，这里是master分支，然后对子模块pull，这种方法会改变子模块的分支。
