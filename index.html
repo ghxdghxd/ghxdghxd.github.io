@@ -47,7 +47,7 @@
     <div class="post-meta">2018-02-03</div>
     <div class="post-content">
         <h1>常用命令</h1>
-<div class="highlight"><pre><span></span>git clone &lt;repository&gt; --recursive 递归的方式克隆整个项目
+<div class="highlight"><pre>git clone &lt;repository&gt; --recursive 递归的方式克隆整个项目
 git submodule add &lt;repository&gt;&lt;path&gt; 添加子模块
 git submodule init 初始化子模块
 git submodule update 更新子模块
@@ -58,16 +58,16 @@ git submodule foreach git pull 拉取所有子模块
 <h2>如何使用</h2>
 <h3>1. 创建带子模块的版本库</h3>
 <p>例如我们要创建如下结构的项目</p>
-<div class="highlight"><pre><span></span>project
-    <span class="p">|</span>--moduleA
-    <span class="p">|</span>--readme.txt
+<div class="highlight"><pre>project
+    |--moduleA
+    |--readme.txt
 </pre></div>
 
 
 <p>创建project版本库，并提交readme.txt文件</p>
-<div class="highlight"><pre><span></span>git init --bare project.git
+<div class="highlight"><pre>git init --bare project.git
 git clone project.git project1cd project1
-echo<span class="s2">&quot;This is a project.&quot;</span> &gt; readme.txt
+<span class="nb">echo</span><span class="s2">&quot;This is a project.&quot;</span> &gt; readme.txt
 git add .
 git commit -m <span class="s2">&quot;add readme.txt&quot;</span>
 git push origin master
