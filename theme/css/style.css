@@ -223,11 +223,16 @@ div {
 }
 
 .search-form {
-    overflow: hidden;
+    /* overflow: hidden;
     display: flex;
     margin: 5% auto;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-    border-radius: 50px;
+    border-radius: 50px; */
+    overflow: hidden;
+    display: flex;
+    margin: 5% auto;
+    padding-right: 50px;
+    padding-top: 20px;
 }
 
 /* title for search result or tagged posts*/
@@ -247,6 +252,7 @@ div {
     color: #555;
     text-align: left;
     font: bold 25px/1.1 "ff-tisa-web-pro", Cambria, "Times New Roman", Georgia, Times, sans-serif;
+    background: url("dotted-border.png") repeat-x scroll left bottom transparent;
 }
 
 .post .post-title a {
@@ -327,7 +333,7 @@ div {
     text-align: justify;
     text-justify: distribute;
     word-break: normal;
-    border-bottom: 2px inset #ddd;
+    /* border-bottom: 2px inset #ddd; */
 }
 
 .post .post-content h2 {
@@ -429,7 +435,7 @@ div {
 }
 
 .page-navigator {
-    border-top: 1px solid #ddd;
+    /* border-top: 1px solid #ddd; */
     list-style: none;
     margin-top: 25px;
     padding: 25px 0 0;
@@ -679,7 +685,7 @@ p.readmore a:after {
 
 p.readmore a:hover {
     background: #F8F8F8;
-    border-bottom-color: #D26911;
+    border-bottom-color: #0073c6;
 }
 
 /* post navigator*/
