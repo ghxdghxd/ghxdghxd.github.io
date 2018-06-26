@@ -2,8 +2,8 @@
 Title: git submodule的用法
 Date: 2018-02-03 10:20
 Modified: 2018-02-03 19:30
-Category: git
-Tags: git
+Category: 工具包
+Tags: git, submodule
 Slug: git-submodule
 Authors: JT Guo
 Summary: 参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目

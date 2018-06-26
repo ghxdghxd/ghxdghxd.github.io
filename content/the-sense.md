@@ -3,8 +3,8 @@ Title: 之感
 Date: 2015-08-03 10:20
 Modified: 2015-08-03 19:30
 Category: 路由器
-Tags: 个人
-Slug: mine
+Tags: personal
+Slug: the-sense
 Authors: JT Guo
 Summary: 想什么说什么
 ---

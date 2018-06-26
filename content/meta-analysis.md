@@ -2,8 +2,8 @@
 Title: meta Analysis
 Date: 2018-02-03 10:20
 Modified: 2018-02-03 19:30
-Category: 统计
-Tags: R
+Category: 统计建模
+Tags: R, meta
 Slug: meta
 Authors: JT Guo
 Summary: meta analysis with metafor

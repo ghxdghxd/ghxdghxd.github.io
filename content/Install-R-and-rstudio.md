@@ -1,12 +1,12 @@
 ---
 Title: R与Rstudio的安装过程（ubuntu）
-Date: 2017-2-03 10:20
+Date: 2014-2-03 10:20
 Modified: 2017-2-05 19:30
-Category: coding 
-Tags: R
+Category: 系统运维
+Tags: R, Rstudio, install
 Slug: R-and-Rstudio
 Authors: JT Guo
-Summary: R与Rstudio的安装
+Summary: ubuntu安装R与Rstudio的过程
 ---
 # install R
 
