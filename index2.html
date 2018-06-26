@@ -52,24 +52,24 @@
     <div class="post-content">
         <h1>docker</h1>
 <h2>centos yum install docker</h2>
-<div class="highlight"><pre><span></span>tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-&#39;EOF&#39;</span>
-<span class="s">[dockerrepo]</span>
-<span class="s">name=Docker Repository</span>
-<span class="s">baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/</span>
-<span class="s">enabled=1</span>
-<span class="s">gpgcheck=1</span>
-<span class="s">gpgkey=https://yum.dockerproject.org/gpg</span>
-<span class="s">EOF</span>
+<div class="highlight"><pre>tee <span class="o">/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo <span class="o">&lt;&lt;-</span><span class="s">&#39;EOF&#39;</span>
+<span class="p">[</span>dockerrepo<span class="p">]</span>
+name<span class="o">=</span>Docker Repository
+baseurl<span class="o">=</span>https<span class="o">://</span>yum.dockerproject.org<span class="o">/</span>repo<span class="o">/</span>main<span class="o">/</span>centos<span class="o">/$</span>releasever<span class="o">/</span>
+enabled<span class="o">=</span><span class="m">1</span>
+gpgcheck<span class="o">=</span><span class="m">1</span>
+gpgkey<span class="o">=</span>https<span class="o">://</span>yum.dockerproject.org<span class="o">/</span>gpg
+EOF
 
-sed -i <span class="s1">&#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39;</span> /etc/sysconfig/docker
+sed <span class="o">-</span>i <span class="s">&#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39;</span> <span class="o">/</span>etc<span class="o">/</span>sysconfig<span class="o">/</span>docker
 
-<span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">8</span><span class="sb">`</span><span class="p">;</span>
-<span class="k">do</span>
-    sudo scp /etc/yum.repos.d/docker.repo compute-0-<span class="nv">$i</span>:/etc/yum.repos.d/docker.repo
-<span class="k">done</span>
+<span class="kr">for</span> i <span class="kr">in</span> <span class="sb">`seq 1 8`</span><span class="p">;</span>
+do
+    sudo scp <span class="o">/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo compute<span class="m">-0</span><span class="o">-$</span>i<span class="o">:/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo
+done
 
-rocks run host <span class="s2">&quot;yum install docker-engine&quot;</span>
-rocks run host <span class="s2">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span>
+rocks run host <span class="s">&quot;yum install docker-engine&quot;</span>
+rocks run host <span class="s">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span>
 </pre></div>
 
 
@@ -112,9 +112,9 @@ rocks run host <span class="s2">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/ot
         </div></div>
         <div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar">
 <div class="widget">
-    <div class="widget-title">
+    <!-- <div class="widget-title">
         <i class="fa fa-heart-o"> 好记性不如烂键盘</i>
-    </div>
+    </div> -->
     <img id="logo_image" src="/theme/images/Logo.jpg" />
 </div>
 <div class="widget">

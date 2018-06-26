@@ -55,15 +55,15 @@ mount | iKnowledgeBase    </title>
     <div class="post-content">
         <h1>/etc/fstab</h1>
 <p>运维都知道的文件，若想把mount的disk和dir设置为每次开机自动加载，那么就要把相关信息写到这个文件中。当用”mount -a“命令自动mount的时候，也会去读这个文件。例如：</p>
-<div class="highlight"><pre><span></span><span class="nv">LABEL</span><span class="o">=</span>/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto <span class="m">0</span> <span class="m">2</span>
-<span class="nv">LABEL</span><span class="o">=</span>/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto <span class="m">0</span> <span class="m">2</span>
+<div class="highlight"><pre><span class="nv">LABEL</span><span class="o">=</span>/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto 0 2
+<span class="nv">LABEL</span><span class="o">=</span>/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto 0 2
 </pre></div>
 
 
 <h1>/etc/mtab</h1>
 <p>这个文件主要是用mount命令的时候，系统根据实际mount的情况生成的数据，例如：</p>
-<div class="highlight"><pre><span></span>/dev/sdb1 /hadoop/9 ext3 rw,noatime,nodiratime <span class="m">0</span> <span class="m">0</span>
-/dev/sdc1 /hadoop/10 ext3 rw,noatime,nodiratime <span class="m">0</span> <span class="m">0</span>
+<div class="highlight"><pre>/dev/sdb1 /hadoop/9 ext3 rw,noatime,nodiratime 0 0
+/dev/sdc1 /hadoop/10 ext3 rw,noatime,nodiratime 0 0
 </pre></div>
 
 
@@ -74,20 +74,20 @@ mount | iKnowledgeBase    </title>
 或者你使用"chmod 000 /dir",把这块盘设为不能读不能写。
 这时如果你管理了1000台服务器，你需要知道你的服务器中哪些盘是被umount了，你会怎么做？
 这里分享一个SHELL脚本，可以给你提供思路：</p>
-<div class="highlight"><pre><span></span><span class="k">function</span> check_disks <span class="o">{</span>
-  <span class="k">for</span> m in <span class="sb">`</span>awk <span class="s1">&#39;$3~/ext3/ {printf&quot; %s &quot;,$2}&#39;</span> /etc/fstab<span class="sb">`</span> <span class="p">;</span> <span class="k">do</span>
-    <span class="nv">fsdev</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-    <span class="nv">fsdev</span><span class="o">=</span><span class="sb">`</span>awk -v <span class="nv">m</span><span class="o">=</span><span class="nv">$m</span> <span class="s1">&#39;$2==m {print $1}&#39;</span> /proc/mounts<span class="sb">`</span><span class="p">;</span>
-    <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;</span><span class="nv">$fsdev</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
-      <span class="nv">msg_</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$msg_</span><span class="s2"> </span><span class="nv">$m</span><span class="s2">(u)&quot;</span>
+<div class="highlight"><pre><span class="k">function </span>check_disks <span class="o">{</span>
+  <span class="k">for </span>m in <span class="sb">`</span>awk <span class="s1">&#39;$3~/ext3/ {printf&quot; %s &quot;,$2}&#39;</span> /etc/fstab<span class="sb">`</span> ; <span class="k">do</span>
+<span class="k">    </span><span class="nv">fsdev</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="nv">fsdev</span><span class="o">=</span><span class="sb">`</span>awk -v <span class="nv">m</span><span class="o">=</span><span class="nv">$m</span> <span class="s1">&#39;$2==m {print $1}&#39;</span> /proc/mounts<span class="sb">`</span>;
+    <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;$fsdev&quot;</span> <span class="o">]</span> ; <span class="k">then</span>
+<span class="k">      </span><span class="nv">msg_</span><span class="o">=</span><span class="s2">&quot;$msg_ $m(u)&quot;</span>
     <span class="k">else</span>
-      <span class="nv">msg_</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$msg_</span><span class="s2">`awk -v m=</span><span class="nv">$m</span><span class="s2"> &#39;</span><span class="nv">$2</span><span class="s2">==m { if ( </span><span class="nv">$4</span><span class="s2"> ~ /^ro,/ ) {printf&quot;</span>%s<span class="o">(</span>ro<span class="o">)</span><span class="s2">&quot;,</span><span class="nv">$2</span><span class="s2"> } ; }&#39; /proc/mounts`&quot;</span>
+<span class="k">      </span><span class="nv">msg_</span><span class="o">=</span><span class="s2">&quot;$msg_`awk -v m=$m &#39;$2==m { if ( $4 ~ /^ro,/ ) {printf&quot;</span>%s<span class="o">(</span>ro<span class="o">)</span><span class="s2">&quot;,$2 } ; }&#39; /proc/mounts`&quot;</span>
     <span class="k">fi</span>
-  <span class="k">done</span>
-  <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;</span><span class="nv">$msg_</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
-    <span class="nb">echo</span> <span class="s2">&quot;disks ok&quot;</span> <span class="p">;</span> <span class="nb">exit</span> <span class="m">0</span>
+<span class="k">  done</span>
+<span class="k">  if</span> <span class="o">[</span> -z <span class="s2">&quot;$msg_&quot;</span> <span class="o">]</span> ; <span class="k">then</span>
+<span class="k">    </span><span class="nb">echo</span> <span class="s2">&quot;disks ok&quot;</span> ; <span class="nb">exit </span>0
   <span class="k">else</span>
-    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$msg_</span><span class="s2">&quot;</span> <span class="p">;</span> <span class="nb">exit</span> <span class="m">2</span>
+<span class="k">    </span><span class="nb">echo</span> <span class="s2">&quot;$msg_&quot;</span> ; <span class="nb">exit </span>2
   <span class="k">fi</span>
 <span class="o">}</span>
 </pre></div>
@@ -104,9 +104,9 @@ mount | iKnowledgeBase    </title>
         </div></div>
         <div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar">
 <div class="widget">
-    <div class="widget-title">
+    <!-- <div class="widget-title">
         <i class="fa fa-heart-o"> 好记性不如烂键盘</i>
-    </div>
+    </div> -->
     <img id="logo_image" src="/theme/images/Logo.jpg" />
 </div>
 <div class="widget">
