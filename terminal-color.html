@@ -47,10 +47,10 @@
     <h1 class="post-title">终端显示颜色</h1>
     <div class="tags" style="float: right;">
     <a href="/tag/linux.html">linux</a>
-    <a href="/tag/interest.html">interest</a>
+    <a href="/tag/shell.html">shell</a>
     </div>
     <div class="post-meta">1月 03, 2017
-    <span> | </span> <a href="/category/linux.html">linux</a>
+    <span> | </span> <a href="/category/xi-tong-yun-wei.html">系统运维</a>
     </div>
     <div class="post-content">
         <p>echo显示带颜色，需要使用参数-e
@@ -64,23 +64,23 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 2、文字颜色后面有个m
 3、字符串前后可以没有空格，如果有的话，输出也是同样有空格</p>
 <p>下面看几个例子：</p>
-<div class="highlight"><pre><span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[30m 黑色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[31m 红色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[32m 绿色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[33m 黄色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[34m 蓝色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[35m 紫色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[36m 天蓝字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[37m 白色字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
+<div class="highlight"><pre><span></span><span class="nb">echo</span> -e <span class="s2">&quot;\033[30m 黑色字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[31m 红色字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[32m 绿色字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[33m 黄色字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[34m 蓝色字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[35m 紫色字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[36m 天蓝字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[37m 白色字 \033[0m&quot;</span>
 
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[40;37m 黑底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[41;37m 红底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[42;37m 绿底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[43;37m 黄底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[44;37m 蓝底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[45;37m 紫底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[46;37m 天蓝底白字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;</span><span class="se">\033</span><span class="s">[47;30m 白底黑字 </span><span class="se">\033</span><span class="s">[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[40;37m 黑底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[41;37m 红底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[42;37m 绿底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[43;37m 黄底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[44;37m 蓝底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[45;37m 紫底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[46;37m 天蓝底白字 \033[0m&quot;</span>
+<span class="nb">echo</span> -e <span class="s2">&quot;\033[47;30m 白底黑字 \033[0m&quot;</span>
 </pre></div>
 
 
@@ -176,7 +176,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 
         <div class="post-nav">
             <a href="/git.html" class="pre">git的一般用法</a>
-            <a href="/R-and-Rstudio.html" class="next">R与Rstudio的安装过程（ubuntu）</a>
+            <a href="/tennis-racquet.html" class="next">网球拍的平衡点</a>
         </div>
 
     </div>
@@ -194,26 +194,30 @@ echo -e "\033[41;37m TonyZhang \033[0m"
         <i class="fa fa-folder-o"> Categories</i>
     </div>
     <ul class="category-list">
-        <li class="category-list-item"><a class="category-list-link" href="/category/coding.html">coding</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/git.html">git</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/interest.html">interest</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/gong-ju-bao.html">工具包</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/linux.html">linux</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/lu-you-qi.html">路由器</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/operation.html">operation</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji.html">统计</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji-jian-mo.html">统计建模</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/xi-tong-yun-wei.html">系统运维</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/xing-qu-ai-hao.html">兴趣爱好</a></li>
     </ul>
 </div><div class="widget">
     <div class="widget-title"><i class="fa fa-star-o"> Tags</i></div>
     <div class="tagcloud">
     <a href="/tag/git.html" style="font-size: 12px">git</a>
+    <a href="/tag/submodule.html" style="font-size: 12px">submodule</a>
     <a href="/tag/r.html" style="font-size: 12px">R</a>
+    <a href="/tag/meta.html" style="font-size: 12px">meta</a>
     <a href="/tag/operation.html" style="font-size: 12px">operation</a>
     <a href="/tag/interest.html" style="font-size: 12px">interest</a>
-    <a href="/tag/awesome.html" style="font-size: 12px">awesome</a>
+    <a href="/tag/docker.html" style="font-size: 12px">docker</a>
     <a href="/tag/tennis.html" style="font-size: 12px">tennis</a>
     <a href="/tag/linux.html" style="font-size: 12px">linux</a>
-    <a href="/tag/ge-ren.html" style="font-size: 12px">个人</a>
+    <a href="/tag/shell.html" style="font-size: 12px">shell</a>
+    <a href="/tag/personal.html" style="font-size: 12px">personal</a>
+    <a href="/tag/terminal.html" style="font-size: 12px">terminal</a>
+    <a href="/tag/rstudio.html" style="font-size: 12px">Rstudio</a>
+    <a href="/tag/install.html" style="font-size: 12px">install</a>
     <a href="/tag/mount.html" style="font-size: 12px">mount</a>
     </div>
 </div><div class="widget">
@@ -235,19 +239,19 @@ echo -e "\033[41;37m TonyZhang \033[0m"
         <a class="post-list-link" href="/tennis-racquet.html">网球拍的平衡点</a>
         </li>
         <li class="post-list-item">
-        <a class="post-list-link" href="/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
-        </li>
-        <li class="post-list-item">
         <a class="post-list-link" href="/terminal-color.html">终端显示颜色</a>
         </li>
         <li class="post-list-item">
         <a class="post-list-link" href="/git.html">git的一般用法</a>
         </li>
         <li class="post-list-item">
-        <a class="post-list-link" href="/mine.html">之感</a>
+        <a class="post-list-link" href="/the-sense.html">之感</a>
         </li>
         <li class="post-list-item">
-        <a class="post-list-link" href="/mount.html">mount</a>
+        <a class="post-list-link" href="/terminal-announcement.html">登录终端信息</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
         </li>
     </ul>
 </div><div class="widget">

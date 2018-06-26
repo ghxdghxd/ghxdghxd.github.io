@@ -8,7 +8,7 @@
     <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
     <title>
-Tags | iKnowledgeBase    </title>
+登录终端信息 | iKnowledgeBase    </title>
     <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
     <link rel="stylesheet" type="text/css" href="/theme/css/pygment.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css" />
@@ -43,26 +43,51 @@ Tags | iKnowledgeBase    </title>
     <button type="submit" class="tipue_search_button" name="sitesearch" value="https://ghxdghxd.github.io">Search</button>
     <div style="clear: both;"></div>
 </form>            <div class="content_container">
-<div class="post"><div class="post-archive">
-<h1 class="label-title">Tags on iKnowledgeBase</h1>
-<div class="tagcloud">
-    <a href="/tag/git.html">git<sup>2</sup></a>
-    <a href="/tag/submodule.html">submodule<sup>1</sup></a>
-    <a href="/tag/r.html">R<sup>2</sup></a>
-    <a href="/tag/meta.html">meta<sup>1</sup></a>
-    <a href="/tag/operation.html">operation<sup>1</sup></a>
-    <a href="/tag/interest.html">interest<sup>1</sup></a>
-    <a href="/tag/docker.html">docker<sup>1</sup></a>
-    <a href="/tag/tennis.html">tennis<sup>1</sup></a>
-    <a href="/tag/linux.html">linux<sup>3</sup></a>
-    <a href="/tag/shell.html">shell<sup>1</sup></a>
-    <a href="/tag/personal.html">personal<sup>1</sup></a>
-    <a href="/tag/terminal.html">terminal<sup>1</sup></a>
-    <a href="/tag/rstudio.html">Rstudio<sup>1</sup></a>
-    <a href="/tag/install.html">install<sup>1</sup></a>
-    <a href="/tag/mount.html">mount<sup>1</sup></a>
+<div class="post">
+    <h1 class="post-title">登录终端信息</h1>
+    <div class="tags" style="float: right;">
+    <a href="/tag/linux.html">linux</a>
+    <a href="/tag/terminal.html">terminal</a>
+    </div>
+    <div class="post-meta">12月 04, 2014
+    <span> | </span> <a href="/category/xi-tong-yun-wei.html">系统运维</a>
+    </div>
+    <div class="post-content">
+        <h1>/etc/issue</h1>
+<p>在终端接口登录时候的提示字符,例如：</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>root@linux ~<span class="o">]</span> cat /etc/issue
+CentOS release <span class="m">5</span>.6 <span class="o">(</span>Final<span class="o">)</span>
+Kernel <span class="se">\r</span> on an <span class="se">\m</span>
+
+issue内各代码说明：
+<span class="se">\d</span>  本地端时间的日期
+<span class="se">\l</span>  显示第几个终端接口
+<span class="se">\m</span>  显示硬件的等级
+<span class="se">\n</span>  显示主机的网络名称
+<span class="se">\o</span>  显示域名
+<span class="se">\r</span>  操作系统的版本
+<span class="se">\t</span>  显示本地端的时间
+<span class="se">\s</span>  操作系统的名称
+<span class="se">\v</span>  操作系统的版本
+</pre></div>
+
+
+<h1>/etc/motd</h1>
+<p>登录后的公告消息, 比如：系统将会在某个时间进行维护</p>
+<div class="highlight"><pre><span></span><span class="o">[</span>root@linux ~<span class="o">]</span> vi /etc/motd
+    Hello everyone,
+    Our server will be maintained at
+    please don<span class="err">&#39;</span>t login at that time,thanks.
+    那么当用户登录的时候，就会显示设置的内容了。
+</pre></div>
+
+        <div class="post-nav">
+            <a href="/R-and-Rstudio.html" class="pre">R与Rstudio的安装过程（ubuntu）</a>
+            <a href="/the-sense.html" class="next">之感</a>
+        </div>
+
+    </div>
 </div>
-</div></div>
         </div></div>
         <div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar">
 <div class="widget">

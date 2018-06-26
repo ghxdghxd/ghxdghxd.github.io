@@ -54,36 +54,36 @@ archlinux安装与配置 | iKnowledgeBase    </title>
     </div>
     <div class="post-content">
         <h1>archlinux安装</h1>
-<div class="highlight"><pre><span class="cp"># u盘启动后</span>
-<span class="cp"># 连接网络</span>
-<span class="n">wifi</span><span class="o">-</span><span class="n">memu</span>
-<span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda1</span> <span class="o">/</span><span class="n">mnt</span>
-<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">home</span>
-<span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda2</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">home</span>
-<span class="cp"># 修改中国镜像源,如163.com</span>
-<span class="n">vi</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">pacman</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">mirrorlist</span>
-<span class="n">pacstrap</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">mnt</span> <span class="n">base</span> <span class="n">base</span><span class="o">-</span><span class="n">devel</span>
-<span class="cp">#生成挂载文件fstab</span>
-<span class="n">genfstab</span> <span class="o">-</span><span class="n">U</span> <span class="o">/</span><span class="n">mnt</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
+<div class="highlight"><pre><span></span><span class="c1"># u盘启动后</span>
+<span class="c1"># 连接网络</span>
+wifi-memu
+mount /dev/sda1 /mnt
+mkdir -p /mnt/home
+mount /dev/sda2 /mnt/home
+<span class="c1"># 修改中国镜像源,如163.com</span>
+vi /ect/pacman.d/mirrorlist
+pacstrap -i /mnt base base-devel
+<span class="c1">#生成挂载文件fstab</span>
+genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </pre></div>
 
 
 <h2>archlinux 初步配置</h2>
-<div class="highlight"><pre><span class="cp">#切换到archlinux</span>
-<span class="n">arch</span><span class="o">-</span><span class="n">chroot</span> <span class="o">/</span><span class="n">mnt</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
+<div class="highlight"><pre><span></span><span class="c1">#切换到archlinux</span>
+arch-chroot /mnt /bin/bash
 </pre></div>
 
 
 <ul>
 <li>本地语言</li>
 </ul>
-<div class="highlight"><pre><span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">gen</span>
-    <span class="n">en_US</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-    <span class="n">zh_CN</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<div class="highlight"><pre><span></span>vi /etc/locale.gen
+    en_US.UTF-8 UTF-8
+    zh_CN.UTF-8 UTF-8
 
-<span class="cp">#生效</span>
-<span class="n">locale</span><span class="o">-</span><span class="n">gen</span>
-<span class="n">echo</span> <span class="n">LANG</span><span class="o">=</span><span class="n">en_US</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">conf</span>
+<span class="c1">#生效</span>
+locale-gen
+<span class="nb">echo</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 &gt; /etc/locale.conf
 </pre></div>
 
 
@@ -92,51 +92,51 @@ archlinux安装与配置 | iKnowledgeBase    </title>
 <ul>
 <li>时区</li>
 </ul>
-<div class="highlight"><pre><span class="n">ln</span> <span class="o">-</span><span class="n">sf</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">zoneinfo</span><span class="o">/</span><span class="n">Asia</span><span class="o">/</span><span class="n">Shanghai</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span>
-<span class="cp"># 或</span>
-<span class="cp"># 按提示选择时区</span>
-<span class="n">tzselect</span>
-<span class="cp">#设置硬件时间</span>
-<span class="n">hwclock</span> <span class="o">--</span><span class="n">systohc</span> <span class="o">--</span><span class="n">utc</span>
+<div class="highlight"><pre><span></span>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+<span class="c1"># 或</span>
+<span class="c1"># 按提示选择时区</span>
+tzselect
+<span class="c1">#设置硬件时间</span>
+hwclock --systohc --utc
 </pre></div>
 
 
 <ul>
 <li>grub引导系统</li>
 </ul>
-<div class="highlight"><pre><span class="cp"># 支持grub和EFI，可只选grup</span>
-<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">grub</span> <span class="n">efibootmgr</span>
-<span class="n">grub</span><span class="o">-</span><span class="n">install</span> <span class="o">--</span><span class="n">target</span><span class="o">=</span><span class="n">i386</span><span class="o">-</span><span class="n">pc</span> <span class="o">--</span><span class="n">recheck</span> <span class="o">--</span><span class="n">debug</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda</span>
-<span class="n">grup</span><span class="o">-</span><span class="n">mkconfig</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">cfg</span>
+<div class="highlight"><pre><span></span><span class="c1"># 支持grub和EFI，可只选grup</span>
+pacman -S grub efibootmgr
+grub-install --target<span class="o">=</span>i386-pc --recheck --debug /dev/sda
+grup-mkconfig -o /boot/grub/grub.cfg
 </pre></div>
 
 
 <ul>
 <li>主机名</li>
 </ul>
-<div class="highlight"><pre><span class="n">echo</span> <span class="n">Garch</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hostname</span>
+<div class="highlight"><pre><span></span><span class="nb">echo</span> Garch &gt;&gt; /etc/hostname
 </pre></div>
 
 
 <ul>
 <li>网络配置</li>
 </ul>
-<div class="highlight"><pre><span class="cp"># 有线</span>
-<span class="n">systemctl</span> <span class="n">enable</span> <span class="n">dhcpcd</span><span class="p">.</span><span class="n">service</span>
-<span class="cp"># 无线</span>
-<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">iw</span> <span class="n">wpa_supplicant</span> <span class="n">dialog</span>
+<div class="highlight"><pre><span></span><span class="c1"># 有线</span>
+systemctl <span class="nb">enable</span> dhcpcd.service
+<span class="c1"># 无线</span>
+pacman -S iw wpa_supplicant dialog
 </pre></div>
 
 
 <h2>archlinux 配置</h2>
-<div class="highlight"><pre><span class="cp"># 最小安装</span>
-<span class="cp"># X桌面</span>
-<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">xorg</span><span class="o">-</span><span class="n">server</span>
-<span class="cp"># 显卡驱动</span>
-<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">xf86</span><span class="o">-</span><span class="n">video</span><span class="o">-</span><span class="n">ati</span>
-<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">gnome</span> <span class="n">gnome</span><span class="o">-</span><span class="n">tweak</span><span class="o">-</span><span class="n">tool</span>
-<span class="n">pacman</span> <span class="o">-</span><span class="n">S</span> <span class="n">ttf</span><span class="o">-</span><span class="n">ubuntu</span>
-<span class="cp"># 可选</span>
+<div class="highlight"><pre><span></span><span class="c1"># 最小安装</span>
+<span class="c1"># X桌面</span>
+pacman -S xorg-server
+<span class="c1"># 显卡驱动</span>
+pacman -S xf86-video-ati
+pacman -S gnome gnome-tweak-tool
+pacman -S ttf-ubuntu
+<span class="c1"># 可选</span>
 </pre></div>
 
         <div class="post-nav">
@@ -159,26 +159,30 @@ archlinux安装与配置 | iKnowledgeBase    </title>
         <i class="fa fa-folder-o"> Categories</i>
     </div>
     <ul class="category-list">
-        <li class="category-list-item"><a class="category-list-link" href="/category/coding.html">coding</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/git.html">git</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/interest.html">interest</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/gong-ju-bao.html">工具包</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/linux.html">linux</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/lu-you-qi.html">路由器</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/operation.html">operation</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji.html">统计</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji-jian-mo.html">统计建模</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/xi-tong-yun-wei.html">系统运维</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/xing-qu-ai-hao.html">兴趣爱好</a></li>
     </ul>
 </div><div class="widget">
     <div class="widget-title"><i class="fa fa-star-o"> Tags</i></div>
     <div class="tagcloud">
     <a href="/tag/git.html" style="font-size: 12px">git</a>
+    <a href="/tag/submodule.html" style="font-size: 12px">submodule</a>
     <a href="/tag/r.html" style="font-size: 12px">R</a>
+    <a href="/tag/meta.html" style="font-size: 12px">meta</a>
     <a href="/tag/operation.html" style="font-size: 12px">operation</a>
     <a href="/tag/interest.html" style="font-size: 12px">interest</a>
-    <a href="/tag/awesome.html" style="font-size: 12px">awesome</a>
+    <a href="/tag/docker.html" style="font-size: 12px">docker</a>
     <a href="/tag/tennis.html" style="font-size: 12px">tennis</a>
     <a href="/tag/linux.html" style="font-size: 12px">linux</a>
-    <a href="/tag/ge-ren.html" style="font-size: 12px">个人</a>
+    <a href="/tag/shell.html" style="font-size: 12px">shell</a>
+    <a href="/tag/personal.html" style="font-size: 12px">personal</a>
+    <a href="/tag/terminal.html" style="font-size: 12px">terminal</a>
+    <a href="/tag/rstudio.html" style="font-size: 12px">Rstudio</a>
+    <a href="/tag/install.html" style="font-size: 12px">install</a>
     <a href="/tag/mount.html" style="font-size: 12px">mount</a>
     </div>
 </div><div class="widget">
@@ -200,19 +204,19 @@ archlinux安装与配置 | iKnowledgeBase    </title>
         <a class="post-list-link" href="/tennis-racquet.html">网球拍的平衡点</a>
         </li>
         <li class="post-list-item">
-        <a class="post-list-link" href="/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
-        </li>
-        <li class="post-list-item">
         <a class="post-list-link" href="/terminal-color.html">终端显示颜色</a>
         </li>
         <li class="post-list-item">
         <a class="post-list-link" href="/git.html">git的一般用法</a>
         </li>
         <li class="post-list-item">
-        <a class="post-list-link" href="/mine.html">之感</a>
+        <a class="post-list-link" href="/the-sense.html">之感</a>
         </li>
         <li class="post-list-item">
-        <a class="post-list-link" href="/mount.html">mount</a>
+        <a class="post-list-link" href="/terminal-announcement.html">登录终端信息</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
         </li>
     </ul>
 </div><div class="widget">

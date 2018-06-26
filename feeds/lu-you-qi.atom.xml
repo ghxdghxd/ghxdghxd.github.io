@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 路由器</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/lu-you-qi.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2015-08-03T19:30:00+08:00</updated><entry><title>之感</title><link href="https://ghxdghxd.github.io/mine.html" rel="alternate"></link><published>2015-08-03T10:20:00+08:00</published><updated>2015-08-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-08-03:/mine.html</id><summary type="html">&lt;p&gt;想什么说什么&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 路由器</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/lu-you-qi.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2015-08-03T19:30:00+08:00</updated><entry><title>之感</title><link href="https://ghxdghxd.github.io/the-sense.html" rel="alternate"></link><published>2015-08-03T10:20:00+08:00</published><updated>2015-08-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-08-03:/the-sense.html</id><summary type="html">&lt;p&gt;想什么说什么&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
 &lt;li&gt;话多应知，话少需明&lt;/li&gt;
 &lt;li&gt;前人看世界，后者品人生&lt;/li&gt;
 &lt;li&gt;棋逢对手 尽兴，将遇良才 榨干——干的漂亮&lt;/li&gt;
@@ -33,4 +33,4 @@
 &lt;li&gt;最好的修养，是明知不问&lt;/li&gt;
 &lt;li&gt;健康大于一切&lt;/li&gt;
 &lt;li&gt;活得太过自私，想得太过周全，倒想糊涂一世，只在聪明一时，难在取舍&lt;/li&gt;
-&lt;/ol&gt;</content><category term="个人"></category></entry></feed>
+&lt;/ol&gt;</content><category term="personal"></category></entry></feed>
