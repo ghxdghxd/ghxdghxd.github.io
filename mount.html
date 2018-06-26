@@ -8,7 +8,7 @@
     <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
     <title>
-interest | iKnowledgeBase    </title>
+My title | iKnowledgeBase    </title>
     <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
     <link rel="stylesheet" type="text/css" href="/theme/css/pygment.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css" />
@@ -42,15 +42,65 @@ interest | iKnowledgeBase    </title>
     <input type="text" name="q" id="tipue_search_input" placeholder="好记性不如烂键盘...">
     <button type="submit" class="tipue_search_button" name="sitesearch" value="https://ghxdghxd.github.io">Search</button>
     <div style="clear: both;"></div>
-</form><div class="post"><div class="post-archive">
-<h1 class="label-title">Articles tagged by <em>interest</em></h1>
-<ul class="listing">
-    <li><span class="date">2018/01/03</span><a href="/bioinfo.html">生物信息</a></li>
-    <li><span class="date">2017/12/03</span><a href="/archlinux.html">archlinux安装与配置</a></li>
-    <li><span class="date">2017/11/03</span><a href="/docker.html">docker安装与配置</a></li>
-    <li><span class="date">2017/01/03</span><a href="/terminal-color.html">终端显示颜色</a></li>
-</ul>
-</div></div>
+</form><div class="post">
+    <h1 class="post-title">My title</h1>
+    <div class="post-meta">1月 03, 2014
+    <span> | </span> <span>系统运维</span>
+    </div>
+    <div class="post-content">
+        <h1>/etc/fstab</h1>
+<p>运维都知道的文件，若想把mount的disk和dir设置为每次开机自动加载，那么就要把相关信息写到这个文件中。当用”mount -a“命令自动mount的时候，也会去读这个文件。例如：</p>
+<div class="highlight"><pre><span class="nv">LABEL</span><span class="o">=</span>/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto 0 2
+<span class="nv">LABEL</span><span class="o">=</span>/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto 0 2
+</pre></div>
+
+
+<h1>/etc/mtab</h1>
+<p>这个文件主要是用mount命令的时候，系统根据实际mount的情况生成的数据，例如：</p>
+<div class="highlight"><pre>/dev/sdb1 /hadoop/9 ext3 rw,noatime,nodiratime 0 0
+/dev/sdc1 /hadoop/10 ext3 rw,noatime,nodiratime 0 0
+</pre></div>
+
+
+<h1>/proc/mounts</h1>
+<p>这个文件是/proc/self/mounts的软链接，/proc下面的文件都是保存在内存中的，是内核自动生成的。所以/proc/mounts比/etc/mtab文件能更加真实的反映当前mount的情况</p>
+<h1>场景应用：</h1>
+<p>服务器中有一块盘因为有坏道，被umount了，通过"df -h"就查看不到这块盘的信息了。
+或者你使用"chmod 000 /dir",把这块盘设为不能读不能写。
+这时如果你管理了1000台服务器，你需要知道你的服务器中哪些盘是被umount了，你会怎么做？
+这里分享一个SHELL脚本，可以给你提供思路：</p>
+<div class="highlight"><pre><span class="k">function </span>check_disks <span class="o">{</span>
+  <span class="k">for </span>m in <span class="sb">`</span>awk <span class="s1">&#39;$3~/ext3/ {printf&quot; %s &quot;,$2}&#39;</span> /etc/fstab<span class="sb">`</span> ; <span class="k">do</span>
+<span class="k">    </span><span class="nv">fsdev</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="nv">fsdev</span><span class="o">=</span><span class="sb">`</span>awk -v <span class="nv">m</span><span class="o">=</span><span class="nv">$m</span> <span class="s1">&#39;$2==m {print $1}&#39;</span> /proc/mounts<span class="sb">`</span>;
+    <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;$fsdev&quot;</span> <span class="o">]</span> ; <span class="k">then</span>
+<span class="k">      </span><span class="nv">msg_</span><span class="o">=</span><span class="s2">&quot;$msg_ $m(u)&quot;</span>
+    <span class="k">else</span>
+<span class="k">      </span><span class="nv">msg_</span><span class="o">=</span><span class="s2">&quot;$msg_`awk -v m=$m &#39;$2==m { if ( $4 ~ /^ro,/ ) {printf&quot;</span>%s<span class="o">(</span>ro<span class="o">)</span><span class="s2">&quot;,$2 } ; }&#39; /proc/mounts`&quot;</span>
+    <span class="k">fi</span>
+<span class="k">  done</span>
+<span class="k">  if</span> <span class="o">[</span> -z <span class="s2">&quot;$msg_&quot;</span> <span class="o">]</span> ; <span class="k">then</span>
+<span class="k">    </span><span class="nb">echo</span> <span class="s2">&quot;disks ok&quot;</span> ; <span class="nb">exit </span>0
+  <span class="k">else</span>
+<span class="k">    </span><span class="nb">echo</span> <span class="s2">&quot;$msg_&quot;</span> ; <span class="nb">exit </span>2
+  <span class="k">fi</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>脚本首先通过比较/etc/fstab和/proc/mounts中的不同之处，得到被umount的盘，然后再把ro(read only)的盘也分析出来。</p>
+
+        <div class="tags">
+        <a href="/tag/linux.html">linux</a>
+        <a href="/tag/mount.html">mount</a>
+        </div>
+
+        <div class="post-nav">
+            <a href="/mine.html" class="next">之感</a>
+        </div>
+
+    </div>
+</div>
         </div></div>
         <div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar">
 <div class="widget">
@@ -70,26 +120,30 @@ interest | iKnowledgeBase    </title>
         <li class="category-list-item"><a class="category-list-link" href="/category/linux.html">linux</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/lu-you-qi.html">路由器</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/operation.html">operation</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/sheng-xin.html">生信</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji.html">统计</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/xi-tong-yun-wei.html">系统运维</a></li>
     </ul>
 </div><div class="widget">
     <div class="widget-title"><i class="fa fa-star-o"> Tags</i></div>
     <div class="tagcloud">
     <a href="/tag/git.html" style="font-size: 12px">git</a>
     <a href="/tag/r.html" style="font-size: 12px">R</a>
-    <a href="/tag/awesome.html" style="font-size: 12px">awesome</a>
-    <a href="/tag/interest.html" style="font-size: 12px">interest</a>
     <a href="/tag/operation.html" style="font-size: 12px">operation</a>
+    <a href="/tag/interest.html" style="font-size: 12px">interest</a>
+    <a href="/tag/awesome.html" style="font-size: 12px">awesome</a>
     <a href="/tag/tennis.html" style="font-size: 12px">tennis</a>
     <a href="/tag/linux.html" style="font-size: 12px">linux</a>
     <a href="/tag/ge-ren.html" style="font-size: 12px">个人</a>
+    <a href="/tag/mount.html" style="font-size: 12px">mount</a>
     </div>
 </div><div class="widget">
     <div class="widget-title"><i class="fa fa-file-o"> Recent</i></div>
     <ul class="post-list">
         <li class="post-list-item">
-        <a class="post-list-link" href="/bioinfo.html">生物信息</a>
+        <a class="post-list-link" href="/git-submodule.html">git submodule的用法</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/meta.html">meta Analysis</a>
         </li>
         <li class="post-list-item">
         <a class="post-list-link" href="/archlinux.html">archlinux安装与配置</a>
@@ -98,7 +152,22 @@ interest | iKnowledgeBase    </title>
         <a class="post-list-link" href="/docker.html">docker安装与配置</a>
         </li>
         <li class="post-list-item">
+        <a class="post-list-link" href="/tennis-racquet.html">网球拍的平衡点</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
+        </li>
+        <li class="post-list-item">
         <a class="post-list-link" href="/terminal-color.html">终端显示颜色</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/git.html">git的一般用法</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/mine.html">之感</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/mount.html">My title</a>
         </li>
     </ul>
 </div><div class="widget">

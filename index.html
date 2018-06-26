@@ -98,14 +98,46 @@ git push origin master
     <p class="readmore"><a href="/meta.html">Read More</a></p>
 </div>
 <div class="post">
-    <h1 class="post-title"><a href="/bioinfo.html">生物信息</a></h1>
-    <div class="post-meta">2018-01-03</div>
+    <h1 class="post-title"><a href="/archlinux.html">archlinux安装与配置</a></h1>
+    <div class="post-meta">2017-12-03</div>
     <div class="post-content">
-        <h1>What is Bioinfomatics</h1>
-<p>Bioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data.As an interdisciplinary field of science, bioinformatics combines Computer Science, Biology, Mathematics, and Engineering to analyze and interpret biological data. Bioinformatics has been used for in silico analyses of biological queries using mathematical and statistical techniques. More broadly, bioinformatics is applied statistics and computing to biological science.</p>
+        <h1>archlinux安装</h1>
+<div class="highlight"><pre><span class="cp"># u盘启动后</span>
+<span class="cp"># 连接网络</span>
+<span class="n">wifi</span><span class="o">-</span><span class="n">memu</span>
+<span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda1</span> <span class="o">/</span><span class="n">mnt</span>
+<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">home</span>
+<span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda2</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">home</span>
+<span class="cp"># 修改中国镜像源,如163.com</span>
+<span class="n">vi</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">pacman</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">mirrorlist</span>
+<span class="n">pacstrap</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">mnt</span> <span class="n">base</span> <span class="n">base</span><span class="o">-</span><span class="n">devel</span>
+<span class="cp">#生成挂载文件fstab</span>
+<span class="n">genfstab</span> <span class="o">-</span><span class="n">U</span> <span class="o">/</span><span class="n">mnt</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
+</pre></div>
+
+
+<h2>archlinux 初步配置</h2>
+<div class="highlight"><pre><span class="cp">#切换到archlinux</span>
+<span class="n">arch</span><span class="o">-</span><span class="n">chroot</span> <span class="o">/</span><span class="n">mnt</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
+</pre></div>
+
+
+<ul>
+<li>本地语言</li>
+</ul>
+<div class="highlight"><pre><span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">gen</span>
+    <span class="n">en_US</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+    <span class="n">zh_CN</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+
+<span class="cp">#生效</span>
+<span class="n">locale</span><span class="o">-</span><span class="n">gen</span>
+<span class="n">echo</span> <span class="n">LANG</span><span class="o">=</span><span class="n">en_US</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">conf</span>
+</pre></div>
+
+
 
     </div>
-    <p class="readmore"><a href="/bioinfo.html">Read More</a></p>
+    <p class="readmore"><a href="/archlinux.html">Read More</a></p>
 </div>
 
 <div class="page-navigator">
@@ -134,20 +166,21 @@ git push origin master
         <li class="category-list-item"><a class="category-list-link" href="/category/linux.html">linux</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/lu-you-qi.html">路由器</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/operation.html">operation</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/sheng-xin.html">生信</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji.html">统计</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/xi-tong-yun-wei.html">系统运维</a></li>
     </ul>
 </div><div class="widget">
     <div class="widget-title"><i class="fa fa-star-o"> Tags</i></div>
     <div class="tagcloud">
     <a href="/tag/git.html" style="font-size: 12px">git</a>
     <a href="/tag/r.html" style="font-size: 12px">R</a>
-    <a href="/tag/awesome.html" style="font-size: 12px">awesome</a>
-    <a href="/tag/interest.html" style="font-size: 12px">interest</a>
     <a href="/tag/operation.html" style="font-size: 12px">operation</a>
+    <a href="/tag/interest.html" style="font-size: 12px">interest</a>
+    <a href="/tag/awesome.html" style="font-size: 12px">awesome</a>
     <a href="/tag/tennis.html" style="font-size: 12px">tennis</a>
     <a href="/tag/linux.html" style="font-size: 12px">linux</a>
     <a href="/tag/ge-ren.html" style="font-size: 12px">个人</a>
+    <a href="/tag/mount.html" style="font-size: 12px">mount</a>
     </div>
 </div><div class="widget">
     <div class="widget-title"><i class="fa fa-file-o"> Recent</i></div>
@@ -157,9 +190,6 @@ git push origin master
         </li>
         <li class="post-list-item">
         <a class="post-list-link" href="/meta.html">meta Analysis</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/bioinfo.html">生物信息</a>
         </li>
         <li class="post-list-item">
         <a class="post-list-link" href="/archlinux.html">archlinux安装与配置</a>
@@ -181,6 +211,9 @@ git push origin master
         </li>
         <li class="post-list-item">
         <a class="post-list-link" href="/mine.html">之感</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/mount.html">My title</a>
         </li>
     </ul>
 </div><div class="widget">

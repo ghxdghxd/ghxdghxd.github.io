@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-02-05T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="https://ghxdghxd.github.io/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-02-03T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="https://ghxdghxd.github.io/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git clone &amp;lt;repository&amp;gt; --recursive 递归的方式克隆整个项目
 git submodule add &amp;lt;repository&amp;gt;&amp;lt;path&amp;gt; 添加子模块
 git submodule init 初始化子模块
@@ -165,21 +165,7 @@ dmres&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;rma.uni&lt;span class="p"&gt;(&
 pdf&lt;span class="p"&gt;()&lt;/span&gt;
 forest&lt;span class="p"&gt;(&lt;/span&gt;dmres&lt;span class="p"&gt;,&lt;/span&gt; atransf&lt;span class="o"&gt;=&lt;/span&gt;exp&lt;span class="p"&gt;,&lt;/span&gt; showweights &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k-Variable"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; mlab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;rsid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; slab &lt;span class="o"&gt;=&lt;/span&gt; paste0&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;study&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 dev.off&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category></entry><entry><title>生物信息</title><link href="https://ghxdghxd.github.io/bioinfo.html" rel="alternate"></link><published>2018-01-03T10:20:00+08:00</published><updated>2018-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-01-03:/bioinfo.html</id><summary type="html">&lt;p&gt;生物信息学&lt;/p&gt;</summary><content type="html">&lt;h1&gt;What is Bioinfomatics&lt;/h1&gt;
-&lt;p&gt;Bioinformatics is an interdisciplinary field that develops methods and software tools for understanding biological data.As an interdisciplinary field of science, bioinformatics combines Computer Science, Biology, Mathematics, and Engineering to analyze and interpret biological data. Bioinformatics has been used for in silico analyses of biological queries using mathematical and statistical techniques. More broadly, bioinformatics is applied statistics and computing to biological science.&lt;/p&gt;
-&lt;!--more--&gt;
-
-&lt;p&gt;Bioinformatics is both an umbrella term for the body of biological studies that use computer programming as part of their methodology, as well as a reference to specific analysis "pipelines" that are repeatedly used, particularly in the field of genomics. Common uses of bioinformatics include the identification of candidate genes and single nucleotide polymorphisms (SNPs). Often, such identification is made with the aim of better understanding the genetic basis of disease, unique adaptations, desirable properties (esp. in agricultural species), or differences between populations. In a less formal way, bioinformatics also tries to understand the organisational principles within nucleic acid and protein sequences, called proteomics.&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-&lt;p&gt;big data is noisy datasets
-大数据就像是一片脏乱的海，
-实验科学是钓鱼(bioexperiment fishes with hook)，生物信息是网鱼(bioinformatics fishes with nets)。&lt;/p&gt;
-&lt;p&gt;move the ships, fishing net&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id="fn-1"&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</content><category term="awesome"></category><category term="interest"></category></entry><entry><title>archlinux安装与配置</title><link href="https://ghxdghxd.github.io/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;archlinux安装&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category></entry><entry><title>archlinux安装与配置</title><link href="https://ghxdghxd.github.io/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;archlinux安装&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# u盘启动后&lt;/span&gt;
 &lt;span class="cp"&gt;# 连接网络&lt;/span&gt;
 &lt;span class="n"&gt;wifi&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;memu&lt;/span&gt;
@@ -870,4 +856,44 @@ git push origin dev:develop             &lt;span class="c"&gt;# 本地分支提�
 &lt;li&gt;最好的修养，是明知不问&lt;/li&gt;
 &lt;li&gt;健康大于一切&lt;/li&gt;
 &lt;li&gt;活得太过自私，想得太过周全，倒想糊涂一世，只在聪明一时，难在取舍&lt;/li&gt;
-&lt;/ol&gt;</content><category term="个人"></category></entry></feed>
+&lt;/ol&gt;</content><category term="个人"></category></entry><entry><title>My title</title><link href="https://ghxdghxd.github.io/mount.html" rel="alternate"></link><published>2014-01-03T00:20:00+08:00</published><updated>2017-10-21T20:52:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-01-03:/mount.html</id><summary type="html">&lt;p&gt;mount挂载说明&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/etc/fstab&lt;/h1&gt;
+&lt;p&gt;运维都知道的文件，若想把mount的disk和dir设置为每次开机自动加载，那么就要把相关信息写到这个文件中。当用”mount -a“命令自动mount的时候，也会去读这个文件。例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto 0 2
+&lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto 0 2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;/etc/mtab&lt;/h1&gt;
+&lt;p&gt;这个文件主要是用mount命令的时候，系统根据实际mount的情况生成的数据，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;/dev/sdb1 /hadoop/9 ext3 rw,noatime,nodiratime 0 0
+/dev/sdc1 /hadoop/10 ext3 rw,noatime,nodiratime 0 0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;/proc/mounts&lt;/h1&gt;
+&lt;p&gt;这个文件是/proc/self/mounts的软链接，/proc下面的文件都是保存在内存中的，是内核自动生成的。所以/proc/mounts比/etc/mtab文件能更加真实的反映当前mount的情况&lt;/p&gt;
+&lt;h1&gt;场景应用：&lt;/h1&gt;
+&lt;p&gt;服务器中有一块盘因为有坏道，被umount了，通过"df -h"就查看不到这块盘的信息了。
+或者你使用"chmod 000 /dir",把这块盘设为不能读不能写。
+这时如果你管理了1000台服务器，你需要知道你的服务器中哪些盘是被umount了，你会怎么做？
+这里分享一个SHELL脚本，可以给你提供思路：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;function &lt;/span&gt;check_disks &lt;span class="o"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;for &lt;/span&gt;m in &lt;span class="sb"&gt;`&lt;/span&gt;awk &lt;span class="s1"&gt;&amp;#39;$3~/ext3/ {printf&amp;quot; %s &amp;quot;,$2}&amp;#39;&lt;/span&gt; /etc/fstab&lt;span class="sb"&gt;`&lt;/span&gt; ; &lt;span class="k"&gt;do&lt;/span&gt;
+&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;fsdev&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="nv"&gt;fsdev&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;awk -v &lt;span class="nv"&gt;m&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$m&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;$2==m {print $1}&amp;#39;&lt;/span&gt; /proc/mounts&lt;span class="sb"&gt;`&lt;/span&gt;;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="s2"&gt;&amp;quot;$fsdev&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; ; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="k"&gt;      &lt;/span&gt;&lt;span class="nv"&gt;msg_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$msg_ $m(u)&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;
+&lt;span class="k"&gt;      &lt;/span&gt;&lt;span class="nv"&gt;msg_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$msg_`awk -v m=$m &amp;#39;$2==m { if ( $4 ~ /^ro,/ ) {printf&amp;quot;&lt;/span&gt;%s&lt;span class="o"&gt;(&lt;/span&gt;ro&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;,$2 } ; }&amp;#39; /proc/mounts`&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="k"&gt;  done&lt;/span&gt;
+&lt;span class="k"&gt;  if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="s2"&gt;&amp;quot;$msg_&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; ; &lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;disks ok&amp;quot;&lt;/span&gt; ; &lt;span class="nb"&gt;exit &lt;/span&gt;0
+  &lt;span class="k"&gt;else&lt;/span&gt;
+&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$msg_&amp;quot;&lt;/span&gt; ; &lt;span class="nb"&gt;exit &lt;/span&gt;2
+  &lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;脚本首先通过比较/etc/fstab和/proc/mounts中的不同之处，得到被umount的盘，然后再把ro(read only)的盘也分析出来。&lt;/p&gt;</content><category term="linux"></category><category term="mount"></category></entry></feed>

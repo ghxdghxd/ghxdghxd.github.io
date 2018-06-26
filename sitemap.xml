@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/</loc>
-<lastmod>2018-06-22T15:22:00-00:00</lastmod>
+<lastmod>2018-06-26T15:37:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/archives.html</loc>
-<lastmod>2018-06-22T15:22:00-00:00</lastmod>
+<lastmod>2018-06-26T15:37:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/tags.html</loc>
-<lastmod>2018-06-22T15:22:00-00:00</lastmod>
+<lastmod>2018-06-26T15:37:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/categories.html</loc>
-<lastmod>2018-06-22T15:22:00-00:00</lastmod>
+<lastmod>2018-06-26T15:37:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -48,13 +48,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://ghxdghxd.github.io/meta.html</loc>
 <lastmod>2018-02-03T19:30:00+08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-
-<url>
-<loc>https://ghxdghxd.github.io/bioinfo.html</loc>
-<lastmod>2018-02-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
@@ -109,6 +102,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://ghxdghxd.github.io/mount.html</loc>
+<lastmod>2017-10-21T20:52:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>https://ghxdghxd.github.io/category/coding.html</loc>
 <lastmod>2017-02-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -151,15 +151,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/category/sheng-xin.html</loc>
-<lastmod>2018-02-05T19:30:00+08:06</lastmod>
+<loc>https://ghxdghxd.github.io/category/tong-ji.html</loc>
+<lastmod>2018-02-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/category/tong-ji.html</loc>
-<lastmod>2018-02-03T19:30:00+08:06</lastmod>
+<loc>https://ghxdghxd.github.io/category/xi-tong-yun-wei.html</loc>
+<lastmod>2017-10-21T20:52:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -179,22 +179,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/tag/awesome.html</loc>
-<lastmod>2018-02-05T19:30:00+08:06</lastmod>
+<loc>https://ghxdghxd.github.io/tag/operation.html</loc>
+<lastmod>2017-12-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/tag/interest.html</loc>
-<lastmod>2018-02-05T19:30:00+08:06</lastmod>
+<lastmod>2017-12-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/tag/operation.html</loc>
-<lastmod>2017-12-05T19:30:00+08:06</lastmod>
+<loc>https://ghxdghxd.github.io/tag/awesome.html</loc>
+<lastmod>2017-11-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -208,7 +208,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/tag/linux.html</loc>
-<lastmod>2017-01-03T19:30:00+08:06</lastmod>
+<lastmod>2017-10-21T20:52:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -221,8 +221,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://ghxdghxd.github.io/tag/mount.html</loc>
+<lastmod>2017-10-21T20:52:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://ghxdghxd.github.io/author/jt-guo.html</loc>
-<lastmod>2018-02-05T19:30:00+08:06</lastmod>
+<lastmod>2018-02-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

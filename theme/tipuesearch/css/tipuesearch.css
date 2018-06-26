@@ -103,16 +103,6 @@ http://www.tipue.com/search
     outline: 0;   
 }
  
-.tipue_search_button:before { /* left arrow */
-    content: '';
-    position: absolute;
-    border-width: 8px 8px 8px 0;
-    border-style: solid solid solid none;
-    border-color: transparent #0073c6 transparent;
-    top: 12px;
-    left: -6px;
-}
- 
 .tipue_search_button:hover:before{
     border-right-color: #0073c6;
 }
