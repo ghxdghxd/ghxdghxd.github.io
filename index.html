@@ -51,15 +51,13 @@
     </div>
     <div class="post-meta">2018-02-03</div>
     <div class="post-content">
-        <h1>常用命令</h1>
+        <html><body><h1>常用命令</h1>
 <div class="highlight"><pre><span></span>git clone &lt;repository&gt; --recursive 递归的方式克隆整个项目
 git submodule add &lt;repository&gt;&lt;path&gt; 添加子模块
 git submodule init 初始化子模块
 git submodule update 更新子模块
 git submodule foreach git pull 拉取所有子模块
 </pre></div>
-
-
 <h2>如何使用</h2>
 <h3>1. 创建带子模块的版本库</h3>
 <p>例如我们要创建如下结构的项目</p>
@@ -67,19 +65,15 @@ git submodule foreach git pull 拉取所有子模块
     <span class="p">|</span>--moduleA
     <span class="p">|</span>--readme.txt
 </pre></div>
-
-
 <p>创建project版本库，并提交readme.txt文件</p>
 <div class="highlight"><pre><span></span>git init --bare project.git
 git clone project.git project1cd project1
-echo<span class="s2">&quot;This is a project.&quot;</span> &gt; readme.txt
+echo<span class="s2">"This is a project."</span> &gt; readme.txt
 git add .
-git commit -m <span class="s2">&quot;add readme.txt&quot;</span>
+git commit -m <span class="s2">"add readme.txt"</span>
 git push origin master
 <span class="nb">cd</span> ..
 </pre></div>
-
-
 
     </div>
     <p class="readmore"><a href="/git-submodule.html">Read More</a></p>
@@ -92,16 +86,15 @@ git push origin master
     </div>
     <div class="post-meta">2018-02-03</div>
     <div class="post-content">
-        <h1>metafor document</h1>
+        <html><body><h1>metafor document</h1>
 <ul>
 <li>An Overview of Functions in the metafor Package</li>
 </ul>
-<p>{% pdf /documents/metafor_diagram.pdf %}
-<a href="/documents/metafor_diagram.pdf">pdf</a></p>
+<p><a href="/documents/metafor_diagram.pdf"><img alt="metafor diagram" src="https://ghxdghxd.github.io/__pdf_previews__/documents/metafor_diagram.pdf.png"/></a></p>
 <ul>
 <li>Viechtbauer gesis ma with metafor</li>
 </ul>
-<p>{% pdf /documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf %}</p>
+<p><a href="/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf"><img alt="talks_2016_viechtbauer_gesis_ma_with_metafor" src="https://ghxdghxd.github.io/__pdf_previews__/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf.png"/></a></p>
 
     </div>
     <p class="readmore"><a href="/meta.html">Read More</a></p>
@@ -114,7 +107,7 @@ git push origin master
     </div>
     <div class="post-meta">2017-12-03</div>
     <div class="post-content">
-        <h1>archlinux安装</h1>
+        <html><body><h1>archlinux安装</h1>
 <div class="highlight"><pre><span></span><span class="c1"># u盘启动后</span>
 <span class="c1"># 连接网络</span>
 wifi-memu
@@ -127,14 +120,10 @@ pacstrap -i /mnt base base-devel
 <span class="c1">#生成挂载文件fstab</span>
 genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </pre></div>
-
-
 <h2>archlinux 初步配置</h2>
 <div class="highlight"><pre><span></span><span class="c1">#切换到archlinux</span>
 arch-chroot /mnt /bin/bash
 </pre></div>
-
-
 <ul>
 <li>本地语言</li>
 </ul>
@@ -146,8 +135,6 @@ arch-chroot /mnt /bin/bash
 locale-gen
 <span class="nb">echo</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 &gt; /etc/locale.conf
 </pre></div>
-
-
 
     </div>
     <p class="readmore"><a href="/archlinux.html">Read More</a></p>
@@ -261,8 +248,8 @@ locale-gen
     </div>
 
 <a id="rocket" href="#top" class="show"></a>
-<script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
+<script type="text/javascript" src="/theme/js/totop.js" async></script><!-- <script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
 <script type="text/javascript" src="/theme/js/fancybox.js" async></script>
-<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" /> -->
 
 </body>

@@ -50,9 +50,9 @@
     </div>
     <div class="post-meta">2017-11-03</div>
     <div class="post-content">
-        <h1>docker</h1>
+        <html><body><h1>docker</h1>
 <h2>centos yum install docker</h2>
-<div class="highlight"><pre><span></span>tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-&#39;EOF&#39;</span>
+<div class="highlight"><pre><span></span>tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-'EOF'</span>
 <span class="s">[dockerrepo]</span>
 <span class="s">name=Docker Repository</span>
 <span class="s">baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/</span>
@@ -61,18 +61,16 @@
 <span class="s">gpgkey=https://yum.dockerproject.org/gpg</span>
 <span class="s">EOF</span>
 
-sed -i <span class="s1">&#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39;</span> /etc/sysconfig/docker
+sed -i <span class="s1">'s/other_args=\"\"/other_args=\"--graph=\/share\/apps\/docker\"/g'</span> /etc/sysconfig/docker
 
 <span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">8</span><span class="sb">`</span><span class="p">;</span>
 <span class="k">do</span>
     sudo scp /etc/yum.repos.d/docker.repo compute-0-<span class="nv">$i</span>:/etc/yum.repos.d/docker.repo
 <span class="k">done</span>
 
-rocks run host <span class="s2">&quot;yum install docker-engine&quot;</span>
-rocks run host <span class="s2">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span>
+rocks run host <span class="s2">"yum install docker-engine"</span>
+rocks run host <span class="s2">"sed -i 's/other_args=\"\"/other_args=\"--graph=\/share\/apps\/docker\"/g' /etc/sysconfig/docker"</span>
 </pre></div>
-
-
 
     </div>
     <p class="readmore"><a href="/docker.html">Read More</a></p>
@@ -212,8 +210,8 @@ rocks run host <span class="s2">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/ot
     </div>
 
 <a id="rocket" href="#top" class="show"></a>
-<script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
+<script type="text/javascript" src="/theme/js/totop.js" async></script><!-- <script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
 <script type="text/javascript" src="/theme/js/fancybox.js" async></script>
-<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" /> -->
 
 </body>

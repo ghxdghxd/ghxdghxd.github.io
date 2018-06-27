@@ -53,20 +53,16 @@ mount | iKnowledgeBase    </title>
     <span> | </span> <a href="/category/xi-tong-guan-li.html">系统管理</a>
     </div>
     <div class="post-content">
-        <h1>/etc/fstab</h1>
+        <html><body><h1>/etc/fstab</h1>
 <p>运维都知道的文件，若想把mount的disk和dir设置为每次开机自动加载，那么就要把相关信息写到这个文件中。当用”mount -a“命令自动mount的时候，也会去读这个文件。例如：</p>
 <div class="highlight"><pre><span></span><span class="nv">LABEL</span><span class="o">=</span>/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto <span class="m">0</span> <span class="m">2</span>
 <span class="nv">LABEL</span><span class="o">=</span>/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto <span class="m">0</span> <span class="m">2</span>
 </pre></div>
-
-
 <h1>/etc/mtab</h1>
 <p>这个文件主要是用mount命令的时候，系统根据实际mount的情况生成的数据，例如：</p>
 <div class="highlight"><pre><span></span>/dev/sdb1 /hadoop/9 ext3 rw,noatime,nodiratime <span class="m">0</span> <span class="m">0</span>
 /dev/sdc1 /hadoop/10 ext3 rw,noatime,nodiratime <span class="m">0</span> <span class="m">0</span>
 </pre></div>
-
-
 <h1>/proc/mounts</h1>
 <p>这个文件是/proc/self/mounts的软链接，/proc下面的文件都是保存在内存中的，是内核自动生成的。所以/proc/mounts比/etc/mtab文件能更加真实的反映当前mount的情况</p>
 <h1>场景应用：</h1>
@@ -75,25 +71,23 @@ mount | iKnowledgeBase    </title>
 这时如果你管理了1000台服务器，你需要知道你的服务器中哪些盘是被umount了，你会怎么做？
 这里分享一个SHELL脚本，可以给你提供思路：</p>
 <div class="highlight"><pre><span></span><span class="k">function</span> check_disks <span class="o">{</span>
-  <span class="k">for</span> m in <span class="sb">`</span>awk <span class="s1">&#39;$3~/ext3/ {printf&quot; %s &quot;,$2}&#39;</span> /etc/fstab<span class="sb">`</span> <span class="p">;</span> <span class="k">do</span>
-    <span class="nv">fsdev</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-    <span class="nv">fsdev</span><span class="o">=</span><span class="sb">`</span>awk -v <span class="nv">m</span><span class="o">=</span><span class="nv">$m</span> <span class="s1">&#39;$2==m {print $1}&#39;</span> /proc/mounts<span class="sb">`</span><span class="p">;</span>
-    <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;</span><span class="nv">$fsdev</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
-      <span class="nv">msg_</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$msg_</span><span class="s2"> </span><span class="nv">$m</span><span class="s2">(u)&quot;</span>
+  <span class="k">for</span> m in <span class="sb">`</span>awk <span class="s1">'$3~/ext3/ {printf" %s ",$2}'</span> /etc/fstab<span class="sb">`</span> <span class="p">;</span> <span class="k">do</span>
+    <span class="nv">fsdev</span><span class="o">=</span><span class="s2">""</span>
+    <span class="nv">fsdev</span><span class="o">=</span><span class="sb">`</span>awk -v <span class="nv">m</span><span class="o">=</span><span class="nv">$m</span> <span class="s1">'$2==m {print $1}'</span> /proc/mounts<span class="sb">`</span><span class="p">;</span>
+    <span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$fsdev</span><span class="s2">"</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+      <span class="nv">msg_</span><span class="o">=</span><span class="s2">"</span><span class="nv">$msg_</span><span class="s2"> </span><span class="nv">$m</span><span class="s2">(u)"</span>
     <span class="k">else</span>
-      <span class="nv">msg_</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$msg_</span><span class="s2">`awk -v m=</span><span class="nv">$m</span><span class="s2"> &#39;</span><span class="nv">$2</span><span class="s2">==m { if ( </span><span class="nv">$4</span><span class="s2"> ~ /^ro,/ ) {printf&quot;</span>%s<span class="o">(</span>ro<span class="o">)</span><span class="s2">&quot;,</span><span class="nv">$2</span><span class="s2"> } ; }&#39; /proc/mounts`&quot;</span>
+      <span class="nv">msg_</span><span class="o">=</span><span class="s2">"</span><span class="nv">$msg_</span><span class="s2">`awk -v m=</span><span class="nv">$m</span><span class="s2"> '</span><span class="nv">$2</span><span class="s2">==m { if ( </span><span class="nv">$4</span><span class="s2"> ~ /^ro,/ ) {printf"</span>%s<span class="o">(</span>ro<span class="o">)</span><span class="s2">",</span><span class="nv">$2</span><span class="s2"> } ; }' /proc/mounts`"</span>
     <span class="k">fi</span>
   <span class="k">done</span>
-  <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;</span><span class="nv">$msg_</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
-    <span class="nb">echo</span> <span class="s2">&quot;disks ok&quot;</span> <span class="p">;</span> <span class="nb">exit</span> <span class="m">0</span>
+  <span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$msg_</span><span class="s2">"</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">"disks ok"</span> <span class="p">;</span> <span class="nb">exit</span> <span class="m">0</span>
   <span class="k">else</span>
-    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$msg_</span><span class="s2">&quot;</span> <span class="p">;</span> <span class="nb">exit</span> <span class="m">2</span>
+    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$msg_</span><span class="s2">"</span> <span class="p">;</span> <span class="nb">exit</span> <span class="m">2</span>
   <span class="k">fi</span>
 <span class="o">}</span>
 </pre></div>
-
-
-<p>脚本首先通过比较/etc/fstab和/proc/mounts中的不同之处，得到被umount的盘，然后再把ro(read only)的盘也分析出来。</p>
+<p>脚本首先通过比较/etc/fstab和/proc/mounts中的不同之处，得到被umount的盘，然后再把ro(read only)的盘也分析出来。</p></body></html>
 
         <div class="post-nav">
             <a href="/R-and-Rstudio.html" class="next">R与Rstudio的安装过程（ubuntu）</a>
@@ -201,8 +195,8 @@ mount | iKnowledgeBase    </title>
     </div>
 
 <a id="rocket" href="#top" class="show"></a>
-<script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
+<script type="text/javascript" src="/theme/js/totop.js" async></script><!-- <script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
 <script type="text/javascript" src="/theme/js/fancybox.js" async></script>
-<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" /> -->
 
 </body>

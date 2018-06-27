@@ -53,20 +53,18 @@ meta Analysis | iKnowledgeBase    </title>
     <span> | </span> <a href="/category/tong-ji-jian-mo.html">统计建模</a>
     </div>
     <div class="post-content">
-        <h1>metafor document</h1>
+        <html><body><h1>metafor document</h1>
 <ul>
 <li>An Overview of Functions in the metafor Package</li>
 </ul>
-<p>{% pdf /documents/metafor_diagram.pdf %}
-<a href="/documents/metafor_diagram.pdf">pdf</a></p>
+<p><a href="/documents/metafor_diagram.pdf"><img alt="metafor diagram" src="https://ghxdghxd.github.io/__pdf_previews__/documents/metafor_diagram.pdf.png"/></a></p>
 <ul>
 <li>Viechtbauer gesis ma with metafor</li>
 </ul>
-<p>{% pdf /documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf %}</p>
+<p><a href="/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf"><img alt="talks_2016_viechtbauer_gesis_ma_with_metafor" src="https://ghxdghxd.github.io/__pdf_previews__/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf.png"/></a></p>
 <!--more-->
-
 <h2>meta-analysis from odds ratios and confidence intervals using metafor</h2>
-<div class="highlight"><pre><span></span>dm<span class="o">&lt;-</span><span class="kp">structure</span><span class="p">(</span><span class="kt">list</span><span class="p">(</span>or <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1.6</span><span class="p">,</span> <span class="m">4.4</span><span class="p">,</span> <span class="m">1.14</span><span class="p">,</span> <span class="m">1.3</span><span class="p">,</span> <span class="m">4.5</span><span class="p">),</span> cill <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1.2</span><span class="p">,</span> <span class="m">2.9</span><span class="p">,</span> <span class="m">0.45</span><span class="p">,</span> <span class="m">0.6</span><span class="p">,</span> <span class="m">3.2</span><span class="p">),</span> ciul <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">6.9</span><span class="p">,</span> <span class="m">2.86</span><span class="p">,</span> <span class="m">2.7</span><span class="p">,</span> <span class="m">6.1</span><span class="p">)),</span> <span class="m">.</span>Names <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;or&quot;</span><span class="p">,</span> <span class="s">&quot;cill&quot;</span><span class="p">,</span> <span class="s">&quot;ciul&quot;</span><span class="p">),</span> class <span class="o">=</span> <span class="s">&quot;data.frame&quot;</span><span class="p">,</span> row.names <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="m">-5L</span><span class="p">))</span>
+<div class="highlight"><pre><span></span>dm<span class="o">&lt;-</span><span class="kp">structure</span><span class="p">(</span><span class="kt">list</span><span class="p">(</span>or <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1.6</span><span class="p">,</span> <span class="m">4.4</span><span class="p">,</span> <span class="m">1.14</span><span class="p">,</span> <span class="m">1.3</span><span class="p">,</span> <span class="m">4.5</span><span class="p">),</span> cill <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1.2</span><span class="p">,</span> <span class="m">2.9</span><span class="p">,</span> <span class="m">0.45</span><span class="p">,</span> <span class="m">0.6</span><span class="p">,</span> <span class="m">3.2</span><span class="p">),</span> ciul <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">6.9</span><span class="p">,</span> <span class="m">2.86</span><span class="p">,</span> <span class="m">2.7</span><span class="p">,</span> <span class="m">6.1</span><span class="p">)),</span> <span class="m">.</span>Names <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"or"</span><span class="p">,</span> <span class="s">"cill"</span><span class="p">,</span> <span class="s">"ciul"</span><span class="p">),</span> class <span class="o">=</span> <span class="s">"data.frame"</span><span class="p">,</span> row.names <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="m">-5L</span><span class="p">))</span>
 
 dm<span class="o">$</span>logor<span class="o">&lt;-</span><span class="kp">log</span><span class="p">(</span>dm<span class="o">$</span>or<span class="p">)</span>
 dm<span class="o">$</span>se1<span class="o">&lt;-</span><span class="p">(</span><span class="kp">log</span><span class="p">(</span>dm<span class="o">$</span>ciul<span class="p">)</span><span class="o">-</span>dm<span class="o">$</span>logor<span class="p">)</span><span class="o">/</span><span class="m">1.96</span>
@@ -76,9 +74,9 @@ dm<span class="o">$</span>se<span class="o">&lt;-</span><span class="p">(</span>
 <span class="kn">library</span><span class="p">(</span>metafor<span class="p">)</span>
 dmres<span class="o">&lt;-</span>rma.uni<span class="p">(</span>yi<span class="o">=</span>logor<span class="p">,</span> sei<span class="o">=</span>se<span class="p">,</span> data<span class="o">=</span>dm<span class="p">)</span>
 pdf<span class="p">()</span>
-forest<span class="p">(</span>dmres<span class="p">,</span> atransf<span class="o">=</span><span class="kp">exp</span><span class="p">,</span> showweights <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> mlab <span class="o">=</span> <span class="s">&quot;rsid&quot;</span><span class="p">,</span> slab <span class="o">=</span> <span class="kp">paste0</span><span class="p">(</span><span class="s">&quot;study&quot;</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">))</span>
+forest<span class="p">(</span>dmres<span class="p">,</span> atransf<span class="o">=</span><span class="kp">exp</span><span class="p">,</span> showweights <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> mlab <span class="o">=</span> <span class="s">"rsid"</span><span class="p">,</span> slab <span class="o">=</span> <span class="kp">paste0</span><span class="p">(</span><span class="s">"study"</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">))</span>
 dev.off<span class="p">()</span>
-</pre></div>
+</pre></div></body></html>
 
         <div class="post-nav">
             <a href="/archlinux.html" class="pre">archlinux安装与配置</a>
@@ -187,8 +185,8 @@ dev.off<span class="p">()</span>
     </div>
 
 <a id="rocket" href="#top" class="show"></a>
-<script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
+<script type="text/javascript" src="/theme/js/totop.js" async></script><!-- <script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
 <script type="text/javascript" src="/theme/js/fancybox.js" async></script>
-<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" /> -->
 
 </body>

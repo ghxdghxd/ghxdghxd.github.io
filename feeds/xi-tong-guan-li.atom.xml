@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 系统管理</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/xi-tong-guan-li.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2017-12-05T19:30:00+08:00</updated><entry><title>archlinux安装与配置</title><link href="https://ghxdghxd.github.io/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;archlinux安装&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 系统管理</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/xi-tong-guan-li.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2017-12-05T19:30:00+08:00</updated><entry><title>archlinux安装与配置</title><link href="https://ghxdghxd.github.io/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;archlinux安装&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# u盘启动后&lt;/span&gt;
 &lt;span class="c1"&gt;# 连接网络&lt;/span&gt;
 wifi-memu
@@ -12,14 +12,10 @@ pacstrap -i /mnt base base-devel
 &lt;span class="c1"&gt;#生成挂载文件fstab&lt;/span&gt;
 genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;archlinux 初步配置&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#切换到archlinux&lt;/span&gt;
 arch-chroot /mnt /bin/bash
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;ul&gt;
 &lt;li&gt;本地语言&lt;/li&gt;
 &lt;/ul&gt;
@@ -31,10 +27,7 @@ arch-chroot /mnt /bin/bash
 locale-gen
 &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;en_US.UTF-8 &amp;gt; /etc/locale.conf
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;!--more--&gt;
-
 &lt;ul&gt;
 &lt;li&gt;时区&lt;/li&gt;
 &lt;/ul&gt;
@@ -45,8 +38,6 @@ tzselect
 &lt;span class="c1"&gt;#设置硬件时间&lt;/span&gt;
 hwclock --systohc --utc
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;ul&gt;
 &lt;li&gt;grub引导系统&lt;/li&gt;
 &lt;/ul&gt;
@@ -55,15 +46,11 @@ pacman -S grub efibootmgr
 grub-install --target&lt;span class="o"&gt;=&lt;/span&gt;i386-pc --recheck --debug /dev/sda
 grup-mkconfig -o /boot/grub/grub.cfg
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;ul&gt;
 &lt;li&gt;主机名&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; Garch &amp;gt;&amp;gt; /etc/hostname
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;ul&gt;
 &lt;li&gt;网络配置&lt;/li&gt;
 &lt;/ul&gt;
@@ -72,8 +59,6 @@ systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; dhcpcd.service
 &lt;span class="c1"&gt;# 无线&lt;/span&gt;
 pacman -S iw wpa_supplicant dialog
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;archlinux 配置&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 最小安装&lt;/span&gt;
 &lt;span class="c1"&gt;# X桌面&lt;/span&gt;
@@ -83,9 +68,9 @@ pacman -S xf86-video-ati
 pacman -S gnome gnome-tweak-tool
 pacman -S ttf-ubuntu
 &lt;span class="c1"&gt;# 可选&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="operation"></category><category term="interest"></category></entry><entry><title>docker安装与配置</title><link href="https://ghxdghxd.github.io/docker.html" rel="alternate"></link><published>2017-11-03T10:20:00+08:00</published><updated>2017-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-11-03:/docker.html</id><summary type="html">&lt;p&gt;docker的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;docker&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="operation"></category><category term="interest"></category></entry><entry><title>docker安装与配置</title><link href="https://ghxdghxd.github.io/docker.html" rel="alternate"></link><published>2017-11-03T10:20:00+08:00</published><updated>2017-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-11-03:/docker.html</id><summary type="html">&lt;p&gt;docker的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;docker&lt;/h1&gt;
 &lt;h2&gt;centos yum install docker&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tee /etc/yum.repos.d/docker.repo &lt;span class="s"&gt;&amp;lt;&amp;lt;-&amp;#39;EOF&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tee /etc/yum.repos.d/docker.repo &lt;span class="s"&gt;&amp;lt;&amp;lt;-'EOF'&lt;/span&gt;
 &lt;span class="s"&gt;[dockerrepo]&lt;/span&gt;
 &lt;span class="s"&gt;name=Docker Repository&lt;/span&gt;
 &lt;span class="s"&gt;baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/&lt;/span&gt;
@@ -94,20 +79,17 @@ pacman -S ttf-ubuntu
 &lt;span class="s"&gt;gpgkey=https://yum.dockerproject.org/gpg&lt;/span&gt;
 &lt;span class="s"&gt;EOF&lt;/span&gt;
 
-sed -i &lt;span class="s1"&gt;&amp;#39;s/other_args=\&amp;quot;\&amp;quot;/other_args=\&amp;quot;--graph=\/share\/apps\/docker\&amp;quot;/g&amp;#39;&lt;/span&gt; /etc/sysconfig/docker
+sed -i &lt;span class="s1"&gt;'s/other_args=\"\"/other_args=\"--graph=\/share\/apps\/docker\"/g'&lt;/span&gt; /etc/sysconfig/docker
 
 &lt;span class="k"&gt;for&lt;/span&gt; i in &lt;span class="sb"&gt;`&lt;/span&gt;seq &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="k"&gt;do&lt;/span&gt;
     sudo scp /etc/yum.repos.d/docker.repo compute-0-&lt;span class="nv"&gt;$i&lt;/span&gt;:/etc/yum.repos.d/docker.repo
 &lt;span class="k"&gt;done&lt;/span&gt;
 
-rocks run host &lt;span class="s2"&gt;&amp;quot;yum install docker-engine&amp;quot;&lt;/span&gt;
-rocks run host &lt;span class="s2"&gt;&amp;quot;sed -i &amp;#39;s/other_args=\&amp;quot;\&amp;quot;/other_args=\&amp;quot;--graph=\/share\/apps\/docker\&amp;quot;/g&amp;#39; /etc/sysconfig/docker&amp;quot;&lt;/span&gt;
+rocks run host &lt;span class="s2"&gt;"yum install docker-engine"&lt;/span&gt;
+rocks run host &lt;span class="s2"&gt;"sed -i 's/other_args=\"\"/other_args=\"--graph=\/share\/apps\/docker\"/g' /etc/sysconfig/docker"&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;!--more--&gt;
-
 &lt;h2&gt;手动安装&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 手动安装centos6.5 一些需要安装&lt;/span&gt;
 yum remove docker-engine
@@ -122,8 +104,6 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-
 yum install device-mapper-event-libs
 service docker restart
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;安装错误&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 下面错误：&lt;/span&gt;
 /usr/bin/docker: relocation error: /usr/bin/docker: symbol dm_task_get_info_with_deferred_remove, version Base not defined in file libdevmapper.so.1.02 with link &lt;span class="nb"&gt;time&lt;/span&gt; reference
@@ -132,14 +112,10 @@ fix: $ sudo yum install device-mapper-event-libs
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
 &lt;span class="c1"&gt;# 然后再安装&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;docker应用&lt;/h2&gt;
 &lt;h3&gt;启动docker&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;service docker start
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;添加用户&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 添加docker group：&lt;/span&gt;
 sudo groupadd docker
@@ -152,11 +128,9 @@ sudo service docker restart
 &lt;span class="c1"&gt;# 开机启动&lt;/span&gt;
 chkconfig docker on
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;修改镜像和容器的存放路径&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# /etc/sysconfig/docker加入：&lt;/span&gt;
-&lt;span class="nv"&gt;other_args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;--graph=/data/docker&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;other_args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"--graph=/data/docker"&lt;/span&gt;
 
 &lt;span class="c1"&gt;# 停止Docker服务&lt;/span&gt;
 service docker stop
@@ -169,8 +143,6 @@ service docker start
 &lt;span class="c1"&gt;# 测试Docker服务&lt;/span&gt;
 docker info
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;用法&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;查看镜像 docker images&lt;/li&gt;
@@ -180,7 +152,7 @@ docker info
 &lt;li&gt;将宿主机的/var/data挂载到容器中的/data: docker run -tdi -v /var/data:/data centos&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;如果ls: cannot open directory '.': Permission denied
-修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled&lt;/p&gt;</content><category term="docker"></category></entry><entry><title>终端显示颜色</title><link href="https://ghxdghxd.github.io/terminal-color.html" rel="alternate"></link><published>2017-01-03T10:20:00+08:00</published><updated>2017-01-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-03:/terminal-color.html</id><summary type="html">&lt;p&gt;终端显示颜色&lt;/p&gt;</summary><content type="html">&lt;p&gt;echo显示带颜色，需要使用参数-e
+修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="docker"></category></entry><entry><title>终端显示颜色</title><link href="https://ghxdghxd.github.io/terminal-color.html" rel="alternate"></link><published>2017-01-03T10:20:00+08:00</published><updated>2017-01-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-03:/terminal-color.html</id><summary type="html">&lt;p&gt;终端显示颜色&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;echo显示带颜色，需要使用参数-e
 格式如下:
 echo -e "\033[字背景颜色;文字颜色m字符串\033[0m"
 例如:
@@ -191,28 +163,25 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 2、文字颜色后面有个m
 3、字符串前后可以没有空格，如果有的话，输出也是同样有空格&lt;/p&gt;
 &lt;p&gt;下面看几个例子：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[30m 黑色字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[31m 红色字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[32m 绿色字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[33m 黄色字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[34m 蓝色字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[35m 紫色字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[36m 天蓝字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[37m 白色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[30m 黑色字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[31m 红色字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[32m 绿色字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[33m 黄色字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[34m 蓝色字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[35m 紫色字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[36m 天蓝字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[37m 白色字 \033[0m"&lt;/span&gt;
 
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[40;37m 黑底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[41;37m 红底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[42;37m 绿底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[43;37m 黄底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[44;37m 蓝底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[45;37m 紫底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[46;37m 天蓝底白字 \033[0m&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[47;30m 白底黑字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[40;37m 黑底白字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[41;37m 红底白字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[42;37m 绿底白字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[43;37m 黄底白字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[44;37m 蓝底白字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[45;37m 紫底白字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[46;37m 天蓝底白字 \033[0m"&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;"\033[47;30m 白底黑字 \033[0m"&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;!-- more --&gt;
-
 &lt;p&gt;控制选项说明 ：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -299,7 +268,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;td&gt;显示光标&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</content><category term="linux"></category><category term="shell"></category></entry><entry><title>登录终端信息</title><link href="https://ghxdghxd.github.io/terminal-announcement.html" rel="alternate"></link><published>2014-12-04T16:20:00+08:00</published><updated>2016-03-09T22:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/terminal-announcement.html</id><summary type="html">&lt;p&gt;登录终端显示提示信息&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/etc/issue&lt;/h1&gt;
+&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="shell"></category></entry><entry><title>登录终端信息</title><link href="https://ghxdghxd.github.io/terminal-announcement.html" rel="alternate"></link><published>2014-12-04T16:20:00+08:00</published><updated>2016-03-09T22:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/terminal-announcement.html</id><summary type="html">&lt;p&gt;登录终端显示提示信息&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;/etc/issue&lt;/h1&gt;
 &lt;p&gt;在终端接口登录时候的提示字符,例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;root@linux ~&lt;span class="o"&gt;]&lt;/span&gt; cat /etc/issue
 CentOS release &lt;span class="m"&gt;5&lt;/span&gt;.6 &lt;span class="o"&gt;(&lt;/span&gt;Final&lt;span class="o"&gt;)&lt;/span&gt;
@@ -316,16 +285,14 @@ issue内各代码说明：
 &lt;span class="se"&gt;\s&lt;/span&gt;  操作系统的名称
 &lt;span class="se"&gt;\v&lt;/span&gt;  操作系统的版本
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h1&gt;/etc/motd&lt;/h1&gt;
 &lt;p&gt;登录后的公告消息, 比如：系统将会在某个时间进行维护&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;root@linux ~&lt;span class="o"&gt;]&lt;/span&gt; vi /etc/motd
     Hello everyone,
     Our server will be maintained at
-    please don&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;t login at that time,thanks.
+    please don&lt;span class="err"&gt;'&lt;/span&gt;t login at that time,thanks.
     那么当用户登录的时候，就会显示设置的内容了。
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/system-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2017-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/system-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;h1&gt;1 服务器管理记录&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/system-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2017-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/system-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;1 服务器管理记录&lt;/h1&gt;
 &lt;h2&gt;1.1 清理内存&lt;/h2&gt;
 &lt;p&gt;echo 1 &amp;gt; /proc/sys/vm/drop_caches&lt;/p&gt;
 &lt;h2&gt;1.2 &lt;a href="terminal-announcement"&gt;登录显示信息&lt;/a&gt;&lt;/h2&gt;
@@ -360,55 +327,40 @@ passwd name
 usermod -g users name
 rocks sync users &lt;span class="c1"&gt;# 可更改/export/home/name 为 /home/name&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;5.ssh compute-0-* 要输入密码&lt;/p&gt;
-&lt;p&gt;rm -rf ~/.ssh   &lt;strong&gt;然后 退出登录 再登陆 会自动生成新密钥&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;rm -rf ~/.ssh &lt;strong&gt;然后 退出登录 再登陆 会自动生成新密钥&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;6.进入单用户模式&lt;/p&gt;
 &lt;p&gt;在倒计时5秒时，按任意键出现下图，
-&lt;strong&gt;选择如图，按e 进入编辑, 最后加上　１，　回车，　按b，root进入系统&lt;/strong&gt;
-&lt;img alt="图1" height="80%" src="images/manager1.png" width="80%"&gt;&lt;/p&gt;
+&lt;strong&gt;选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统&lt;/strong&gt;
+&lt;img alt="图1" height="80%" src="images/manager1.png" width="80%"/&gt;&lt;/p&gt;
 &lt;h2&gt;3.3 qmgr&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;qmgr -c &lt;span class="s2"&gt;&amp;quot;print server&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# 输出server的属性&lt;/span&gt;
-qmgr -c &lt;span class="s2"&gt;&amp;quot;set server query_other_jobs = true&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# qstat可以查看所有用户&lt;/span&gt;
-qmgr -c &lt;span class="s2"&gt;&amp;quot;set server auto_node_np = True&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# 自动更新节点线程数&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="centos"></category><category term="shell"></category><category term="hpc"></category><category term="rocks cluster"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="https://ghxdghxd.github.io/R-and-Rstudio.html" rel="alternate"></link><published>2014-02-03T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-02-03:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;ubuntu安装R与Rstudio的过程&lt;/p&gt;</summary><content type="html">&lt;h1&gt;install R&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;qmgr -c &lt;span class="s2"&gt;"print server"&lt;/span&gt; &lt;span class="c1"&gt;# 输出server的属性&lt;/span&gt;
+qmgr -c &lt;span class="s2"&gt;"set server query_other_jobs = true"&lt;/span&gt; &lt;span class="c1"&gt;# qstat可以查看所有用户&lt;/span&gt;
+qmgr -c &lt;span class="s2"&gt;"set server auto_node_np = True"&lt;/span&gt; &lt;span class="c1"&gt;# 自动更新节点线程数&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="centos"></category><category term="shell"></category><category term="hpc"></category><category term="rocks cluster"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="https://ghxdghxd.github.io/R-and-Rstudio.html" rel="alternate"></link><published>2014-02-03T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-02-03:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;ubuntu安装R与Rstudio的过程&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;install R&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;error&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;File failed to load: /extensions/MathZoom.js
-&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-I/share/apps/R_depends/include&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LDFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-L/share/apps/R_depends/lib&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"-I/share/apps/R_depends/include"&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LDFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"-L/share/apps/R_depends/lib"&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;!--more--&gt;
-
 &lt;h2&gt;./configure&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    ./configure --prefix&lt;span class="o"&gt;=&lt;/span&gt;/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;1. configure: error: No F77 compiler found&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install gfortran
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;2. configure: error: --with-readline&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install libreadline-dev
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;3. configure: error: --with-x=yes&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install libxt-dev
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;4. checking whether zlib support suffices&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install zlib1g-dev
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;5. checking whether bzip2 support suffices&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    wget &amp;lt;http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz&amp;gt;
     tar xvf bzip2-1.0.6.tar.gz
@@ -421,13 +373,9 @@ qmgr -c &lt;span class="s2"&gt;&amp;quot;set server auto_node_np = True&amp;quot
     make install &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$R_depends&lt;/span&gt;
     install bzip2-lib
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;6. configure: error: "liblzma&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install liblzma-dev
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;7. configure: error: pcre &amp;gt;= 8.10&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz
     tar xvf pcre-8.39.tar.gz
@@ -435,8 +383,6 @@ qmgr -c &lt;span class="s2"&gt;&amp;quot;set server auto_node_np = True&amp;quot
     ./configure --enable-utf8 --prefix&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$R_depends&lt;/span&gt;
     make &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;amp&lt;span class="p"&gt;;&lt;/span&gt; sudo make install
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;8. libcurl &amp;gt;= 7.28.0 library and headers are required with support for https&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    wget https://www.openssl.org/source/openssl-1.1.0b.tar.gz
     tar xvf openssl-1.1.0b.tar.gz
@@ -449,18 +395,12 @@ qmgr -c &lt;span class="s2"&gt;&amp;quot;set server auto_node_np = True&amp;quot
     ./configure --with-ssl&lt;span class="o"&gt;=&lt;/span&gt;/usr/local/ssl/
     make &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;amp&lt;span class="p"&gt;;&lt;/span&gt; sudo make install
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;9.configure: WARNING: you cannot build info or HTML versions of the R manuals&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install texinfo
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;10. configure: WARNING: you cannot build PDF versions of the R manuals, configure: WARNING: you cannot build PDF versions of vignettes and help pages&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install texlive
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;11. configure: WARNING: neither inconsolata.sty nor zi4.sty found: PDF vignettes and package manuals will not be rendered optimally&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    wget &amp;lt;http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip&amp;gt;
     sudo mv inconsolata.tds.zip /usr/share/texlive/texmf-dist/tex/latex
@@ -468,49 +408,37 @@ qmgr -c &lt;span class="s2"&gt;&amp;quot;set server auto_node_np = True&amp;quot
     unzip inconsolata.tds.zip
     sudo mktexlsr
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;12. 本版本不支持png&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install libpng16-dev
     sudo apt-get install libtiff5-dev
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;make&lt;/h2&gt;
 &lt;h3&gt;1./usr/local/lib/libbz2.a: 无法添加符号: 错误的值&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    rm /usr/local/lib/libbz2.a
     wget &amp;lt;http://zlib.net/zlib-1.2.8.tar.gz&amp;gt;
     tar xvf zlib-1.2.8.tar.gz
     &lt;span class="nb"&gt;cd&lt;/span&gt; zlib-1.2.8
-    &lt;span class="nv"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;gcc -fPIC&amp;#39;&lt;/span&gt;
+    &lt;span class="nv"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'gcc -fPIC'&lt;/span&gt;
     ./configure&lt;span class="p"&gt;;&lt;/span&gt; make &lt;span class="nb"&gt;test&lt;/span&gt;
     sudo make install
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;2./usr/bin/ld: cannot find -lbz2 ;  collect2: error: ld returned 1 exit status&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install libbz2-dev
     &lt;span class="c1"&gt;# 会用到&lt;/span&gt;
-    make &lt;span class="nv"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;gcc -fPIC&amp;#39;&lt;/span&gt;
+    make &lt;span class="nv"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'gcc -fPIC'&lt;/span&gt;
     make install &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/software/packages
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;make install&lt;/h2&gt;
 &lt;h3&gt;1.conftest.c:1:17: fatal error: jni.h&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="nb"&gt;cd&lt;/span&gt; R-3.3.1/doc
     wget &amp;lt;https://cran.r-project.org/doc/manuals/r-release/NEWS.pdf&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;install rstudio&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install libjpeg62-dev
     sudo apt-get install libgstreamer0.10-0
     sudo apt-get install libgstreamer-plugins-base0.10-0
-    &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;RSTUDIO_WHICH_R&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/opt/R-3.3.1/bin/R&amp;quot;&lt;/span&gt; 添加到/etc/profile或~/.profile
+    &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;RSTUDIO_WHICH_R&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"/opt/R-3.3.1/bin/R"&lt;/span&gt; 添加到/etc/profile或~/.profile
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;run R&lt;/h3&gt;
 &lt;h3&gt;Error in grid.Call(L_textBounds, as.graphicsAnnot(xlabel),xlabel),x x, x$y, :无法载入X11字面为2,大小为20的字形-&lt;em&gt;-courier-%s-%s-&lt;/em&gt;-&lt;em&gt;-%d-&lt;/em&gt;-&lt;em&gt;-&lt;/em&gt;-&lt;em&gt;-&lt;/em&gt;-&lt;em&gt;-&lt;/em&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install t1-xfree86-nonfree ttf-xfree86-nonfree ttf-xfree86-nonfree-syriac
@@ -519,44 +447,32 @@ qmgr -c &lt;span class="s2"&gt;&amp;quot;set server auto_node_np = True&amp;quot
     sudo apt-get install mesa-utils
     sudo apt-get install libxtst-dev
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;using R&lt;/h3&gt;
 &lt;h3&gt;无法载入共享目标对象 stringi.so&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    install.packages&lt;span class="o"&gt;(&lt;/span&gt;stringi&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;R install.packages returns "failed to create lock directory"&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    R CMD INSTALL --no-lock &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;pkg&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="c1"&gt;# OR&lt;/span&gt;
-    install.packages&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Rcpp&amp;quot;&lt;/span&gt;, &lt;span class="nv"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;TRUE, &lt;span class="nv"&gt;INSTALL_opts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; c&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\--no-lock&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+    install.packages&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Rcpp"&lt;/span&gt;, &lt;span class="nv"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;TRUE, &lt;span class="nv"&gt;INSTALL_opts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; c&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'\--no-lock'&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;An irrecoverable exception occurred. R is aborting now ... ERROR: loading failed&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    R CMD INSTALL --no-test-load *packages*
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;nlopt&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    ./configure --enable-shared
     make
     make install
-&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category><category term="Rstudio"></category><category term="install"></category></entry><entry><title>mount</title><link href="https://ghxdghxd.github.io/mount.html" rel="alternate"></link><published>2014-01-03T00:20:00+08:00</published><updated>2017-10-21T20:52:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-01-03:/mount.html</id><summary type="html">&lt;p&gt;mount挂载说明&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/etc/fstab&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="R"></category><category term="Rstudio"></category><category term="install"></category></entry><entry><title>mount</title><link href="https://ghxdghxd.github.io/mount.html" rel="alternate"></link><published>2014-01-03T00:20:00+08:00</published><updated>2017-10-21T20:52:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-01-03:/mount.html</id><summary type="html">&lt;p&gt;mount挂载说明&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;/etc/fstab&lt;/h1&gt;
 &lt;p&gt;运维都知道的文件，若想把mount的disk和dir设置为每次开机自动加载，那么就要把相关信息写到这个文件中。当用”mount -a“命令自动mount的时候，也会去读这个文件。例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
 &lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h1&gt;/etc/mtab&lt;/h1&gt;
 &lt;p&gt;这个文件主要是用mount命令的时候，系统根据实际mount的情况生成的数据，例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/dev/sdb1 /hadoop/9 ext3 rw,noatime,nodiratime &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
 /dev/sdc1 /hadoop/10 ext3 rw,noatime,nodiratime &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h1&gt;/proc/mounts&lt;/h1&gt;
 &lt;p&gt;这个文件是/proc/self/mounts的软链接，/proc下面的文件都是保存在内存中的，是内核自动生成的。所以/proc/mounts比/etc/mtab文件能更加真实的反映当前mount的情况&lt;/p&gt;
 &lt;h1&gt;场景应用：&lt;/h1&gt;
@@ -565,22 +481,20 @@ qmgr -c &lt;span class="s2"&gt;&amp;quot;set server auto_node_np = True&amp;quot
 这时如果你管理了1000台服务器，你需要知道你的服务器中哪些盘是被umount了，你会怎么做？
 这里分享一个SHELL脚本，可以给你提供思路：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;function&lt;/span&gt; check_disks &lt;span class="o"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;for&lt;/span&gt; m in &lt;span class="sb"&gt;`&lt;/span&gt;awk &lt;span class="s1"&gt;&amp;#39;$3~/ext3/ {printf&amp;quot; %s &amp;quot;,$2}&amp;#39;&lt;/span&gt; /etc/fstab&lt;span class="sb"&gt;`&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
-    &lt;span class="nv"&gt;fsdev&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
-    &lt;span class="nv"&gt;fsdev&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;awk -v &lt;span class="nv"&gt;m&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$m&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;$2==m {print $1}&amp;#39;&lt;/span&gt; /proc/mounts&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$fsdev&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
-      &lt;span class="nv"&gt;msg_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$msg_&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$m&lt;/span&gt;&lt;span class="s2"&gt;(u)&amp;quot;&lt;/span&gt;
+  &lt;span class="k"&gt;for&lt;/span&gt; m in &lt;span class="sb"&gt;`&lt;/span&gt;awk &lt;span class="s1"&gt;'$3~/ext3/ {printf" %s ",$2}'&lt;/span&gt; /etc/fstab&lt;span class="sb"&gt;`&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nv"&gt;fsdev&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;""&lt;/span&gt;
+    &lt;span class="nv"&gt;fsdev&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;awk -v &lt;span class="nv"&gt;m&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$m&lt;/span&gt; &lt;span class="s1"&gt;'$2==m {print $1}'&lt;/span&gt; /proc/mounts&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$fsdev&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="nv"&gt;msg_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$msg_&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$m&lt;/span&gt;&lt;span class="s2"&gt;(u)"&lt;/span&gt;
     &lt;span class="k"&gt;else&lt;/span&gt;
-      &lt;span class="nv"&gt;msg_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$msg_&lt;/span&gt;&lt;span class="s2"&gt;`awk -v m=&lt;/span&gt;&lt;span class="nv"&gt;$m&lt;/span&gt;&lt;span class="s2"&gt; &amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$2&lt;/span&gt;&lt;span class="s2"&gt;==m { if ( &lt;/span&gt;&lt;span class="nv"&gt;$4&lt;/span&gt;&lt;span class="s2"&gt; ~ /^ro,/ ) {printf&amp;quot;&lt;/span&gt;%s&lt;span class="o"&gt;(&lt;/span&gt;ro&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;,&lt;/span&gt;&lt;span class="nv"&gt;$2&lt;/span&gt;&lt;span class="s2"&gt; } ; }&amp;#39; /proc/mounts`&amp;quot;&lt;/span&gt;
+      &lt;span class="nv"&gt;msg_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$msg_&lt;/span&gt;&lt;span class="s2"&gt;`awk -v m=&lt;/span&gt;&lt;span class="nv"&gt;$m&lt;/span&gt;&lt;span class="s2"&gt; '&lt;/span&gt;&lt;span class="nv"&gt;$2&lt;/span&gt;&lt;span class="s2"&gt;==m { if ( &lt;/span&gt;&lt;span class="nv"&gt;$4&lt;/span&gt;&lt;span class="s2"&gt; ~ /^ro,/ ) {printf"&lt;/span&gt;%s&lt;span class="o"&gt;(&lt;/span&gt;ro&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;",&lt;/span&gt;&lt;span class="nv"&gt;$2&lt;/span&gt;&lt;span class="s2"&gt; } ; }' /proc/mounts`"&lt;/span&gt;
     &lt;span class="k"&gt;fi&lt;/span&gt;
   &lt;span class="k"&gt;done&lt;/span&gt;
-  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$msg_&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
-    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;disks ok&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$msg_&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"disks ok"&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
   &lt;span class="k"&gt;else&lt;/span&gt;
-    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$msg_&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$msg_&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
   &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;脚本首先通过比较/etc/fstab和/proc/mounts中的不同之处，得到被umount的盘，然后再把ro(read only)的盘也分析出来。&lt;/p&gt;</content><category term="linux"></category><category term="mount"></category></entry></feed>
+&lt;p&gt;脚本首先通过比较/etc/fstab和/proc/mounts中的不同之处，得到被umount的盘，然后再把ro(read only)的盘也分析出来。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="mount"></category></entry></feed>

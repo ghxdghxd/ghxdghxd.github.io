@@ -52,9 +52,9 @@ docker安装与配置 | iKnowledgeBase    </title>
     <span> | </span> <a href="/category/xi-tong-guan-li.html">系统管理</a>
     </div>
     <div class="post-content">
-        <h1>docker</h1>
+        <html><body><h1>docker</h1>
 <h2>centos yum install docker</h2>
-<div class="highlight"><pre><span></span>tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-&#39;EOF&#39;</span>
+<div class="highlight"><pre><span></span>tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-'EOF'</span>
 <span class="s">[dockerrepo]</span>
 <span class="s">name=Docker Repository</span>
 <span class="s">baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/</span>
@@ -63,20 +63,17 @@ docker安装与配置 | iKnowledgeBase    </title>
 <span class="s">gpgkey=https://yum.dockerproject.org/gpg</span>
 <span class="s">EOF</span>
 
-sed -i <span class="s1">&#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39;</span> /etc/sysconfig/docker
+sed -i <span class="s1">'s/other_args=\"\"/other_args=\"--graph=\/share\/apps\/docker\"/g'</span> /etc/sysconfig/docker
 
 <span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">8</span><span class="sb">`</span><span class="p">;</span>
 <span class="k">do</span>
     sudo scp /etc/yum.repos.d/docker.repo compute-0-<span class="nv">$i</span>:/etc/yum.repos.d/docker.repo
 <span class="k">done</span>
 
-rocks run host <span class="s2">&quot;yum install docker-engine&quot;</span>
-rocks run host <span class="s2">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span>
+rocks run host <span class="s2">"yum install docker-engine"</span>
+rocks run host <span class="s2">"sed -i 's/other_args=\"\"/other_args=\"--graph=\/share\/apps\/docker\"/g' /etc/sysconfig/docker"</span>
 </pre></div>
-
-
 <!--more-->
-
 <h2>手动安装</h2>
 <div class="highlight"><pre><span></span><span class="c1"># 手动安装centos6.5 一些需要安装</span>
 yum remove docker-engine
@@ -91,8 +88,6 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-
 yum install device-mapper-event-libs
 service docker restart
 </pre></div>
-
-
 <h3>安装错误</h3>
 <div class="highlight"><pre><span></span><span class="c1"># 下面错误：</span>
 /usr/bin/docker: relocation error: /usr/bin/docker: symbol dm_task_get_info_with_deferred_remove, version Base not defined in file libdevmapper.so.1.02 with link <span class="nb">time</span> reference
@@ -101,14 +96,10 @@ fix: $ sudo yum install device-mapper-event-libs
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
 <span class="c1"># 然后再安装</span>
 </pre></div>
-
-
 <h2>docker应用</h2>
 <h3>启动docker</h3>
 <div class="highlight"><pre><span></span>service docker start
 </pre></div>
-
-
 <h3>添加用户</h3>
 <div class="highlight"><pre><span></span><span class="c1"># 添加docker group：</span>
 sudo groupadd docker
@@ -121,11 +112,9 @@ sudo service docker restart
 <span class="c1"># 开机启动</span>
 chkconfig docker on
 </pre></div>
-
-
 <h3>修改镜像和容器的存放路径</h3>
 <div class="highlight"><pre><span></span><span class="c1"># /etc/sysconfig/docker加入：</span>
-<span class="nv">other_args</span><span class="o">=</span><span class="s2">&quot;--graph=/data/docker&quot;</span>
+<span class="nv">other_args</span><span class="o">=</span><span class="s2">"--graph=/data/docker"</span>
 
 <span class="c1"># 停止Docker服务</span>
 service docker stop
@@ -138,8 +127,6 @@ service docker start
 <span class="c1"># 测试Docker服务</span>
 docker info
 </pre></div>
-
-
 <h3>用法</h3>
 <ul>
 <li>查看镜像 docker images</li>
@@ -149,7 +136,7 @@ docker info
 <li>将宿主机的/var/data挂载到容器中的/data: docker run -tdi -v /var/data:/data centos</li>
 </ul>
 <p>如果ls: cannot open directory '.': Permission denied
-修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled</p>
+修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled</p></body></html>
 
         <div class="post-nav">
             <a href="/tennis-racquet.html" class="pre">网球拍的平衡点</a>
@@ -258,8 +245,8 @@ docker info
     </div>
 
 <a id="rocket" href="#top" class="show"></a>
-<script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
+<script type="text/javascript" src="/theme/js/totop.js" async></script><!-- <script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
 <script type="text/javascript" src="/theme/js/fancybox.js" async></script>
-<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" /> -->
 
 </body>

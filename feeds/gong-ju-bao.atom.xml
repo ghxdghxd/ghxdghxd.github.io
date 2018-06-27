@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 工具包</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/gong-ju-bao.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-02-03T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="https://ghxdghxd.github.io/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 工具包</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/gong-ju-bao.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-02-03T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="https://ghxdghxd.github.io/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;常用命令&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone &amp;lt;repository&amp;gt; --recursive 递归的方式克隆整个项目
 git submodule add &amp;lt;repository&amp;gt;&amp;lt;path&amp;gt; 添加子模块
 git submodule init 初始化子模块
 git submodule update 更新子模块
 git submodule foreach git pull 拉取所有子模块
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;如何使用&lt;/h2&gt;
 &lt;h3&gt;1. 创建带子模块的版本库&lt;/h3&gt;
 &lt;p&gt;例如我们要创建如下结构的项目&lt;/p&gt;
@@ -15,53 +13,42 @@ git submodule foreach git pull 拉取所有子模块
     &lt;span class="p"&gt;|&lt;/span&gt;--moduleA
     &lt;span class="p"&gt;|&lt;/span&gt;--readme.txt
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;创建project版本库，并提交readme.txt文件&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init --bare project.git
 git clone project.git project1cd project1
-echo&lt;span class="s2"&gt;&amp;quot;This is a project.&amp;quot;&lt;/span&gt; &amp;gt; readme.txt
+echo&lt;span class="s2"&gt;"This is a project."&lt;/span&gt; &amp;gt; readme.txt
 git add .
-git commit -m &lt;span class="s2"&gt;&amp;quot;add readme.txt&amp;quot;&lt;/span&gt;
+git commit -m &lt;span class="s2"&gt;"add readme.txt"&lt;/span&gt;
 git push origin master
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;!--more--&gt;
-
 &lt;p&gt;创建moduleA版本库，并提交a.txt文件&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init --bare moduleA.git
 git clone moduleA.git moduleA1
 &lt;span class="nb"&gt;cd&lt;/span&gt; moduleA1
-echo&lt;span class="s2"&gt;&amp;quot;This is a submodule.&amp;quot;&lt;/span&gt; &amp;gt; a.txt
+echo&lt;span class="s2"&gt;"This is a submodule."&lt;/span&gt; &amp;gt; a.txt
 git add .
-git commit -m &lt;span class="s2"&gt;&amp;quot;add a.txt&amp;quot;&lt;/span&gt;
+git commit -m &lt;span class="s2"&gt;"add a.txt"&lt;/span&gt;
 git push origin master
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;在project项目中引入子模块moduleA，并提交子模块信息&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project1
 git submodule add ../moduleA.git moduleA
 git statusgit diff
 git add .
-git commit -m&lt;span class="s2"&gt;&amp;quot;add submodule&amp;quot;&lt;/span&gt;
+git commit -m&lt;span class="s2"&gt;"add submodule"&lt;/span&gt;
 git push origin master
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;使用git status可以看到多了两个需要提交的文件，其中.gitmodules指定submodule的主要信息，包括子模块的路径和地址信息，moduleA指定了子模块的commit id，使用git diff可以看到这两项的内容。这里需要指出父项目的git并不会记录submodule的文件变动，它是按照commit id指定submodule的git header，所以.gitmodules和moduleA这两项是需要提交到父项目的远程仓库的。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;On branch master
-Your branch is up-to-datewith&lt;span class="s1"&gt;&amp;#39;origin/master&amp;#39;&lt;/span&gt;.
-Changes to be committed:  &lt;span class="o"&gt;(&lt;/span&gt;use &lt;span class="s2"&gt;&amp;quot;git reset HEAD ...&amp;quot;&lt;/span&gt;to unstage&lt;span class="o"&gt;)&lt;/span&gt;
+Your branch is up-to-datewith&lt;span class="s1"&gt;'origin/master'&lt;/span&gt;.
+Changes to be committed:  &lt;span class="o"&gt;(&lt;/span&gt;use &lt;span class="s2"&gt;"git reset HEAD ..."&lt;/span&gt;to unstage&lt;span class="o"&gt;)&lt;/span&gt;
     new file:   .gitmodules
     new file:   moduleA
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;2. 克隆带子模块的版本库&lt;/h3&gt;
 &lt;p&gt;方法一，先clone父项目，再初始化submodule，最后更新submodule，初始化只需要做一次，之后每次只需要直接update就可以了，需要注意submodule默认是不在任何分支上的，它指向父项目存储的submodule commit id。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone project.git project2
@@ -70,32 +57,26 @@ git submodule init
 git submodule update
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;方法二，采用递归参数--recursive，需要注意同样submodule默认是不在任何分支上的，它指向父项目存储的submodule commit id。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone project.git project3 --recursive
 git submodule update --init --recursive
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;3. 修改子模块&lt;/h3&gt;
 &lt;p&gt;修改子模块之后只对子模块的版本库产生影响，对父项目的版本库不会产生任何影响，如果父项目需要用到最新的子模块代码，我们需要更新父项目中submodule commit id，默认的我们使用git status就可以看到父项目中submodule commit id已经改变了，我们只需要再次提交就可以了。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project1/moduleA
 git branch
-echo&lt;span class="s2"&gt;&amp;quot;This is a submodule.&amp;quot;&lt;/span&gt; &amp;gt; b.txt
+echo&lt;span class="s2"&gt;"This is a submodule."&lt;/span&gt; &amp;gt; b.txt
 git add .
-git commit -m &lt;span class="s2"&gt;&amp;quot;add b.txt&amp;quot;&lt;/span&gt;
+git commit -m &lt;span class="s2"&gt;"add b.txt"&lt;/span&gt;
 git push origin master
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
 git status
 git diff
 git add .
-git commit -m &lt;span class="s2"&gt;&amp;quot;update submodule add b.txt&amp;quot;&lt;/span&gt;
+git commit -m &lt;span class="s2"&gt;"update submodule add b.txt"&lt;/span&gt;
 git push origin master
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;4. 更新子模块&lt;/h3&gt;
 &lt;p&gt;更新子模块的时候要注意子模块的分支默认不是master。
 方法一，先pull父项目，然后执行&lt;code&gt;git submodule update&lt;/code&gt;，注意moduleA的分支始终不是master。&lt;/p&gt;
@@ -104,8 +85,6 @@ git pull
 git submodule update
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;方法二，先进入子模块，然后切换到需要的分支，这里是master分支，然后对子模块pull，这种方法会改变子模块的分支。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project3/moduleA
 git checkout master
@@ -113,8 +92,6 @@ git checkout master
 git submodule foreach git pull
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;5. 删除子模块&lt;/h3&gt;
 &lt;p&gt;网上有好多用的是下面这种方法&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm --cached moduleA
@@ -122,25 +99,19 @@ rm -rf moduleA
 rm .gitmodules
 vim .git/config
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;删除submodule相关的内容，例如下面的内容&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;submodule &lt;span class="s2"&gt;&amp;quot;moduleA&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;      &lt;span class="nv"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; /Users/nick/dev/nick-doc/testGitSubmodule/moduleA.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;submodule &lt;span class="s2"&gt;"moduleA"&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;      &lt;span class="nv"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; /Users/nick/dev/nick-doc/testGitSubmodule/moduleA.git
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;然后提交到远程服务器&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add .
-git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/span&gt;
+git commit -m&lt;span class="s2"&gt;"remove submodule"&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;但是我自己本地实验的时候，发现用下面的方式也可以，服务器记录的是.gitmodules和moduleA，本地只要用git的删除命令删除moduleA，再用git status查看状态就会发现.gitmodules和moduleA这两项都已经改变了，至于.git/config，仍会记录submodule信息，但是本地使用也没发现有什么影响，如果重新从服务器克隆则.git/config中不会有submodule信息。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm moduleA
 git status
-git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/span&gt;
+git commit -m&lt;span class="s2"&gt;"remove submodule"&lt;/span&gt;
 git push origin master
-&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category><category term="submodule"></category></entry><entry><title>hotnet2</title><link href="https://ghxdghxd.github.io/hotnet2.html" rel="alternate"></link><published>2016-11-03T19:01:00+08:00</published><updated>2016-11-18T11:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/hotnet2.html</id><summary type="html">&lt;p&gt;hotnet2的简介&lt;/p&gt;</summary><content type="html">&lt;p&gt;hotnet2是一种新型计算机算法，能够筛选庞大的遗传数据，发现相互作用基因，而这些基因一旦突变就会导致多种癌症的发生发展。&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="git"></category><category term="submodule"></category></entry><entry><title>hotnet2</title><link href="https://ghxdghxd.github.io/hotnet2.html" rel="alternate"></link><published>2016-11-03T19:01:00+08:00</published><updated>2016-11-18T11:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/hotnet2.html</id><summary type="html">&lt;p&gt;hotnet2的简介&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;hotnet2是一种新型计算机算法，能够筛选庞大的遗传数据，发现相互作用基因，而这些基因一旦突变就会导致多种癌症的发生发展。&lt;/p&gt;
 &lt;h1&gt;背景&lt;/h1&gt;
 &lt;p&gt;预先定义一个合理的基因集合或组合的统计需求&lt;/p&gt;
 &lt;p&gt;标准化分析突变相关通路及蛋白复合物的方法&lt;/p&gt;
@@ -175,49 +146,38 @@ git push origin master
 &lt;p&gt;ks Minimum subnetwork size&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;sampleToTypes： 样本类型&lt;/li&gt;
-&lt;/ul&gt;</content><category term="NGS"></category><category term="hotnet2"></category><category term="bioinfo"></category></entry><entry><title>git的一般用法</title><link href="https://ghxdghxd.github.io/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
+&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="NGS"></category><category term="hotnet2"></category><category term="bioinfo"></category></entry><entry><title>git的一般用法</title><link href="https://ghxdghxd.github.io/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;Git用法&lt;/h1&gt;
 &lt;h2&gt;1 建立仓库&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;远程&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git remote add origin git@github.com:ghxdghxd&lt;span class="nv"&gt;$NAME&lt;/span&gt;.git
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;ul&gt;
 &lt;li&gt;本地(初始化)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;2 常用操作&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;拉取&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git pull origin master
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;ul&gt;
 &lt;li&gt;提交&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add *.py
-git commit -m &lt;span class="s2"&gt;&amp;quot;message&amp;quot;&lt;/span&gt;
+git commit -m &lt;span class="s2"&gt;"message"&lt;/span&gt;
 git push origin master/dev/develop
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;!--more--&gt;
-
 &lt;ul&gt;
 &lt;li&gt;重命令与删除&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm
 git mv
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;3 分支操作&lt;/h2&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -248,13 +208,9 @@ git checkout &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;
 git merge --no-ff &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;                &lt;span class="c1"&gt;# 合并分支&lt;/span&gt;
 git push origin dev:develop             &lt;span class="c1"&gt;# 本地分支提交到远程&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;push命令用于将本地分支的更新，推送到远程主机。&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;git pull类似:
     git pull &amp;lt;远程分支&amp;gt;:&amp;lt;本地分支&amp;gt;&lt;/p&gt;
 &lt;p&gt;注意，分支推送顺序的写法是&amp;lt;来源地&amp;gt;:&amp;lt;目的地&amp;gt;，
@@ -262,69 +218,45 @@ git push origin dev:develop             &lt;span class="c1"&gt;# 本地分支提
 如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支(通常两者同名)，如果该远程分支不存在，则会被新建。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin master
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;上面命令表示，将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。&lt;/p&gt;
 &lt;p&gt;如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin :master
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;等同于&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin --delete master
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;上面命令表示删除origin主机的master分支。&lt;/p&gt;
 &lt;p&gt;如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;上面命令表示，将当前分支推送到origin主机的对应分支。&lt;/p&gt;
 &lt;p&gt;如果当前分支只有一个追踪分支，那么主机名都可以省略。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push -u origin master
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。&lt;/p&gt;
 &lt;p&gt;不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用git config命令。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global push.default matching
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;或者&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global push.default simple
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push --all origin
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;上面命令表示，将所有本地分支都推送到origin主机。&lt;/p&gt;
 &lt;p&gt;如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用–force选项。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push --force origin
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;上面命令使用–force选项，结果导致在远程主机产生一个”非直进式”的合并(non-fast-forward merge)。除非你很确定要这样做，否则应该尽量避免使用–force选项。&lt;/p&gt;
 &lt;p&gt;最后，git push不会推送标签(tag)，除非使用–tags选项。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin --tags
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;中文乱码&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    git config --global core.quotepath &lt;span class="nb"&gt;false&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常。&lt;/p&gt;
 &lt;h2&gt;gitignore忽略文件&lt;/h2&gt;
 &lt;p&gt;1、配置语法：&lt;/p&gt;
@@ -351,7 +283,7 @@ git push origin dev:develop             &lt;span class="c1"&gt;# 本地分支提
 在git创建的项目中换行符为LF，而执行git add时，系统会提示LF将被转换为CRLF。
 解决的办法很简单，禁止git的自动转换即可。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.autocrlf &lt;span class="nb"&gt;false&lt;/span&gt; //禁用自动转换
-&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category><category term="command"></category></entry><entry><title>MutSigCV的问题</title><link href="https://ghxdghxd.github.io/MutSigCV.html" rel="alternate"></link><published>2015-04-28T16:47:00+08:00</published><updated>2016-09-23T10:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-04-28:/MutSigCV.html</id><summary type="html">&lt;p&gt;MutSigCV的简介&lt;/p&gt;</summary><content type="html">&lt;p&gt;A tab-delimited report of significant mutations, listed in descending order from most significant to least significant.
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="git"></category><category term="command"></category></entry><entry><title>MutSigCV的问题</title><link href="https://ghxdghxd.github.io/MutSigCV.html" rel="alternate"></link><published>2015-04-28T16:47:00+08:00</published><updated>2016-09-23T10:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-04-28:/MutSigCV.html</id><summary type="html">&lt;p&gt;MutSigCV的简介&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;A tab-delimited report of significant mutations, listed in descending order from most significant to least significant.
 The "nnei","x", and "X" values in the MutSig output analysis give insight into how the background mutation rate is calculated for a given gene.  nnei gives the number of neighboring genes that are pooled together to compute the background mutation rate for that gene; these genes are not necessarily adjacent on the genome, but rather they have nearby covariate values. x gives the number of mutated bases in these neighboring genes that are either silent or non-coding, while X gives the total number of bases related to these neighboring genes.&lt;/p&gt;
 &lt;p&gt;According to the original MutSigCV article, olfactory receptors (ORs) can show up as significant due to the heterogeneity in the mutational processes in cancer (authors' hypothesis)(Lawrence et al. "Mutational heterogeneity in cancer and the search for new cancer-associted genes", Nature, 2013). Certain genes, like ORs, can accumulate mutations faster than others, even if their biology is not potentially oncogenic. Therefore, assuming a uniform rate of background mutations/aberrations (GISTIC/JISTIC) is somewhat wrong, no?&lt;/p&gt;
-&lt;p&gt;肿瘤异质性的突变过程， 一些基因，如ORs，虽然对肿瘤没有功能影响，但因为能够迅速积累突变，而被鉴定出来。&lt;/p&gt;</content><category term="issue"></category></entry></feed>
+&lt;p&gt;肿瘤异质性的突变过程， 一些基因，如ORs，虽然对肿瘤没有功能影响，但因为能够迅速积累突变，而被鉴定出来。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="issue"></category></entry></feed>

@@ -53,15 +53,13 @@ git submodule的用法 | iKnowledgeBase    </title>
     <span> | </span> <a href="/category/gong-ju-bao.html">工具包</a>
     </div>
     <div class="post-content">
-        <h1>常用命令</h1>
+        <html><body><h1>常用命令</h1>
 <div class="highlight"><pre><span></span>git clone &lt;repository&gt; --recursive 递归的方式克隆整个项目
 git submodule add &lt;repository&gt;&lt;path&gt; 添加子模块
 git submodule init 初始化子模块
 git submodule update 更新子模块
 git submodule foreach git pull 拉取所有子模块
 </pre></div>
-
-
 <h2>如何使用</h2>
 <h3>1. 创建带子模块的版本库</h3>
 <p>例如我们要创建如下结构的项目</p>
@@ -69,53 +67,42 @@ git submodule foreach git pull 拉取所有子模块
     <span class="p">|</span>--moduleA
     <span class="p">|</span>--readme.txt
 </pre></div>
-
-
 <p>创建project版本库，并提交readme.txt文件</p>
 <div class="highlight"><pre><span></span>git init --bare project.git
 git clone project.git project1cd project1
-echo<span class="s2">&quot;This is a project.&quot;</span> &gt; readme.txt
+echo<span class="s2">"This is a project."</span> &gt; readme.txt
 git add .
-git commit -m <span class="s2">&quot;add readme.txt&quot;</span>
+git commit -m <span class="s2">"add readme.txt"</span>
 git push origin master
 <span class="nb">cd</span> ..
 </pre></div>
-
-
 <!--more-->
-
 <p>创建moduleA版本库，并提交a.txt文件</p>
 <div class="highlight"><pre><span></span>git init --bare moduleA.git
 git clone moduleA.git moduleA1
 <span class="nb">cd</span> moduleA1
-echo<span class="s2">&quot;This is a submodule.&quot;</span> &gt; a.txt
+echo<span class="s2">"This is a submodule."</span> &gt; a.txt
 git add .
-git commit -m <span class="s2">&quot;add a.txt&quot;</span>
+git commit -m <span class="s2">"add a.txt"</span>
 git push origin master
 <span class="nb">cd</span> ..
 </pre></div>
-
-
 <p>在project项目中引入子模块moduleA，并提交子模块信息</p>
 <div class="highlight"><pre><span></span><span class="nb">cd</span> project1
 git submodule add ../moduleA.git moduleA
 git statusgit diff
 git add .
-git commit -m<span class="s2">&quot;add submodule&quot;</span>
+git commit -m<span class="s2">"add submodule"</span>
 git push origin master
 <span class="nb">cd</span> ..
 </pre></div>
-
-
 <p>使用git status可以看到多了两个需要提交的文件，其中.gitmodules指定submodule的主要信息，包括子模块的路径和地址信息，moduleA指定了子模块的commit id，使用git diff可以看到这两项的内容。这里需要指出父项目的git并不会记录submodule的文件变动，它是按照commit id指定submodule的git header，所以.gitmodules和moduleA这两项是需要提交到父项目的远程仓库的。</p>
 <div class="highlight"><pre><span></span>On branch master
-Your branch is up-to-datewith<span class="s1">&#39;origin/master&#39;</span>.
-Changes to be committed:  <span class="o">(</span>use <span class="s2">&quot;git reset HEAD ...&quot;</span>to unstage<span class="o">)</span>
+Your branch is up-to-datewith<span class="s1">'origin/master'</span>.
+Changes to be committed:  <span class="o">(</span>use <span class="s2">"git reset HEAD ..."</span>to unstage<span class="o">)</span>
     new file:   .gitmodules
     new file:   moduleA
 </pre></div>
-
-
 <h3>2. 克隆带子模块的版本库</h3>
 <p>方法一，先clone父项目，再初始化submodule，最后更新submodule，初始化只需要做一次，之后每次只需要直接update就可以了，需要注意submodule默认是不在任何分支上的，它指向父项目存储的submodule commit id。</p>
 <div class="highlight"><pre><span></span>git clone project.git project2
@@ -124,32 +111,26 @@ git submodule init
 git submodule update
 <span class="nb">cd</span> ..
 </pre></div>
-
-
 <p>方法二，采用递归参数--recursive，需要注意同样submodule默认是不在任何分支上的，它指向父项目存储的submodule commit id。</p>
 <div class="highlight"><pre><span></span>git clone project.git project3 --recursive
 git submodule update --init --recursive
 </pre></div>
-
-
 <h3>3. 修改子模块</h3>
 <p>修改子模块之后只对子模块的版本库产生影响，对父项目的版本库不会产生任何影响，如果父项目需要用到最新的子模块代码，我们需要更新父项目中submodule commit id，默认的我们使用git status就可以看到父项目中submodule commit id已经改变了，我们只需要再次提交就可以了。</p>
 <div class="highlight"><pre><span></span><span class="nb">cd</span> project1/moduleA
 git branch
-echo<span class="s2">&quot;This is a submodule.&quot;</span> &gt; b.txt
+echo<span class="s2">"This is a submodule."</span> &gt; b.txt
 git add .
-git commit -m <span class="s2">&quot;add b.txt&quot;</span>
+git commit -m <span class="s2">"add b.txt"</span>
 git push origin master
 <span class="nb">cd</span> ..
 git status
 git diff
 git add .
-git commit -m <span class="s2">&quot;update submodule add b.txt&quot;</span>
+git commit -m <span class="s2">"update submodule add b.txt"</span>
 git push origin master
 <span class="nb">cd</span> ..
 </pre></div>
-
-
 <h3>4. 更新子模块</h3>
 <p>更新子模块的时候要注意子模块的分支默认不是master。
 方法一，先pull父项目，然后执行<code>git submodule update</code>，注意moduleA的分支始终不是master。</p>
@@ -158,8 +139,6 @@ git pull
 git submodule update
 <span class="nb">cd</span> ..
 </pre></div>
-
-
 <p>方法二，先进入子模块，然后切换到需要的分支，这里是master分支，然后对子模块pull，这种方法会改变子模块的分支。</p>
 <div class="highlight"><pre><span></span><span class="nb">cd</span> project3/moduleA
 git checkout master
@@ -167,8 +146,6 @@ git checkout master
 git submodule foreach git pull
 <span class="nb">cd</span> ..
 </pre></div>
-
-
 <h3>5. 删除子模块</h3>
 <p>网上有好多用的是下面这种方法</p>
 <div class="highlight"><pre><span></span>git rm --cached moduleA
@@ -176,25 +153,19 @@ rm -rf moduleA
 rm .gitmodules
 vim .git/config
 </pre></div>
-
-
 <p>删除submodule相关的内容，例如下面的内容</p>
-<div class="highlight"><pre><span></span><span class="o">[</span>submodule <span class="s2">&quot;moduleA&quot;</span><span class="o">]</span>      <span class="nv">url</span> <span class="o">=</span> /Users/nick/dev/nick-doc/testGitSubmodule/moduleA.git
+<div class="highlight"><pre><span></span><span class="o">[</span>submodule <span class="s2">"moduleA"</span><span class="o">]</span>      <span class="nv">url</span> <span class="o">=</span> /Users/nick/dev/nick-doc/testGitSubmodule/moduleA.git
 </pre></div>
-
-
 <p>然后提交到远程服务器</p>
 <div class="highlight"><pre><span></span>git add .
-git commit -m<span class="s2">&quot;remove submodule&quot;</span>
+git commit -m<span class="s2">"remove submodule"</span>
 </pre></div>
-
-
 <p>但是我自己本地实验的时候，发现用下面的方式也可以，服务器记录的是.gitmodules和moduleA，本地只要用git的删除命令删除moduleA，再用git status查看状态就会发现.gitmodules和moduleA这两项都已经改变了，至于.git/config，仍会记录submodule信息，但是本地使用也没发现有什么影响，如果重新从服务器克隆则.git/config中不会有submodule信息。</p>
 <div class="highlight"><pre><span></span>git rm moduleA
 git status
-git commit -m<span class="s2">&quot;remove submodule&quot;</span>
+git commit -m<span class="s2">"remove submodule"</span>
 git push origin master
-</pre></div>
+</pre></div></body></html>
 
         <div class="post-nav">
             <a href="/meta.html" class="pre">meta Analysis</a>
@@ -302,8 +273,8 @@ git push origin master
     </div>
 
 <a id="rocket" href="#top" class="show"></a>
-<script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
+<script type="text/javascript" src="/theme/js/totop.js" async></script><!-- <script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
 <script type="text/javascript" src="/theme/js/fancybox.js" async></script>
-<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" /> -->
 
 </body>

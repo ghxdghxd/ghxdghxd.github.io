@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 理论基础</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/li-lun-ji-chu.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2016-03-17T10:33:00+08:00</updated><entry><title>人类基因组</title><link href="https://ghxdghxd.github.io/hunman-genome.html" rel="alternate"></link><published>2014-12-05T11:38:00+08:00</published><updated>2016-03-17T10:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-05:/hunman-genome.html</id><summary type="html">&lt;p&gt;人类参考基因组的记录&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="hg" src="images/human_genome.png"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 理论基础</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/li-lun-ji-chu.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2016-03-17T10:33:00+08:00</updated><entry><title>人类基因组</title><link href="https://ghxdghxd.github.io/hunman-genome.html" rel="alternate"></link><published>2014-12-05T11:38:00+08:00</published><updated>2016-03-17T10:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-05:/hunman-genome.html</id><summary type="html">&lt;p&gt;人类参考基因组的记录&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="hg" src="images/human_genome.png"/&gt;&lt;/p&gt;
 &lt;h1&gt;参考序列&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;XY染色体上相同序列 &lt;strong&gt;PAR1&lt;/strong&gt; &lt;strong&gt;PAR2&lt;/strong&gt;&lt;/li&gt;
@@ -13,7 +13,7 @@
   chromosomes.
   The chrUn_* sequences are unlocalized sequences where the corresponding reference chromosome has not been determined.&lt;/p&gt;
 &lt;h1&gt;基因结构&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="gs" height="100%" src="images/GeneStructure.bmp" width="100%"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="gs" height="100%" src="images/GeneStructure.bmp" width="100%"/&gt;&lt;/p&gt;
 &lt;p&gt;1.&lt;strong&gt;基因&lt;/strong&gt;： 表达基因产物的全部DNA序列,包括启动子、5'UTR、开放阅读框(open reading frame，ORF)、外显子、内含子、3'UTR以及调控区&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;启动子&lt;/strong&gt;
@@ -29,7 +29,7 @@
 又称heterogeneous nuclear RNA, hnRNA,是转录获得的最原始序列，没有经过任何加工，序列包含从转录起始位点到转录终止位点的全部序列；&lt;/p&gt;
 &lt;p&gt;3.&lt;strong&gt;信使RNA(mRNA)&lt;/strong&gt;: 基因转录后加工成熟用于翻译蛋白质的序列，包括CDS序列、3'UTR、5'UTR、5'帽子及3'Poly(A)尾&lt;/p&gt;
 &lt;p&gt;外显子拼接形成成熟的mRNA，多数基因都有UTR,它们也是外显子拼接的产物，所以，mRNA的长度要大于CDS，只有CDS才编码蛋白，AUG以前的mRNA编码前导序列。&lt;/p&gt;
-&lt;p&gt;&lt;img align="right" alt="polyA" height="50%" src="images/polyA.jpg" width="50%"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img align="right" alt="polyA" height="50%" src="images/polyA.jpg" width="50%"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3`UTR的结构&lt;/strong&gt;: 3`UTR是PolyA尾巴的载体，而加这个尾巴关键的是PloyA signal。这个信号位点在3`UTR富含T或GT和其上游AATAAA信号中间，大约离AATAAA20-25个核苷酸，这个位点叫Cleavage site。如果AATAAA发生突变，那么PolyA signal就不会被激活。&lt;/p&gt;
 &lt;p&gt;4.&lt;strong&gt;cDNA&lt;/strong&gt;：通过mRNA反转录所得，与mRNA序列互补的单链DNA或者与mRNA对应的DNA双链；&lt;/p&gt;
 &lt;p&gt;5.&lt;strong&gt;EST&lt;/strong&gt;：表达序列标签，是指从一个随机选择的cDNA 克隆，进行5’端和3’端单一次测序挑选出来获得的短的cDNA部分序列, 代表一个完整基因的一小部分，在数据库中其长度一般从20 到7000bp 不等，平均长度为360
@@ -38,7 +38,7 @@
 :---:|:---:|:---:|:---:|:---:|:---:
 DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保留复制|需要
 转录|双链DNA|四种NTP|合成的新链除了把DNA上的T改为U外，其他一样，半不连续转录|不需要
-翻译|mRNA|20种游离的氨基酸|3个碱基决定一个氨基酸|&lt;/p&gt;</content><category term="genome"></category></entry><entry><title>如何根据测序数据计算出数据量以及测序深度？</title><link href="https://ghxdghxd.github.io/NGS-coverage.html" rel="alternate"></link><published>2014-12-04T16:35:00+08:00</published><updated>2016-02-29T20:40:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/NGS-coverage.html</id><summary type="html">&lt;p&gt;根据测序数据(reads)统计数据量以及测序深度&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+翻译|mRNA|20种游离的氨基酸|3个碱基决定一个氨基酸|&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="genome"></category></entry><entry><title>如何根据测序数据计算出数据量以及测序深度？</title><link href="https://ghxdghxd.github.io/NGS-coverage.html" rel="alternate"></link><published>2014-12-04T16:35:00+08:00</published><updated>2016-02-29T20:40:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/NGS-coverage.html</id><summary type="html">&lt;p&gt;根据测序数据(reads)统计数据量以及测序深度&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;ol&gt;
 &lt;li&gt;数据量大小&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;单端测序&lt;/strong&gt; 数据量 = reads长度 * reads数
@@ -48,9 +48,9 @@ DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保�
 &lt;p&gt;测序深度 = 数据量大小 / 参考基因组大小&lt;/p&gt;
 &lt;p&gt;3.测序与物理覆盖度&lt;/p&gt;
 &lt;p&gt;在PE测序文库中&lt;/p&gt;
-&lt;p&gt;&lt;img alt="coverage" src="images/coverage.png"&gt;&lt;/p&gt;</content><category term="NGS"></category></entry><entry><title>FASTQ格式详解</title><link href="https://ghxdghxd.github.io/fastq-format.html" rel="alternate"></link><published>2014-12-04T10:20:00+08:00</published><updated>2015-03-06T16:12:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/fastq-format.html</id><summary type="html">&lt;p&gt;Fastq的格式&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;FASTQ&lt;/strong&gt;是基于文本的，保存生物序列（通常是核酸序列）和其测序质量信息的标准格式。
+&lt;p&gt;&lt;img alt="coverage" src="images/coverage.png"/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="NGS"></category></entry><entry><title>FASTQ格式详解</title><link href="https://ghxdghxd.github.io/fastq-format.html" rel="alternate"></link><published>2014-12-04T10:20:00+08:00</published><updated>2015-03-06T16:12:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/fastq-format.html</id><summary type="html">&lt;p&gt;Fastq的格式&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;strong&gt;FASTQ&lt;/strong&gt;是基于文本的，保存生物序列（通常是核酸序列）和其测序质量信息的标准格式。
 其序列以及质量信息都是使用一个ASCII字符标示，最初由Sanger开发，目的是将FASTA序列与质量数据放到一起，目前已经成为高通量测序结果的事实标准。&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr/&gt;
 &lt;h1&gt;FASTQ基本格式(reads)&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -66,10 +66,8 @@ DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保�
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1 @SEQ_ID
 2 GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
 3 \+
-4 !&amp;#39;&amp;#39;*((((***+))%%%++)(%%%%).1***-+*&amp;#39;&amp;#39;))**55CCF&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CCCCCCC65
+4 !''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CCCCCCC65
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;Fastq ID&lt;/h2&gt;
 &lt;p&gt;illumina测序仪的ID行一般包含测序仪、运行编号、flowcell ID、lane ID、tile ID、横纵轴坐标、索引序列等等&lt;/p&gt;
 &lt;h2&gt;质量信息&lt;/h2&gt;
@@ -120,7 +118,7 @@ DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保�
 &lt;p&gt;除了Phred质量得分换算标准，还有就是Solexa标准：
 $$Q_{solexa-prior to v.1.3}=-10log_{10}\frac{P}{1-P}$$&lt;/p&gt;
 &lt;p&gt;两种换算标准的比较：
-&lt;img alt="compare" src="./images/fastq_quality_compare.png"&gt;&lt;/p&gt;
+&lt;img alt="compare" src="./images/fastq_quality_compare.png"/&gt;&lt;/p&gt;
 &lt;p&gt;Relationship between Q and p using the Sanger (red) and Solexa (black)
 equations (described above). The vertical dotted line indicates p = 0.05, or
 equivalently, Q ≈ 13.&lt;/p&gt;
@@ -137,7 +135,7 @@ equivalently, Q ≈ 13.&lt;/p&gt;
       ...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................
       .................................**J**JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................
       LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL....................................................
-      !&amp;quot;#$%&amp;amp;&amp;#39;()*+,-./0123456789:;&amp;lt;=&amp;gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+      !"#$%&amp;amp;'()*+,-./0123456789:;&amp;lt;=&amp;gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
       |                         |    |        |                              |                     |
      33                        59   64       73                            104                   126
      S - Sanger        Phred+33,  raw reads typically (0, 40)
@@ -147,4 +145,4 @@ equivalently, Q ≈ 13.&lt;/p&gt;
         with 0=unused, 1=unused, 2=Read Segment Quality Control Indicator (bold)
         (Note: See discussion above).
      L - Illumina 1.8+ Phred+33,  raw reads typically (0, 41)
-&lt;/pre&gt;&lt;/div&gt;</content><category term="NGS"></category><category term="fastq"></category><category term="bioinfo"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="NGS"></category><category term="fastq"></category><category term="bioinfo"></category></entry></feed>

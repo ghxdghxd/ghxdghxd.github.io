@@ -56,7 +56,7 @@
     <span> | </span> <a href="/category/xi-tong-guan-li.html">系统管理</a>
     </div>
     <div class="post-content">
-        <h1>1 服务器管理记录</h1>
+        <html><body><h1>1 服务器管理记录</h1>
 <h2>1.1 清理内存</h2>
 <p>echo 1 &gt; /proc/sys/vm/drop_caches</p>
 <h2>1.2 <a href="terminal-announcement">登录显示信息</a></h2>
@@ -91,19 +91,17 @@ passwd name
 usermod -g users name
 rocks sync users <span class="c1"># 可更改/export/home/name 为 /home/name</span>
 </pre></div>
-
-
 <p>5.ssh compute-0-* 要输入密码</p>
-<p>rm -rf ~/.ssh   <strong>然后 退出登录 再登陆 会自动生成新密钥</strong></p>
+<p>rm -rf ~/.ssh <strong>然后 退出登录 再登陆 会自动生成新密钥</strong></p>
 <p>6.进入单用户模式</p>
 <p>在倒计时5秒时，按任意键出现下图，
-<strong>选择如图，按e 进入编辑, 最后加上　１，　回车，　按b，root进入系统</strong>
-<img alt="图1" height="80%" src="images/manager1.png" width="80%"></p>
+<strong>选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统</strong>
+<img alt="图1" height="80%" src="images/manager1.png" width="80%"/></p>
 <h2>3.3 qmgr</h2>
-<div class="highlight"><pre><span></span>qmgr -c <span class="s2">&quot;print server&quot;</span> <span class="c1"># 输出server的属性</span>
-qmgr -c <span class="s2">&quot;set server query_other_jobs = true&quot;</span> <span class="c1"># qstat可以查看所有用户</span>
-qmgr -c <span class="s2">&quot;set server auto_node_np = True&quot;</span> <span class="c1"># 自动更新节点线程数</span>
-</pre></div>
+<div class="highlight"><pre><span></span>qmgr -c <span class="s2">"print server"</span> <span class="c1"># 输出server的属性</span>
+qmgr -c <span class="s2">"set server query_other_jobs = true"</span> <span class="c1"># qstat可以查看所有用户</span>
+qmgr -c <span class="s2">"set server auto_node_np = True"</span> <span class="c1"># 自动更新节点线程数</span>
+</pre></div></body></html>
 
         <div class="post-nav">
             <a href="/fastq-format.html" class="pre">FASTQ格式详解</a>
@@ -212,8 +210,8 @@ qmgr -c <span class="s2">&quot;set server auto_node_np = True&quot;</span> <span
     </div>
 
 <a id="rocket" href="#top" class="show"></a>
-<script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
+<script type="text/javascript" src="/theme/js/totop.js" async></script><!-- <script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
 <script type="text/javascript" src="/theme/js/fancybox.js" async></script>
-<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" /> -->
 
 </body>

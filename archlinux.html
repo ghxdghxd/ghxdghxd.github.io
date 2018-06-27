@@ -53,7 +53,7 @@ archlinux安装与配置 | iKnowledgeBase    </title>
     <span> | </span> <a href="/category/xi-tong-guan-li.html">系统管理</a>
     </div>
     <div class="post-content">
-        <h1>archlinux安装</h1>
+        <html><body><h1>archlinux安装</h1>
 <div class="highlight"><pre><span></span><span class="c1"># u盘启动后</span>
 <span class="c1"># 连接网络</span>
 wifi-memu
@@ -66,14 +66,10 @@ pacstrap -i /mnt base base-devel
 <span class="c1">#生成挂载文件fstab</span>
 genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </pre></div>
-
-
 <h2>archlinux 初步配置</h2>
 <div class="highlight"><pre><span></span><span class="c1">#切换到archlinux</span>
 arch-chroot /mnt /bin/bash
 </pre></div>
-
-
 <ul>
 <li>本地语言</li>
 </ul>
@@ -85,10 +81,7 @@ arch-chroot /mnt /bin/bash
 locale-gen
 <span class="nb">echo</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 &gt; /etc/locale.conf
 </pre></div>
-
-
 <!--more-->
-
 <ul>
 <li>时区</li>
 </ul>
@@ -99,8 +92,6 @@ tzselect
 <span class="c1">#设置硬件时间</span>
 hwclock --systohc --utc
 </pre></div>
-
-
 <ul>
 <li>grub引导系统</li>
 </ul>
@@ -109,15 +100,11 @@ pacman -S grub efibootmgr
 grub-install --target<span class="o">=</span>i386-pc --recheck --debug /dev/sda
 grup-mkconfig -o /boot/grub/grub.cfg
 </pre></div>
-
-
 <ul>
 <li>主机名</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="nb">echo</span> Garch &gt;&gt; /etc/hostname
 </pre></div>
-
-
 <ul>
 <li>网络配置</li>
 </ul>
@@ -126,8 +113,6 @@ systemctl <span class="nb">enable</span> dhcpcd.service
 <span class="c1"># 无线</span>
 pacman -S iw wpa_supplicant dialog
 </pre></div>
-
-
 <h2>archlinux 配置</h2>
 <div class="highlight"><pre><span></span><span class="c1"># 最小安装</span>
 <span class="c1"># X桌面</span>
@@ -137,7 +122,7 @@ pacman -S xf86-video-ati
 pacman -S gnome gnome-tweak-tool
 pacman -S ttf-ubuntu
 <span class="c1"># 可选</span>
-</pre></div>
+</pre></div></body></html>
 
         <div class="post-nav">
             <a href="/docker.html" class="pre">docker安装与配置</a>
@@ -246,8 +231,8 @@ pacman -S ttf-ubuntu
     </div>
 
 <a id="rocket" href="#top" class="show"></a>
-<script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
+<script type="text/javascript" src="/theme/js/totop.js" async></script><!-- <script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
 <script type="text/javascript" src="/theme/js/fancybox.js" async></script>
-<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" /> -->
 
 </body>
