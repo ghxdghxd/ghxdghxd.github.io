@@ -23,7 +23,8 @@ Summary: meta analysis with metafor
 ## meta-analysis from odds ratios and confidence intervals using metafor
 
 ```R
-dm<-structure(list(or = c(1.6, 4.4, 1.14, 1.3, 4.5), cill = c(1.2, 2.9, 0.45, 0.6, 3.2), ciul = c(2, 6.9, 2.86, 2.7, 6.1)), .Names = c("or", "cill", "ciul"), class = "data.frame", row.names = c(NA, -5L))
+dm<-structure(list(or = c(1.6, 4.4, 1.14, 1.3, 4.5), cill = c(1.2, 2.9, 0.45, 0.6, 3.2),
+ciul = c(2, 6.9, 2.86, 2.7, 6.1)), .Names = c("or", "cill", "ciul"), class = "data.frame", row.names = c(NA, -5L))
 
 dm$logor<-log(dm$or)
 dm$se1<-(log(dm$ciul)-dm$logor)/1.96
