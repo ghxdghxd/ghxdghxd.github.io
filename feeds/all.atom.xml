@@ -744,6 +744,7 @@ qmgr -c &lt;span class="s2"&gt;"set server auto_node_np = True"&lt;/span&gt; &lt
 &lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="centos"></category><category term="shell"></category><category term="hpc"></category><category term="rocks cluster"></category></entry><entry><title>FASTQ格式详解</title><link href="https://ghxdghxd.github.io/fastq-format.html" rel="alternate"></link><published>2014-12-04T10:20:00+08:00</published><updated>2015-03-06T16:12:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/fastq-format.html</id><summary type="html">&lt;p&gt;Fastq的格式&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;strong&gt;FASTQ&lt;/strong&gt;是基于文本的，保存生物序列（通常是核酸序列）和其测序质量信息的标准格式。
 其序列以及质量信息都是使用一个ASCII字符标示，最初由Sanger开发，目的是将FASTA序列与质量数据放到一起，目前已经成为高通量测序结果的事实标准。&lt;/p&gt;
 &lt;hr/&gt;
+&lt;p&gt;&lt;img alt="fastQC工具" src="/BioKits/fastqc"/&gt;&lt;/p&gt;
 &lt;h1&gt;FASTQ基本格式(reads)&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
