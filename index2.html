@@ -52,24 +52,24 @@
     <div class="post-content">
         <h1>docker</h1>
 <h2>centos yum install docker</h2>
-<div class="highlight"><pre>tee <span class="o">/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo <span class="o">&lt;&lt;-</span><span class="s">&#39;EOF&#39;</span>
-<span class="p">[</span>dockerrepo<span class="p">]</span>
-name<span class="o">=</span>Docker Repository
-baseurl<span class="o">=</span>https<span class="o">://</span>yum.dockerproject.org<span class="o">/</span>repo<span class="o">/</span>main<span class="o">/</span>centos<span class="o">/$</span>releasever<span class="o">/</span>
-enabled<span class="o">=</span><span class="m">1</span>
-gpgcheck<span class="o">=</span><span class="m">1</span>
-gpgkey<span class="o">=</span>https<span class="o">://</span>yum.dockerproject.org<span class="o">/</span>gpg
-EOF
+<div class="highlight"><pre><span></span>tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-&#39;EOF&#39;</span>
+<span class="s">[dockerrepo]</span>
+<span class="s">name=Docker Repository</span>
+<span class="s">baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/</span>
+<span class="s">enabled=1</span>
+<span class="s">gpgcheck=1</span>
+<span class="s">gpgkey=https://yum.dockerproject.org/gpg</span>
+<span class="s">EOF</span>
 
-sed <span class="o">-</span>i <span class="s">&#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39;</span> <span class="o">/</span>etc<span class="o">/</span>sysconfig<span class="o">/</span>docker
+sed -i <span class="s1">&#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39;</span> /etc/sysconfig/docker
 
-<span class="kr">for</span> i <span class="kr">in</span> <span class="sb">`seq 1 8`</span><span class="p">;</span>
-do
-    sudo scp <span class="o">/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo compute<span class="m">-0</span><span class="o">-$</span>i<span class="o">:/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo
-done
+<span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">8</span><span class="sb">`</span><span class="p">;</span>
+<span class="k">do</span>
+    sudo scp /etc/yum.repos.d/docker.repo compute-0-<span class="nv">$i</span>:/etc/yum.repos.d/docker.repo
+<span class="k">done</span>
 
-rocks run host <span class="s">&quot;yum install docker-engine&quot;</span>
-rocks run host <span class="s">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span>
+rocks run host <span class="s2">&quot;yum install docker-engine&quot;</span>
+rocks run host <span class="s2">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span>
 </pre></div>
 
 
@@ -81,6 +81,7 @@ rocks run host <span class="s">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/oth
     <h1 class="post-title"><a href="/tennis-racquet.html">网球拍的平衡点</a></h1>
     <div class="tags" style="float: right;">
         <a href="/tag/tennis.html">tennis</a>
+        <a href="/tag/interest.html">interest</a>
     </div>
     <div class="post-meta">2017-04-03</div>
     <div class="post-content">
@@ -107,6 +108,8 @@ rocks run host <span class="s">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/oth
     <span class="page-number current">2</span>
     <a class="page-number" href="/index3.html">3</a>
     <a class="page-number" href="/index4.html">4</a>
+    <span class="space">...</span>
+    <a class="page-number" href="/index6.html">6</a>
     <a class="extend next" rel="next" href="index3.html">Next</a></nav>
 </div class="page-navigator">
         </div></div>
@@ -123,10 +126,10 @@ rocks run host <span class="s">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/oth
     </div>
     <ul class="category-list">
         <li class="category-list-item"><a class="category-list-link" href="/category/gong-ju-bao.html">工具包</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/linux.html">linux</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/li-lun-ji-chu.html">理论基础</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/lu-you-qi.html">路由器</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji-jian-mo.html">统计建模</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/xi-tong-yun-wei.html">系统运维</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/xi-tong-guan-li.html">系统管理</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/xing-qu-ai-hao.html">兴趣爱好</a></li>
     </ul>
 </div><div class="widget">
@@ -142,8 +145,18 @@ rocks run host <span class="s">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/oth
     <a href="/tag/tennis.html" style="font-size: 12px">tennis</a>
     <a href="/tag/linux.html" style="font-size: 12px">linux</a>
     <a href="/tag/shell.html" style="font-size: 12px">shell</a>
+    <a href="/tag/ngs.html" style="font-size: 12px">NGS</a>
+    <a href="/tag/hotnet2.html" style="font-size: 12px">hotnet2</a>
+    <a href="/tag/bioinfo.html" style="font-size: 12px">bioinfo</a>
+    <a href="/tag/command.html" style="font-size: 12px">command</a>
     <a href="/tag/personal.html" style="font-size: 12px">personal</a>
+    <a href="/tag/issue.html" style="font-size: 12px">issue</a>
+    <a href="/tag/genome.html" style="font-size: 12px">genome</a>
     <a href="/tag/terminal.html" style="font-size: 12px">terminal</a>
+    <a href="/tag/centos.html" style="font-size: 12px">centos</a>
+    <a href="/tag/hpc.html" style="font-size: 12px">hpc</a>
+    <a href="/tag/rocks-cluster.html" style="font-size: 12px">rocks cluster</a>
+    <a href="/tag/fastq.html" style="font-size: 12px">fastq</a>
     <a href="/tag/rstudio.html" style="font-size: 12px">Rstudio</a>
     <a href="/tag/install.html" style="font-size: 12px">install</a>
     <a href="/tag/mount.html" style="font-size: 12px">mount</a>
@@ -170,16 +183,16 @@ rocks run host <span class="s">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/oth
         <a class="post-list-link" href="/terminal-color.html">终端显示颜色</a>
         </li>
         <li class="post-list-item">
+        <a class="post-list-link" href="/hotnet2.html">hotnet2</a>
+        </li>
+        <li class="post-list-item">
         <a class="post-list-link" href="/git.html">git的一般用法</a>
         </li>
         <li class="post-list-item">
         <a class="post-list-link" href="/the-sense.html">之感</a>
         </li>
         <li class="post-list-item">
-        <a class="post-list-link" href="/terminal-announcement.html">登录终端信息</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
+        <a class="post-list-link" href="/MutSigCV.html">MutSigCV的问题</a>
         </li>
     </ul>
 </div><div class="widget">

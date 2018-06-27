@@ -66,17 +66,17 @@ meta Analysis | iKnowledgeBase    </title>
 <!--more-->
 
 <h2>meta-analysis from odds ratios and confidence intervals using metafor</h2>
-<div class="highlight"><pre>dm<span class="o">&lt;-</span>structure<span class="p">(</span>list<span class="p">(</span>or <span class="o">=</span> c<span class="p">(</span><span class="m">1.6</span><span class="p">,</span> <span class="m">4.4</span><span class="p">,</span> <span class="m">1.14</span><span class="p">,</span> <span class="m">1.3</span><span class="p">,</span> <span class="m">4.5</span><span class="p">),</span> cill <span class="o">=</span> c<span class="p">(</span><span class="m">1.2</span><span class="p">,</span> <span class="m">2.9</span><span class="p">,</span> <span class="m">0.45</span><span class="p">,</span> <span class="m">0.6</span><span class="p">,</span> <span class="m">3.2</span><span class="p">),</span> ciul <span class="o">=</span> c<span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">6.9</span><span class="p">,</span> <span class="m">2.86</span><span class="p">,</span> <span class="m">2.7</span><span class="p">,</span> <span class="m">6.1</span><span class="p">)),</span> .Names <span class="o">=</span> c<span class="p">(</span><span class="s">&quot;or&quot;</span><span class="p">,</span> <span class="s">&quot;cill&quot;</span><span class="p">,</span> <span class="s">&quot;ciul&quot;</span><span class="p">),</span> class <span class="o">=</span> <span class="s">&quot;data.frame&quot;</span><span class="p">,</span> row.names <span class="o">=</span> c<span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="m">-5L</span><span class="p">))</span>
+<div class="highlight"><pre><span></span>dm<span class="o">&lt;-</span><span class="kp">structure</span><span class="p">(</span><span class="kt">list</span><span class="p">(</span>or <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1.6</span><span class="p">,</span> <span class="m">4.4</span><span class="p">,</span> <span class="m">1.14</span><span class="p">,</span> <span class="m">1.3</span><span class="p">,</span> <span class="m">4.5</span><span class="p">),</span> cill <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1.2</span><span class="p">,</span> <span class="m">2.9</span><span class="p">,</span> <span class="m">0.45</span><span class="p">,</span> <span class="m">0.6</span><span class="p">,</span> <span class="m">3.2</span><span class="p">),</span> ciul <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">6.9</span><span class="p">,</span> <span class="m">2.86</span><span class="p">,</span> <span class="m">2.7</span><span class="p">,</span> <span class="m">6.1</span><span class="p">)),</span> <span class="m">.</span>Names <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;or&quot;</span><span class="p">,</span> <span class="s">&quot;cill&quot;</span><span class="p">,</span> <span class="s">&quot;ciul&quot;</span><span class="p">),</span> class <span class="o">=</span> <span class="s">&quot;data.frame&quot;</span><span class="p">,</span> row.names <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="m">-5L</span><span class="p">))</span>
 
-dm<span class="o">$</span>logor<span class="o">&lt;-</span>log<span class="p">(</span>dm<span class="o">$</span>or<span class="p">)</span>
-dm<span class="o">$</span>se1<span class="o">&lt;-</span><span class="p">(</span>log<span class="p">(</span>dm<span class="o">$</span>ciul<span class="p">)</span><span class="o">-</span>dm<span class="o">$</span>logor<span class="p">)</span><span class="o">/</span><span class="m">1.96</span>
-dm<span class="o">$</span>se2<span class="o">&lt;-</span><span class="p">(</span>dm<span class="o">$</span>logor<span class="o">-</span>log<span class="p">(</span>dm<span class="o">$</span>cill<span class="p">))</span><span class="o">/</span><span class="m">1.96</span>
+dm<span class="o">$</span>logor<span class="o">&lt;-</span><span class="kp">log</span><span class="p">(</span>dm<span class="o">$</span>or<span class="p">)</span>
+dm<span class="o">$</span>se1<span class="o">&lt;-</span><span class="p">(</span><span class="kp">log</span><span class="p">(</span>dm<span class="o">$</span>ciul<span class="p">)</span><span class="o">-</span>dm<span class="o">$</span>logor<span class="p">)</span><span class="o">/</span><span class="m">1.96</span>
+dm<span class="o">$</span>se2<span class="o">&lt;-</span><span class="p">(</span>dm<span class="o">$</span>logor<span class="o">-</span><span class="kp">log</span><span class="p">(</span>dm<span class="o">$</span>cill<span class="p">))</span><span class="o">/</span><span class="m">1.96</span>
 dm<span class="o">$</span>se<span class="o">&lt;-</span><span class="p">(</span>dm<span class="o">$</span>se1<span class="o">+</span>dm<span class="o">$</span>se2<span class="p">)</span><span class="o">/</span><span class="m">2</span>
 
-library<span class="p">(</span>metafor<span class="p">)</span>
+<span class="kn">library</span><span class="p">(</span>metafor<span class="p">)</span>
 dmres<span class="o">&lt;-</span>rma.uni<span class="p">(</span>yi<span class="o">=</span>logor<span class="p">,</span> sei<span class="o">=</span>se<span class="p">,</span> data<span class="o">=</span>dm<span class="p">)</span>
 pdf<span class="p">()</span>
-forest<span class="p">(</span>dmres<span class="p">,</span> atransf<span class="o">=</span>exp<span class="p">,</span> showweights <span class="o">=</span> <span class="k-Variable">T</span><span class="p">,</span> mlab <span class="o">=</span> <span class="s">&quot;rsid&quot;</span><span class="p">,</span> slab <span class="o">=</span> paste0<span class="p">(</span><span class="s">&quot;study&quot;</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">))</span>
+forest<span class="p">(</span>dmres<span class="p">,</span> atransf<span class="o">=</span><span class="kp">exp</span><span class="p">,</span> showweights <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> mlab <span class="o">=</span> <span class="s">&quot;rsid&quot;</span><span class="p">,</span> slab <span class="o">=</span> <span class="kp">paste0</span><span class="p">(</span><span class="s">&quot;study&quot;</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">))</span>
 dev.off<span class="p">()</span>
 </pre></div>
 
@@ -101,10 +101,10 @@ dev.off<span class="p">()</span>
     </div>
     <ul class="category-list">
         <li class="category-list-item"><a class="category-list-link" href="/category/gong-ju-bao.html">工具包</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/linux.html">linux</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/li-lun-ji-chu.html">理论基础</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/lu-you-qi.html">路由器</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji-jian-mo.html">统计建模</a></li>
-        <li class="category-list-item"><a class="category-list-link" href="/category/xi-tong-yun-wei.html">系统运维</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/xi-tong-guan-li.html">系统管理</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/xing-qu-ai-hao.html">兴趣爱好</a></li>
     </ul>
 </div><div class="widget">
@@ -120,8 +120,18 @@ dev.off<span class="p">()</span>
     <a href="/tag/tennis.html" style="font-size: 12px">tennis</a>
     <a href="/tag/linux.html" style="font-size: 12px">linux</a>
     <a href="/tag/shell.html" style="font-size: 12px">shell</a>
+    <a href="/tag/ngs.html" style="font-size: 12px">NGS</a>
+    <a href="/tag/hotnet2.html" style="font-size: 12px">hotnet2</a>
+    <a href="/tag/bioinfo.html" style="font-size: 12px">bioinfo</a>
+    <a href="/tag/command.html" style="font-size: 12px">command</a>
     <a href="/tag/personal.html" style="font-size: 12px">personal</a>
+    <a href="/tag/issue.html" style="font-size: 12px">issue</a>
+    <a href="/tag/genome.html" style="font-size: 12px">genome</a>
     <a href="/tag/terminal.html" style="font-size: 12px">terminal</a>
+    <a href="/tag/centos.html" style="font-size: 12px">centos</a>
+    <a href="/tag/hpc.html" style="font-size: 12px">hpc</a>
+    <a href="/tag/rocks-cluster.html" style="font-size: 12px">rocks cluster</a>
+    <a href="/tag/fastq.html" style="font-size: 12px">fastq</a>
     <a href="/tag/rstudio.html" style="font-size: 12px">Rstudio</a>
     <a href="/tag/install.html" style="font-size: 12px">install</a>
     <a href="/tag/mount.html" style="font-size: 12px">mount</a>
@@ -148,16 +158,16 @@ dev.off<span class="p">()</span>
         <a class="post-list-link" href="/terminal-color.html">终端显示颜色</a>
         </li>
         <li class="post-list-item">
+        <a class="post-list-link" href="/hotnet2.html">hotnet2</a>
+        </li>
+        <li class="post-list-item">
         <a class="post-list-link" href="/git.html">git的一般用法</a>
         </li>
         <li class="post-list-item">
         <a class="post-list-link" href="/the-sense.html">之感</a>
         </li>
         <li class="post-list-item">
-        <a class="post-list-link" href="/terminal-announcement.html">登录终端信息</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
+        <a class="post-list-link" href="/MutSigCV.html">MutSigCV的问题</a>
         </li>
     </ul>
 </div><div class="widget">

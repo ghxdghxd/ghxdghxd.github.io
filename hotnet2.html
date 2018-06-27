@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html land="zh">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>
+hotnet2 | iKnowledgeBase    </title>
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygment.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css" />
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    
+    <link rel="Shortcut Icon" type="image/x-icon" href="/theme/images/favicon.ico" />
+    <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="body_container">
+    <div id="header">
+        <div class="site-name">
+            <a id="logo" href="/."> iKnowledgeBase </a>
+            <!-- <img id="short_image" src="/theme/images/Logo.jpg"/> -->
+            <!-- notebox + logo_image -->
+        </div>
+        <div id="nav-menu">
+            <a href="/." class="current"><i class="fa fa-home"> Home</i></a>
+            <a href="/archives.html"><i class="fa fa-archive"> Archive</i></a>
+            <a href="/pages/about.html"><i class="fa fa-user"> About</i></a>
+        </div>
+    </div>
+    <div id="layout" class="pure-g">
+        <div class="pure-u-1 pure-u-md-3-4">
+
+<form action="search.html" accept-charset="utf-8" class="search-form">
+    <input type="text" name="q" id="tipue_search_input" placeholder="好记性不如烂键盘...">
+    <button type="submit" class="tipue_search_button" name="sitesearch" value="https://ghxdghxd.github.io">Search</button>
+    <div style="clear: both;"></div>
+</form>            <div class="content_container">
+<div class="post">
+    <h1 class="post-title">hotnet2</h1>
+    <div class="tags" style="float: right;">
+    <a href="/tag/ngs.html">NGS</a>
+    <a href="/tag/hotnet2.html">hotnet2</a>
+    <a href="/tag/bioinfo.html">bioinfo</a>
+    </div>
+    <div class="post-meta">11月 03, 2016
+    <span> | </span> <a href="/category/gong-ju-bao.html">工具包</a>
+    </div>
+    <div class="post-content">
+        <p>hotnet2是一种新型计算机算法，能够筛选庞大的遗传数据，发现相互作用基因，而这些基因一旦突变就会导致多种癌症的发生发展。</p>
+<h1>背景</h1>
+<p>预先定义一个合理的基因集合或组合的统计需求</p>
+<p>标准化分析突变相关通路及蛋白复合物的方法</p>
+<p>这项研究没有选择癌症遗传学研究，而是采用了与众不同的方式，寻找癌症样品中频繁出现的单个基因的突变。基因并不会常常独自作战，主要还是与其它基因形成网络和途径，调控细胞功能。在某些情况下，途径中多个基因中出现一个突变，就会引发故障发生，导致癌症。因为有害突变可以分布在多个这样的基因网络，因此难以通过统计检验发现它们。</p>
+<p>而Hotnet2运算方法则能在网络水平上分析基因，帮助科学家们识别罕见，但又重要的癌症突变。</p>
+<p>HotNet2 算法是通过将病患突变数据投射到一张基因相互作用图谱上，然后寻找比偶发突变更常见的突变之间的相互作用网络，这一程序能作为heat sources寻找经常突变的基因。通过分析图谱上分布和聚集的方式，HotNet2 能找到与癌症相关的的“热”网络。</p>
+<p>Hotnet 的最初版本已经被用于识别急性髓细胞白血病、卵巢癌和几个其它类型癌症中的重要网络，目前这一版本也经过修改，可以用于处理更大和更复杂的泛癌症数据集。</p>
+<h1>subnetworks.json结构</h1>
+<ul>
+<li>
+<p>stats : {Minimum edge weight δ: {
+    Minimum subnetwork size1 : {expected : XXX,  observed : XXX,  pval : XXX}
+    Minimum subnetwork size2 : { expected : XXX,  observed : XXX,  pval : XXX}
+    }}</p>
+</li>
+<li>
+<p>deltas : [ deltas1, deltas2, deltas3, deltas4]
+    Minimum edge weight δ</p>
+</li>
+<li>
+<p>mutation_matrices : {deltas 1:{}, deltas2 : {}, deltas3 : {}, deltas4 : {}}
+    基因不同位点的类型（snv indel 或 cnv)</p>
+</li>
+<li>
+<p>typeToSamples</p>
+</li>
+<li>
+<p>subnetworks：{deltas :[ network0, network1] }
+    network: {edges :{</p>
+</li>
+<li>
+<p>ks Minimum subnetwork size</p>
+</li>
+<li>sampleToTypes： 样本类型</li>
+</ul>
+
+        <div class="post-nav">
+            <a href="/git.html" class="pre">git的一般用法</a>
+            <a href="/terminal-color.html" class="next">终端显示颜色</a>
+        </div>
+
+    </div>
+</div>
+        </div></div>
+        <div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar">
+<div class="widget">
+    <!-- <div class="widget-title">
+        <i class="fa fa-heart-o"> 好记性不如烂键盘</i>
+    </div> -->
+    <img id="logo_image" src="/theme/images/Logo.jpg" />
+</div>
+<div class="widget">
+    <div class="widget-title">
+        <i class="fa fa-folder-o"> Categories</i>
+    </div>
+    <ul class="category-list">
+        <li class="category-list-item"><a class="category-list-link" href="/category/gong-ju-bao.html">工具包</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/li-lun-ji-chu.html">理论基础</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/lu-you-qi.html">路由器</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji-jian-mo.html">统计建模</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/xi-tong-guan-li.html">系统管理</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/xing-qu-ai-hao.html">兴趣爱好</a></li>
+    </ul>
+</div><div class="widget">
+    <div class="widget-title"><i class="fa fa-star-o"> Tags</i></div>
+    <div class="tagcloud">
+    <a href="/tag/git.html" style="font-size: 12px">git</a>
+    <a href="/tag/submodule.html" style="font-size: 12px">submodule</a>
+    <a href="/tag/r.html" style="font-size: 12px">R</a>
+    <a href="/tag/meta.html" style="font-size: 12px">meta</a>
+    <a href="/tag/operation.html" style="font-size: 12px">operation</a>
+    <a href="/tag/interest.html" style="font-size: 12px">interest</a>
+    <a href="/tag/docker.html" style="font-size: 12px">docker</a>
+    <a href="/tag/tennis.html" style="font-size: 12px">tennis</a>
+    <a href="/tag/linux.html" style="font-size: 12px">linux</a>
+    <a href="/tag/shell.html" style="font-size: 12px">shell</a>
+    <a href="/tag/ngs.html" style="font-size: 12px">NGS</a>
+    <a href="/tag/hotnet2.html" style="font-size: 12px">hotnet2</a>
+    <a href="/tag/bioinfo.html" style="font-size: 12px">bioinfo</a>
+    <a href="/tag/command.html" style="font-size: 12px">command</a>
+    <a href="/tag/personal.html" style="font-size: 12px">personal</a>
+    <a href="/tag/issue.html" style="font-size: 12px">issue</a>
+    <a href="/tag/genome.html" style="font-size: 12px">genome</a>
+    <a href="/tag/terminal.html" style="font-size: 12px">terminal</a>
+    <a href="/tag/centos.html" style="font-size: 12px">centos</a>
+    <a href="/tag/hpc.html" style="font-size: 12px">hpc</a>
+    <a href="/tag/rocks-cluster.html" style="font-size: 12px">rocks cluster</a>
+    <a href="/tag/fastq.html" style="font-size: 12px">fastq</a>
+    <a href="/tag/rstudio.html" style="font-size: 12px">Rstudio</a>
+    <a href="/tag/install.html" style="font-size: 12px">install</a>
+    <a href="/tag/mount.html" style="font-size: 12px">mount</a>
+    </div>
+</div><div class="widget">
+    <div class="widget-title"><i class="fa fa-file-o"> Recent</i></div>
+    <ul class="post-list">
+        <li class="post-list-item">
+        <a class="post-list-link" href="/git-submodule.html">git submodule的用法</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/meta.html">meta Analysis</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/archlinux.html">archlinux安装与配置</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/docker.html">docker安装与配置</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/tennis-racquet.html">网球拍的平衡点</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/terminal-color.html">终端显示颜色</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/hotnet2.html">hotnet2</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/git.html">git的一般用法</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/the-sense.html">之感</a>
+        </li>
+        <li class="post-list-item">
+        <a class="post-list-link" href="/MutSigCV.html">MutSigCV的问题</a>
+        </li>
+    </ul>
+</div><div class="widget">
+    <div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div>
+    <ul></ul>
+    <a href="http://getpelican.com/" title="Pelican" target="_blank">Pelican</a>
+    <ul></ul>
+    <a href="http://python.org/" title="Python.org" target="_blank">Python.org</a>
+    <ul></ul>
+    <a href="http://jinja.pocoo.org/" title="Jinja2" target="_blank">Jinja2</a>
+    <ul></ul>
+    <a href="#" title="You can modify those links in your config file" target="_blank">You can modify those links in your config file</a>
+</div>
+        </div></div>
+        <div class="pure-u-1 pure-u-md-3-4">
+<div id="footer">Copyright © 2018 <a href="/." rel="nofollow">iKnowledgeBase.</a> Powered by <a rel="nofollow" target="_blank" href="https://getpelican.com/">Pelican</a> and <a rel="nofollow", target="_blank", href="https://github.com/wormtooth/maupassant-pelican">maupassant</a>.</div>        </div>
+    </div>
+
+<a id="rocket" href="#top" class="show"></a>
+<script type="text/javascript" src="/theme/js/totop.js" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script>
+<script type="text/javascript" src="/theme/js/fancybox.js" async></script>
+<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css" />
+
+</body>

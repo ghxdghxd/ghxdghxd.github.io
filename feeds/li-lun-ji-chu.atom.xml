@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 理论基础</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/li-lun-ji-chu.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2016-03-17T10:33:00+08:00</updated><entry><title>人类基因组</title><link href="https://ghxdghxd.github.io/hunman-genome.html" rel="alternate"></link><published>2014-12-05T11:38:00+08:00</published><updated>2016-03-17T10:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-05:/hunman-genome.html</id><summary type="html">&lt;p&gt;人类参考基因组的记录&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="hg" src="images/human_genome.png"&gt;&lt;/p&gt;
+&lt;h1&gt;参考序列&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;XY染色体上相同序列 &lt;strong&gt;PAR1&lt;/strong&gt; &lt;strong&gt;PAR2&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;chrY:10001-2649520 and chrY:59034050-59363566
+  chrX:60001-2699520 and chrX:154931044-155260560&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;参考基因组中的多余序列&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The chr*_random sequences are unplaced sequence on those reference
+  chromosomes.
+  The chrUn_* sequences are unlocalized sequences where the corresponding reference chromosome has not been determined.&lt;/p&gt;
+&lt;h1&gt;基因结构&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="gs" height="100%" src="images/GeneStructure.bmp" width="100%"&gt;&lt;/p&gt;
+&lt;p&gt;1.&lt;strong&gt;基因&lt;/strong&gt;： 表达基因产物的全部DNA序列,包括启动子、5'UTR、开放阅读框(open reading frame，ORF)、外显子、内含子、3'UTR以及调控区&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;启动子&lt;/strong&gt;
+    CAAT框(CAAT box)：其一致顺序为GGCTCAATCT，是真核生物基因常有的调节区，常位于转录起始点上游约-80bp处(或更远处)，可能也是RNA聚合酶的一个结合处，其突变敏感性决定转录效率，但是其突变不影响启动子的特异性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开放阅读框(open reading frame，ORF)：&lt;/strong&gt;
+    在mRNA上从&lt;em&gt;起始密码子&lt;/em&gt;到&lt;em&gt;终止密码子&lt;/em&gt;之间的一段序列，该段序列可能编码蛋白质，也可能不编码；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;编码区(coding sequences，CDS):&lt;/strong&gt;
+    CDS是检查cDNA后得到的编码组合序列，能翻译成氨基酸序列的DNA序列，从起始密码子到终止密码子，也就是说CDS与所翻译的氨基酸序列存在严格的3对1的关系；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;外显子与内含子分界&lt;/strong&gt;
+    每个外显子与内含子的接头部位，都有一高度保守的共有序列，为剪接识别信号，即每个内含子5‘端的两个核苷酸都是&lt;strong&gt;GT&lt;/strong&gt;，3‘端的两个核苷酸都是&lt;strong&gt;AG&lt;/strong&gt;，这种连接方式称为&lt;strong&gt;GT-AG&lt;/strong&gt;法则，是真核细胞中基因表达时剪切内含子和拼接外显子的共同机制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.&lt;strong&gt;前信使RNA(precursor messenger RNA, pre-mRNA)&lt;/strong&gt;
+又称heterogeneous nuclear RNA, hnRNA,是转录获得的最原始序列，没有经过任何加工，序列包含从转录起始位点到转录终止位点的全部序列；&lt;/p&gt;
+&lt;p&gt;3.&lt;strong&gt;信使RNA(mRNA)&lt;/strong&gt;: 基因转录后加工成熟用于翻译蛋白质的序列，包括CDS序列、3'UTR、5'UTR、5'帽子及3'Poly(A)尾&lt;/p&gt;
+&lt;p&gt;外显子拼接形成成熟的mRNA，多数基因都有UTR,它们也是外显子拼接的产物，所以，mRNA的长度要大于CDS，只有CDS才编码蛋白，AUG以前的mRNA编码前导序列。&lt;/p&gt;
+&lt;p&gt;&lt;img align="right" alt="polyA" height="50%" src="images/polyA.jpg" width="50%"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3`UTR的结构&lt;/strong&gt;: 3`UTR是PolyA尾巴的载体，而加这个尾巴关键的是PloyA signal。这个信号位点在3`UTR富含T或GT和其上游AATAAA信号中间，大约离AATAAA20-25个核苷酸，这个位点叫Cleavage site。如果AATAAA发生突变，那么PolyA signal就不会被激活。&lt;/p&gt;
+&lt;p&gt;4.&lt;strong&gt;cDNA&lt;/strong&gt;：通过mRNA反转录所得，与mRNA序列互补的单链DNA或者与mRNA对应的DNA双链；&lt;/p&gt;
+&lt;p&gt;5.&lt;strong&gt;EST&lt;/strong&gt;：表达序列标签，是指从一个随机选择的cDNA 克隆，进行5’端和3’端单一次测序挑选出来获得的短的cDNA部分序列, 代表一个完整基因的一小部分，在数据库中其长度一般从20 到7000bp 不等，平均长度为360
+±120bp。由于cDNA文库的复杂性和测序的随机性，有时多个EST代表同一基因或基因组，将其归类形成EST簇（EST cluster)；&lt;/p&gt;
+&lt;p&gt;过程|模板|原料|特点|引物
+:---:|:---:|:---:|:---:|:---:|:---:
+DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保留复制|需要
+转录|双链DNA|四种NTP|合成的新链除了把DNA上的T改为U外，其他一样，半不连续转录|不需要
+翻译|mRNA|20种游离的氨基酸|3个碱基决定一个氨基酸|&lt;/p&gt;</content><category term="genome"></category></entry><entry><title>如何根据测序数据计算出数据量以及测序深度？</title><link href="https://ghxdghxd.github.io/NGS-coverage.html" rel="alternate"></link><published>2014-12-04T16:35:00+08:00</published><updated>2016-02-29T20:40:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/NGS-coverage.html</id><summary type="html">&lt;p&gt;根据测序数据(reads)统计数据量以及测序深度&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+&lt;li&gt;数据量大小&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;单端测序&lt;/strong&gt; 数据量 = reads长度 * reads数
+&lt;strong&gt;双端测序&lt;/strong&gt; 数据量 = 单端reads长度 * 单端reads个数 * 2&lt;/p&gt;
+&lt;p&gt;注：&lt;strong&gt;单位换算&lt;/strong&gt; 1个碱基=1bp 1kb=1024bp 1M=1024kb 1G=1024M&lt;/p&gt;
+&lt;p&gt;2.测序深度&lt;/p&gt;
+&lt;p&gt;测序深度 = 数据量大小 / 参考基因组大小&lt;/p&gt;
+&lt;p&gt;3.测序与物理覆盖度&lt;/p&gt;
+&lt;p&gt;在PE测序文库中&lt;/p&gt;
+&lt;p&gt;&lt;img alt="coverage" src="images/coverage.png"&gt;&lt;/p&gt;</content><category term="NGS"></category></entry><entry><title>FASTQ格式详解</title><link href="https://ghxdghxd.github.io/fastq-format.html" rel="alternate"></link><published>2014-12-04T10:20:00+08:00</published><updated>2015-03-06T16:12:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/fastq-format.html</id><summary type="html">&lt;p&gt;Fastq的格式&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;FASTQ&lt;/strong&gt;是基于文本的，保存生物序列（通常是核酸序列）和其测序质量信息的标准格式。
+其序列以及质量信息都是使用一个ASCII字符标示，最初由Sanger开发，目的是将FASTA序列与质量数据放到一起，目前已经成为高通量测序结果的事实标准。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;FASTQ基本格式(reads)&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;每条reads包括4行：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;序列标识以及相关的描述信息，以‘@’开头；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;第二行是序列&lt;/li&gt;
+&lt;li&gt;第三行以‘+’开头，后面是序列标示符、描述信息，或者什么也不加&lt;/li&gt;
+&lt;li&gt;第四行，是质量信息，和第二行的序列相对应，每一个序列都有一个质量评分，根据评分体系的不同，每个字符的含义表示的数字也不相同。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1 @SEQ_ID
+2 GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
+3 \+
+4 !&amp;#39;&amp;#39;*((((***+))%%%++)(%%%%).1***-+*&amp;#39;&amp;#39;))**55CCF&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CCCCCCC65
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Fastq ID&lt;/h2&gt;
+&lt;p&gt;illumina测序仪的ID行一般包含测序仪、运行编号、flowcell ID、lane ID、tile ID、横纵轴坐标、索引序列等等&lt;/p&gt;
+&lt;h2&gt;质量信息&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;质量信息代表一个碱基的错误概率的对数值&lt;/li&gt;
+&lt;li&gt;Phred quality scores are logarithmically linked to error probabilities Phred&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$Q=-10log_{10}P$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;质量得分与错误概率的对应关系见下表：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Phred Quality Score (Q)&lt;/th&gt;
+&lt;th&gt;Probability of incorrect base call&lt;/th&gt;
+&lt;th&gt;Base call accuracy (P)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;1 in 10&lt;/td&gt;
+&lt;td&gt;90 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;1 in 100&lt;/td&gt;
+&lt;td&gt;99 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;30&lt;/td&gt;
+&lt;td&gt;1 in 1000&lt;/td&gt;
+&lt;td&gt;99.9 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;1 in 10000&lt;/td&gt;
+&lt;td&gt;99.99 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;1 in 100000&lt;/td&gt;
+&lt;td&gt;99.999 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;除了Phred质量得分换算标准，还有就是Solexa标准：
+$$Q_{solexa-prior to v.1.3}=-10log_{10}\frac{P}{1-P}$$&lt;/p&gt;
+&lt;p&gt;两种换算标准的比较：
+&lt;img alt="compare" src="./images/fastq_quality_compare.png"&gt;&lt;/p&gt;
+&lt;p&gt;Relationship between Q and p using the Sanger (red) and Solexa (black)
+equations (described above). The vertical dotted line indicates p = 0.05, or
+equivalently, Q ≈ 13.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于每个碱基的质量编码标示，不同的软件采用不同的方案，目前有5种方案：&lt;/li&gt;
+&lt;li&gt;Sanger，Phred quality score，值的范围从0到92，对应的ASCII码从33到126，但是对于测序数据（raw read data）质量得分通常小于60，序列拼接或者mapping可能用到更大的分数。&lt;/li&gt;
+&lt;li&gt;Solexa/Illumina 1.0, Solexa/Illumina quality score，值的范围从-5到63，对应的ASCII码从59到126，对于测序数据，得分一般在-5到40之间；&lt;/li&gt;
+&lt;li&gt;Illumina 1.3+，&lt;a href="http://en.wikipedia.org/wiki/Phred_quality_score"&gt;Phred quality score&lt;/a&gt;，值的范围从0到62对应的ASCII码从64到126，低于测序数据，得分在0到40之间；&lt;/li&gt;
+&lt;li&gt;Illumina 1.5+，Phred quality score，但是0到2作为另外的标示，&lt;a href="http://solexaqa.sourceforge.net/questions.htm#illumina"&gt;详见&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Illumina 1.8+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................
+      ..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................
+      ...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................
+      .................................**J**JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................
+      LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL....................................................
+      !&amp;quot;#$%&amp;amp;&amp;#39;()*+,-./0123456789:;&amp;lt;=&amp;gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+      |                         |    |        |                              |                     |
+     33                        59   64       73                            104                   126
+     S - Sanger        Phred+33,  raw reads typically (0, 40)
+     X - Solexa        Solexa+64, raw reads typically (-5, 40)
+     I - Illumina 1.3+ Phred+64,  raw reads typically (0, 40)
+     J - Illumina 1.5+ Phred+64,  raw reads typically (3, 40)
+        with 0=unused, 1=unused, 2=Read Segment Quality Control Indicator (bold)
+        (Note: See discussion above).
+     L - Illumina 1.8+ Phred+33,  raw reads typically (0, 41)
+&lt;/pre&gt;&lt;/div&gt;</content><category term="NGS"></category><category term="fastq"></category><category term="bioinfo"></category></entry></feed>

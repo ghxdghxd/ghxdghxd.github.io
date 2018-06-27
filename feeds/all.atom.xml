@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-02-03T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="https://ghxdghxd.github.io/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git clone &amp;lt;repository&amp;gt; --recursive 递归的方式克隆整个项目
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone &amp;lt;repository&amp;gt; --recursive 递归的方式克隆整个项目
 git submodule add &amp;lt;repository&amp;gt;&amp;lt;path&amp;gt; 添加子模块
 git submodule init 初始化子模块
 git submodule update 更新子模块
@@ -11,16 +11,16 @@ git submodule foreach git pull 拉取所有子模块
 &lt;h2&gt;如何使用&lt;/h2&gt;
 &lt;h3&gt;1. 创建带子模块的版本库&lt;/h3&gt;
 &lt;p&gt;例如我们要创建如下结构的项目&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;project
-    |--moduleA
-    |--readme.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;project
+    &lt;span class="p"&gt;|&lt;/span&gt;--moduleA
+    &lt;span class="p"&gt;|&lt;/span&gt;--readme.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;创建project版本库，并提交readme.txt文件&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git init --bare project.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init --bare project.git
 git clone project.git project1cd project1
-&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;This is a project.&amp;quot;&lt;/span&gt; &amp;gt; readme.txt
+echo&lt;span class="s2"&gt;&amp;quot;This is a project.&amp;quot;&lt;/span&gt; &amp;gt; readme.txt
 git add .
 git commit -m &lt;span class="s2"&gt;&amp;quot;add readme.txt&amp;quot;&lt;/span&gt;
 git push origin master
@@ -31,10 +31,10 @@ git push origin master
 &lt;!--more--&gt;
 
 &lt;p&gt;创建moduleA版本库，并提交a.txt文件&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git init --bare moduleA.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init --bare moduleA.git
 git clone moduleA.git moduleA1
-&lt;span class="nb"&gt;cd &lt;/span&gt;moduleA1
-&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;This is a submodule.&amp;quot;&lt;/span&gt; &amp;gt; a.txt
+&lt;span class="nb"&gt;cd&lt;/span&gt; moduleA1
+echo&lt;span class="s2"&gt;&amp;quot;This is a submodule.&amp;quot;&lt;/span&gt; &amp;gt; a.txt
 git add .
 git commit -m &lt;span class="s2"&gt;&amp;quot;add a.txt&amp;quot;&lt;/span&gt;
 git push origin master
@@ -43,7 +43,7 @@ git push origin master
 
 
 &lt;p&gt;在project项目中引入子模块moduleA，并提交子模块信息&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;project1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project1
 git submodule add ../moduleA.git moduleA
 git statusgit diff
 git add .
@@ -54,7 +54,7 @@ git push origin master
 
 
 &lt;p&gt;使用git status可以看到多了两个需要提交的文件，其中.gitmodules指定submodule的主要信息，包括子模块的路径和地址信息，moduleA指定了子模块的commit id，使用git diff可以看到这两项的内容。这里需要指出父项目的git并不会记录submodule的文件变动，它是按照commit id指定submodule的git header，所以.gitmodules和moduleA这两项是需要提交到父项目的远程仓库的。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;On branch master
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;On branch master
 Your branch is up-to-datewith&lt;span class="s1"&gt;&amp;#39;origin/master&amp;#39;&lt;/span&gt;.
 Changes to be committed:  &lt;span class="o"&gt;(&lt;/span&gt;use &lt;span class="s2"&gt;&amp;quot;git reset HEAD ...&amp;quot;&lt;/span&gt;to unstage&lt;span class="o"&gt;)&lt;/span&gt;
     new file:   .gitmodules
@@ -64,8 +64,8 @@ Changes to be committed:  &lt;span class="o"&gt;(&lt;/span&gt;use &lt;span class
 
 &lt;h3&gt;2. 克隆带子模块的版本库&lt;/h3&gt;
 &lt;p&gt;方法一，先clone父项目，再初始化submodule，最后更新submodule，初始化只需要做一次，之后每次只需要直接update就可以了，需要注意submodule默认是不在任何分支上的，它指向父项目存储的submodule commit id。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git clone project.git project2
-&lt;span class="nb"&gt;cd &lt;/span&gt;project2
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone project.git project2
+&lt;span class="nb"&gt;cd&lt;/span&gt; project2
 git submodule init
 git submodule update
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
@@ -73,16 +73,16 @@ git submodule update
 
 
 &lt;p&gt;方法二，采用递归参数--recursive，需要注意同样submodule默认是不在任何分支上的，它指向父项目存储的submodule commit id。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git clone project.git project3 --recursive
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone project.git project3 --recursive
 git submodule update --init --recursive
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;3. 修改子模块&lt;/h3&gt;
 &lt;p&gt;修改子模块之后只对子模块的版本库产生影响，对父项目的版本库不会产生任何影响，如果父项目需要用到最新的子模块代码，我们需要更新父项目中submodule commit id，默认的我们使用git status就可以看到父项目中submodule commit id已经改变了，我们只需要再次提交就可以了。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;project1/moduleA
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project1/moduleA
 git branch
-&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;This is a submodule.&amp;quot;&lt;/span&gt; &amp;gt; b.txt
+echo&lt;span class="s2"&gt;&amp;quot;This is a submodule.&amp;quot;&lt;/span&gt; &amp;gt; b.txt
 git add .
 git commit -m &lt;span class="s2"&gt;&amp;quot;add b.txt&amp;quot;&lt;/span&gt;
 git push origin master
@@ -99,7 +99,7 @@ git push origin master
 &lt;h3&gt;4. 更新子模块&lt;/h3&gt;
 &lt;p&gt;更新子模块的时候要注意子模块的分支默认不是master。
 方法一，先pull父项目，然后执行&lt;code&gt;git submodule update&lt;/code&gt;，注意moduleA的分支始终不是master。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;project2
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project2
 git pull
 git submodule update
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
@@ -107,7 +107,7 @@ git submodule update
 
 
 &lt;p&gt;方法二，先进入子模块，然后切换到需要的分支，这里是master分支，然后对子模块pull，这种方法会改变子模块的分支。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;project3/moduleA
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project3/moduleA
 git checkout master
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
 git submodule foreach git pull
@@ -117,7 +117,7 @@ git submodule foreach git pull
 
 &lt;h3&gt;5. 删除子模块&lt;/h3&gt;
 &lt;p&gt;网上有好多用的是下面这种方法&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git rm --cached moduleA
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm --cached moduleA
 rm -rf moduleA
 rm .gitmodules
 vim .git/config
@@ -125,18 +125,18 @@ vim .git/config
 
 
 &lt;p&gt;删除submodule相关的内容，例如下面的内容&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;submodule &lt;span class="s2"&gt;&amp;quot;moduleA&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;      &lt;span class="nv"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; /Users/nick/dev/nick-doc/testGitSubmodule/moduleA.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;submodule &lt;span class="s2"&gt;&amp;quot;moduleA&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;      &lt;span class="nv"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; /Users/nick/dev/nick-doc/testGitSubmodule/moduleA.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;然后提交到远程服务器&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git add .
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add .
 git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;但是我自己本地实验的时候，发现用下面的方式也可以，服务器记录的是.gitmodules和moduleA，本地只要用git的删除命令删除moduleA，再用git status查看状态就会发现.gitmodules和moduleA这两项都已经改变了，至于.git/config，仍会记录submodule信息，但是本地使用也没发现有什么影响，如果重新从服务器克隆则.git/config中不会有submodule信息。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git rm moduleA
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm moduleA
 git status
 git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/span&gt;
 git push origin master
@@ -153,49 +153,49 @@ git push origin master
 &lt;!--more--&gt;
 
 &lt;h2&gt;meta-analysis from odds ratios and confidence intervals using metafor&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;dm&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;structure&lt;span class="p"&gt;(&lt;/span&gt;list&lt;span class="p"&gt;(&lt;/span&gt;or &lt;span class="o"&gt;=&lt;/span&gt; c&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1.6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;4.4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1.14&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1.3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;4.5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; cill &lt;span class="o"&gt;=&lt;/span&gt; c&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1.2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2.9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.45&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;3.2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; ciul &lt;span class="o"&gt;=&lt;/span&gt; c&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;6.9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2.86&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2.7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;6.1&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; .Names &lt;span class="o"&gt;=&lt;/span&gt; c&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;or&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;cill&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ciul&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; class &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;data.frame&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; row.names &lt;span class="o"&gt;=&lt;/span&gt; c&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;NA&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;-5L&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dm&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="kp"&gt;structure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;or &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1.6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;4.4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1.14&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1.3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;4.5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; cill &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1.2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2.9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.45&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;3.2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; ciul &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;6.9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2.86&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2.7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;6.1&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="m"&gt;.&lt;/span&gt;Names &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;or&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;cill&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ciul&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; class &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;data.frame&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; row.names &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;NA&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;-5L&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
-dm&lt;span class="o"&gt;$&lt;/span&gt;logor&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;log&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;or&lt;span class="p"&gt;)&lt;/span&gt;
-dm&lt;span class="o"&gt;$&lt;/span&gt;se1&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;log&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;ciul&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;logor&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="m"&gt;1.96&lt;/span&gt;
-dm&lt;span class="o"&gt;$&lt;/span&gt;se2&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;logor&lt;span class="o"&gt;-&lt;/span&gt;log&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;cill&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="m"&gt;1.96&lt;/span&gt;
+dm&lt;span class="o"&gt;$&lt;/span&gt;logor&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="kp"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;or&lt;span class="p"&gt;)&lt;/span&gt;
+dm&lt;span class="o"&gt;$&lt;/span&gt;se1&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;ciul&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;logor&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="m"&gt;1.96&lt;/span&gt;
+dm&lt;span class="o"&gt;$&lt;/span&gt;se2&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;logor&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kp"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;cill&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="m"&gt;1.96&lt;/span&gt;
 dm&lt;span class="o"&gt;$&lt;/span&gt;se&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;se1&lt;span class="o"&gt;+&lt;/span&gt;dm&lt;span class="o"&gt;$&lt;/span&gt;se2&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;
 
-library&lt;span class="p"&gt;(&lt;/span&gt;metafor&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;metafor&lt;span class="p"&gt;)&lt;/span&gt;
 dmres&lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;rma.uni&lt;span class="p"&gt;(&lt;/span&gt;yi&lt;span class="o"&gt;=&lt;/span&gt;logor&lt;span class="p"&gt;,&lt;/span&gt; sei&lt;span class="o"&gt;=&lt;/span&gt;se&lt;span class="p"&gt;,&lt;/span&gt; data&lt;span class="o"&gt;=&lt;/span&gt;dm&lt;span class="p"&gt;)&lt;/span&gt;
 pdf&lt;span class="p"&gt;()&lt;/span&gt;
-forest&lt;span class="p"&gt;(&lt;/span&gt;dmres&lt;span class="p"&gt;,&lt;/span&gt; atransf&lt;span class="o"&gt;=&lt;/span&gt;exp&lt;span class="p"&gt;,&lt;/span&gt; showweights &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k-Variable"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; mlab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;rsid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; slab &lt;span class="o"&gt;=&lt;/span&gt; paste0&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;study&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+forest&lt;span class="p"&gt;(&lt;/span&gt;dmres&lt;span class="p"&gt;,&lt;/span&gt; atransf&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kp"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; showweights &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; mlab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;rsid&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; slab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;paste0&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;study&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 dev.off&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category><category term="meta"></category></entry><entry><title>archlinux安装与配置</title><link href="https://ghxdghxd.github.io/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;archlinux安装&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# u盘启动后&lt;/span&gt;
-&lt;span class="cp"&gt;# 连接网络&lt;/span&gt;
-&lt;span class="n"&gt;wifi&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;memu&lt;/span&gt;
-&lt;span class="n"&gt;mount&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sda1&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt;
-&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;
-&lt;span class="n"&gt;mount&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sda2&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;
-&lt;span class="cp"&gt;# 修改中国镜像源,如163.com&lt;/span&gt;
-&lt;span class="n"&gt;vi&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ect&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pacman&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mirrorlist&lt;/span&gt;
-&lt;span class="n"&gt;pacstrap&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt; &lt;span class="n"&gt;base&lt;/span&gt; &lt;span class="n"&gt;base&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;devel&lt;/span&gt;
-&lt;span class="cp"&gt;#生成挂载文件fstab&lt;/span&gt;
-&lt;span class="n"&gt;genfstab&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fstab&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# u盘启动后&lt;/span&gt;
+&lt;span class="c1"&gt;# 连接网络&lt;/span&gt;
+wifi-memu
+mount /dev/sda1 /mnt
+mkdir -p /mnt/home
+mount /dev/sda2 /mnt/home
+&lt;span class="c1"&gt;# 修改中国镜像源,如163.com&lt;/span&gt;
+vi /ect/pacman.d/mirrorlist
+pacstrap -i /mnt base base-devel
+&lt;span class="c1"&gt;#生成挂载文件fstab&lt;/span&gt;
+genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;archlinux 初步配置&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#切换到archlinux&lt;/span&gt;
-&lt;span class="n"&gt;arch&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;chroot&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mnt&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bash&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#切换到archlinux&lt;/span&gt;
+arch-chroot /mnt /bin/bash
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;本地语言&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;vi&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;locale&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gen&lt;/span&gt;
-    &lt;span class="n"&gt;en_US&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UTF&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="n"&gt;UTF&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;
-    &lt;span class="n"&gt;zh_CN&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UTF&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="n"&gt;UTF&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vi /etc/locale.gen
+    en_US.UTF-8 UTF-8
+    zh_CN.UTF-8 UTF-8
 
-&lt;span class="cp"&gt;#生效&lt;/span&gt;
-&lt;span class="n"&gt;locale&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;gen&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="n"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;en_US&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UTF&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;locale&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;
+&lt;span class="c1"&gt;#生效&lt;/span&gt;
+locale-gen
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;en_US.UTF-8 &amp;gt; /etc/locale.conf
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -204,136 +204,136 @@ dev.off&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;ul&gt;
 &lt;li&gt;时区&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ln&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;sf&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;zoneinfo&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Asia&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Shanghai&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;localtime&lt;/span&gt;
-&lt;span class="cp"&gt;# 或&lt;/span&gt;
-&lt;span class="cp"&gt;# 按提示选择时区&lt;/span&gt;
-&lt;span class="n"&gt;tzselect&lt;/span&gt;
-&lt;span class="cp"&gt;#设置硬件时间&lt;/span&gt;
-&lt;span class="n"&gt;hwclock&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;systohc&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;utc&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+&lt;span class="c1"&gt;# 或&lt;/span&gt;
+&lt;span class="c1"&gt;# 按提示选择时区&lt;/span&gt;
+tzselect
+&lt;span class="c1"&gt;#设置硬件时间&lt;/span&gt;
+hwclock --systohc --utc
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;grub引导系统&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# 支持grub和EFI，可只选grup&lt;/span&gt;
-&lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;grub&lt;/span&gt; &lt;span class="n"&gt;efibootmgr&lt;/span&gt;
-&lt;span class="n"&gt;grub&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;i386&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pc&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;recheck&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sda&lt;/span&gt;
-&lt;span class="n"&gt;grup&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mkconfig&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;boot&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;grub&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;grub&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cfg&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 支持grub和EFI，可只选grup&lt;/span&gt;
+pacman -S grub efibootmgr
+grub-install --target&lt;span class="o"&gt;=&lt;/span&gt;i386-pc --recheck --debug /dev/sda
+grup-mkconfig -o /boot/grub/grub.cfg
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;主机名&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="n"&gt;Garch&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;hostname&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; Garch &amp;gt;&amp;gt; /etc/hostname
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;网络配置&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# 有线&lt;/span&gt;
-&lt;span class="n"&gt;systemctl&lt;/span&gt; &lt;span class="n"&gt;enable&lt;/span&gt; &lt;span class="n"&gt;dhcpcd&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;service&lt;/span&gt;
-&lt;span class="cp"&gt;# 无线&lt;/span&gt;
-&lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;iw&lt;/span&gt; &lt;span class="n"&gt;wpa_supplicant&lt;/span&gt; &lt;span class="n"&gt;dialog&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 有线&lt;/span&gt;
+systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; dhcpcd.service
+&lt;span class="c1"&gt;# 无线&lt;/span&gt;
+pacman -S iw wpa_supplicant dialog
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;archlinux 配置&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# 最小安装&lt;/span&gt;
-&lt;span class="cp"&gt;# X桌面&lt;/span&gt;
-&lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;xorg&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;
-&lt;span class="cp"&gt;# 显卡驱动&lt;/span&gt;
-&lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;xf86&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;video&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ati&lt;/span&gt;
-&lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;gnome&lt;/span&gt; &lt;span class="n"&gt;gnome&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tweak&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tool&lt;/span&gt;
-&lt;span class="n"&gt;pacman&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="n"&gt;ttf&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ubuntu&lt;/span&gt;
-&lt;span class="cp"&gt;# 可选&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 最小安装&lt;/span&gt;
+&lt;span class="c1"&gt;# X桌面&lt;/span&gt;
+pacman -S xorg-server
+&lt;span class="c1"&gt;# 显卡驱动&lt;/span&gt;
+pacman -S xf86-video-ati
+pacman -S gnome gnome-tweak-tool
+pacman -S ttf-ubuntu
+&lt;span class="c1"&gt;# 可选&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="operation"></category><category term="interest"></category></entry><entry><title>docker安装与配置</title><link href="https://ghxdghxd.github.io/docker.html" rel="alternate"></link><published>2017-11-03T10:20:00+08:00</published><updated>2017-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-11-03:/docker.html</id><summary type="html">&lt;p&gt;docker的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;docker&lt;/h1&gt;
 &lt;h2&gt;centos yum install docker&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;tee &lt;span class="o"&gt;/&lt;/span&gt;etc&lt;span class="o"&gt;/&lt;/span&gt;yum.repos.d&lt;span class="o"&gt;/&lt;/span&gt;docker.repo &lt;span class="o"&gt;&amp;lt;&amp;lt;-&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;EOF&amp;#39;&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;dockerrepo&lt;span class="p"&gt;]&lt;/span&gt;
-name&lt;span class="o"&gt;=&lt;/span&gt;Docker Repository
-baseurl&lt;span class="o"&gt;=&lt;/span&gt;https&lt;span class="o"&gt;://&lt;/span&gt;yum.dockerproject.org&lt;span class="o"&gt;/&lt;/span&gt;repo&lt;span class="o"&gt;/&lt;/span&gt;main&lt;span class="o"&gt;/&lt;/span&gt;centos&lt;span class="o"&gt;/$&lt;/span&gt;releasever&lt;span class="o"&gt;/&lt;/span&gt;
-enabled&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
-gpgcheck&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
-gpgkey&lt;span class="o"&gt;=&lt;/span&gt;https&lt;span class="o"&gt;://&lt;/span&gt;yum.dockerproject.org&lt;span class="o"&gt;/&lt;/span&gt;gpg
-EOF
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tee /etc/yum.repos.d/docker.repo &lt;span class="s"&gt;&amp;lt;&amp;lt;-&amp;#39;EOF&amp;#39;&lt;/span&gt;
+&lt;span class="s"&gt;[dockerrepo]&lt;/span&gt;
+&lt;span class="s"&gt;name=Docker Repository&lt;/span&gt;
+&lt;span class="s"&gt;baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/&lt;/span&gt;
+&lt;span class="s"&gt;enabled=1&lt;/span&gt;
+&lt;span class="s"&gt;gpgcheck=1&lt;/span&gt;
+&lt;span class="s"&gt;gpgkey=https://yum.dockerproject.org/gpg&lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;
 
-sed &lt;span class="o"&gt;-&lt;/span&gt;i &lt;span class="s"&gt;&amp;#39;s/other_args=\&amp;quot;\&amp;quot;/other_args=\&amp;quot;--graph=\/share\/apps\/docker\&amp;quot;/g&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;etc&lt;span class="o"&gt;/&lt;/span&gt;sysconfig&lt;span class="o"&gt;/&lt;/span&gt;docker
+sed -i &lt;span class="s1"&gt;&amp;#39;s/other_args=\&amp;quot;\&amp;quot;/other_args=\&amp;quot;--graph=\/share\/apps\/docker\&amp;quot;/g&amp;#39;&lt;/span&gt; /etc/sysconfig/docker
 
-&lt;span class="kr"&gt;for&lt;/span&gt; i &lt;span class="kr"&gt;in&lt;/span&gt; &lt;span class="sb"&gt;`seq 1 8`&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-do
-    sudo scp &lt;span class="o"&gt;/&lt;/span&gt;etc&lt;span class="o"&gt;/&lt;/span&gt;yum.repos.d&lt;span class="o"&gt;/&lt;/span&gt;docker.repo compute&lt;span class="m"&gt;-0&lt;/span&gt;&lt;span class="o"&gt;-$&lt;/span&gt;i&lt;span class="o"&gt;:/&lt;/span&gt;etc&lt;span class="o"&gt;/&lt;/span&gt;yum.repos.d&lt;span class="o"&gt;/&lt;/span&gt;docker.repo
-done
+&lt;span class="k"&gt;for&lt;/span&gt; i in &lt;span class="sb"&gt;`&lt;/span&gt;seq &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;do&lt;/span&gt;
+    sudo scp /etc/yum.repos.d/docker.repo compute-0-&lt;span class="nv"&gt;$i&lt;/span&gt;:/etc/yum.repos.d/docker.repo
+&lt;span class="k"&gt;done&lt;/span&gt;
 
-rocks run host &lt;span class="s"&gt;&amp;quot;yum install docker-engine&amp;quot;&lt;/span&gt;
-rocks run host &lt;span class="s"&gt;&amp;quot;sed -i &amp;#39;s/other_args=\&amp;quot;\&amp;quot;/other_args=\&amp;quot;--graph=\/share\/apps\/docker\&amp;quot;/g&amp;#39; /etc/sysconfig/docker&amp;quot;&lt;/span&gt;
+rocks run host &lt;span class="s2"&gt;&amp;quot;yum install docker-engine&amp;quot;&lt;/span&gt;
+rocks run host &lt;span class="s2"&gt;&amp;quot;sed -i &amp;#39;s/other_args=\&amp;quot;\&amp;quot;/other_args=\&amp;quot;--graph=\/share\/apps\/docker\&amp;quot;/g&amp;#39; /etc/sysconfig/docker&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;!--more--&gt;
 
 &lt;h2&gt;手动安装&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# 手动安装centos6.5 一些需要安装&lt;/span&gt;
-&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;remove&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;engine&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;apps&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
-&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lua&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;filesystem&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.4.2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="n"&gt;el6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;
-&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lxc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;libs&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.0.11&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="n"&gt;el6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;
-&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lua&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;lxc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.0.11&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="n"&gt;el6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;
-&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lua&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;getopt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;0.7.0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="n"&gt;el6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;noarch&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;
-&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lxc&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.0.11&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="n"&gt;el6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;
-&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.7.1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;2.&lt;/span&gt;&lt;span class="n"&gt;el6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;
-&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;O&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;yum&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;CentOS&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//mirrors.aliyun.com/repo/Centos-6.repo&lt;/span&gt;
-&lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mapper&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;libs&lt;/span&gt;
-&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 手动安装centos6.5 一些需要安装&lt;/span&gt;
+yum remove docker-engine
+&lt;span class="nb"&gt;cd&lt;/span&gt; /share/apps/until/docker/
+yum install ./lua-filesystem-1.4.2-1.el6.x86_64.rpm
+yum install ./lxc-libs-1.0.11-1.el6.x86_64.rpm
+yum install ./lua-lxc-1.0.11-1.el6.x86_64.rpm
+yum install ./lua-alt-getopt-0.7.0-1.el6.noarch.rpm
+yum install ./lxc-1.0.11-1.el6.x86_64.rpm
+yum install ./docker-io-1.7.1-2.el6.x86_64.rpm
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+yum install device-mapper-event-libs
+service docker restart
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;安装错误&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# 下面错误：&lt;/span&gt;
-&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;relocation&lt;/span&gt; &lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;symbol&lt;/span&gt; &lt;span class="n"&gt;dm_task_get_info_with_deferred_remove&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="n"&gt;Base&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;defined&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;libdevmapper&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;&lt;span class="mf"&gt;.1.02&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt; &lt;span class="n"&gt;reference&lt;/span&gt;
-&lt;span class="nl"&gt;fix:&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;yum&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;device&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mapper&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;event&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;libs&lt;/span&gt;
-&lt;span class="cp"&gt;# 如果无法安装，重新更新&lt;/span&gt;
-&lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;O&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;yum&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;CentOS&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//mirrors.aliyun.com/repo/Centos-6.repo&lt;/span&gt;
-&lt;span class="cp"&gt;# 然后再安装&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 下面错误：&lt;/span&gt;
+/usr/bin/docker: relocation error: /usr/bin/docker: symbol dm_task_get_info_with_deferred_remove, version Base not defined in file libdevmapper.so.1.02 with link &lt;span class="nb"&gt;time&lt;/span&gt; reference
+fix: $ sudo yum install device-mapper-event-libs
+&lt;span class="c1"&gt;# 如果无法安装，重新更新&lt;/span&gt;
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+&lt;span class="c1"&gt;# 然后再安装&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;docker应用&lt;/h2&gt;
 &lt;h3&gt;启动docker&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;service docker start
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;添加用户&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;# 添加docker group：
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 添加docker group：&lt;/span&gt;
 sudo groupadd docker
 
-# 将当前用户添加到docker组：
-sudo gpasswd -a &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;USER&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; docker
+&lt;span class="c1"&gt;# 将当前用户添加到docker组：&lt;/span&gt;
+sudo gpasswd -a &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; docker
 
-# 重启docker服务：
+&lt;span class="c1"&gt;# 重启docker服务：&lt;/span&gt;
 sudo service docker restart
-# 开机启动
+&lt;span class="c1"&gt;# 开机启动&lt;/span&gt;
 chkconfig docker on
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;修改镜像和容器的存放路径&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# /etc/sysconfig/docker加入：&lt;/span&gt;
-&lt;span class="n"&gt;other_args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;--graph=/data/docker&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# /etc/sysconfig/docker加入：&lt;/span&gt;
+&lt;span class="nv"&gt;other_args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;--graph=/data/docker&amp;quot;&lt;/span&gt;
 
-&lt;span class="cp"&gt;# 停止Docker服务&lt;/span&gt;
-&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;
-&lt;span class="cp"&gt;# 备份数据到新的存放路径&lt;/span&gt;
-&lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rf&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
-&lt;span class="cp"&gt;# 修改备份/var/lib/docker路径&lt;/span&gt;
-&lt;span class="n"&gt;mv&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="p"&gt;{,.&lt;/span&gt;&lt;span class="n"&gt;bak&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="cp"&gt;# 启动Docker服务&lt;/span&gt;
-&lt;span class="n"&gt;service&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;
-&lt;span class="cp"&gt;# 测试Docker服务&lt;/span&gt;
-&lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt;
+&lt;span class="c1"&gt;# 停止Docker服务&lt;/span&gt;
+service docker stop
+&lt;span class="c1"&gt;# 备份数据到新的存放路径&lt;/span&gt;
+cp -rf /var/lib/docker /data/
+&lt;span class="c1"&gt;# 修改备份/var/lib/docker路径&lt;/span&gt;
+mv /var/lib/docker&lt;span class="o"&gt;{&lt;/span&gt;,.bak&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="c1"&gt;# 启动Docker服务&lt;/span&gt;
+service docker start
+&lt;span class="c1"&gt;# 测试Docker服务&lt;/span&gt;
+docker info
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -356,7 +356,7 @@ chkconfig docker on
 &lt;p&gt;图中可知，此时拍子是完全平衡状态，只需测量纸片到底盖的距离就可以了，按这个方法测量出我的拍子是32.34cm，套用公式:
 （34.25-32.34）÷0.3175=6.015，也就是6点头轻了！&lt;/p&gt;
 &lt;p&gt;另附上球拍头轻和头重的优劣:
-头轻拍更灵活易于控制，能让选手在网前有不错的表现，但是不能提供足够大的力量。头重拍，灵活性差，但能提供额外的力量更有利于底线的击球。一般专业的球拍都是头轻拍或者是平衡拍，因为这样更利于网前技术的发挥，而且专业球员都有很好的身体素质可以自身去发力。而初学拍比较多的是头重拍，这样能使初学者并不需要太多的发力就能击出力量较大的球。&lt;/p&gt;</content><category term="tennis"></category></entry><entry><title>终端显示颜色</title><link href="https://ghxdghxd.github.io/terminal-color.html" rel="alternate"></link><published>2017-01-03T10:20:00+08:00</published><updated>2017-01-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-03:/terminal-color.html</id><summary type="html">&lt;p&gt;终端显示颜色&lt;/p&gt;</summary><content type="html">&lt;p&gt;echo显示带颜色，需要使用参数-e
+头轻拍更灵活易于控制，能让选手在网前有不错的表现，但是不能提供足够大的力量。头重拍，灵活性差，但能提供额外的力量更有利于底线的击球。一般专业的球拍都是头轻拍或者是平衡拍，因为这样更利于网前技术的发挥，而且专业球员都有很好的身体素质可以自身去发力。而初学拍比较多的是头重拍，这样能使初学者并不需要太多的发力就能击出力量较大的球。&lt;/p&gt;</content><category term="tennis"></category><category term="interest"></category></entry><entry><title>终端显示颜色</title><link href="https://ghxdghxd.github.io/terminal-color.html" rel="alternate"></link><published>2017-01-03T10:20:00+08:00</published><updated>2017-01-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-03:/terminal-color.html</id><summary type="html">&lt;p&gt;终端显示颜色&lt;/p&gt;</summary><content type="html">&lt;p&gt;echo显示带颜色，需要使用参数-e
 格式如下:
 echo -e "\033[字背景颜色;文字颜色m字符串\033[0m"
 例如:
@@ -367,23 +367,23 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 2、文字颜色后面有个m
 3、字符串前后可以没有空格，如果有的话，输出也是同样有空格&lt;/p&gt;
 &lt;p&gt;下面看几个例子：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[30m 黑色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[31m 红色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[32m 绿色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[33m 黄色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[34m 蓝色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[35m 紫色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[36m 天蓝字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[37m 白色字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[30m 黑色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[31m 红色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[32m 绿色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[33m 黄色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[34m 蓝色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[35m 紫色字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[36m 天蓝字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[37m 白色字 \033[0m&amp;quot;&lt;/span&gt;
 
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[40;37m 黑底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[41;37m 红底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[42;37m 绿底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[43;37m 黄底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[44;37m 蓝底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[45;37m 紫底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[46;37m 天蓝底白字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[47;30m 白底黑字 &lt;/span&gt;&lt;span class="se"&gt;\033&lt;/span&gt;&lt;span class="s"&gt;[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[40;37m 黑底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[41;37m 红底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[42;37m 绿底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[43;37m 黄底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[44;37m 蓝底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[45;37m 紫底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[46;37m 天蓝底白字 \033[0m&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;\033[47;30m 白底黑字 \033[0m&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -475,19 +475,54 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;td&gt;显示光标&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</content><category term="linux"></category><category term="shell"></category></entry><entry><title>git的一般用法</title><link href="https://ghxdghxd.github.io/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
+&lt;/table&gt;</content><category term="linux"></category><category term="shell"></category></entry><entry><title>hotnet2</title><link href="https://ghxdghxd.github.io/hotnet2.html" rel="alternate"></link><published>2016-11-03T19:01:00+08:00</published><updated>2016-11-18T11:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/hotnet2.html</id><summary type="html">&lt;p&gt;hotnet2的简介&lt;/p&gt;</summary><content type="html">&lt;p&gt;hotnet2是一种新型计算机算法，能够筛选庞大的遗传数据，发现相互作用基因，而这些基因一旦突变就会导致多种癌症的发生发展。&lt;/p&gt;
+&lt;h1&gt;背景&lt;/h1&gt;
+&lt;p&gt;预先定义一个合理的基因集合或组合的统计需求&lt;/p&gt;
+&lt;p&gt;标准化分析突变相关通路及蛋白复合物的方法&lt;/p&gt;
+&lt;p&gt;这项研究没有选择癌症遗传学研究，而是采用了与众不同的方式，寻找癌症样品中频繁出现的单个基因的突变。基因并不会常常独自作战，主要还是与其它基因形成网络和途径，调控细胞功能。在某些情况下，途径中多个基因中出现一个突变，就会引发故障发生，导致癌症。因为有害突变可以分布在多个这样的基因网络，因此难以通过统计检验发现它们。&lt;/p&gt;
+&lt;p&gt;而Hotnet2运算方法则能在网络水平上分析基因，帮助科学家们识别罕见，但又重要的癌症突变。&lt;/p&gt;
+&lt;p&gt;HotNet2 算法是通过将病患突变数据投射到一张基因相互作用图谱上，然后寻找比偶发突变更常见的突变之间的相互作用网络，这一程序能作为heat sources寻找经常突变的基因。通过分析图谱上分布和聚集的方式，HotNet2 能找到与癌症相关的的“热”网络。&lt;/p&gt;
+&lt;p&gt;Hotnet 的最初版本已经被用于识别急性髓细胞白血病、卵巢癌和几个其它类型癌症中的重要网络，目前这一版本也经过修改，可以用于处理更大和更复杂的泛癌症数据集。&lt;/p&gt;
+&lt;h1&gt;subnetworks.json结构&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;stats : {Minimum edge weight δ: {
+    Minimum subnetwork size1 : {expected : XXX,  observed : XXX,  pval : XXX}
+    Minimum subnetwork size2 : { expected : XXX,  observed : XXX,  pval : XXX}
+    }}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;deltas : [ deltas1, deltas2, deltas3, deltas4]
+    Minimum edge weight δ&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;mutation_matrices : {deltas 1:{}, deltas2 : {}, deltas3 : {}, deltas4 : {}}
+    基因不同位点的类型（snv indel 或 cnv)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;typeToSamples&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;subnetworks：{deltas :[ network0, network1] }
+    network: {edges :{&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ks Minimum subnetwork size&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;sampleToTypes： 样本类型&lt;/li&gt;
+&lt;/ul&gt;</content><category term="NGS"></category><category term="hotnet2"></category><category term="bioinfo"></category></entry><entry><title>git的一般用法</title><link href="https://ghxdghxd.github.io/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
 &lt;h2&gt;1 建立仓库&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;远程&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git remote add origin git@github.com:ghxdghxd&lt;span class="nv"&gt;$NAME&lt;/span&gt;.git
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git remote add origin git@github.com:ghxdghxd&lt;span class="nv"&gt;$NAME&lt;/span&gt;.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;本地(初始化)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git init
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -495,16 +530,16 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;ul&gt;
 &lt;li&gt;拉取&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;pull&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git pull origin master
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;提交&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
-&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;message&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;develop&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git add *.py
+git commit -m &lt;span class="s2"&gt;&amp;quot;message&amp;quot;&lt;/span&gt;
+git push origin master/dev/develop
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -513,8 +548,8 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;ul&gt;
 &lt;li&gt;重命令与删除&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;rm&lt;/span&gt;
-&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;mv&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git rm
+git mv
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -539,19 +574,19 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git branch  /-a/r       &lt;span class="c"&gt;# 查看本地/全部/远程分支&lt;/span&gt;
-git branch &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;       &lt;span class="c"&gt;# 建立分支&lt;/span&gt;
-git branch -d &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;    &lt;span class="c"&gt;# 删除分支&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git branch  /-a/r       &lt;span class="c1"&gt;# 查看本地/全部/远程分支&lt;/span&gt;
+git branch &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;       &lt;span class="c1"&gt;# 建立分支&lt;/span&gt;
+git branch -d &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;    &lt;span class="c1"&gt;# 删除分支&lt;/span&gt;
 
-git checkout -b &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt; origin/develop   &lt;span class="c"&gt;# 建立并切换开发分支&lt;/span&gt;
-git checkout &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;                     &lt;span class="c"&gt;# 切换分支&lt;/span&gt;
-git merge --no-ff &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;                &lt;span class="c"&gt;# 合并分支&lt;/span&gt;
-git push origin dev:develop             &lt;span class="c"&gt;# 本地分支提交到远程&lt;/span&gt;
+git checkout -b &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt; origin/develop   &lt;span class="c1"&gt;# 建立并切换开发分支&lt;/span&gt;
+git checkout &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;                     &lt;span class="c1"&gt;# 切换分支&lt;/span&gt;
+git merge --no-ff &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;                &lt;span class="c1"&gt;# 合并分支&lt;/span&gt;
+git push origin dev:develop             &lt;span class="c1"&gt;# 本地分支提交到远程&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;push命令用于将本地分支的更新，推送到远程主机。&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;git&lt;/span&gt; &lt;span class="nb"&gt;push&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;远程主机名&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;本地分支名&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;远程分支名&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -560,68 +595,68 @@ git push origin dev:develop             &lt;span class="c"&gt;# 本地分支提�
 &lt;p&gt;注意，分支推送顺序的写法是&amp;lt;来源地&amp;gt;:&amp;lt;目的地&amp;gt;，
 所以git pull是&amp;lt;远程分支&amp;gt;:&amp;lt;本地分支&amp;gt;，而git push是&amp;lt;本地分支&amp;gt;:&amp;lt;远程分支&amp;gt;。
 如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支(通常两者同名)，如果该远程分支不存在，则会被新建。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin master
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;上面命令表示，将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。&lt;/p&gt;
 &lt;p&gt;如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;master&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin :master
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;等同于&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;delete&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin --delete master
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;上面命令表示删除origin主机的master分支。&lt;/p&gt;
 &lt;p&gt;如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;上面命令表示，将当前分支推送到origin主机的对应分支。&lt;/p&gt;
 &lt;p&gt;如果当前分支只有一个追踪分支，那么主机名都可以省略。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push -u origin master
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。&lt;/p&gt;
 &lt;p&gt;不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用git config命令。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;matching&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global push.default matching
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;或者&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;simple&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global push.default simple
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push --all origin
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;上面命令表示，将所有本地分支都推送到origin主机。&lt;/p&gt;
 &lt;p&gt;如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用–force选项。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;force&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push --force origin
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;上面命令使用–force选项，结果导致在远程主机产生一个”非直进式”的合并(non-fast-forward merge)。除非你很确定要这样做，否则应该尽量避免使用–force选项。&lt;/p&gt;
 &lt;p&gt;最后，git push不会推送标签(tag)，除非使用–tags选项。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;tags&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git push origin --tags
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;中文乱码&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;global&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quotepath&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    git config --global core.quotepath &lt;span class="nb"&gt;false&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -650,8 +685,8 @@ git push origin dev:develop             &lt;span class="c"&gt;# 本地分支提�
 &lt;p&gt;这是因为在Windows中的换行符为CRLF，而在Linux中的换行符为LF。
 在git创建的项目中换行符为LF，而执行git add时，系统会提示LF将被转换为CRLF。
 解决的办法很简单，禁止git的自动转换即可。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;git config --global core.autocrlf &lt;span class="nb"&gt;false&lt;/span&gt; //禁用自动转换
-&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>之感</title><link href="https://ghxdghxd.github.io/the-sense.html" rel="alternate"></link><published>2015-08-03T10:20:00+08:00</published><updated>2015-08-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-08-03:/the-sense.html</id><summary type="html">&lt;p&gt;想什么说什么&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.autocrlf &lt;span class="nb"&gt;false&lt;/span&gt; //禁用自动转换
+&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category><category term="command"></category></entry><entry><title>之感</title><link href="https://ghxdghxd.github.io/the-sense.html" rel="alternate"></link><published>2015-08-03T10:20:00+08:00</published><updated>2015-08-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-08-03:/the-sense.html</id><summary type="html">&lt;p&gt;想什么说什么&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
 &lt;li&gt;话多应知，话少需明&lt;/li&gt;
 &lt;li&gt;前人看世界，后者品人生&lt;/li&gt;
 &lt;li&gt;棋逢对手 尽兴，将遇良才 榨干——干的漂亮&lt;/li&gt;
@@ -685,10 +720,62 @@ git push origin dev:develop             &lt;span class="c"&gt;# 本地分支提�
 &lt;li&gt;最好的修养，是明知不问&lt;/li&gt;
 &lt;li&gt;健康大于一切&lt;/li&gt;
 &lt;li&gt;活得太过自私，想得太过周全，倒想糊涂一世，只在聪明一时，难在取舍&lt;/li&gt;
-&lt;/ol&gt;</content><category term="personal"></category></entry><entry><title>登录终端信息</title><link href="https://ghxdghxd.github.io/terminal-announcement.html" rel="alternate"></link><published>2014-12-04T16:20:00+08:00</published><updated>2016-03-09T22:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/terminal-announcement.html</id><summary type="html">&lt;p&gt;登录终端显示提示信息&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/etc/issue&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="personal"></category></entry><entry><title>MutSigCV的问题</title><link href="https://ghxdghxd.github.io/MutSigCV.html" rel="alternate"></link><published>2015-04-28T16:47:00+08:00</published><updated>2016-09-23T10:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-04-28:/MutSigCV.html</id><summary type="html">&lt;p&gt;MutSigCV的简介&lt;/p&gt;</summary><content type="html">&lt;p&gt;A tab-delimited report of significant mutations, listed in descending order from most significant to least significant.
+The "nnei","x", and "X" values in the MutSig output analysis give insight into how the background mutation rate is calculated for a given gene.  nnei gives the number of neighboring genes that are pooled together to compute the background mutation rate for that gene; these genes are not necessarily adjacent on the genome, but rather they have nearby covariate values. x gives the number of mutated bases in these neighboring genes that are either silent or non-coding, while X gives the total number of bases related to these neighboring genes.&lt;/p&gt;
+&lt;p&gt;According to the original MutSigCV article, olfactory receptors (ORs) can show up as significant due to the heterogeneity in the mutational processes in cancer (authors' hypothesis)(Lawrence et al. "Mutational heterogeneity in cancer and the search for new cancer-associted genes", Nature, 2013). Certain genes, like ORs, can accumulate mutations faster than others, even if their biology is not potentially oncogenic. Therefore, assuming a uniform rate of background mutations/aberrations (GISTIC/JISTIC) is somewhat wrong, no?&lt;/p&gt;
+&lt;p&gt;肿瘤异质性的突变过程， 一些基因，如ORs，虽然对肿瘤没有功能影响，但因为能够迅速积累突变，而被鉴定出来。&lt;/p&gt;</content><category term="issue"></category></entry><entry><title>人类基因组</title><link href="https://ghxdghxd.github.io/hunman-genome.html" rel="alternate"></link><published>2014-12-05T11:38:00+08:00</published><updated>2016-03-17T10:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-05:/hunman-genome.html</id><summary type="html">&lt;p&gt;人类参考基因组的记录&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="hg" src="images/human_genome.png"&gt;&lt;/p&gt;
+&lt;h1&gt;参考序列&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;XY染色体上相同序列 &lt;strong&gt;PAR1&lt;/strong&gt; &lt;strong&gt;PAR2&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;chrY:10001-2649520 and chrY:59034050-59363566
+  chrX:60001-2699520 and chrX:154931044-155260560&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;参考基因组中的多余序列&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The chr*_random sequences are unplaced sequence on those reference
+  chromosomes.
+  The chrUn_* sequences are unlocalized sequences where the corresponding reference chromosome has not been determined.&lt;/p&gt;
+&lt;h1&gt;基因结构&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="gs" height="100%" src="images/GeneStructure.bmp" width="100%"&gt;&lt;/p&gt;
+&lt;p&gt;1.&lt;strong&gt;基因&lt;/strong&gt;： 表达基因产物的全部DNA序列,包括启动子、5'UTR、开放阅读框(open reading frame，ORF)、外显子、内含子、3'UTR以及调控区&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;启动子&lt;/strong&gt;
+    CAAT框(CAAT box)：其一致顺序为GGCTCAATCT，是真核生物基因常有的调节区，常位于转录起始点上游约-80bp处(或更远处)，可能也是RNA聚合酶的一个结合处，其突变敏感性决定转录效率，但是其突变不影响启动子的特异性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开放阅读框(open reading frame，ORF)：&lt;/strong&gt;
+    在mRNA上从&lt;em&gt;起始密码子&lt;/em&gt;到&lt;em&gt;终止密码子&lt;/em&gt;之间的一段序列，该段序列可能编码蛋白质，也可能不编码；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;编码区(coding sequences，CDS):&lt;/strong&gt;
+    CDS是检查cDNA后得到的编码组合序列，能翻译成氨基酸序列的DNA序列，从起始密码子到终止密码子，也就是说CDS与所翻译的氨基酸序列存在严格的3对1的关系；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;外显子与内含子分界&lt;/strong&gt;
+    每个外显子与内含子的接头部位，都有一高度保守的共有序列，为剪接识别信号，即每个内含子5‘端的两个核苷酸都是&lt;strong&gt;GT&lt;/strong&gt;，3‘端的两个核苷酸都是&lt;strong&gt;AG&lt;/strong&gt;，这种连接方式称为&lt;strong&gt;GT-AG&lt;/strong&gt;法则，是真核细胞中基因表达时剪切内含子和拼接外显子的共同机制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.&lt;strong&gt;前信使RNA(precursor messenger RNA, pre-mRNA)&lt;/strong&gt;
+又称heterogeneous nuclear RNA, hnRNA,是转录获得的最原始序列，没有经过任何加工，序列包含从转录起始位点到转录终止位点的全部序列；&lt;/p&gt;
+&lt;p&gt;3.&lt;strong&gt;信使RNA(mRNA)&lt;/strong&gt;: 基因转录后加工成熟用于翻译蛋白质的序列，包括CDS序列、3'UTR、5'UTR、5'帽子及3'Poly(A)尾&lt;/p&gt;
+&lt;p&gt;外显子拼接形成成熟的mRNA，多数基因都有UTR,它们也是外显子拼接的产物，所以，mRNA的长度要大于CDS，只有CDS才编码蛋白，AUG以前的mRNA编码前导序列。&lt;/p&gt;
+&lt;p&gt;&lt;img align="right" alt="polyA" height="50%" src="images/polyA.jpg" width="50%"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3`UTR的结构&lt;/strong&gt;: 3`UTR是PolyA尾巴的载体，而加这个尾巴关键的是PloyA signal。这个信号位点在3`UTR富含T或GT和其上游AATAAA信号中间，大约离AATAAA20-25个核苷酸，这个位点叫Cleavage site。如果AATAAA发生突变，那么PolyA signal就不会被激活。&lt;/p&gt;
+&lt;p&gt;4.&lt;strong&gt;cDNA&lt;/strong&gt;：通过mRNA反转录所得，与mRNA序列互补的单链DNA或者与mRNA对应的DNA双链；&lt;/p&gt;
+&lt;p&gt;5.&lt;strong&gt;EST&lt;/strong&gt;：表达序列标签，是指从一个随机选择的cDNA 克隆，进行5’端和3’端单一次测序挑选出来获得的短的cDNA部分序列, 代表一个完整基因的一小部分，在数据库中其长度一般从20 到7000bp 不等，平均长度为360
+±120bp。由于cDNA文库的复杂性和测序的随机性，有时多个EST代表同一基因或基因组，将其归类形成EST簇（EST cluster)；&lt;/p&gt;
+&lt;p&gt;过程|模板|原料|特点|引物
+:---:|:---:|:---:|:---:|:---:|:---:
+DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保留复制|需要
+转录|双链DNA|四种NTP|合成的新链除了把DNA上的T改为U外，其他一样，半不连续转录|不需要
+翻译|mRNA|20种游离的氨基酸|3个碱基决定一个氨基酸|&lt;/p&gt;</content><category term="genome"></category></entry><entry><title>如何根据测序数据计算出数据量以及测序深度？</title><link href="https://ghxdghxd.github.io/NGS-coverage.html" rel="alternate"></link><published>2014-12-04T16:35:00+08:00</published><updated>2016-02-29T20:40:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/NGS-coverage.html</id><summary type="html">&lt;p&gt;根据测序数据(reads)统计数据量以及测序深度&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+&lt;li&gt;数据量大小&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;单端测序&lt;/strong&gt; 数据量 = reads长度 * reads数
+&lt;strong&gt;双端测序&lt;/strong&gt; 数据量 = 单端reads长度 * 单端reads个数 * 2&lt;/p&gt;
+&lt;p&gt;注：&lt;strong&gt;单位换算&lt;/strong&gt; 1个碱基=1bp 1kb=1024bp 1M=1024kb 1G=1024M&lt;/p&gt;
+&lt;p&gt;2.测序深度&lt;/p&gt;
+&lt;p&gt;测序深度 = 数据量大小 / 参考基因组大小&lt;/p&gt;
+&lt;p&gt;3.测序与物理覆盖度&lt;/p&gt;
+&lt;p&gt;在PE测序文库中&lt;/p&gt;
+&lt;p&gt;&lt;img alt="coverage" src="images/coverage.png"&gt;&lt;/p&gt;</content><category term="NGS"></category></entry><entry><title>登录终端信息</title><link href="https://ghxdghxd.github.io/terminal-announcement.html" rel="alternate"></link><published>2014-12-04T16:20:00+08:00</published><updated>2016-03-09T22:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/terminal-announcement.html</id><summary type="html">&lt;p&gt;登录终端显示提示信息&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/etc/issue&lt;/h1&gt;
 &lt;p&gt;在终端接口登录时候的提示字符,例如：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;root@linux ~&lt;span class="o"&gt;]&lt;/span&gt; cat /etc/issue
-CentOS release 5.6 &lt;span class="o"&gt;(&lt;/span&gt;Final&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;root@linux ~&lt;span class="o"&gt;]&lt;/span&gt; cat /etc/issue
+CentOS release &lt;span class="m"&gt;5&lt;/span&gt;.6 &lt;span class="o"&gt;(&lt;/span&gt;Final&lt;span class="o"&gt;)&lt;/span&gt;
 Kernel &lt;span class="se"&gt;\r&lt;/span&gt; on an &lt;span class="se"&gt;\m&lt;/span&gt;
 
 issue内各代码说明：
@@ -706,193 +793,339 @@ issue内各代码说明：
 
 &lt;h1&gt;/etc/motd&lt;/h1&gt;
 &lt;p&gt;登录后的公告消息, 比如：系统将会在某个时间进行维护&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;root@linux ~&lt;span class="o"&gt;]&lt;/span&gt; vi /etc/motd
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;root@linux ~&lt;span class="o"&gt;]&lt;/span&gt; vi /etc/motd
     Hello everyone,
     Our server will be maintained at
-    please don&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;t login at that &lt;span class="nb"&gt;time&lt;/span&gt;,thanks.
+    please don&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;t login at that time,thanks.
     那么当用户登录的时候，就会显示设置的内容了。
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="https://ghxdghxd.github.io/R-and-Rstudio.html" rel="alternate"></link><published>2014-02-03T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-02-03:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;ubuntu安装R与Rstudio的过程&lt;/p&gt;</summary><content type="html">&lt;h1&gt;install R&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/system-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2017-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/system-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;h1&gt;1 服务器管理记录&lt;/h1&gt;
+&lt;h2&gt;1.1 清理内存&lt;/h2&gt;
+&lt;p&gt;echo 1 &amp;gt; /proc/sys/vm/drop_caches&lt;/p&gt;
+&lt;h2&gt;1.2 &lt;a href="terminal-announcement"&gt;登录显示信息&lt;/a&gt;&lt;/h2&gt;
+&lt;h1&gt;2 gate&lt;/h1&gt;
+&lt;p&gt;mount /dev/sdc1 /extra&lt;/p&gt;
+&lt;h1&gt;3 HPC&lt;/h1&gt;
+&lt;h2&gt;3.1 配置&lt;/h2&gt;
+&lt;h3&gt;3.1.1 概念&lt;/h3&gt;
+&lt;h4&gt;3.1.1.1 物理CPU&lt;/h4&gt;
+&lt;p&gt;实际Server中插槽上的CPU个数
+物理cpu数量，可以数不重复的 physical id 有几个&lt;/p&gt;
+&lt;h4&gt;3.1.1.2 逻辑CPU&lt;/h4&gt;
+&lt;p&gt;/proc/cpuinfo 用来存储cpu硬件信息， 信息内容分别列出了processor 0 –processor n 的规格。这里需要注意，n是逻辑cpu数
+一般情况，我们认为一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core出来
+逻辑CPU数量 = 物理cpu数量 × cpu cores x 2(如果支持并开启ht)
+备注一下：Linux下top查看的CPU也是逻辑CPU个数&lt;/p&gt;
+&lt;h4&gt;3.1.1.3 CPU核数&lt;/h4&gt;
+&lt;p&gt;一块CPU上面能处理数据的芯片组的数量、比如现在的i5 760,是双核心四线程的CPU、而 i5 2250 是四核心四线程的CPU
+一般来说，物理CPU个数×每颗核数就应该等于逻辑CPU的个数，如果不相等的话，则表示服务器的CPU支持超线程技术
+输入命令cat /proc/cpuinfo 查看物理CPU，physical id有几个；核数，cores有几个；逻辑CPU，processor有几个&lt;/p&gt;
+&lt;h4&gt;3.1.1.4 GPU&lt;/h4&gt;
+&lt;p&gt;1-4节点有GPU，
+TeslaK20Xm GPU ，cuda核心数 2688， 内存6G，&lt;/p&gt;
+&lt;h2&gt;3.2 rocks cluster 管理&lt;/h2&gt;
+&lt;p&gt;1.rocks run host "hostname" #所有节点运行
+2.rocks sync config # 同步配制
+3.&lt;strong&gt;要先重启管理节点然后计算机节点,否则导致数据不同步&lt;/strong&gt;
+    运行 rocks run host  "/etc/init.d/pbs_mom restart" 即可&lt;/p&gt;
+&lt;p&gt;4.添加用户&lt;strong&gt;无法qusb要在/etc/group 添加用户&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;useradd name
+passwd name
+usermod -g users name
+rocks sync users &lt;span class="c1"&gt;# 可更改/export/home/name 为 /home/name&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;5.ssh compute-0-* 要输入密码&lt;/p&gt;
+&lt;p&gt;rm -rf ~/.ssh   &lt;strong&gt;然后 退出登录 再登陆 会自动生成新密钥&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;6.进入单用户模式&lt;/p&gt;
+&lt;p&gt;在倒计时5秒时，按任意键出现下图，
+&lt;strong&gt;选择如图，按e 进入编辑, 最后加上　１，　回车，　按b，root进入系统&lt;/strong&gt;
+&lt;img alt="图1" height="80%" src="images/manager1.png" width="80%"&gt;&lt;/p&gt;
+&lt;h2&gt;3.3 qmgr&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;qmgr -c &lt;span class="s2"&gt;&amp;quot;print server&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# 输出server的属性&lt;/span&gt;
+qmgr -c &lt;span class="s2"&gt;&amp;quot;set server query_other_jobs = true&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# qstat可以查看所有用户&lt;/span&gt;
+qmgr -c &lt;span class="s2"&gt;&amp;quot;set server auto_node_np = True&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# 自动更新节点线程数&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="centos"></category><category term="shell"></category><category term="hpc"></category><category term="rocks cluster"></category></entry><entry><title>FASTQ格式详解</title><link href="https://ghxdghxd.github.io/fastq-format.html" rel="alternate"></link><published>2014-12-04T10:20:00+08:00</published><updated>2015-03-06T16:12:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/fastq-format.html</id><summary type="html">&lt;p&gt;Fastq的格式&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;FASTQ&lt;/strong&gt;是基于文本的，保存生物序列（通常是核酸序列）和其测序质量信息的标准格式。
+其序列以及质量信息都是使用一个ASCII字符标示，最初由Sanger开发，目的是将FASTA序列与质量数据放到一起，目前已经成为高通量测序结果的事实标准。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;FASTQ基本格式(reads)&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;每条reads包括4行：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;序列标识以及相关的描述信息，以‘@’开头；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;第二行是序列&lt;/li&gt;
+&lt;li&gt;第三行以‘+’开头，后面是序列标示符、描述信息，或者什么也不加&lt;/li&gt;
+&lt;li&gt;第四行，是质量信息，和第二行的序列相对应，每一个序列都有一个质量评分，根据评分体系的不同，每个字符的含义表示的数字也不相同。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1 @SEQ_ID
+2 GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
+3 \+
+4 !&amp;#39;&amp;#39;*((((***+))%%%++)(%%%%).1***-+*&amp;#39;&amp;#39;))**55CCF&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CCCCCCC65
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Fastq ID&lt;/h2&gt;
+&lt;p&gt;illumina测序仪的ID行一般包含测序仪、运行编号、flowcell ID、lane ID、tile ID、横纵轴坐标、索引序列等等&lt;/p&gt;
+&lt;h2&gt;质量信息&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;质量信息代表一个碱基的错误概率的对数值&lt;/li&gt;
+&lt;li&gt;Phred quality scores are logarithmically linked to error probabilities Phred&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$Q=-10log_{10}P$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;质量得分与错误概率的对应关系见下表：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Phred Quality Score (Q)&lt;/th&gt;
+&lt;th&gt;Probability of incorrect base call&lt;/th&gt;
+&lt;th&gt;Base call accuracy (P)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;1 in 10&lt;/td&gt;
+&lt;td&gt;90 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;1 in 100&lt;/td&gt;
+&lt;td&gt;99 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;30&lt;/td&gt;
+&lt;td&gt;1 in 1000&lt;/td&gt;
+&lt;td&gt;99.9 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;1 in 10000&lt;/td&gt;
+&lt;td&gt;99.99 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;1 in 100000&lt;/td&gt;
+&lt;td&gt;99.999 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;除了Phred质量得分换算标准，还有就是Solexa标准：
+$$Q_{solexa-prior to v.1.3}=-10log_{10}\frac{P}{1-P}$$&lt;/p&gt;
+&lt;p&gt;两种换算标准的比较：
+&lt;img alt="compare" src="./images/fastq_quality_compare.png"&gt;&lt;/p&gt;
+&lt;p&gt;Relationship between Q and p using the Sanger (red) and Solexa (black)
+equations (described above). The vertical dotted line indicates p = 0.05, or
+equivalently, Q ≈ 13.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于每个碱基的质量编码标示，不同的软件采用不同的方案，目前有5种方案：&lt;/li&gt;
+&lt;li&gt;Sanger，Phred quality score，值的范围从0到92，对应的ASCII码从33到126，但是对于测序数据（raw read data）质量得分通常小于60，序列拼接或者mapping可能用到更大的分数。&lt;/li&gt;
+&lt;li&gt;Solexa/Illumina 1.0, Solexa/Illumina quality score，值的范围从-5到63，对应的ASCII码从59到126，对于测序数据，得分一般在-5到40之间；&lt;/li&gt;
+&lt;li&gt;Illumina 1.3+，&lt;a href="http://en.wikipedia.org/wiki/Phred_quality_score"&gt;Phred quality score&lt;/a&gt;，值的范围从0到62对应的ASCII码从64到126，低于测序数据，得分在0到40之间；&lt;/li&gt;
+&lt;li&gt;Illumina 1.5+，Phred quality score，但是0到2作为另外的标示，&lt;a href="http://solexaqa.sourceforge.net/questions.htm#illumina"&gt;详见&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Illumina 1.8+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................
+      ..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................
+      ...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................
+      .................................**J**JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................
+      LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL....................................................
+      !&amp;quot;#$%&amp;amp;&amp;#39;()*+,-./0123456789:;&amp;lt;=&amp;gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+      |                         |    |        |                              |                     |
+     33                        59   64       73                            104                   126
+     S - Sanger        Phred+33,  raw reads typically (0, 40)
+     X - Solexa        Solexa+64, raw reads typically (-5, 40)
+     I - Illumina 1.3+ Phred+64,  raw reads typically (0, 40)
+     J - Illumina 1.5+ Phred+64,  raw reads typically (3, 40)
+        with 0=unused, 1=unused, 2=Read Segment Quality Control Indicator (bold)
+        (Note: See discussion above).
+     L - Illumina 1.8+ Phred+33,  raw reads typically (0, 41)
+&lt;/pre&gt;&lt;/div&gt;</content><category term="NGS"></category><category term="fastq"></category><category term="bioinfo"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="https://ghxdghxd.github.io/R-and-Rstudio.html" rel="alternate"></link><published>2014-02-03T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-02-03:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;ubuntu安装R与Rstudio的过程&lt;/p&gt;</summary><content type="html">&lt;h1&gt;install R&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;error&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;File failed to load: /extensions/MathZoom.js
-&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;CFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-I/share/apps/R_depends/include&amp;quot;&lt;/span&gt;
-&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;LDFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-L/share/apps/R_depends/lib&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;File failed to load: /extensions/MathZoom.js
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-I/share/apps/R_depends/include&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LDFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-L/share/apps/R_depends/lib&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;!--more--&gt;
 
 &lt;h2&gt;./configure&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;configure&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;opt&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;3.3.1&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;enable&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shlib&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;with&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;libpng&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;with&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;jpeglib&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;with&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;libtiff&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;with&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;with&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tcltk&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    ./configure --prefix&lt;span class="o"&gt;=&lt;/span&gt;/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;1. configure: error: No F77 compiler found&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;gfortran&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install gfortran
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;2. configure: error: --with-readline&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;libreadline&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install libreadline-dev
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;3. configure: error: --with-x=yes&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;libxt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install libxt-dev
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;4. checking whether zlib support suffices&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;zlib1g&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install zlib1g-dev
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;5. checking whether bzip2 support suffices&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz&amp;gt;&lt;/span&gt;
-    &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="n"&gt;xvf&lt;/span&gt; &lt;span class="n"&gt;bzip2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.0.6&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;
-    &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;bzip2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.0.6&lt;/span&gt;
-    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
-    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;OR&lt;/span&gt;
-    &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;Makefile&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;libbz2_so&lt;/span&gt;
-    &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;clean&lt;/span&gt;
-    &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;R_depends&lt;/span&gt;
-    &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;R_depends&lt;/span&gt;
-    &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;bzip2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    wget &amp;lt;http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz&amp;gt;
+    tar xvf bzip2-1.0.6.tar.gz
+    &lt;span class="nb"&gt;cd&lt;/span&gt; bzip2-1.0.6
+    sudo make install
+    &lt;span class="c1"&gt;# OR&lt;/span&gt;
+    make -f Makefile-libbz2_so
+    make clean
+    make -n install &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$R_depends&lt;/span&gt;
+    make install &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$R_depends&lt;/span&gt;
+    install bzip2-lib
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;6. configure: error: "liblzma&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;liblzma&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install liblzma-dev
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;7. configure: error: pcre &amp;gt;= 8.10&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="n"&gt;ftp&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz&lt;/span&gt;
-    &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="n"&gt;xvf&lt;/span&gt; &lt;span class="n"&gt;pcre&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;8.39&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;
-    &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;pcre&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;8.39&lt;/span&gt;
-    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;configure&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;enable&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;utf8&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;R_depends&lt;/span&gt;
-    &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz
+    tar xvf pcre-8.39.tar.gz
+    &lt;span class="nb"&gt;cd&lt;/span&gt; pcre-8.39
+    ./configure --enable-utf8 --prefix&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$R_depends&lt;/span&gt;
+    make &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;amp&lt;span class="p"&gt;;&lt;/span&gt; sudo make install
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;8. libcurl &amp;gt;= 7.28.0 library and headers are required with support for https&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.openssl.org/source/openssl-1.1.0b.tar.gz&lt;/span&gt;
-    &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="n"&gt;xvf&lt;/span&gt; &lt;span class="n"&gt;openssl&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.1.0&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;
-    &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;openssl&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.1.0&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;
-    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;
-    &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
-    &lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//curl.haxx.se/download/curl-7.50.3.tar.gz&amp;gt;&lt;/span&gt;
-    &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="n"&gt;xvf&lt;/span&gt; &lt;span class="n"&gt;curl&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;7.50.3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;
-    &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;curl&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;7.50.3&lt;/span&gt;
-    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;configure&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;with&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
-    &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    wget https://www.openssl.org/source/openssl-1.1.0b.tar.gz
+    tar xvf openssl-1.1.0b.tar.gz
+    &lt;span class="nb"&gt;cd&lt;/span&gt; openssl-1.1.0b
+    ./config
+    make &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;amp&lt;span class="p"&gt;;&lt;/span&gt;  sudo make install
+    wget &amp;lt;https://curl.haxx.se/download/curl-7.50.3.tar.gz&amp;gt;
+    tar xvf curl-7.50.3.tar.gz
+    &lt;span class="nb"&gt;cd&lt;/span&gt; curl-7.50.3
+    ./configure --with-ssl&lt;span class="o"&gt;=&lt;/span&gt;/usr/local/ssl/
+    make &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;amp&lt;span class="p"&gt;;&lt;/span&gt; sudo make install
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;9.configure: WARNING: you cannot build info or HTML versions of the R manuals&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;texinfo&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install texinfo
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;10. configure: WARNING: you cannot build PDF versions of the R manuals, configure: WARNING: you cannot build PDF versions of vignettes and help pages&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;texlive&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install texlive
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;11. configure: WARNING: neither inconsolata.sty nor zi4.sty found: PDF vignettes and package manuals will not be rendered optimally&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//mirrors.ctan.org/install/fonts/inconsolata.tds.zip&amp;gt;&lt;/span&gt;
-    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;mv&lt;/span&gt; &lt;span class="n"&gt;inconsolata&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tds&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;texlive&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;texmf&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dist&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tex&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;latex&lt;/span&gt;
-    &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;texlive&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;texmf&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dist&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tex&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;latex&lt;/span&gt;
-    &lt;span class="n"&gt;unzip&lt;/span&gt; &lt;span class="n"&gt;inconsolata&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tds&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;zip&lt;/span&gt;
-    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;mktexlsr&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    wget &amp;lt;http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip&amp;gt;
+    sudo mv inconsolata.tds.zip /usr/share/texlive/texmf-dist/tex/latex
+    &lt;span class="nb"&gt;cd&lt;/span&gt; /usr/share/texlive/texmf-dist/tex/latex
+    unzip inconsolata.tds.zip
+    sudo mktexlsr
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;12. 本版本不支持png&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;libpng16&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
-    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;libtiff5&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install libpng16-dev
+    sudo apt-get install libtiff5-dev
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;make&lt;/h2&gt;
 &lt;h3&gt;1./usr/local/lib/libbz2.a: 无法添加符号: 错误的值&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;rm&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;libbz2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;
-    &lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//zlib.net/zlib-1.2.8.tar.gz&amp;gt;&lt;/span&gt;
-    &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="n"&gt;xvf&lt;/span&gt; &lt;span class="n"&gt;zlib&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.2.8&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;
-    &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;zlib&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.2.8&lt;/span&gt;
-    &lt;span class="n"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;gcc&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fPIC&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
-    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;configure&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
-    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    rm /usr/local/lib/libbz2.a
+    wget &amp;lt;http://zlib.net/zlib-1.2.8.tar.gz&amp;gt;
+    tar xvf zlib-1.2.8.tar.gz
+    &lt;span class="nb"&gt;cd&lt;/span&gt; zlib-1.2.8
+    &lt;span class="nv"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;gcc -fPIC&amp;#39;&lt;/span&gt;
+    ./configure&lt;span class="p"&gt;;&lt;/span&gt; make &lt;span class="nb"&gt;test&lt;/span&gt;
+    sudo make install
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;2./usr/bin/ld: cannot find -lbz2 ;  collect2: error: ld returned 1 exit status&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;libbz2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
-    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;会用到&lt;/span&gt;
-    &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;gcc&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fPIC&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
-    &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;software&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install libbz2-dev
+    &lt;span class="c1"&gt;# 会用到&lt;/span&gt;
+    make &lt;span class="nv"&gt;CC&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;gcc -fPIC&amp;#39;&lt;/span&gt;
+    make install &lt;span class="nv"&gt;PREFIX&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/software/packages
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;make install&lt;/h2&gt;
 &lt;h3&gt;1.conftest.c:1:17: fatal error: jni.h&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;3.3.1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;
-    &lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//cran.r-project.org/doc/manuals/r-release/NEWS.pdf&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="nb"&gt;cd&lt;/span&gt; R-3.3.1/doc
+    wget &amp;lt;https://cran.r-project.org/doc/manuals/r-release/NEWS.pdf&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;install rstudio&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;libjpeg62&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
-    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;libgstreamer0&lt;/span&gt;&lt;span class="mf"&gt;.10&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
-    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;libgstreamer&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;plugins&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;base0&lt;/span&gt;&lt;span class="mf"&gt;.10&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
-    &lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;RSTUDIO_WHICH_R&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/opt/R-3.3.1/bin/R&amp;quot;&lt;/span&gt; &lt;span class="err"&gt;添加到&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt;&lt;span class="err"&gt;或&lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install libjpeg62-dev
+    sudo apt-get install libgstreamer0.10-0
+    sudo apt-get install libgstreamer-plugins-base0.10-0
+    &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;RSTUDIO_WHICH_R&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/opt/R-3.3.1/bin/R&amp;quot;&lt;/span&gt; 添加到/etc/profile或~/.profile
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;run R&lt;/h3&gt;
 &lt;h3&gt;Error in grid.Call(L_textBounds, as.graphicsAnnot(xlabel),xlabel),x x, x$y, :无法载入X11字面为2,大小为20的字形-&lt;em&gt;-courier-%s-%s-&lt;/em&gt;-&lt;em&gt;-%d-&lt;/em&gt;-&lt;em&gt;-&lt;/em&gt;-&lt;em&gt;-&lt;/em&gt;-&lt;em&gt;-&lt;/em&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;t1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xfree86&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;nonfree&lt;/span&gt; &lt;span class="n"&gt;ttf&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xfree86&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;nonfree&lt;/span&gt; &lt;span class="n"&gt;ttf&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xfree86&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;nonfree&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;syriac&lt;/span&gt;
-    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;xfonts&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;75&lt;/span&gt;&lt;span class="n"&gt;dpi&lt;/span&gt;
-    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;xfonts&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="n"&gt;dpi&lt;/span&gt;
-    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;mesa&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;utils&lt;/span&gt;
-    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;libxtst&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo apt-get install t1-xfree86-nonfree ttf-xfree86-nonfree ttf-xfree86-nonfree-syriac
+    sudo apt-get install xfonts-75dpi
+    sudo apt-get install xfonts-100dpi
+    sudo apt-get install mesa-utils
+    sudo apt-get install libxtst-dev
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;using R&lt;/h3&gt;
 &lt;h3&gt;无法载入共享目标对象 stringi.so&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stringi&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    install.packages&lt;span class="o"&gt;(&lt;/span&gt;stringi&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;R install.packages returns "failed to create lock directory"&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;R&lt;/span&gt; &lt;span class="n"&gt;CMD&lt;/span&gt; &lt;span class="n"&gt;INSTALL&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;lock&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;lt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;pkg&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;gt&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;OR&lt;/span&gt;
-    &lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Rcpp&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;INSTALL_opts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;\&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;lock&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    R CMD INSTALL --no-lock &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;pkg&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="c1"&gt;# OR&lt;/span&gt;
+    install.packages&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Rcpp&amp;quot;&lt;/span&gt;, &lt;span class="nv"&gt;dependencies&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;TRUE, &lt;span class="nv"&gt;INSTALL_opts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; c&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\--no-lock&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;An irrecoverable exception occurred. R is aborting now ... ERROR: loading failed&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;R&lt;/span&gt; &lt;span class="n"&gt;CMD&lt;/span&gt; &lt;span class="n"&gt;INSTALL&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    R CMD INSTALL --no-test-load *packages*
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;nlopt&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;configure&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;enable&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shared&lt;/span&gt;
-    &lt;span class="n"&gt;make&lt;/span&gt;
-    &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    ./configure --enable-shared
+    make
+    make install
 &lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category><category term="Rstudio"></category><category term="install"></category></entry><entry><title>mount</title><link href="https://ghxdghxd.github.io/mount.html" rel="alternate"></link><published>2014-01-03T00:20:00+08:00</published><updated>2017-10-21T20:52:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-01-03:/mount.html</id><summary type="html">&lt;p&gt;mount挂载说明&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/etc/fstab&lt;/h1&gt;
 &lt;p&gt;运维都知道的文件，若想把mount的disk和dir设置为每次开机自动加载，那么就要把相关信息写到这个文件中。当用”mount -a“命令自动mount的时候，也会去读这个文件。例如：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto 0 2
-&lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto 0 2
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
+&lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h1&gt;/etc/mtab&lt;/h1&gt;
 &lt;p&gt;这个文件主要是用mount命令的时候，系统根据实际mount的情况生成的数据，例如：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;/dev/sdb1 /hadoop/9 ext3 rw,noatime,nodiratime 0 0
-/dev/sdc1 /hadoop/10 ext3 rw,noatime,nodiratime 0 0
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/dev/sdb1 /hadoop/9 ext3 rw,noatime,nodiratime &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+/dev/sdc1 /hadoop/10 ext3 rw,noatime,nodiratime &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -903,20 +1136,20 @@ issue内各代码说明：
 或者你使用"chmod 000 /dir",把这块盘设为不能读不能写。
 这时如果你管理了1000台服务器，你需要知道你的服务器中哪些盘是被umount了，你会怎么做？
 这里分享一个SHELL脚本，可以给你提供思路：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;function &lt;/span&gt;check_disks &lt;span class="o"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;for &lt;/span&gt;m in &lt;span class="sb"&gt;`&lt;/span&gt;awk &lt;span class="s1"&gt;&amp;#39;$3~/ext3/ {printf&amp;quot; %s &amp;quot;,$2}&amp;#39;&lt;/span&gt; /etc/fstab&lt;span class="sb"&gt;`&lt;/span&gt; ; &lt;span class="k"&gt;do&lt;/span&gt;
-&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nv"&gt;fsdev&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
-    &lt;span class="nv"&gt;fsdev&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;awk -v &lt;span class="nv"&gt;m&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$m&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;$2==m {print $1}&amp;#39;&lt;/span&gt; /proc/mounts&lt;span class="sb"&gt;`&lt;/span&gt;;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="s2"&gt;&amp;quot;$fsdev&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; ; &lt;span class="k"&gt;then&lt;/span&gt;
-&lt;span class="k"&gt;      &lt;/span&gt;&lt;span class="nv"&gt;msg_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$msg_ $m(u)&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;function&lt;/span&gt; check_disks &lt;span class="o"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;for&lt;/span&gt; m in &lt;span class="sb"&gt;`&lt;/span&gt;awk &lt;span class="s1"&gt;&amp;#39;$3~/ext3/ {printf&amp;quot; %s &amp;quot;,$2}&amp;#39;&lt;/span&gt; /etc/fstab&lt;span class="sb"&gt;`&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nv"&gt;fsdev&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="nv"&gt;fsdev&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;awk -v &lt;span class="nv"&gt;m&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$m&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;$2==m {print $1}&amp;#39;&lt;/span&gt; /proc/mounts&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$fsdev&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+      &lt;span class="nv"&gt;msg_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$msg_&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$m&lt;/span&gt;&lt;span class="s2"&gt;(u)&amp;quot;&lt;/span&gt;
     &lt;span class="k"&gt;else&lt;/span&gt;
-&lt;span class="k"&gt;      &lt;/span&gt;&lt;span class="nv"&gt;msg_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$msg_`awk -v m=$m &amp;#39;$2==m { if ( $4 ~ /^ro,/ ) {printf&amp;quot;&lt;/span&gt;%s&lt;span class="o"&gt;(&lt;/span&gt;ro&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;,$2 } ; }&amp;#39; /proc/mounts`&amp;quot;&lt;/span&gt;
+      &lt;span class="nv"&gt;msg_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$msg_&lt;/span&gt;&lt;span class="s2"&gt;`awk -v m=&lt;/span&gt;&lt;span class="nv"&gt;$m&lt;/span&gt;&lt;span class="s2"&gt; &amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$2&lt;/span&gt;&lt;span class="s2"&gt;==m { if ( &lt;/span&gt;&lt;span class="nv"&gt;$4&lt;/span&gt;&lt;span class="s2"&gt; ~ /^ro,/ ) {printf&amp;quot;&lt;/span&gt;%s&lt;span class="o"&gt;(&lt;/span&gt;ro&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;,&lt;/span&gt;&lt;span class="nv"&gt;$2&lt;/span&gt;&lt;span class="s2"&gt; } ; }&amp;#39; /proc/mounts`&amp;quot;&lt;/span&gt;
     &lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;span class="k"&gt;  done&lt;/span&gt;
-&lt;span class="k"&gt;  if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="s2"&gt;&amp;quot;$msg_&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; ; &lt;span class="k"&gt;then&lt;/span&gt;
-&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;disks ok&amp;quot;&lt;/span&gt; ; &lt;span class="nb"&gt;exit &lt;/span&gt;0
+  &lt;span class="k"&gt;done&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$msg_&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;disks ok&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
   &lt;span class="k"&gt;else&lt;/span&gt;
-&lt;span class="k"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;$msg_&amp;quot;&lt;/span&gt; ; &lt;span class="nb"&gt;exit &lt;/span&gt;2
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$msg_&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
   &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
