@@ -57,7 +57,6 @@ FASTQ格式详解 | iKnowledgeBase    </title>
         <html><body><p><strong>FASTQ</strong>是基于文本的，保存生物序列（通常是核酸序列）和其测序质量信息的标准格式。
 其序列以及质量信息都是使用一个ASCII字符标示，最初由Sanger开发，目的是将FASTA序列与质量数据放到一起，目前已经成为高通量测序结果的事实标准。</p>
 <hr/>
-<p><a href="/BioKits/fastqc">fastQC工具</a></p>
 <h1>FASTQ基本格式(reads)</h1>
 <ul>
 <li>
@@ -152,7 +151,11 @@ equivalently, Q ≈ 13.</p>
         with 0=unused, 1=unused, 2=Read Segment Quality Control Indicator (bold)
         (Note: See discussion above).
      L - Illumina 1.8+ Phred+33,  raw reads typically (0, 41)
-</pre></div></body></html>
+</pre></div>
+<h1>fastq 质量检测工具</h1>
+<ul>
+<li><a href="/BioKits/fastqc">fastQC</a></li>
+</ul></body></html>
 
         <div class="post-nav">
             <a href="/R-and-Rstudio.html" class="pre">R与Rstudio的安装过程（ubuntu）</a>
