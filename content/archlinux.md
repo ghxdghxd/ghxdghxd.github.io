@@ -2,7 +2,7 @@
 Title: archlinux安装与配置
 Date: 2017-12-03 10:20
 Modified: 2017-12-05 19:30
-Category: 系统运维
+Category: 系统管理
 Tags: operation, interest
 Slug: archlinux
 Authors: JT Guo

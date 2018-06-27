@@ -3,7 +3,7 @@ Title: 网球拍的平衡点
 Date: 2017-04-03 10:20
 Modified: 2017-04-03 19:30
 Category: 兴趣爱好
-Tags: tennis
+Tags: tennis, interest
 Slug: tennis-racquet
 Authors: JT Guo
 Summary: 网球拍的平衡点

@@ -2,7 +2,7 @@
 Title: 登录终端信息
 Date: 2014-12-04 16:20
 Modified: 2016-03-09 22:07
-Category: 系统运维
+Category: 系统管理
 Tags: linux, terminal
 Slug: terminal-announcement
 Authors: JT Guo

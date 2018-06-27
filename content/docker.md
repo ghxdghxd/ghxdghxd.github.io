@@ -2,7 +2,7 @@
 Title: docker安装与配置
 Date: 2017-11-03 10:20
 Modified: 2017-11-05 19:30
-Category: 系统运维
+Category: 系统管理
 Tags: docker
 Slug: docker
 Authors: JT Guo

@@ -3,7 +3,7 @@ Title: git的一般用法
 Date: 2016-11-03 10:20
 Modified: 2016-11-05 19:30
 Category: 工具包
-Tags: git
+Tags: git, command
 Slug: git
 Authors: JT Guo
 Summary: git的一般用法

@@ -2,7 +2,7 @@
 Title: 终端显示颜色
 Date: 2017-1-03 10:20
 Modified: 2017-1-03 19:30
-Category: 系统运维
+Category: 系统管理
 Tags: linux, shell
 Slug: terminal-color
 Authors: JT Guo

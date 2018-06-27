@@ -2,7 +2,7 @@
 Title: mount
 Date: 2014-01-03 00:20
 Modified: 2017-10-21 20:52
-Category: 系统运维
+Category: 系统管理
 Tags: linux, mount
 Slug: mount
 Authors: JT Guo
