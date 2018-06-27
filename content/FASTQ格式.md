@@ -85,3 +85,7 @@ SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.......................................
         (Note: See discussion above).
      L - Illumina 1.8+ Phred+33,  raw reads typically (0, 41)
 ```
+
+# fastq 质量检测工具
+
+* [fastQC](/BioKits/fastqc)
