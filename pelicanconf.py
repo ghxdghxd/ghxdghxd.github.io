@@ -17,7 +17,7 @@ EXTRA_PATH_METADATA = {
     'pages/about.md': {'path': 'about.html'}
 }
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['tipue_search', "sitemap", "i18n_subsites", "neighbors"]
+PLUGINS = ['tipue_search', "sitemap", "i18n_subsites", "neighbors", "pdf-img"]
 
 THEME = "themes/maupassant-pelican"
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'search']

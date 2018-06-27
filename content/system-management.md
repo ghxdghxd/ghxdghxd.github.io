@@ -67,12 +67,12 @@ rocks sync users # 可更改/export/home/name 为 /home/name
 
 5.ssh compute-0-* 要输入密码
 
-rm -rf ~/.ssh   **然后 退出登录 再登陆 会自动生成新密钥**
+rm -rf ~/.ssh **然后 退出登录 再登陆 会自动生成新密钥**
 
 6.进入单用户模式
 
 在倒计时5秒时，按任意键出现下图，
-**选择如图，按e 进入编辑, 最后加上　１，　回车，　按b，root进入系统**
+**选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统**
 ![图1](images/manager1.png){:height="80%" width="80%"}
 
 ## 3.3 qmgr
