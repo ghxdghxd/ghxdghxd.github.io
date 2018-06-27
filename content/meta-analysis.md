@@ -16,7 +16,7 @@ Summary: meta analysis with metafor
 
 + Viechtbauer gesis ma with metafor
 
-![talks_2016_viechtbauer_gesis_ma_with_metafor](/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf)
+![talks](/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf)
 
 <!--more-->
 
