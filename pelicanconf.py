@@ -11,7 +11,7 @@ PATH = 'content'
 TIMEZONE = 'Asia/Shanghai'
 DEFAULT_LANG = 'zh'
 
-STATIC_PATHS = ["pages", 'theme/imges', "documents", 'images']
+STATIC_PATHS = ["pages", 'theme/images', "documents", 'images']
 EXTRA_PATH_METADATA = {
     # about.md生成到output下, 表示about.html的路径
     'pages/about.md': {'path': 'about.html'}
@@ -22,9 +22,9 @@ PLUGINS = ['tipue_search', "sitemap", "i18n_subsites", "neighbors", "pdf-img"]
 THEME = "themes/maupassant-pelican"
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'search']
 # title, link, font-awesome-id(http://fontawesome.io)
-MENUITEMS = [('Home', '.', 'fa-home'),
-             ('Archive', 'archives.html', 'fa-archive'),
-             ("About", "pages/about.html", "fa-user")]
+MENUITEMS = [('主页', '.', 'fa-home'),
+             ('归档', 'archives.html', 'fa-archive'),
+             ("关于", "pages/about.html", "fa-user")]
 
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n'],
