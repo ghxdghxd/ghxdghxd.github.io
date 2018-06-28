@@ -4,7 +4,7 @@ Date: 2014-12-04 16:10:16
 Modified: 2017-03-09 22:07:02
 Category: 系统管理
 Tags: linux, centos, shell, hpc, rocks cluster
-Slug: system-management
+Slug: linux-management
 Authors: JT Guo
 Summary: 常用的linux服务器管理
 ---

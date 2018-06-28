@@ -2,7 +2,7 @@
 Title: hotnet2
 Date: 2016-11-03 19:01
 Modified: 2016-11-18 11:07
-Category: 工具包
+Category: 生信软件
 Tags: NGS, hotnet2, bioinfo
 Slug: hotnet2
 Authors: JT Guo

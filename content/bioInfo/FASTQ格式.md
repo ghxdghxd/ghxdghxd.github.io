@@ -2,7 +2,7 @@
 Title: FASTQ格式详解
 Date: 2014-12-04 10:20
 Modified: 2015-03-06 16:12
-Category: 理论基础
+Category: 生信数据
 Tags: NGS, fastq, bioinfo
 Slug: fastq-format
 Authors: JT Guo

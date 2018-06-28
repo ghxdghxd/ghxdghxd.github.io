@@ -2,7 +2,7 @@
 Title: 如何根据测序数据计算出数据量以及测序深度？
 Date: 2014-12-04 16:35
 Modified: 2016-02-29 20:40
-Category: 理论基础
+Category: 生信数据
 Tags: NGS
 Slug: NGS-coverage
 Authors: JT Guo

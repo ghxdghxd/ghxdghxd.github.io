@@ -2,8 +2,8 @@
 Title: MutSigCV的问题
 Date: 2015-04-28 16:47
 Modified: 2016-09-23 10:30
-Category: 工具包
-Tags: issue
+Category: 生信软件
+Tags: mutsig, issue, bioinfo
 Slug: MutSigCV
 Authors: 
 Summary: MutSigCV的简介

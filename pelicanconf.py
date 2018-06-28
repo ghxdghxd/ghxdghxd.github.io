@@ -11,7 +11,7 @@ PATH = 'content'
 TIMEZONE = 'Asia/Shanghai'
 DEFAULT_LANG = 'zh'
 
-STATIC_PATHS = ["pages", 'theme/images', "documents", 'images']
+STATIC_PATHS = ["pages", 'theme/imges', "documents", 'images']
 EXTRA_PATH_METADATA = {
     # about.md生成到output下, 表示about.html的路径
     'pages/about.md': {'path': 'about.html'}
