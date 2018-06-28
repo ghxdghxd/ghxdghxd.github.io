@@ -44,6 +44,18 @@
     <div style="clear: both;"></div>
 </form>            <div class="content_container">
 <div class="post">
+    <h1 class="post-title"><a href="/ROC.html">ROC曲线</a></h1>
+    <div class="tags" style="float: right;">
+        <a href="/tag/roc.html">ROC</a>
+        <a href="/tag/bioinfo.html">bioinfo</a>
+    </div>
+    <div class="post-meta">2018-03-12</div>
+    <div class="post-content">
+        <p>ROC曲线</p>
+    </div>
+    <p class="readmore"><a href="/ROC.html">Read More</a></p>
+</div>
+<div class="post">
     <h1 class="post-title"><a href="/git-submodule.html">git submodule的用法</a></h1>
     <div class="tags" style="float: right;">
         <a href="/tag/git.html">git</a>
@@ -99,53 +111,13 @@ git push origin master
     </div>
     <p class="readmore"><a href="/meta.html">Read More</a></p>
 </div>
-<div class="post">
-    <h1 class="post-title"><a href="/archlinux.html">archlinux安装与配置</a></h1>
-    <div class="tags" style="float: right;">
-        <a href="/tag/operation.html">operation</a>
-        <a href="/tag/interest.html">interest</a>
-    </div>
-    <div class="post-meta">2017-12-03</div>
-    <div class="post-content">
-        <html><body><h1>archlinux安装</h1>
-<div class="highlight"><pre><span></span><span class="c1"># u盘启动后</span>
-<span class="c1"># 连接网络</span>
-wifi-memu
-mount /dev/sda1 /mnt
-mkdir -p /mnt/home
-mount /dev/sda2 /mnt/home
-<span class="c1"># 修改中国镜像源,如163.com</span>
-vi /ect/pacman.d/mirrorlist
-pacstrap -i /mnt base base-devel
-<span class="c1">#生成挂载文件fstab</span>
-genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
-</pre></div>
-<h2>archlinux 初步配置</h2>
-<div class="highlight"><pre><span></span><span class="c1">#切换到archlinux</span>
-arch-chroot /mnt /bin/bash
-</pre></div>
-<ul>
-<li>本地语言</li>
-</ul>
-<div class="highlight"><pre><span></span>vi /etc/locale.gen
-    en_US.UTF-8 UTF-8
-    zh_CN.UTF-8 UTF-8
-
-<span class="c1">#生效</span>
-locale-gen
-<span class="nb">echo</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 &gt; /etc/locale.conf
-</pre></div>
-
-    </div>
-    <p class="readmore"><a href="/archlinux.html">Read More</a></p>
-</div>
 
 <div class="page-navigator">
     <span class="page-number current">1</span>
     <a class="page-number" href="/index2.html">2</a>
     <a class="page-number" href="/index3.html">3</a>
     <span class="space">...</span>
-    <a class="page-number" href="/index6.html">6</a>
+    <a class="page-number" href="/index7.html">7</a>
     <a class="extend next" rel="next" href="index2.html">Next</a></nav>
 </div class="page-navigator">
         </div></div>
@@ -164,6 +136,8 @@ locale-gen
         <li class="category-list-item"><a class="category-list-link" href="/category/gong-ju-bao.html">工具包</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/li-lun-ji-chu.html">理论基础</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/lu-you-qi.html">路由器</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/sheng-xin-ruan-jian.html">生信软件</a></li>
+        <li class="category-list-item"><a class="category-list-link" href="/category/sheng-xin-shu-ju.html">生信数据</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/tong-ji-jian-mo.html">统计建模</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/xi-tong-guan-li.html">系统管理</a></li>
         <li class="category-list-item"><a class="category-list-link" href="/category/xing-qu-ai-hao.html">兴趣爱好</a></li>
@@ -171,6 +145,8 @@ locale-gen
 </div><div class="widget">
     <div class="widget-title"><i class="fa fa-star-o"> Tags</i></div>
     <div class="tagcloud">
+    <a href="/tag/roc.html" style="font-size: 12px">ROC</a>
+    <a href="/tag/bioinfo.html" style="font-size: 12px">bioinfo</a>
     <a href="/tag/git.html" style="font-size: 12px">git</a>
     <a href="/tag/submodule.html" style="font-size: 12px">submodule</a>
     <a href="/tag/r.html" style="font-size: 12px">R</a>
@@ -183,10 +159,11 @@ locale-gen
     <a href="/tag/shell.html" style="font-size: 12px">shell</a>
     <a href="/tag/ngs.html" style="font-size: 12px">NGS</a>
     <a href="/tag/hotnet2.html" style="font-size: 12px">hotnet2</a>
-    <a href="/tag/bioinfo.html" style="font-size: 12px">bioinfo</a>
     <a href="/tag/command.html" style="font-size: 12px">command</a>
     <a href="/tag/personal.html" style="font-size: 12px">personal</a>
+    <a href="/tag/mutsig.html" style="font-size: 12px">mutsig</a>
     <a href="/tag/issue.html" style="font-size: 12px">issue</a>
+    <a href="/tag/crest.html" style="font-size: 12px">CREST</a>
     <a href="/tag/genome.html" style="font-size: 12px">genome</a>
     <a href="/tag/terminal.html" style="font-size: 12px">terminal</a>
     <a href="/tag/centos.html" style="font-size: 12px">centos</a>
@@ -200,6 +177,9 @@ locale-gen
 </div><div class="widget">
     <div class="widget-title"><i class="fa fa-file-o"> Recent</i></div>
     <ul class="post-list">
+        <li class="post-list-item">
+        <a class="post-list-link" href="/ROC.html">ROC曲线</a>
+        </li>
         <li class="post-list-item">
         <a class="post-list-link" href="/git-submodule.html">git submodule的用法</a>
         </li>
@@ -226,9 +206,6 @@ locale-gen
         </li>
         <li class="post-list-item">
         <a class="post-list-link" href="/the-sense.html">之感</a>
-        </li>
-        <li class="post-list-item">
-        <a class="post-list-link" href="/MutSigCV.html">MutSigCV的问题</a>
         </li>
     </ul>
 </div><div class="widget">

@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-02-03T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="https://ghxdghxd.github.io/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;常用命令&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-03-12T09:58:00+08:00</updated><entry><title>ROC曲线</title><link href="https://ghxdghxd.github.io/ROC.html" rel="alternate"></link><published>2018-03-12T09:58:00+08:00</published><updated>2016-06-14T14:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-03-12:/ROC.html</id><summary type="html">&lt;p&gt;ROC曲线&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;ROC曲线&lt;/h1&gt;
+&lt;p&gt;接收者操作特征曲线 （receiver operating characteristic curve），简称ROC曲线是一种坐标图式的分析工具，用于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;选择最佳的信号侦测模型、舍弃次佳的模型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在同一模型中设定最佳阈值&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ROC分析的是二元分类模型（如阳性/阳性，有病/没病）：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ROC1" src="./images/ROC1.png"/&gt;&lt;/p&gt;
+&lt;h1&gt;ROC空间&lt;/h1&gt;
+&lt;p&gt;ROC空间将伪阳性率（FPR）定义为 X 轴，真阳性率（TPR）定义为 Y 轴。&lt;/p&gt;
+&lt;p&gt;TPR：在所有实际为阳性的样本中，被正确地判断为阳性之比率。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;TPR=TP/(TP+FN)&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;FPR：在所有实际为阴性的样本中，被错误地判断为阳性之比率。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;FPR=FP/(FP+TN)&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="ROC"></category><category term="bioinfo"></category></entry><entry><title>git submodule的用法</title><link href="https://ghxdghxd.github.io/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;常用命令&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone &amp;lt;repository&amp;gt; --recursive 递归的方式克隆整个项目
 git submodule add &amp;lt;repository&amp;gt;&amp;lt;path&amp;gt; 添加子模块
 git submodule init 初始化子模块
@@ -623,7 +644,15 @@ git push origin dev:develop             &lt;span class="c1"&gt;# 本地分支提
 &lt;/ol&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="personal"></category></entry><entry><title>MutSigCV的问题</title><link href="https://ghxdghxd.github.io/MutSigCV.html" rel="alternate"></link><published>2015-04-28T16:47:00+08:00</published><updated>2016-09-23T10:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-04-28:/MutSigCV.html</id><summary type="html">&lt;p&gt;MutSigCV的简介&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;A tab-delimited report of significant mutations, listed in descending order from most significant to least significant.
 The "nnei","x", and "X" values in the MutSig output analysis give insight into how the background mutation rate is calculated for a given gene.  nnei gives the number of neighboring genes that are pooled together to compute the background mutation rate for that gene; these genes are not necessarily adjacent on the genome, but rather they have nearby covariate values. x gives the number of mutated bases in these neighboring genes that are either silent or non-coding, while X gives the total number of bases related to these neighboring genes.&lt;/p&gt;
 &lt;p&gt;According to the original MutSigCV article, olfactory receptors (ORs) can show up as significant due to the heterogeneity in the mutational processes in cancer (authors' hypothesis)(Lawrence et al. "Mutational heterogeneity in cancer and the search for new cancer-associted genes", Nature, 2013). Certain genes, like ORs, can accumulate mutations faster than others, even if their biology is not potentially oncogenic. Therefore, assuming a uniform rate of background mutations/aberrations (GISTIC/JISTIC) is somewhat wrong, no?&lt;/p&gt;
-&lt;p&gt;肿瘤异质性的突变过程， 一些基因，如ORs，虽然对肿瘤没有功能影响，但因为能够迅速积累突变，而被鉴定出来。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="issue"></category></entry><entry><title>人类基因组</title><link href="https://ghxdghxd.github.io/hunman-genome.html" rel="alternate"></link><published>2014-12-05T11:38:00+08:00</published><updated>2016-03-17T10:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-05:/hunman-genome.html</id><summary type="html">&lt;p&gt;人类参考基因组的记录&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="hg" src="images/human_genome.png"/&gt;&lt;/p&gt;
+&lt;p&gt;肿瘤异质性的突变过程， 一些基因，如ORs，虽然对肿瘤没有功能影响，但因为能够迅速积累突变，而被鉴定出来。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="mutsig"></category><category term="issue"></category><category term="bioinfo"></category></entry><entry><title>CREST的问题</title><link href="https://ghxdghxd.github.io/CREST.html" rel="alternate"></link><published>2015-03-12T09:58:00+08:00</published><updated>2015-12-24T14:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-03-12:/CREST.html</id><summary type="html">&lt;p&gt;CREST用来发现结构变异&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;运行CREST时，报错如下错误：
+Couldn't connect to 192.168.81.177 9000
+Connection refused
+Sorry, the BLAT/iPCR server seems to be down.  Please try again later.
+crest第一步从原始的bam结果中提取出soft-clipped reads，第二步用blat将截短的序列，重新比对回reference。 blat有两种模式，一种是单机版(Stand - alone Blat)，另一种是交互式的客户端/服务器模式(Client/Server Blat)，CREST使用了第二种模式。
+这里报这个错误，是因为没有配置好服务器。
+配置服务器命令：/share/backup/user/bin/blatSuite-34/gfServer start 192.168.81.177 9000 /path_to_2bit_file/hg19.fa.2bit &amp;amp; （后面的&amp;amp;将此命令放入后台执行）
+程序输出Server ready for queries!的提示后，服务器可用。
+服务器配置完成后，可以用/share/backup/bin/bin/blatSuite-34/gfClient测试可否连接上服务器。若能正常连接上，则crest可正常运行。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="CREST"></category><category term="issue"></category><category term="bioinfo"></category></entry><entry><title>人类基因组</title><link href="https://ghxdghxd.github.io/hunman-genome.html" rel="alternate"></link><published>2014-12-05T11:38:00+08:00</published><updated>2016-03-17T10:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-05:/hunman-genome.html</id><summary type="html">&lt;p&gt;人类参考基因组的记录&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="hg" src="images/human_genome.png"/&gt;&lt;/p&gt;
 &lt;h1&gt;参考序列&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;XY染色体上相同序列 &lt;strong&gt;PAR1&lt;/strong&gt; &lt;strong&gt;PAR2&lt;/strong&gt;&lt;/li&gt;
@@ -696,7 +725,7 @@ issue内各代码说明：
     Our server will be maintained at
     please don&lt;span class="err"&gt;'&lt;/span&gt;t login at that time,thanks.
     那么当用户登录的时候，就会显示设置的内容了。
-&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/system-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2017-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/system-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;1 服务器管理记录&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/linux-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2017-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/linux-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;1 服务器管理记录&lt;/h1&gt;
 &lt;h2&gt;1.1 清理内存&lt;/h2&gt;
 &lt;p&gt;echo 1 &amp;gt; /proc/sys/vm/drop_caches&lt;/p&gt;
 &lt;h2&gt;1.2 &lt;a href="terminal-announcement"&gt;登录显示信息&lt;/a&gt;&lt;/h2&gt;

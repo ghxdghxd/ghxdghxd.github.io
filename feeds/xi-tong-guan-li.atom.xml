@@ -292,7 +292,7 @@ issue内各代码说明：
     Our server will be maintained at
     please don&lt;span class="err"&gt;'&lt;/span&gt;t login at that time,thanks.
     那么当用户登录的时候，就会显示设置的内容了。
-&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/system-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2017-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/system-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;1 服务器管理记录&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/linux-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2017-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/linux-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;1 服务器管理记录&lt;/h1&gt;
 &lt;h2&gt;1.1 清理内存&lt;/h2&gt;
 &lt;p&gt;echo 1 &amp;gt; /proc/sys/vm/drop_caches&lt;/p&gt;
 &lt;h2&gt;1.2 &lt;a href="terminal-announcement"&gt;登录显示信息&lt;/a&gt;&lt;/h2&gt;

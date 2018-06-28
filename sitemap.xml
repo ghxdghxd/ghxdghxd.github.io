@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/</loc>
-<lastmod>2018-06-27T17:27:57-00:00</lastmod>
+<lastmod>2018-06-28T15:48:24-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/archives.html</loc>
-<lastmod>2018-06-27T17:27:57-00:00</lastmod>
+<lastmod>2018-06-28T15:48:24-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/tags.html</loc>
-<lastmod>2018-06-27T17:27:57-00:00</lastmod>
+<lastmod>2018-06-28T15:48:24-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/categories.html</loc>
-<lastmod>2018-06-27T17:27:57-00:00</lastmod>
+<lastmod>2018-06-28T15:48:24-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -36,6 +36,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2014-12-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/ROC.html</loc>
+<lastmod>2016-06-14T14:02:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -109,6 +116,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://ghxdghxd.github.io/CREST.html</loc>
+<lastmod>2015-12-24T14:02:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>https://ghxdghxd.github.io/hunman-genome.html</loc>
 <lastmod>2016-03-17T10:33:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -130,7 +144,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/system-management.html</loc>
+<loc>https://ghxdghxd.github.io/linux-management.html</loc>
 <lastmod>2017-03-09T22:07:02+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
@@ -179,8 +193,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://ghxdghxd.github.io/category/sheng-xin-ruan-jian.html</loc>
+<lastmod>2016-11-18T11:07:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/category/sheng-xin-shu-ju.html</loc>
+<lastmod>2016-02-29T20:40:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://ghxdghxd.github.io/category/tong-ji-jian-mo.html</loc>
-<lastmod>2018-02-03T19:30:00+08:06</lastmod>
+<lastmod>2018-03-12T09:58:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -195,6 +223,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://ghxdghxd.github.io/category/xing-qu-ai-hao.html</loc>
 <lastmod>2017-04-03T19:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/roc.html</loc>
+<lastmod>2018-03-12T09:58:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/bioinfo.html</loc>
+<lastmod>2018-03-12T09:58:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -284,13 +326,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/tag/bioinfo.html</loc>
-<lastmod>2016-11-18T11:07:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://ghxdghxd.github.io/tag/command.html</loc>
 <lastmod>2016-11-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -305,8 +340,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://ghxdghxd.github.io/tag/mutsig.html</loc>
+<lastmod>2016-09-23T10:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://ghxdghxd.github.io/tag/issue.html</loc>
 <lastmod>2016-09-23T10:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/crest.html</loc>
+<lastmod>2015-12-24T14:02:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -376,7 +425,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/author/jt-guo.html</loc>
-<lastmod>2018-02-03T19:30:00+08:06</lastmod>
+<lastmod>2018-03-12T09:58:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
