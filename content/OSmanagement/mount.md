@@ -58,3 +58,11 @@ function check_disks {
 ```
 
 脚本首先通过比较/etc/fstab和/proc/mounts中的不同之处，得到被umount的盘，然后再把ro(read only)的盘也分析出来。
+
+# 挂载usb到指定位置
+
+```sh
+blkid usb #查看uuid
+# 修改/etc/fstab
+UUID=54A3-36E3 /home/aData exfat defaults,uid=1000,gid=1000,umask=022 0 0
+```
