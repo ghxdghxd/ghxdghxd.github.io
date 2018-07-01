@@ -1,6 +1,6 @@
 [submodule "themes/maupassant-pelican"]
 	path = themes/maupassant-pelican
 	url = git@github.com:ghxdghxd/maupassant-pelican.git
-[submodule "themes/pelican-wiki"]
-	path = themes/pelican-wiki
-	url = git@github.com:ghxdghxd/pelican-wiki.git
+[submodule "themes/pelican-bootstrap4"]
+	path = themes/pelican-bootstrap4
+	url = git@github.com:ghxdghxd/pelican-bootstrap4.git
