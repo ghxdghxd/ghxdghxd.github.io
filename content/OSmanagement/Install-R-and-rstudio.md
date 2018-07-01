@@ -1,6 +1,6 @@
 ---
 Title: R与Rstudio的安装过程（ubuntu）
-Date: 2014-2-03 10:20
+Date: 2014-11-13 10:20
 Modified: 2017-2-05 19:30
 Category: 系统管理
 Tags: R, Rstudio, install
