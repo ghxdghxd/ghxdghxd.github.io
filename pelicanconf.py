@@ -19,8 +19,9 @@ EXTRA_PATH_METADATA = {
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['tipue_search', "sitemap", "i18n_subsites", "neighbors", "pdf-img"]
 
-THEME = "themes/maupassant-pelican"
-DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'search']
+THEME = "themes/pelican-bootstrap4"
+DIRECT_TEMPLATES = ["index", "search",
+                    "setting", "archives", "tags", "categories"]
 # title, link, font-awesome-id(http://fontawesome.io)
 MENUITEMS = [('主页', '.', 'fa-home'),
              ('归档', 'archives.html', 'fa-archive'),
