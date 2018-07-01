@@ -62,9 +62,10 @@ cd ..
 ```bash
 cd project1
 git submodule add ../moduleA.git moduleA
-git statusgit diff
+git status
+git diff
 git add .
-git commit -m"add submodule"
+git commit -m "add submodule"
 git push origin master
 cd ..
 ```
