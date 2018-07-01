@@ -57,9 +57,10 @@ git push origin master
 &lt;p&gt;在project项目中引入子模块moduleA，并提交子模块信息&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project1
 git submodule add ../moduleA.git moduleA
-git statusgit diff
+git status
+git diff
 git add .
-git commit -m&lt;span class="s2"&gt;"add submodule"&lt;/span&gt;
+git commit -m &lt;span class="s2"&gt;"add submodule"&lt;/span&gt;
 git push origin master
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
 &lt;/pre&gt;&lt;/div&gt;
@@ -871,7 +872,7 @@ equivalently, Q ≈ 13.&lt;/p&gt;
 &lt;h1&gt;fastq 质量检测工具&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="/BioKits/fastqc"&gt;fastQC&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="NGS"></category><category term="fastq"></category><category term="bioinfo"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="https://ghxdghxd.github.io/R-and-Rstudio.html" rel="alternate"></link><published>2014-02-03T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-02-03:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;ubuntu安装R与Rstudio的过程&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;install R&lt;/h1&gt;
+&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="NGS"></category><category term="fastq"></category><category term="bioinfo"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="https://ghxdghxd.github.io/R-and-Rstudio.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;ubuntu安装R与Rstudio的过程&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;install R&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;error&lt;/li&gt;
 &lt;/ul&gt;
@@ -997,7 +998,7 @@ equivalently, Q ≈ 13.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    ./configure --enable-shared
     make
     make install
-&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="R"></category><category term="Rstudio"></category><category term="install"></category></entry><entry><title>mount</title><link href="https://ghxdghxd.github.io/mount.html" rel="alternate"></link><published>2014-01-03T00:20:00+08:00</published><updated>2017-10-21T20:52:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-01-03:/mount.html</id><summary type="html">&lt;p&gt;mount挂载说明&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;/etc/fstab&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="R"></category><category term="Rstudio"></category><category term="install"></category></entry><entry><title>分区挂载</title><link href="https://ghxdghxd.github.io/mount.html" rel="alternate"></link><published>2014-11-03T00:20:00+08:00</published><updated>2017-10-21T20:52:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-03:/mount.html</id><summary type="html">&lt;p&gt;mount挂载说明&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;/etc/fstab&lt;/h1&gt;
 &lt;p&gt;运维都知道的文件，若想把mount的disk和dir设置为每次开机自动加载，那么就要把相关信息写到这个文件中。当用”mount -a“命令自动mount的时候，也会去读这个文件。例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
 &lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
@@ -1031,4 +1032,9 @@ equivalently, Q ≈ 13.&lt;/p&gt;
   &lt;span class="k"&gt;fi&lt;/span&gt;
 &lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;脚本首先通过比较/etc/fstab和/proc/mounts中的不同之处，得到被umount的盘，然后再把ro(read only)的盘也分析出来。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="mount"></category></entry></feed>
+&lt;p&gt;脚本首先通过比较/etc/fstab和/proc/mounts中的不同之处，得到被umount的盘，然后再把ro(read only)的盘也分析出来。&lt;/p&gt;
+&lt;h1&gt;挂载usb到指定位置&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;blkid usb &lt;span class="c1"&gt;#查看uuid&lt;/span&gt;
+&lt;span class="c1"&gt;# 修改/etc/fstab&lt;/span&gt;
+&lt;span class="nv"&gt;UUID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;54A3-36E3 /home/aData exfat defaults,uid&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;,gid&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;,umask&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;022&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="mount"></category></entry></feed>

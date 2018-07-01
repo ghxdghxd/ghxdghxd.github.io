@@ -36,9 +36,10 @@ git push origin master
 &lt;p&gt;在project项目中引入子模块moduleA，并提交子模块信息&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; project1
 git submodule add ../moduleA.git moduleA
-git statusgit diff
+git status
+git diff
 git add .
-git commit -m&lt;span class="s2"&gt;"add submodule"&lt;/span&gt;
+git commit -m &lt;span class="s2"&gt;"add submodule"&lt;/span&gt;
 git push origin master
 &lt;span class="nb"&gt;cd&lt;/span&gt; ..
 &lt;/pre&gt;&lt;/div&gt;
