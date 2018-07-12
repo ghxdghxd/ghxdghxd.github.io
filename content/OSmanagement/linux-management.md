@@ -75,6 +75,12 @@ rm -rf ~/.ssh **然后 退出登录 再登陆 会自动生成新密钥**
 **选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统**
 ![图1](images/manager1.png){:height="80%" width="80%"}
 
+7.重装节点
+
+```sh
+rocks set host pxeboot compute-0-3 action=install
+```
+
 ## 3.3 qmgr
 
 ```bash
