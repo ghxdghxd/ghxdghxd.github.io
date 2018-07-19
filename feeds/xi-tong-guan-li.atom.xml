@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 系统管理</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/xi-tong-guan-li.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2017-12-05T19:30:00+08:00</updated><entry><title>archlinux安装与配置</title><link href="https://ghxdghxd.github.io/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;archlinux安装&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 系统管理</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/xi-tong-guan-li.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-07-05T19:30:00+08:00</updated><entry><title>archlinux安装与配置</title><link href="https://ghxdghxd.github.io/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;archlinux安装&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# u盘启动后&lt;/span&gt;
 &lt;span class="c1"&gt;# 连接网络&lt;/span&gt;
 wifi-memu
@@ -268,7 +268,27 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;td&gt;显示光标&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="shell"></category></entry><entry><title>登录终端信息</title><link href="https://ghxdghxd.github.io/terminal-announcement.html" rel="alternate"></link><published>2014-12-04T16:20:00+08:00</published><updated>2016-03-09T22:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/terminal-announcement.html</id><summary type="html">&lt;p&gt;登录终端显示提示信息&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;/etc/issue&lt;/h1&gt;
+&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="shell"></category></entry><entry><title>linux好用软件集</title><link href="https://ghxdghxd.github.io/linux-soft.html" rel="alternate"></link><published>2015-02-03T10:20:00+08:00</published><updated>2018-07-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-02-03:/linux-soft.html</id><summary type="html">&lt;p&gt;自己用的linux软件以及遇到的问题整理&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;1. guake terminal&lt;/h1&gt;
+&lt;h2&gt;简介&lt;/h2&gt;
+&lt;p&gt;guake terminal， 一个下拉式终端&lt;a href="https://github.com/Guake/guake"&gt;这里下载&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;问题&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Ctrl+D in the terminal does not close the tab anymore, but freezes the current tab&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ubuntu上遇到此问题，解决办法是安装 libutempter0,参考&lt;a href="https://github.com/Guake/guake/issues/1198"&gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;2. anaconda&lt;/h1&gt;
+&lt;h2&gt;简介&lt;/h2&gt;
+&lt;p&gt;python 的管理工具&lt;/p&gt;
+&lt;h2&gt;问题&lt;/h2&gt;
+&lt;p&gt;1.matplotlib中文显示参数设置&lt;/p&gt;
+&lt;p&gt;由于matplotlib库中没有中文字体。&lt;/p&gt;
+&lt;p&gt;将对应的字体&lt;a href="https://github.com/StellarCN/scp_zh/blob/master/fonts/SimHei.ttf"&gt;SimHei.tff&lt;/a&gt;拷贝到
+~/anaconda3/lib/python3.5/site-packages/matplotlib/mpl-data/fonts/ttf/&lt;/p&gt;
+&lt;p&gt;在 ~/anaconda3/lib/python3.5/site-packages/matplotlib/mpl-data/matplotlibrc 中，删除font.family和font.sans-serif两行前的#，并在font.sans-serif后添加SimHei
+font.family          :sans-serif
+font.sans-serif     : SimHei, DejaVu Serif（后面还有很多，略去）
+axes.unicode_minus，将True改为False&lt;/p&gt;
+&lt;p&gt;删除~/.cache/matplotlib字体缓存&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="software"></category></entry><entry><title>登录终端信息</title><link href="https://ghxdghxd.github.io/terminal-announcement.html" rel="alternate"></link><published>2014-12-04T16:20:00+08:00</published><updated>2016-03-09T22:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/terminal-announcement.html</id><summary type="html">&lt;p&gt;登录终端显示提示信息&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;/etc/issue&lt;/h1&gt;
 &lt;p&gt;在终端接口登录时候的提示字符,例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;root@linux ~&lt;span class="o"&gt;]&lt;/span&gt; cat /etc/issue
 CentOS release &lt;span class="m"&gt;5&lt;/span&gt;.6 &lt;span class="o"&gt;(&lt;/span&gt;Final&lt;span class="o"&gt;)&lt;/span&gt;
@@ -333,6 +353,9 @@ rocks sync users &lt;span class="c1"&gt;# 可更改/export/home/name 为 /home/n
 &lt;p&gt;在倒计时5秒时，按任意键出现下图，
 &lt;strong&gt;选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统&lt;/strong&gt;
 &lt;img alt="图1" height="80%" src="images/manager1.png" width="80%"/&gt;&lt;/p&gt;
+&lt;p&gt;7.重装节点&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rocks &lt;span class="nb"&gt;set&lt;/span&gt; host pxeboot compute-0-3 &lt;span class="nv"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;install
+&lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;3.3 qmgr&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;qmgr -c &lt;span class="s2"&gt;"print server"&lt;/span&gt; &lt;span class="c1"&gt;# 输出server的属性&lt;/span&gt;
 qmgr -c &lt;span class="s2"&gt;"set server query_other_jobs = true"&lt;/span&gt; &lt;span class="c1"&gt;# qstat可以查看所有用户&lt;/span&gt;

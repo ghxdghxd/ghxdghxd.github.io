@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 4">
+    <title>JTGuo-KnowledgeBase</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/custom-themes.css">
+    <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/theme/css/post.css">
+    <link rel="stylesheet" href="/theme/css/pagination.css">
+    <link rel="stylesheet" href="/theme/css/totop.css">
+    <link rel="stylesheet" href="/theme/css/readmore.css">
+    <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
+</head>
+
+<body>
+    <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
+        <!-- 上面加入toggled是显示 -->
+        <a id="show-sidebar" class="btn btn-sm btn-dark" href="javascript:void(0);">
+            <i class="fas fa-bars"></i>
+        </a>
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                <div class="sidebar-brand">
+                    <a href="/">iKnowledgeBase</a>
+                </div>
+                <div class="sidebar-header">
+                    <div class="user-pic">
+                        <img class="img-responsive img-rounded" src="/theme/images/Logo.jpg" alt="User picture" style="border-radius: 50%">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">
+                            <strong>JT Guo</strong>
+                        </span>
+                        <span class="user-role">Administrator</span>
+                        <span class="user-status">
+                            <i class="fa fa-circle"></i>
+                            <span>Online</span>
+                        </span>
+                    </div>
+                </div>
+                <!-- sidebar-header  -->
+                <div class="sidebar-search"><div>
+                    <form action="search.html" class="input-group">
+                        <input type="text" name="q" id="tipue_search_input" class="form-control search-menu" placeholder="好记性不如烂键盘...">
+                        <div class="input-group-append">
+                            <button class="btn btn-default" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div></div>
+                <!-- sidebar-search  -->
+                <div class="sidebar-menu">
+                    <ul>
+                        <li class="header-menu">
+                            <span>分类文件夹</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-folder"></i>
+                                <span>工具集</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/git-submodule.html">git submodule的用法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/git.html">git的一般用法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-folder"></i>
+                                <span>理论基础</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/mpileup.html">mpileup格式</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/ctDNA.html">循环肿瘤DNA</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/phred.html">质量值体系</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/BRCA.html">BRCA基因检测</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/variant.html">变异标准化</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/QQplot.html">QQplot</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/cfDNA.html">cfDNA,ctDNA,CTC</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/mutation.html">突变分类及定义功能</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/HGVS.html">HGVS Names和refSNP ID</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/DHS.html">脱氧核糖核酸酶高敏感位点</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/hunman-genome.html">人类基因组</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-folder"></i>
+                                <span>路由器</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/the-sense.html">之感</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-folder"></i>
+                                <span>生信软件</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/hotnet2.html">hotnet2</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/MutSigCV.html">MutSigCV的问题</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/CREST.html">CREST的问题</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-folder"></i>
+                                <span>生信数据</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/NGS-coverage.html">如何根据测序数据计算出数据量以及测序深度？</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/fastq-format.html">FASTQ格式详解</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-folder"></i>
+                                <span>统计建模</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/meta.html">meta Analysis</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-folder"></i>
+                                <span>系统管理</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/archlinux.html">archlinux安装与配置</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/docker.html">docker安装与配置</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/terminal-color.html">终端显示颜色</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-soft.html">linux好用软件集</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/terminal-announcement.html">登录终端信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/mount.html">分区挂载</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-folder"></i>
+                                <span>兴趣爱好</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/tennis-racquet.html">网球拍的平衡点</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="header-menu">
+                            <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>ROC</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>bioinfo</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/hotnet2.html">hotnet2</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/MutSigCV.html">MutSigCV的问题</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/CREST.html">CREST的问题</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/fastq-format.html">FASTQ格式详解</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>git</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/git-submodule.html">git submodule的用法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/git.html">git的一般用法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>submodule</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/git-submodule.html">git submodule的用法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>R</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/meta.html">meta Analysis</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>meta</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/meta.html">meta Analysis</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>operation</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/archlinux.html">archlinux安装与配置</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>interest</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/archlinux.html">archlinux安装与配置</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/tennis-racquet.html">网球拍的平衡点</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>docker</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/docker.html">docker安装与配置</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>tennis</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/tennis-racquet.html">网球拍的平衡点</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>samtools</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/mpileup.html">mpileup格式</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>mpileup</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/mpileup.html">mpileup格式</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>ctDNA</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/ctDNA.html">循环肿瘤DNA</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/cfDNA.html">cfDNA,ctDNA,CTC</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>fastq</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/phred.html">质量值体系</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/fastq-format.html">FASTQ格式详解</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>QC</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/phred.html">质量值体系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>phred</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/phred.html">质量值体系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>linux</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/terminal-color.html">终端显示颜色</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-soft.html">linux好用软件集</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/terminal-announcement.html">登录终端信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/mount.html">分区挂载</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>shell</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/terminal-color.html">终端显示颜色</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>BRCA</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/BRCA.html">BRCA基因检测</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>geneticTesting</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/BRCA.html">BRCA基因检测</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>NGS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/hotnet2.html">hotnet2</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/NGS-coverage.html">如何根据测序数据计算出数据量以及测序深度？</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/fastq-format.html">FASTQ格式详解</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>hotnet2</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/hotnet2.html">hotnet2</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>command</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/git.html">git的一般用法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>variant</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/variant.html">变异标准化</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>QQplot</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/QQplot.html">QQplot</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>cfDNA</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/cfDNA.html">cfDNA,ctDNA,CTC</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>CTC</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/cfDNA.html">cfDNA,ctDNA,CTC</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>mutation</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/mutation.html">突变分类及定义功能</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>HGVS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/HGVS.html">HGVS Names和refSNP ID</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>SNP</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/HGVS.html">HGVS Names和refSNP ID</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>personal</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/the-sense.html">之感</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>mutsig</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/MutSigCV.html">MutSigCV的问题</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>issue</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/MutSigCV.html">MutSigCV的问题</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/CREST.html">CREST的问题</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>CREST</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/CREST.html">CREST的问题</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>DNA</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/DHS.html">脱氧核糖核酸酶高敏感位点</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>DHS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/DHS.html">脱氧核糖核酸酶高敏感位点</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>software</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-soft.html">linux好用软件集</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>genome</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/hunman-genome.html">人类基因组</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>terminal</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/terminal-announcement.html">登录终端信息</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>centos</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>hpc</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>rocks cluster</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>Rstudio</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>install</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/R-and-Rstudio.html">R与Rstudio的安装过程（ubuntu）</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>mount</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/mount.html">分区挂载</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- sidebar-menu  -->
+            </div>
+            <!-- sidebar-content  -->
+            <div class="sidebar-footer">
+                <div class="dropdown">
+                    <a href="javascript:void(0);" class="" id="dropdownMenuNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-list"></i>
+                        <!-- <span class="badge badge-pill badge-warning notification">3</span> -->
+                    </a>
+                    <div class="dropdown-menu notifications" aria-labelledby="dropdownMenuMessage">
+                        <div class="notifications-header">
+                            <i class="fa fa-bell"></i>
+                            分类
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="https://ghxdghxd.github.io/category/gong-ju-ji.html">
+                            <div class="notification-content">
+                                <div class="icon">
+                                    <i class="fas fa-check text-success border border-success"></i>
+                                </div>
+                                <div class="content">
+                                    <div class="notification-detail">工具集</div>
+                                    <div class="notification-time">
+                                        2篇文章
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item" href="https://ghxdghxd.github.io/category/li-lun-ji-chu.html">
+                            <div class="notification-content">
+                                <div class="icon">
+                                    <i class="fas fa-check text-success border border-success"></i>
+                                </div>
+                                <div class="content">
+                                    <div class="notification-detail">理论基础</div>
+                                    <div class="notification-time">
+                                        11篇文章
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item" href="https://ghxdghxd.github.io/category/lu-you-qi.html">
+                            <div class="notification-content">
+                                <div class="icon">
+                                    <i class="fas fa-check text-success border border-success"></i>
+                                </div>
+                                <div class="content">
+                                    <div class="notification-detail">路由器</div>
+                                    <div class="notification-time">
+                                        1篇文章
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item" href="https://ghxdghxd.github.io/category/sheng-xin-ruan-jian.html">
+                            <div class="notification-content">
+                                <div class="icon">
+                                    <i class="fas fa-check text-success border border-success"></i>
+                                </div>
+                                <div class="content">
+                                    <div class="notification-detail">生信软件</div>
+                                    <div class="notification-time">
+                                        3篇文章
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item" href="https://ghxdghxd.github.io/category/sheng-xin-shu-ju.html">
+                            <div class="notification-content">
+                                <div class="icon">
+                                    <i class="fas fa-check text-success border border-success"></i>
+                                </div>
+                                <div class="content">
+                                    <div class="notification-detail">生信数据</div>
+                                    <div class="notification-time">
+                                        2篇文章
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-center" href="/categories.html">查看所有分类</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="javascript:void(0);" class="" id="dropdownMenuMessage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-tags"></i>
+                        <!-- <span class="badge badge-pill badge-success notification">7</span> -->
+                    </a>
+                    <div class="dropdown-menu messages" aria-labelledby="dropdownMenuMessage">
+                        <div class="messages-header">
+                            <i class="fa fa-tags"></i>
+                            标签
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="https://ghxdghxd.github.io/tag/bioinfo.html">
+                            <div class="notification-content">
+                                <div class="content">
+                                    <div class="notification-detail">
+                                        bioinfo<sup>5</sup>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item" href="https://ghxdghxd.github.io/tag/brca.html">
+                            <div class="notification-content">
+                                <div class="content">
+                                    <div class="notification-detail">
+                                        BRCA<sup>1</sup>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item" href="https://ghxdghxd.github.io/tag/centos.html">
+                            <div class="notification-content">
+                                <div class="content">
+                                    <div class="notification-detail">
+                                        centos<sup>1</sup>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item" href="https://ghxdghxd.github.io/tag/cfdna.html">
+                            <div class="notification-content">
+                                <div class="content">
+                                    <div class="notification-detail">
+                                        cfDNA<sup>1</sup>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item" href="https://ghxdghxd.github.io/tag/command.html">
+                            <div class="notification-content">
+                                <div class="content">
+                                    <div class="notification-detail">
+                                        command<sup>1</sup>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-center" href="/tags.html">查看所有标签</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="/setting.html">
+                        <i class="fa fa-cog"></i>
+                    </a>
+                </div>
+                <div id="close-sidebar">
+                    <a href="javascript:void(0);">
+                        <i class="fas fa-power-off"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <main class="page-content">
+            <div class="container-fluid" style="float: left">
+<div class="post">
+    <h1 class="post-title">突变分类及定义功能</h1>
+    <div class="tags" style="float: right;">
+    <a href="/tag/mutation.html">mutation</a>
+    </div>
+    <div class="post-meta">11月 05, 2015
+    <span> | </span> <a href="/category/li-lun-ji-chu.html">理论基础</a>
+    </div>
+    <div class="post-content">
+        <html><body><h1>概念</h1>
+<p><strong>突变与变异是两个截然不同的概念</strong>。<strong>变异</strong>一般是指物种在漫长的自然选择压力下，由于“适者生存”的原则而使自身遗传基因发生的某些有益于自身完善于生存环境而生存、发展的变化。</p>
+<p><strong>突变</strong>则是指物种遗传基因在某些物理、化学、生物因素作用下，短期内发生的某些基因序列的变化。就人体而言，突变一般是对人体十分有害的。</p>
+<p><strong>突变可以分为3大类型</strong>：点突变（point mutation）、染色体突变(chromosomal mutation)和基因组突变(genomic mutation)。 </p>
+<ol>
+<li>其中以点突变最为常见和重要，包括转换(transition)、颠换（transversion）、插入(insertion)和缺失(deletion)几种类型，前两种属于碱基置换(basesubstitution)，后两种属于移码突变(frame shift mutation) 。</li>
+</ol>
+<p>substitution（替换）和delection/addition(添加/缺失），估计就是碱基置换、移码、缺失和插入，只是翻译不同，这种分类有点笼统了，适合用于定义{基因突变是指DNA分子中发生碱基对的替换、增添和缺失，而引起的基因结构的改变，它包括单个碱基改变所引起的点突变（point mutation），或多个碱基的缺失、重复和插入。}   </p>
+<p>不过更笼统的是按照遗传信息的改变方式，分为错义、无义两类。   </p>
+<p>我看的分类复杂点。我看过的是类似是这个分类，你去看下网站。好象是上海一个大学的。   </p>
+<p>基因突变的类型 <br/>
+<a href="http://genetics.sjtu.edu.cn/genetics/21.01.htm">http://genetics.sjtu.edu.cn/genetics/21.01.htm</a> </p>
+<p>突变的原因   </p>
+<p><a href="http://genetics.sjtu.edu.cn/genetics/21.02.htm">http://genetics.sjtu.edu.cn/genetics/21.02.htm</a> </p>
+<p>根据基因结构的改变方式不同，可将基因突变分为四种类型： <br/>
+（1）点突变 由某位点一对减基改变造成的。其包括两种形式：转换和颠换。点突变的不同效应为：①同义突变；②错义突变；③无义突变；④终止密码突变。 <br/>
+（2）移码突变 某位点增添或减少1～2对碱基造成的。 <br/>
+（3）缺失突变 基因内部缺失某个DNA小段造成的。 <br/>
+（4）插入突变 基因内部增添一小段外源DNA造成的。   </p>
+<p>基因突变是随机发生的。它可以发生在生物个体发育的任何时期和生物体的任何细胞。一般来说，在生物个体发育的过程中，基因突变发生的时期越迟，生物体表现突变的部分就越少。例如，植物的叶芽如果在发育的早期发生基因突变，那么由这个叶芽长成的枝条，上面着生的叶、花和果实都有可能与其他枝条不同。如果基因突变发生在花芽分化时，那么，将来可能只在一朵花或一个花序上表现出变异。 <br/>
+基因突变可以发生在体细胞中，也可以发生在生殖细胞中。发生在生殖细胞中的突变，可以通过受精作用直接传递给后代。发生在体细胞中的突变，一般是不能传递给后代的。 <br/>
+基因突变在生物界中是普遍存在的。无论是低等生物，还是高等的动植物以及人，都可能发生基因突变。基因突变在自然界的物种中广泛存在。例如，棉花的短果枝、水稻的矮杆、糯性，果蝇的白眼、残翅，家鸽羽毛的灰红色，以及人的色肓、糖尿病、白化病等遗传病，都是突变性状。自然条件下发生的基因突变叫做自然突变，人为条件下诱发产生的基因突变叫做诱发突变。   </p>
+<p>绝大多数的人类遗传病，就是由基因突变造成的，这些病对人类健康构成了严重威胁。又如，植物中常见的白化苗，也是基因突变形成的。这种苗由于缺乏叶绿素，不能进行光合作用制造有机物，最终导致死亡。但是，也有少数基因突变是有利的。例如，植物的抗病性突变、耐旱性突变、微生物的抗药性突变等，都是有利于生物生存的。</p>
+<p>nonsense mutation 无义突变：使原本可制造蛋白质的密码变成停止密码</p>
+<p>missense mutation 错义突变：使密码所对应氨基酸改变</p>
+<p>silent mutation 无表型突变：密码改变，但对应的氨基酸不变</p>
+<p>INV， inversion 倒位 、转置</p>
+<p>Interchromosomal translocation, CTX 染色体间易位  </p>
+<p>intra-chromosome translocation , ITX 染色体内易位</p>
+<table>
+<thead>
+<tr>
+<th align="center">SO term</th>
+<th align="center">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001628">intergenic_variant</a></td>
+<td align="center">A sequence variant located in the intergenic region, between genes.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001631">upstream_gene_variant</a></td>
+<td align="center">A sequence variant located 5' of a gene. (VAI searches within 5,000 bases.)</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001632">downstream_gene_variant</a></td>
+<td align="center">A sequence variant located 3' of a gene. (VAI searches within 5,000 bases.)</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001623">5_prime_UTR_variant</a></td>
+<td align="center">A variant located in the 5' untranslated region (UTR) of a gene.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001624">3_prime_UTR_variant</a></td>
+<td align="center">A variant located in the 3' untranslated region (UTR) of a gene.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001819">synonymous_variant</a></td>
+<td align="center">A sequence variant where there is no resulting change to the encoded amino acid.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001583">missense_variant</a></td>
+<td align="center">A sequence variant, that changes one or more bases, resulting in a different amino acid sequence but where the length is preserved.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001821">inframe_insertion</a></td>
+<td align="center">An inframe non synonymous variant that inserts bases into in the coding sequence.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001822">inframe_deletion</a></td>
+<td align="center">An inframe non synonymous variant that deletes bases from the coding sequence.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001589">frameshift_variant</a></td>
+<td align="center">A sequence variant which causes a disruption of the translational reading frame, because the number of nucleotides inserted or deleted is not a multiple of three.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001582">initiator_codon_variant</a></td>
+<td align="center">A codon variant that changes at least one base of the first codon of a transcript.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001626">incomplete_terminal_codon_variant</a></td>
+<td align="center">A sequence variant where at least one base of the final codon of an incompletely annotated transcript is changed.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001578">stop_lost</a></td>
+<td align="center">A sequence variant where at least one base of the terminator codon (stop) is changed, resulting in an elongated transcript.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001567">stop_retained_variant</a></td>
+<td align="center">A sequence variant where at least one base in the terminator codon is changed, but the terminator remains.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001572">exon_loss</a></td>
+<td align="center">A sequence variant whereby an exon is lost from the transcript. (VAI assigns this term when an entire exon is deleted.)</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001587">stop_gained</a></td>
+<td align="center">A sequence variant whereby at least one base of a codon is changed, resulting in a premature stop codon, leading to a shortened transcript.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001621">NMD_transcript_variant</a></td>
+<td align="center">A variant in a transcript that is already the target of nonsense-mediated decay (NMD), i.e. stop codon is not in last exon nor within 50 bases of the end of the second-to-last exon.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001627">intron_variant</a></td>
+<td align="center">A transcript variant occurring within an intron.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001575">splice_donor_variant</a></td>
+<td align="center">A splice variant that changes the 2-base region at the 5' end of an intron.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001574">splice_acceptor_variant</a></td>
+<td align="center">A splice variant that changes the 2 base region at the 3' end of an intron.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001630">splice_region_variant</a></td>
+<td align="center">A sequence variant in which a change has occurred within the region of the splice site, either within 1-3 bases of the exon or 3-8 bases of the intron.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001577">complex_transcript_variant</a></td>
+<td align="center">A transcript variant with a complex insertion or deletion (indel) that spans an exon/intron border or a coding sequence/UTR border.</td>
+</tr>
+<tr>
+<td align="center"><a href="http://sequenceontology.org/browser/current_release/term/SO:0001792">non_coding_exon_variant</a></td>
+<td align="center">A sequence variant that changes exon sequence of a non-coding gene.</td>
+</tr>
+</tbody>
+</table>
+<h3>Functional role</h3>
+<p>By default, all variants are included in the output regardless of predicted
+functional effect. If you would like to keep only variants that have a
+particular type of effect, you can uncheck the checkboxes of other effect
+types. The detailed functional effect predictions are categorized as follows:</p>
+<ul>
+<li><strong>intergenic:</strong> <a href="http://sequenceontology.org/browser/current_release/term/SO:0001628">intergenic_variant</a></li>
+<li><strong>upstream/downstream of gene:</strong> <a href="http://sequenceontology.org/browser/current_release/term/SO:0001631">upstream_gene_variant</a>, <a href="http://sequenceontology.org/browser/current_release/term/SO:0001632">downstream_gene_variant</a></li>
+<li><strong>5' or 3' UTR:</strong> <a href="http://sequenceontology.org/browser/current_release/term/SO:0001623">5_prime_UTR_variant</a>, <a href="http://sequenceontology.org/browser/current_release/term/SO:0001624">3_prime_UTR_variant</a></li>
+<li><strong>CDS - synonymous coding change:</strong> <a href="http://sequenceontology.org/browser/current_release/term/SO:0001819">synonymous_variant</a></li>
+<li><strong>CDS - non-synonymous (missense, stop gain/loss, frameshift etc):</strong> <a href="http://sequenceontology.org/browser/current_release/term/SO:0001583">missense_variant</a>, <a href="http://sequenceontology.org/browser/current_release/term/SO:0001821">inframe_insertion</a>, <a href="http://sequenceontology.org/browser/current_release/term/SO:0001822">inframe_deletion</a>, <a href="http://sequenceontology.org/browser/current_release/term/SO:0001589">frameshift_variant</a>, <a href="http://sequenceontology.org/browser/current_release/term/SO:0001582">initiator_codon_variant</a>, <a href="http://sequenceontology.org/browser/current_release/term/SO:0001626">incomplete_terminal_codon_variant</a>, <a href="http://sequenceontology.org/browser/current_release/term/SO:0001578">stop_lost</a>, <a href="http://sequenceontology.org/browser/current_release/term/SO:0001567">stop_retained_variant</a>, <a href="http://sequenceontology.org/browser/current_release/term/SO:0001587">stop_gained</a>,<a href="http://sequenceontology.org/browser/current_release/term/SO:0001621">NMD_transcript_variant</a></li>
+<li><strong>intron:</strong> <a href="http://sequenceontology.org/browser/current_release/term/SO:0001627">intron_variant</a></li>
+<li><strong>splice site or splice region:</strong> <a href="http://sequenceontology.org/browser/current_release/term/SO:0001575">splice_donor_variant</a>, <a href="http://sequenceontology.org/browser/current_release/term/SO:0001574">splice_acceptor_variant</a>, <a href="http://sequenceontology.org/browser/current_release/term/SO:0001630">splice_region_variant</a></li>
+<li><strong>exon of non-coding gene:</strong> <a href="http://sequenceontology.org/browser/current_release/term/SO:0001792">non_coding_exon_variant</a></li>
+</ul></body></html>
+
+        <div class="post-nav">
+            <a href="/HGVS.html" class="pre">HGVS Names和refSNP ID</a>
+            <a href="/cfDNA.html" class="next">cfDNA,ctDNA,CTC</a>
+        </div>
+
+    </div>
+</div>
+            </div>
+        </main>
+        <!-- page-content" -->
+    </div>
+    <!-- page-wrapper -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="/theme/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/theme/js/custom.js"></script>
+    <script type="text/javascript" src="/theme/tipuesearch/tipuesearch_set.js"></script>
+    <script type="text/javascript" src="/theme/tipuesearch/tipuesearch.min.js"></script>
+    <script>
+        if((screen.width<=600)){
+            $(".page-wrapper").removeClass("toggled");
+        }
+    </script>
+<a id="rocket" href="#top" class="show"></a>
+<!-- 先调用jquery-3.3.1.min.js -->
+<script type="text/javascript" src="/theme/js/totop.js" async></script></body>
+
+</html>

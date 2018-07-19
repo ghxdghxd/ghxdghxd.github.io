@@ -1,5 +1,569 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 理论基础</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/li-lun-ji-chu.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2016-03-17T10:33:00+08:00</updated><entry><title>人类基因组</title><link href="https://ghxdghxd.github.io/hunman-genome.html" rel="alternate"></link><published>2014-12-05T11:38:00+08:00</published><updated>2016-03-17T10:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-05:/hunman-genome.html</id><summary type="html">&lt;p&gt;人类参考基因组的记录&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="hg" src="images/human_genome.png"/&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 理论基础</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/li-lun-ji-chu.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2017-03-04T14:38:00+08:00</updated><entry><title>mpileup格式</title><link href="https://ghxdghxd.github.io/mpileup.html" rel="alternate"></link><published>2017-03-04T14:38:00+08:00</published><updated>2017-03-04T14:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-04:/mpileup.html</id><summary type="html">&lt;p&gt;samtools mpileup的格式&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;mpileup&lt;/h1&gt;
+&lt;p&gt;mpileup 结果中的 &amp;gt;, &amp;lt;; 代表reference skip, 基因组上没有的序列，  the reference position is
+bridged by reference skip.&lt;/p&gt;
+&lt;p&gt;计算depth要减去reference skip数目&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="samtools"></category><category term="mpileup"></category></entry><entry><title>循环肿瘤DNA</title><link href="https://ghxdghxd.github.io/ctDNA.html" rel="alternate"></link><published>2017-01-09T15:59:00+08:00</published><updated>2017-01-09T15:59:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-09:/ctDNA.html</id><summary type="html">&lt;p&gt;循环肿瘤DNA&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;循环肿瘤DNA，英文叫：circulating tumor DNA，简称ctDNA。
+对ctDNA进行测序，是目前很火的LiquidBiopsy（液体活检）中的一种。  &lt;/p&gt;
+&lt;p&gt;在今天的讲解当中，我们会主要参考Nature Medicine杂志，在2014年4月刊登的AaronNewman（下称：Aaron）等人写的一篇文章。  &lt;/p&gt;
+&lt;p&gt;这篇文章的题目是：《An ultrasensitive method for quantitatingcirculating tumor DNA with
+broad patient coverage》，同时，我们也会结合国内一些服务公司的实际操作方法，来介绍ctDNA测序。  &lt;/p&gt;
+&lt;p&gt;Aaron给他们的实验方法起了一个专有名词：CAncer PersonalizedProfiling by deep SEQuencing，简称：CAPP-
+Seq。  &lt;/p&gt;
+&lt;h1&gt;意义&lt;/h1&gt;
+&lt;p&gt;首先，我们来说一下ctDNA测序的临床意义。&lt;br/&gt;
+1.减少病人的开刀痛苦，只要抽血，不必开刀，就可以做检测。&lt;br/&gt;
+2.增加可检测的病人范围，对于不适合做开刀手术的病人。例如，已经发生肿瘤全身转移的病人。也可以用测ctDNA的方法来测肿瘤的基因突变。&lt;br/&gt;
+3.只抽血（而不必开刀），所以取样很方便。所以它可以应用于肿瘤病人的病情随访，并可以多次取样。&lt;/p&gt;
+&lt;h1&gt;原理&lt;/h1&gt;
+&lt;p&gt;正常细胞和肿瘤细胞都会破裂，细胞破裂之后，细胞中的DNA就会被释放到体液当中去。其中进入血液的这部分DNA，就称为血液游离DNA。那么，它也被称作血浆游离DNA，或者cell
+free DNA，简称cfDNA。&lt;/p&gt;
+&lt;p&gt;这些DNA片段的长度，主要集中在100BP~240BP之间，大部分在170BP左右，把血液当中游离的DNA抽提出来，建成DNA测序的文库。用探针杂交、或者PCR扩增等方法，把其中与肿瘤相关的DNA富集出来，进行高通量测序。&lt;/p&gt;
+&lt;p&gt;然后再进行数据分析，看哪些基因有突变。接着根据基因突变的信息，来决定下一步的治疗方法&lt;/p&gt;
+&lt;p&gt;这就是ctDNA测序的核心原理。  &lt;/p&gt;
+&lt;h2&gt;难点&lt;/h2&gt;
+&lt;p&gt;从原理上，ctDNA测序，简单易懂，但是在实际的操作过程当中，需要克服一系列的技术难点。&lt;/p&gt;
+&lt;p&gt;第一个难点，是在全部的血浆游离DNA当中，ctDNA只占很小的一部分，大约只有万分之几到千分之几。其余的，都是正常细胞的DNA。一般而言，肿瘤早期，ctDNA占全部游离DNA的比例会更低一些，到肿瘤晚期，ctDNA占全部游离DNA的比例会高一些。但是要检测到千分之几、万分之几的突变，总是一件困难的事情  &lt;/p&gt;
+&lt;p&gt;第二个难点，是血液当中的游离DNA量很少，大约每一毫升的血浆当中，只会有十几纳克（ng）的游离DNA。通过比较好的、专用的DNA抽提试剂盒，从一毫升的血浆当中，大约可以抽提到10^-9个纳克（ng，10^-9）左右的游离DNA，每一个正常的、人的细胞，大约含有3.3个皮克(pg，10^-12)的基因组DNA。也就是说1个ng的基因组DNA，相当于来源于300个细胞的DNA量。&lt;/p&gt;
+&lt;p&gt;目前国内做ctDNA测序的科研实践当中，一般是一次抽10个毫升的血，从中可以分离到约5到6毫升的血浆。从这5~6毫升的血浆当中，可以抽提到约
+50ng~60ng 的游离DNA。60个ng的DNA，大约相当于来自18000个细胞的基因组DNA。&lt;/p&gt;
+&lt;p&gt;综合上面所说，ctDNA 测序的两大难点：
+第一，是突变信号相对于背景信号来说，信号强度极低，只有万分之几，到千分之几。
+第二，是样本量极其有限，必须在几十个ng的游离DNA当中，找到突变信息。&lt;/p&gt;
+&lt;h2&gt;实验设计&lt;/h2&gt;
+&lt;p&gt;所以，在整个 ctDNA 测序的实践过程当中，所有的实验步骤，都是围绕上述2个难点，来进行设计的。  &lt;/p&gt;
+&lt;p&gt;首先，我们来说采血。  &lt;/p&gt;
+&lt;p&gt;如果采血完成后，马上可以分离血浆，并抽提游离DNA，那么可以用常规的枸橼酸钠、或者EDTA抗凝采血管来采血。但是，不要用肝素采血管来进行采血，因为肝素是多种DNA修饰酶的强抑制剂，而后面的DNA建库过程当中，要用到多种DNA修饰酶，所以不要用肝素采血管来进行采血。  &lt;/p&gt;
+&lt;p&gt;如果另一种情况，血液要经过一段时间的保存、运输后，才能达到中央实验室，进行血浆分离，并抽提游离DNA的话，那么建议采用 Streck
+公司出品的专用的采血管来进行抽血。Streck 的采血管有以下两个特点：&lt;br/&gt;
+第1，它可以防止血液当中的游离DNA降解&lt;br/&gt;
+第2，它可以防止血液当中的白细胞破裂  &lt;/p&gt;
+&lt;p&gt;因为血液当中的游离DNA很少，而白细胞很多，如果白细胞破裂，那会大大增加测序当中的本底值，所以，防止白细胞破裂是非常必要的。  &lt;/p&gt;
+&lt;p&gt;第二步，是抽提血浆游离DNA。在Aaron的文章当中，是用Qiagen公司出的QIAamp  Circulating Nucleic Acid
+Kit来进行DNA抽提的。这是一个专门用来抽提血浆游离DNA的专用试剂盒。  &lt;/p&gt;
+&lt;p&gt;第三步，是用抽提好的DNA来构建文库。在 Aaron 的文章当中，是用 KAPA 公司的出的 KAPA Library Preparation Kit
+来进行文库构建的。  &lt;/p&gt;
+&lt;p&gt;第四步，是用捕获试剂盒来对文库进行杂交捕获。在 Aaron 的文章当中，是设计了一个针对139个肿瘤相关基因的捕获 Panel。这个 Panel
+的覆盖范围是125个KB的大小。  &lt;/p&gt;
+&lt;p&gt;在这个 Panel 当中，包括按照 hg19 参考基因组序列，设计目标区域。这些区域可以用于检测点突变、和插入缺失突变。同时，对于 ALK 和 ROS1
+这两个基因当中，常见的、易发生融合基因突变的突变位点，也设计了相应的捕获探针，目的是可以更好地检测到融合基因突变。  &lt;/p&gt;
+&lt;p&gt;捕获探针是请 Roche 公司旗下的 Nimblegen 公司合成的。  &lt;/p&gt;
+&lt;p&gt;第五步，捕获好的文库，用高保真聚合酶进行扩增。Aaron 的文章当中，是用 KAPA 公司的KAPA HiFi Hot Start Ready Mix
+酶，配合Illumina公司的文库接头，进行文库的PCR扩增。然后用 Qiagen 公司的 QIAquick PCR Purification Kit，对
+PCR 扩增产物进行纯化。  &lt;/p&gt;
+&lt;p&gt;第六步，扩增好的文库，用 HiSeq 2000 测序仪，进行读长为双端各100碱基的高通量DNA测序，这里要特别说明一下，ctDNA
+的测序深度是非常深的。一般情况下，会测到上万倍、甚至几万倍的测序深度。在Aaron 的文章当中，平均每个ctDNA
+样本，是测2.1G的数据。也就是说，测序的数据量，相当于捕获目标区域大小的17000倍。  &lt;/p&gt;
+&lt;p&gt;第七步，是把测序得到的序列，进行生物信息学分析。在ctDNA的数据分析当中，有一些与传统的捕获测序分析过程不一样的参数设定。  &lt;/p&gt;
+&lt;p&gt;第一点，就是去除 duplicaton 的过滤条件是不一样的。所谓duplication，就是因为上机测序前的 PCR
+扩增，导致一个原始的模板复制出许多个拷贝来。这些复制出来的拷贝，被测序过程多次测到，这就叫 duplication。因为 ctDNA
+的测序深度很深，达到上万倍，所以会有大量的 duplication。在 Aaron 的文章当中，duplication
+的比例，会高达50%~70%。也就是说，每10个读到的序列当中，有5个到7个是重复的。  &lt;/p&gt;
+&lt;p&gt;传统的测序分析当中，如果2条序列的起始位置、和结束位置都一样，就判定这2个序列是 duplication。但是，在 Aaron
+的方法当中，如果两条序列的起始、和结束位置是一样的，但是，其中有一个碱基的差别（SNV），则不认为这两条序列是
+duplication。这样做，可以尽可能地保留测序结果当中，测到的序列的多样性。也就保证了检测的灵敏度。  &lt;/p&gt;
+&lt;p&gt;第二点，是判定点突变（SNV），Aaron采用的置信条件，与通常的方法也不同。Aaron 一定要这个突变的碱基的测序的质量值（Phred quality
+score）高于30，才确定这个突变是一个真的突变（SNV），测序得到的碱基质量值（Phred quality
+score）是测序仪的分析程序，对一个碱基的可信度的通用判定标准。如果这个值高于30，则这个碱基读错的可能性，低于千分之一，Aaron
+通过设置这样一个置信条件，来减少因为测序误差，可能带来的误判。这样，也就提高了检测分析结果的特异性。  &lt;/p&gt;
+&lt;p&gt;这就是 ctDNA 测序检测的方法。  &lt;/p&gt;
+&lt;h2&gt;结果&lt;/h2&gt;
+&lt;p&gt;介绍完方法，我们接下来介绍 Aaron的实验结果。&lt;/p&gt;
+&lt;p&gt;Aaron 检测了13个非小细胞肺癌病人的35份游离 DNA 样本，和5个正常人的游离 DNA 样本。  &lt;/p&gt;
+&lt;p&gt;同时，也检测了病人的肿瘤样本、和germline 样本（外周血白细胞DNA），把测序的结果进行数据分析。以肿瘤样本中检测到的突变为阳性标准，画出 ROC
+曲线。  &lt;/p&gt;
+&lt;p&gt;这里，我们简单介绍一下 ROC 曲线，ROC 曲线的英文是: Receiver Operating Characteristic
+(ROC)，ROC的横轴，是100%减掉特异性得到的值，纵轴是敏感性的值。  &lt;/p&gt;
+&lt;p&gt;ROC 曲线越靠近图型的左上角，则这个检测的较果越好，它的灵敏性、和特异性都好。反之，ROC
+曲线越接近对角线，则检测的效果越差，会有很多的假阴性、和假阳性。  &lt;/p&gt;
+&lt;p&gt;ROC 曲线下方部分的面积，占整个座标矩型面积的比例，叫 AUC 值，Area Under Curve (AUC)。AUC
+值的取值范围在：0.5-1之间。越接近1，则这个检测的分辨效果越好，越接近0.5，则分辨效果越差。  &lt;/p&gt;
+&lt;p&gt;AUC 值是评判一个方法好坏的重要标准。  &lt;/p&gt;
+&lt;p&gt;更多介绍 ROC 曲线的内容，有兴趣同学可以在微信公众号【陈巍学基因】当中，回复“ROC”三个字，就可以看到更详细的介绍了。  &lt;/p&gt;
+&lt;p&gt;回到 Aaron 的实验结果，我们来看这条蓝色的曲线，这是全部13个病人的结果。可以看到这条曲线是比较接近图的左上角的，它的 AUC 值，达到了0.95。  &lt;/p&gt;
+&lt;p&gt;这13个病人当中，包括了4个癌症 I 期的病人，和9个癌症 II 期到 IV 期的病人，如果只看这9个癌症II 期到 IV
+期的病人的结果（红色曲线），AUC值达到0.99。  &lt;/p&gt;
+&lt;p&gt;这两个数值，0.95和0.99的 AUC 值，都说明：CAPP-seq 是一个相当好的检测肿瘤基因突变的方法。  &lt;/p&gt;
+&lt;p&gt;在 Aaron 的文章当中，对肿瘤的体积与 CAPP-seq 方法检测到的突变的数量，也进行了分析。共9个病人进行了 CT 或者 PET-CT的检测。  &lt;/p&gt;
+&lt;p&gt;来看肿瘤的体积大小，并同时做 CAPP-seq
+的检测。检测的结果如果所示，肿瘤的体积，与每毫升血液中检测到的突变量数，呈现出十分明显的相关性。R^2值达到0.89，P值达到0.0002。&lt;/p&gt;
+&lt;h2&gt;结论&lt;/h2&gt;
+&lt;p&gt;文章的数据表明：针对游离 DNA 进行高深度的靶向DNA 测序，会是未来一个很有前景的肿瘤临床基因检测手段。  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="ctDNA"></category></entry><entry><title>质量值体系</title><link href="https://ghxdghxd.github.io/phred.html" rel="alternate"></link><published>2017-01-05T16:04:00+08:00</published><updated>2017-01-05T16:04:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-05:/phred.html</id><summary type="html">&lt;p&gt;质量值体系 Phred33 和 Phred 64&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;质量值体系&lt;/h1&gt;
+&lt;p&gt;相比之前培训时所学的质控内容, (我拿到的) 流程中还多了一步 &lt;code&gt;phred33to64&lt;/code&gt;, 也就是把 .fastq 格式的数据从 Phred33
+质量值体系转换为 Phred64 质量体系, 于是先补充学习了下质量值体系:&lt;/p&gt;
+&lt;p&gt;首先要从质量值说起, 测序仪器下机数据的 fastq 文件中, 每条序列都对应了相同长度的质量值, 反映出每个碱基的准确性和可靠性, (现在主流用的)
+计算公式为:&lt;/p&gt;
+&lt;p&gt;Q = -10log10p&lt;/p&gt;
+&lt;p&gt;而这个 p 值就是 Phred 计算出来的, 表示一个碱基被识别错误的可能性, Phred 一开始是一个软件 (或者说计算方法),
+对测序仪器识别到的荧光强度 (三代的不了解) 进行评估, 针对不同仪器有不同的标准表, 然后根据表中荧光强度的范围和分辨率分析得出碱基的 p 值,
+由于比较可靠, 逐渐被各大公司采纳 (以上脑补翻译自 &lt;a href="https://en.wikipedia.org/wiki/Phred_quality_score"&gt;Phred quality
+score&lt;/a&gt; 和 &lt;a href="https://en.wikipedia.org/wiki/Phred_base_calling"&gt;Phred base
+calling&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;反正, Q 值为 10 就表示这个碱基有 90% 的概率是正确的, 20 就是 99%, 40 就是 4 个 9, 很好记, 相信大家也都很熟悉&lt;/p&gt;
+&lt;p&gt;但是这时候问题就来了, 因为一个碱基对应一个质量值, 可 Q 值可以是一位数也可以是两位数, 连在一起的话就分不出哪个对应哪个碱基
+(比如某两个碱基的质量值序列为 123 , 则可能为 1|23 或 12 | 3, 当然这是个极端的例子), 此外也浪费存储空间, 因为一个数字只有 10
+种可能性, 却要占去一个字符位, 而一个字节有 8 位, 理论上已经可以代表 256 种状态, 这还没换算一个字符要占多少字节,
+因此就会把碱基质量值转换为相应的 ASCII 码, 这是计算机中最基本的一套字符体系, 用来把常用符号 (共 127 个) 转为二进制以便于机器使用,
+ASCII 码表见 &lt;a href="http://binf.snipcademy.com/binf/img/lessons/dna-file-formats/ascii.svg"&gt;ASCII code chart&lt;/a&gt;, 这样一个字符就可以搞定了, 很方便很省事&lt;/p&gt;
+&lt;p&gt;但是这时候问题又来了, 最理想的情况当然是直接把质量值作为序号找出对应的那个 ASCII 码, 比如质量值为 40 就换成十进制 40 对应的 ASCII
+码,可惜质量值根据测序仪公司的标准不同, 范围也各不相同, 基本都包括了 0 至 40 的区间, 甚至还可能是负值, 这就没法愉快地玩耍了, 而且人家
+ASCII 码表也不配合, 0 到 31 对应的都是些控制字符 (比如回车, 退格), 根本不适合打印和保存, 可打印的都得从 32 号排起 (参见&lt;a href="https://en.wikipedia.org/wiki/ASCII#ASCII_printable_code_chart"&gt;ASCII printable code
+chart&lt;/a&gt;),
+所以各家测序仪器公司就把质量值再加上某个固定值作为 ASCII 码转换成了可打印字符从而保存在 FASTQ 文件中&lt;/p&gt;
+&lt;p&gt;可是问题还没有完, 这个固定值是多少好呢, 各家公司是竞争对手, 怎么可能你用什么我也用什么, 所以 Sanger 公司加了 33, 也就是质量值为 0
+就转换成 ASCII 码 33, 查表可知为 &lt;code&gt;!&lt;/code&gt;, 也即从可打印的字符开始 (排除了空格), 这就是现在所谓的 Phred33 体系, 当时的
+Solexa (后来被 Illumina 收购) 公司就偏不用 33 (此处为个人脑补), 偏要加个 64, 这样质量值为 0 就用 &lt;code&gt;@&lt;/code&gt; 表示, 后面从
+1 开始的就依次对应了 ABCD, 于是就成了 Phred64 体系, 至于当时三巨头的另一家测序仪公司 454 Life Sciences (后被
+Roche 收购) 就更绝, 人家从碱基开始就不用 ACTG 表示, 直接整了个 ColorSpace 体系出来, 根本不和你们玩, (话说 Color
+Space 这玩意儿曾经把我狠狠地坑了好久), 当然后来大家也不跟 454 玩了, 最后他也就没得玩了&lt;/p&gt;
+&lt;p&gt;回到质量值体系, 这样就由 Sanger 公司和 Illumina 公司产生了 Phred33 体系和 Phred64 体系, 两家互相拗着,
+这就辛苦了写生物信息分析软件的人, 两种质量体系都要考虑, 当然好一点的软件都是有参数接受体系类型的, 更好一点的软件就会自动判断体系类型进行对应转换&lt;/p&gt;
+&lt;p&gt;本来就这样结束的话也算是个圆满的故事了, 可是墨菲他老人家不高兴了 (&lt;a href="https://en.wikipedia.org/wiki/Murphy's_law"&gt;Murphy's
+law&lt;/a&gt;), 所以在 2011 年, Illumina
+公司表示他们又要改成 Phred33 体系了 (&lt;a href="http://seqanswers.com/forums/showthread.php?s=ba8c7dfba863815f637c0bf45882f14b&amp;amp;t=8895"&gt;Upcoming changes in
+CASAVA&lt;/a&gt;),
+真是大(wo)快(le)人(ge)心(qu)啊! 这么来回一折腾, 结果还是回到了最初的起点, 与老基友相拥而泣了, Phred33 一统江湖!
+(当然实际上现在 Ilumina 的 Phred33 和最初 Sanger 的 Phred33 还是有点区别的, 详见后文)&lt;/p&gt;
+&lt;p&gt;扯了这么多, 发现写了半天才刚交代完故事背景, 剩下的部分就等有空再写了, 最后上点干货:&lt;/p&gt;
+&lt;p&gt;先是 wikipedia 上非常直观的示例, 可以看出各家公司各个版本的质量值体系&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;      SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................
+      ..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................
+      ...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................
+      .................................JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................
+      LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL....................................................
+      !&lt;span class="s2"&gt;"#&lt;/span&gt;$&lt;span class="s2"&gt;%&amp;amp;'()*+,-./0123456789:;&amp;lt;=&amp;gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&lt;/span&gt;
+&lt;span class="s2"&gt;      |                         |    |        |                              |                     |&lt;/span&gt;
+&lt;span class="s2"&gt;     33                        59   64       73                            104                   126&lt;/span&gt;
+&lt;span class="s2"&gt;      0........................26...31.......40                                &lt;/span&gt;
+&lt;span class="s2"&gt;                               -5....0........9.............................40 &lt;/span&gt;
+&lt;span class="s2"&gt;                                     0........9.............................40 &lt;/span&gt;
+&lt;span class="s2"&gt;                                        3.....9.............................40 &lt;/span&gt;
+&lt;span class="s2"&gt;      0.2......................26...31........41                              &lt;/span&gt;
+
+&lt;span class="s2"&gt;     S - Sanger        Phred+33,  raw reads typically (0, 40)&lt;/span&gt;
+&lt;span class="s2"&gt;     X - Solexa        Solexa+64, raw reads typically (-5, 40)&lt;/span&gt;
+&lt;span class="s2"&gt;     I - Illumina 1.3+ Phred+64,  raw reads typically (0, 40)&lt;/span&gt;
+&lt;span class="s2"&gt;     J - Illumina 1.5+ Phred+64,  raw reads typically (3, 40)&lt;/span&gt;
+&lt;span class="s2"&gt;         with 0=unused, 1=unused, 2=Read Segment Quality Control Indicator (bold) &lt;/span&gt;
+&lt;span class="s2"&gt;         (Note: See discussion above).&lt;/span&gt;
+&lt;span class="s2"&gt;     L - Illumina 1.8+ Phred+33,  raw reads typically (0, 41)&lt;/span&gt;
+
+&lt;span class="s2"&gt;然后光看也没什么用啊, 就[有人写了个小函数](http://onetipperday.blogspot.com.br/2012/10/code-snip-&lt;/span&gt;
+&lt;span class="s2"&gt;to-decide-phred-encoding-of.html), 用来分析 fastq 文件 (压缩或未压缩均可), 代码如下:&lt;/span&gt;
+&lt;span class="s2"&gt;    fqtype () {&lt;/span&gt;
+&lt;span class="s2"&gt;            less &lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt; | head -n 999 | awk '{if(NR%4==0) printf("&lt;/span&gt;%s&lt;span class="s2"&gt;",&lt;/span&gt;&lt;span class="nv"&gt;$0&lt;/span&gt;&lt;span class="s2"&gt;);}' \&lt;/span&gt;
+&lt;span class="s2"&gt;            | od -A n -t u1 -v \&lt;/span&gt;
+&lt;span class="s2"&gt;            | awk 'BEGIN{min=100;max=0;}\&lt;/span&gt;
+&lt;span class="s2"&gt;            {for(i=1;i&amp;lt;=NF;i++) {if(&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="s2"&gt;&amp;gt;max) max=&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="s2"&gt;; if(&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;min) min=&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="s2"&gt;;}}END\&lt;/span&gt;
+&lt;span class="s2"&gt;            {if(max&amp;lt;=74 &amp;amp;&amp;amp; min&amp;lt;59) print "&lt;/span&gt;Phred+33&lt;span class="s2"&gt;"; \&lt;/span&gt;
+&lt;span class="s2"&gt;            else if(max&amp;gt;73 &amp;amp;&amp;amp; min&amp;gt;=64) print "&lt;/span&gt;Phred+64&lt;span class="s2"&gt;"; \&lt;/span&gt;
+&lt;span class="s2"&gt;            else if(min&amp;gt;=59 &amp;amp;&amp;amp; min&amp;lt;64 &amp;amp;&amp;amp; max&amp;gt;73) print "&lt;/span&gt;Solexa+64&lt;span class="s2"&gt;"; \&lt;/span&gt;
+&lt;span class="s2"&gt;            else print "&lt;/span&gt;Unknown score encoding&lt;span class="s2"&gt;"; \&lt;/span&gt;
+&lt;span class="s2"&gt;            print "&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;" min "&lt;/span&gt;, &lt;span class="s2"&gt;" max, "&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;";}'&lt;/span&gt;
+&lt;span class="s2"&gt;    }&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;写在 shell 配置文件里, &lt;code&gt;source&lt;/code&gt; 然后 &lt;code&gt;fqtype &amp;lt;fastq_file&amp;gt;&lt;/code&gt; 就行了, 这个代码有点老, 还没加 [35, 75]
+的判断, 我又懒得重新改判断逻辑, 所以直接在最后加了个打印最小值最大值, 再跟上面的示例一比, 就基本确定是什么体系了&lt;/p&gt;
+&lt;p&gt;关于这两种体系对我们实际流程的影响和分析, 请听下回分解&lt;/p&gt;
+&lt;p&gt;转自：&lt;a href="http://not.farbox.com/post/phred_p1"&gt;http://not.farbox.com/post/phred_p1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;感觉写的很好理解，特此谢谢。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="fastq"></category><category term="QC"></category><category term="phred"></category></entry><entry><title>BRCA基因检测</title><link href="https://ghxdghxd.github.io/BRCA.html" rel="alternate"></link><published>2016-11-03T20:10:00+08:00</published><updated>2016-11-03T20:31:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/BRCA.html</id><summary type="html">&lt;p&gt;BRCA的基因检测&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;背景&lt;/h1&gt;
+&lt;p&gt;一方面，BRCA是抑癌基因，突变后容易得肿瘤，另一方面，BRCA可以修复DNA损伤。而DNA两条自我修复途径：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;PARP(poly ADP-ribose polymerase)是DNA修复酶作为关键因子&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;BRCA1和BRCA2起关键作用&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果上述修复通路同时锁定，肿瘤细胞会因累积DNA损伤而死亡，因此&lt;strong&gt;如果BRCA突变，则可用PARP抑制剂治疗肿瘤&lt;/strong&gt;&lt;/p&gt;
+&lt;h1&gt;BRCA体细胞突变检测现况&lt;/h1&gt;
+&lt;p&gt;在乳腺癌、卵巢癌中检测到的BRCA 1/2 突变，其中20%左右是由于体突变引起。体细胞突变的检测需要正常组织做对照，常用血细胞做对照（如TCGA
+癌症研究）。研究发现，体细胞突变与胚系突变的卵巢癌，乳腺癌病人在生存、预后方面没有明显的差异，并且都可以用奥拉帕利进行治疗。但是相对于胚系突变，体细胞突变检测难度大些。检测的难度和准确性主要受样本类型、癌症细胞含量以及突变比例（具有BRCA
+1/2 体细胞突变的癌细胞占所有癌细胞的比例）等影响。因此，针对BRCA基因体细胞突变的检测技术还在完善中。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="BRCA"></category><category term="geneticTesting"></category></entry><entry><title>变异标准化</title><link href="https://ghxdghxd.github.io/variant.html" rel="alternate"></link><published>2016-10-20T20:10:00+08:00</published><updated>2016-12-27T21:28:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-20:/variant.html</id><summary type="html">&lt;p&gt;突变的标准化概念及标准&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;介绍&lt;/h1&gt;
+&lt;p&gt;VCF(Variant Call Format)格式文件是一种灵活的格式, 可以用来表示SNPs、INDELs及CNVs等很多种变异类型.但,&lt;strong&gt;VCF文件中的变异表达在参考型和突变型的表示上具有不唯一性&lt;/strong&gt;，一次失败的识别很容易造成错误的分析.&lt;/p&gt;
+&lt;p&gt;变异标准化(variant normalization)，不仅适用于双等位基因同时适用于多等位基因.&lt;/p&gt;
+&lt;h1&gt;定义&lt;/h1&gt;
+&lt;p&gt;VCF中的变异标准化涉及两个方面:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;变异长度上的简约性(parsimony)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;变异位置左对齐(left alignment)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;1、简约性(Parsimony)&lt;/h2&gt;
+&lt;p&gt;在变异表达中，简约性代表用&lt;strong&gt;尽可能少但不为0的核苷酸数量&lt;/strong&gt;来表示每一个等位基因，它描述了变异的长度属性，&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义：&lt;/strong&gt;当且仅当一个变异使用了尽可能少的核苷酸, 并且没有一个等位基因的长度为0时, 称该变异为简约的.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;并定义：&lt;/strong&gt;如果每个等位基因的最左侧核苷酸相同, 且移除该核苷酸并不会导致空等位基因, 则称该变异在左侧有多余核苷酸.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例&lt;/strong&gt;：如下实例中, 多核苷酸多态性在前三种表示上都有多余核苷酸, 而第四种表示上则是简约的. 当一个变异在左侧具有多余核苷酸时, 称该变异为左侧未简约, 并需要进行左切除. 同理, 右侧未简约也需要进行由切除. 简约性在INDELs一样体现, 在左对齐章节将做示范.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="标准化1" src="images/variant.normalization.1.png"/&gt;&lt;/p&gt;
+&lt;p&gt;图中展示了多核苷酸多态性的多种展示,
+&lt;strong&gt;最左列&lt;/strong&gt;用颜色区分了四种可能存在的不同表示方式.
+&lt;strong&gt;右边一列&lt;/strong&gt;展示了在VCF文件中的相应表示.
+&lt;strong&gt;最后一列&lt;/strong&gt;展示了四种方式的简约性表现.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在简约性的定义的基础上, 容易看到:&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;如果一个变异是非简约的, 则所有的等位基因长度必须大于1.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;2、左对齐(Left alignment)&lt;/h2&gt;
+&lt;p&gt;将一个变异左对齐表示将该变异的起始位置尽可能地向左移动. 这是插入、缺失中的相关概念, 描述了变异的位置属性.
+为了区分左对齐和简单的对一个变异左填充,
+给出&lt;strong&gt;定义&lt;/strong&gt;如下:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;在保持所有等位基因长度的前提下, 当且仅当一个变异不可能再往左移动时, 称该变异为左对齐的.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;下图展示了一个没有标准化的短串联重复序列(一种特殊的indel). 并且用和图中颜色对应的文字对变异进行描述.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;font style:=""&gt; VCF文件要求任意一个等位基因都不能以空字符串的形式表示(空等位基因).红色的indel是非法的VCF表示方式.&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font style:=""&gt; 绿色的变异并不是左对齐的, 你可以在该变异的每个等位基因左边加上一个核苷酸,并移除每个等位基因右边的C. 但该变异是简约的.&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font style:=""&gt; 橙色的变异是左对齐的, 但是右侧并不简约&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font style:=""&gt; 蓝色的变异是左对齐的, 但是左侧并不简约.褐红色的变异是左对齐并且简约的.&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font style:=""&gt; 褐红色的变异是左对齐并且简约的&lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="标准化2" src="images/variant.normalization.2.png"/&gt;&lt;/p&gt;
+&lt;p&gt;图中展示了CA微卫星(Short Tendem Repeat)的多种表示方式,
+&lt;strong&gt;最左列&lt;/strong&gt;用颜色区分了五种可能存在的不同表示方式.
+&lt;strong&gt;右边一列&lt;/strong&gt;展示了在VCF文件中的相应表示.
+&lt;strong&gt;最后一列&lt;/strong&gt;展示了该微卫星的五种方式的左对齐以及简约性表现.&lt;/p&gt;
+&lt;h2&gt;3、区分是否标准化&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;当且仅当一个变异是简约且左对齐时, 称该变异是标准化的.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;3.1、引论&lt;/h3&gt;
+&lt;p&gt;为了检测一个变异是否标准化, 我们首先需要证明以下引论(1):&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;当且仅当变异是非左对齐或者非右简约时, 该变异的所有等位基因都以同样的核苷酸结尾.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;从=&amp;gt;方向证明:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果一个indel是左对齐并且右侧简约时, 该变异的所有等位基因不以同样的核苷酸结尾.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;首先假设一个indel已经左对齐并且右侧简约.
+1.当任一等位基因长度大于1时, 由于该indel是右侧简约的, 很显然每个等位基因不能以同样的核苷酸结尾.
+2.当其中某一等位基因长度为1时, 并假设所有的等位基因都以A结尾. 此时, 为了避免出现空等位基因的情况, 右侧已经不再能去除相同的A核苷酸,故右侧仍然是简约的.
+3.在任意等位基因左侧延长一个核苷酸(复制参考基因组), 此时在右侧就出现了多余的核苷酸. 将该核苷酸去除,结果导致indel的每个等位基因在保持长度不变的前提下向左移动了一个位置, 这和该indel是左对齐矛盾.
+因此, 所有的等位基因都不能以相同的核苷酸结尾.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;从&amp;lt;=方向证明:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果一个indel是非左对齐或者非右简约时, 该变异的所有等位基因都以同样的核苷酸结尾.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;假设该变异是非左对齐的, 则对该变异进行左对齐操作时, 为了保证长度不变, 则每移动一个核苷酸就必须从右侧移除一个相同的核苷酸,
+因此该变异右侧至少存在一个相同的核苷酸, 否则无法进行左对齐操作.
+假设该变异是非右简约的, 根据定义可知, 该变异的所有等位基因中, 最右侧的碱基都必须相同以期望被移除.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;3.2、必然性&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一个变异是标准化的当且仅当:
+1.在左侧没有多余的碱基;
+2.任意一个等位基因都以不同的核苷酸结尾;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;证明:
+一个变异是标准化的当且仅当该变异简约并且左对齐
+=&amp;gt; 一个变异是标准化的当且仅当该变异左简约并且右简约并且左对齐
+=&amp;gt; 一个变异是标准化的当且仅当该变异左侧没有多余核苷酸并且右侧没有多余核苷酸并且左对齐
+=&amp;gt; 一个变异是标准化的当且仅当该变异左侧没有多余的核苷酸并且所有等位基因不以相同的核苷酸结尾 (引论1)&lt;/p&gt;
+&lt;h3&gt;3.3、唯一性&lt;/h3&gt;
+&lt;p&gt;变异的标准化得到唯一的变异表达是非常重要的, 在我们证明之前, 先凭直觉接受:
+一个变异的任意表达都可以通过同时在等位基因一端添加参考核苷酸或者同时在等位基因的一端移除相同的核苷酸, 从而得到另外一种表达.&lt;/p&gt;
+&lt;p&gt;现在假设有变异的两个标准化A和B. 不失一般性, 假设B在A的右侧, 由于标准化的定义, A和B都是左对齐的,
+如果A和B不在同一个位置则意味着B可以通过向左对齐变成A(由于A和B表示了相同的变异), 与B是标准化矛盾, 所以A和B必然在相同的位置.&lt;/p&gt;
+&lt;p&gt;假设A和B虽然在同一个位置, 但是长度不同, 不失一般性认为B比A长, 则B肯定是非简约并且可以通过去除核苷酸达到和A相同的长度, 与B标准化矛盾,
+所以A和B长度必然相同.&lt;/p&gt;
+&lt;p&gt;由于A和B必然在同一个位置并且长度相同, 故变异的标准化表示是唯一的.&lt;/p&gt;
+&lt;h3&gt;3.4、 实施&lt;/h3&gt;
+&lt;p&gt;vt中已经得到了实施.&lt;/p&gt;
+&lt;h3&gt;3.5、标准化的算法&lt;/h3&gt;
+&lt;p&gt;现在我们知道了如何区分一个变异是否标准化, 我们只需要操作变异表达方式, 直到最后侧的核苷酸不同并且去除左侧多余的核苷酸, 即可得到一个标准化后的变异表达.
+标准化双等位基因和多等位基因的算法表示如下:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="标准化3" src="images/variant.normalization.3.png"/&gt;&lt;/p&gt;
+&lt;p&gt;1到8行进行了左对齐操作并且保证右侧简约. 9到11行保证左侧的简约.&lt;/p&gt;
+&lt;h2&gt;4、比较&lt;/h2&gt;
+&lt;p&gt;2014年5月20号&lt;/p&gt;
+&lt;p&gt;下面的表格展示了对一个不公开数据进行标准化时, 正确标准化的变异数量. 该比较在2014年5月20号完成.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;Dataset&lt;/th&gt;
+&lt;th align="center"&gt;bcftools&lt;/th&gt;
+&lt;th align="center"&gt;gatk&lt;/th&gt;
+&lt;th align="center"&gt;vt&lt;/th&gt;
+&lt;th align="center"&gt;comments&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;normalized&lt;/td&gt;
+&lt;td align="center"&gt;18849&lt;/td&gt;
+&lt;td align="center"&gt;18794&lt;/td&gt;
+&lt;td align="center"&gt;18849&lt;/td&gt;
+&lt;td align="center"&gt;bcftools的标准化存在bug, 会去除不同的核苷酸.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;normalized after bcftools&lt;/td&gt;
+&lt;td align="center"&gt;0&lt;/td&gt;
+&lt;td align="center"&gt;0&lt;/td&gt;
+&lt;td align="center"&gt;0&lt;/td&gt;
+&lt;td align="center"&gt;bcftools的标准化结果没有被进一步标准化&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;normalized after gatk&lt;/td&gt;
+&lt;td align="center"&gt;-&lt;/td&gt;
+&lt;td align="center"&gt;0&lt;/td&gt;
+&lt;td align="center"&gt;57&lt;/td&gt;
+&lt;td align="center"&gt;gatk的写了只使用双等位基因的文档. 57个gatk的标准化结果被vt重新左对齐.其中有6个是双等位基因, 51个是多等位基因. 注意有两个变异被gatk修改但是没有完全标准化&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;normalized after vt&lt;/td&gt;
+&lt;td align="center"&gt;-&lt;/td&gt;
+&lt;td align="center"&gt;0&lt;/td&gt;
+&lt;td align="center"&gt;0&lt;/td&gt;
+&lt;td align="center"&gt;vt的标准化结果没有被进一步标准化&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;使用的命令为:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;bcftools norm -f ref.fa in.vcf -O z &amp;gt; out.vcf.gz
+java -jar GenomeAnalysisTK.jar -T LeftAlignAndTrimVariants --trimAlleles -R
+ref.fa --variant in.vcf.gz -o out.vcf.gz
+vt normalize -r ref.vcf.gz -o out.vcf.gz
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;使用的版本为:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;bcftools v0.2.0-rc8-5-g0e06231 &lt;span class="o"&gt;(&lt;/span&gt;using htslib &lt;span class="m"&gt;0&lt;/span&gt;.2.0-rc8-6-gd49dfa6&lt;span class="o"&gt;)&lt;/span&gt;
+GATK v3.1-1-g07a4bf8
+vt normalize v0.5
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;5、一个该标准化算法失效的例子&lt;/h2&gt;
+&lt;p&gt;我们用下面的规则区分变异的标准化(normalization)和分解/组合(decomposition/reconstruction):&lt;/p&gt;
+&lt;p&gt;标准化代表着将一个变异的多个表达降低为一个权威的表达. 标准化可以适用于双等位基因和多等位基因. 变异标准化问题已经被解决,
+并且有一个唯一的表示方式(左对齐并且简约的表达). 数学证明已经发表.1&lt;/p&gt;
+&lt;p&gt;变异的分解代表着将一个变异的表达拆分成多个变异. 这个分解可以是纵向的 —— 将一个多等位基因分解成双等位基因. 也可以是横向的 ——
+将一个包含多个indel和snp群的复合变异分解成多个单一变异. 横向分解常常不仅有一个结果. 相似地,
+将多个变异组合重构成一个变异也有横向和纵向两种方式. 讲一个复合变异纵向分解是一个多对一的函数, 将多个双等位基因组合为一个复合变异则并不具有唯一解,
+需要考虑到所有等位基因可能的排列.&lt;/p&gt;
+&lt;p&gt;如果你的例子中包含了变异的分解和组合, 那么你就有可能发现前后不一致.&lt;/p&gt;
+&lt;p&gt;区分标准化和分解组合的不同点是非常重要的. 标准化的概念意味着变异有标准表示格式. 如果在你的标准化概念里加入分解和组合,
+由于可辨别性的内在差异(是否具有唯一解等), 你将会得到前后不一致的情况.&lt;/p&gt;
+&lt;p&gt;当进行分解组合操作时, 我认为应当考虑以下几点:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;你的变异仅仅用来表示单个个体还是一个群体？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;这些基因型是否在独立的阶段产生?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在不同的情况下可能得到不同的答案.&lt;/p&gt;
+&lt;p&gt;An example of inconsistent variant representation due to using vt normalize&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="variant"></category></entry><entry><title>QQplot</title><link href="https://ghxdghxd.github.io/QQplot.html" rel="alternate"></link><published>2015-12-27T19:57:00+08:00</published><updated>2015-12-27T19:57:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-12-27:/QQplot.html</id><summary type="html">&lt;p&gt;QQplot在GWAS中的意思&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;QQplot&lt;/h1&gt;
+&lt;p&gt;Q-Q plot 即Quantile-Quantile Plot。它在各类研究中经常用到，主要是直观的表示观测值与预测值之间的差异。&lt;/p&gt;
+&lt;p&gt;在SPSS中很容做，Analysis - Descriptive statistics - Q-Qplot。&lt;/p&gt;
+&lt;p&gt;Q-Q plot主要是用来估计数量性状观测值与预测值之间的差异。一般我们所取得的数量性状数据都为正态分布数据。在GWAS研究中Q-Q
+plot的X和Y轴主要是代表各个SNP的-lg P values。预测的线是一条从原点发出的45°角的虚线。实际观测值则是标的实心点。&lt;/p&gt;
+&lt;p&gt;Q-Q plot主要要点：&lt;/p&gt;
+&lt;p&gt;预测的虚线为什么是45°出来的呢？因为预测的线实际是通过在QQ图中第一象限作图得出。理论上一个点A在该图上的位置应该是A预测值=A实际值，转化为坐标就是A（x，y）x=y。所以预测的线是一条从原点发出的45°线。&lt;/p&gt;
+&lt;p&gt;观测值的点的坐标是怎么得出来的。同样设点A的坐标是（x，y）x为预测值，y为实际观测值。查了一下R 中qq plot的算法是这样的&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pvals &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.table&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"DGI_chr3_pvals.txt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; header&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;T&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+observed &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pvals&lt;span class="o"&gt;$&lt;/span&gt;PVAL&lt;span class="p"&gt;)&lt;/span&gt;
+lobs &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;log10&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;observed&lt;span class="p"&gt;))&lt;/span&gt;
+
+expected &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;observed&lt;span class="p"&gt;))&lt;/span&gt;
+lexp &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;log10&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;expected &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;expected&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="m"&gt;+1&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;具体解释是这样的，先把P值从小到大排序。lobs代表纵坐标，lexp代表横坐标，纵坐标就是观测P值的-
+log10，而横坐标则根据P值数目而定。比如，当只有3个P值 P1=0.0001 P2=0.001
+P3=0.01，那么在这个P值组中，length(observed)=3，对于P1=0.0001 expected=1
+lexp=-log10（1/3+1），对于P2=0.001 expected=2 lexp=-log10（2/3+1）， P3=0.01
+expected=3 lexp=-log10（3/3+1）。。。。。依此类推。&lt;/p&gt;
+&lt;p&gt;如果出现了偏离的情况说明实际值跟预测值有偏差，在GWAS研究中，那个SNP点出现了较大的偏离，则认为这个SNP位点的观测值的偏离是由这个SNP突变所产生的遗传作用造成的&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="QQplot"></category></entry><entry><title>cfDNA,ctDNA,CTC</title><link href="https://ghxdghxd.github.io/cfDNA.html" rel="alternate"></link><published>2015-12-25T11:24:00+08:00</published><updated>2015-12-25T20:31:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-12-25:/cfDNA.html</id><summary type="html">&lt;p&gt;肿瘤的近亲--cfDNA,ctDNA,CTC&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;肿瘤的近亲--cfDNA,ctDNA,CTC&lt;/h1&gt;
+&lt;p&gt;全称循环游离DNA（Circulating free DNA），是指存在于循环血中的DNA片段。cfDNA可以来源于凋亡、坏死的细胞释放释放的DNA片段；细胞以囊泡的形式分泌到循环血中的DNA片段；外源微生物的DNA片段（如病毒DNA）等。它既可以是来自于体内正常的细胞，也可能是来自肿瘤细胞，或者外源微生物。早在1948年来自法国的两位学者Mandeland
+Métais提出cell-free nucleic acid(cfNA)这一概念，但直到1994年科学家在肿瘤患者的血液中发现了携带有RAS基因突变的DNA片段这一概念才引起了科学家的重视。&lt;/p&gt;
+&lt;p&gt;与传统的穿刺活检相比，循环游离DNA的检测又被称为液体活检（liquid
+biopsy）。通过采集患者的外周血，检测血液中是否含有待检DNA序列及含量的多少来诊断患者是否患病、治疗是否有效，治疗后的复发监测等，是一种新兴的无创诊断、监测手段，所以又被形象地称为“液体活检”。有研究表明正常人cfDNA的含量约30ng/ml(0-100ng/ml),肿瘤患者循环血中的cfDNA含量平均约180ng/ml(0~&amp;gt;1000ng/ml)。虽然肿瘤患者的循环血中含有更多的cfDNA，但是单单用cfDNA的含量多少来诊断疾病或者预测患者预后可能不太可靠，来自European
+Prospective Investigation into Cancer andNutrition
+(EPIC)的大人群回顾性的研究表明cfDNA的浓度可能与人群的来源和接受治疗的不同而不同。&lt;/p&gt;
+&lt;p&gt;目前cfDNA更多的用于肿瘤的早期诊断和、疗效、复发监测等领域。近年来有大量的研究表明cfDNA的检测能够作为有效的生物标记物（biomarker）而被科学工作者所热捧，随着检测技术的发展很有可能进入临床应用。  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="cfDNA" src="images/cfDNA.png"/&gt;&lt;/p&gt;
+&lt;p&gt;ctDNA (Circulating tumorDNA )
+循环肿瘤DNA。是指来自肿瘤细胞的循环游离DNA。是cfDNA的一个小的亚类。研究表明一个100g的实体肿瘤大概含有3*10^10个肿瘤细胞，每天大约有3.3%的肿瘤细胞DNA进入循环血。这些循环肿瘤DNA的长度基本上在70-200bp,有的能够长达21kb。这些来自肿瘤的cfDNA,常常携带有肿瘤细胞的一些特质，如特定的突变，结构改变，表观遗传信息等从而成为肿瘤的诊断、复发监测、疗效评估的有效手段。Detection
+of Circulating Tumor DNA in Early-and Late-Stage Human Malignancies&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ctDNA" src="images/ctDNA.png"/&gt;&lt;/p&gt;
+&lt;p&gt;CTC (circulatingtumor cell)循环肿瘤细胞。循环肿瘤细胞（CTCs）被认为是一种来源于肿瘤原发灶或是转移灶的，在特定条件下释放入外周血液循环的一些肿瘤细胞。这些细胞的含量非常稀少具有肿瘤细胞的特殊表型，在肿瘤发生转移之前的过程既可出现。因此CTCs也被认为是一种转移的前体细胞，是肿瘤获得侵袭性能力的体现。而如今对CTCs的无创性检测和监视，可以为肿瘤的早期诊断、疗效评估及靶向药物的设计提供一条非常有效的途径。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="CTC" src="images/CTC.jpg"/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="cfDNA"></category><category term="ctDNA"></category><category term="CTC"></category></entry><entry><title>突变分类及定义功能</title><link href="https://ghxdghxd.github.io/mutation.html" rel="alternate"></link><published>2015-11-05T16:59:00+08:00</published><updated>2016-08-30T10:03:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-11-05:/mutation.html</id><summary type="html">&lt;p&gt;突变的标准化概念及标准&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;概念&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;突变与变异是两个截然不同的概念&lt;/strong&gt;。&lt;strong&gt;变异&lt;/strong&gt;一般是指物种在漫长的自然选择压力下，由于“适者生存”的原则而使自身遗传基因发生的某些有益于自身完善于生存环境而生存、发展的变化。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;突变&lt;/strong&gt;则是指物种遗传基因在某些物理、化学、生物因素作用下，短期内发生的某些基因序列的变化。就人体而言，突变一般是对人体十分有害的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;突变可以分为3大类型&lt;/strong&gt;：点突变（point mutation）、染色体突变(chromosomal mutation)和基因组突变(genomic mutation)。 &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;其中以点突变最为常见和重要，包括转换(transition)、颠换（transversion）、插入(insertion)和缺失(deletion)几种类型，前两种属于碱基置换(basesubstitution)，后两种属于移码突变(frame shift mutation) 。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;substitution（替换）和delection/addition(添加/缺失），估计就是碱基置换、移码、缺失和插入，只是翻译不同，这种分类有点笼统了，适合用于定义{基因突变是指DNA分子中发生碱基对的替换、增添和缺失，而引起的基因结构的改变，它包括单个碱基改变所引起的点突变（point mutation），或多个碱基的缺失、重复和插入。}   &lt;/p&gt;
+&lt;p&gt;不过更笼统的是按照遗传信息的改变方式，分为错义、无义两类。   &lt;/p&gt;
+&lt;p&gt;我看的分类复杂点。我看过的是类似是这个分类，你去看下网站。好象是上海一个大学的。   &lt;/p&gt;
+&lt;p&gt;基因突变的类型 &lt;br/&gt;
+&lt;a href="http://genetics.sjtu.edu.cn/genetics/21.01.htm"&gt;http://genetics.sjtu.edu.cn/genetics/21.01.htm&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;突变的原因   &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://genetics.sjtu.edu.cn/genetics/21.02.htm"&gt;http://genetics.sjtu.edu.cn/genetics/21.02.htm&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;根据基因结构的改变方式不同，可将基因突变分为四种类型： &lt;br/&gt;
+（1）点突变 由某位点一对减基改变造成的。其包括两种形式：转换和颠换。点突变的不同效应为：①同义突变；②错义突变；③无义突变；④终止密码突变。 &lt;br/&gt;
+（2）移码突变 某位点增添或减少1～2对碱基造成的。 &lt;br/&gt;
+（3）缺失突变 基因内部缺失某个DNA小段造成的。 &lt;br/&gt;
+（4）插入突变 基因内部增添一小段外源DNA造成的。   &lt;/p&gt;
+&lt;p&gt;基因突变是随机发生的。它可以发生在生物个体发育的任何时期和生物体的任何细胞。一般来说，在生物个体发育的过程中，基因突变发生的时期越迟，生物体表现突变的部分就越少。例如，植物的叶芽如果在发育的早期发生基因突变，那么由这个叶芽长成的枝条，上面着生的叶、花和果实都有可能与其他枝条不同。如果基因突变发生在花芽分化时，那么，将来可能只在一朵花或一个花序上表现出变异。 &lt;br/&gt;
+基因突变可以发生在体细胞中，也可以发生在生殖细胞中。发生在生殖细胞中的突变，可以通过受精作用直接传递给后代。发生在体细胞中的突变，一般是不能传递给后代的。 &lt;br/&gt;
+基因突变在生物界中是普遍存在的。无论是低等生物，还是高等的动植物以及人，都可能发生基因突变。基因突变在自然界的物种中广泛存在。例如，棉花的短果枝、水稻的矮杆、糯性，果蝇的白眼、残翅，家鸽羽毛的灰红色，以及人的色肓、糖尿病、白化病等遗传病，都是突变性状。自然条件下发生的基因突变叫做自然突变，人为条件下诱发产生的基因突变叫做诱发突变。   &lt;/p&gt;
+&lt;p&gt;绝大多数的人类遗传病，就是由基因突变造成的，这些病对人类健康构成了严重威胁。又如，植物中常见的白化苗，也是基因突变形成的。这种苗由于缺乏叶绿素，不能进行光合作用制造有机物，最终导致死亡。但是，也有少数基因突变是有利的。例如，植物的抗病性突变、耐旱性突变、微生物的抗药性突变等，都是有利于生物生存的。&lt;/p&gt;
+&lt;p&gt;nonsense mutation 无义突变：使原本可制造蛋白质的密码变成停止密码&lt;/p&gt;
+&lt;p&gt;missense mutation 错义突变：使密码所对应氨基酸改变&lt;/p&gt;
+&lt;p&gt;silent mutation 无表型突变：密码改变，但对应的氨基酸不变&lt;/p&gt;
+&lt;p&gt;INV， inversion 倒位 、转置&lt;/p&gt;
+&lt;p&gt;Interchromosomal translocation, CTX 染色体间易位  &lt;/p&gt;
+&lt;p&gt;intra-chromosome translocation , ITX 染色体内易位&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;SO term&lt;/th&gt;
+&lt;th align="center"&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001628"&gt;intergenic_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant located in the intergenic region, between genes.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001631"&gt;upstream_gene_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant located 5' of a gene. (VAI searches within 5,000 bases.)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001632"&gt;downstream_gene_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant located 3' of a gene. (VAI searches within 5,000 bases.)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001623"&gt;5_prime_UTR_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A variant located in the 5' untranslated region (UTR) of a gene.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001624"&gt;3_prime_UTR_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A variant located in the 3' untranslated region (UTR) of a gene.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001819"&gt;synonymous_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant where there is no resulting change to the encoded amino acid.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001583"&gt;missense_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant, that changes one or more bases, resulting in a different amino acid sequence but where the length is preserved.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001821"&gt;inframe_insertion&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;An inframe non synonymous variant that inserts bases into in the coding sequence.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001822"&gt;inframe_deletion&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;An inframe non synonymous variant that deletes bases from the coding sequence.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001589"&gt;frameshift_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant which causes a disruption of the translational reading frame, because the number of nucleotides inserted or deleted is not a multiple of three.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001582"&gt;initiator_codon_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A codon variant that changes at least one base of the first codon of a transcript.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001626"&gt;incomplete_terminal_codon_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant where at least one base of the final codon of an incompletely annotated transcript is changed.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001578"&gt;stop_lost&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant where at least one base of the terminator codon (stop) is changed, resulting in an elongated transcript.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001567"&gt;stop_retained_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant where at least one base in the terminator codon is changed, but the terminator remains.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001572"&gt;exon_loss&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant whereby an exon is lost from the transcript. (VAI assigns this term when an entire exon is deleted.)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001587"&gt;stop_gained&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant whereby at least one base of a codon is changed, resulting in a premature stop codon, leading to a shortened transcript.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001621"&gt;NMD_transcript_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A variant in a transcript that is already the target of nonsense-mediated decay (NMD), i.e. stop codon is not in last exon nor within 50 bases of the end of the second-to-last exon.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001627"&gt;intron_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A transcript variant occurring within an intron.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001575"&gt;splice_donor_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A splice variant that changes the 2-base region at the 5' end of an intron.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001574"&gt;splice_acceptor_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A splice variant that changes the 2 base region at the 3' end of an intron.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001630"&gt;splice_region_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant in which a change has occurred within the region of the splice site, either within 1-3 bases of the exon or 3-8 bases of the intron.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001577"&gt;complex_transcript_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A transcript variant with a complex insertion or deletion (indel) that spans an exon/intron border or a coding sequence/UTR border.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001792"&gt;non_coding_exon_variant&lt;/a&gt;&lt;/td&gt;
+&lt;td align="center"&gt;A sequence variant that changes exon sequence of a non-coding gene.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;Functional role&lt;/h3&gt;
+&lt;p&gt;By default, all variants are included in the output regardless of predicted
+functional effect. If you would like to keep only variants that have a
+particular type of effect, you can uncheck the checkboxes of other effect
+types. The detailed functional effect predictions are categorized as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;intergenic:&lt;/strong&gt; &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001628"&gt;intergenic_variant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;upstream/downstream of gene:&lt;/strong&gt; &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001631"&gt;upstream_gene_variant&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001632"&gt;downstream_gene_variant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;5' or 3' UTR:&lt;/strong&gt; &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001623"&gt;5_prime_UTR_variant&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001624"&gt;3_prime_UTR_variant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CDS - synonymous coding change:&lt;/strong&gt; &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001819"&gt;synonymous_variant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CDS - non-synonymous (missense, stop gain/loss, frameshift etc):&lt;/strong&gt; &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001583"&gt;missense_variant&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001821"&gt;inframe_insertion&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001822"&gt;inframe_deletion&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001589"&gt;frameshift_variant&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001582"&gt;initiator_codon_variant&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001626"&gt;incomplete_terminal_codon_variant&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001578"&gt;stop_lost&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001567"&gt;stop_retained_variant&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001587"&gt;stop_gained&lt;/a&gt;,&lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001621"&gt;NMD_transcript_variant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;intron:&lt;/strong&gt; &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001627"&gt;intron_variant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;splice site or splice region:&lt;/strong&gt; &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001575"&gt;splice_donor_variant&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001574"&gt;splice_acceptor_variant&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001630"&gt;splice_region_variant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;exon of non-coding gene:&lt;/strong&gt; &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001792"&gt;non_coding_exon_variant&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="mutation"></category></entry><entry><title>HGVS Names和refSNP ID</title><link href="https://ghxdghxd.github.io/HGVS.html" rel="alternate"></link><published>2015-09-29T11:09:00+08:00</published><updated>2015-09-29T11:09:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-09-29:/HGVS.html</id><summary type="html">&lt;p&gt;HGVS Names和refSNP ID&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;在NCBI(美国国立生物技术信息中心)网站上经常会看到“HGVS Names”和“refSNP ID”的字样，这两个都是用于命名SNP(single
+nucleotide polymorphism，单核苷酸多态性)的方法。&lt;/p&gt;
+&lt;p&gt;HGVS是Human Genome Variation Society(人类基因组变异协会)的简称，是一个非政府的民间学术组织，其官方网站的&lt;a href="http://www.hgvs.org"&gt;网址&lt;/a&gt;。HGVS命名SNP法的规则是标出引用的核酸序列号(Reference Sequence, RefSeq)和SNP在该核酸序列中的位置，例如：NG_000004.3:g.247167G&amp;gt;A，其中红色的部分是核酸序列接受号，绿色的部分是该单核苷酸多态性位点在该核酸序列中的位置，G&amp;gt;A表示原始碱基是G，突变碱基是A。这样的命名方法有利于找出所在基因序列中的位置，当向引物公司提交设计和购买申请时都会用到。&lt;/p&gt;
+&lt;p&gt;在文献中出现的等位基因常见的标注方式，CYP3A5*3(6986A&amp;gt;G或A6986G)，其实这就是一种非常不正规的用HGVS
+Names标注SNP位置的方法，很明显，由于缺少引用核酸序列的接受号，因此读者无法从这样的表示在GenBank中查到对应的信息。这是个历史遗留问题，责任也不能全怪原文的作者标注不明，甚至有些时候，由于最初发现并报道该基因位点的文章由于没有被NCBI收录，导致有许多用此法标注的的SNP位点，其引用的RefSeq号竟然丢失了！HGVS正是做着弥补此事的工作，但是由于数据量太大，HGVS目前所完成的只是其中的一部分。所幸NCBI也看到了此事的重大意义，正在接手此事，现在在GenBank的SNP数据库的查询返回结果页的右上角已经可以看到其整理的HGVS
+Names了，例如：&lt;a href="http://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=776746"&gt;&lt;strong&gt;查询CYP3A5*3的结果&lt;/strong&gt;&lt;/a&gt;。在该结果我们看到并没有标出6986A&amp;gt;G的HGVS命名，说明该数据库尚须完善。&lt;/p&gt;
+&lt;p&gt;GenBank官方的refSNP ID单核苷酸多态性命名法是相对比较完善的命名体系，命名方法是rs+7位阿拉伯数字，例如：CYP3A5&lt;em&gt;3的refSNP
+ID是rs776746，如果已知一个SNP的refSNP
+ID，那么就可以在GenBank的SNP数据库中搜索到相关的信息和在基因组中的位置了。这里是&lt;a href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=snp"&gt;&lt;strong&gt;GenBank的SNP数据库查询地址&lt;/strong&gt;&lt;/a&gt;，例如，要查找CYP3A5&lt;/em&gt;3在GenBank中的信息，只要在该搜索框中输入“
+rs776746 ”进行查找即可。下面是该查询返回的结果，如图：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="image" src="http://u.jimdo.com/www102/o/se19ec0f28937288f/img/iac1a9acbed828ae0/1279201754/std/image.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;在该返回结果中可以看到给出了CYP3A5*3位点两侧少量的碱基序列，其下方给出了HGVS
+Names的链接，我们点击该链接，然后在接下来的网页点击“FASTA”链接即可获得该SNP所在的核苷酸碱基序列了，但是有些时候HGVS
+Names引用的核酸碱基序列较长，本示例中引用的核酸碱基序列就有几千万碱基之多，光下载都需要很长的时间，更别说在浏览器中打开了。此时可以点击上图中的红色“rs776746”链接，看看是否有其他引用核苷酸碱基序列较短的HGVS
+Names，在打开的页面的右上角可以看到有四个HGVS Names，如下：&lt;/p&gt;
+&lt;p&gt;NG_000004.3:g.247167G&amp;gt;A&lt;/p&gt;
+&lt;p&gt;NG_007938.1:g.12083G&amp;gt;A&lt;/p&gt;
+&lt;p&gt;NM_000777.2:c.219-237G&amp;gt;A&lt;/p&gt;
+&lt;p&gt;NT_007933.14:g.24504815C&amp;gt;T&lt;/p&gt;
+&lt;p&gt;其中，前两个很短，估计引用的核酸序列也较短，可以用来查看对应的核苷酸碱基序列，第三个样子有些怪，其实就是不规则命名遗留下来的，除了便于查询外，已经没有什么实际意义了。以第一个HGVS
+Names为例，首先打开&lt;a href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=nuccore"&gt;&lt;strong&gt;GenBank的Nucleotide查询数据库&lt;/strong&gt;&lt;/a&gt;，在搜索框中输入核苷酸碱基序列“
+NG_000004.3
+”，点击“go”键执行搜索，在返回的结果页点击“FASTA”链接，即可获得该SNP所在的核苷酸碱基序列了。在打开该序列的所在页面中，利用前面在SNP数据库中查到的该SNP的序列片段，依次点击IE浏览器菜单栏上的：编辑
+- 在该页上查找 - 输入一段碱基序列，即可找到该SNP在此核苷酸碱基序列中的具体位置了，还可以通过点击该页面上的&lt;/p&gt;
+&lt;p&gt;“More Formats”链接 - "GenBank(full)"链接，通过网页中给出的碱基序列的位置编号来找到该SNP 所在的位置。&lt;/p&gt;
+&lt;p&gt;可能有很多人会存在这样的疑问，例如，在文献中看到类似CYP3A5*3(6986A&amp;gt;G)这样的等位基因名称，但此时还不知道它的refSNP ID，该如何找到该SNP在GenBank中所在的位置呢？遇到这种情况也只有在Google上碰碰运气了，因为有的文献作者会对这种残缺的HGVS Names的SNP在文章中同时标出其refSNP ID，查询的方法是在Google中输入“该SNP的HGVS Names + refSNP ID”进行查找即可，例如：&lt;a href="http://www.google.cn/search?hl=zh-CN&amp;amp;newwindow=1&amp;amp;q="&gt;g"++++"refSNP+ID"&amp;amp;btnG=Google+搜索&amp;amp;meta=&amp;amp;aq=f&amp;amp;oq="target="_blank" style="color: rgb(0, 6, 220);"&amp;gt;&lt;strong&gt;搜索CYP3A5*3(6986A&amp;gt;G)&lt;/strong&gt;&lt;/a&gt;，如果没有找到满意的检索结果，也可以直接在上文提到的GenBank的SNP数据库的搜索框中直接输入该SNP所在的基因名称+Homosapiens（人类），例如输入“ CYP3A5  Homo sapiens "[这里需要说明的是目前只有人类的等位基因才会给出HGVS Names]，执行搜索后会返回很多该基因的SNP，每个SNP除标有refSNP ID之外，还常标出数个HGVS Names，这时就可以直接利用浏览器的网页查找功能搜索如“_599A&amp;gt;G”，_来找到对应的refSNP ID了。这里推荐的一个小窍门是，假如返回的SNP数量较多的话，可以将每页显示结果的数量设置的多一些（选择show后面的数值），会减少很多反复翻页的麻烦。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="HGVS"></category><category term="SNP"></category></entry><entry><title>脱氧核糖核酸酶高敏感位点</title><link href="https://ghxdghxd.github.io/DHS.html" rel="alternate"></link><published>2015-02-03T13:27:00+08:00</published><updated>2015-02-03T13:27:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-02-03:/DHS.html</id><summary type="html">&lt;p&gt;脱氧核糖核酸酶高敏感位点的简介&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;脱氧核糖核酸酶高敏感位点（DNase Hypersensitive Site，DHS），也就是DNA酶高敏感位点，是DNA上容易被DNA酶识别的位点。&lt;/p&gt;
+&lt;p&gt;中文名脱氧核糖核酸酶高敏感位点&lt;/p&gt;
+&lt;p&gt;外文名DNase Hypersensitive Site，DHS&lt;/p&gt;
+&lt;p&gt;DHS一般对应染色体上比较松弛的区段，这中松弛的特性可以提供酶去与之结合的物理条件，而那些转录活性比较强的DNA区段一般也是松弛的，因此可以通过生物信息学的方法，预测与DHS结合的转录因子信息，为DNA的功能和活性提供了重要线索。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="DNA"></category><category term="DHS"></category></entry><entry><title>人类基因组</title><link href="https://ghxdghxd.github.io/hunman-genome.html" rel="alternate"></link><published>2014-12-05T11:38:00+08:00</published><updated>2016-03-17T10:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-05:/hunman-genome.html</id><summary type="html">&lt;p&gt;人类参考基因组的记录&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="hg" src="images/human_genome.png"/&gt;&lt;/p&gt;
 &lt;h1&gt;参考序列&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;XY染色体上相同序列 &lt;strong&gt;PAR1&lt;/strong&gt; &lt;strong&gt;PAR2&lt;/strong&gt;&lt;/li&gt;
