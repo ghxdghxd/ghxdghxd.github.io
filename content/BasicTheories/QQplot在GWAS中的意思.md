@@ -1,3 +1,15 @@
+---
+Title: QQplot
+Date: 2015-12-27 19:57
+Modified: 2015-12-27 19:57
+Category: 理论基础
+Tags: QQplot
+Slug: QQplot
+Authors: JT Guo
+Summary: QQplot在GWAS中的意思
+---
+# QQplot
+
 Q-Q plot 即Quantile-Quantile Plot。它在各类研究中经常用到，主要是直观的表示观测值与预测值之间的差异。
 
 在SPSS中很容做，Analysis - Descriptive statistics - Q-Qplot。
@@ -20,6 +32,7 @@ lobs <- -(log10(observed))
 expected <- c(1:length(observed))
 lexp <- -(log10(expected / (length(expected)+1)))
 ```
+
 具体解释是这样的，先把P值从小到大排序。lobs代表纵坐标，lexp代表横坐标，纵坐标就是观测P值的-
 log10，而横坐标则根据P值数目而定。比如，当只有3个P值 P1=0.0001 P2=0.001
 P3=0.01，那么在这个P值组中，length(observed)=3，对于P1=0.0001 expected=1

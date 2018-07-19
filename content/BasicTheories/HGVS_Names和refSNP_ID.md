@@ -3,10 +3,10 @@ Title: HGVS Names和refSNP ID
 Date: 2015-09-29 11:09
 Modified: 2015-09-29 11:09
 Category: 理论基础
-Tags: genome
-Slug: hunman-genome
+Tags: HGVS, SNP
+Slug: HGVS
 Authors: JT Guo
-Summary: 人类参考基因组的记录
+Summary: HGVS Names和refSNP ID
 ---
 
 在NCBI(美国国立生物技术信息中心)网站上经常会看到“HGVS Names”和“refSNP ID”的字样，这两个都是用于命名SNP(single
@@ -23,7 +23,7 @@ ID是rs776746，如果已知一个SNP的refSNP
 ID，那么就可以在GenBank的SNP数据库中搜索到相关的信息和在基因组中的位置了。这里是[**GenBank的SNP数据库查询地址**](http://www.ncbi.nlm.nih.gov/sites/entrez?db=snp)，例如，要查找CYP3A5*3在GenBank中的信息，只要在该搜索框中输入“
 rs776746 ”进行查找即可。下面是该查询返回的结果，如图：
 
-![](http://u.jimdo.com/www102/o/se19ec0f28937288f/img/iac1a9acbed828ae0/1279201754/std/image.jpg)
+![image](http://u.jimdo.com/www102/o/se19ec0f28937288f/img/iac1a9acbed828ae0/1279201754/std/image.jpg)
 
 在该返回结果中可以看到给出了CYP3A5*3位点两侧少量的碱基序列，其下方给出了HGVS
 Names的链接，我们点击该链接，然后在接下来的网页点击“FASTA”链接即可获得该SNP所在的核苷酸碱基序列了，但是有些时候HGVS
