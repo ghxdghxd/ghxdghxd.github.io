@@ -111,4 +111,4 @@ sudo snap install electronic-wechat
 
 File failed to load: /extensions/MathZoom.js
 
-# [install R](/R-and-Rstudio.html)
+# [install R](R-and-Rstudio)

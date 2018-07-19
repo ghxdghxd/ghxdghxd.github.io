@@ -179,4 +179,4 @@ File failed to load: /extensions/MathZoom.jsrs
 
 # install R
 
-参考[这里](/R-and-Rstudio.html)
+参考[这里](R-and-Rstudio)
