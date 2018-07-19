@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/</loc>
-<lastmod>2018-07-19T17:38:57-00:00</lastmod>
+<lastmod>2018-07-19T18:08:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/archives.html</loc>
-<lastmod>2018-07-19T17:38:57-00:00</lastmod>
+<lastmod>2018-07-19T18:08:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/tags.html</loc>
-<lastmod>2018-07-19T17:38:57-00:00</lastmod>
+<lastmod>2018-07-19T18:08:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/categories.html</loc>
-<lastmod>2018-07-19T17:38:57-00:00</lastmod>
+<lastmod>2018-07-19T18:08:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -137,6 +137,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://ghxdghxd.github.io/markdown.html</loc>
+<lastmod>2016-10-20T16:30:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>https://ghxdghxd.github.io/QQplot.html</loc>
 <lastmod>2015-12-27T19:57:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -167,6 +174,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://ghxdghxd.github.io/the-sense.html</loc>
 <lastmod>2015-08-03T19:30:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/fastq.html</loc>
+<lastmod>2017-03-16T22:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
@@ -257,7 +271,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/category/li-lun-ji-chu.html</loc>
-<lastmod>2017-03-04T14:38:00+08:06</lastmod>
+<lastmod>2017-03-16T22:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -397,7 +411,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/tag/fastq.html</loc>
-<lastmod>2017-01-05T16:04:00+08:06</lastmod>
+<lastmod>2017-03-16T22:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -468,6 +482,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://ghxdghxd.github.io/tag/variant.html</loc>
 <lastmod>2016-12-27T21:28:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/markdown.html</loc>
+<lastmod>2016-10-20T16:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

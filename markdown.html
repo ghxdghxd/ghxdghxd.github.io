@@ -1059,19 +1059,344 @@
         <main class="page-content">
             <div class="container-fluid" style="float: left">
 <div class="post">
-    <h1 class="label-title text-center">command</h1>
+    <h1 class="post-title">markdown格式详解</h1>
+    <div class="tags" style="float: right;">
+    <a href="/tag/markdown.html">markdown</a>
+    </div>
+    <div class="post-meta">10月 20, 2016
+    <span> | </span> <a href="/category/li-lun-ji-chu.html">理论基础</a>
+    </div>
     <div class="post-content">
-        <div class="recent-post-header">
-            <a class="post-title" href="https://ghxdghxd.github.io/git.html">
-                <h4>git的一般用法
-                <span class="link">&raquo;</span>
-                </h4>
-                </a>
-            <div class="tags">
-                <a href="https://ghxdghxd.github.io/tag/git.html">git</a>
-                <a href="https://ghxdghxd.github.io/tag/command.html">command</a>
-            </div>
+        <html><body><h1>1 概述</h1>
+<p><a href="http://zh.wikipedia.org/wiki/Markdown" title="Wiki: Markdown">Wiki: Markdown</a></p>
+<p>Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。<br/>
+它使用易读易写的纯文本格式编写文档，然后转换成有效的 XHTML（或者 HTML）文档。<br/>
+这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。<br/>
+”.md“ 和 ”.markdown“ 都是被普遍支持的扩展名，不过 ”.md“ 更加简单和方便。</p>
+<h2>为什么选择 Markdown</h2>
+<ul>
+<li>它基于纯文本，方便修改和共享</li>
+<li>几乎可以在所有的文本编辑器中编写</li>
+<li>有众多编程语言的实现，以及应用的相关扩展</li>
+<li>在 <a href="https://github.com/">GitHub</a> 等网站中有很好的应用</li>
+<li>很容易转换为 HTML 文档或其他格式</li>
+<li>适合用来编写文档、记录笔记、撰写文章</li>
+</ul>
+<h3>兼容 HTML</h3>
+<p>Markdown 完全兼容 HTML 语法，可以直接在 Markdown 文档中插入 HTML 内容：</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>4<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+<p>这段代码会变成下面的样子：</p>
+<table>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+</tr>
+</table>
+<h1>2 语法</h1>
+<h2>2.1 标题</h2>
+<table>
+<thead>
+<tr>
+<th align="left">任何数量的"="和"-"</th>
+<th align="left">使用左边或两边对称"#"</th>
+<th align="center">显示效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">正副二级标题</td>
+<td align="left">标记1-6级标题</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">一级标题<br/>======</td>
+<td align="left"># 一级标题 <s>#</s></td>
+<td align="center"><h1> 一级标题</h1></td>
+</tr>
+<tr>
+<td align="left">二级标题<br/>------</td>
+<td align="left">## 二级标题 <s>##</s></td>
+<td align="center"><h2> 二级标题</h2></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">### 三级标题 <s>###</s></td>
+<td align="center"><h3> 三级标题</h3></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">#### 四级标题 <s>####</s></td>
+<td align="center"><h4> 四级标题</h4></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">##### 五级标题 <s>#####</s></td>
+<td align="center"><h5> 五级标题</h5></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">###### 六级标题 <s>#####</s></td>
+<td align="center"><h6> 六级标题</h6></td>
+</tr>
+</tbody>
+</table>
+<h2>2.2 段落与换行</h2>
+<ul>
+<li>段落的前后必须是空行：</li>
+<li>空行指的是行内什么都没有，或者只有空白符（空格或制表符）</li>
+<li>相邻两行文本，如果中间没有空行会显示在一行中（换行符被转换为空格）</li>
+<li>如果需要在段落内加入换行（<code>&lt;br&gt;</code>）：</li>
+<li>可以在前一行的末尾加入至少两个空格, 然后换行写其它的文字</li>
+<li>Markdown 中的多数区块都需要在两个空行之间</li>
+</ul>
+<h2>2.3 引用</h2>
+<h3>2.3.1 引用内容</h3>
+<p>在段落或其他内容前使用 <code>&gt;</code> 符号，就可以将这段内容标记为 '引用' 的内容（<code>&lt;blockquote&gt;</code>）：</p>
+<div class="highlight"><pre><span></span>&gt;引用内容
+</pre></div>
+<blockquote>
+<p>引用内容</p>
+</blockquote>
+<h3>2.3.2 多行引用</h3>
+<div class="highlight"><pre><span></span>&gt;多行引用
+&gt;可以在每行前加 `&gt;`
+</pre></div>
+<blockquote>
+<p>多行引用
+可以在每行前加 <code>&gt;</code></p>
+</blockquote>
+<div class="highlight"><pre><span></span>&gt;如果仅在第一行使用 `&gt;`，
+后面相邻的行即使省略 `&gt;`，也会变成引用内容
+</pre></div>
+<blockquote>
+<p>如果仅在第一行使用 <code>&gt;</code>，
+后面相邻的行即使省略 <code>&gt;</code>，也会变成引用内容</p>
+</blockquote>
+<div class="highlight"><pre><span></span>&gt;如果引用内容需要换行，
+&gt;可以在行尾添加两个空格
+&gt;
+&gt;或者在引用内容中加一个空行
+</pre></div>
+<blockquote>
+<p>如果引用内容需要换行，
+可以在行尾添加两个空格</p>
+<p>或者在引用内容中加一个空行</p>
+</blockquote>
+<h3>2.3.3 嵌套引用</h3>
+<div class="highlight"><pre><span></span>&gt;也可以在引用中
+&gt;&gt;使用嵌套的引用
+</pre></div>
+<blockquote>
+<p>也可以在引用中</p>
+<blockquote>
+<p>使用嵌套的引用</p>
+</blockquote>
+</blockquote>
+<h3>2.3.4 其他 Markdown</h3>
+<div class="highlight"><pre><span></span>&gt;在引用中可以使用使用其他任何 *Markdown* 语法
+</pre></div>
+<blockquote>
+<p>在引用中可以使用使用其他任何 <em>Markdown</em> 语法</p>
+</blockquote>
+<h2>2.4 列表</h2>
+<h3>2.4.1 无序列表</h3>
+<div class="highlight"><pre><span></span>* 可以使用 `*` 作为标记
++ 也可以使用 `+`
+- 或者 `-`
+</pre></div>
+<p>* 可以使用 <code>*</code> 作为标记
++ 也可以使用 <code>+</code>
+- 或者 <code>-</code></p>
+<h3>2.4.2 有序列表</h3>
+<div class="highlight"><pre><span></span>1. 有序列表以数字和 `.` 开始；
+3. 数字的序列并不会影响生成的列表序列；
+4. 但仍然推荐按照自然顺序（1.2.3...）编写。
+</pre></div>
+<p>1.有序列表以数字和 <code>.</code> 开始；
+3.数字的序列并不会影响生成的列表序列；
+4.但仍然推荐按照自然顺序（1.2.3...）编写。</p>
+<h3>2.4.3 嵌套的列表</h3>
+<div class="highlight"><pre><span></span>1. 第一层
++ 1-1
++ 1-2
+2. 无序列表和有序列表可以随意相互嵌套
+1. 2-1
+2. 2-2
+</pre></div>
+<p>1.第一层
++1-1
++1-2
+2.无序列表和有序列表可以随意相互嵌套
+1.2-1
+2.2-2</p>
+<h3>语法和用法</h3>
+<ol>
+<li>无序列表项的开始是：符号 空格；</li>
+<li>有序列表项的开始是：数字 <code>.</code> 空格；</li>
+<li>空格至少为一个，多个空格将被解析为一个；</li>
+<li>如果仅需要在行前显示数字和 <code>.</code>：</li>
+</ol>
+<div class="highlight"><pre><span></span>05\. 可以使用：数字\. 来取消显示为列表
+</pre></div>
+<p>05. 可以使用：数字\. 来取消显示为列表</p>
+<blockquote>
+<p><code>\*</code> 的语法专门用来显示 Markdown 语法中使用的特殊字符，参考 <a href="blackslash-escapes.md">字符转义</a></p>
+</blockquote>
+<h2>2.5 代码</h2>
+<h3>2.5.1 代码块</h3>
+<p>可以使用缩进来插入代码块：</p>
+<p> // Tab开头
+</p><title>Markdown</title>
+ // 四个空格开头
+<p>代码块前后需要有至少一个空行，且每行代码前需要有至少一个 Tab 或四个空格；</p>
+<h3>2.5.2 行内代码</h3>
+<p>也可以通过 ``，插入行内代码（` 是 <code>Tab</code> 键上边、数字 <code>1</code> 键左侧的那个按键）：</p>
+<p>例如 <code>&lt;title&gt;Markdown&lt;/title&gt;</code></p>
+<h3>2.5.3 转换规则</h3>
+<p>代码块中的文本（包括 Markdown 语法）都会显示为原始内容，而特殊字符会被转换为 HTML <a href="https://zh.wikipedia.org/wiki/XML%E4%B8%8EHTML%E5%AD%97%E7%AC%A6%E5%AE%9E%E4%BD%93%E5%BC%95%E7%94%A8%E5%88%97%E8%A1%A8">字符实体</a>。</p>
+<h2>2.6 分隔线</h2>
+<p>1. 可以在一行中使用三个或更多的 <code>*</code>、<code>-</code> 或 <code>_</code> 来添加分隔线：</p>
+<div class="highlight"><pre><span></span>***
+------
+___
+</pre></div>
+<hr/>
+<hr/>
+<hr/>
+<p>2. 多个字符之间可以有空格（空白符），但不能有其他字符：</p>
+<div class="highlight"><pre><span></span>* * *
+- - -
+</pre></div>
+<hr/>
+<hr/>
+<h2>2.7 超链接</h2>
+<h3>2.7.1 行内式</h3>
+<p>格式为 <code>[link text](URL 'title text')</code>。</p>
+<p>① 普通链接：</p>
+<div class="highlight"><pre><span></span>[Google](http://www.google.com/)
+</pre></div>
+<p><a href="http://www.google.com/">Google</a></p>
+<p>② 指向本地文件的链接：</p>
+<div class="highlight"><pre><span></span>[icon.png](./images/icon.png)
+</pre></div>
+<p><a href="./images/icon.png">icon.png</a></p>
+<p>③ 包含 'title' 的链接:</p>
+<div class="highlight"><pre><span></span>[Google](http://www.google.com/ "Google")
+</pre></div>
+<p><a href="http://www.google.com/" title="Google">Google</a></p>
+<blockquote>
+<p>title 使用 ' 或 " 都是可以的。</p>
+</blockquote>
+<h3>2.7.2 参考式</h3>
+<p>参考式链接的写法相当于行内式拆分成两部分，并通过一个 <em>识别符</em> 来连接两部分。参考式能尽量保持文章结构的简单，也方便统一管理 URL。</p>
+<p>① 首先，定义链接：</p>
+<div class="highlight"><pre><span></span>[Google][link]
+</pre></div>
+<p><a href="http://www.google.com/" title="Google">Google</a></p>
+<p>第二个方括号内为链接独有的 <em>识别符</em>，可以是字母、数字、空白或标点符号。识别符是 <em>不区分大小写</em> 的；</p>
+<p>② 然后定义链接内容：</p>
+<div class="highlight"><pre><span></span>[link]: http://www.google.com/ "Google"
+</pre></div>
+<p>其格式为：<code>[识别符]: URL 'title'</code>。</p>
+<blockquote>
+<p>其中，URL可以使用 &lt;&gt; 包括起来，title 可以使用 ""、''、() 包括（考虑到兼容性，建议使用引号），title 部分也可以换行来写；</p>
+<p>链接内容的定义可以放在同一个文件的 <em>任意位置</em>；</p>
+</blockquote>
+<p>③ 也可以省略 <em>识别符</em>，使用链接文本作为 <em>识别符</em>：</p>
+<div class="highlight"><pre><span></span><span class="k">[Google][]</span>
+<span class="na">[Google]: http://www.google.com/ "Google"</span>
+</pre></div>
+<p><a href="http://www.google.com/" title="Google">Google</a></p>
+<blockquote>
+<p>参考式相对于行内式有一个明显的优点，就是可以在多个不同的位置引用同一个 URL。</p>
+</blockquote>
+<h3>2.7.3 自动链接</h3>
+<p>使用 <code>&lt;&gt;</code> 包括的 URL 或邮箱地址会被自动转换为超链接：</p>
+<div class="highlight"><pre><span></span>&lt;http://www.google.com/&gt;
+
+&lt;123@email.com&gt;
+</pre></div>
+<p><a href="http://www.google.com/">http://www.google.com/</a></p>
+<p><a href="mailto:123@email.com">123@email.com</a></p>
+<p>该方式适合行内较短的链接，会使用 URL 作为链接文字。邮箱地址会自动编码，以逃避抓取机器人。</p>
+<h2>2.8 图像</h2>
+<p>插入图片的语法和插入超链接的语法基本一致，只是在最前面多一个 <code>!</code>。也分为行内式和参考式两种。</p>
+<h3>2.8.1 行内式</h3>
+<div class="highlight"><pre><span></span>![GitHub](https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100 "GitHub,Social Coding")
+</pre></div>
+<p><img alt="GitHub" src="https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100" title="GitHub,Social Coding"/></p>
+<p>方括号中的部分是图片的替代文本，括号中的 'title' 部分和链接一样，是可选的。</p>
+<h3>2.8.2 参考式</h3>
+<div class="highlight"><pre><span></span>![GitHub][github]
+
+[github]: https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100 "GitHub,Social Coding"
+</pre></div>
+<p><img alt="GitHub" src="https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100" title="GitHub,Social Coding"/></p>
+<h3>2.8.3 指定图片的显示大小</h3>
+<p>Markdown 不支持指定图片的显示大小，不过可以通过直接插入<code>&lt;img /&gt;</code>标签来指定相关属性：</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"GitHub"</span> <span class="na">title</span><span class="o">=</span><span class="s">"GitHub,Social Coding"</span> <span class="na">width</span><span class="o">=</span><span class="s">"50"</span> <span class="na">height</span><span class="o">=</span><span class="s">"50"</span> <span class="p">/&gt;</span>
+</pre></div>
+<p><img alt="GitHub" height="50" src="https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100" title="GitHub,Social Coding" width="50"/></p>
+<h2>2.9 强调</h2>
+<p>1. 使用 <code>* *</code> 或 <code>_ _</code> 包括的文本会被转换为 <code>&lt;em&gt;&lt;/em&gt;</code> ，通常表现为斜体：</p>
+<div class="highlight"><pre><span></span>这是用来 *演示* 的 _文本_
+</pre></div>
+<p>这是用来 <em>演示</em> 的 <em>文本</em></p>
+<p>2. 使用 <code>** **</code> 或 <code>__ __</code> 包括的文本会被转换为 <code>&lt;strong&gt;&lt;/strong&gt;</code>，通常表现为加粗：</p>
+<div class="highlight"><pre><span></span>这是用来 **演示** 的 __文本__
+</pre></div>
+<p>这是用来 <strong>演示</strong> 的 <strong>文本</strong></p>
+<p>3. 用来包括文本的 <code>*</code> 或 <code>_</code> 内侧不能有空白，否则 <code>*</code> 和 <code>_</code> 将不会被转换（不同的实现会有不同的表现）：</p>
+<div class="highlight"><pre><span></span>这是用来 * 演示* 的 _文本 _
+</pre></div>
+<p>这是用来 * 演示* 的 _文本 _</p>
+<p>4. 如果需要在文本中显示成对的 <code>*</code> 或 <code>_</code>，可以在符号前加入 <code>\</code> 即可：</p>
+<div class="highlight"><pre><span></span>这是用来 \*演示\* 的 \_文本\_
+</pre></div>
+<p>这是用来 *演示* 的 _文本_</p>
+<p>5. <code>*</code>、<code>**</code>、<code>_</code> 和 <code>__</code> 都必须 <em>成对使用</em> 。</p>
+<h2>2.10 字符转义</h2>
+<p>反斜线（<code>\</code>）用于插入在 Markdown 语法中有特殊作用的字符。</p>
+<div class="highlight"><pre><span></span>这是用来 *演示* 的 _文本_
+
+这是用来 \*演示\* 的 \_文本\_
+</pre></div>
+<p>这是用来 <em>演示</em> 的 <em>文本</em></p>
+<p>这是用来 *演示* 的 _文本_</p>
+<p>这些字符包括：</p>
+<div class="highlight"><pre><span></span>\
+`
+*
+_
+{}
+[]
+()
+#
++
+-
+.
+!
+</pre></div></body></html>
+
+        <div class="post-nav">
+            <a href="/QQplot.html" class="pre">QQplot</a>
+            <a href="/variant.html" class="next">变异标准化</a>
         </div>
+
     </div>
 </div>
             </div>

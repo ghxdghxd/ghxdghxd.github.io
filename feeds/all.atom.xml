@@ -964,7 +964,330 @@ vt normalize v0.5
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;在不同的情况下可能得到不同的答案.&lt;/p&gt;
-&lt;p&gt;An example of inconsistent variant representation due to using vt normalize&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="variant"></category></entry><entry><title>QQplot</title><link href="https://ghxdghxd.github.io/QQplot.html" rel="alternate"></link><published>2015-12-27T19:57:00+08:00</published><updated>2015-12-27T19:57:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-12-27:/QQplot.html</id><summary type="html">&lt;p&gt;QQplot在GWAS中的意思&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;QQplot&lt;/h1&gt;
+&lt;p&gt;An example of inconsistent variant representation due to using vt normalize&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="variant"></category></entry><entry><title>markdown格式详解</title><link href="https://ghxdghxd.github.io/markdown.html" rel="alternate"></link><published>2016-10-20T16:00:00+08:00</published><updated>2016-10-20T16:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-20:/markdown.html</id><summary type="html">&lt;p&gt;markdown格式详解&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;1 概述&lt;/h1&gt;
+&lt;p&gt;&lt;a href="http://zh.wikipedia.org/wiki/Markdown" title="Wiki: Markdown"&gt;Wiki: Markdown&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。&lt;br/&gt;
+它使用易读易写的纯文本格式编写文档，然后转换成有效的 XHTML（或者 HTML）文档。&lt;br/&gt;
+这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。&lt;br/&gt;
+”.md“ 和 ”.markdown“ 都是被普遍支持的扩展名，不过 ”.md“ 更加简单和方便。&lt;/p&gt;
+&lt;h2&gt;为什么选择 Markdown&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;它基于纯文本，方便修改和共享&lt;/li&gt;
+&lt;li&gt;几乎可以在所有的文本编辑器中编写&lt;/li&gt;
+&lt;li&gt;有众多编程语言的实现，以及应用的相关扩展&lt;/li&gt;
+&lt;li&gt;在 &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; 等网站中有很好的应用&lt;/li&gt;
+&lt;li&gt;很容易转换为 HTML 文档或其他格式&lt;/li&gt;
+&lt;li&gt;适合用来编写文档、记录笔记、撰写文章&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;兼容 HTML&lt;/h3&gt;
+&lt;p&gt;Markdown 完全兼容 HTML 语法，可以直接在 Markdown 文档中插入 HTML 内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;table&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;1&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;2&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;3&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;4&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;table&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这段代码会变成下面的样子：&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;h1&gt;2 语法&lt;/h1&gt;
+&lt;h2&gt;2.1 标题&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="left"&gt;任何数量的"="和"-"&lt;/th&gt;
+&lt;th align="left"&gt;使用左边或两边对称"#"&lt;/th&gt;
+&lt;th align="center"&gt;显示效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;正副二级标题&lt;/td&gt;
+&lt;td align="left"&gt;标记1-6级标题&lt;/td&gt;
+&lt;td align="center"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;一级标题&lt;br/&gt;======&lt;/td&gt;
+&lt;td align="left"&gt;# 一级标题 &lt;s&gt;#&lt;/s&gt;&lt;/td&gt;
+&lt;td align="center"&gt;&lt;h1&gt; 一级标题&lt;/h1&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;二级标题&lt;br/&gt;------&lt;/td&gt;
+&lt;td align="left"&gt;## 二级标题 &lt;s&gt;##&lt;/s&gt;&lt;/td&gt;
+&lt;td align="center"&gt;&lt;h2&gt; 二级标题&lt;/h2&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;/td&gt;
+&lt;td align="left"&gt;### 三级标题 &lt;s&gt;###&lt;/s&gt;&lt;/td&gt;
+&lt;td align="center"&gt;&lt;h3&gt; 三级标题&lt;/h3&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;/td&gt;
+&lt;td align="left"&gt;#### 四级标题 &lt;s&gt;####&lt;/s&gt;&lt;/td&gt;
+&lt;td align="center"&gt;&lt;h4&gt; 四级标题&lt;/h4&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;/td&gt;
+&lt;td align="left"&gt;##### 五级标题 &lt;s&gt;#####&lt;/s&gt;&lt;/td&gt;
+&lt;td align="center"&gt;&lt;h5&gt; 五级标题&lt;/h5&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="left"&gt;&lt;/td&gt;
+&lt;td align="left"&gt;###### 六级标题 &lt;s&gt;#####&lt;/s&gt;&lt;/td&gt;
+&lt;td align="center"&gt;&lt;h6&gt; 六级标题&lt;/h6&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;2.2 段落与换行&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;段落的前后必须是空行：&lt;/li&gt;
+&lt;li&gt;空行指的是行内什么都没有，或者只有空白符（空格或制表符）&lt;/li&gt;
+&lt;li&gt;相邻两行文本，如果中间没有空行会显示在一行中（换行符被转换为空格）&lt;/li&gt;
+&lt;li&gt;如果需要在段落内加入换行（&lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;）：&lt;/li&gt;
+&lt;li&gt;可以在前一行的末尾加入至少两个空格, 然后换行写其它的文字&lt;/li&gt;
+&lt;li&gt;Markdown 中的多数区块都需要在两个空行之间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2.3 引用&lt;/h2&gt;
+&lt;h3&gt;2.3.1 引用内容&lt;/h3&gt;
+&lt;p&gt;在段落或其他内容前使用 &lt;code&gt;&amp;gt;&lt;/code&gt; 符号，就可以将这段内容标记为 '引用' 的内容（&lt;code&gt;&amp;lt;blockquote&amp;gt;&lt;/code&gt;）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;引用内容
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;引用内容&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;2.3.2 多行引用&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;多行引用
+&amp;gt;可以在每行前加 `&amp;gt;`
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;多行引用
+可以在每行前加 &lt;code&gt;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;如果仅在第一行使用 `&amp;gt;`，
+后面相邻的行即使省略 `&amp;gt;`，也会变成引用内容
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果仅在第一行使用 &lt;code&gt;&amp;gt;&lt;/code&gt;，
+后面相邻的行即使省略 &lt;code&gt;&amp;gt;&lt;/code&gt;，也会变成引用内容&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;如果引用内容需要换行，
+&amp;gt;可以在行尾添加两个空格
+&amp;gt;
+&amp;gt;或者在引用内容中加一个空行
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果引用内容需要换行，
+可以在行尾添加两个空格&lt;/p&gt;
+&lt;p&gt;或者在引用内容中加一个空行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;2.3.3 嵌套引用&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;也可以在引用中
+&amp;gt;&amp;gt;使用嵌套的引用
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;也可以在引用中&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用嵌套的引用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;2.3.4 其他 Markdown&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;在引用中可以使用使用其他任何 *Markdown* 语法
+&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在引用中可以使用使用其他任何 &lt;em&gt;Markdown&lt;/em&gt; 语法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;2.4 列表&lt;/h2&gt;
+&lt;h3&gt;2.4.1 无序列表&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* 可以使用 `*` 作为标记
++ 也可以使用 `+`
+- 或者 `-`
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;* 可以使用 &lt;code&gt;*&lt;/code&gt; 作为标记
++ 也可以使用 &lt;code&gt;+&lt;/code&gt;
+- 或者 &lt;code&gt;-&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;2.4.2 有序列表&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1. 有序列表以数字和 `.` 开始；
+3. 数字的序列并不会影响生成的列表序列；
+4. 但仍然推荐按照自然顺序（1.2.3...）编写。
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;1.有序列表以数字和 &lt;code&gt;.&lt;/code&gt; 开始；
+3.数字的序列并不会影响生成的列表序列；
+4.但仍然推荐按照自然顺序（1.2.3...）编写。&lt;/p&gt;
+&lt;h3&gt;2.4.3 嵌套的列表&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1. 第一层
++ 1-1
++ 1-2
+2. 无序列表和有序列表可以随意相互嵌套
+1. 2-1
+2. 2-2
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;1.第一层
++1-1
++1-2
+2.无序列表和有序列表可以随意相互嵌套
+1.2-1
+2.2-2&lt;/p&gt;
+&lt;h3&gt;语法和用法&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;无序列表项的开始是：符号 空格；&lt;/li&gt;
+&lt;li&gt;有序列表项的开始是：数字 &lt;code&gt;.&lt;/code&gt; 空格；&lt;/li&gt;
+&lt;li&gt;空格至少为一个，多个空格将被解析为一个；&lt;/li&gt;
+&lt;li&gt;如果仅需要在行前显示数字和 &lt;code&gt;.&lt;/code&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;05\. 可以使用：数字\. 来取消显示为列表
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;05. 可以使用：数字\. 来取消显示为列表&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;\*&lt;/code&gt; 的语法专门用来显示 Markdown 语法中使用的特殊字符，参考 &lt;a href="blackslash-escapes.md"&gt;字符转义&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;2.5 代码&lt;/h2&gt;
+&lt;h3&gt;2.5.1 代码块&lt;/h3&gt;
+&lt;p&gt;可以使用缩进来插入代码块：&lt;/p&gt;
+&lt;p&gt; // Tab开头
+&lt;/p&gt;&lt;title&gt;Markdown&lt;/title&gt;
+ // 四个空格开头
+&lt;p&gt;代码块前后需要有至少一个空行，且每行代码前需要有至少一个 Tab 或四个空格；&lt;/p&gt;
+&lt;h3&gt;2.5.2 行内代码&lt;/h3&gt;
+&lt;p&gt;也可以通过 ``，插入行内代码（` 是 &lt;code&gt;Tab&lt;/code&gt; 键上边、数字 &lt;code&gt;1&lt;/code&gt; 键左侧的那个按键）：&lt;/p&gt;
+&lt;p&gt;例如 &lt;code&gt;&amp;lt;title&amp;gt;Markdown&amp;lt;/title&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;2.5.3 转换规则&lt;/h3&gt;
+&lt;p&gt;代码块中的文本（包括 Markdown 语法）都会显示为原始内容，而特殊字符会被转换为 HTML &lt;a href="https://zh.wikipedia.org/wiki/XML%E4%B8%8EHTML%E5%AD%97%E7%AC%A6%E5%AE%9E%E4%BD%93%E5%BC%95%E7%94%A8%E5%88%97%E8%A1%A8"&gt;字符实体&lt;/a&gt;。&lt;/p&gt;
+&lt;h2&gt;2.6 分隔线&lt;/h2&gt;
+&lt;p&gt;1. 可以在一行中使用三个或更多的 &lt;code&gt;*&lt;/code&gt;、&lt;code&gt;-&lt;/code&gt; 或 &lt;code&gt;_&lt;/code&gt; 来添加分隔线：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;***
+------
+___
+&lt;/pre&gt;&lt;/div&gt;
+&lt;hr/&gt;
+&lt;hr/&gt;
+&lt;hr/&gt;
+&lt;p&gt;2. 多个字符之间可以有空格（空白符），但不能有其他字符：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* * *
+- - -
+&lt;/pre&gt;&lt;/div&gt;
+&lt;hr/&gt;
+&lt;hr/&gt;
+&lt;h2&gt;2.7 超链接&lt;/h2&gt;
+&lt;h3&gt;2.7.1 行内式&lt;/h3&gt;
+&lt;p&gt;格式为 &lt;code&gt;[link text](URL 'title text')&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;① 普通链接：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[Google](http://www.google.com/)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href="http://www.google.com/"&gt;Google&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;② 指向本地文件的链接：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[icon.png](./images/icon.png)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href="./images/icon.png"&gt;icon.png&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;③ 包含 'title' 的链接:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[Google](http://www.google.com/ "Google")
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href="http://www.google.com/" title="Google"&gt;Google&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;title 使用 ' 或 " 都是可以的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;2.7.2 参考式&lt;/h3&gt;
+&lt;p&gt;参考式链接的写法相当于行内式拆分成两部分，并通过一个 &lt;em&gt;识别符&lt;/em&gt; 来连接两部分。参考式能尽量保持文章结构的简单，也方便统一管理 URL。&lt;/p&gt;
+&lt;p&gt;① 首先，定义链接：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[Google][link]
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href="http://www.google.com/" title="Google"&gt;Google&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;第二个方括号内为链接独有的 &lt;em&gt;识别符&lt;/em&gt;，可以是字母、数字、空白或标点符号。识别符是 &lt;em&gt;不区分大小写&lt;/em&gt; 的；&lt;/p&gt;
+&lt;p&gt;② 然后定义链接内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[link]: http://www.google.com/ "Google"
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;其格式为：&lt;code&gt;[识别符]: URL 'title'&lt;/code&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;其中，URL可以使用 &amp;lt;&amp;gt; 包括起来，title 可以使用 ""、''、() 包括（考虑到兼容性，建议使用引号），title 部分也可以换行来写；&lt;/p&gt;
+&lt;p&gt;链接内容的定义可以放在同一个文件的 &lt;em&gt;任意位置&lt;/em&gt;；&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;③ 也可以省略 &lt;em&gt;识别符&lt;/em&gt;，使用链接文本作为 &lt;em&gt;识别符&lt;/em&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[Google][]&lt;/span&gt;
+&lt;span class="na"&gt;[Google]: http://www.google.com/ "Google"&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href="http://www.google.com/" title="Google"&gt;Google&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考式相对于行内式有一个明显的优点，就是可以在多个不同的位置引用同一个 URL。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;2.7.3 自动链接&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt; 包括的 URL 或邮箱地址会被自动转换为超链接：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;http://www.google.com/&amp;gt;
+
+&amp;lt;123@email.com&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href="http://www.google.com/"&gt;http://www.google.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="mailto:123@email.com"&gt;123@email.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;该方式适合行内较短的链接，会使用 URL 作为链接文字。邮箱地址会自动编码，以逃避抓取机器人。&lt;/p&gt;
+&lt;h2&gt;2.8 图像&lt;/h2&gt;
+&lt;p&gt;插入图片的语法和插入超链接的语法基本一致，只是在最前面多一个 &lt;code&gt;!&lt;/code&gt;。也分为行内式和参考式两种。&lt;/p&gt;
+&lt;h3&gt;2.8.1 行内式&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;![GitHub](https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100 "GitHub,Social Coding")
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img alt="GitHub" src="https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100" title="GitHub,Social Coding"/&gt;&lt;/p&gt;
+&lt;p&gt;方括号中的部分是图片的替代文本，括号中的 'title' 部分和链接一样，是可选的。&lt;/p&gt;
+&lt;h3&gt;2.8.2 参考式&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;![GitHub][github]
+
+[github]: https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100 "GitHub,Social Coding"
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img alt="GitHub" src="https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100" title="GitHub,Social Coding"/&gt;&lt;/p&gt;
+&lt;h3&gt;2.8.3 指定图片的显示大小&lt;/h3&gt;
+&lt;p&gt;Markdown 不支持指定图片的显示大小，不过可以通过直接插入&lt;code&gt;&amp;lt;img /&amp;gt;&lt;/code&gt;标签来指定相关属性：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100"&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"GitHub"&lt;/span&gt; &lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"GitHub,Social Coding"&lt;/span&gt; &lt;span class="na"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"50"&lt;/span&gt; &lt;span class="na"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"50"&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img alt="GitHub" height="50" src="https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100" title="GitHub,Social Coding" width="50"/&gt;&lt;/p&gt;
+&lt;h2&gt;2.9 强调&lt;/h2&gt;
+&lt;p&gt;1. 使用 &lt;code&gt;* *&lt;/code&gt; 或 &lt;code&gt;_ _&lt;/code&gt; 包括的文本会被转换为 &lt;code&gt;&amp;lt;em&amp;gt;&amp;lt;/em&amp;gt;&lt;/code&gt; ，通常表现为斜体：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;这是用来 *演示* 的 _文本_
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这是用来 &lt;em&gt;演示&lt;/em&gt; 的 &lt;em&gt;文本&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;2. 使用 &lt;code&gt;** **&lt;/code&gt; 或 &lt;code&gt;__ __&lt;/code&gt; 包括的文本会被转换为 &lt;code&gt;&amp;lt;strong&amp;gt;&amp;lt;/strong&amp;gt;&lt;/code&gt;，通常表现为加粗：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;这是用来 **演示** 的 __文本__
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这是用来 &lt;strong&gt;演示&lt;/strong&gt; 的 &lt;strong&gt;文本&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;3. 用来包括文本的 &lt;code&gt;*&lt;/code&gt; 或 &lt;code&gt;_&lt;/code&gt; 内侧不能有空白，否则 &lt;code&gt;*&lt;/code&gt; 和 &lt;code&gt;_&lt;/code&gt; 将不会被转换（不同的实现会有不同的表现）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;这是用来 * 演示* 的 _文本 _
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这是用来 * 演示* 的 _文本 _&lt;/p&gt;
+&lt;p&gt;4. 如果需要在文本中显示成对的 &lt;code&gt;*&lt;/code&gt; 或 &lt;code&gt;_&lt;/code&gt;，可以在符号前加入 &lt;code&gt;\&lt;/code&gt; 即可：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;这是用来 \*演示\* 的 \_文本\_
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这是用来 *演示* 的 _文本_&lt;/p&gt;
+&lt;p&gt;5. &lt;code&gt;*&lt;/code&gt;、&lt;code&gt;**&lt;/code&gt;、&lt;code&gt;_&lt;/code&gt; 和 &lt;code&gt;__&lt;/code&gt; 都必须 &lt;em&gt;成对使用&lt;/em&gt; 。&lt;/p&gt;
+&lt;h2&gt;2.10 字符转义&lt;/h2&gt;
+&lt;p&gt;反斜线（&lt;code&gt;\&lt;/code&gt;）用于插入在 Markdown 语法中有特殊作用的字符。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;这是用来 *演示* 的 _文本_
+
+这是用来 \*演示\* 的 \_文本\_
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这是用来 &lt;em&gt;演示&lt;/em&gt; 的 &lt;em&gt;文本&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;这是用来 *演示* 的 _文本_&lt;/p&gt;
+&lt;p&gt;这些字符包括：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;\
+`
+*
+_
+{}
+[]
+()
+#
++
+-
+.
+!
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="markdown"></category></entry><entry><title>QQplot</title><link href="https://ghxdghxd.github.io/QQplot.html" rel="alternate"></link><published>2015-12-27T19:57:00+08:00</published><updated>2015-12-27T19:57:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-12-27:/QQplot.html</id><summary type="html">&lt;p&gt;QQplot在GWAS中的意思&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;QQplot&lt;/h1&gt;
 &lt;p&gt;Q-Q plot 即Quantile-Quantile Plot。它在各类研究中经常用到，主要是直观的表示观测值与预测值之间的差异。&lt;/p&gt;
 &lt;p&gt;在SPSS中很容做，Analysis - Descriptive statistics - Q-Qplot。&lt;/p&gt;
 &lt;p&gt;Q-Q plot主要是用来估计数量性状观测值与预测值之间的差异。一般我们所取得的数量性状数据都为正态分布数据。在GWAS研究中Q-Q
@@ -1203,7 +1526,207 @@ NG_000004.3
 &lt;li&gt;最好的修养，是明知不问&lt;/li&gt;
 &lt;li&gt;健康大于一切&lt;/li&gt;
 &lt;li&gt;活得太过自私，想得太过周全，倒想糊涂一世，只在聪明一时，难在取舍&lt;/li&gt;
-&lt;/ol&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="personal"></category></entry><entry><title>MutSigCV的问题</title><link href="https://ghxdghxd.github.io/MutSigCV.html" rel="alternate"></link><published>2015-04-28T16:47:00+08:00</published><updated>2016-09-23T10:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-04-28:/MutSigCV.html</id><summary type="html">&lt;p&gt;MutSigCV的简介&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;A tab-delimited report of significant mutations, listed in descending order from most significant to least significant.
+&lt;/ol&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="personal"></category></entry><entry><title>FASTQ格式详解</title><link href="https://ghxdghxd.github.io/fastq.html" rel="alternate"></link><published>2015-07-27T17:06:00+08:00</published><updated>2017-03-16T22:00:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-07-27:/fastq.html</id><summary type="html">&lt;p&gt;FASTQ格式详解&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;FASTQ是基于文本的，保存生物序列（通常是核酸序列）和其测序质量信息的标准格式。
+其序列以及质量信息都是使用一个ASCII字符标示，最初由Sanger开发，目的是将FASTA序列与质量数据放到一起，目前已经成为高通量测序结果的事实标准。&lt;/p&gt;
+&lt;h1&gt;格式说明&lt;/h1&gt;
+&lt;p&gt;FASTQ文件中每个序列通常有四行：
+1.序列标识以及相关的描述信息，以‘@’开头；
+2.第二行是序列
+3.第三行以‘+’开头，后面是序列标示符、描述信息，或者什么也不加
+4.第四行，是质量信息，和第二行的序列相对应，每一个序列都有一个质量评分，根据评分体系的不同，每个字符的含义表示的数字也不相同。&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  @SEQ_ID
+  GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
+  &lt;span class="se"&gt;\+&lt;/span&gt;  
+  !&lt;span class="s1"&gt;''&lt;/span&gt;*&lt;span class="o"&gt;((((&lt;/span&gt;***+&lt;span class="o"&gt;))&lt;/span&gt;%%%++&lt;span class="o"&gt;)(&lt;/span&gt;%%%%&lt;span class="o"&gt;)&lt;/span&gt;.1***-+*&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;**55CCF&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CCCCCCC65
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Illumina sequence identifiers&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;@HWUSI-EAS100R:6:73:941:1973#0/1&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;HWUSI-EAS100R&lt;/th&gt;
+&lt;th&gt;the unique instrument name&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;6&lt;/td&gt;
+&lt;td&gt;flowcell lane&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;73&lt;/td&gt;
+&lt;td&gt;tile number within the flowcell lane&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;941&lt;/td&gt;
+&lt;td&gt;‘x’-coordinate of the cluster within the tile&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;1973&lt;/td&gt;
+&lt;td&gt;‘y’-coordinate of the cluster within the tile&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;#0&lt;/td&gt;
+&lt;td&gt;index number for a multiplexed sample (0 for no indexing)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;/1&lt;/td&gt;
+&lt;td&gt;the member of a pair, /1 or /2 _(paired-end or mate-pair reads only)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;@EAS139:136:FC706VJ:2:2104:15343:197393 1:Y:18:ATCACG&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;EAS139&lt;/th&gt;
+&lt;th&gt;the unique instrument name&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;136&lt;/td&gt;
+&lt;td&gt;the run id&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;FC706VJ&lt;/td&gt;
+&lt;td&gt;the flowcell id&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;2&lt;/td&gt;
+&lt;td&gt;flowcell lane&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;2104&lt;/td&gt;
+&lt;td&gt;tile number within the flowcell lane&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;15343&lt;/td&gt;
+&lt;td&gt;‘x’-coordinate of the cluster within the tile&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;197393&lt;/td&gt;
+&lt;td&gt;‘y’-coordinate of the cluster within the tile&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;1&lt;/td&gt;
+&lt;td&gt;the member of a pair, 1 or 2 &lt;em&gt;(paired-end or mate-pair reads only)&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;Y&lt;/td&gt;
+&lt;td&gt;Y if the read fails filter (read is bad), N otherwise&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;18&lt;/td&gt;
+&lt;td&gt;0 when none of the control bits are on, otherwise it is an even number&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;ATCACG&lt;/td&gt;
+&lt;td&gt;index sequence&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;NCBI Sequence Read Archive&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  @SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345 &lt;span class="nv"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;36&lt;/span&gt;
+  GGGTGATGGCCGCTGCCGATGGCGTCAAATCCCACC  
+  +SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345 &lt;span class="nv"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;36&lt;/span&gt;  
+  IIIIIIIIIIIIIIIIIIIIIIIIIIIIII9IG9IC
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;关于质量编码格式&lt;/h2&gt;
+&lt;p&gt;质量评分指的是一个碱基的错误概率的对数值。其最初在Phred拼接软件中定义与使用，其后在许多软件中得到使用。其质量得分与错误概率的对应关系见下表：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Phred quality scores are logarithmically linked to error probabilities Phred&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Quality Score&lt;/th&gt;
+&lt;th&gt;Probability of incorrect base call&lt;/th&gt;
+&lt;th&gt;Base call accuracy&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;1 in 10&lt;/td&gt;
+&lt;td&gt;90 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;1 in 100&lt;/td&gt;
+&lt;td&gt;99 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;30&lt;/td&gt;
+&lt;td&gt;1 in 1000&lt;/td&gt;
+&lt;td&gt;99.9 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;1 in 10000&lt;/td&gt;
+&lt;td&gt;99.99 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;1 in 100000&lt;/td&gt;
+&lt;td&gt;99.999 %&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;$$Q=-10log_{10}P$$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q: Phred quality scores
+P: base-calling error probabilities&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;除了Phred质量得分换算标准，还有就是Solexa标准：
+$$Q_{solexa-prior to v.1.3}=-10log_{10}\frac{P}{1-P}$$&lt;/p&gt;
+&lt;p&gt;两种换算标准的比较：
+&lt;img alt="center" src="../images/compare.png"/&gt;
+Relationship between Q and p using the Sanger (red) and Solexa (black)
+equations (described above). The vertical dotted line indicates p = 0.05, or
+equivalently, Q ≈ 13.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;对于每个碱基的质量编码标示，不同的软件采用不同的方案，目前有5种方案：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sanger，Phred quality score，值的范围从0到92，对应的ASCII码从33到126，但是对于测序数据（raw read data）质量得分通常小于60，序列拼接或者mapping可能用到更大的分数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Solexa/Illumina 1.0, Solexa/Illumina quality score，值的范围从-5到63，对应的ASCII码从59到126，对于测序数据，得分一般在-5到40之间；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Illumina 1.3+，&lt;a href="http://en.wikipedia.org/wiki/Phred_quality_score"&gt;Phred quality score&lt;/a&gt;，值的范围从0到62对应的ASCII码从64到126，低于测序数据，得分在0到40之间；&lt;/li&gt;
+&lt;li&gt;Illumina 1.5+，Phred quality score，但是0到2作为另外的标示，&lt;a href="http://solexaqa.sourceforge.net/questions.htm#illumina"&gt;详见&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Illumina 1.8+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面是更为直观的表示：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................
+..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................
+...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................
+.................................**J**JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................
+LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL....................................................
+!&lt;span class="s2"&gt;"#&lt;/span&gt;$&lt;span class="s2"&gt;%&amp;amp;'()*+,-./0123456789:;&amp;lt;=&amp;gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&lt;/span&gt;
+&lt;span class="s2"&gt;|                         |    |        |                              |                     |&lt;/span&gt;
+&lt;span class="s2"&gt;33                        59   64       73                            104                   126&lt;/span&gt;
+
+&lt;span class="s2"&gt;S - Sanger        Phred+33,  raw reads typically (0, 40)&lt;/span&gt;
+&lt;span class="s2"&gt;X - Solexa        Solexa+64, raw reads typically (-5, 40)&lt;/span&gt;
+&lt;span class="s2"&gt;I - Illumina 1.3+ Phred+64,  raw reads typically (0, 40)&lt;/span&gt;
+&lt;span class="s2"&gt;J - Illumina 1.5+ Phred+64,  raw reads typically (3, 40)&lt;/span&gt;
+&lt;span class="s2"&gt;  with 0=unused, 1=unused, 2=Read Segment Quality Control Indicator (bold)&lt;/span&gt;
+&lt;span class="s2"&gt;  (Note: See discussion above).&lt;/span&gt;
+&lt;span class="s2"&gt;L - Illumina 1.8+ Phred+33,  raw reads typically (0, 41)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="fastq"></category></entry><entry><title>MutSigCV的问题</title><link href="https://ghxdghxd.github.io/MutSigCV.html" rel="alternate"></link><published>2015-04-28T16:47:00+08:00</published><updated>2016-09-23T10:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-04-28:/MutSigCV.html</id><summary type="html">&lt;p&gt;MutSigCV的简介&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;A tab-delimited report of significant mutations, listed in descending order from most significant to least significant.
 The "nnei","x", and "X" values in the MutSig output analysis give insight into how the background mutation rate is calculated for a given gene.  nnei gives the number of neighboring genes that are pooled together to compute the background mutation rate for that gene; these genes are not necessarily adjacent on the genome, but rather they have nearby covariate values. x gives the number of mutated bases in these neighboring genes that are either silent or non-coding, while X gives the total number of bases related to these neighboring genes.&lt;/p&gt;
 &lt;p&gt;According to the original MutSigCV article, olfactory receptors (ORs) can show up as significant due to the heterogeneity in the mutational processes in cancer (authors' hypothesis)(Lawrence et al. "Mutational heterogeneity in cancer and the search for new cancer-associted genes", Nature, 2013). Certain genes, like ORs, can accumulate mutations faster than others, even if their biology is not potentially oncogenic. Therefore, assuming a uniform rate of background mutations/aberrations (GISTIC/JISTIC) is somewhat wrong, no?&lt;/p&gt;
 &lt;p&gt;肿瘤异质性的突变过程， 一些基因，如ORs，虽然对肿瘤没有功能影响，但因为能够迅速积累突变，而被鉴定出来。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="mutsig"></category><category term="issue"></category><category term="bioinfo"></category></entry><entry><title>CREST的问题</title><link href="https://ghxdghxd.github.io/CREST.html" rel="alternate"></link><published>2015-03-12T09:58:00+08:00</published><updated>2015-12-24T14:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-03-12:/CREST.html</id><summary type="html">&lt;p&gt;CREST用来发现结构变异&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;运行CREST时，报错如下错误：
