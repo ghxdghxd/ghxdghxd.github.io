@@ -486,7 +486,187 @@ qmgr -c &lt;span class="s2"&gt;"set server auto_node_np = True"&lt;/span&gt; &lt
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    ./configure --enable-shared
     make
     make install
-&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="R"></category><category term="Rstudio"></category><category term="install"></category></entry><entry><title>分区挂载</title><link href="https://ghxdghxd.github.io/mount.html" rel="alternate"></link><published>2014-11-03T00:20:00+08:00</published><updated>2017-10-21T20:52:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-03:/mount.html</id><summary type="html">&lt;p&gt;mount挂载说明&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;/etc/fstab&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="R"></category><category term="Rstudio"></category><category term="install"></category></entry><entry><title>fedora常用配置</title><link href="https://ghxdghxd.github.io/fedora-install.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2018-01-27T10:27:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/fedora-install.html</id><summary type="html">&lt;p&gt;fedora常用安装与配置&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;config fedora&lt;/h1&gt;
+&lt;p&gt;sudo rm -rf /opt
+sudo dnf install yum-utils&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;package-cleanup --oldkernels&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;RPM Fusion Free/Nonfree源, FZUG源&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;27&lt;/span&gt;  
+sudo dnf config-manager --add-repo&lt;span class="o"&gt;=&lt;/span&gt;http://mirrors.aliyun.com/repo/fedora.repo  
+sudo dnf install http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-&lt;span class="nv"&gt;$version&lt;/span&gt;.noarch.rpm -y  
+sudo dnf install http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-&lt;span class="nv"&gt;$version&lt;/span&gt;.noarch.rpm -y  
+sudo dnf install https://repo.fdzh.org/FZUG/free/&lt;span class="nv"&gt;$version&lt;/span&gt;/x86_64/noarch/fzug-release-&lt;span class="nv"&gt;$version&lt;/span&gt;-0.2.noarch.rpm -y  
+sudo dnf makecache
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;upgrade&lt;/h2&gt;
+&lt;p&gt;sudo dnf check-update &amp;amp; sudo dnf upgrade&lt;br/&gt;
+sudo dnf install sqlite  &lt;/p&gt;
+&lt;h2&gt;disable Wayland&lt;/h2&gt;
+&lt;p&gt;/etc/gdm/custom.conf&lt;br/&gt;
+WaylandEnable=false  &lt;/p&gt;
+&lt;h2&gt;chrome&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm  
+sudo dnf install ./google-chrome-stable_current_x86_64.rpm  
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;git&lt;/h2&gt;
+&lt;p&gt;sudo dnf install git&lt;br/&gt;
+git config --global user.name "ghxdghxd"&lt;br/&gt;
+git config --global user.email guojt-4451@163.com  &lt;/p&gt;
+&lt;h2&gt;guake&lt;/h2&gt;
+&lt;p&gt;sudo dnf install guake  &lt;/p&gt;
+&lt;h2&gt;gnome-tweak-tool&lt;/h2&gt;
+&lt;p&gt;sudo dnf install gnome-tweak-tool&lt;br/&gt;
+sudo dnf install chrome-gnome-shell&lt;br/&gt;
+dashtodocky&lt;br/&gt;
+Topicons plus  &lt;/p&gt;
+&lt;h2&gt;wbpy&lt;/h2&gt;
+&lt;p&gt;sudo dnf install fcitx-table-chinese&lt;br/&gt;
+sudo dnf install fcitx-configtool&lt;br/&gt;
+sudo dnf install im-chooser&lt;br/&gt;
+im-chooser  &lt;/p&gt;
+&lt;h2&gt;zsh&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install zsh  
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - &lt;span class="p"&gt;|&lt;/span&gt; zsh  
+chsh -s /bin/zsh  
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;change PATH language&lt;/h2&gt;
+&lt;p&gt;export LANG=en_US&lt;br/&gt;
+xdg-user-dirs-gtk-update&lt;br/&gt;
+export LANG=zh_CN&lt;br/&gt;
+reboot  &lt;/p&gt;
+&lt;h2&gt;install ubuntu fonts&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo dnf install ttmkfdir  
+&lt;span class="nv"&gt;fontname&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;ubuntu-font-family-0.83  
+wget http://font.ubuntu.com/download/&lt;span class="nv"&gt;$fontname&lt;/span&gt;.zip  
+mkdir /tmp/&lt;span class="nv"&gt;$fontname&lt;/span&gt;  
+unzip -j &lt;span class="nv"&gt;$fontname&lt;/span&gt;.zip -d /tmp/&lt;span class="nv"&gt;$fontname&lt;/span&gt;  
+sudo mkdir /usr/share/fonts/ubuntu  
+sudo mv /tmp/&lt;span class="nv"&gt;$fontname&lt;/span&gt;/*.ttf /usr/share/fonts/ubuntu  
+rm -rf /tmp/&lt;span class="nv"&gt;$fontname&lt;/span&gt;  
+&lt;span class="nb"&gt;cd&lt;/span&gt; /usr/share/fonts/ubuntu  
+ttmkfdir &amp;gt; fonts.dir  
+fc-cache -fv  
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;exFat &amp;amp; sshfs&lt;/h2&gt;
+&lt;p&gt;sudo dnf install exfat-utils&lt;br/&gt;
+sudo dnf install fuse-exfat&lt;br/&gt;
+sudo apt install sshfs  &lt;/p&gt;
+&lt;h2&gt;synergy&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget https://binaries.symless.com/v1.8.8/synergy-v1.8.8-stable-25a8cb2-Linux-x86_64.rpm  
+sudo dnf install ./synergy-v1.8.8-stable-25a8cb2-Linux-x86_64.rpm  
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;sublime text&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg  
+sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo  
+sudo dnf update  
+sudo dnf install sublime-text  
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;anaconda&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget https://repo.continuum.io/archive/Anaconda3-5.0.0.1-Linux-x86_64.sh  
+bash Anaconda3-4.3.1-Linux-x86_64.sh&lt;span class="p"&gt;|&lt;/span&gt;sh  
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;zotero&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget https://download.zotero.org/client/release/5.0.23/https://download.zotero.org/client/release/5.0.23/Zotero-5.0.23_linux-x86_64.tar.bz2  
+tar xvf Zotero-5.0.23_linux-x86_64.tar.bz2  
+sudo mv Zotero_linux-x86_64/  
+
+cp /share/apps/Zotero_linux-x86_64/zotero.desktop /usr/share/applications  
+
+git clone https://github.com/jlegewie/zotfile.git  
+&lt;span class="nb"&gt;cd&lt;/span&gt; zotfile  
+make  
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;wewechat&lt;/h2&gt;
+&lt;h2&gt;thunderbird&lt;/h2&gt;
+&lt;p&gt;sudo dnf install thunderbird-enigmail  &lt;/p&gt;
+&lt;h2&gt;atom&lt;/h2&gt;
+&lt;p&gt;sudo dnf --assumeyes install make gcc gcc-c++ glibc-devel git-core libsecret-devel rpmdevtools libX11-devel libxkbfile-devel&lt;br/&gt;
+sudo dnf install ./atom.x86_64.rpm  &lt;/p&gt;
+&lt;h2&gt;wordpress&lt;/h2&gt;
+&lt;p&gt;sudo dnf install -y php php-mysqlnd mysql mysql-server mysql-devel workpress  &lt;/p&gt;
+&lt;p&gt;sudo systemctl enable httpd.service mariadb.service&lt;br/&gt;
+sudo systemctl start httpd.service mariadb.service  &lt;/p&gt;
+&lt;p&gt;sudo mysqladmin -u root password  &lt;/p&gt;
+&lt;p&gt;vi /etc/httpd/conf.d/wordpress.conf&lt;br/&gt;
+Require local ======&amp;gt;  Require all granted  &lt;/p&gt;
+&lt;p&gt;sudo firewall-cmd --add-service=http --permanent&lt;br/&gt;
+sudo firewall-cmd --reload  &lt;/p&gt;
+&lt;h2&gt;ModuleNotFoundError: No module named 'Xlib'&lt;/h2&gt;
+&lt;p&gt;pip install python3_xlib&lt;/p&gt;
+&lt;h2&gt;ModuleNotFoundError: No module named 'xdg'&lt;/h2&gt;
+&lt;p&gt;pip install pyxdg  &lt;/p&gt;
+&lt;p&gt;File failed to load: /extensions/MathZoom.jsrs  &lt;/p&gt;
+&lt;h1&gt;install R&lt;/h1&gt;
+&lt;p&gt;参考&lt;a href="R-and-Rstudio"&gt;这里&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="fedora"></category><category term="linux"></category><category term="R"></category><category term="install"></category></entry><entry><title>ubuntu常用配置</title><link href="https://ghxdghxd.github.io/ubuntu-install.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2017-12-28T08:05:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/ubuntu-install.html</id><summary type="html">&lt;p&gt;ubuntu常用安装与配置&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;config ubuntu&lt;/h1&gt;
+&lt;h2&gt;upgrade&lt;/h2&gt;
+&lt;p&gt;sudo apt update &amp;amp; sudo apt upgrade&lt;/p&gt;
+&lt;h2&gt;chrome&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt -fy install ./google-chrome-stable_current_amd64.deb
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;git&lt;/h2&gt;
+&lt;p&gt;sudo apt install git
+git config --global user.name "user name"
+git config --global user.email user@email.com&lt;/p&gt;
+&lt;h2&gt;guake&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install python-dbus-dev
+sudo apt install libutempter-dev
+sudo apt-get install automake libgconf2-dev python-glade2 libtool python-keybinder
+git clone https://github.com/Guake/guake.git
+&lt;span class="nb"&gt;cd&lt;/span&gt; guake
+sudo ./dev.sh --install
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;gnome-tweak-tool&lt;/h2&gt;
+&lt;p&gt;sudo apt install gnome-tweak-tool
+sudo apt install gnome-shell-extension-dash-to-panel&lt;/p&gt;
+&lt;h2&gt;wbpy&lt;/h2&gt;
+&lt;p&gt;sudo apt install fcitx-table-wbpy
+im-config -s fcitx
+sudo cp /usr/share/fcitx/xdg/autostart/fcitx-autostart.desktop /etc/xdg/autostart/&lt;/p&gt;
+&lt;h2&gt;zsh&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - &lt;span class="p"&gt;|&lt;/span&gt; zsh
+chsh -s &lt;span class="sb"&gt;`&lt;/span&gt;which zsh&lt;span class="sb"&gt;`&lt;/span&gt;
+sudo shutdown -r &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;change PATH language&lt;/h2&gt;
+&lt;p&gt;export LANG=en_US
+xdg-user-dirs-gtk-update&lt;/p&gt;
+&lt;p&gt;export LANG=zh_CN&lt;/p&gt;
+&lt;h2&gt;exFat&lt;/h2&gt;
+&lt;p&gt;sudo apt instal exfat-fuse&lt;/p&gt;
+&lt;p&gt;sudo apt install sshfs&lt;/p&gt;
+&lt;h2&gt;anaconda&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
+bash Anaconda3-4.3.1-Linux-x86_64.sh&lt;span class="p"&gt;|&lt;/span&gt;sh
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;synergy&lt;/h2&gt;
+&lt;p&gt;sudo apt-get -fy install ./synergy-v1.8.8-stable-c30301e-Linux-x86_64.deb&lt;/p&gt;
+&lt;h2&gt;sublime&lt;/h2&gt;
+&lt;p&gt;sudo apt-get -fy install ./sublime-text_build-3126_amd64.deb&lt;/p&gt;
+&lt;h2&gt;atom&lt;/h2&gt;
+&lt;p&gt;sudo apt-get -fy install ./atom-amd64.deb&lt;/p&gt;
+&lt;h2&gt;youdao-dict&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get -fy install ./youdao-dict_1.1.0-0-deepin_amd64.deb
+wget https://pypi.python.org/packages/48/9a/bcf41728a0a81b3d76e2a873296c2912300c653f9e6453c760a50bd2ef93/python-xlib-0.19.tar.bz2
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;ModuleNotFoundError&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;No module named 'Xlib'
+  pip install python3_xlib&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;No module named 'xdg'
+  pip install pyxdg&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;wechat&lt;/h2&gt;
+&lt;p&gt;sudo snap install electronic-wechat&lt;/p&gt;
+&lt;p&gt;File failed to load: /extensions/MathZoom.js&lt;/p&gt;
+&lt;h1&gt;&lt;a href="R-and-Rstudio"&gt;install R&lt;/a&gt;&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="ubuntu"></category><category term="linux"></category><category term="R"></category><category term="install"></category></entry><entry><title>分区挂载</title><link href="https://ghxdghxd.github.io/mount.html" rel="alternate"></link><published>2014-11-03T00:20:00+08:00</published><updated>2017-10-21T20:52:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-03:/mount.html</id><summary type="html">&lt;p&gt;mount挂载说明&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;/etc/fstab&lt;/h1&gt;
 &lt;p&gt;运维都知道的文件，若想把mount的disk和dir设置为每次开机自动加载，那么就要把相关信息写到这个文件中。当用”mount -a“命令自动mount的时候，也会去读这个文件。例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
 &lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;
@@ -525,4 +705,105 @@ qmgr -c &lt;span class="s2"&gt;"set server auto_node_np = True"&lt;/span&gt; &lt
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;blkid usb &lt;span class="c1"&gt;#查看uuid&lt;/span&gt;
 &lt;span class="c1"&gt;# 修改/etc/fstab&lt;/span&gt;
 &lt;span class="nv"&gt;UUID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;54A3-36E3 /home/aData exfat defaults,uid&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;,gid&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;,umask&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;022&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="mount"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="linux"></category><category term="mount"></category></entry><entry><title>ssh安装与配置</title><link href="https://ghxdghxd.github.io/ssh.html" rel="alternate"></link><published>2014-11-03T00:20:00+08:00</published><updated>2018-01-13T11:01:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-03:/ssh.html</id><summary type="html">&lt;p&gt;ssh安装与配置&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;相关文档&lt;/h1&gt;
+&lt;h2&gt;SSH安装&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 备份&lt;/span&gt;
+sudo cp -rf /etc/ssh /etc/ssh_bak
+&lt;span class="c1"&gt;#下载&lt;/span&gt;
+wget http://mirror.internode.on.net/pub/OpenBSD/OpenSSH/portable/openssh-7.5p1.tar.gz
+&lt;span class="c1"&gt;#解压&lt;/span&gt;
+tar xvf openssh-7.5p1.tar.gz
+&lt;span class="nb"&gt;cd&lt;/span&gt; openssh-7.5p1
+&lt;span class="c1"&gt;#编译,安装到/opt，配置保存到/etc/ssh&lt;/span&gt;
+./configure --prefix&lt;span class="o"&gt;=&lt;/span&gt;/opt/openssh-7.5p1 --sysconfdir&lt;span class="o"&gt;=&lt;/span&gt;/etc/ssh --with-pam --with-zlib --with-md5-passwords
+make
+make install
+
+service sshd reload
+&lt;span class="c1"&gt;#或&lt;/span&gt;
+service sshd restart
+
+&lt;span class="c1"&gt;#开机启动&lt;/span&gt;
+chkconfig sshd on
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;1. 关于SSH Server的整体设定，包含使用的port以及使用的密码演算方式&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Port &lt;span class="m"&gt;22&lt;/span&gt;
+    &lt;span class="c1"&gt;#SSH预设使用22这个port，重复使用port使用多个端口&lt;/span&gt;
+Protocol &lt;span class="m"&gt;2&lt;/span&gt;,1
+    &lt;span class="c1"&gt;# 选择的SSH协议版本，可以是1也可以是2，&lt;/span&gt;
+    &lt;span class="c1"&gt;# 如果要同时支持两者，就必须要使用 2,1 这个分隔了！&lt;/span&gt;
+ListenAddress &lt;span class="m"&gt;192&lt;/span&gt;.168.0.100
+    &lt;span class="c1"&gt;# 只监听来自 192.168.0.100 这个 IP 的SSH联机。&lt;/span&gt;
+    &lt;span class="c1"&gt;# 如果不使用设定的话，则预设所有接口均接受 SSH&lt;/span&gt;
+PidFile /var/run/sshd.pid
+    &lt;span class="c1"&gt;# 可以放置 SSHD 这个 PID 的档案！左列为默认值&lt;/span&gt;
+LoginGraceTime &lt;span class="m"&gt;600&lt;/span&gt;
+    &lt;span class="c1"&gt;# 当使用者连上 SSH server 之后，会出现输入密码的画面，&lt;/span&gt;
+    &lt;span class="c1"&gt;# 在该画面中，在多久时间内没有成功连上 SSH server ，&lt;/span&gt;
+    &lt;span class="c1"&gt;# 就断线！时间为秒！&lt;/span&gt;
+Compression yes
+    &lt;span class="c1"&gt;# 是否可以使用压缩指令？当然可以啰！&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;2. 说明主机的 Private Key 放置的档案，预设使用下面的档案即可！&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;HostKey /etc/ssh/ssh_host_key　　　　&lt;span class="c1"&gt;# SSH version 1 使用的私钥&lt;/span&gt;
+HostKey /etc/ssh/ssh_host_rsa_key　　&lt;span class="c1"&gt;# SSH version 2 使用的 RSA 私钥&lt;/span&gt;
+HostKey /etc/ssh/ssh_host_dsa_key　　&lt;span class="c1"&gt;# SSH version 2 使用的 DSA 私钥&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;2.1 关于 version 1 的一些设定！&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;KeyRegenerationInterval &lt;span class="m"&gt;3600&lt;/span&gt;
+    &lt;span class="c1"&gt;# 由前面联机的说明可以知道， version 1 会使用 server 的 Public Key ，那么如果这个 Public Key 被偷的话，岂不完蛋？所以需要每隔一段时间来重新建立一次！这里的时间为秒！&lt;/span&gt;
+ServerKeyBits &lt;span class="m"&gt;768&lt;/span&gt; 　　 &lt;span class="c1"&gt;# 没错！这个就是 Server key 的长度！&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;3. 关于登录文件的讯息数据放置与 daemon 的名称！&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SyslogFacility AUTH　　　　　　　　　&lt;span class="c1"&gt;# 当有人使用 SSH 登入系统的时候，SSH会记录资讯，这个信息要记录在什么 daemon name 底下？预设是以 AUTH 来设定的，即是 /var/log/secure 里面！什么？忘记了！回到 Linux 基础去翻一下其它可用的 daemon name 为：DAEMON,USER,AUTH,LOCAL0,LOCAL1,LOCAL2,LOCAL3,LOCAL4,LOCAL5,&lt;/span&gt;
+LogLevel INFO　　&lt;span class="c1"&gt;# 登录记录的等级！嘿嘿！任何讯息！同样的，忘记了就回去参考！&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;4. 安全设定项目！极重要！&lt;/h3&gt;
+&lt;h4&gt;4.1 登入设定部分&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;PermitRootLogin no　　 　&lt;span class="c1"&gt;# 是否允许 root 登入！预设是允许的，但是建议设定成 no！&lt;/span&gt;
+UserLogin no　　　　　　　&lt;span class="c1"&gt;# 在 SSH 底下本来就不接受 login 这个程序的登入！&lt;/span&gt;
+StrictModes yes　　　　　　&lt;span class="c1"&gt;# 当使用者的 host key 改变之后，Server 就不接受联机，&lt;/span&gt;
+　　　　　　　　　　　　　 &lt;span class="c1"&gt;# 可以抵挡部分的木马程序！&lt;/span&gt;
+&lt;span class="c1"&gt;# RSAAuthentication yes　　 # 是否使用纯的 RSA 认证！？仅针对 version 1 ！&lt;/span&gt;
+PubkeyAuthentication yes　 &lt;span class="c1"&gt;# 是否允许 Public Key ？当然允许啦！只有 version 2&lt;/span&gt;
+AuthorizedKeysFile      .ssh/authorized_keys
+　　　　　　　　　　　　　 &lt;span class="c1"&gt;# 上面这个在设定若要使用不需要密码登入的账号时，那么那个账号的存放档案所在档名！&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;4.2 认证部分&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;RhostsAuthentication no　　&lt;span class="c1"&gt;# 本机系统不止使用 .rhosts ，因为仅使用 .rhosts 太不安全了，所以这里一定要设定为 no ！&lt;/span&gt;
+IgnoreRhosts yes　　　　　 &lt;span class="c1"&gt;# 是否取消使用 ~/.ssh/.rhosts 来做为认证！当然是！&lt;/span&gt;
+RhostsRSAAuthentication no &lt;span class="c1"&gt;# 这个选项是专门给 version 1 用的，使用 rhosts 档案在 /etc/hosts.equiv配合 RSA 演算方式来进行认证！不要使用&lt;/span&gt;
+HostbasedAuthentication no &lt;span class="c1"&gt;# 这个项目与上面的项目类似，不过是给 version 2 使用的！&lt;/span&gt;
+IgnoreUserKnownHosts no　　&lt;span class="c1"&gt;# 是否忽略家目录内的 ~/.ssh/known_hosts 这个档案所记录的主机内容？当然不要忽略，所以这里就是 no 啦！&lt;/span&gt;
+PasswordAuthentication yes &lt;span class="c1"&gt;# 密码验证当然是需要的！所以这里写 yes 啰！&lt;/span&gt;
+PermitEmptyPasswords no　　&lt;span class="c1"&gt;# 若上面那一项如果设定为 yes 的话，这一项就最好设定为 no ，这个项目在是否允许以空的密码登入！当然不许！&lt;/span&gt;
+ChallengeResponseAuthentication yes  &lt;span class="c1"&gt;# 挑战任何的密码认证！所以，任何 login.conf规定的认证方式，均可适用！&lt;/span&gt;
+&lt;span class="c1"&gt;#PAMAuthenticationViaKbdInt yes      # 是否启用其它的 PAM 模块！启用这个模块将会导致 PasswordAuthentication 设定失效！&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;4.3 与 Kerberos 有关的参数设定！因为我们没有 Kerberos 主机，所以底下不用设定！&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#KerberosAuthentication no&lt;/span&gt;
+&lt;span class="c1"&gt;#KerberosOrLocalPasswd yes&lt;/span&gt;
+&lt;span class="c1"&gt;#KerberosTicketCleanup yes&lt;/span&gt;
+&lt;span class="c1"&gt;#KerberosTgtPassing no&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;4.4 底下是有关在 X-Window 底下使用的相关设定！&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;X11Forwarding yes
+&lt;span class="c1"&gt;#X11DisplayOffset 10&lt;/span&gt;
+&lt;span class="c1"&gt;#X11UseLocalhost yes&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;4.5 登入后的项目：&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;PrintMotd no              &lt;span class="c1"&gt;# 登入后是否显示出一些信息呢？例如上次登入的时间、地点等等，预设是 yes ，但是，如果为了安全，可以考虑改为 no ！&lt;/span&gt;
+PrintLastLog yes　　　　　&lt;span class="c1"&gt;# 显示上次登入的信息！可以啊！预设也是 yes ！&lt;/span&gt;
+KeepAlive yes　　　　　　 &lt;span class="c1"&gt;# 一般而言，如果设定这项目的话，那么 SSH Server 会传送 KeepAlive 的讯息给 Client 端，以确保两者的联机正常！在这个情况下，任何一端死掉后， SSH 可以立刻知道！而不会有僵尸程序的发生！&lt;/span&gt;
+UsePrivilegeSeparation yes &lt;span class="c1"&gt;# 使用者的权限设定项目！就设定为 yes 吧！&lt;/span&gt;
+MaxStartups &lt;span class="m"&gt;10&lt;/span&gt;　　　　　　&lt;span class="c1"&gt;# 同时允许几个尚未登入的联机画面？当我们连上 SSH ，但是尚未输入密码时，这个时候就是我们所谓的联机画面啦！在这个联机画面中，为了保护主机，所以需要设定最大值，预设最多十个联机画面，而已经建立联机的不计算在这十个当中&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;4.6 关于使用者抵挡的设定项目：&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;DenyUsers *　　　　　　　 &lt;span class="c1"&gt;# 设定受抵挡的使用者名称，如果是全部的使用者，那就是全部&lt;/span&gt;
+　　　　　　　　　　　　　&lt;span class="c1"&gt;# 挡吧！若是部分使用者，可以将该账号填入！例如下列！&lt;/span&gt;
+DenyUsers &lt;span class="nb"&gt;test&lt;/span&gt;
+DenyGroups &lt;span class="nb"&gt;test&lt;/span&gt;　　　　　 &lt;span class="c1"&gt;# 与 DenyUsers 相同！仅抵挡几个群组而已！&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;5. 关于 SFTP 服务的设定项目！&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Subsystem       sftp    /usr/lib/ssh/sftp-server
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="ssh"></category><category term="linux"></category></entry></feed>

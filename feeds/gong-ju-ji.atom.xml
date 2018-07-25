@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 工具集</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/gong-ju-ji.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-02-03T19:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="https://ghxdghxd.github.io/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;常用命令&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 工具集</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/gong-ju-ji.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-05-28T11:30:00+08:00</updated><entry><title>git submodule的用法</title><link href="https://ghxdghxd.github.io/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;常用命令&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone &amp;lt;repository&amp;gt; --recursive 递归的方式克隆整个项目
 git submodule add &amp;lt;repository&amp;gt;&amp;lt;path&amp;gt; 添加子模块
 git submodule init 初始化子模块
@@ -249,4 +249,180 @@ git push origin dev:develop             &lt;span class="c1"&gt;# 本地分支提
 在git创建的项目中换行符为LF，而执行git add时，系统会提示LF将被转换为CRLF。
 解决的办法很简单，禁止git的自动转换即可。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git config --global core.autocrlf &lt;span class="nb"&gt;false&lt;/span&gt; //禁用自动转换
-&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="git"></category><category term="command"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="git"></category><category term="command"></category></entry><entry><title>R</title><link href="https://ghxdghxd.github.io/R.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-01-13T10:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/R.html</id><summary type="html">&lt;p&gt;R的常用命令&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;R的常用命令&lt;/h1&gt;
+&lt;h2&gt;R&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    动态生成变量，并赋值， &lt;span class="kp"&gt;assign&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;,&lt;/span&gt; value&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="R"></category></entry><entry><title>计算机字符编码</title><link href="https://ghxdghxd.github.io/Unicode.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-02-28T11:10:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/Unicode.html</id><summary type="html">&lt;p&gt;计算机字符编码&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;计算机系统通用的字符编码&lt;/h1&gt;
+&lt;h2&gt;数据结构(字符)&lt;/h2&gt;
+&lt;p&gt;在计算机内存中，统一使用Unicode编码；当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码。&lt;br/&gt;
+用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件：&lt;/p&gt;
+&lt;p&gt;![编码1]](../images/bianma-1.png)&lt;/p&gt;
+&lt;p&gt;utf-8编码的文件在内存中是unicode编码显示&lt;/p&gt;
+&lt;p&gt;浏览网页的时候，服务器会把动态生成的Unicode内容转换为UTF-8再传输到浏览器：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="编码2" src="../images/bianma-2.png"/&gt;&lt;/p&gt;
+&lt;p&gt;服务器把动态生成的Unicode内容转换为UTF-8再传输&lt;/p&gt;
+&lt;p&gt;所以你看到很多网页的源码上会有类似&lt;meta charset="utf-8"/&gt;的信息，表示该网页正是用的UTF-8编码。（UTF-8编码没有字节序的问题）&lt;/p&gt;
+&lt;h2&gt;字符转化&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;序列化&lt;/strong&gt;: 将一个数据结构（unicode编码， utf-8等）转化为二进制的数据流。用于存储，或者发送给网络中的其它程序。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不同的编码形成的二进制流不一样。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;反序列化&lt;/strong&gt;：与序列化相反，将二进制流重新恢复成更易于处理和阅读的数据结构&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;python中的编码&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Python中一切都是对象（object）。&lt;/li&gt;
+&lt;li&gt;与字符编码类型有关的对象有str和bytes。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;str对象存储的字符是UNICODE类型，bytes对象存储的字符就是一串byte。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;str u'字符串以u开头'&lt;blockquote&gt;
+&lt;p&gt;str.encode后得到的是一个bytes对象&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;bytes b'字节以b开头'&lt;blockquote&gt;
+&lt;p&gt;bytes.decode之后，得到的是一个str对象。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;decode的作用是将其他编码的字符串转换成unicode编码，如str1.decode('gb2312')，表示将gb2312编码的字符串str1转换成unicode编码&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Unicode"></category><category term="UTF-8"></category></entry><entry><title>pandas</title><link href="https://ghxdghxd.github.io/pandas.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-03-20T13:21:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/pandas.html</id><summary type="html">&lt;p&gt;pandas的常用命令&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;常用&lt;/h1&gt;
+&lt;h2&gt;read_csv&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sep&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 第一行不设为列名&lt;/span&gt;
+ &lt;span class="n"&gt;bed_df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'object'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'chr'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'start'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'pos'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'ref'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'alt'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+ &lt;span class="sb"&gt;``&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;
+
+&lt;span class="c1"&gt;## cat 合并&lt;/span&gt;
+
+&lt;span class="sb"&gt;``&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;
+&lt;span class="n"&gt;Series&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s1"&gt;'a'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'b'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'c'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cat&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s1"&gt;'A'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'B'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'C'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="n"&gt;sep&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;','&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;filter&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mat[mat.index.map(lambda x:x in list)]
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;dataframe to list&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mat.drop_duplicates().values.tolist()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;merge dataframe&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pd.connect([mat1, mat2, mat3], axis=1)  #axis=1 cbind, asis=0 rbind
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;insert&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mat.insert(0, 'date', date) # insert in 0 col
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;pandas错误&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;read_csv: C-engine CParserError: Error tokenizing data&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When using read_csv like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_pickle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'faulty_row.pkl'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'faulty_row.csv'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'utf8'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'faulty_row.csv'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'utf8'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You get the following exception:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;CParserError: Error tokenizing data. C error: Buffer overflow caught - possible malformed input file.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Solution 1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can read the CSV using the python engine then no exception is thrown:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'faulty_row.csv'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'utf8'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'python'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Solution 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If your second-to-last line includes an '\r' break.
+You can open in universal-new-line mode to solve the error.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'test.csv'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;'rU'&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'utf-8'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'c'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="python"></category><category term="pandas"></category></entry><entry><title>python</title><link href="https://ghxdghxd.github.io/python.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-02-28T11:10:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/python.html</id><summary type="html">&lt;p&gt;python的常用命令&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;python优化&lt;/h1&gt;
+&lt;h2&gt;做一个pythonic的人&lt;/h2&gt;
+&lt;h3&gt;1. 枚举&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterable&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;2. python -m cProfile&lt;/h3&gt;
+&lt;h3&gt;3. time -p bash test.sh/python test.py&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="python"></category><category term="pandas"></category></entry><entry><title>shell</title><link href="https://ghxdghxd.github.io/shell.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-05-28T11:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/shell.html</id><summary type="html">&lt;p&gt;shell的常用命令&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;常用命令&lt;/h1&gt;
+&lt;h2&gt;awk&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="nv"&gt;$0&lt;/span&gt;~/aaa/表示0包括aaa
+    split &lt;span class="o"&gt;(&lt;/span&gt;string, array, field separator&lt;span class="o"&gt;)&lt;/span&gt;
+    split &lt;span class="o"&gt;(&lt;/span&gt;string, array&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="se"&gt;\-&lt;/span&gt;-&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt;如果第三个参数没有提供，awk就默认使用当前FS值。
+    substr&lt;span class="o"&gt;(&lt;/span&gt;s,p&lt;span class="o"&gt;)&lt;/span&gt; 返回字符串s中从p开始的后缀部分
+    substr&lt;span class="o"&gt;(&lt;/span&gt;s,p,n&lt;span class="o"&gt;)&lt;/span&gt; 返回字符串s中从p开始长度为n的后缀部分
+    length函数返回整个记录中的字符数。
+    gsub&lt;span class="o"&gt;(&lt;/span&gt;regular expression, subsitution string, target string&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    index&lt;span class="o"&gt;(&lt;/span&gt;a,b&lt;span class="o"&gt;)&lt;/span&gt;, r返回b中a的位置，没有返回0
+    &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;i&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;length&lt;span class="o"&gt;(&lt;/span&gt;a&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;i++&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;awk,getline,用于获得下一行&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;输出奇数，
+seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;'{print $0;getline}'&lt;/span&gt;
+&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="m"&gt;3&lt;/span&gt;
+&lt;span class="m"&gt;5&lt;/span&gt;
+&lt;span class="m"&gt;7&lt;/span&gt;
+&lt;span class="m"&gt;9&lt;/span&gt;
+输出偶数
+seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;'{getline;print $0}'&lt;/span&gt;
+&lt;span class="m"&gt;2&lt;/span&gt;
+&lt;span class="m"&gt;4&lt;/span&gt;
+&lt;span class="m"&gt;6&lt;/span&gt;
+&lt;span class="m"&gt;8&lt;/span&gt;
+&lt;span class="m"&gt;10&lt;/span&gt;
+
+输出三行,如果后面没有足够的行，则输出最后一行
+seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;'{getline;getline;print $0}'&lt;/span&gt;
+&lt;span class="m"&gt;3&lt;/span&gt;
+&lt;span class="m"&gt;6&lt;/span&gt;
+&lt;span class="m"&gt;9&lt;/span&gt;
+&lt;span class="m"&gt;10&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;sed&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sed -n &lt;span class="s1"&gt;'/A/,/B/p'&lt;/span&gt;  匹配A的行与匹配B的行之间的内容
+    sed -n &lt;span class="s1"&gt;'2p,4,5p'&lt;/span&gt; 输出2 &lt;span class="m"&gt;4&lt;/span&gt;,5 行
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;grep&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    cat file  &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s1"&gt;'[:space:]*#'&lt;/span&gt;匹配空格
+    grep -P &lt;span class="s1"&gt;'\t'&lt;/span&gt; 匹配制表符
+    grep -E &lt;span class="s2"&gt;"abc|123"&lt;/span&gt; myfile -n 两个关键词
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;ln&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    ln -s 源文件 目标文件
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;paste&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    paste -s -d &lt;span class="s1"&gt;'\t'&lt;/span&gt;  多行合并成一行
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;tr&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tr -s &lt;span class="s1"&gt;' '&lt;/span&gt; 多个空格变一个
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;sort&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sort  -V 按染色体排序 &lt;span class="m"&gt;1&lt;/span&gt;，2，3，，，，X，Y
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;unzip&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    unzip -l zipfile   查看list
+    unzip -p zipfile &lt;span class="s2"&gt;"*/getfile"&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;less   查看指定文件
+    unzip -d outdir    指定输出目录
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;gzip&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gzip -t/--test 检测gz文件是否有错误
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;计算 expr&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    expr &lt;span class="m"&gt;1&lt;/span&gt; + &lt;span class="m"&gt;1&lt;/span&gt;
+    expr
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;查看网速sar&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sar -n DEV &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="m"&gt;100&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;sudo !!命令&lt;/h2&gt;
+&lt;p&gt;没有特定输入sudo命令而运行，将给出没有权限的错误。那么，你不需要重写整个命令，仅仅输入'!!'就可以抓取最后的命令。&lt;/p&gt;
+&lt;h2&gt;Ctrl+x+e命令&lt;/h2&gt;
+&lt;p&gt;这个命令对于管理员和开发者非常有用。为了使每天的任务自动化，管理员需要通过输入vi、vim、nano等打开编辑器。&lt;/p&gt;
+&lt;p&gt;仅仅从命令行快速的敲击“Ctrl-x-e”，就可以在编辑器中开始工作了。&lt;/p&gt;
+&lt;h2&gt;nl命令&lt;/h2&gt;
+&lt;p&gt;“nl命令”添加文件的行数。&lt;/p&gt;
+&lt;h2&gt;shuf n1&lt;/h2&gt;
+&lt;p&gt;随机从一个文件或文件夹中选择行/文件/文件夹。首先使用ls命令来显示文件夹的内容。&lt;/p&gt;
+&lt;h2&gt;数组&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;array&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;cat test.txt&lt;span class="p"&gt;|&lt;/span&gt;cut -f &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;array&lt;/span&gt;&lt;span class="p"&gt;[@]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="c1"&gt;# 数组全部&lt;/span&gt;
+&lt;span class="si"&gt;${#&lt;/span&gt;&lt;span class="nv"&gt;array&lt;/span&gt;&lt;span class="p"&gt;[@]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="c1"&gt;# 数组长度&lt;/span&gt;
+&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;array&lt;/span&gt;&lt;span class="p"&gt;[0]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="c1"&gt;# 数组元素 0 1 2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="shell"></category><category term="bash"></category></entry></feed>
