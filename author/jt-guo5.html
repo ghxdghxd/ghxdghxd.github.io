@@ -43,7 +43,7 @@
                         <span class="user-name">
                             <strong>JT Guo</strong>
                         </span>
-                        <span class="user-role">Administrator</span>
+                        <span class="user-role">Bioinformatist</span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
                             <span>Online</span>
@@ -1004,6 +1004,19 @@
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
                                 <i class="fa fa-tag"></i>
+                                <span>manage</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
                                 <span>Rstudio</span>
                             </a>
                             <div class="sidebar-submenu">
@@ -1258,25 +1271,25 @@
 <ul>
 <li>远程</li>
 </ul>
-<div class="highlight"><pre><span></span>git remote add origin git@github.com:ghxdghxd<span class="nv">$NAME</span>.git
+<div class="highlight"><pre>git remote add origin git@github.com:ghxdghxd<span class="nv">$NAME</span>.git
 </pre></div>
 <ul>
 <li>本地(初始化)</li>
 </ul>
-<div class="highlight"><pre><span></span>git init
+<div class="highlight"><pre><span class="n">git</span> <span class="n">init</span>
 </pre></div>
 <h2>2 常用操作</h2>
 <ul>
 <li>拉取</li>
 </ul>
-<div class="highlight"><pre><span></span>git pull origin master
+<div class="highlight"><pre><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
 </pre></div>
 <ul>
 <li>提交</li>
 </ul>
-<div class="highlight"><pre><span></span>git add *.py
-git commit -m <span class="s2">"message"</span>
-git push origin master/dev/develop
+<div class="highlight"><pre><span class="n">git</span> <span class="n">add</span> <span class="o">*</span><span class="p">.</span><span class="n">py</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">"message"</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">develop</span>
 </pre></div>
 
     </div>
@@ -1337,6 +1350,10 @@ git push origin master/dev/develop
         if((screen.width<=600)){
             $(".page-wrapper").removeClass("toggled");
         }
+        $(document).ready(function() {
+            $("table").attr("class", "table table-striped table-bordered table-sm text-center");
+            $("thead").attr("class", "thead-dark");
+        });
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

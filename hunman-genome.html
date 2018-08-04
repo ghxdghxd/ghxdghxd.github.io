@@ -43,7 +43,7 @@
                         <span class="user-name">
                             <strong>JT Guo</strong>
                         </span>
-                        <span class="user-role">Administrator</span>
+                        <span class="user-role">Bioinformatist</span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
                             <span>Online</span>
@@ -1004,6 +1004,19 @@
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
                                 <i class="fa fa-tag"></i>
+                                <span>manage</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
                                 <span>Rstudio</span>
                             </a>
                             <div class="sidebar-submenu">
@@ -1289,11 +1302,44 @@
 <p>4.<strong>cDNA</strong>：通过mRNA反转录所得，与mRNA序列互补的单链DNA或者与mRNA对应的DNA双链；</p>
 <p>5.<strong>EST</strong>：表达序列标签，是指从一个随机选择的cDNA 克隆，进行5’端和3’端单一次测序挑选出来获得的短的cDNA部分序列, 代表一个完整基因的一小部分，在数据库中其长度一般从20 到7000bp 不等，平均长度为360
 ±120bp。由于cDNA文库的复杂性和测序的随机性，有时多个EST代表同一基因或基因组，将其归类形成EST簇（EST cluster)；</p>
-<p>过程|模板|原料|特点|引物
-:---:|:---:|:---:|:---:|:---:|:---:
-DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保留复制|需要
-转录|双链DNA|四种NTP|合成的新链除了把DNA上的T改为U外，其他一样，半不连续转录|不需要
-翻译|mRNA|20种游离的氨基酸|3个碱基决定一个氨基酸|</p></body></html>
+<table>
+<thead>
+<tr>
+<th align="center">过程</th>
+<th align="center">模板</th>
+<th align="center">原料</th>
+<th align="center">特点</th>
+<th align="center">引物</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">DNA复制</td>
+<td align="center">双链DNA</td>
+<td align="center">四种dNTP</td>
+<td align="center">合成的新链与模板链一模一样，半保留复制</td>
+<td align="center">需要</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">转录</td>
+<td align="center">双链DNA</td>
+<td align="center">四种NTP</td>
+<td align="center">合成的新链除了把DNA上的T改为U外，其他一样，半不连续转录</td>
+<td align="center">不需要</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">翻译</td>
+<td align="center">mRNA</td>
+<td align="center">20种游离的氨基酸</td>
+<td align="center">3个碱基决定一个氨基酸</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table></body></html>
 
         <div class="post-nav">
             <a href="/NGS-coverage.html" class="pre">如何根据测序数据计算出数据量以及测序深度？</a>
@@ -1322,6 +1368,10 @@ DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保�
         if((screen.width<=600)){
             $(".page-wrapper").removeClass("toggled");
         }
+        $(document).ready(function() {
+            $("table").attr("class", "table table-striped table-bordered table-sm text-center");
+            $("thead").attr("class", "thead-dark");
+        });
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

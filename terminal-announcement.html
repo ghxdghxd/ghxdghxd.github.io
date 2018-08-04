@@ -43,7 +43,7 @@
                         <span class="user-name">
                             <strong>JT Guo</strong>
                         </span>
-                        <span class="user-role">Administrator</span>
+                        <span class="user-role">Bioinformatist</span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
                             <span>Online</span>
@@ -1004,6 +1004,19 @@
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
                                 <i class="fa fa-tag"></i>
+                                <span>manage</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
                                 <span>Rstudio</span>
                             </a>
                             <div class="sidebar-submenu">
@@ -1257,8 +1270,8 @@
     <div class="post-content">
         <html><body><h1>/etc/issue</h1>
 <p>在终端接口登录时候的提示字符,例如：</p>
-<div class="highlight"><pre><span></span><span class="o">[</span>root@linux ~<span class="o">]</span> cat /etc/issue
-CentOS release <span class="m">5</span>.6 <span class="o">(</span>Final<span class="o">)</span>
+<div class="highlight"><pre><span class="o">[</span>root@linux ~<span class="o">]</span> cat /etc/issue
+CentOS release 5.6 <span class="o">(</span>Final<span class="o">)</span>
 Kernel <span class="se">\r</span> on an <span class="se">\m</span>
 
 issue内各代码说明：
@@ -1274,10 +1287,10 @@ issue内各代码说明：
 </pre></div>
 <h1>/etc/motd</h1>
 <p>登录后的公告消息, 比如：系统将会在某个时间进行维护</p>
-<div class="highlight"><pre><span></span><span class="o">[</span>root@linux ~<span class="o">]</span> vi /etc/motd
+<div class="highlight"><pre><span class="o">[</span>root@linux ~<span class="o">]</span> vi /etc/motd
     Hello everyone,
     Our server will be maintained at
-    please don<span class="err">'</span>t login at that time,thanks.
+    please don<span class="err">'</span>t login at that <span class="nb">time</span>,thanks.
     那么当用户登录的时候，就会显示设置的内容了。
 </pre></div></body></html>
 
@@ -1308,6 +1321,10 @@ issue内各代码说明：
         if((screen.width<=600)){
             $(".page-wrapper").removeClass("toggled");
         }
+        $(document).ready(function() {
+            $("table").attr("class", "table table-striped table-bordered table-sm text-center");
+            $("thead").attr("class", "thead-dark");
+        });
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

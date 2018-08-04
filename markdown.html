@@ -43,7 +43,7 @@
                         <span class="user-name">
                             <strong>JT Guo</strong>
                         </span>
-                        <span class="user-role">Administrator</span>
+                        <span class="user-role">Bioinformatist</span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
                             <span>Online</span>
@@ -1004,6 +1004,19 @@
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
                                 <i class="fa fa-tag"></i>
+                                <span>manage</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
                                 <span>Rstudio</span>
                             </a>
                             <div class="sidebar-submenu">
@@ -1271,16 +1284,16 @@
 </ul>
 <h3>兼容 HTML</h3>
 <p>Markdown 完全兼容 HTML 语法，可以直接在 Markdown 文档中插入 HTML 内容：</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>4<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;table&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+<span class="nt">&lt;td&gt;</span>1<span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;td&gt;</span>2<span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+<span class="nt">&lt;td&gt;</span>3<span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;td&gt;</span>4<span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
 </pre></div>
 <p>这段代码会变成下面的样子：</p>
 <table>
@@ -1353,30 +1366,30 @@
 <h2>2.3 引用</h2>
 <h3>2.3.1 引用内容</h3>
 <p>在段落或其他内容前使用 <code>&gt;</code> 符号，就可以将这段内容标记为 '引用' 的内容（<code>&lt;blockquote&gt;</code>）：</p>
-<div class="highlight"><pre><span></span>&gt;引用内容
+<div class="highlight"><pre><span class="o">&gt;</span><span class="err">引用内容</span>
 </pre></div>
 <blockquote>
 <p>引用内容</p>
 </blockquote>
 <h3>2.3.2 多行引用</h3>
-<div class="highlight"><pre><span></span>&gt;多行引用
-&gt;可以在每行前加 `&gt;`
+<div class="highlight"><pre><span class="o">&gt;</span><span class="err">多行引用</span>
+<span class="o">&gt;</span><span class="err">可以在每行前加</span> <span class="err">`</span><span class="o">&gt;</span><span class="err">`</span>
 </pre></div>
 <blockquote>
 <p>多行引用
 可以在每行前加 <code>&gt;</code></p>
 </blockquote>
-<div class="highlight"><pre><span></span>&gt;如果仅在第一行使用 `&gt;`，
-后面相邻的行即使省略 `&gt;`，也会变成引用内容
+<div class="highlight"><pre><span class="o">&gt;</span><span class="err">如果仅在第一行使用</span> <span class="err">`</span><span class="o">&gt;</span><span class="err">`，</span>
+<span class="err">后面相邻的行即使省略</span> <span class="err">`</span><span class="o">&gt;</span><span class="err">`，也会变成引用内容</span>
 </pre></div>
 <blockquote>
 <p>如果仅在第一行使用 <code>&gt;</code>，
 后面相邻的行即使省略 <code>&gt;</code>，也会变成引用内容</p>
 </blockquote>
-<div class="highlight"><pre><span></span>&gt;如果引用内容需要换行，
-&gt;可以在行尾添加两个空格
-&gt;
-&gt;或者在引用内容中加一个空行
+<div class="highlight"><pre><span class="o">&gt;</span><span class="err">如果引用内容需要换行，</span>
+<span class="o">&gt;</span><span class="err">可以在行尾添加两个空格</span>
+<span class="o">&gt;</span>
+<span class="o">&gt;</span><span class="err">或者在引用内容中加一个空行</span>
 </pre></div>
 <blockquote>
 <p>如果引用内容需要换行，
@@ -1384,8 +1397,8 @@
 <p>或者在引用内容中加一个空行</p>
 </blockquote>
 <h3>2.3.3 嵌套引用</h3>
-<div class="highlight"><pre><span></span>&gt;也可以在引用中
-&gt;&gt;使用嵌套的引用
+<div class="highlight"><pre><span class="o">&gt;</span><span class="err">也可以在引用中</span>
+<span class="o">&gt;&gt;</span><span class="err">使用嵌套的引用</span>
 </pre></div>
 <blockquote>
 <p>也可以在引用中</p>
@@ -1394,35 +1407,35 @@
 </blockquote>
 </blockquote>
 <h3>2.3.4 其他 Markdown</h3>
-<div class="highlight"><pre><span></span>&gt;在引用中可以使用使用其他任何 *Markdown* 语法
+<div class="highlight"><pre><span class="o">&gt;</span><span class="err">在引用中可以使用使用其他任何</span> <span class="o">*</span><span class="n">Markdown</span><span class="o">*</span> <span class="err">语法</span>
 </pre></div>
 <blockquote>
 <p>在引用中可以使用使用其他任何 <em>Markdown</em> 语法</p>
 </blockquote>
 <h2>2.4 列表</h2>
 <h3>2.4.1 无序列表</h3>
-<div class="highlight"><pre><span></span>* 可以使用 `*` 作为标记
-+ 也可以使用 `+`
-- 或者 `-`
+<div class="highlight"><pre><span class="o">*</span> <span class="err">可以使用</span> <span class="err">`</span><span class="o">*</span><span class="err">`</span> <span class="err">作为标记</span>
+<span class="o">+</span> <span class="err">也可以使用</span> <span class="err">`</span><span class="o">+</span><span class="err">`</span>
+<span class="o">-</span> <span class="err">或者</span> <span class="err">`</span><span class="o">-</span><span class="err">`</span>
 </pre></div>
 <p>* 可以使用 <code>*</code> 作为标记
 + 也可以使用 <code>+</code>
 - 或者 <code>-</code></p>
 <h3>2.4.2 有序列表</h3>
-<div class="highlight"><pre><span></span>1. 有序列表以数字和 `.` 开始；
-3. 数字的序列并不会影响生成的列表序列；
-4. 但仍然推荐按照自然顺序（1.2.3...）编写。
+<div class="highlight"><pre><span class="mf">1.</span> <span class="err">有序列表以数字和</span> <span class="err">`</span><span class="p">.</span><span class="err">`</span> <span class="err">开始；</span>
+<span class="mf">3.</span> <span class="err">数字的序列并不会影响生成的列表序列；</span>
+<span class="mf">4.</span> <span class="err">但仍然推荐按照自然顺序（</span><span class="mf">1.2.3</span><span class="p">...</span><span class="err">）编写。</span>
 </pre></div>
 <p>1.有序列表以数字和 <code>.</code> 开始；
 3.数字的序列并不会影响生成的列表序列；
 4.但仍然推荐按照自然顺序（1.2.3...）编写。</p>
 <h3>2.4.3 嵌套的列表</h3>
-<div class="highlight"><pre><span></span>1. 第一层
-+ 1-1
-+ 1-2
-2. 无序列表和有序列表可以随意相互嵌套
-1. 2-1
-2. 2-2
+<div class="highlight"><pre><span class="mf">1.</span> <span class="err">第一层</span>
+<span class="o">+</span> <span class="mi">1</span><span class="o">-</span><span class="mi">1</span>
+<span class="o">+</span> <span class="mi">1</span><span class="o">-</span><span class="mi">2</span>
+<span class="mf">2.</span> <span class="err">无序列表和有序列表可以随意相互嵌套</span>
+<span class="mf">1.</span> <span class="mi">2</span><span class="o">-</span><span class="mi">1</span>
+<span class="mf">2.</span> <span class="mi">2</span><span class="o">-</span><span class="mi">2</span>
 </pre></div>
 <p>1.第一层
 +1-1
@@ -1437,7 +1450,7 @@
 <li>空格至少为一个，多个空格将被解析为一个；</li>
 <li>如果仅需要在行前显示数字和 <code>.</code>：</li>
 </ol>
-<div class="highlight"><pre><span></span>05\. 可以使用：数字\. 来取消显示为列表
+<div class="highlight"><pre><span class="mo">05</span><span class="err">\</span><span class="p">.</span> <span class="err">可以使用：数字\</span><span class="p">.</span> <span class="err">来取消显示为列表</span>
 </pre></div>
 <p>05. 可以使用：数字\. 来取消显示为列表</p>
 <blockquote>
@@ -1457,16 +1470,16 @@
 <p>代码块中的文本（包括 Markdown 语法）都会显示为原始内容，而特殊字符会被转换为 HTML <a href="https://zh.wikipedia.org/wiki/XML%E4%B8%8EHTML%E5%AD%97%E7%AC%A6%E5%AE%9E%E4%BD%93%E5%BC%95%E7%94%A8%E5%88%97%E8%A1%A8">字符实体</a>。</p>
 <h2>2.6 分隔线</h2>
 <p>1. 可以在一行中使用三个或更多的 <code>*</code>、<code>-</code> 或 <code>_</code> 来添加分隔线：</p>
-<div class="highlight"><pre><span></span>***
-------
-___
+<div class="highlight"><pre><span class="o">***</span>
+<span class="o">------</span>
+<span class="n">___</span>
 </pre></div>
 <hr/>
 <hr/>
 <hr/>
 <p>2. 多个字符之间可以有空格（空白符），但不能有其他字符：</p>
-<div class="highlight"><pre><span></span>* * *
-- - -
+<div class="highlight"><pre><span class="o">*</span> <span class="o">*</span> <span class="o">*</span>
+<span class="o">-</span> <span class="o">-</span> <span class="o">-</span>
 </pre></div>
 <hr/>
 <hr/>
@@ -1474,15 +1487,15 @@ ___
 <h3>2.7.1 行内式</h3>
 <p>格式为 <code>[link text](URL 'title text')</code>。</p>
 <p>① 普通链接：</p>
-<div class="highlight"><pre><span></span>[Google](http://www.google.com/)
+<div class="highlight"><pre><span class="p">[</span><span class="n">Google</span><span class="p">](</span><span class="n">http</span><span class="o">:</span><span class="c1">//www.google.com/)</span>
 </pre></div>
 <p><a href="http://www.google.com/">Google</a></p>
 <p>② 指向本地文件的链接：</p>
-<div class="highlight"><pre><span></span>[icon.png](./images/icon.png)
+<div class="highlight"><pre><span class="p">[</span><span class="n">icon</span><span class="p">.</span><span class="n">png</span><span class="p">](.</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">icon</span><span class="p">.</span><span class="n">png</span><span class="p">)</span>
 </pre></div>
 <p><a href="./images/icon.png">icon.png</a></p>
 <p>③ 包含 'title' 的链接:</p>
-<div class="highlight"><pre><span></span>[Google](http://www.google.com/ "Google")
+<div class="highlight"><pre><span class="p">[</span><span class="n">Google</span><span class="p">](</span><span class="n">http</span><span class="o">:</span><span class="c1">//www.google.com/ "Google")</span>
 </pre></div>
 <p><a href="http://www.google.com/" title="Google">Google</a></p>
 <blockquote>
@@ -1491,12 +1504,12 @@ ___
 <h3>2.7.2 参考式</h3>
 <p>参考式链接的写法相当于行内式拆分成两部分，并通过一个 <em>识别符</em> 来连接两部分。参考式能尽量保持文章结构的简单，也方便统一管理 URL。</p>
 <p>① 首先，定义链接：</p>
-<div class="highlight"><pre><span></span>[Google][link]
+<div class="highlight"><pre><span class="p">[</span><span class="n">Google</span><span class="p">][</span><span class="n">link</span><span class="p">]</span>
 </pre></div>
 <p><a href="http://www.google.com/" title="Google">Google</a></p>
 <p>第二个方括号内为链接独有的 <em>识别符</em>，可以是字母、数字、空白或标点符号。识别符是 <em>不区分大小写</em> 的；</p>
 <p>② 然后定义链接内容：</p>
-<div class="highlight"><pre><span></span>[link]: http://www.google.com/ "Google"
+<div class="highlight"><pre><span class="p">[</span><span class="n">link</span><span class="p">]</span><span class="o">:</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.google.com/ "Google"</span>
 </pre></div>
 <p>其格式为：<code>[识别符]: URL 'title'</code>。</p>
 <blockquote>
@@ -1504,8 +1517,8 @@ ___
 <p>链接内容的定义可以放在同一个文件的 <em>任意位置</em>；</p>
 </blockquote>
 <p>③ 也可以省略 <em>识别符</em>，使用链接文本作为 <em>识别符</em>：</p>
-<div class="highlight"><pre><span></span><span class="k">[Google][]</span>
-<span class="na">[Google]: http://www.google.com/ "Google"</span>
+<div class="highlight"><pre><span class="k">[Google][]</span>
+<span class="err">[Google]:</span> <span class="err">http://www.google.com/</span> <span class="err">"Google"</span>
 </pre></div>
 <p><a href="http://www.google.com/" title="Google">Google</a></p>
 <blockquote>
@@ -1513,9 +1526,9 @@ ___
 </blockquote>
 <h3>2.7.3 自动链接</h3>
 <p>使用 <code>&lt;&gt;</code> 包括的 URL 或邮箱地址会被自动转换为超链接：</p>
-<div class="highlight"><pre><span></span>&lt;http://www.google.com/&gt;
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">http</span><span class="o">:</span><span class="c1">//www.google.com/&gt;</span>
 
-&lt;123@email.com&gt;
+<span class="o">&lt;</span><span class="mi">123</span><span class="err">@</span><span class="n">email</span><span class="p">.</span><span class="n">com</span><span class="o">&gt;</span>
 </pre></div>
 <p><a href="http://www.google.com/">http://www.google.com/</a></p>
 <p><a href="mailto:123@email.com">123@email.com</a></p>
@@ -1523,60 +1536,60 @@ ___
 <h2>2.8 图像</h2>
 <p>插入图片的语法和插入超链接的语法基本一致，只是在最前面多一个 <code>!</code>。也分为行内式和参考式两种。</p>
 <h3>2.8.1 行内式</h3>
-<div class="highlight"><pre><span></span>![GitHub](https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100 "GitHub,Social Coding")
+<div class="highlight"><pre><span class="o">!</span><span class="p">[</span><span class="n">GitHub</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100 "GitHub,Social Coding")</span>
 </pre></div>
 <p><img alt="GitHub" src="https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100" title="GitHub,Social Coding"/></p>
 <p>方括号中的部分是图片的替代文本，括号中的 'title' 部分和链接一样，是可选的。</p>
 <h3>2.8.2 参考式</h3>
-<div class="highlight"><pre><span></span>![GitHub][github]
+<div class="highlight"><pre><span class="o">!</span><span class="p">[</span><span class="n">GitHub</span><span class="p">][</span><span class="n">github</span><span class="p">]</span>
 
-[github]: https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100 "GitHub,Social Coding"
+<span class="p">[</span><span class="n">github</span><span class="p">]</span><span class="o">:</span> <span class="n">https</span><span class="o">:</span><span class="c1">//avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100 "GitHub,Social Coding"</span>
 </pre></div>
 <p><img alt="GitHub" src="https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100" title="GitHub,Social Coding"/></p>
 <h3>2.8.3 指定图片的显示大小</h3>
 <p>Markdown 不支持指定图片的显示大小，不过可以通过直接插入<code>&lt;img /&gt;</code>标签来指定相关属性：</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100"</span> <span class="na">alt</span><span class="o">=</span><span class="s">"GitHub"</span> <span class="na">title</span><span class="o">=</span><span class="s">"GitHub,Social Coding"</span> <span class="na">width</span><span class="o">=</span><span class="s">"50"</span> <span class="na">height</span><span class="o">=</span><span class="s">"50"</span> <span class="p">/&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100"</span> <span class="na">alt=</span><span class="s">"GitHub"</span> <span class="na">title=</span><span class="s">"GitHub,Social Coding"</span> <span class="na">width=</span><span class="s">"50"</span> <span class="na">height=</span><span class="s">"50"</span> <span class="nt">/&gt;</span>
 </pre></div>
 <p><img alt="GitHub" height="50" src="https://avatars2.githubusercontent.com/u/3265208?v=3&amp;s=100" title="GitHub,Social Coding" width="50"/></p>
 <h2>2.9 强调</h2>
 <p>1. 使用 <code>* *</code> 或 <code>_ _</code> 包括的文本会被转换为 <code>&lt;em&gt;&lt;/em&gt;</code> ，通常表现为斜体：</p>
-<div class="highlight"><pre><span></span>这是用来 *演示* 的 _文本_
+<div class="highlight"><pre><span class="err">这是用来</span> <span class="o">*</span><span class="err">演示</span><span class="o">*</span> <span class="err">的</span> <span class="n">_</span><span class="err">文本</span><span class="n">_</span>
 </pre></div>
 <p>这是用来 <em>演示</em> 的 <em>文本</em></p>
 <p>2. 使用 <code>** **</code> 或 <code>__ __</code> 包括的文本会被转换为 <code>&lt;strong&gt;&lt;/strong&gt;</code>，通常表现为加粗：</p>
-<div class="highlight"><pre><span></span>这是用来 **演示** 的 __文本__
+<div class="highlight"><pre><span class="err">这是用来</span> <span class="o">**</span><span class="err">演示</span><span class="o">**</span> <span class="err">的</span> <span class="n">__</span><span class="err">文本</span><span class="n">__</span>
 </pre></div>
 <p>这是用来 <strong>演示</strong> 的 <strong>文本</strong></p>
 <p>3. 用来包括文本的 <code>*</code> 或 <code>_</code> 内侧不能有空白，否则 <code>*</code> 和 <code>_</code> 将不会被转换（不同的实现会有不同的表现）：</p>
-<div class="highlight"><pre><span></span>这是用来 * 演示* 的 _文本 _
+<div class="highlight"><pre><span class="err">这是用来</span> <span class="o">*</span> <span class="err">演示</span><span class="o">*</span> <span class="err">的</span> <span class="n">_</span><span class="err">文本</span> <span class="n">_</span>
 </pre></div>
 <p>这是用来 * 演示* 的 _文本 _</p>
 <p>4. 如果需要在文本中显示成对的 <code>*</code> 或 <code>_</code>，可以在符号前加入 <code>\</code> 即可：</p>
-<div class="highlight"><pre><span></span>这是用来 \*演示\* 的 \_文本\_
+<div class="highlight"><pre><span class="err">这是用来</span> <span class="err">\</span><span class="o">*</span><span class="err">演示\</span><span class="o">*</span> <span class="err">的</span> <span class="err">\</span><span class="n">_</span><span class="err">文本\</span><span class="n">_</span>
 </pre></div>
 <p>这是用来 *演示* 的 _文本_</p>
 <p>5. <code>*</code>、<code>**</code>、<code>_</code> 和 <code>__</code> 都必须 <em>成对使用</em> 。</p>
 <h2>2.10 字符转义</h2>
 <p>反斜线（<code>\</code>）用于插入在 Markdown 语法中有特殊作用的字符。</p>
-<div class="highlight"><pre><span></span>这是用来 *演示* 的 _文本_
+<div class="highlight"><pre><span class="err">这是用来</span> <span class="o">*</span><span class="err">演示</span><span class="o">*</span> <span class="err">的</span> <span class="n">_</span><span class="err">文本</span><span class="n">_</span>
 
-这是用来 \*演示\* 的 \_文本\_
+<span class="err">这是用来</span> <span class="err">\</span><span class="o">*</span><span class="err">演示\</span><span class="o">*</span> <span class="err">的</span> <span class="err">\</span><span class="n">_</span><span class="err">文本\</span><span class="n">_</span>
 </pre></div>
 <p>这是用来 <em>演示</em> 的 <em>文本</em></p>
 <p>这是用来 *演示* 的 _文本_</p>
 <p>这些字符包括：</p>
-<div class="highlight"><pre><span></span>\
-`
-*
-_
-{}
-[]
-()
-#
-+
--
-.
-!
+<div class="highlight"><pre>\
+<span class="err">`</span>
+<span class="o">*</span>
+<span class="n">_</span>
+<span class="p">{}</span>
+<span class="p">[]</span>
+<span class="p">()</span>
+<span class="cp">#</span>
+<span class="o">+</span>
+<span class="o">-</span>
+<span class="p">.</span>
+<span class="o">!</span>
 </pre></div></body></html>
 
         <div class="post-nav">
@@ -1606,6 +1619,10 @@ _
         if((screen.width<=600)){
             $(".page-wrapper").removeClass("toggled");
         }
+        $(document).ready(function() {
+            $("table").attr("class", "table table-striped table-bordered table-sm text-center");
+            $("thead").attr("class", "thead-dark");
+        });
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

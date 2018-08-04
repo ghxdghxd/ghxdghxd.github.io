@@ -24,7 +24,7 @@
 &lt;li&gt;第三行以‘+’开头，后面是序列标示符、描述信息，或者什么也不加&lt;/li&gt;
 &lt;li&gt;第四行，是质量信息，和第二行的序列相对应，每一个序列都有一个质量评分，根据评分体系的不同，每个字符的含义表示的数字也不相同。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1 @SEQ_ID
+&lt;div class="highlight"&gt;&lt;pre&gt;1 @SEQ_ID
 2 GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
 3 \+
 4 !''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CCCCCCC65
@@ -91,7 +91,7 @@ equivalently, Q ≈ 13.&lt;/p&gt;
 &lt;li&gt;Illumina 1.5+，Phred quality score，但是0到2作为另外的标示，&lt;a href="http://solexaqa.sourceforge.net/questions.htm#illumina"&gt;详见&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Illumina 1.8+&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................
+&lt;div class="highlight"&gt;&lt;pre&gt;SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................
       ..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................
       ...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................
       .................................**J**JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................

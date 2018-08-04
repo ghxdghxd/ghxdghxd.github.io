@@ -43,7 +43,7 @@
                         <span class="user-name">
                             <strong>JT Guo</strong>
                         </span>
-                        <span class="user-role">Administrator</span>
+                        <span class="user-role">Bioinformatist</span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
                             <span>Online</span>
@@ -1004,6 +1004,19 @@
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
                                 <i class="fa fa-tag"></i>
+                                <span>manage</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
                                 <span>Rstudio</span>
                             </a>
                             <div class="sidebar-submenu">
@@ -1271,7 +1284,7 @@
 <li>第三行以‘+’开头，后面是序列标示符、描述信息，或者什么也不加</li>
 <li>第四行，是质量信息，和第二行的序列相对应，每一个序列都有一个质量评分，根据评分体系的不同，每个字符的含义表示的数字也不相同。</li>
 </ul>
-<div class="highlight"><pre><span></span>1 @SEQ_ID
+<div class="highlight"><pre>1 @SEQ_ID
 2 GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
 3 \+
 4 !''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF&gt;&gt;&gt;&gt;&gt;&gt;CCCCCCC65
@@ -1338,7 +1351,7 @@ equivalently, Q ≈ 13.</p>
 <li>Illumina 1.5+，Phred quality score，但是0到2作为另外的标示，<a href="http://solexaqa.sourceforge.net/questions.htm#illumina">详见</a></li>
 <li>Illumina 1.8+</li>
 </ul>
-<div class="highlight"><pre><span></span>SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................
+<div class="highlight"><pre>SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................
       ..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................
       ...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................
       .................................**J**JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................
@@ -1386,6 +1399,10 @@ equivalently, Q ≈ 13.</p>
         if((screen.width<=600)){
             $(".page-wrapper").removeClass("toggled");
         }
+        $(document).ready(function() {
+            $("table").attr("class", "table table-striped table-bordered table-sm text-center");
+            $("thead").attr("class", "thead-dark");
+        });
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

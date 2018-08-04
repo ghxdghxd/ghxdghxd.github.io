@@ -43,7 +43,7 @@
                         <span class="user-name">
                             <strong>JT Guo</strong>
                         </span>
-                        <span class="user-role">Administrator</span>
+                        <span class="user-role">Bioinformatist</span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
                             <span>Online</span>
@@ -1004,6 +1004,19 @@
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
                                 <i class="fa fa-tag"></i>
+                                <span>manage</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
                                 <span>Rstudio</span>
                             </a>
                             <div class="sidebar-submenu">
@@ -1260,128 +1273,128 @@
 <ul>
 <li>error</li>
 </ul>
-<div class="highlight"><pre><span></span>File failed to load: /extensions/MathZoom.js
-<span class="nb">export</span> <span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">"-I/share/apps/R_depends/include"</span>
-<span class="nb">export</span> <span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">"-L/share/apps/R_depends/lib"</span>
+<div class="highlight"><pre>File failed to load: /extensions/MathZoom.js
+<span class="nb">export </span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">"-I/share/apps/R_depends/include"</span>
+<span class="nb">export </span><span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">"-L/share/apps/R_depends/lib"</span>
 </pre></div>
 <!--more-->
 <h2>./configure</h2>
-<div class="highlight"><pre><span></span>    ./configure --prefix<span class="o">=</span>/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk
+<div class="highlight"><pre>    <span class="p">.</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">R</span><span class="o">-</span><span class="mf">3.3.1</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">R</span><span class="o">-</span><span class="n">shlib</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">libpng</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">jpeglib</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">libtiff</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">x</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">tcltk</span>
 </pre></div>
 <h3>1. configure: error: No F77 compiler found</h3>
-<div class="highlight"><pre><span></span>    sudo apt-get install gfortran
+<div class="highlight"><pre>    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gfortran</span>
 </pre></div>
 <h3>2. configure: error: --with-readline</h3>
-<div class="highlight"><pre><span></span>    sudo apt-get install libreadline-dev
+<div class="highlight"><pre>    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libreadline</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 <h3>3. configure: error: --with-x=yes</h3>
-<div class="highlight"><pre><span></span>    sudo apt-get install libxt-dev
+<div class="highlight"><pre>    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libxt</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 <h3>4. checking whether zlib support suffices</h3>
-<div class="highlight"><pre><span></span>    sudo apt-get install zlib1g-dev
+<div class="highlight"><pre>    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 <h3>5. checking whether bzip2 support suffices</h3>
-<div class="highlight"><pre><span></span>    wget &lt;http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz&gt;
-    tar xvf bzip2-1.0.6.tar.gz
-    <span class="nb">cd</span> bzip2-1.0.6
-    sudo make install
-    <span class="c1"># OR</span>
-    make -f Makefile-libbz2_so
-    make clean
-    make -n install <span class="nv">PREFIX</span><span class="o">=</span><span class="nv">$R_depends</span>
-    make install <span class="nv">PREFIX</span><span class="o">=</span><span class="nv">$R_depends</span>
-    install bzip2-lib
+<div class="highlight"><pre>    <span class="n">wget</span> <span class="o">&lt;</span><span class="n">http</span><span class="o">:</span><span class="c1">//www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz&gt;</span>
+    <span class="n">tar</span> <span class="n">xvf</span> <span class="n">bzip2</span><span class="o">-</span><span class="mf">1.0.6</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+    <span class="n">cd</span> <span class="n">bzip2</span><span class="o">-</span><span class="mf">1.0.6</span>
+    <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+    <span class="err">#</span> <span class="n">OR</span>
+    <span class="n">make</span> <span class="o">-</span><span class="n">f</span> <span class="n">Makefile</span><span class="o">-</span><span class="n">libbz2_so</span>
+    <span class="n">make</span> <span class="n">clean</span>
+    <span class="n">make</span> <span class="o">-</span><span class="n">n</span> <span class="n">install</span> <span class="n">PREFIX</span><span class="o">=</span><span class="err">$</span><span class="n">R_depends</span>
+    <span class="n">make</span> <span class="n">install</span> <span class="n">PREFIX</span><span class="o">=</span><span class="err">$</span><span class="n">R_depends</span>
+    <span class="n">install</span> <span class="n">bzip2</span><span class="o">-</span><span class="n">lib</span>
 </pre></div>
 <h3>6. configure: error: "liblzma</h3>
-<div class="highlight"><pre><span></span>    sudo apt-get install liblzma-dev
+<div class="highlight"><pre>    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">liblzma</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 <h3>7. configure: error: pcre &gt;= 8.10</h3>
-<div class="highlight"><pre><span></span>    wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz
-    tar xvf pcre-8.39.tar.gz
-    <span class="nb">cd</span> pcre-8.39
-    ./configure --enable-utf8 --prefix<span class="o">=</span><span class="nv">$R_depends</span>
-    make <span class="p">&amp;</span>amp<span class="p">;</span> sudo make install
+<div class="highlight"><pre>    <span class="n">wget</span> <span class="n">ftp</span><span class="o">:</span><span class="c1">//ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz</span>
+    <span class="n">tar</span> <span class="n">xvf</span> <span class="n">pcre</span><span class="o">-</span><span class="mf">8.39</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+    <span class="n">cd</span> <span class="n">pcre</span><span class="o">-</span><span class="mf">8.39</span>
+    <span class="p">.</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">utf8</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=</span><span class="err">$</span><span class="n">R_depends</span>
+    <span class="n">make</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 <h3>8. libcurl &gt;= 7.28.0 library and headers are required with support for https</h3>
-<div class="highlight"><pre><span></span>    wget https://www.openssl.org/source/openssl-1.1.0b.tar.gz
-    tar xvf openssl-1.1.0b.tar.gz
-    <span class="nb">cd</span> openssl-1.1.0b
-    ./config
-    make <span class="p">&amp;</span>amp<span class="p">;</span>  sudo make install
-    wget &lt;https://curl.haxx.se/download/curl-7.50.3.tar.gz&gt;
-    tar xvf curl-7.50.3.tar.gz
-    <span class="nb">cd</span> curl-7.50.3
-    ./configure --with-ssl<span class="o">=</span>/usr/local/ssl/
-    make <span class="p">&amp;</span>amp<span class="p">;</span> sudo make install
+<div class="highlight"><pre>    <span class="n">wget</span> <span class="n">https</span><span class="o">:</span><span class="c1">//www.openssl.org/source/openssl-1.1.0b.tar.gz</span>
+    <span class="n">tar</span> <span class="n">xvf</span> <span class="n">openssl</span><span class="o">-</span><span class="mf">1.1.0</span><span class="n">b</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+    <span class="n">cd</span> <span class="n">openssl</span><span class="o">-</span><span class="mf">1.1.0</span><span class="n">b</span>
+    <span class="p">.</span><span class="o">/</span><span class="n">config</span>
+    <span class="n">make</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span>  <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+    <span class="n">wget</span> <span class="o">&lt;</span><span class="n">https</span><span class="o">:</span><span class="c1">//curl.haxx.se/download/curl-7.50.3.tar.gz&gt;</span>
+    <span class="n">tar</span> <span class="n">xvf</span> <span class="n">curl</span><span class="o">-</span><span class="mf">7.50.3</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+    <span class="n">cd</span> <span class="n">curl</span><span class="o">-</span><span class="mf">7.50.3</span>
+    <span class="p">.</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">ssl</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">ssl</span><span class="o">/</span>
+    <span class="n">make</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 <h3>9.configure: WARNING: you cannot build info or HTML versions of the R manuals</h3>
-<div class="highlight"><pre><span></span>    sudo apt-get install texinfo
+<div class="highlight"><pre>    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">texinfo</span>
 </pre></div>
 <h3>10. configure: WARNING: you cannot build PDF versions of the R manuals, configure: WARNING: you cannot build PDF versions of vignettes and help pages</h3>
-<div class="highlight"><pre><span></span>    sudo apt-get install texlive
+<div class="highlight"><pre>    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">texlive</span>
 </pre></div>
 <h3>11. configure: WARNING: neither inconsolata.sty nor zi4.sty found: PDF vignettes and package manuals will not be rendered optimally</h3>
-<div class="highlight"><pre><span></span>    wget &lt;http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip&gt;
-    sudo mv inconsolata.tds.zip /usr/share/texlive/texmf-dist/tex/latex
-    <span class="nb">cd</span> /usr/share/texlive/texmf-dist/tex/latex
-    unzip inconsolata.tds.zip
-    sudo mktexlsr
+<div class="highlight"><pre>    <span class="n">wget</span> <span class="o">&lt;</span><span class="n">http</span><span class="o">:</span><span class="c1">//mirrors.ctan.org/install/fonts/inconsolata.tds.zip&gt;</span>
+    <span class="n">sudo</span> <span class="n">mv</span> <span class="n">inconsolata</span><span class="p">.</span><span class="n">tds</span><span class="p">.</span><span class="n">zip</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">texlive</span><span class="o">/</span><span class="n">texmf</span><span class="o">-</span><span class="n">dist</span><span class="o">/</span><span class="n">tex</span><span class="o">/</span><span class="n">latex</span>
+    <span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">texlive</span><span class="o">/</span><span class="n">texmf</span><span class="o">-</span><span class="n">dist</span><span class="o">/</span><span class="n">tex</span><span class="o">/</span><span class="n">latex</span>
+    <span class="n">unzip</span> <span class="n">inconsolata</span><span class="p">.</span><span class="n">tds</span><span class="p">.</span><span class="n">zip</span>
+    <span class="n">sudo</span> <span class="n">mktexlsr</span>
 </pre></div>
 <h3>12. 本版本不支持png</h3>
-<div class="highlight"><pre><span></span>    sudo apt-get install libpng16-dev
-    sudo apt-get install libtiff5-dev
+<div class="highlight"><pre>    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libpng16</span><span class="o">-</span><span class="n">dev</span>
+    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libtiff5</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 <h2>make</h2>
 <h3>1./usr/local/lib/libbz2.a: 无法添加符号: 错误的值</h3>
-<div class="highlight"><pre><span></span>    rm /usr/local/lib/libbz2.a
-    wget &lt;http://zlib.net/zlib-1.2.8.tar.gz&gt;
-    tar xvf zlib-1.2.8.tar.gz
-    <span class="nb">cd</span> zlib-1.2.8
-    <span class="nv">CC</span><span class="o">=</span><span class="s1">'gcc -fPIC'</span>
-    ./configure<span class="p">;</span> make <span class="nb">test</span>
-    sudo make install
+<div class="highlight"><pre>    <span class="n">rm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libbz2</span><span class="p">.</span><span class="n">a</span>
+    <span class="n">wget</span> <span class="o">&lt;</span><span class="n">http</span><span class="o">:</span><span class="c1">//zlib.net/zlib-1.2.8.tar.gz&gt;</span>
+    <span class="n">tar</span> <span class="n">xvf</span> <span class="n">zlib</span><span class="o">-</span><span class="mf">1.2.8</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
+    <span class="n">cd</span> <span class="n">zlib</span><span class="o">-</span><span class="mf">1.2.8</span>
+    <span class="n">CC</span><span class="o">=</span><span class="err">'</span><span class="n">gcc</span> <span class="o">-</span><span class="n">fPIC</span><span class="err">'</span>
+    <span class="p">.</span><span class="o">/</span><span class="n">configure</span><span class="p">;</span> <span class="n">make</span> <span class="n">test</span>
+    <span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 <h3>2./usr/bin/ld: cannot find -lbz2 ;  collect2: error: ld returned 1 exit status</h3>
-<div class="highlight"><pre><span></span>    sudo apt-get install libbz2-dev
-    <span class="c1"># 会用到</span>
-    make <span class="nv">CC</span><span class="o">=</span><span class="s1">'gcc -fPIC'</span>
-    make install <span class="nv">PREFIX</span><span class="o">=</span>/software/packages
+<div class="highlight"><pre>    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libbz2</span><span class="o">-</span><span class="n">dev</span>
+    <span class="err">#</span> <span class="err">会用到</span>
+    <span class="n">make</span> <span class="n">CC</span><span class="o">=</span><span class="err">'</span><span class="n">gcc</span> <span class="o">-</span><span class="n">fPIC</span><span class="err">'</span>
+    <span class="n">make</span> <span class="n">install</span> <span class="n">PREFIX</span><span class="o">=/</span><span class="n">software</span><span class="o">/</span><span class="n">packages</span>
 </pre></div>
 <h2>make install</h2>
 <h3>1.conftest.c:1:17: fatal error: jni.h</h3>
-<div class="highlight"><pre><span></span>    <span class="nb">cd</span> R-3.3.1/doc
-    wget &lt;https://cran.r-project.org/doc/manuals/r-release/NEWS.pdf&gt;
+<div class="highlight"><pre>    <span class="n">cd</span> <span class="n">R</span><span class="o">-</span><span class="mf">3.3.1</span><span class="o">/</span><span class="n">doc</span>
+    <span class="n">wget</span> <span class="o">&lt;</span><span class="n">https</span><span class="o">:</span><span class="c1">//cran.r-project.org/doc/manuals/r-release/NEWS.pdf&gt;</span>
 </pre></div>
 <h2>install rstudio</h2>
-<div class="highlight"><pre><span></span>    sudo apt-get install libjpeg62-dev
-    sudo apt-get install libgstreamer0.10-0
-    sudo apt-get install libgstreamer-plugins-base0.10-0
-    <span class="nb">export</span> <span class="nv">RSTUDIO_WHICH_R</span><span class="o">=</span><span class="s2">"/opt/R-3.3.1/bin/R"</span> 添加到/etc/profile或~/.profile
+<div class="highlight"><pre>    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libjpeg62</span><span class="o">-</span><span class="n">dev</span>
+    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libgstreamer0</span><span class="mf">.10</span><span class="o">-</span><span class="mi">0</span>
+    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libgstreamer</span><span class="o">-</span><span class="n">plugins</span><span class="o">-</span><span class="n">base0</span><span class="mf">.10</span><span class="o">-</span><span class="mi">0</span>
+    <span class="n">export</span> <span class="n">RSTUDIO_WHICH_R</span><span class="o">=</span><span class="s">"/opt/R-3.3.1/bin/R"</span> <span class="err">添加到</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="err">或</span><span class="o">~/</span><span class="p">.</span><span class="n">profile</span>
 </pre></div>
 <h3>run R</h3>
 <h3>Error in grid.Call(L_textBounds, as.graphicsAnnot(xlabel),xlabel),x x, x$y, :无法载入X11字面为2,大小为20的字形-<em>-courier-%s-%s-</em>-<em>-%d-</em>-<em>-</em>-<em>-</em>-<em>-</em></h3>
-<div class="highlight"><pre><span></span>    sudo apt-get install t1-xfree86-nonfree ttf-xfree86-nonfree ttf-xfree86-nonfree-syriac
-    sudo apt-get install xfonts-75dpi
-    sudo apt-get install xfonts-100dpi
-    sudo apt-get install mesa-utils
-    sudo apt-get install libxtst-dev
+<div class="highlight"><pre>    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">t1</span><span class="o">-</span><span class="n">xfree86</span><span class="o">-</span><span class="n">nonfree</span> <span class="n">ttf</span><span class="o">-</span><span class="n">xfree86</span><span class="o">-</span><span class="n">nonfree</span> <span class="n">ttf</span><span class="o">-</span><span class="n">xfree86</span><span class="o">-</span><span class="n">nonfree</span><span class="o">-</span><span class="n">syriac</span>
+    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">xfonts</span><span class="o">-</span><span class="mi">75</span><span class="n">dpi</span>
+    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">xfonts</span><span class="o">-</span><span class="mi">100</span><span class="n">dpi</span>
+    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">mesa</span><span class="o">-</span><span class="n">utils</span>
+    <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libxtst</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 <h3>using R</h3>
 <h3>无法载入共享目标对象 stringi.so</h3>
-<div class="highlight"><pre><span></span>    install.packages<span class="o">(</span>stringi<span class="o">)</span>
+<div class="highlight"><pre>    <span class="n">install</span><span class="p">.</span><span class="n">packages</span><span class="p">(</span><span class="n">stringi</span><span class="p">)</span>
 </pre></div>
 <h3>R install.packages returns "failed to create lock directory"</h3>
-<div class="highlight"><pre><span></span>    R CMD INSTALL --no-lock <span class="p">&amp;</span>lt<span class="p">;</span>pkg<span class="p">&amp;</span>gt<span class="p">;</span>
-    <span class="c1"># OR</span>
-    install.packages<span class="o">(</span><span class="s2">"Rcpp"</span>, <span class="nv">dependencies</span><span class="o">=</span>TRUE, <span class="nv">INSTALL_opts</span> <span class="o">=</span> c<span class="o">(</span><span class="s1">'\--no-lock'</span><span class="o">))</span>
+<div class="highlight"><pre>    <span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">lock</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">pkg</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+    <span class="err">#</span> <span class="n">OR</span>
+    <span class="n">install</span><span class="p">.</span><span class="n">packages</span><span class="p">(</span><span class="s">"Rcpp"</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="n">TRUE</span><span class="p">,</span> <span class="n">INSTALL_opts</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="err">'\</span><span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">lock</span><span class="err">'</span><span class="p">))</span>
 </pre></div>
 <h3>An irrecoverable exception occurred. R is aborting now ... ERROR: loading failed</h3>
-<div class="highlight"><pre><span></span>    R CMD INSTALL --no-test-load *packages*
+<div class="highlight"><pre>    <span class="n">R</span> <span class="n">CMD</span> <span class="n">INSTALL</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">load</span> <span class="o">*</span><span class="n">packages</span><span class="o">*</span>
 </pre></div>
 <h3>nlopt</h3>
-<div class="highlight"><pre><span></span>    ./configure --enable-shared
-    make
-    make install
+<div class="highlight"><pre>    <span class="p">.</span><span class="o">/</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">shared</span>
+    <span class="n">make</span>
+    <span class="n">make</span> <span class="n">install</span>
 </pre></div></body></html>
 
         <div class="post-nav">
@@ -1411,6 +1424,10 @@
         if((screen.width<=600)){
             $(".page-wrapper").removeClass("toggled");
         }
+        $(document).ready(function() {
+            $("table").attr("class", "table table-striped table-bordered table-sm text-center");
+            $("thead").attr("class", "thead-dark");
+        });
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

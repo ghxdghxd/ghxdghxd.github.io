@@ -43,7 +43,7 @@
                         <span class="user-name">
                             <strong>JT Guo</strong>
                         </span>
-                        <span class="user-role">Administrator</span>
+                        <span class="user-role">Bioinformatist</span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
                             <span>Online</span>
@@ -1004,6 +1004,19 @@
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
                                 <i class="fa fa-tag"></i>
+                                <span>manage</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
                                 <span>Rstudio</span>
                             </a>
                             <div class="sidebar-submenu">
@@ -1399,13 +1412,13 @@
 </tbody>
 </table>
 <p>使用的命令为:</p>
-<div class="highlight"><pre><span></span>bcftools norm -f ref.fa in.vcf -O z &gt; out.vcf.gz
+<div class="highlight"><pre>bcftools norm -f ref.fa in.vcf -O z &gt; out.vcf.gz
 java -jar GenomeAnalysisTK.jar -T LeftAlignAndTrimVariants --trimAlleles -R
 ref.fa --variant in.vcf.gz -o out.vcf.gz
 vt normalize -r ref.vcf.gz -o out.vcf.gz
 </pre></div>
 <p>使用的版本为:</p>
-<div class="highlight"><pre><span></span>bcftools v0.2.0-rc8-5-g0e06231 <span class="o">(</span>using htslib <span class="m">0</span>.2.0-rc8-6-gd49dfa6<span class="o">)</span>
+<div class="highlight"><pre>bcftools v0.2.0-rc8-5-g0e06231 <span class="o">(</span>using htslib 0.2.0-rc8-6-gd49dfa6<span class="o">)</span>
 GATK v3.1-1-g07a4bf8
 vt normalize v0.5
 </pre></div>
@@ -1459,6 +1472,10 @@ vt normalize v0.5
         if((screen.width<=600)){
             $(".page-wrapper").removeClass("toggled");
         }
+        $(document).ready(function() {
+            $("table").attr("class", "table table-striped table-bordered table-sm text-center");
+            $("thead").attr("class", "thead-dark");
+        });
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

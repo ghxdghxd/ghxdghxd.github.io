@@ -43,7 +43,7 @@
                         <span class="user-name">
                             <strong>JT Guo</strong>
                         </span>
-                        <span class="user-role">Administrator</span>
+                        <span class="user-role">Bioinformatist</span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
                             <span>Online</span>
@@ -1004,6 +1004,19 @@
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
                                 <i class="fa fa-tag"></i>
+                                <span>manage</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/linux-management.html">集群管理笔记</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
                                 <span>Rstudio</span>
                             </a>
                             <div class="sidebar-submenu">
@@ -1264,7 +1277,7 @@ sudo dnf install yum-utils</p>
 <li>package-cleanup --oldkernels</li>
 </ul>
 <h2>RPM Fusion Free/Nonfree源, FZUG源</h2>
-<div class="highlight"><pre><span></span><span class="nv">version</span><span class="o">=</span><span class="m">27</span>  
+<div class="highlight"><pre><span class="nv">version</span><span class="o">=</span>27  
 sudo dnf config-manager --add-repo<span class="o">=</span>http://mirrors.aliyun.com/repo/fedora.repo  
 sudo dnf install http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-<span class="nv">$version</span>.noarch.rpm -y  
 sudo dnf install http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-<span class="nv">$version</span>.noarch.rpm -y  
@@ -1278,7 +1291,7 @@ sudo dnf install sqlite  </p>
 <p>/etc/gdm/custom.conf<br/>
 WaylandEnable=false  </p>
 <h2>chrome</h2>
-<div class="highlight"><pre><span></span>wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm  
+<div class="highlight"><pre>wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm  
 sudo dnf install ./google-chrome-stable_current_x86_64.rpm  
 </pre></div>
 <h2>git</h2>
@@ -1298,8 +1311,8 @@ sudo dnf install fcitx-configtool<br/>
 sudo dnf install im-chooser<br/>
 im-chooser  </p>
 <h2>zsh</h2>
-<div class="highlight"><pre><span></span>sudo apt install zsh  
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - <span class="p">|</span> zsh  
+<div class="highlight"><pre>sudo apt install zsh  
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh  
 chsh -s /bin/zsh  
 </pre></div>
 <h2>change PATH language</h2>
@@ -1308,7 +1321,7 @@ xdg-user-dirs-gtk-update<br/>
 export LANG=zh_CN<br/>
 reboot  </p>
 <h2>install ubuntu fonts</h2>
-<div class="highlight"><pre><span></span>sudo dnf install ttmkfdir  
+<div class="highlight"><pre>sudo dnf install ttmkfdir  
 <span class="nv">fontname</span><span class="o">=</span>ubuntu-font-family-0.83  
 wget http://font.ubuntu.com/download/<span class="nv">$fontname</span>.zip  
 mkdir /tmp/<span class="nv">$fontname</span>  
@@ -1318,35 +1331,35 @@ sudo mv /tmp/<span class="nv">$fontname</span>/*.ttf /usr/share/fonts/ubuntu
 rm -rf /tmp/<span class="nv">$fontname</span>  
 <span class="nb">cd</span> /usr/share/fonts/ubuntu  
 ttmkfdir &gt; fonts.dir  
-fc-cache -fv  
+<span class="nb">fc</span>-cache -fv  
 </pre></div>
 <h2>exFat &amp; sshfs</h2>
 <p>sudo dnf install exfat-utils<br/>
 sudo dnf install fuse-exfat<br/>
 sudo apt install sshfs  </p>
 <h2>synergy</h2>
-<div class="highlight"><pre><span></span>wget https://binaries.symless.com/v1.8.8/synergy-v1.8.8-stable-25a8cb2-Linux-x86_64.rpm  
+<div class="highlight"><pre>wget https://binaries.symless.com/v1.8.8/synergy-v1.8.8-stable-25a8cb2-Linux-x86_64.rpm  
 sudo dnf install ./synergy-v1.8.8-stable-25a8cb2-Linux-x86_64.rpm  
 </pre></div>
 <h2>sublime text</h2>
-<div class="highlight"><pre><span></span>sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg  
+<div class="highlight"><pre>sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg  
 sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo  
 sudo dnf update  
 sudo dnf install sublime-text  
 </pre></div>
 <h2>anaconda</h2>
-<div class="highlight"><pre><span></span>wget https://repo.continuum.io/archive/Anaconda3-5.0.0.1-Linux-x86_64.sh  
-bash Anaconda3-4.3.1-Linux-x86_64.sh<span class="p">|</span>sh  
+<div class="highlight"><pre>wget https://repo.continuum.io/archive/Anaconda3-5.0.0.1-Linux-x86_64.sh  
+bash Anaconda3-4.3.1-Linux-x86_64.sh|sh  
 </pre></div>
 <h2>zotero</h2>
-<div class="highlight"><pre><span></span>wget https://download.zotero.org/client/release/5.0.23/https://download.zotero.org/client/release/5.0.23/Zotero-5.0.23_linux-x86_64.tar.bz2  
+<div class="highlight"><pre>wget https://download.zotero.org/client/release/5.0.23/https://download.zotero.org/client/release/5.0.23/Zotero-5.0.23_linux-x86_64.tar.bz2  
 tar xvf Zotero-5.0.23_linux-x86_64.tar.bz2  
 sudo mv Zotero_linux-x86_64/  
 
 cp /share/apps/Zotero_linux-x86_64/zotero.desktop /usr/share/applications  
 
 git clone https://github.com/jlegewie/zotfile.git  
-<span class="nb">cd</span> zotfile  
+<span class="nb">cd </span>zotfile  
 make  
 </pre></div>
 <h2>wewechat</h2>
@@ -1399,6 +1412,10 @@ sudo firewall-cmd --reload  </p>
         if((screen.width<=600)){
             $(".page-wrapper").removeClass("toggled");
         }
+        $(document).ready(function() {
+            $("table").attr("class", "table table-striped table-bordered table-sm text-center");
+            $("thead").attr("class", "thead-dark");
+        });
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->
