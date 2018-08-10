@@ -17,7 +17,8 @@ EXTRA_PATH_METADATA = {
     'pages/about.md': {'path': 'about.html'}
 }
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['tipue_search', "sitemap", "i18n_subsites", "neighbors", "pdf-img"]
+PLUGINS = ['tipue_search', "sitemap", "i18n_subsites",
+           "neighbors", "pdf-img", "better_codeblock_line_numbering"]
 
 THEME = "themes/pelican-bootstrap4"
 DIRECT_TEMPLATES = ["index", "search",
@@ -69,3 +70,7 @@ DEFAULT_PAGINATION = 3
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
+
+MARKDOWN = {
+    'extensions': ['codehilite(css_class=highlight, linenums=False)', 'extra']
+}

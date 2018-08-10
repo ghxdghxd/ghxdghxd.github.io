@@ -21,13 +21,17 @@ Summary: 常用的linux服务器管理
 
 ## 清理内存
 
+```shell
 echo 1 > /proc/sys/vm/drop_caches
+```
 
 ## [登录显示信息](terminal-announcement)
 
 ## 158挂载swap
 
+```shell
 mount /dev/sdc1 /extra
+```
 
 ## 核心数
 
@@ -41,21 +45,15 @@ mount /dev/sdc1 /extra
 
 + 逻辑CPU数
 
-```shell
-cat /proc/cpuinfo|grep "processor"|wc
-```
+        cat /proc/cpuinfo|grep "processor"|wc
 
 + 物理CPU数
 
-```shell
-cat /proc/cpuinfo|grep "physical\ id"|sort -u|wc
-```
+        cat /proc/cpuinfo|grep "physical\ id"|sort -u|wc
 
 + CPU核数
 
-```shell
-cat /proc/cpuinfo|grep "cores"|sort -u
-```
+        cat /proc/cpuinfo|grep "cores"|sort -u
 
 ## 硬盘
 
@@ -93,37 +91,41 @@ cat /proc/cpuinfo|grep "cores"|sort -u
 
 ## rocks
 
-1.rocks run host "hostname" #所有节点运行
-2.rocks sync config # 同步配制
-3.**要先重启管理节点然后计算机节点,否则导致数据不同步**
-    运行 rocks run host "/etc/init.d/pbs_mom restart" 即可
-4.添加用户**无法qusb要在/etc/group 添加用户**
+1. 所有节点运行
 
-```shell
-useradd -g group name
-passwd name
-rocks sync users #可更改/export/home/name 为 /home/name
-```
+        rocks run host "hostname"
 
-5.如果ssh compute 需要输入密码
+2. 同步配制
 
-```shell
-rm -rf ~/.ssh **然后 退出登录 再登陆 会自动生成新密钥**
-```
+        rocks sync config
 
-6.进入单用户模式
+3. 要先重启管理节点然后计算机节点,否则导致数据不同步
 
-在倒计时5秒时，按任意键出现下图，
-**选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统**
-![图1](images/manager1.png){:height="80%" width="80%"}
-![图2](images/manager2.png){:height="80%" width="80%"}
-![图3](images/manager3.jpg){:height="80%" width="80%"}
+        rocks run host "/etc/init.d/pbs_mom restart"
 
-7.重装节点
+4. 添加用户**无法qusb要在/etc/group 添加用户**
 
-```shell
-rocks set host pxeboot compute1 action=install
-```
+        #!shell
+        useradd -g group name
+        passwd name
+        rocks sync users #可更改/export/home/name 为 /home/name
+
+5. 如果ssh compute 需要输入密码
+
+        rm -rf ~/.ssh #然后 退出登录 再登陆 会自动生成新密钥
+
+6. 进入单用户模式
+
+    在倒计时5秒时，按任意键出现下图，
+    **选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统**
+    ![图1](images/manager1.png){:height="30%" width="30%"}
+    ![图2](images/manager2.png){:height="30%" width="30%"}
+    ![图3](images/manager3.jpg){:height="30%" width="30%"}
+
+7. 重装节点
+
+        #!bash
+        rocks set host pxeboot compute1 action=install
 
 ## qmgr
 
@@ -137,67 +139,74 @@ qmgr -c "set server auto_node_np = True" # 自动更新节点线程数
 
 + 硬件连接及硬盘灯(绿)
 + 确定服务开启:
-    ```shell
-    service iscsi restart
-    ```
+
+        service iscsi restart
+
 + 查看iscsi发现记录
-    ```shell
-    iscsiadm -m node
-    ```
+
+        iscsiadm -m node
+
 + 发现iscsi存储：
-    ```shell
-    iscsiadm -m discovery -t st -p 10.1.1.100:3260
-    iscsiadm -m discovery -t st -p 10.1.1.101:3260
-    iscsiadm -m discovery -t st -p 10.1.1.102:3260
-    iscsiadm -m discovery -t st -p 10.1.1.103:3260
-    ```
+
+        iscsiadm -m discovery -t st -p 10.1.1.100:3260
+        iscsiadm -m discovery -t st -p 10.1.1.101:3260
+        iscsiadm -m discovery -t st -p 10.1.1.102:3260
+        iscsiadm -m discovery -t st -p 10.1.1.103:3260
+
 + multipath操作
-    ```shell
-    multipath -ll #查看
-    multipath -v2  #自动更新路径
-    multipath -f mpathg # 删除路径
-    service multipathd restart #重启确认/dev/mapper下有硬盘连接
-    挂载
-    mount /dev/mapper/mpathep1 /export/data2
-    mount /dev/mapper/mpathfp1 /export/data3
-    mount /dev/mapper/mpathhp1 /export/data4
-    ```
+
+        #!shell
+        multipath -ll #查看
+        multipath -v2  #自动更新路径
+        multipath -f mpathg # 删除路径
+        service multipathd restart #重启确认/dev/mapper下有硬盘连接
+        # 挂载
+        mount /dev/mapper/mpathep1 /export/data2
+        mount /dev/mapper/mpathfp1 /export/data3
+        mount /dev/mapper/mpathhp1 /export/data4
+
 + 挂载fstab
 
-    ```shell
-    /dev/sdc1 /export/data0 ext4 defaults 1 1
-    /dev/sdc2 /export/data1 ext4 defaults 1 1
-    /dev/sde1 /export/data5 ext4 defaults 1 1
-    /dev/mapper/mpathhp1 /export/data4 xfs defaults,_netdev 0 0
-    /dev/mapper/mpathep1 /export/data2 xfs defaults,_netdev 0 0
-    /dev/mapper/mpathfp1 /export/data3 xfs defaults,_netdev 0 0
-    ```
+        /dev/sdc1 /export/data0 ext4 defaults 1 1
+        /dev/sdc2 /export/data1 ext4 defaults 1 1
+        /dev/sde1 /export/data5 ext4 defaults 1 1
+        /dev/mapper/mpathhp1 /export/data4 xfs defaults,_netdev 0 0
+        /dev/mapper/mpathep1 /export/data2 xfs defaults,_netdev 0 0
+        /dev/mapper/mpathfp1 /export/data3 xfs defaults,_netdev 0 0
 
 + autofs自动挂载
+
     autofs一般与ldap、nfs协作实现远程home目录。
-  + service autofs restart #重启确认/export
+
+  + 确认/export/*,一般重启服务
+
+        #!shell
+        service autofs restart
+
   + /etc/auto.master
-    ```shell
-    /share /etc/auto.share --timeout=1200
-    /home  /etc/auto.home  --timeout=1200
-    ```
+
+        #!shell
+        /share /etc/auto.share --timeout=1200
+        /home  /etc/auto.home  --timeout=1200
+
   + /etc/auto.share
-    ```shell
-    apps -nfsvers=3 -soft,intr,timeo=9999  xmu.local:/export/&
-    #bio  -nfsvers=3 -soft,intr,timeo=9999  xmu:/export/&
-    data0 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
-    data1 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
-    data2 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
-    data3 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
-    data4 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
-    data5 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
-    ```
+
+        #!shell
+        apps -nfsvers=3 -soft,intr,timeo=9999  xmu.local:/export/&
+        #bio  -nfsvers=3 -soft,intr,timeo=9999  xmu:/export/&
+        data0 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
+        data1 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
+        data2 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
+        data3 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
+        data4 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
+        data5 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
+
 + 修复分区(未完)
-    ```shell
-    exportfs -rv #重新扫描/etc/exports
-    exportfs -u /export/data2       #umount分区
-    xfs_check /dev/mapper/mpathep1;echo $? #显示0表示已umount
-    ```
+
+        #!shell
+        exportfs -rv #重新扫描/etc/exports
+        exportfs -u /export/data2       #umount分区
+        xfs_check /dev/mapper/mpathep1;echo $? #显示0表示已umount
 
 ## qsub
 
@@ -209,7 +218,8 @@ qusb -l nodes=1:n1:ppn=+1:n2
 ```
 
 2.重新运行任务
-    qrerun
+
+        qrerun
 
 3.lib
 
@@ -236,4 +246,4 @@ yum --enablerepo=elrepo-kernel -y install kernel-lt （kernel-ml）
 vim /etc/grub.conf
 ```
 
-![图4](images/manager4.png){:height="80%" width="80%"}
+![图4](images/manager4.png){:height="50%" width="50%"}
