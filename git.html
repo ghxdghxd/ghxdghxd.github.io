@@ -1388,8 +1388,8 @@
 </table>
 <div class="highlight"><pre><span class="code-line"><span></span>git branch  /-a/r       <span class="c1"># 查看本地/全部/远程分支</span></span>
 <span class="code-line">git branch <span class="o">[</span>name<span class="o">]</span>       <span class="c1"># 建立分支</span></span>
-<span class="code-line">git branch -d <span class="o">[</span>name<span class="o">]</span>    <span class="c1"># 删除分支</span></span>
-<span class="code-line"></span>
+<span class="code-line">git branch -d <span class="o">[</span>name<span class="o">]</span>    <span class="c1"># 删除本地分支</span></span>
+<span class="code-line">git push origin --delete <span class="o">[</span>name<span class="o">]</span>         <span class="c1"># 删除远程分支</span></span>
 <span class="code-line">git checkout -b <span class="o">[</span>name<span class="o">]</span> origin/develop   <span class="c1"># 建立并切换开发分支</span></span>
 <span class="code-line">git checkout <span class="o">[</span>name<span class="o">]</span>                     <span class="c1"># 切换分支</span></span>
 <span class="code-line">git merge --no-ff <span class="o">[</span>name<span class="o">]</span>                <span class="c1"># 合并分支</span></span>
@@ -1442,7 +1442,7 @@
 <div class="highlight"><pre><span class="code-line"><span></span>git push origin --tags</span>
 </pre></div>
 <h2>中文乱码</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>    git config --global core.quotepath <span class="nb">false</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span>git config --global core.quotepath <span class="nb">false</span></span>
 </pre></div>
 <p>core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常。</p>
 <h2>gitignore忽略文件</h2>

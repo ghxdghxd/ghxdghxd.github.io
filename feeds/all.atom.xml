@@ -706,8 +706,8 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;/table&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;git branch  /-a/r       &lt;span class="c1"&gt;# 查看本地/全部/远程分支&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;git branch &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;       &lt;span class="c1"&gt;# 建立分支&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;git branch -d &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;    &lt;span class="c1"&gt;# 删除分支&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;git branch -d &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;    &lt;span class="c1"&gt;# 删除本地分支&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;git push origin --delete &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;         &lt;span class="c1"&gt;# 删除远程分支&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;git checkout -b &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt; origin/develop   &lt;span class="c1"&gt;# 建立并切换开发分支&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;git checkout &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;                     &lt;span class="c1"&gt;# 切换分支&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;git merge --no-ff &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;                &lt;span class="c1"&gt;# 合并分支&lt;/span&gt;&lt;/span&gt;
@@ -760,7 +760,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;git push origin --tags&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;中文乱码&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;    git config --global core.quotepath &lt;span class="nb"&gt;false&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;git config --global core.quotepath &lt;span class="nb"&gt;false&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常。&lt;/p&gt;
 &lt;h2&gt;gitignore忽略文件&lt;/h2&gt;
