@@ -58,8 +58,8 @@ git mv
 ```bash
 git branch  /-a/r       # 查看本地/全部/远程分支
 git branch [name]       # 建立分支
-git branch -d [name]    # 删除分支
-
+git branch -d [name]    # 删除本地分支
+git push origin --delete [name]         # 删除远程分支
 git checkout -b [name] origin/develop   # 建立并切换开发分支
 git checkout [name]                     # 切换分支
 git merge --no-ff [name]                # 合并分支
@@ -129,7 +129,7 @@ git pull类似:
 ## 中文乱码
 
 ```shell
-    git config --global core.quotepath false
+git config --global core.quotepath false
 ```
 
 core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常。
