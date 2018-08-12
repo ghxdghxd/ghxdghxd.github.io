@@ -125,41 +125,41 @@ CASAVA&lt;/a&gt;),
 (当然实际上现在 Ilumina 的 Phred33 和最初 Sanger 的 Phred33 还是有点区别的, 详见后文)&lt;/p&gt;
 &lt;p&gt;扯了这么多, 发现写了半天才刚交代完故事背景, 剩下的部分就等有空再写了, 最后上点干货:&lt;/p&gt;
 &lt;p&gt;先是 wikipedia 上非常直观的示例, 可以看出各家公司各个版本的质量值体系&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;      SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................
-      ..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................
-      ...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................
-      .................................JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................
-      LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL....................................................
-      !&lt;span class="s2"&gt;"#$%&amp;amp;'()*+,-./0123456789:;&amp;lt;=&amp;gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&lt;/span&gt;
-&lt;span class="s2"&gt;      |                         |    |        |                              |                     |&lt;/span&gt;
-&lt;span class="s2"&gt;     33                        59   64       73                            104                   126&lt;/span&gt;
-&lt;span class="s2"&gt;      0........................26...31.......40                                &lt;/span&gt;
-&lt;span class="s2"&gt;                               -5....0........9.............................40 &lt;/span&gt;
-&lt;span class="s2"&gt;                                     0........9.............................40 &lt;/span&gt;
-&lt;span class="s2"&gt;                                        3.....9.............................40 &lt;/span&gt;
-&lt;span class="s2"&gt;      0.2......................26...31........41                              &lt;/span&gt;
-
-&lt;span class="s2"&gt;     S - Sanger        Phred+33,  raw reads typically (0, 40)&lt;/span&gt;
-&lt;span class="s2"&gt;     X - Solexa        Solexa+64, raw reads typically (-5, 40)&lt;/span&gt;
-&lt;span class="s2"&gt;     I - Illumina 1.3+ Phred+64,  raw reads typically (0, 40)&lt;/span&gt;
-&lt;span class="s2"&gt;     J - Illumina 1.5+ Phred+64,  raw reads typically (3, 40)&lt;/span&gt;
-&lt;span class="s2"&gt;         with 0=unused, 1=unused, 2=Read Segment Quality Control Indicator (bold) &lt;/span&gt;
-&lt;span class="s2"&gt;         (Note: See discussion above).&lt;/span&gt;
-&lt;span class="s2"&gt;     L - Illumina 1.8+ Phred+33,  raw reads typically (0, 41)&lt;/span&gt;
-
-&lt;span class="s2"&gt;然后光看也没什么用啊, 就[有人写了个小函数](http://onetipperday.blogspot.com.br/2012/10/code-snip-&lt;/span&gt;
-&lt;span class="s2"&gt;to-decide-phred-encoding-of.html), 用来分析 fastq 文件 (压缩或未压缩均可), 代码如下:&lt;/span&gt;
-&lt;span class="s2"&gt;    fqtype () {&lt;/span&gt;
-&lt;span class="s2"&gt;            less $1 | head -n 999 | awk '{if(NR%4==0) printf("&lt;/span&gt;%s&lt;span class="s2"&gt;",$0);}' \&lt;/span&gt;
-&lt;span class="s2"&gt;            | od -A n -t u1 -v \&lt;/span&gt;
-&lt;span class="s2"&gt;            | awk 'BEGIN{min=100;max=0;}\&lt;/span&gt;
-&lt;span class="s2"&gt;            {for(i=1;i&amp;lt;=NF;i++) {if($i&amp;gt;max) max=$i; if($i&amp;lt;min) min=$i;}}END\&lt;/span&gt;
-&lt;span class="s2"&gt;            {if(max&amp;lt;=74 &amp;amp;&amp;amp; min&amp;lt;59) print "&lt;/span&gt;Phred+33&lt;span class="s2"&gt;"; \&lt;/span&gt;
-&lt;span class="s2"&gt;            else if(max&amp;gt;73 &amp;amp;&amp;amp; min&amp;gt;=64) print "&lt;/span&gt;Phred+64&lt;span class="s2"&gt;"; \&lt;/span&gt;
-&lt;span class="s2"&gt;            else if(min&amp;gt;=59 &amp;amp;&amp;amp; min&amp;lt;64 &amp;amp;&amp;amp; max&amp;gt;73) print "&lt;/span&gt;Solexa+64&lt;span class="s2"&gt;"; \&lt;/span&gt;
-&lt;span class="s2"&gt;            else print "&lt;/span&gt;Unknown score encoding&lt;span class="s2"&gt;"; \&lt;/span&gt;
-&lt;span class="s2"&gt;            print "&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;" min "&lt;/span&gt;, &lt;span class="s2"&gt;" max, "&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="err"&gt;"&lt;/span&gt;;&lt;span class="o"&gt;}&lt;/span&gt;&lt;span class="err"&gt;'&lt;/span&gt;
-    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;      SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................&lt;/span&gt;
+&lt;span class="code-line"&gt;      ..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................&lt;/span&gt;
+&lt;span class="code-line"&gt;      ...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................&lt;/span&gt;
+&lt;span class="code-line"&gt;      .................................JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................&lt;/span&gt;
+&lt;span class="code-line"&gt;      LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL....................................................&lt;/span&gt;
+&lt;span class="code-line"&gt;      !&lt;span class="s2"&gt;"#&lt;/span&gt;$&lt;span class="s2"&gt;%&amp;amp;'()*+,-./0123456789:;&amp;lt;=&amp;gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;      |                         |    |        |                              |                     |&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;     33                        59   64       73                            104                   126&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;      0........................26...31.......40                                &lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;                               -5....0........9.............................40 &lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;                                     0........9.............................40 &lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;                                        3.....9.............................40 &lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;      0.2......................26...31........41                              &lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;     S - Sanger        Phred+33,  raw reads typically (0, 40)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;     X - Solexa        Solexa+64, raw reads typically (-5, 40)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;     I - Illumina 1.3+ Phred+64,  raw reads typically (0, 40)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;     J - Illumina 1.5+ Phred+64,  raw reads typically (3, 40)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;         with 0=unused, 1=unused, 2=Read Segment Quality Control Indicator (bold) &lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;         (Note: See discussion above).&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;     L - Illumina 1.8+ Phred+33,  raw reads typically (0, 41)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;然后光看也没什么用啊, 就[有人写了个小函数](http://onetipperday.blogspot.com.br/2012/10/code-snip-&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;to-decide-phred-encoding-of.html), 用来分析 fastq 文件 (压缩或未压缩均可), 代码如下:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;    fqtype () {&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;            less &lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt; | head -n 999 | awk '{if(NR%4==0) printf("&lt;/span&gt;%s&lt;span class="s2"&gt;",&lt;/span&gt;&lt;span class="nv"&gt;$0&lt;/span&gt;&lt;span class="s2"&gt;);}' \&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;            | od -A n -t u1 -v \&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;            | awk 'BEGIN{min=100;max=0;}\&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;            {for(i=1;i&amp;lt;=NF;i++) {if(&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="s2"&gt;&amp;gt;max) max=&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="s2"&gt;; if(&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;min) min=&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="s2"&gt;;}}END\&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;            {if(max&amp;lt;=74 &amp;amp;&amp;amp; min&amp;lt;59) print "&lt;/span&gt;Phred+33&lt;span class="s2"&gt;"; \&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;            else if(max&amp;gt;73 &amp;amp;&amp;amp; min&amp;gt;=64) print "&lt;/span&gt;Phred+64&lt;span class="s2"&gt;"; \&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;            else if(min&amp;gt;=59 &amp;amp;&amp;amp; min&amp;lt;64 &amp;amp;&amp;amp; max&amp;gt;73) print "&lt;/span&gt;Solexa+64&lt;span class="s2"&gt;"; \&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;            else print "&lt;/span&gt;Unknown score encoding&lt;span class="s2"&gt;"; \&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;            print "&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;" min "&lt;/span&gt;, &lt;span class="s2"&gt;" max, "&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;";}'&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;    }&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;写在 shell 配置文件里, &lt;code&gt;source&lt;/code&gt; 然后 &lt;code&gt;fqtype &amp;lt;fastq_file&amp;gt;&lt;/code&gt; 就行了, 这个代码有点老, 还没加 [35, 75]
 的判断, 我又懒得重新改判断逻辑, 所以直接在最后加了个打印最小值最大值, 再跟上面的示例一比, 就基本确定是什么体系了&lt;/p&gt;
@@ -324,15 +324,15 @@ CASAVA&lt;/a&gt;),
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;使用的命令为:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;bcftools norm -f ref.fa in.vcf -O z &amp;gt; out.vcf.gz
-java -jar GenomeAnalysisTK.jar -T LeftAlignAndTrimVariants --trimAlleles -R
-ref.fa --variant in.vcf.gz -o out.vcf.gz
-vt normalize -r ref.vcf.gz -o out.vcf.gz
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;bcftools norm -f ref.fa in.vcf -O z &amp;gt; out.vcf.gz&lt;/span&gt;
+&lt;span class="code-line"&gt;java -jar GenomeAnalysisTK.jar -T LeftAlignAndTrimVariants --trimAlleles -R&lt;/span&gt;
+&lt;span class="code-line"&gt;ref.fa --variant in.vcf.gz -o out.vcf.gz&lt;/span&gt;
+&lt;span class="code-line"&gt;vt normalize -r ref.vcf.gz -o out.vcf.gz&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;使用的版本为:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;bcftools v0.2.0-rc8-5-g0e06231 &lt;span class="o"&gt;(&lt;/span&gt;using htslib 0.2.0-rc8-6-gd49dfa6&lt;span class="o"&gt;)&lt;/span&gt;
-GATK v3.1-1-g07a4bf8
-vt normalize v0.5
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;bcftools v0.2.0-rc8-5-g0e06231 &lt;span class="o"&gt;(&lt;/span&gt;using htslib &lt;span class="m"&gt;0&lt;/span&gt;.2.0-rc8-6-gd49dfa6&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;GATK v3.1-1-g07a4bf8&lt;/span&gt;
+&lt;span class="code-line"&gt;vt normalize v0.5&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;5、一个该标准化算法失效的例子&lt;/h2&gt;
 &lt;p&gt;我们用下面的规则区分变异的标准化(normalization)和分解/组合(decomposition/reconstruction):&lt;/p&gt;
@@ -372,16 +372,16 @@ vt normalize v0.5
 &lt;/ul&gt;
 &lt;h3&gt;兼容 HTML&lt;/h3&gt;
 &lt;p&gt;Markdown 完全兼容 HTML 语法，可以直接在 Markdown 文档中插入 HTML 内容：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;table&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;1&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;2&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;3&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;4&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;table&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;1&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;2&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;3&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;4&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;td&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;tr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;table&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这段代码会变成下面的样子：&lt;/p&gt;
 &lt;table&gt;
@@ -454,30 +454,30 @@ vt normalize v0.5
 &lt;h2&gt;2.3 引用&lt;/h2&gt;
 &lt;h3&gt;2.3.1 引用内容&lt;/h3&gt;
 &lt;p&gt;在段落或其他内容前使用 &lt;code&gt;&amp;gt;&lt;/code&gt; 符号，就可以将这段内容标记为 '引用' 的内容（&lt;code&gt;&amp;lt;blockquote&amp;gt;&lt;/code&gt;）：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;引用内容&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;引用内容&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;引用内容&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;2.3.2 多行引用&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;多行引用&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;可以在每行前加&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;多行引用&lt;/span&gt;
+&lt;span class="code-line"&gt;&amp;gt;可以在每行前加 `&amp;gt;`&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;多行引用
 可以在每行前加 &lt;code&gt;&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;如果仅在第一行使用&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;`，&lt;/span&gt;
-&lt;span class="err"&gt;后面相邻的行即使省略&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;`，也会变成引用内容&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;如果仅在第一行使用 `&amp;gt;`，&lt;/span&gt;
+&lt;span class="code-line"&gt;后面相邻的行即使省略 `&amp;gt;`，也会变成引用内容&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;如果仅在第一行使用 &lt;code&gt;&amp;gt;&lt;/code&gt;，
 后面相邻的行即使省略 &lt;code&gt;&amp;gt;&lt;/code&gt;，也会变成引用内容&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;如果引用内容需要换行，&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;可以在行尾添加两个空格&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;或者在引用内容中加一个空行&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;如果引用内容需要换行，&lt;/span&gt;
+&lt;span class="code-line"&gt;&amp;gt;可以在行尾添加两个空格&lt;/span&gt;
+&lt;span class="code-line"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&amp;gt;或者在引用内容中加一个空行&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;如果引用内容需要换行，
@@ -485,8 +485,8 @@ vt normalize v0.5
 &lt;p&gt;或者在引用内容中加一个空行&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;2.3.3 嵌套引用&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;也可以在引用中&lt;/span&gt;
-&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;使用嵌套的引用&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;也可以在引用中&lt;/span&gt;
+&lt;span class="code-line"&gt;&amp;gt;&amp;gt;使用嵌套的引用&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;也可以在引用中&lt;/p&gt;
@@ -495,35 +495,35 @@ vt normalize v0.5
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;2.3.4 其他 Markdown&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;在引用中可以使用使用其他任何&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Markdown&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="err"&gt;语法&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;在引用中可以使用使用其他任何 *Markdown* 语法&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在引用中可以使用使用其他任何 &lt;em&gt;Markdown&lt;/em&gt; 语法&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;2.4 列表&lt;/h2&gt;
 &lt;h3&gt;2.4.1 无序列表&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="err"&gt;可以使用&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="err"&gt;作为标记&lt;/span&gt;
-&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="err"&gt;也可以使用&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;
-&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="err"&gt;或者&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;* 可以使用 `*` 作为标记&lt;/span&gt;
+&lt;span class="code-line"&gt;+ 也可以使用 `+`&lt;/span&gt;
+&lt;span class="code-line"&gt;- 或者 `-`&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;* 可以使用 &lt;code&gt;*&lt;/code&gt; 作为标记
 + 也可以使用 &lt;code&gt;+&lt;/code&gt;
 - 或者 &lt;code&gt;-&lt;/code&gt;&lt;/p&gt;
 &lt;h3&gt;2.4.2 有序列表&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="err"&gt;有序列表以数字和&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="err"&gt;开始；&lt;/span&gt;
-&lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="err"&gt;数字的序列并不会影响生成的列表序列；&lt;/span&gt;
-&lt;span class="mf"&gt;4.&lt;/span&gt; &lt;span class="err"&gt;但仍然推荐按照自然顺序（&lt;/span&gt;&lt;span class="mf"&gt;1.2.3&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="err"&gt;）编写。&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;1. 有序列表以数字和 `.` 开始；&lt;/span&gt;
+&lt;span class="code-line"&gt;3. 数字的序列并不会影响生成的列表序列；&lt;/span&gt;
+&lt;span class="code-line"&gt;4. 但仍然推荐按照自然顺序（1.2.3...）编写。&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;1.有序列表以数字和 &lt;code&gt;.&lt;/code&gt; 开始；
 3.数字的序列并不会影响生成的列表序列；
 4.但仍然推荐按照自然顺序（1.2.3...）编写。&lt;/p&gt;
 &lt;h3&gt;2.4.3 嵌套的列表&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="err"&gt;第一层&lt;/span&gt;
-&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
-&lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="err"&gt;无序列表和有序列表可以随意相互嵌套&lt;/span&gt;
-&lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;1. 第一层&lt;/span&gt;
+&lt;span class="code-line"&gt;+ 1-1&lt;/span&gt;
+&lt;span class="code-line"&gt;+ 1-2&lt;/span&gt;
+&lt;span class="code-line"&gt;2. 无序列表和有序列表可以随意相互嵌套&lt;/span&gt;
+&lt;span class="code-line"&gt;1. 2-1&lt;/span&gt;
+&lt;span class="code-line"&gt;2. 2-2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;1.第一层
 +1-1
@@ -538,7 +538,7 @@ vt normalize v0.5
 &lt;li&gt;空格至少为一个，多个空格将被解析为一个；&lt;/li&gt;
 &lt;li&gt;如果仅需要在行前显示数字和 &lt;code&gt;.&lt;/code&gt;：&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mo"&gt;05&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="err"&gt;可以使用：数字\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="err"&gt;来取消显示为列表&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;05\. 可以使用：数字\. 来取消显示为列表&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;05. 可以使用：数字\. 来取消显示为列表&lt;/p&gt;
 &lt;blockquote&gt;
@@ -558,16 +558,16 @@ vt normalize v0.5
 &lt;p&gt;代码块中的文本（包括 Markdown 语法）都会显示为原始内容，而特殊字符会被转换为 HTML &lt;a href="https://zh.wikipedia.org/wiki/XML%E4%B8%8EHTML%E5%AD%97%E7%AC%A6%E5%AE%9E%E4%BD%93%E5%BC%95%E7%94%A8%E5%88%97%E8%A1%A8"&gt;字符实体&lt;/a&gt;。&lt;/p&gt;
 &lt;h2&gt;2.6 分隔线&lt;/h2&gt;
 &lt;p&gt;1. 可以在一行中使用三个或更多的 &lt;code&gt;*&lt;/code&gt;、&lt;code&gt;-&lt;/code&gt; 或 &lt;code&gt;_&lt;/code&gt; 来添加分隔线：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;***&lt;/span&gt;
-&lt;span class="o"&gt;------&lt;/span&gt;
-&lt;span class="n"&gt;___&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;***&lt;/span&gt;
+&lt;span class="code-line"&gt;------&lt;/span&gt;
+&lt;span class="code-line"&gt;___&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;hr/&gt;
 &lt;hr/&gt;
 &lt;hr/&gt;
 &lt;p&gt;2. 多个字符之间可以有空格（空白符），但不能有其他字符：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
-&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;* * *&lt;/span&gt;
+&lt;span class="code-line"&gt;- - -&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;hr/&gt;
 &lt;hr/&gt;
@@ -575,15 +575,15 @@ vt normalize v0.5
 &lt;h3&gt;2.7.1 行内式&lt;/h3&gt;
 &lt;p&gt;格式为 &lt;code&gt;[link text](URL 'title text')&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;① 普通链接：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Google&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.google.com/)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;[Google](http://www.google.com/)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href="http://www.google.com/"&gt;Google&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;② 指向本地文件的链接：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;icon&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;](.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;icon&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;[icon.png](./images/icon.png)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href="./images/icon.png"&gt;icon.png&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;③ 包含 'title' 的链接:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Google&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.google.com/ "Google")&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;[Google](http://www.google.com/ "Google")&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href="http://www.google.com/" title="Google"&gt;Google&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -592,12 +592,12 @@ vt normalize v0.5
 &lt;h3&gt;2.7.2 参考式&lt;/h3&gt;
 &lt;p&gt;参考式链接的写法相当于行内式拆分成两部分，并通过一个 &lt;em&gt;识别符&lt;/em&gt; 来连接两部分。参考式能尽量保持文章结构的简单，也方便统一管理 URL。&lt;/p&gt;
 &lt;p&gt;① 首先，定义链接：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Google&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;[Google][link]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href="http://www.google.com/" title="Google"&gt;Google&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;第二个方括号内为链接独有的 &lt;em&gt;识别符&lt;/em&gt;，可以是字母、数字、空白或标点符号。识别符是 &lt;em&gt;不区分大小写&lt;/em&gt; 的；&lt;/p&gt;
 &lt;p&gt;② 然后定义链接内容：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.google.com/ "Google"&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;[link]: http://www.google.com/ "Google"&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;其格式为：&lt;code&gt;[识别符]: URL 'title'&lt;/code&gt;。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -605,8 +605,8 @@ vt normalize v0.5
 &lt;p&gt;链接内容的定义可以放在同一个文件的 &lt;em&gt;任意位置&lt;/em&gt;；&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;③ 也可以省略 &lt;em&gt;识别符&lt;/em&gt;，使用链接文本作为 &lt;em&gt;识别符&lt;/em&gt;：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[Google][]&lt;/span&gt;
-&lt;span class="err"&gt;[Google]:&lt;/span&gt; &lt;span class="err"&gt;http://www.google.com/&lt;/span&gt; &lt;span class="err"&gt;"Google"&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[Google][]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="na"&gt;[Google]: http://www.google.com/ "Google"&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href="http://www.google.com/" title="Google"&gt;Google&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -614,9 +614,9 @@ vt normalize v0.5
 &lt;/blockquote&gt;
 &lt;h3&gt;2.7.3 自动链接&lt;/h3&gt;
 &lt;p&gt;使用 &lt;code&gt;&amp;lt;&amp;gt;&lt;/code&gt; 包括的 URL 或邮箱地址会被自动转换为超链接：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//www.google.com/&amp;gt;&lt;/span&gt;
-
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="mi"&gt;123&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;http://www.google.com/&amp;gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&amp;lt;123@email.com&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href="http://www.google.com/"&gt;http://www.google.com/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="mailto:123@email.com"&gt;123@email.com&lt;/a&gt;&lt;/p&gt;
@@ -624,60 +624,60 @@ vt normalize v0.5
 &lt;h2&gt;2.8 图像&lt;/h2&gt;
 &lt;p&gt;插入图片的语法和插入超链接的语法基本一致，只是在最前面多一个 &lt;code&gt;!&lt;/code&gt;。也分为行内式和参考式两种。&lt;/p&gt;
 &lt;h3&gt;2.8.1 行内式&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;GitHub&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100 "GitHub,Social Coding")&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;![GitHub](https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100 "GitHub,Social Coding")&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img alt="GitHub" src="https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100" title="GitHub,Social Coding"/&gt;&lt;/p&gt;
 &lt;p&gt;方括号中的部分是图片的替代文本，括号中的 'title' 部分和链接一样，是可选的。&lt;/p&gt;
 &lt;h3&gt;2.8.2 参考式&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;GitHub&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100 "GitHub,Social Coding"&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;![GitHub][github]&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;[github]: https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100 "GitHub,Social Coding"&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img alt="GitHub" src="https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100" title="GitHub,Social Coding"/&gt;&lt;/p&gt;
 &lt;h3&gt;2.8.3 指定图片的显示大小&lt;/h3&gt;
 &lt;p&gt;Markdown 不支持指定图片的显示大小，不过可以通过直接插入&lt;code&gt;&amp;lt;img /&amp;gt;&lt;/code&gt;标签来指定相关属性：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;"https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100"&lt;/span&gt; &lt;span class="na"&gt;alt=&lt;/span&gt;&lt;span class="s"&gt;"GitHub"&lt;/span&gt; &lt;span class="na"&gt;title=&lt;/span&gt;&lt;span class="s"&gt;"GitHub,Social Coding"&lt;/span&gt; &lt;span class="na"&gt;width=&lt;/span&gt;&lt;span class="s"&gt;"50"&lt;/span&gt; &lt;span class="na"&gt;height=&lt;/span&gt;&lt;span class="s"&gt;"50"&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100"&lt;/span&gt; &lt;span class="na"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"GitHub"&lt;/span&gt; &lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"GitHub,Social Coding"&lt;/span&gt; &lt;span class="na"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"50"&lt;/span&gt; &lt;span class="na"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;"50"&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img alt="GitHub" height="50" src="https://avatars2.githubusercontent.com/u/3265208?v=3&amp;amp;s=100" title="GitHub,Social Coding" width="50"/&gt;&lt;/p&gt;
 &lt;h2&gt;2.9 强调&lt;/h2&gt;
 &lt;p&gt;1. 使用 &lt;code&gt;* *&lt;/code&gt; 或 &lt;code&gt;_ _&lt;/code&gt; 包括的文本会被转换为 &lt;code&gt;&amp;lt;em&amp;gt;&amp;lt;/em&amp;gt;&lt;/code&gt; ，通常表现为斜体：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;这是用来&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="err"&gt;演示&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="err"&gt;的&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="err"&gt;文本&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;这是用来 *演示* 的 _文本_&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这是用来 &lt;em&gt;演示&lt;/em&gt; 的 &lt;em&gt;文本&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;2. 使用 &lt;code&gt;** **&lt;/code&gt; 或 &lt;code&gt;__ __&lt;/code&gt; 包括的文本会被转换为 &lt;code&gt;&amp;lt;strong&amp;gt;&amp;lt;/strong&amp;gt;&lt;/code&gt;，通常表现为加粗：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;这是用来&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="err"&gt;演示&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="err"&gt;的&lt;/span&gt; &lt;span class="n"&gt;__&lt;/span&gt;&lt;span class="err"&gt;文本&lt;/span&gt;&lt;span class="n"&gt;__&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;这是用来 **演示** 的 __文本__&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这是用来 &lt;strong&gt;演示&lt;/strong&gt; 的 &lt;strong&gt;文本&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;3. 用来包括文本的 &lt;code&gt;*&lt;/code&gt; 或 &lt;code&gt;_&lt;/code&gt; 内侧不能有空白，否则 &lt;code&gt;*&lt;/code&gt; 和 &lt;code&gt;_&lt;/code&gt; 将不会被转换（不同的实现会有不同的表现）：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;这是用来&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="err"&gt;演示&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="err"&gt;的&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="err"&gt;文本&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;这是用来 * 演示* 的 _文本 _&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这是用来 * 演示* 的 _文本 _&lt;/p&gt;
 &lt;p&gt;4. 如果需要在文本中显示成对的 &lt;code&gt;*&lt;/code&gt; 或 &lt;code&gt;_&lt;/code&gt;，可以在符号前加入 &lt;code&gt;\&lt;/code&gt; 即可：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;这是用来&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="err"&gt;演示\&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="err"&gt;的&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="err"&gt;文本\&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;这是用来 \*演示\* 的 \_文本\_&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这是用来 *演示* 的 _文本_&lt;/p&gt;
 &lt;p&gt;5. &lt;code&gt;*&lt;/code&gt;、&lt;code&gt;**&lt;/code&gt;、&lt;code&gt;_&lt;/code&gt; 和 &lt;code&gt;__&lt;/code&gt; 都必须 &lt;em&gt;成对使用&lt;/em&gt; 。&lt;/p&gt;
 &lt;h2&gt;2.10 字符转义&lt;/h2&gt;
 &lt;p&gt;反斜线（&lt;code&gt;\&lt;/code&gt;）用于插入在 Markdown 语法中有特殊作用的字符。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;这是用来&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="err"&gt;演示&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="err"&gt;的&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="err"&gt;文本&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;
-
-&lt;span class="err"&gt;这是用来&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="err"&gt;演示\&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="err"&gt;的&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="err"&gt;文本\&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;这是用来 *演示* 的 _文本_&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;这是用来 \*演示\* 的 \_文本\_&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这是用来 &lt;em&gt;演示&lt;/em&gt; 的 &lt;em&gt;文本&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;这是用来 *演示* 的 _文本_&lt;/p&gt;
 &lt;p&gt;这些字符包括：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;\
-&lt;span class="err"&gt;`&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt;
-&lt;span class="n"&gt;_&lt;/span&gt;
-&lt;span class="p"&gt;{}&lt;/span&gt;
-&lt;span class="p"&gt;[]&lt;/span&gt;
-&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="cp"&gt;#&lt;/span&gt;
-&lt;span class="o"&gt;+&lt;/span&gt;
-&lt;span class="o"&gt;-&lt;/span&gt;
-&lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="o"&gt;!&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;\&lt;/span&gt;
+&lt;span class="code-line"&gt;`&lt;/span&gt;
+&lt;span class="code-line"&gt;*&lt;/span&gt;
+&lt;span class="code-line"&gt;_&lt;/span&gt;
+&lt;span class="code-line"&gt;{}&lt;/span&gt;
+&lt;span class="code-line"&gt;[]&lt;/span&gt;
+&lt;span class="code-line"&gt;()&lt;/span&gt;
+&lt;span class="code-line"&gt;#&lt;/span&gt;
+&lt;span class="code-line"&gt;+&lt;/span&gt;
+&lt;span class="code-line"&gt;-&lt;/span&gt;
+&lt;span class="code-line"&gt;.&lt;/span&gt;
+&lt;span class="code-line"&gt;!&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="markdown"></category></entry><entry><title>QQplot</title><link href="https://ghxdghxd.github.io/QQplot.html" rel="alternate"></link><published>2015-12-27T19:57:00+08:00</published><updated>2015-12-27T19:57:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-12-27:/QQplot.html</id><summary type="html">&lt;p&gt;QQplot在GWAS中的意思&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h1&gt;QQplot&lt;/h1&gt;
 &lt;p&gt;Q-Q plot 即Quantile-Quantile Plot。它在各类研究中经常用到，主要是直观的表示观测值与预测值之间的差异。&lt;/p&gt;
 &lt;p&gt;在SPSS中很容做，Analysis - Descriptive statistics - Q-Qplot。&lt;/p&gt;
@@ -686,13 +686,13 @@ plot的X和Y轴主要是代表各个SNP的-lg P values。预测的线是一条�
 &lt;p&gt;Q-Q plot主要要点：&lt;/p&gt;
 &lt;p&gt;预测的虚线为什么是45°出来的呢？因为预测的线实际是通过在QQ图中第一象限作图得出。理论上一个点A在该图上的位置应该是A预测值=A实际值，转化为坐标就是A（x，y）x=y。所以预测的线是一条从原点发出的45°线。&lt;/p&gt;
 &lt;p&gt;观测值的点的坐标是怎么得出来的。同样设点A的坐标是（x，y）x为预测值，y为实际观测值。查了一下R 中qq plot的算法是这样的&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;pvals &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.table&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"DGI_chr3_pvals.txt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; header&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k-Variable"&gt;T&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-observed &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; sort&lt;span class="p"&gt;(&lt;/span&gt;pvals&lt;span class="o"&gt;$&lt;/span&gt;PVAL&lt;span class="p"&gt;)&lt;/span&gt;
-lobs &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;log10&lt;span class="p"&gt;(&lt;/span&gt;observed&lt;span class="p"&gt;))&lt;/span&gt;
-
-expected &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; c&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;length&lt;span class="p"&gt;(&lt;/span&gt;observed&lt;span class="p"&gt;))&lt;/span&gt;
-lexp &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;log10&lt;span class="p"&gt;(&lt;/span&gt;expected &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;length&lt;span class="p"&gt;(&lt;/span&gt;expected&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="m"&gt;+1&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;pvals &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; read.table&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"DGI_chr3_pvals.txt"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; header&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;T&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;observed &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;sort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pvals&lt;span class="o"&gt;$&lt;/span&gt;PVAL&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;lobs &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;log10&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;observed&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;expected &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;observed&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;lexp &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;log10&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;expected &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;expected&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="m"&gt;+1&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;具体解释是这样的，先把P值从小到大排序。lobs代表纵坐标，lexp代表横坐标，纵坐标就是观测P值的-
 log10，而横坐标则根据P值数目而定。比如，当只有3个P值 P1=0.0001 P2=0.001
@@ -892,10 +892,10 @@ NG_000004.3
 3.第三行以‘+’开头，后面是序列标示符、描述信息，或者什么也不加
 4.第四行，是质量信息，和第二行的序列相对应，每一个序列都有一个质量评分，根据评分体系的不同，每个字符的含义表示的数字也不相同。&lt;/p&gt;
 &lt;p&gt;例如：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;  @SEQ_ID
-  GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
-  &lt;span class="se"&gt;\+&lt;/span&gt;  
-  !&lt;span class="s1"&gt;''&lt;/span&gt;*&lt;span class="o"&gt;((((&lt;/span&gt;***+&lt;span class="o"&gt;))&lt;/span&gt;%%%++&lt;span class="o"&gt;)(&lt;/span&gt;%%%%&lt;span class="o"&gt;)&lt;/span&gt;.1***-+*&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;**55CCF&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CCCCCCC65
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  @SEQ_ID&lt;/span&gt;
+&lt;span class="code-line"&gt;  GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT&lt;/span&gt;
+&lt;span class="code-line"&gt;  &lt;span class="se"&gt;\+&lt;/span&gt;  &lt;/span&gt;
+&lt;span class="code-line"&gt;  !&lt;span class="s1"&gt;''&lt;/span&gt;*&lt;span class="o"&gt;((((&lt;/span&gt;***+&lt;span class="o"&gt;))&lt;/span&gt;%%%++&lt;span class="o"&gt;)(&lt;/span&gt;%%%%&lt;span class="o"&gt;)&lt;/span&gt;.1***-+*&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;**55CCF&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CCCCCCC65&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;Illumina sequence identifiers&lt;/h2&gt;
 &lt;blockquote&gt;
@@ -989,10 +989,10 @@ NG_000004.3
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h3&gt;NCBI Sequence Read Archive&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;  @SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345 &lt;span class="nv"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;36
-  GGGTGATGGCCGCTGCCGATGGCGTCAAATCCCACC  
-  +SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345 &lt;span class="nv"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;36  
-  IIIIIIIIIIIIIIIIIIIIIIIIIIIIII9IG9IC
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  @SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345 &lt;span class="nv"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;36&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;  GGGTGATGGCCGCTGCCGATGGCGTCAAATCCCACC  &lt;/span&gt;
+&lt;span class="code-line"&gt;  +SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345 &lt;span class="nv"&gt;length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;36&lt;/span&gt;  &lt;/span&gt;
+&lt;span class="code-line"&gt;  IIIIIIIIIIIIIIIIIIIIIIIIIIIIII9IG9IC&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;关于质量编码格式&lt;/h2&gt;
 &lt;p&gt;质量评分指的是一个碱基的错误概率的对数值。其最初在Phred拼接软件中定义与使用，其后在许多软件中得到使用。其质量得分与错误概率的对应关系见下表：&lt;/p&gt;
@@ -1067,22 +1067,22 @@ equivalently, Q ≈ 13.&lt;/p&gt;
 &lt;li&gt;Illumina 1.8+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;下面是更为直观的表示：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................
-..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................
-...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................
-.................................**J**JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................
-LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL....................................................
-!&lt;span class="err"&gt;"&lt;/span&gt;&lt;span class="c"&gt;#$%&amp;amp;'()*+,-./0123456789:;&amp;lt;=&amp;gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&lt;/span&gt;
-|                         |    |        |                              |                     |
-33                        59   64       73                            104                   126
-
-S - Sanger        Phred+33,  raw reads typically &lt;span class="o"&gt;(&lt;/span&gt;0, 40&lt;span class="o"&gt;)&lt;/span&gt;
-X - Solexa        Solexa+64, raw reads typically &lt;span class="o"&gt;(&lt;/span&gt;-5, 40&lt;span class="o"&gt;)&lt;/span&gt;
-I - Illumina 1.3+ Phred+64,  raw reads typically &lt;span class="o"&gt;(&lt;/span&gt;0, 40&lt;span class="o"&gt;)&lt;/span&gt;
-J - Illumina 1.5+ Phred+64,  raw reads typically &lt;span class="o"&gt;(&lt;/span&gt;3, 40&lt;span class="o"&gt;)&lt;/span&gt;
-  with &lt;span class="nv"&gt;0&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;unused, &lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;unused, &lt;span class="nv"&gt;2&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;Read Segment Quality Control Indicator &lt;span class="o"&gt;(&lt;/span&gt;bold&lt;span class="o"&gt;)&lt;/span&gt;
-  &lt;span class="o"&gt;(&lt;/span&gt;Note: See discussion above&lt;span class="o"&gt;)&lt;/span&gt;.
-L - Illumina 1.8+ Phred+33,  raw reads typically &lt;span class="o"&gt;(&lt;/span&gt;0, 41&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................&lt;/span&gt;
+&lt;span class="code-line"&gt;..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................&lt;/span&gt;
+&lt;span class="code-line"&gt;...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................&lt;/span&gt;
+&lt;span class="code-line"&gt;.................................**J**JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................&lt;/span&gt;
+&lt;span class="code-line"&gt;LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL....................................................&lt;/span&gt;
+&lt;span class="code-line"&gt;!&lt;span class="s2"&gt;"#&lt;/span&gt;$&lt;span class="s2"&gt;%&amp;amp;'()*+,-./0123456789:;&amp;lt;=&amp;gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;|                         |    |        |                              |                     |&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;33                        59   64       73                            104                   126&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;S - Sanger        Phred+33,  raw reads typically (0, 40)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;X - Solexa        Solexa+64, raw reads typically (-5, 40)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;I - Illumina 1.3+ Phred+64,  raw reads typically (0, 40)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;J - Illumina 1.5+ Phred+64,  raw reads typically (3, 40)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;  with 0=unused, 1=unused, 2=Read Segment Quality Control Indicator (bold)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;  (Note: See discussion above).&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;L - Illumina 1.8+ Phred+33,  raw reads typically (0, 41)&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="fastq"></category></entry><entry><title>脱氧核糖核酸酶高敏感位点</title><link href="https://ghxdghxd.github.io/DHS.html" rel="alternate"></link><published>2015-02-03T13:27:00+08:00</published><updated>2015-02-03T13:27:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-02-03:/DHS.html</id><summary type="html">&lt;p&gt;脱氧核糖核酸酶高敏感位点的简介&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;脱氧核糖核酸酶高敏感位点（DNase Hypersensitive Site，DHS），也就是DNA酶高敏感位点，是DNA上容易被DNA酶识别的位点。&lt;/p&gt;
 &lt;p&gt;中文名脱氧核糖核酸酶高敏感位点&lt;/p&gt;
 &lt;p&gt;外文名DNase Hypersensitive Site，DHS&lt;/p&gt;

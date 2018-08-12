@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1259,6 +1324,31 @@
         <main class="page-content">
             <div class="container-fluid" style="float: left">
 <div class="post">
+    <h1 class="post-title"><a href="/BRCA.html">BRCA基因检测</a></h1>
+    <div class="tags" style="float: right;">
+        <a href="/tag/brca.html">BRCA</a>
+        <a href="/tag/genetictesting.html">geneticTesting</a>
+    </div>
+    <div class="post-meta">2016-11-03</div>
+    <div class="post-content">
+        <p>BRCA的基因检测</p>
+    </div>
+    <p class="readmore"><a href="/BRCA.html">Read More</a></p>
+</div>
+<div class="post">
+    <h1 class="post-title"><a href="/hotnet2.html">hotnet2</a></h1>
+    <div class="tags" style="float: right;">
+        <a href="/tag/ngs.html">NGS</a>
+        <a href="/tag/hotnet2.html">hotnet2</a>
+        <a href="/tag/bioinfo.html">bioinfo</a>
+    </div>
+    <div class="post-meta">2016-11-03</div>
+    <div class="post-content">
+        <p>hotnet2的简介</p>
+    </div>
+    <p class="readmore"><a href="/hotnet2.html">Read More</a></p>
+</div>
+<div class="post">
     <h1 class="post-title"><a href="/git.html">git的一般用法</a></h1>
     <div class="tags" style="float: right;">
         <a href="/tag/git.html">git</a>
@@ -1271,51 +1361,29 @@
 <ul>
 <li>远程</li>
 </ul>
-<div class="highlight"><pre>git remote add origin git@github.com:ghxdghxd<span class="nv">$NAME</span>.git
+<div class="highlight"><pre><span class="code-line"><span></span>git remote add origin git@github.com:ghxdghxd<span class="nv">$NAME</span>.git</span>
 </pre></div>
 <ul>
 <li>本地(初始化)</li>
 </ul>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">init</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git init</span>
 </pre></div>
 <h2>2 常用操作</h2>
 <ul>
 <li>拉取</li>
 </ul>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git pull origin master</span>
 </pre></div>
 <ul>
 <li>提交</li>
 </ul>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">add</span> <span class="o">*</span><span class="p">.</span><span class="n">py</span>
-<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">"message"</span>
-<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">develop</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git add *.py</span>
+<span class="code-line">git commit -m <span class="s2">"message"</span></span>
+<span class="code-line">git push origin master/dev/develop</span>
 </pre></div>
 
     </div>
     <p class="readmore"><a href="/git.html">Read More</a></p>
-</div>
-<div class="post">
-    <h1 class="post-title"><a href="/variant.html">变异标准化</a></h1>
-    <div class="tags" style="float: right;">
-        <a href="/tag/variant.html">variant</a>
-    </div>
-    <div class="post-meta">2016-10-20</div>
-    <div class="post-content">
-        <p>突变的标准化概念及标准</p>
-    </div>
-    <p class="readmore"><a href="/variant.html">Read More</a></p>
-</div>
-<div class="post">
-    <h1 class="post-title"><a href="/markdown.html">markdown格式详解</a></h1>
-    <div class="tags" style="float: right;">
-        <a href="/tag/markdown.html">markdown</a>
-    </div>
-    <div class="post-meta">2016-10-20</div>
-    <div class="post-content">
-        <p>markdown格式详解</p>
-    </div>
-    <p class="readmore"><a href="/markdown.html">Read More</a></p>
 </div>
                 <div class="post">
                 <div class="post-content">
@@ -1329,7 +1397,7 @@
     <a class="page-number" href="/author/jt-guo6.html">6</a>
     <a class="page-number" href="/author/jt-guo7.html">7</a>
     <span class="space">...</span>
-    <a class="page-number" href="/author/jt-guo14.html">14</a>
+    <a class="page-number" href="/author/jt-guo15.html">15</a>
     <a class="extend next" rel="next" href="author/jt-guo6.html">Next</a></nav>
 </div class="page-navigator">
                 </div></div>
@@ -1354,6 +1422,11 @@
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1300,6 +1365,11 @@
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

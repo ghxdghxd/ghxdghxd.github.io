@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1270,13 +1335,13 @@
     <div class="post-content">
         <html><body><h1>/etc/fstab</h1>
 <p>运维都知道的文件，若想把mount的disk和dir设置为每次开机自动加载，那么就要把相关信息写到这个文件中。当用”mount -a“命令自动mount的时候，也会去读这个文件。例如：</p>
-<div class="highlight"><pre><span class="nv">LABEL</span><span class="o">=</span>/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto 0 2
-<span class="nv">LABEL</span><span class="o">=</span>/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto 0 2
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nv">LABEL</span><span class="o">=</span>/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto <span class="m">0</span> <span class="m">2</span></span>
+<span class="code-line"><span class="nv">LABEL</span><span class="o">=</span>/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto <span class="m">0</span> <span class="m">2</span></span>
 </pre></div>
 <h1>/etc/mtab</h1>
 <p>这个文件主要是用mount命令的时候，系统根据实际mount的情况生成的数据，例如：</p>
-<div class="highlight"><pre>/dev/sdb1 /hadoop/9 ext3 rw,noatime,nodiratime 0 0
-/dev/sdc1 /hadoop/10 ext3 rw,noatime,nodiratime 0 0
+<div class="highlight"><pre><span class="code-line"><span></span>/dev/sdb1 /hadoop/9 ext3 rw,noatime,nodiratime <span class="m">0</span> <span class="m">0</span></span>
+<span class="code-line">/dev/sdc1 /hadoop/10 ext3 rw,noatime,nodiratime <span class="m">0</span> <span class="m">0</span></span>
 </pre></div>
 <h1>/proc/mounts</h1>
 <p>这个文件是/proc/self/mounts的软链接，/proc下面的文件都是保存在内存中的，是内核自动生成的。所以/proc/mounts比/etc/mtab文件能更加真实的反映当前mount的情况</p>
@@ -1285,28 +1350,28 @@
 或者你使用"chmod 000 /dir",把这块盘设为不能读不能写。
 这时如果你管理了1000台服务器，你需要知道你的服务器中哪些盘是被umount了，你会怎么做？
 这里分享一个SHELL脚本，可以给你提供思路：</p>
-<div class="highlight"><pre><span class="k">function </span>check_disks <span class="o">{</span>
-  <span class="k">for </span>m in <span class="sb">`</span>awk <span class="s1">'$3~/ext3/ {printf" %s ",$2}'</span> /etc/fstab<span class="sb">`</span> ; <span class="k">do</span>
-<span class="k">    </span><span class="nv">fsdev</span><span class="o">=</span><span class="s2">""</span>
-    <span class="nv">fsdev</span><span class="o">=</span><span class="sb">`</span>awk -v <span class="nv">m</span><span class="o">=</span><span class="nv">$m</span> <span class="s1">'$2==m {print $1}'</span> /proc/mounts<span class="sb">`</span>;
-    <span class="k">if</span> <span class="o">[</span> -z <span class="s2">"$fsdev"</span> <span class="o">]</span> ; <span class="k">then</span>
-<span class="k">      </span><span class="nv">msg_</span><span class="o">=</span><span class="s2">"$msg_ $m(u)"</span>
-    <span class="k">else</span>
-<span class="k">      </span><span class="nv">msg_</span><span class="o">=</span><span class="s2">"$msg_`awk -v m=$m '$2==m { if ( $4 ~ /^ro,/ ) {printf"</span>%s<span class="o">(</span>ro<span class="o">)</span><span class="s2">",$2 } ; }' /proc/mounts`"</span>
-    <span class="k">fi</span>
-<span class="k">  done</span>
-<span class="k">  if</span> <span class="o">[</span> -z <span class="s2">"$msg_"</span> <span class="o">]</span> ; <span class="k">then</span>
-<span class="k">    </span><span class="nb">echo</span> <span class="s2">"disks ok"</span> ; <span class="nb">exit </span>0
-  <span class="k">else</span>
-<span class="k">    </span><span class="nb">echo</span> <span class="s2">"$msg_"</span> ; <span class="nb">exit </span>2
-  <span class="k">fi</span>
-<span class="o">}</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="k">function</span> check_disks <span class="o">{</span></span>
+<span class="code-line">  <span class="k">for</span> m in <span class="sb">`</span>awk <span class="s1">'$3~/ext3/ {printf" %s ",$2}'</span> /etc/fstab<span class="sb">`</span> <span class="p">;</span> <span class="k">do</span></span>
+<span class="code-line">    <span class="nv">fsdev</span><span class="o">=</span><span class="s2">""</span></span>
+<span class="code-line">    <span class="nv">fsdev</span><span class="o">=</span><span class="sb">`</span>awk -v <span class="nv">m</span><span class="o">=</span><span class="nv">$m</span> <span class="s1">'$2==m {print $1}'</span> /proc/mounts<span class="sb">`</span><span class="p">;</span></span>
+<span class="code-line">    <span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$fsdev</span><span class="s2">"</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span></span>
+<span class="code-line">      <span class="nv">msg_</span><span class="o">=</span><span class="s2">"</span><span class="nv">$msg_</span><span class="s2"> </span><span class="nv">$m</span><span class="s2">(u)"</span></span>
+<span class="code-line">    <span class="k">else</span></span>
+<span class="code-line">      <span class="nv">msg_</span><span class="o">=</span><span class="s2">"</span><span class="nv">$msg_</span><span class="s2">`awk -v m=</span><span class="nv">$m</span><span class="s2"> '</span><span class="nv">$2</span><span class="s2">==m { if ( </span><span class="nv">$4</span><span class="s2"> ~ /^ro,/ ) {printf"</span>%s<span class="o">(</span>ro<span class="o">)</span><span class="s2">",</span><span class="nv">$2</span><span class="s2"> } ; }' /proc/mounts`"</span></span>
+<span class="code-line">    <span class="k">fi</span></span>
+<span class="code-line">  <span class="k">done</span></span>
+<span class="code-line">  <span class="k">if</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$msg_</span><span class="s2">"</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span></span>
+<span class="code-line">    <span class="nb">echo</span> <span class="s2">"disks ok"</span> <span class="p">;</span> <span class="nb">exit</span> <span class="m">0</span></span>
+<span class="code-line">  <span class="k">else</span></span>
+<span class="code-line">    <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$msg_</span><span class="s2">"</span> <span class="p">;</span> <span class="nb">exit</span> <span class="m">2</span></span>
+<span class="code-line">  <span class="k">fi</span></span>
+<span class="code-line"><span class="o">}</span></span>
 </pre></div>
 <p>脚本首先通过比较/etc/fstab和/proc/mounts中的不同之处，得到被umount的盘，然后再把ro(read only)的盘也分析出来。</p>
 <h1>挂载usb到指定位置</h1>
-<div class="highlight"><pre>blkid usb <span class="c">#查看uuid</span>
-<span class="c"># 修改/etc/fstab</span>
-<span class="nv">UUID</span><span class="o">=</span>54A3-36E3 /home/aData exfat defaults,uid<span class="o">=</span>1000,gid<span class="o">=</span>1000,umask<span class="o">=</span>022 0 0
+<div class="highlight"><pre><span class="code-line"><span></span>blkid usb <span class="c1">#查看uuid</span></span>
+<span class="code-line"><span class="c1"># 修改/etc/fstab</span></span>
+<span class="code-line"><span class="nv">UUID</span><span class="o">=</span>54A3-36E3 /home/aData exfat defaults,uid<span class="o">=</span><span class="m">1000</span>,gid<span class="o">=</span><span class="m">1000</span>,umask<span class="o">=</span><span class="m">022</span> <span class="m">0</span> <span class="m">0</span></span>
 </pre></div></body></html>
 
         <div class="post-nav">
@@ -1340,6 +1405,11 @@
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

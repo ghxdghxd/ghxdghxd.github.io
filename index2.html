@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1259,6 +1324,62 @@
         <main class="page-content">
             <div class="container-fluid" style="float: left">
 <div class="post">
+    <h1 class="post-title"><a href="/git-submodule.html">git submodule的用法</a></h1>
+    <div class="tags" style="float: right;">
+        <a href="/tag/git.html">git</a>
+        <a href="/tag/submodule.html">submodule</a>
+    </div>
+    <div class="post-meta">2018-02-03</div>
+    <div class="post-content">
+        <html><body><h1>常用命令</h1>
+<div class="highlight"><pre><span class="code-line"><span></span>git clone &lt;repository&gt; --recursive 递归的方式克隆整个项目</span>
+<span class="code-line">git submodule add &lt;repository&gt;&lt;path&gt; 添加子模块</span>
+<span class="code-line">git submodule init 初始化子模块</span>
+<span class="code-line">git submodule update 更新子模块</span>
+<span class="code-line">git submodule foreach git pull 拉取所有子模块</span>
+</pre></div>
+<h2>如何使用</h2>
+<h3>1. 创建带子模块的版本库</h3>
+<p>例如我们要创建如下结构的项目</p>
+<div class="highlight"><pre><span class="code-line"><span></span>project</span>
+<span class="code-line">    <span class="p">|</span>--moduleA</span>
+<span class="code-line">    <span class="p">|</span>--readme.txt</span>
+</pre></div>
+<p>创建project版本库，并提交readme.txt文件</p>
+<div class="highlight"><pre><span class="code-line"><span></span>git init --bare project.git</span>
+<span class="code-line">git clone project.git project1cd project1</span>
+<span class="code-line">echo<span class="s2">"This is a project."</span> &gt; readme.txt</span>
+<span class="code-line">git add .</span>
+<span class="code-line">git commit -m <span class="s2">"add readme.txt"</span></span>
+<span class="code-line">git push origin master</span>
+<span class="code-line"><span class="nb">cd</span> ..</span>
+</pre></div>
+
+    </div>
+    <p class="readmore"><a href="/git-submodule.html">Read More</a></p>
+</div>
+<div class="post">
+    <h1 class="post-title"><a href="/meta.html">meta Analysis</a></h1>
+    <div class="tags" style="float: right;">
+        <a href="/tag/r.html">R</a>
+        <a href="/tag/meta.html">meta</a>
+    </div>
+    <div class="post-meta">2018-02-03</div>
+    <div class="post-content">
+        <html><body><h1>metafor document</h1>
+<ul>
+<li>An Overview of Functions in the metafor Package</li>
+</ul>
+<p><a href="/documents/metafor_diagram.pdf"><img alt="metafor diagram" src="https://ghxdghxd.github.io/pdf_previews/documents/metafor_diagram.pdf.png"/></a></p>
+<ul>
+<li>Viechtbauer gesis ma with metafor</li>
+</ul>
+<p><a href="/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf"><img alt="talks" src="https://ghxdghxd.github.io/pdf_previews/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf.png"/></a></p>
+
+    </div>
+    <p class="readmore"><a href="/meta.html">Read More</a></p>
+</div>
+<div class="post">
     <h1 class="post-title"><a href="/archlinux.html">archlinux安装与配置</a></h1>
     <div class="tags" style="float: right;">
         <a href="/tag/operation.html">operation</a>
@@ -1267,80 +1388,36 @@
     <div class="post-meta">2017-12-03</div>
     <div class="post-content">
         <html><body><h1>archlinux安装</h1>
-<div class="highlight"><pre><span class="cp"># u盘启动后</span>
-<span class="cp"># 连接网络</span>
-<span class="n">wifi</span><span class="o">-</span><span class="n">memu</span>
-<span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda1</span> <span class="o">/</span><span class="n">mnt</span>
-<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">home</span>
-<span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda2</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">home</span>
-<span class="cp"># 修改中国镜像源,如163.com</span>
-<span class="n">vi</span> <span class="o">/</span><span class="n">ect</span><span class="o">/</span><span class="n">pacman</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">mirrorlist</span>
-<span class="n">pacstrap</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">mnt</span> <span class="n">base</span> <span class="n">base</span><span class="o">-</span><span class="n">devel</span>
-<span class="cp">#生成挂载文件fstab</span>
-<span class="n">genfstab</span> <span class="o">-</span><span class="n">U</span> <span class="o">/</span><span class="n">mnt</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># u盘启动后</span></span>
+<span class="code-line"><span class="c1"># 连接网络</span></span>
+<span class="code-line">wifi-memu</span>
+<span class="code-line">mount /dev/sda1 /mnt</span>
+<span class="code-line">mkdir -p /mnt/home</span>
+<span class="code-line">mount /dev/sda2 /mnt/home</span>
+<span class="code-line"><span class="c1"># 修改中国镜像源,如163.com</span></span>
+<span class="code-line">vi /ect/pacman.d/mirrorlist</span>
+<span class="code-line">pacstrap -i /mnt base base-devel</span>
+<span class="code-line"><span class="c1">#生成挂载文件fstab</span></span>
+<span class="code-line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span>
 </pre></div>
 <h2>archlinux 初步配置</h2>
-<div class="highlight"><pre><span class="cp">#切换到archlinux</span>
-<span class="n">arch</span><span class="o">-</span><span class="n">chroot</span> <span class="o">/</span><span class="n">mnt</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1">#切换到archlinux</span></span>
+<span class="code-line">arch-chroot /mnt /bin/bash</span>
 </pre></div>
 <ul>
 <li>本地语言</li>
 </ul>
-<div class="highlight"><pre><span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">gen</span>
-    <span class="n">en_US</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-    <span class="n">zh_CN</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-
-<span class="cp">#生效</span>
-<span class="n">locale</span><span class="o">-</span><span class="n">gen</span>
-<span class="n">echo</span> <span class="n">LANG</span><span class="o">=</span><span class="n">en_US</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">conf</span>
+<div class="highlight"><pre><span class="code-line"><span></span>vi /etc/locale.gen</span>
+<span class="code-line">    en_US.UTF-8 UTF-8</span>
+<span class="code-line">    zh_CN.UTF-8 UTF-8</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#生效</span></span>
+<span class="code-line">locale-gen</span>
+<span class="code-line"><span class="nb">echo</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 &gt; /etc/locale.conf</span>
 </pre></div>
 
     </div>
     <p class="readmore"><a href="/archlinux.html">Read More</a></p>
-</div>
-<div class="post">
-    <h1 class="post-title"><a href="/docker.html">docker安装与配置</a></h1>
-    <div class="tags" style="float: right;">
-        <a href="/tag/docker.html">docker</a>
-    </div>
-    <div class="post-meta">2017-11-03</div>
-    <div class="post-content">
-        <html><body><h1>docker</h1>
-<h2>centos yum install docker</h2>
-<div class="highlight"><pre>tee <span class="o">/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo <span class="o">&lt;&lt;-</span><span class="s">'EOF'</span>
-<span class="p">[</span>dockerrepo<span class="p">]</span>
-name<span class="o">=</span>Docker Repository
-baseurl<span class="o">=</span>https<span class="o">://</span>yum.dockerproject.org<span class="o">/</span>repo<span class="o">/</span>main<span class="o">/</span>centos<span class="o">/$</span>releasever<span class="o">/</span>
-enabled<span class="o">=</span><span class="m">1</span>
-gpgcheck<span class="o">=</span><span class="m">1</span>
-gpgkey<span class="o">=</span>https<span class="o">://</span>yum.dockerproject.org<span class="o">/</span>gpg
-EOF
-
-sed <span class="o">-</span>i <span class="s">'s/other_args=\"\"/other_args=\"--graph=\/share\/apps\/docker\"/g'</span> <span class="o">/</span>etc<span class="o">/</span>sysconfig<span class="o">/</span>docker
-
-<span class="kr">for</span> i <span class="kr">in</span> <span class="sb">`seq 1 8`</span><span class="p">;</span>
-do
-    sudo scp <span class="o">/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo compute<span class="m">-0</span><span class="o">-$</span>i<span class="o">:/</span>etc<span class="o">/</span>yum.repos.d<span class="o">/</span>docker.repo
-done
-
-rocks run host <span class="s">"yum install docker-engine"</span>
-rocks run host <span class="s">"sed -i 's/other_args=\"\"/other_args=\"--graph=\/share\/apps\/docker\"/g' /etc/sysconfig/docker"</span>
-</pre></div>
-
-    </div>
-    <p class="readmore"><a href="/docker.html">Read More</a></p>
-</div>
-<div class="post">
-    <h1 class="post-title"><a href="/tennis-racquet.html">网球拍的平衡点</a></h1>
-    <div class="tags" style="float: right;">
-        <a href="/tag/tennis.html">tennis</a>
-        <a href="/tag/interest.html">interest</a>
-    </div>
-    <div class="post-meta">2017-04-03</div>
-    <div class="post-content">
-        <p>网球拍的平衡点</p>
-    </div>
-    <p class="readmore"><a href="/tennis-racquet.html">Read More</a></p>
 </div>
                 <div class="post">
                 <div class="post-content">
@@ -1351,7 +1428,7 @@ rocks run host <span class="s">"sed -i 's/other_args=\"\"/other_args=\"--graph=\
     <a class="page-number" href="/index3.html">3</a>
     <a class="page-number" href="/index4.html">4</a>
     <span class="space">...</span>
-    <a class="page-number" href="/index14.html">14</a>
+    <a class="page-number" href="/index15.html">15</a>
     <a class="extend next" rel="next" href="index3.html">Next</a></nav>
 </div class="page-navigator">
                 </div></div>
@@ -1376,6 +1453,11 @@ rocks run host <span class="s">"sed -i 's/other_args=\"\"/other_args=\"--graph=\
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1270,28 +1335,28 @@
     <div class="post-content">
         <html><body><h1>/etc/issue</h1>
 <p>在终端接口登录时候的提示字符,例如：</p>
-<div class="highlight"><pre><span class="o">[</span>root@linux ~<span class="o">]</span> cat /etc/issue
-CentOS release 5.6 <span class="o">(</span>Final<span class="o">)</span>
-Kernel <span class="se">\r</span> on an <span class="se">\m</span>
-
-issue内各代码说明：
-<span class="se">\d</span>  本地端时间的日期
-<span class="se">\l</span>  显示第几个终端接口
-<span class="se">\m</span>  显示硬件的等级
-<span class="se">\n</span>  显示主机的网络名称
-<span class="se">\o</span>  显示域名
-<span class="se">\r</span>  操作系统的版本
-<span class="se">\t</span>  显示本地端的时间
-<span class="se">\s</span>  操作系统的名称
-<span class="se">\v</span>  操作系统的版本
+<div class="highlight"><pre><span class="code-line"><span></span><span class="o">[</span>root@linux ~<span class="o">]</span> cat /etc/issue</span>
+<span class="code-line">CentOS release <span class="m">5</span>.6 <span class="o">(</span>Final<span class="o">)</span></span>
+<span class="code-line">Kernel <span class="se">\r</span> on an <span class="se">\m</span></span>
+<span class="code-line"></span>
+<span class="code-line">issue内各代码说明：</span>
+<span class="code-line"><span class="se">\d</span>  本地端时间的日期</span>
+<span class="code-line"><span class="se">\l</span>  显示第几个终端接口</span>
+<span class="code-line"><span class="se">\m</span>  显示硬件的等级</span>
+<span class="code-line"><span class="se">\n</span>  显示主机的网络名称</span>
+<span class="code-line"><span class="se">\o</span>  显示域名</span>
+<span class="code-line"><span class="se">\r</span>  操作系统的版本</span>
+<span class="code-line"><span class="se">\t</span>  显示本地端的时间</span>
+<span class="code-line"><span class="se">\s</span>  操作系统的名称</span>
+<span class="code-line"><span class="se">\v</span>  操作系统的版本</span>
 </pre></div>
 <h1>/etc/motd</h1>
 <p>登录后的公告消息, 比如：系统将会在某个时间进行维护</p>
-<div class="highlight"><pre><span class="o">[</span>root@linux ~<span class="o">]</span> vi /etc/motd
-    Hello everyone,
-    Our server will be maintained at
-    please don<span class="err">'</span>t login at that <span class="nb">time</span>,thanks.
-    那么当用户登录的时候，就会显示设置的内容了。
+<div class="highlight"><pre><span class="code-line"><span></span><span class="o">[</span>root@linux ~<span class="o">]</span> vi /etc/motd</span>
+<span class="code-line">    Hello everyone,</span>
+<span class="code-line">    Our server will be maintained at</span>
+<span class="code-line">    please don<span class="err">'</span>t login at that time,thanks.</span>
+<span class="code-line">    那么当用户登录的时候，就会显示设置的内容了。</span>
 </pre></div></body></html>
 
         <div class="post-nav">
@@ -1325,6 +1390,11 @@ issue内各代码说明：
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

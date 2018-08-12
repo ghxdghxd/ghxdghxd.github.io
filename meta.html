@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1279,19 +1344,19 @@
 <p><a href="/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf"><img alt="talks" src="https://ghxdghxd.github.io/pdf_previews/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf.png"/></a></p>
 <!--more-->
 <h2>meta-analysis from odds ratios and confidence intervals using metafor</h2>
-<div class="highlight"><pre>dm<span class="o">&lt;-</span>structure<span class="p">(</span>list<span class="p">(</span>or <span class="o">=</span> c<span class="p">(</span><span class="m">1.6</span><span class="p">,</span> <span class="m">4.4</span><span class="p">,</span> <span class="m">1.14</span><span class="p">,</span> <span class="m">1.3</span><span class="p">,</span> <span class="m">4.5</span><span class="p">),</span> cill <span class="o">=</span> c<span class="p">(</span><span class="m">1.2</span><span class="p">,</span> <span class="m">2.9</span><span class="p">,</span> <span class="m">0.45</span><span class="p">,</span> <span class="m">0.6</span><span class="p">,</span> <span class="m">3.2</span><span class="p">),</span>
-ciul <span class="o">=</span> c<span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">6.9</span><span class="p">,</span> <span class="m">2.86</span><span class="p">,</span> <span class="m">2.7</span><span class="p">,</span> <span class="m">6.1</span><span class="p">)),</span> .Names <span class="o">=</span> c<span class="p">(</span><span class="s">"or"</span><span class="p">,</span> <span class="s">"cill"</span><span class="p">,</span> <span class="s">"ciul"</span><span class="p">),</span> class <span class="o">=</span> <span class="s">"data.frame"</span><span class="p">,</span> row.names <span class="o">=</span> c<span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="m">-5L</span><span class="p">))</span>
-
-dm<span class="o">$</span>logor<span class="o">&lt;-</span>log<span class="p">(</span>dm<span class="o">$</span>or<span class="p">)</span>
-dm<span class="o">$</span>se1<span class="o">&lt;-</span><span class="p">(</span>log<span class="p">(</span>dm<span class="o">$</span>ciul<span class="p">)</span><span class="o">-</span>dm<span class="o">$</span>logor<span class="p">)</span><span class="o">/</span><span class="m">1.96</span>
-dm<span class="o">$</span>se2<span class="o">&lt;-</span><span class="p">(</span>dm<span class="o">$</span>logor<span class="o">-</span>log<span class="p">(</span>dm<span class="o">$</span>cill<span class="p">))</span><span class="o">/</span><span class="m">1.96</span>
-dm<span class="o">$</span>se<span class="o">&lt;-</span><span class="p">(</span>dm<span class="o">$</span>se1<span class="o">+</span>dm<span class="o">$</span>se2<span class="p">)</span><span class="o">/</span><span class="m">2</span>
-
-library<span class="p">(</span>metafor<span class="p">)</span>
-dmres<span class="o">&lt;-</span>rma.uni<span class="p">(</span>yi<span class="o">=</span>logor<span class="p">,</span> sei<span class="o">=</span>se<span class="p">,</span> data<span class="o">=</span>dm<span class="p">)</span>
-pdf<span class="p">()</span>
-forest<span class="p">(</span>dmres<span class="p">,</span> atransf<span class="o">=</span>exp<span class="p">,</span> showweights <span class="o">=</span> <span class="k-Variable">T</span><span class="p">,</span> mlab <span class="o">=</span> <span class="s">"rsid"</span><span class="p">,</span> slab <span class="o">=</span> paste0<span class="p">(</span><span class="s">"study"</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">))</span>
-dev.off<span class="p">()</span>
+<div class="highlight"><pre><span class="code-line"><span></span>dm<span class="o">&lt;-</span><span class="kp">structure</span><span class="p">(</span><span class="kt">list</span><span class="p">(</span>or <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1.6</span><span class="p">,</span> <span class="m">4.4</span><span class="p">,</span> <span class="m">1.14</span><span class="p">,</span> <span class="m">1.3</span><span class="p">,</span> <span class="m">4.5</span><span class="p">),</span> cill <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">1.2</span><span class="p">,</span> <span class="m">2.9</span><span class="p">,</span> <span class="m">0.45</span><span class="p">,</span> <span class="m">0.6</span><span class="p">,</span> <span class="m">3.2</span><span class="p">),</span></span>
+<span class="code-line">ciul <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">6.9</span><span class="p">,</span> <span class="m">2.86</span><span class="p">,</span> <span class="m">2.7</span><span class="p">,</span> <span class="m">6.1</span><span class="p">)),</span> <span class="m">.</span>Names <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">"or"</span><span class="p">,</span> <span class="s">"cill"</span><span class="p">,</span> <span class="s">"ciul"</span><span class="p">),</span> class <span class="o">=</span> <span class="s">"data.frame"</span><span class="p">,</span> row.names <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span> <span class="m">-5L</span><span class="p">))</span></span>
+<span class="code-line"></span>
+<span class="code-line">dm<span class="o">$</span>logor<span class="o">&lt;-</span><span class="kp">log</span><span class="p">(</span>dm<span class="o">$</span>or<span class="p">)</span></span>
+<span class="code-line">dm<span class="o">$</span>se1<span class="o">&lt;-</span><span class="p">(</span><span class="kp">log</span><span class="p">(</span>dm<span class="o">$</span>ciul<span class="p">)</span><span class="o">-</span>dm<span class="o">$</span>logor<span class="p">)</span><span class="o">/</span><span class="m">1.96</span></span>
+<span class="code-line">dm<span class="o">$</span>se2<span class="o">&lt;-</span><span class="p">(</span>dm<span class="o">$</span>logor<span class="o">-</span><span class="kp">log</span><span class="p">(</span>dm<span class="o">$</span>cill<span class="p">))</span><span class="o">/</span><span class="m">1.96</span></span>
+<span class="code-line">dm<span class="o">$</span>se<span class="o">&lt;-</span><span class="p">(</span>dm<span class="o">$</span>se1<span class="o">+</span>dm<span class="o">$</span>se2<span class="p">)</span><span class="o">/</span><span class="m">2</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="kn">library</span><span class="p">(</span>metafor<span class="p">)</span></span>
+<span class="code-line">dmres<span class="o">&lt;-</span>rma.uni<span class="p">(</span>yi<span class="o">=</span>logor<span class="p">,</span> sei<span class="o">=</span>se<span class="p">,</span> data<span class="o">=</span>dm<span class="p">)</span></span>
+<span class="code-line">pdf<span class="p">()</span></span>
+<span class="code-line">forest<span class="p">(</span>dmres<span class="p">,</span> atransf<span class="o">=</span><span class="kp">exp</span><span class="p">,</span> showweights <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> mlab <span class="o">=</span> <span class="s">"rsid"</span><span class="p">,</span> slab <span class="o">=</span> <span class="kp">paste0</span><span class="p">(</span><span class="s">"study"</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">))</span></span>
+<span class="code-line">dev.off<span class="p">()</span></span>
 </pre></div></body></html>
 
         <div class="post-nav">
@@ -1325,6 +1390,11 @@ dev.off<span class="p">()</span>
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1276,10 +1341,10 @@
 3.第三行以‘+’开头，后面是序列标示符、描述信息，或者什么也不加
 4.第四行，是质量信息，和第二行的序列相对应，每一个序列都有一个质量评分，根据评分体系的不同，每个字符的含义表示的数字也不相同。</p>
 <p>例如：</p>
-<div class="highlight"><pre>  @SEQ_ID
-  GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
-  <span class="se">\+</span>  
-  !<span class="s1">''</span>*<span class="o">((((</span>***+<span class="o">))</span>%%%++<span class="o">)(</span>%%%%<span class="o">)</span>.1***-+*<span class="s1">''</span><span class="o">))</span>**55CCF&gt;&gt;&gt;&gt;&gt;&gt;CCCCCCC65
+<div class="highlight"><pre><span class="code-line"><span></span>  @SEQ_ID</span>
+<span class="code-line">  GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT</span>
+<span class="code-line">  <span class="se">\+</span>  </span>
+<span class="code-line">  !<span class="s1">''</span>*<span class="o">((((</span>***+<span class="o">))</span>%%%++<span class="o">)(</span>%%%%<span class="o">)</span>.1***-+*<span class="s1">''</span><span class="o">))</span>**55CCF&gt;&gt;&gt;&gt;&gt;&gt;CCCCCCC65</span>
 </pre></div>
 <h2>Illumina sequence identifiers</h2>
 <blockquote>
@@ -1373,10 +1438,10 @@
 </tbody>
 </table>
 <h3>NCBI Sequence Read Archive</h3>
-<div class="highlight"><pre>  @SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345 <span class="nv">length</span><span class="o">=</span>36
-  GGGTGATGGCCGCTGCCGATGGCGTCAAATCCCACC  
-  +SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345 <span class="nv">length</span><span class="o">=</span>36  
-  IIIIIIIIIIIIIIIIIIIIIIIIIIIIII9IG9IC
+<div class="highlight"><pre><span class="code-line"><span></span>  @SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345 <span class="nv">length</span><span class="o">=</span><span class="m">36</span></span>
+<span class="code-line">  GGGTGATGGCCGCTGCCGATGGCGTCAAATCCCACC  </span>
+<span class="code-line">  +SRR001666.1 071112_SLXA-EAS1_s_7:5:1:817:345 <span class="nv">length</span><span class="o">=</span><span class="m">36</span>  </span>
+<span class="code-line">  IIIIIIIIIIIIIIIIIIIIIIIIIIIIII9IG9IC</span>
 </pre></div>
 <h2>关于质量编码格式</h2>
 <p>质量评分指的是一个碱基的错误概率的对数值。其最初在Phred拼接软件中定义与使用，其后在许多软件中得到使用。其质量得分与错误概率的对应关系见下表：</p>
@@ -1451,22 +1516,22 @@ equivalently, Q ≈ 13.</p>
 <li>Illumina 1.8+</li>
 </ul>
 <p>下面是更为直观的表示：</p>
-<div class="highlight"><pre>SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................
-..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................
-...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................
-.................................**J**JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................
-LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL....................................................
-!<span class="err">"</span><span class="c">#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~</span>
-|                         |    |        |                              |                     |
-33                        59   64       73                            104                   126
-
-S - Sanger        Phred+33,  raw reads typically <span class="o">(</span>0, 40<span class="o">)</span>
-X - Solexa        Solexa+64, raw reads typically <span class="o">(</span>-5, 40<span class="o">)</span>
-I - Illumina 1.3+ Phred+64,  raw reads typically <span class="o">(</span>0, 40<span class="o">)</span>
-J - Illumina 1.5+ Phred+64,  raw reads typically <span class="o">(</span>3, 40<span class="o">)</span>
-  with <span class="nv">0</span><span class="o">=</span>unused, <span class="nv">1</span><span class="o">=</span>unused, <span class="nv">2</span><span class="o">=</span>Read Segment Quality Control Indicator <span class="o">(</span>bold<span class="o">)</span>
-  <span class="o">(</span>Note: See discussion above<span class="o">)</span>.
-L - Illumina 1.8+ Phred+33,  raw reads typically <span class="o">(</span>0, 41<span class="o">)</span>
+<div class="highlight"><pre><span class="code-line"><span></span>SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................</span>
+<span class="code-line">..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................</span>
+<span class="code-line">...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................</span>
+<span class="code-line">.................................**J**JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................</span>
+<span class="code-line">LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL....................................................</span>
+<span class="code-line">!<span class="s2">"#</span>$<span class="s2">%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~</span></span>
+<span class="code-line"><span class="s2">|                         |    |        |                              |                     |</span></span>
+<span class="code-line"><span class="s2">33                        59   64       73                            104                   126</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="s2">S - Sanger        Phred+33,  raw reads typically (0, 40)</span></span>
+<span class="code-line"><span class="s2">X - Solexa        Solexa+64, raw reads typically (-5, 40)</span></span>
+<span class="code-line"><span class="s2">I - Illumina 1.3+ Phred+64,  raw reads typically (0, 40)</span></span>
+<span class="code-line"><span class="s2">J - Illumina 1.5+ Phred+64,  raw reads typically (3, 40)</span></span>
+<span class="code-line"><span class="s2">  with 0=unused, 1=unused, 2=Read Segment Quality Control Indicator (bold)</span></span>
+<span class="code-line"><span class="s2">  (Note: See discussion above).</span></span>
+<span class="code-line"><span class="s2">L - Illumina 1.8+ Phred+33,  raw reads typically (0, 41)</span></span>
 </pre></div></body></html>
 
         <div class="post-nav">
@@ -1500,6 +1565,11 @@ L - Illumina 1.8+ Phred+33,  raw reads typically <span class="o">(</span>0, 41<s
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

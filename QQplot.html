@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1275,13 +1340,13 @@ plot的X和Y轴主要是代表各个SNP的-lg P values。预测的线是一条�
 <p>Q-Q plot主要要点：</p>
 <p>预测的虚线为什么是45°出来的呢？因为预测的线实际是通过在QQ图中第一象限作图得出。理论上一个点A在该图上的位置应该是A预测值=A实际值，转化为坐标就是A（x，y）x=y。所以预测的线是一条从原点发出的45°线。</p>
 <p>观测值的点的坐标是怎么得出来的。同样设点A的坐标是（x，y）x为预测值，y为实际观测值。查了一下R 中qq plot的算法是这样的</p>
-<div class="highlight"><pre>pvals <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">"DGI_chr3_pvals.txt"</span><span class="p">,</span> header<span class="o">=</span><span class="k-Variable">T</span><span class="p">)</span>
-
-observed <span class="o">&lt;-</span> sort<span class="p">(</span>pvals<span class="o">$</span>PVAL<span class="p">)</span>
-lobs <span class="o">&lt;-</span> <span class="o">-</span><span class="p">(</span>log10<span class="p">(</span>observed<span class="p">))</span>
-
-expected <span class="o">&lt;-</span> c<span class="p">(</span><span class="m">1</span><span class="o">:</span>length<span class="p">(</span>observed<span class="p">))</span>
-lexp <span class="o">&lt;-</span> <span class="o">-</span><span class="p">(</span>log10<span class="p">(</span>expected <span class="o">/</span> <span class="p">(</span>length<span class="p">(</span>expected<span class="p">)</span><span class="m">+1</span><span class="p">)))</span>
+<div class="highlight"><pre><span class="code-line"><span></span>pvals <span class="o">&lt;-</span> read.table<span class="p">(</span><span class="s">"DGI_chr3_pvals.txt"</span><span class="p">,</span> header<span class="o">=</span><span class="bp">T</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">observed <span class="o">&lt;-</span> <span class="kp">sort</span><span class="p">(</span>pvals<span class="o">$</span>PVAL<span class="p">)</span></span>
+<span class="code-line">lobs <span class="o">&lt;-</span> <span class="o">-</span><span class="p">(</span><span class="kp">log10</span><span class="p">(</span>observed<span class="p">))</span></span>
+<span class="code-line"></span>
+<span class="code-line">expected <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="kp">length</span><span class="p">(</span>observed<span class="p">))</span></span>
+<span class="code-line">lexp <span class="o">&lt;-</span> <span class="o">-</span><span class="p">(</span><span class="kp">log10</span><span class="p">(</span>expected <span class="o">/</span> <span class="p">(</span><span class="kp">length</span><span class="p">(</span>expected<span class="p">)</span><span class="m">+1</span><span class="p">)))</span></span>
 </pre></div>
 <p>具体解释是这样的，先把P值从小到大排序。lobs代表纵坐标，lexp代表横坐标，纵坐标就是观测P值的-
 log10，而横坐标则根据P值数目而定。比如，当只有3个P值 P1=0.0001 P2=0.001
@@ -1321,6 +1386,11 @@ expected=3 lexp=-log10（3/3+1）。。。。。依此类推。</p>
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

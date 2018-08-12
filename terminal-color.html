@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1279,23 +1344,23 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 2、文字颜色后面有个m
 3、字符串前后可以没有空格，如果有的话，输出也是同样有空格</p>
 <p>下面看几个例子：</p>
-<div class="highlight"><pre><span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[30m 黑色字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[31m 红色字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[32m 绿色字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[33m 黄色字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[34m 蓝色字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[35m 紫色字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[36m 天蓝字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[37m 白色字 </span><span class="se">\033</span><span class="s">[0m"</span>
-
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[40;37m 黑底白字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[41;37m 红底白字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[42;37m 绿底白字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[43;37m 黄底白字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[44;37m 蓝底白字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[45;37m 紫底白字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[46;37m 天蓝底白字 </span><span class="se">\033</span><span class="s">[0m"</span>
-<span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s">"</span><span class="se">\033</span><span class="s">[47;30m 白底黑字 </span><span class="se">\033</span><span class="s">[0m"</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nb">echo</span> -e <span class="s2">"\033[30m 黑色字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[31m 红色字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[32m 绿色字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[33m 黄色字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[34m 蓝色字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[35m 紫色字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[36m 天蓝字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[37m 白色字 \033[0m"</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[40;37m 黑底白字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[41;37m 红底白字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[42;37m 绿底白字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[43;37m 黄底白字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[44;37m 蓝底白字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[45;37m 紫底白字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[46;37m 天蓝底白字 \033[0m"</span></span>
+<span class="code-line"><span class="nb">echo</span> -e <span class="s2">"\033[47;30m 白底黑字 \033[0m"</span></span>
 </pre></div>
 <!-- more -->
 <p>控制选项说明 ：</p>
@@ -1417,6 +1482,11 @@ echo -e "\033[41;37m TonyZhang \033[0m"
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

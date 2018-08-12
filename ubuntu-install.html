@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1274,20 +1339,20 @@
 <h2>upgrade</h2>
 <p>sudo apt update &amp; sudo apt upgrade</p>
 <h2>chrome</h2>
-<div class="highlight"><pre>wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt -fy install ./google-chrome-stable_current_amd64.deb
+<div class="highlight"><pre><span class="code-line"><span></span>wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb</span>
+<span class="code-line">sudo apt -fy install ./google-chrome-stable_current_amd64.deb</span>
 </pre></div>
 <h2>git</h2>
 <p>sudo apt install git
 git config --global user.name "user name"
 git config --global user.email user@email.com</p>
 <h2>guake</h2>
-<div class="highlight"><pre>sudo apt install python-dbus-dev
-sudo apt install libutempter-dev
-sudo apt-get install automake libgconf2-dev python-glade2 libtool python-keybinder
-git clone https://github.com/Guake/guake.git
-<span class="nb">cd </span>guake
-sudo ./dev.sh --install
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt install python-dbus-dev</span>
+<span class="code-line">sudo apt install libutempter-dev</span>
+<span class="code-line">sudo apt-get install automake libgconf2-dev python-glade2 libtool python-keybinder</span>
+<span class="code-line">git clone https://github.com/Guake/guake.git</span>
+<span class="code-line"><span class="nb">cd</span> guake</span>
+<span class="code-line">sudo ./dev.sh --install</span>
 </pre></div>
 <h2>gnome-tweak-tool</h2>
 <p>sudo apt install gnome-tweak-tool
@@ -1297,10 +1362,10 @@ sudo apt install gnome-shell-extension-dash-to-panel</p>
 im-config -s fcitx
 sudo cp /usr/share/fcitx/xdg/autostart/fcitx-autostart.desktop /etc/xdg/autostart/</p>
 <h2>zsh</h2>
-<div class="highlight"><pre>sudo apt install zsh
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
-chsh -s <span class="sb">`</span>which zsh<span class="sb">`</span>
-sudo shutdown -r 0
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt install zsh</span>
+<span class="code-line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - <span class="p">|</span> zsh</span>
+<span class="code-line">chsh -s <span class="sb">`</span>which zsh<span class="sb">`</span></span>
+<span class="code-line">sudo shutdown -r <span class="m">0</span></span>
 </pre></div>
 <h2>change PATH language</h2>
 <p>export LANG=en_US
@@ -1310,8 +1375,8 @@ xdg-user-dirs-gtk-update</p>
 <p>sudo apt instal exfat-fuse</p>
 <p>sudo apt install sshfs</p>
 <h2>anaconda</h2>
-<div class="highlight"><pre>wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
-bash Anaconda3-4.3.1-Linux-x86_64.sh|sh
+<div class="highlight"><pre><span class="code-line"><span></span>wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh</span>
+<span class="code-line">bash Anaconda3-4.3.1-Linux-x86_64.sh<span class="p">|</span>sh</span>
 </pre></div>
 <h2>synergy</h2>
 <p>sudo apt-get -fy install ./synergy-v1.8.8-stable-c30301e-Linux-x86_64.deb</p>
@@ -1320,8 +1385,8 @@ bash Anaconda3-4.3.1-Linux-x86_64.sh|sh
 <h2>atom</h2>
 <p>sudo apt-get -fy install ./atom-amd64.deb</p>
 <h2>youdao-dict</h2>
-<div class="highlight"><pre>sudo apt-get -fy install ./youdao-dict_1.1.0-0-deepin_amd64.deb
-wget https://pypi.python.org/packages/48/9a/bcf41728a0a81b3d76e2a873296c2912300c653f9e6453c760a50bd2ef93/python-xlib-0.19.tar.bz2
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get -fy install ./youdao-dict_1.1.0-0-deepin_amd64.deb</span>
+<span class="code-line">wget https://pypi.python.org/packages/48/9a/bcf41728a0a81b3d76e2a873296c2912300c653f9e6453c760a50bd2ef93/python-xlib-0.19.tar.bz2</span>
 </pre></div>
 <h2>ModuleNotFoundError</h2>
 <ul>
@@ -1370,6 +1435,11 @@ wget https://pypi.python.org/packages/48/9a/bcf41728a0a81b3d76e2a873296c2912300c
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

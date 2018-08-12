@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/</loc>
-<lastmod>2018-08-04T19:49:33-00:00</lastmod>
+<lastmod>2018-08-12T14:12:55-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/archives.html</loc>
-<lastmod>2018-08-04T19:49:33-00:00</lastmod>
+<lastmod>2018-08-12T14:12:55-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/tags.html</loc>
-<lastmod>2018-08-04T19:49:33-00:00</lastmod>
+<lastmod>2018-08-12T14:12:55-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/categories.html</loc>
-<lastmod>2018-08-04T19:49:33-00:00</lastmod>
+<lastmod>2018-08-12T14:12:55-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -36,6 +36,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2014-12-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/OLS.html</loc>
+<lastmod>2018-08-06T09:53:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/IVregression.html</loc>
+<lastmod>2018-08-06T19:30:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -369,7 +383,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/category/tong-ji-jian-mo.html</loc>
-<lastmod>2018-03-12T09:58:00+08:06</lastmod>
+<lastmod>2018-08-06T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -384,6 +398,34 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://ghxdghxd.github.io/category/xing-qu-ai-hao.html</loc>
 <lastmod>2017-04-03T19:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/statics.html</loc>
+<lastmod>2018-08-06T19:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/ols.html</loc>
+<lastmod>2018-08-06T09:53:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/regression.html</loc>
+<lastmod>2018-08-06T19:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/iv.html</loc>
+<lastmod>2018-08-06T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -782,7 +824,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/author/jt-guo.html</loc>
-<lastmod>2018-07-05T19:30:00+08:06</lastmod>
+<lastmod>2018-08-06T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

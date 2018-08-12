@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1336,10 +1401,12 @@
 </tbody>
 </table>
 <h2>清理内存</h2>
-<p>echo 1 &gt; /proc/sys/vm/drop_caches</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/vm/drop_caches</span>
+</pre></div>
 <h2><a href="terminal-announcement">登录显示信息</a></h2>
 <h2>158挂载swap</h2>
-<p>mount /dev/sdc1 /extra</p>
+<div class="highlight"><pre><span class="code-line"><span></span>mount /dev/sdc1 /extra</span>
+</pre></div>
 <h2>核心数</h2>
 <p>/proc/cpuinfo 用来存储cpu硬件信息
 一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core出来
@@ -1361,20 +1428,22 @@
 </tbody>
 </table>
 <ul>
-<li>逻辑CPU数</li>
-</ul>
-<div class="highlight"><pre><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">cpuinfo</span><span class="o">|</span><span class="n">grep</span> <span class="s">"processor"</span><span class="o">|</span><span class="n">wc</span>
+<li>
+<p>逻辑CPU数</p>
+<div class="highlight"><pre><span class="code-line"><span></span>cat /proc/cpuinfo|grep "processor"|wc</span>
 </pre></div>
-<ul>
-<li>物理CPU数</li>
-</ul>
-<div class="highlight"><pre><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">cpuinfo</span><span class="o">|</span><span class="n">grep</span> <span class="s">"physical\ id"</span><span class="o">|</span><span class="n">sort</span> <span class="o">-</span><span class="n">u</span><span class="o">|</span><span class="n">wc</span>
+</li>
+<li>
+<p>物理CPU数</p>
+<div class="highlight"><pre><span class="code-line"><span></span>cat /proc/cpuinfo|grep "physical\ id"|sort -u|wc</span>
 </pre></div>
-<ul>
-<li>CPU核数</li>
-</ul>
-<div class="highlight"><pre><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">cpuinfo</span><span class="o">|</span><span class="n">grep</span> <span class="s">"cores"</span><span class="o">|</span><span class="n">sort</span> <span class="o">-</span><span class="n">u</span>
+</li>
+<li>
+<p>CPU核数</p>
+<div class="highlight"><pre><span class="code-line"><span></span>cat /proc/cpuinfo|grep "cores"|sort -u</span>
 </pre></div>
+</li>
+</ul>
 <h2>硬盘</h2>
 <ul>
 <li>
@@ -1431,119 +1500,159 @@
 </li>
 </ul>
 <h2>rocks</h2>
-<p>1.rocks run host "hostname" #所有节点运行
-2.rocks sync config # 同步配制
-3.<strong>要先重启管理节点然后计算机节点,否则导致数据不同步</strong>
-    运行 rocks run host "/etc/init.d/pbs_mom restart" 即可
-4.添加用户<strong>无法qusb要在/etc/group 添加用户</strong></p>
-<div class="highlight"><pre><span class="n">useradd</span> <span class="o">-</span><span class="n">g</span> <span class="n">group</span> <span class="n">name</span>
-<span class="n">passwd</span> <span class="n">name</span>
-<span class="n">rocks</span> <span class="n">sync</span> <span class="n">users</span> <span class="err">#可更改</span><span class="o">/</span><span class="n">export</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">name</span> <span class="err">为</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">name</span>
+<ol>
+<li>
+<p>所有节点运行</p>
+<div class="highlight"><pre><span class="code-line"><span></span>rocks run host "hostname"</span>
 </pre></div>
-<p>5.如果ssh compute 需要输入密码</p>
-<div class="highlight"><pre><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">~/</span><span class="p">.</span><span class="n">ssh</span> <span class="o">**</span><span class="err">然后</span> <span class="err">退出登录</span> <span class="err">再登陆</span> <span class="err">会自动生成新密钥</span><span class="o">**</span>
+</li>
+<li>
+<p>同步配制</p>
+<div class="highlight"><pre><span class="code-line"><span></span>rocks sync config</span>
 </pre></div>
-<p>6.进入单用户模式</p>
+</li>
+<li>
+<p>要先重启管理节点然后计算机节点,否则导致数据不同步</p>
+<div class="highlight"><pre><span class="code-line"><span></span>rocks run host "/etc/init.d/pbs_mom restart"</span>
+</pre></div>
+</li>
+<li>
+<p>添加用户<strong>无法qusb要在/etc/group 添加用户</strong></p>
+<div class="highlight"><pre><span class="code-line"><span></span>useradd -g group name</span>
+<span class="code-line">passwd name</span>
+<span class="code-line">rocks sync users <span class="c1">#可更改/export/home/name 为 /home/name</span></span>
+</pre></div>
+</li>
+<li>
+<p>如果ssh compute 需要输入密码</p>
+<div class="highlight"><pre><span class="code-line"><span></span>rm -rf ~/.ssh #然后 退出登录 再登陆 会自动生成新密钥</span>
+</pre></div>
+</li>
+<li>
+<p>进入单用户模式</p>
 <p>在倒计时5秒时，按任意键出现下图，
 <strong>选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统</strong>
-<img alt="图1" height="80%" src="images/manager1.png" width="80%"/>
-<img alt="图2" height="80%" src="images/manager2.png" width="80%"/>
-<img alt="图3" height="80%" src="images/manager3.jpg" width="80%"/></p>
-<p>7.重装节点</p>
-<div class="highlight"><pre><span class="n">rocks</span> <span class="n">set</span> <span class="n">host</span> <span class="n">pxeboot</span> <span class="n">compute1</span> <span class="n">action</span><span class="o">=</span><span class="n">install</span>
+<img alt="图1" height="30%" src="images/manager1.png" width="30%"/>
+<img alt="图2" height="30%" src="images/manager2.png" width="30%"/>
+<img alt="图3" height="30%" src="images/manager3.jpg" width="30%"/></p>
+</li>
+<li>
+<p>重装节点</p>
+<div class="highlight"><pre><span class="code-line"><span></span>rocks <span class="nb">set</span> host pxeboot compute1 <span class="nv">action</span><span class="o">=</span>install</span>
 </pre></div>
+</li>
+</ol>
 <h2>qmgr</h2>
-<div class="highlight"><pre><span class="n">qmgr</span> <span class="o">-</span><span class="n">c</span> <span class="s">"print server"</span> <span class="err">#</span> <span class="err">输出</span><span class="n">server</span><span class="err">的属性</span>
-<span class="n">qmgr</span> <span class="o">-</span><span class="n">c</span> <span class="s">"set server query_other_jobs = true"</span> <span class="err">#</span> <span class="n">qstat</span><span class="err">可以查看所有用户</span>
-<span class="n">qmgr</span> <span class="o">-</span><span class="n">c</span> <span class="s">"set server auto_node_np = True"</span> <span class="err">#</span> <span class="err">自动更新节点线程数</span>
+<div class="highlight"><pre><span class="code-line"><span></span>qmgr -c <span class="s2">"print server"</span> <span class="c1"># 输出server的属性</span></span>
+<span class="code-line">qmgr -c <span class="s2">"set server query_other_jobs = true"</span> <span class="c1"># qstat可以查看所有用户</span></span>
+<span class="code-line">qmgr -c <span class="s2">"set server auto_node_np = True"</span> <span class="c1"># 自动更新节点线程数</span></span>
 </pre></div>
 <h2>multipath与iscsi操作</h2>
 <ul>
 <li>硬件连接及硬盘灯(绿)</li>
-<li>确定服务开启:
-    <code>shell
-    service iscsi restart</code></li>
-<li>查看iscsi发现记录
-    <code>shell
-    iscsiadm -m node</code></li>
-<li>发现iscsi存储：
-    <code>shell
-    iscsiadm -m discovery -t st -p 10.1.1.100:3260
-    iscsiadm -m discovery -t st -p 10.1.1.101:3260
-    iscsiadm -m discovery -t st -p 10.1.1.102:3260
-    iscsiadm -m discovery -t st -p 10.1.1.103:3260</code></li>
-<li>multipath操作
-    <code>shell
-    multipath -ll #查看
-    multipath -v2  #自动更新路径
-    multipath -f mpathg # 删除路径
-    service multipathd restart #重启确认/dev/mapper下有硬盘连接
-    挂载
-    mount /dev/mapper/mpathep1 /export/data2
-    mount /dev/mapper/mpathfp1 /export/data3
-    mount /dev/mapper/mpathhp1 /export/data4</code></li>
+<li>
+<p>确定服务开启:</p>
+<div class="highlight"><pre><span class="code-line"><span></span>service iscsi restart</span>
+</pre></div>
+</li>
+<li>
+<p>查看iscsi发现记录</p>
+<div class="highlight"><pre><span class="code-line"><span></span>iscsiadm -m node</span>
+</pre></div>
+</li>
+<li>
+<p>发现iscsi存储：</p>
+<div class="highlight"><pre><span class="code-line"><span></span>iscsiadm -m discovery -t st -p 10.1.1.100:3260</span>
+<span class="code-line">iscsiadm -m discovery -t st -p 10.1.1.101:3260</span>
+<span class="code-line">iscsiadm -m discovery -t st -p 10.1.1.102:3260</span>
+<span class="code-line">iscsiadm -m discovery -t st -p 10.1.1.103:3260</span>
+</pre></div>
+</li>
+<li>
+<p>multipath操作</p>
+<div class="highlight"><pre><span class="code-line"><span></span>multipath -ll <span class="c1">#查看</span></span>
+<span class="code-line">multipath -v2  <span class="c1">#自动更新路径</span></span>
+<span class="code-line">multipath -f mpathg <span class="c1"># 删除路径</span></span>
+<span class="code-line">service multipathd restart <span class="c1">#重启确认/dev/mapper下有硬盘连接</span></span>
+<span class="code-line"><span class="c1"># 挂载</span></span>
+<span class="code-line">mount /dev/mapper/mpathep1 /export/data2</span>
+<span class="code-line">mount /dev/mapper/mpathfp1 /export/data3</span>
+<span class="code-line">mount /dev/mapper/mpathhp1 /export/data4</span>
+</pre></div>
+</li>
 <li>
 <p>挂载fstab</p>
-<p><code>shell
-/dev/sdc1 /export/data0 ext4 defaults 1 1
-/dev/sdc2 /export/data1 ext4 defaults 1 1
-/dev/sde1 /export/data5 ext4 defaults 1 1
-/dev/mapper/mpathhp1 /export/data4 xfs defaults,_netdev 0 0
-/dev/mapper/mpathep1 /export/data2 xfs defaults,_netdev 0 0
-/dev/mapper/mpathfp1 /export/data3 xfs defaults,_netdev 0 0</code></p>
+<div class="highlight"><pre><span class="code-line"><span></span>/dev/sdc1 /export/data0 ext4 defaults 1 1</span>
+<span class="code-line">/dev/sdc2 /export/data1 ext4 defaults 1 1</span>
+<span class="code-line">/dev/sde1 /export/data5 ext4 defaults 1 1</span>
+<span class="code-line">/dev/mapper/mpathhp1 /export/data4 xfs defaults,_netdev 0 0</span>
+<span class="code-line">/dev/mapper/mpathep1 /export/data2 xfs defaults,_netdev 0 0</span>
+<span class="code-line">/dev/mapper/mpathfp1 /export/data3 xfs defaults,_netdev 0 0</span>
+</pre></div>
 </li>
 <li>
-<p>autofs自动挂载
-    autofs一般与ldap、nfs协作实现远程home目录。</p>
+<p>autofs自动挂载</p>
+<p>autofs一般与ldap、nfs协作实现远程home目录。</p>
 </li>
-<li>service autofs restart #重启确认/export</li>
-<li>/etc/auto.master
-    <code>shell
-    /share /etc/auto.share --timeout=1200
-    /home  /etc/auto.home  --timeout=1200</code></li>
-<li>/etc/auto.share
-    <code>shell
-    apps -nfsvers=3 -soft,intr,timeo=9999  xmu.local:/export/&amp;
-    #bio  -nfsvers=3 -soft,intr,timeo=9999  xmu:/export/&amp;
-    data0 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;
-    data1 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;
-    data2 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;
-    data3 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;
-    data4 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;
-    data5 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;</code></li>
-<li>修复分区(未完)
-    <code>shell
-    exportfs -rv #重新扫描/etc/exports
-    exportfs -u /export/data2       #umount分区
-    xfs_check /dev/mapper/mpathep1;echo $? #显示0表示已umount</code></li>
+<li>
+<p>确认/export/*,一般重启服务</p>
+<div class="highlight"><pre><span class="code-line"><span></span>service autofs restart</span>
+</pre></div>
+</li>
+<li>
+<p>/etc/auto.master</p>
+<div class="highlight"><pre><span class="code-line"><span></span>/share /etc/auto.share --timeout<span class="o">=</span><span class="m">1200</span></span>
+<span class="code-line">/home  /etc/auto.home  --timeout<span class="o">=</span><span class="m">1200</span></span>
+</pre></div>
+</li>
+<li>
+<p>/etc/auto.share</p>
+<div class="highlight"><pre><span class="code-line"><span></span>apps -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span>  xmu.local:/export/<span class="p">&amp;</span></span>
+<span class="code-line"><span class="c1">#bio  -nfsvers=3 -soft,intr,timeo=9999  xmu:/export/&amp;</span></span>
+<span class="code-line">data0 -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span> xmu.local:/export/<span class="p">&amp;</span></span>
+<span class="code-line">data1 -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span> xmu.local:/export/<span class="p">&amp;</span></span>
+<span class="code-line">data2 -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span> xmu.local:/export/<span class="p">&amp;</span></span>
+<span class="code-line">data3 -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span> xmu.local:/export/<span class="p">&amp;</span></span>
+<span class="code-line">data4 -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span> xmu.local:/export/<span class="p">&amp;</span></span>
+<span class="code-line">data5 -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span> xmu.local:/export/<span class="p">&amp;</span></span>
+</pre></div>
+</li>
+<li>
+<p>修复分区(未完)</p>
+<div class="highlight"><pre><span class="code-line"><span></span>exportfs -rv <span class="c1">#重新扫描/etc/exports</span></span>
+<span class="code-line">exportfs -u /export/data2       <span class="c1">#umount分区</span></span>
+<span class="code-line">xfs_check /dev/mapper/mpathep1<span class="p">;</span><span class="nb">echo</span> <span class="nv">$?</span> <span class="c1">#显示0表示已umount</span></span>
+</pre></div>
+</li>
 </ul>
 <h2>qsub</h2>
 <p>1.指定运行节点</p>
-<div class="highlight"><pre><span class="n">qsub</span> <span class="o">-</span><span class="n">l</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="n">n3</span><span class="o">:</span><span class="n">ppn</span><span class="o">=</span><span class="mi">40</span>
-<span class="n">qusb</span> <span class="o">-</span><span class="n">l</span> <span class="n">nodes</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="n">n1</span><span class="o">:</span><span class="n">ppn</span><span class="o">=+</span><span class="mi">1</span><span class="o">:</span><span class="n">n2</span>
+<div class="highlight"><pre><span class="code-line"><span></span>qsub -l <span class="nv">nodes</span><span class="o">=</span><span class="m">1</span>:n3:ppn<span class="o">=</span><span class="m">40</span></span>
+<span class="code-line">qusb -l <span class="nv">nodes</span><span class="o">=</span><span class="m">1</span>:n1:ppn<span class="o">=</span>+1:n2</span>
 </pre></div>
-<p>2.重新运行任务
-    qrerun</p>
+<p>2.重新运行任务</p>
+<div class="highlight"><pre><span class="code-line"><span></span>    qrerun</span>
+</pre></div>
 <p>3.lib</p>
-<div class="highlight"><pre><span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="err">`</span><span class="n">seq</span> <span class="mi">1</span> <span class="mi">8</span><span class="err">`</span><span class="p">;</span>
-<span class="k">do</span>
-<span class="n">sudo</span> <span class="n">scp</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">set</span><span class="p">.</span><span class="n">sh</span> <span class="n">compute</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="err">$</span><span class="n">i</span><span class="o">:/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">set</span><span class="p">.</span><span class="n">sh</span>
-<span class="n">done</span>
-<span class="n">rm</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">libstdc</span><span class="o">++</span><span class="p">.</span><span class="n">so</span><span class="mf">.6</span>
-<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mf">5.3.0</span><span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">libstdc</span><span class="o">++</span><span class="p">.</span><span class="n">so</span><span class="mf">.6.0.21</span> <span class="n">libstdc</span><span class="o">++</span><span class="p">.</span><span class="n">so</span><span class="mf">.6</span>
-<span class="n">strings</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libstdc</span><span class="o">++</span><span class="p">.</span><span class="n">so</span><span class="mf">.6</span> <span class="o">|</span> <span class="n">grep</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">8</span><span class="sb">`</span><span class="p">;</span></span>
+<span class="code-line"><span class="k">do</span></span>
+<span class="code-line">sudo scp /etc/profile.d/set.sh compute-0-<span class="nv">$i</span>:/etc/profile.d/set.sh</span>
+<span class="code-line"><span class="k">done</span></span>
+<span class="code-line">rm /usr/lib64/libstdc++.so.6</span>
+<span class="code-line">ln -s /share/apps/gcc-5.3.0/lib64/libstdc++.so.6.0.21 libstdc++.so.6</span>
+<span class="code-line">strings /usr/lib/libstdc++.so.6 <span class="p">|</span> grep</span>
 </pre></div>
 <h1>CentOS 6.5 升级内核</h1>
-<div class="highlight"><pre><span class="n">rpm</span> <span class="o">--</span><span class="n">import</span> <span class="n">https</span><span class="o">:</span><span class="c1">//www.elrepo.org/RPM-GPG-KEY-elrepo.org</span>
-<span class="n">rpm</span> <span class="o">-</span><span class="n">Uvh</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.elrepo.org/elrepo-release-6-8.el6.elrepo.noarch.rpm</span>
-<span class="n">yum</span> <span class="n">elrepo</span><span class="err">源有</span> <span class="n">ml</span><span class="err">（</span><span class="n">mainline</span> <span class="err">为最新版本的内核）和</span> <span class="n">lt</span><span class="err">（长期支持的内核）两种内核，这里我们选择</span> <span class="n">lt</span> <span class="err">内核</span>
-<span class="n">yum</span> <span class="o">--</span><span class="n">enablerepo</span><span class="o">=</span><span class="n">elrepo</span><span class="o">-</span><span class="n">kernel</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">kernel</span><span class="o">-</span><span class="n">lt</span> <span class="err">（</span><span class="n">kernel</span><span class="o">-</span><span class="n">ml</span><span class="err">）</span>
-
-<span class="err">引导文件修改（</span><span class="n">grub</span><span class="p">.</span><span class="n">conf</span><span class="err">）</span>
-<span class="err">将</span> <span class="k">default</span> <span class="err">设置为</span> <span class="mi">0</span> <span class="err">，</span><span class="k">default</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">vim</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">conf</span>
+<div class="highlight"><pre><span class="code-line"><span></span>rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</span>
+<span class="code-line">rpm -Uvh http://www.elrepo.org/elrepo-release-6-8.el6.elrepo.noarch.rpm</span>
+<span class="code-line">yum elrepo源有 ml（mainline 为最新版本的内核）和 lt（长期支持的内核）两种内核，这里我们选择 lt 内核</span>
+<span class="code-line">yum --enablerepo<span class="o">=</span>elrepo-kernel -y install kernel-lt （kernel-ml）</span>
+<span class="code-line"></span>
+<span class="code-line">引导文件修改（grub.conf）</span>
+<span class="code-line">将 default 设置为 <span class="m">0</span> ，default<span class="o">=</span><span class="m">0</span></span>
+<span class="code-line">vim /etc/grub.conf</span>
 </pre></div>
-<p><img alt="图4" height="80%" src="images/manager4.png" width="80%"/></p></body></html>
+<p><img alt="图4" height="50%" src="images/manager4.png" width="50%"/></p></body></html>
 
         <div class="post-nav">
             <a href="/fastq-format.html" class="pre">FASTQ格式详解</a>
@@ -1576,6 +1685,11 @@
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

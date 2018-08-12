@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1270,74 +1335,74 @@
     <div class="post-content">
         <html><body><h1>常用命令</h1>
 <h2>awk</h2>
-<div class="highlight"><pre>    <span class="nv">$0</span>~/aaa/表示0包括aaa
-    split <span class="o">(</span>string, array, field separator<span class="o">)</span>
-    split <span class="o">(</span>string, array<span class="o">)</span>  <span class="se">\-</span>-&amp;gt;如果第三个参数没有提供，awk就默认使用当前FS值。
-    substr<span class="o">(</span>s,p<span class="o">)</span> 返回字符串s中从p开始的后缀部分
-    substr<span class="o">(</span>s,p,n<span class="o">)</span> 返回字符串s中从p开始长度为n的后缀部分
-    length函数返回整个记录中的字符数。
-    gsub<span class="o">(</span>regular expression, subsitution string, target string<span class="o">)</span>;
-    index<span class="o">(</span>a,b<span class="o">)</span>, r返回b中a的位置，没有返回0
-    <span class="k">for</span><span class="o">(</span><span class="nv">i</span><span class="o">=</span>1;i&amp;lt;<span class="o">=</span>length<span class="o">(</span>a<span class="o">)</span>;i++<span class="o">)</span>
+<div class="highlight"><pre><span class="code-line"><span></span>    <span class="nv">$0</span>~/aaa/表示0包括aaa</span>
+<span class="code-line">    split <span class="o">(</span>string, array, field separator<span class="o">)</span></span>
+<span class="code-line">    split <span class="o">(</span>string, array<span class="o">)</span>  <span class="se">\-</span>-<span class="p">&amp;</span>gt<span class="p">;</span>如果第三个参数没有提供，awk就默认使用当前FS值。</span>
+<span class="code-line">    substr<span class="o">(</span>s,p<span class="o">)</span> 返回字符串s中从p开始的后缀部分</span>
+<span class="code-line">    substr<span class="o">(</span>s,p,n<span class="o">)</span> 返回字符串s中从p开始长度为n的后缀部分</span>
+<span class="code-line">    length函数返回整个记录中的字符数。</span>
+<span class="code-line">    gsub<span class="o">(</span>regular expression, subsitution string, target string<span class="o">)</span><span class="p">;</span></span>
+<span class="code-line">    index<span class="o">(</span>a,b<span class="o">)</span>, r返回b中a的位置，没有返回0</span>
+<span class="code-line">    <span class="k">for</span><span class="o">(</span><span class="nv">i</span><span class="o">=</span><span class="m">1</span><span class="p">;</span>i<span class="p">&amp;</span>lt<span class="p">;</span><span class="o">=</span>length<span class="o">(</span>a<span class="o">)</span><span class="p">;</span>i++<span class="o">)</span></span>
 </pre></div>
 <h3>awk,getline,用于获得下一行</h3>
-<div class="highlight"><pre>输出奇数，
-seq 10 | awk <span class="s1">'{print $0;getline}'</span>
-1
-3
-5
-7
-9
-输出偶数
-seq 10 | awk <span class="s1">'{getline;print $0}'</span>
-2
-4
-6
-8
-10
-
-输出三行,如果后面没有足够的行，则输出最后一行
-seq 10 | awk <span class="s1">'{getline;getline;print $0}'</span>
-3
-6
-9
-10
+<div class="highlight"><pre><span class="code-line"><span></span>输出奇数，</span>
+<span class="code-line">seq <span class="m">10</span> <span class="p">|</span> awk <span class="s1">'{print $0;getline}'</span></span>
+<span class="code-line"><span class="m">1</span></span>
+<span class="code-line"><span class="m">3</span></span>
+<span class="code-line"><span class="m">5</span></span>
+<span class="code-line"><span class="m">7</span></span>
+<span class="code-line"><span class="m">9</span></span>
+<span class="code-line">输出偶数</span>
+<span class="code-line">seq <span class="m">10</span> <span class="p">|</span> awk <span class="s1">'{getline;print $0}'</span></span>
+<span class="code-line"><span class="m">2</span></span>
+<span class="code-line"><span class="m">4</span></span>
+<span class="code-line"><span class="m">6</span></span>
+<span class="code-line"><span class="m">8</span></span>
+<span class="code-line"><span class="m">10</span></span>
+<span class="code-line"></span>
+<span class="code-line">输出三行,如果后面没有足够的行，则输出最后一行</span>
+<span class="code-line">seq <span class="m">10</span> <span class="p">|</span> awk <span class="s1">'{getline;getline;print $0}'</span></span>
+<span class="code-line"><span class="m">3</span></span>
+<span class="code-line"><span class="m">6</span></span>
+<span class="code-line"><span class="m">9</span></span>
+<span class="code-line"><span class="m">10</span></span>
 </pre></div>
 <h2>sed</h2>
-<div class="highlight"><pre>    sed -n <span class="s1">'/A/,/B/p'</span>  匹配A的行与匹配B的行之间的内容
-    sed -n <span class="s1">'2p,4,5p'</span> 输出2 4,5 行
+<div class="highlight"><pre><span class="code-line"><span></span>    sed -n <span class="s1">'/A/,/B/p'</span>  匹配A的行与匹配B的行之间的内容</span>
+<span class="code-line">    sed -n <span class="s1">'2p,4,5p'</span> 输出2 <span class="m">4</span>,5 行</span>
 </pre></div>
 <h2>grep</h2>
-<div class="highlight"><pre>    cat file  | grep <span class="s1">'[:space:]*#'</span>匹配空格
-    grep -P <span class="s1">'\t'</span> 匹配制表符
-    grep -E <span class="s2">"abc|123"</span> myfile -n 两个关键词
+<div class="highlight"><pre><span class="code-line"><span></span>    cat file  <span class="p">|</span> grep <span class="s1">'[:space:]*#'</span>匹配空格</span>
+<span class="code-line">    grep -P <span class="s1">'\t'</span> 匹配制表符</span>
+<span class="code-line">    grep -E <span class="s2">"abc|123"</span> myfile -n 两个关键词</span>
 </pre></div>
 <h2>ln</h2>
-<div class="highlight"><pre>    ln -s 源文件 目标文件
+<div class="highlight"><pre><span class="code-line"><span></span>    ln -s 源文件 目标文件</span>
 </pre></div>
 <h2>paste</h2>
-<div class="highlight"><pre>    paste -s -d <span class="s1">'\t'</span>  多行合并成一行
+<div class="highlight"><pre><span class="code-line"><span></span>    paste -s -d <span class="s1">'\t'</span>  多行合并成一行</span>
 </pre></div>
 <h2>tr</h2>
-<div class="highlight"><pre>tr -s <span class="s1">' '</span> 多个空格变一个
+<div class="highlight"><pre><span class="code-line"><span></span>tr -s <span class="s1">' '</span> 多个空格变一个</span>
 </pre></div>
 <h2>sort</h2>
-<div class="highlight"><pre>    sort  -V 按染色体排序 1，2，3，，，，X，Y
+<div class="highlight"><pre><span class="code-line"><span></span>    sort  -V 按染色体排序 <span class="m">1</span>，2，3，，，，X，Y</span>
 </pre></div>
 <h2>unzip</h2>
-<div class="highlight"><pre>    unzip -l zipfile   查看list
-    unzip -p zipfile <span class="s2">"*/getfile"</span> |less   查看指定文件
-    unzip -d outdir    指定输出目录
+<div class="highlight"><pre><span class="code-line"><span></span>    unzip -l zipfile   查看list</span>
+<span class="code-line">    unzip -p zipfile <span class="s2">"*/getfile"</span> <span class="p">|</span>less   查看指定文件</span>
+<span class="code-line">    unzip -d outdir    指定输出目录</span>
 </pre></div>
 <h2>gzip</h2>
-<div class="highlight"><pre>gzip -t/--test 检测gz文件是否有错误
+<div class="highlight"><pre><span class="code-line"><span></span>gzip -t/--test 检测gz文件是否有错误</span>
 </pre></div>
 <h2>计算 expr</h2>
-<div class="highlight"><pre>    expr 1 + 1
-    expr
+<div class="highlight"><pre><span class="code-line"><span></span>    expr <span class="m">1</span> + <span class="m">1</span></span>
+<span class="code-line">    expr</span>
 </pre></div>
 <h2>查看网速sar</h2>
-<div class="highlight"><pre>sar -n DEV 1 100
+<div class="highlight"><pre><span class="code-line"><span></span>sar -n DEV <span class="m">1</span> <span class="m">100</span></span>
 </pre></div>
 <h2>sudo !!命令</h2>
 <p>没有特定输入sudo命令而运行，将给出没有权限的错误。那么，你不需要重写整个命令，仅仅输入'!!'就可以抓取最后的命令。</p>
@@ -1349,10 +1414,10 @@ seq 10 | awk <span class="s1">'{getline;getline;print $0}'</span>
 <h2>shuf n1</h2>
 <p>随机从一个文件或文件夹中选择行/文件/文件夹。首先使用ls命令来显示文件夹的内容。</p>
 <h2>数组</h2>
-<div class="highlight"><pre>array=(`cat test.txt|cut -f 1`)
-<span class="cp">${</span><span class="n">array</span><span class="p">[</span><span class="err">@</span><span class="p">]</span><span class="cp">}</span> # 数组全部
-<span class="cp">${</span><span class="c">#array[@]</span><span class="cp">}</span> # 数组长度
-<span class="cp">${</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="cp">}</span> # 数组元素 0 1 2
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nv">array</span><span class="o">=(</span><span class="sb">`</span>cat test.txt<span class="p">|</span>cut -f <span class="m">1</span><span class="sb">`</span><span class="o">)</span></span>
+<span class="code-line"><span class="si">${</span><span class="nv">array</span><span class="p">[@]</span><span class="si">}</span> <span class="c1"># 数组全部</span></span>
+<span class="code-line"><span class="si">${#</span><span class="nv">array</span><span class="p">[@]</span><span class="si">}</span> <span class="c1"># 数组长度</span></span>
+<span class="code-line"><span class="si">${</span><span class="nv">array</span><span class="p">[0]</span><span class="si">}</span> <span class="c1"># 数组元素 0 1 2</span></span>
 </pre></div></body></html>
 
         <div class="post-nav">
@@ -1386,6 +1451,11 @@ seq 10 | awk <span class="s1">'{getline;getline;print $0}'</span>
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

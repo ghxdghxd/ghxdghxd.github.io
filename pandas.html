@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1270,51 +1335,51 @@
     <div class="post-content">
         <html><body><h1>常用</h1>
 <h2>read_csv</h2>
-<div class="highlight"><pre> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="c"># 第一行不设为列名</span>
- <span class="n">bed_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">'object'</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="p">[</span><span class="s">'chr'</span><span class="p">,</span> <span class="s">'start'</span><span class="p">,</span> <span class="s">'pos'</span><span class="p">,</span> <span class="s">'ref'</span><span class="p">,</span> <span class="s">'alt'</span><span class="p">])</span>
- <span class="sb">``</span><span class="err">`</span>
-
-<span class="c">## cat 合并</span>
-
-<span class="sb">``</span><span class="err">`</span><span class="n">python</span>
-<span class="n">Series</span><span class="p">([</span><span class="s">'a'</span><span class="p">,</span><span class="s">'b'</span><span class="p">,</span><span class="s">'c'</span><span class="p">])</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="s">'A'</span><span class="p">,</span><span class="s">'B'</span><span class="p">,</span><span class="s">'C'</span><span class="p">],</span><span class="n">sep</span><span class="o">=</span><span class="s">','</span><span class="p">)</span>
+<div class="highlight"><pre><span class="code-line"><span></span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span> <span class="c1"># 第一行不设为列名</span></span>
+<span class="code-line"> <span class="n">bed_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'object'</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="p">[</span><span class="s1">'chr'</span><span class="p">,</span> <span class="s1">'start'</span><span class="p">,</span> <span class="s1">'pos'</span><span class="p">,</span> <span class="s1">'ref'</span><span class="p">,</span> <span class="s1">'alt'</span><span class="p">])</span></span>
+<span class="code-line"> <span class="sb">``</span><span class="err">`</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">## cat 合并</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="sb">``</span><span class="err">`</span><span class="n">python</span></span>
+<span class="code-line"><span class="n">Series</span><span class="p">([</span><span class="s1">'a'</span><span class="p">,</span><span class="s1">'b'</span><span class="p">,</span><span class="s1">'c'</span><span class="p">])</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="s1">'A'</span><span class="p">,</span><span class="s1">'B'</span><span class="p">,</span><span class="s1">'C'</span><span class="p">],</span><span class="n">sep</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span></span>
 </pre></div>
 <h2>filter</h2>
-<div class="highlight"><pre><span class="n">mat</span><span class="p">[</span><span class="n">mat</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">lambda</span> <span class="n">x</span><span class="o">:</span><span class="n">x</span> <span class="n">in</span> <span class="n">list</span><span class="p">)]</span>
+<div class="highlight"><pre><span class="code-line"><span></span>mat[mat.index.map(lambda x:x in list)]</span>
 </pre></div>
 <h2>dataframe to list</h2>
-<div class="highlight"><pre><span class="n">mat</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">().</span><span class="n">values</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span>
+<div class="highlight"><pre><span class="code-line"><span></span>mat.drop_duplicates().values.tolist()</span>
 </pre></div>
 <h2>merge dataframe</h2>
-<div class="highlight"><pre><span class="n">pd</span><span class="p">.</span><span class="n">connect</span><span class="p">([</span><span class="n">mat1</span><span class="p">,</span> <span class="n">mat2</span><span class="p">,</span> <span class="n">mat3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="err">#</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span> <span class="n">cbind</span><span class="p">,</span> <span class="n">asis</span><span class="o">=</span><span class="mi">0</span> <span class="n">rbind</span>
+<div class="highlight"><pre><span class="code-line"><span></span>pd.connect([mat1, mat2, mat3], axis=1)  #axis=1 cbind, asis=0 rbind</span>
 </pre></div>
 <h2>insert</h2>
-<div class="highlight"><pre><span class="n">mat</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="err">'</span><span class="n">date</span><span class="err">'</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span> <span class="err">#</span> <span class="n">insert</span> <span class="n">in</span> <span class="mi">0</span> <span class="n">col</span>
+<div class="highlight"><pre><span class="code-line"><span></span>mat.insert(0, 'date', date) # insert in 0 col</span>
 </pre></div>
 <h1>pandas错误</h1>
 <blockquote>
 <p>read_csv: C-engine CParserError: Error tokenizing data</p>
 </blockquote>
 <p>When using read_csv like this:</p>
-<div class="highlight"><pre><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s">'faulty_row.pkl'</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'faulty_row.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'faulty_row.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">)</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">'faulty_row.pkl'</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'faulty_row.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf8'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">df</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'faulty_row.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf8'</span><span class="p">)</span></span>
 </pre></div>
 <p>You get the following exception:</p>
-<div class="highlight"><pre><span class="n">CParserError</span><span class="o">:</span> <span class="n">Error</span> <span class="n">tokenizing</span> <span class="n">data</span><span class="o">.</span> <span class="n">C</span> <span class="n">error</span><span class="o">:</span> <span class="n">Buffer</span> <span class="n">overflow</span> <span class="n">caught</span> <span class="o">-</span> <span class="n">possible</span> <span class="n">malformed</span> <span class="n">input</span> <span class="n">file</span><span class="o">.</span>
+<div class="highlight"><pre><span class="code-line"><span></span>CParserError: Error tokenizing data. C error: Buffer overflow caught - possible malformed input file.</span>
 </pre></div>
 <ul>
 <li>Solution 1</li>
 </ul>
 <p>You can read the CSV using the python engine then no exception is thrown:</p>
-<div class="highlight"><pre><span class="n">df</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'faulty_row.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf8'</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s">'python'</span><span class="p">)</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="n">df</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'faulty_row.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf8'</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">'python'</span><span class="p">)</span></span>
 </pre></div>
 <ul>
 <li>Solution 2</li>
 </ul>
 <p>If your second-to-last line includes an '\r' break.
 You can open in universal-new-line mode to solve the error.</p>
-<div class="highlight"><pre><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">'test.csv'</span><span class="p">,</span><span class="s">'rU'</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s">'c'</span><span class="p">)</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">'test.csv'</span><span class="p">,</span><span class="s1">'rU'</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">'c'</span><span class="p">)</span></span>
 </pre></div></body></html>
 
         <div class="post-nav">
@@ -1348,6 +1413,11 @@ You can open in universal-new-line mode to solve the error.</p>
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->

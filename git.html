@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="/theme/css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="/theme/css/custom.css">
+    <link rel="stylesheet" href="/theme/css/pygment.css">
     <link rel="stylesheet" href="/theme/css/custom-themes.css">
     <link href="/theme/tipuesearch/css/tipuesearch.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="/theme/css/readmore.css">
     <link rel="shortcut icon" type="image/png" href="/theme/images/favicon.ico" />
 </head>
-
 <body>
     <div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
         <!-- 上面加入toggled是显示 -->
@@ -216,6 +216,12 @@
                             <div class="sidebar-submenu">
                                 <ul>
                                     <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                    <li>
                                         <a href="https://ghxdghxd.github.io/ROC.html">ROC曲线</a>
                                     </li>
                                     <li>
@@ -280,8 +286,66 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="header-menu">
+                        <!-- <li class="header-menu">
                             <span>标签</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>statics</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>OLS</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>regression</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/OLS.html">普通最小二乘法</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-tag"></i>
+                                <span>IV</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="https://ghxdghxd.github.io/IVregression.html">工具变量(Instrumental variables regression)</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="sidebar-dropdown">
                             <a href="javascript:void(0);">
@@ -1098,6 +1162,7 @@
                                 </ul>
                             </div>
                         </li>
+ -->
                     </ul>
                 </div>
                 <!-- sidebar-menu  -->
@@ -1273,32 +1338,32 @@
 <ul>
 <li>远程</li>
 </ul>
-<div class="highlight"><pre>git remote add origin git@github.com:ghxdghxd<span class="nv">$NAME</span>.git
+<div class="highlight"><pre><span class="code-line"><span></span>git remote add origin git@github.com:ghxdghxd<span class="nv">$NAME</span>.git</span>
 </pre></div>
 <ul>
 <li>本地(初始化)</li>
 </ul>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">init</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git init</span>
 </pre></div>
 <h2>2 常用操作</h2>
 <ul>
 <li>拉取</li>
 </ul>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git pull origin master</span>
 </pre></div>
 <ul>
 <li>提交</li>
 </ul>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">add</span> <span class="o">*</span><span class="p">.</span><span class="n">py</span>
-<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">"message"</span>
-<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">develop</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git add *.py</span>
+<span class="code-line">git commit -m <span class="s2">"message"</span></span>
+<span class="code-line">git push origin master/dev/develop</span>
 </pre></div>
 <!--more-->
 <ul>
 <li>重命令与删除</li>
 </ul>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">rm</span>
-<span class="n">git</span> <span class="n">mv</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git rm</span>
+<span class="code-line">git mv</span>
 </pre></div>
 <h2>3 分支操作</h2>
 <table>
@@ -1321,63 +1386,63 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre>git branch  /-a/r       <span class="c"># 查看本地/全部/远程分支</span>
-git branch <span class="o">[</span>name<span class="o">]</span>       <span class="c"># 建立分支</span>
-git branch -d <span class="o">[</span>name<span class="o">]</span>    <span class="c"># 删除分支</span>
-
-git checkout -b <span class="o">[</span>name<span class="o">]</span> origin/develop   <span class="c"># 建立并切换开发分支</span>
-git checkout <span class="o">[</span>name<span class="o">]</span>                     <span class="c"># 切换分支</span>
-git merge --no-ff <span class="o">[</span>name<span class="o">]</span>                <span class="c"># 合并分支</span>
-git push origin dev:develop             <span class="c"># 本地分支提交到远程</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git branch  /-a/r       <span class="c1"># 查看本地/全部/远程分支</span></span>
+<span class="code-line">git branch <span class="o">[</span>name<span class="o">]</span>       <span class="c1"># 建立分支</span></span>
+<span class="code-line">git branch -d <span class="o">[</span>name<span class="o">]</span>    <span class="c1"># 删除分支</span></span>
+<span class="code-line"></span>
+<span class="code-line">git checkout -b <span class="o">[</span>name<span class="o">]</span> origin/develop   <span class="c1"># 建立并切换开发分支</span></span>
+<span class="code-line">git checkout <span class="o">[</span>name<span class="o">]</span>                     <span class="c1"># 切换分支</span></span>
+<span class="code-line">git merge --no-ff <span class="o">[</span>name<span class="o">]</span>                <span class="c1"># 合并分支</span></span>
+<span class="code-line">git push origin dev:develop             <span class="c1"># 本地分支提交到远程</span></span>
 </pre></div>
 <h2>push命令用于将本地分支的更新，推送到远程主机。</h2>
-<div class="highlight"><pre><span class="nx">git</span> <span class="nb">push</span> <span class="o">&lt;</span><span class="nx">远程主机名</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">本地分支名</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="nx">远程分支名</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span>
 </pre></div>
 <p>git pull类似:
     git pull &lt;远程分支&gt;:&lt;本地分支&gt;</p>
 <p>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，
 所以git pull是&lt;远程分支&gt;:&lt;本地分支&gt;，而git push是&lt;本地分支&gt;:&lt;远程分支&gt;。
 如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支(通常两者同名)，如果该远程分支不存在，则会被新建。</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git push origin master</span>
 </pre></div>
 <p>上面命令表示，将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。</p>
 <p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="o">:</span><span class="n">master</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git push origin :master</span>
 </pre></div>
 <p>等同于</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="o">--</span><span class="n">delete</span> <span class="n">master</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git push origin --delete master</span>
 </pre></div>
 <p>上面命令表示删除origin主机的master分支。</p>
 <p>如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git push origin</span>
 </pre></div>
 <p>上面命令表示，将当前分支推送到origin主机的对应分支。</p>
 <p>如果当前分支只有一个追踪分支，那么主机名都可以省略。</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">push</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git push</span>
 </pre></div>
 <p>如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">master</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git push -u origin master</span>
 </pre></div>
 <p>上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。</p>
 <p>不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用git config命令。</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">push</span><span class="p">.</span><span class="k">default</span> <span class="n">matching</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git config --global push.default matching</span>
 </pre></div>
 <p>或者</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">push</span><span class="p">.</span><span class="k">default</span> <span class="n">simple</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git config --global push.default simple</span>
 </pre></div>
 <p>还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="n">all</span> <span class="n">origin</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git push --all origin</span>
 </pre></div>
 <p>上面命令表示，将所有本地分支都推送到origin主机。</p>
 <p>如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用–force选项。</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="n">force</span> <span class="n">origin</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git push --force origin</span>
 </pre></div>
 <p>上面命令使用–force选项，结果导致在远程主机产生一个”非直进式”的合并(non-fast-forward merge)。除非你很确定要这样做，否则应该尽量避免使用–force选项。</p>
 <p>最后，git push不会推送标签(tag)，除非使用–tags选项。</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="o">--</span><span class="n">tags</span>
+<div class="highlight"><pre><span class="code-line"><span></span>git push origin --tags</span>
 </pre></div>
 <h2>中文乱码</h2>
-<div class="highlight"><pre>    <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">core</span><span class="p">.</span><span class="n">quotepath</span> <span class="nb">false</span>
+<div class="highlight"><pre><span class="code-line"><span></span>    git config --global core.quotepath <span class="nb">false</span></span>
 </pre></div>
 <p>core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常。</p>
 <h2>gitignore忽略文件</h2>
@@ -1404,7 +1469,7 @@ git push origin dev:develop             <span class="c"># 本地分支提交到�
 <p>这是因为在Windows中的换行符为CRLF，而在Linux中的换行符为LF。
 在git创建的项目中换行符为LF，而执行git add时，系统会提示LF将被转换为CRLF。
 解决的办法很简单，禁止git的自动转换即可。</p>
-<div class="highlight"><pre>git config --global core.autocrlf <span class="nb">false</span> //禁用自动转换
+<div class="highlight"><pre><span class="code-line"><span></span>git config --global core.autocrlf <span class="nb">false</span> //禁用自动转换</span>
 </pre></div></body></html>
 
         <div class="post-nav">
@@ -1438,6 +1503,11 @@ git push origin dev:develop             <span class="c"># 本地分支提交到�
             $("table").attr("class", "table table-striped table-bordered table-sm text-center");
             $("thead").attr("class", "thead-dark");
         });
+        var x = document.getElementsByClassName("code");
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.textAlign = "left";
+        }
     </script>
 <a id="rocket" href="#top" class="show"></a>
 <!-- 先调用jquery-3.3.1.min.js -->
