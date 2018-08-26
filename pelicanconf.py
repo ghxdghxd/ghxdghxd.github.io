@@ -66,7 +66,7 @@ SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
 PAGINATED_DIRECT_TEMPLATES = ['index']  # 分页
-DEFAULT_PAGINATION = 3
+DEFAULT_PAGINATION = 5
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
