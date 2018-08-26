@@ -173,6 +173,10 @@
 &lt;span class="code-line"&gt;git checkout &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;                     &lt;span class="c1"&gt;# 切换分支&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;git merge --no-ff &lt;span class="o"&gt;[&lt;/span&gt;name&lt;span class="o"&gt;]&lt;/span&gt;                &lt;span class="c1"&gt;# 合并分支&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;git push origin dev:develop             &lt;span class="c1"&gt;# 本地分支提交到远程&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 删除远程分支后，本地未同步的问题&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;git remote show origin      &lt;span class="c1"&gt;# 可以查看remote地址，远程分支，还有本地分支与之相对应关系等信息&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;git remote prune origin     &lt;span class="c1"&gt;# 删除了那些远程仓库不存在的分支&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h2&gt;push命令用于将本地分支的更新，推送到远程主机。&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt;&lt;/span&gt;
