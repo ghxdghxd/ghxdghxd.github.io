@@ -64,6 +64,10 @@ git checkout -b [name] origin/develop   # 建立并切换开发分支
 git checkout [name]                     # 切换分支
 git merge --no-ff [name]                # 合并分支
 git push origin dev:develop             # 本地分支提交到远程
+
+# 删除远程分支后，本地未同步的问题
+git remote show origin      # 可以查看remote地址，远程分支，还有本地分支与之相对应关系等信息
+git remote prune origin     # 删除了那些远程仓库不存在的分支
 ```
 
 ## push命令用于将本地分支的更新，推送到远程主机。
