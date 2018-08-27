@@ -17,7 +17,7 @@ EXTRA_PATH_METADATA = {
     'pages/about.md': {'path': 'about.html'}
 }
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['tipue_search', "sitemap", "i18n_subsites",
+PLUGINS = ['tipue-search', "sitemap", "i18n_subsites",
            "neighbors", "pdf-img", "better_codeblock_line_numbering"]
 
 THEME = "themes/pelican-bootstrap4"

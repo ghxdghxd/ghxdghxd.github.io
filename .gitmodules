@@ -7,3 +7,6 @@
 [submodule "plugins/pdf-img"]
 	path = plugins/pdf-img
 	url = git@github.com:cmacmackin/pdf-img.git
+[submodule "plugins/tipue-search"]
+	path = plugins/tipue-search
+	url = git@github.com:ghxdghxd/pelican-tipue-search-plugins.git
