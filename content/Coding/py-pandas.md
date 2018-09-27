@@ -15,7 +15,7 @@ Summary: pandas的常用命令
 ```python
  pd.read_csv(file, sep="\t", header=None) # 第一行不设为列名
  bed_df = pd.read_table(file, dtype='object', name=['chr', 'start', 'pos', 'ref', 'alt'])
- ```
+```
 
 ## cat 合并
 
