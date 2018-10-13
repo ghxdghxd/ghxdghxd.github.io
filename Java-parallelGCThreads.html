@@ -1,0 +1,117 @@
+<div class="header">
+  <h1 class="page-title">
+    <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>
+    Java parallelGCThreads的选择
+  </h1>
+  <div class="details">
+    <div class="left">
+      1月 08, 2016
+      <span> | </span> <a href="/category/gong-ju-ji.html">工具集</a>
+    </div>
+    <div class="right">
+      <a class="fa fa-tag" href="/tag/java.html">Java</a>
+    </div>
+  </div>
+</div>
+<div id="message-nano-wrapper" class="nano">
+  <div class="nano-content">
+    <ul class="message-container">
+        <div class="message">
+          <h1>1.含义</h1>
+<p>ParallelGCThreads，表示JVM在进行并行GC的时候，用于GC的线程数，-XX:ParallelGCThreads=43，表示配置GC线程数为43。</p>
+<h1>2.JVM相关接口</h1>
+<p>JVM中，关于ParallelGCThreads的计算代码如下：</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="n">unsigned</span> <span class="kt">int</span> <span class="n">VM_Version</span><span class="o">::</span><span class="n">calc_parallel_worker_threads</span><span class="o">()</span> <span class="o">{</span></span>
+<span class="code-line">  <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">result</span><span class="o">;</span></span>
+<span class="code-line">  <span class="k">if</span> <span class="o">(</span><span class="n">is_M_series</span><span class="o">())</span> <span class="o">{</span></span>
+<span class="code-line">    <span class="c1">// for now, use same gc thread calculation for M-series as for niagara-plus</span></span>
+<span class="code-line">    <span class="c1">// in future, we may want to tweak parameters for nof_parallel_worker_thread</span></span>
+<span class="code-line">    <span class="n">result</span> <span class="o">=</span> <span class="n">nof_parallel_worker_threads</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">16</span><span class="o">,</span> <span class="mi">8</span><span class="o">);</span></span>
+<span class="code-line">  <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">is_niagara_plus</span><span class="o">())</span> <span class="o">{</span></span>
+<span class="code-line">    <span class="n">result</span> <span class="o">=</span> <span class="n">nof_parallel_worker_threads</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">16</span><span class="o">,</span> <span class="mi">8</span><span class="o">);</span></span>
+<span class="code-line">  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span></span>
+<span class="code-line">    <span class="n">result</span> <span class="o">=</span> <span class="n">nof_parallel_worker_threads</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">8</span><span class="o">);</span></span>
+<span class="code-line">  <span class="o">}</span></span>
+<span class="code-line">  <span class="k">return</span> <span class="n">result</span><span class="o">;</span></span>
+<span class="code-line"><span class="o">}</span></span>
+<span class="code-line"><span class="n">unsigned</span> <span class="kt">int</span> <span class="n">Abstract_VM_Version</span><span class="o">::</span><span class="n">parallel_worker_threads</span><span class="o">()</span> <span class="o">{</span></span>
+<span class="code-line">  <span class="k">if</span> <span class="o">(!</span><span class="n">_parallel_worker_threads_initialized</span><span class="o">)</span> <span class="o">{</span></span>
+<span class="code-line">    <span class="k">if</span> <span class="o">(</span><span class="n">FLAG_IS_DEFAULT</span><span class="o">(</span><span class="n">ParallelGCThreads</span><span class="o">))</span> <span class="o">{</span></span>
+<span class="code-line">      <span class="n">_parallel_worker_threads</span> <span class="o">=</span> <span class="n">VM_Version</span><span class="o">::</span><span class="n">calc_parallel_worker_threads</span><span class="o">();</span></span>
+<span class="code-line">    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span></span>
+<span class="code-line">      <span class="n">_parallel_worker_threads</span> <span class="o">=</span> <span class="n">ParallelGCThreads</span><span class="o">;</span></span>
+<span class="code-line">    <span class="o">}</span></span>
+<span class="code-line">    <span class="n">_parallel_worker_threads_initialized</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span></span>
+<span class="code-line">  <span class="o">}</span></span>
+<span class="code-line">  <span class="k">return</span> <span class="n">_parallel_worker_threads</span><span class="o">;</span></span>
+<span class="code-line"><span class="o">}</span></span>
+<span class="code-line"><span class="n">unsigned</span> <span class="kt">int</span> <span class="n">Abstract_VM_Version</span><span class="o">::</span><span class="n">calc_parallel_worker_threads</span><span class="o">()</span> <span class="o">{</span></span>
+<span class="code-line">  <span class="k">return</span> <span class="n">nof_parallel_worker_threads</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">8</span><span class="o">);</span></span>
+<span class="code-line"><span class="o">}</span></span>
+<span class="code-line"><span class="n">unsigned</span> <span class="kt">int</span> <span class="n">Abstract_VM_Version</span><span class="o">::</span><span class="n">nof_parallel_worker_threads</span><span class="o">(</span></span>
+<span class="code-line">  <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">num</span><span class="o">,</span></span>
+<span class="code-line">  <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">den</span><span class="o">,</span></span>
+<span class="code-line">  <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">switch_pt</span><span class="o">)</span> <span class="o">{</span></span>
+<span class="code-line">  <span class="k">if</span> <span class="o">(</span><span class="n">FLAG_IS_DEFAULT</span><span class="o">(</span><span class="n">ParallelGCThreads</span><span class="o">))</span> <span class="o">{</span></span>
+<span class="code-line">    <span class="k">assert</span><span class="o">(</span><span class="n">ParallelGCThreads</span> <span class="o">==</span> <span class="mi">0</span><span class="o">,</span> <span class="s">&quot;Default ParallelGCThreads is not 0&quot;</span><span class="o">);</span></span>
+<span class="code-line">    <span class="c1">// For very large machines, there are diminishing returns</span></span>
+<span class="code-line">    <span class="c1">// for large numbers of worker threads.  Instead of</span></span>
+<span class="code-line">    <span class="c1">// hogging the whole system, use a fraction of the workers for every</span></span>
+<span class="code-line">    <span class="c1">// processor after the first 8.  For example, on a 72 cpu machine</span></span>
+<span class="code-line">    <span class="c1">// and a chosen fraction of 5/8</span></span>
+<span class="code-line">    <span class="c1">// use 8 + (72 - 8) * (5/8) == 48 worker threads.</span></span>
+<span class="code-line">    <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">ncpus</span> <span class="o">=</span> <span class="o">(</span><span class="n">unsigned</span> <span class="kt">int</span><span class="o">)</span> <span class="n">os</span><span class="o">::</span><span class="n">active_processor_count</span><span class="o">();</span></span>
+<span class="code-line">    <span class="k">return</span> <span class="o">(</span><span class="n">ncpus</span> <span class="o">&lt;=</span> <span class="n">switch_pt</span><span class="o">)</span> <span class="o">?</span></span>
+<span class="code-line">      <span class="n">ncpus</span> <span class="o">:</span> <span class="o">(</span><span class="n">switch_pt</span> <span class="o">+</span> <span class="o">((</span><span class="n">ncpus</span> <span class="o">-</span> <span class="n">switch_pt</span><span class="o">)</span> <span class="o">*</span> <span class="n">num</span><span class="o">)</span> <span class="o">/</span> <span class="n">den</span><span class="o">);</span></span>
+<span class="code-line">  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span></span>
+<span class="code-line">    <span class="k">return</span> <span class="n">ParallelGCThreads</span><span class="o">;</span></span>
+<span class="code-line">  <span class="o">}</span></span>
+<span class="code-line"><span class="o">}</span></span>
+</pre></div>
+
+
+<h1>3.计算方法</h1>
+<div class="highlight"><pre><span class="code-line"><span></span>上面列出了与ParallelGCThreads计算相关的几个核心接口，其中，最主要关注nof_parallel_worker_threads接口，该接口中给出了计算ParallelGCThreads值的具体算法，具体如下：</span>
+<span class="code-line"></span>
+<span class="code-line">① 如果用户显示指定了ParallelGCThreads，则使用用户指定的值。</span>
+<span class="code-line"></span>
+<span class="code-line">② 否则，需要根据实际的CPU所能够支持的线程数来计算ParallelGCThreads的值，计算方法见步骤③和步骤④。</span>
+<span class="code-line"></span>
+<span class="code-line">③ 如果物理CPU所能够支持线程数小于8，则ParallelGCThreads的值为CPU所支持的线程数。这里的阀值为8，是因为JVM中调用nof_parallel_worker_threads接口所传入的switch_pt的值均为8。</span>
+<span class="code-line"></span>
+<span class="code-line">④ 如果物理CPU所能够支持线程数大于8，则ParallelGCThreads的值为8加上一个调整值，调整值的计算方式为：物理CPU所支持的线程数减去8所得值的5/8或者5/16，JVM会根据实际的情况来选择具体是乘以5/8还是5/16。</span>
+<span class="code-line"></span>
+<span class="code-line">比如，在64线程的x86 CPU上，如果用户未指定ParallelGCThreads的值，则默认的计算方式为：ParallelGCThreads = 8 + (64 - 8) * (5/8) = 8 + 35 = 43。</span>
+</pre></div>
+        </div>
+        <!-- <div class="tool-box">
+          <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a>
+        </div> -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nano').overlayScrollbars({
+    scrollbars: {
+      autoHide: "leave",
+    }
+  });
+  $('.trigger-message-close').on('click', function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+    $('body').removeClass('show-main-overlay');
+  });
+  $('#message .header .left a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addDisjunctiveFacetRefinement("category", e.target.text).search();
+    
+  });
+  $('#message .header .right a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addFacetRefinement("tags", e.target.text).search();
+  });
+</script>

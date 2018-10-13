@@ -16,9 +16,15 @@ code {
 
 /* Following http://bililite.com/blog/2012/08/05/line-numbering-in-pre-elements/, use CSS to add line numbers to all spans that have the class 'code-line' */
 
+.highlight {
+    margin: 10px 0;
+    font-family: Consolas;
+}
+
 .highlight pre {
     counter-reset: linecounter;
-    padding-left: 2em;
+    padding: 0.5em 0 0.5em 2em;
+    overflow: auto;
 }
 .highlight pre span.code-line {
 	counter-increment: linecounter;
