@@ -10,3 +10,15 @@
 [submodule "plugins/tipue-search"]
 	path = plugins/tipue-search
 	url = git@github.com:ghxdghxd/pelican-tipue-search-plugins.git
+[submodule "themes/webnote"]
+	path = themes/webnote
+	url = git@github.com:ghxdghxd/webnote.git
+[submodule "plugins/pelican-show-pdf"]
+	path = plugins/pelican-show-pdf
+	url = git@github.com:ghxdghxd/pelican-show-pdf.git
+[submodule "pelican-algolia-search"]
+	path = pelican-algolia-search
+	url = git@github.com:ghxdghxd/pelican-algolia-search.git
+[submodule "plugins/pelican-algolia-search"]
+	path = plugins/pelican-algolia-search
+	url = git@github.com:ghxdghxd/pelican-algolia-search.git

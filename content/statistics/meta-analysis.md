@@ -12,11 +12,11 @@ Summary: meta analysis with metafor
 
 + An Overview of Functions in the metafor Package
 
-![metafor diagram](/documents/metafor_diagram.pdf)
+{% pdf id=metafor_diagram src=/documents/metafor_diagram.pdf %}
 
 + Viechtbauer gesis ma with metafor
 
-![talks](/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf)
+{% pdf id=talks src=/documents/talks_2016_viechtbauer_gesis_ma_with_metafor.pdf %}
 
 <!--more-->
 

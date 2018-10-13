@@ -11,11 +11,11 @@ Summary: 参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 
 # 常用命令
 
 ```bash
-git clone <repository> --recursive 递归的方式克隆整个项目
-git submodule add <repository><path> 添加子模块
-git submodule init 初始化子模块
-git submodule update 更新子模块
-git submodule foreach git pull 拉取所有子模块
+git clone <repository> --recursive #递归的方式克隆整个项目
+git submodule add projectB.git projectB #添加子模块
+git submodule init #初始化子模块
+git submodule update #更新子模块
+git submodule foreach git pull #拉取所有子模块
 ```
 
 ## 如何使用
@@ -35,7 +35,7 @@ project
 ```bash
 git init --bare project.git
 git clone project.git project1cd project1
-echo"This is a project." > readme.txt
+echo "This is a project." > readme.txt
 git add .
 git commit -m "add readme.txt"
 git push origin master
@@ -50,7 +50,7 @@ cd ..
 git init --bare moduleA.git
 git clone moduleA.git moduleA1
 cd moduleA1
-echo"This is a submodule." > a.txt
+echo "This is a submodule." > a.txt
 git add .
 git commit -m "add a.txt"
 git push origin master

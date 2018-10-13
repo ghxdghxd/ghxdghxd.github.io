@@ -247,3 +247,5 @@ vim /etc/grub.conf
 ```
 
 ![图4](images/manager4.png){:height="50%" width="50%"}
+
+# 使用 fail2ban 防御 SSH 服务器的暴力破解攻击

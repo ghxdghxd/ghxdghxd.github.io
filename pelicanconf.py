@@ -11,18 +11,19 @@ PATH = 'content'
 TIMEZONE = 'Asia/Shanghai'
 DEFAULT_LANG = 'zh'
 
-STATIC_PATHS = ["pages", 'theme/images', "documents", 'images']
+STATIC_PATHS = ["pages", 'theme/images', "documents", 'images', 'favicon.ico']
+
 EXTRA_PATH_METADATA = {
     # about.md生成到output下, 表示about.html的路径
     'pages/about.md': {'path': 'about.html'}
 }
-PLUGIN_PATHS = ['plugins']
-PLUGINS = ['tipue-search', "sitemap", "i18n_subsites",
-           "neighbors", "pdf-img", "better_codeblock_line_numbering"]
 
-THEME = "themes/pelican-bootstrap4"
-DIRECT_TEMPLATES = ["index", "search",
-                    "setting", "archives", "tags", "categories"]
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ['tipue-search', "sitemap", "i18n_subsites", "pelican-algolia-search",
+           "neighbors", "pelican-show-pdf", "better_codeblock_line_numbering"]
+
+THEME = "themes/webnote"
+DIRECT_TEMPLATES = ['index', "solar_system"]
 # title, link, font-awesome-id(http://fontawesome.io)
 MENUITEMS = [('主页', '.', 'fa-home'),
              ('归档', 'archives.html', 'fa-archive'),
@@ -65,8 +66,8 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
-PAGINATED_DIRECT_TEMPLATES = ['index']  # 分页
-DEFAULT_PAGINATION = 5
+# PAGINATED_DIRECT_TEMPLATES = ['index']  # 分页
+# DEFAULT_PAGINATION = 5
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
@@ -74,3 +75,18 @@ RELATIVE_URLS = True
 MARKDOWN = {
     'extensions': ['codehilite(css_class=highlight, linenums=False)', 'extra']
 }
+
+# algolia search config
+import os
+if os.path.exists(os.path.join(os.environ['HOME'], ".env")):
+    print('Importing environment from ',
+          os.path.join(os.environ['HOME'], ".env"))
+for line in open(os.path.join(os.environ['HOME'], ".env")):
+    var = line.strip().split('=')
+    if len(var) == 2:
+        key, value = var[0].strip(), var[1].strip()
+        os.environ[key] = value
+ALGOLIA_APP_ID = os.getenv('ALGOLIA_APP_ID', None)
+ALGOLIA_SEARCH_API_KEY = os.getenv('ALGOLIA_SEARCH_API_KEY', None)
+ALGOLIA_ADMIN_API_KEY = os.getenv('ALGOLIA_ADMIN_API_KEY', None)
+ALGOLIA_INDEX_NAME = os.getenv('ALGOLIA_INDEX_NAME', None)
