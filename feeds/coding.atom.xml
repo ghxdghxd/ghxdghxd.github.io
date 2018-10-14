@@ -271,7 +271,7 @@
 &lt;/table&gt;
 
 &lt;h2&gt;大 O 复杂度图表&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="BigO" src="../images/BigO.png" /&gt;&lt;/p&gt;</content><category term="time"></category></entry><entry><title>My title</title><link href="https://ghxdghxd.github.io/my-super-post.html" rel="alternate"></link><published>2010-12-03T10:20:00+08:00</published><updated>2010-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2010-12-03:/my-super-post.html</id><summary type="html">&lt;p&gt;Thanks to Pelican&lt;/p&gt;</summary><content type="html">&lt;h1&gt;css + js + html&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="BigO" src="../images/BigO.png" /&gt;&lt;/p&gt;</content><category term="time"></category></entry><entry><title>前端</title><link href="https://ghxdghxd.github.io/my-super-post.html" rel="alternate"></link><published>2010-12-03T10:20:00+08:00</published><updated>2010-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2010-12-03:/my-super-post.html</id><summary type="html">&lt;p&gt;前端的记录&lt;/p&gt;</summary><content type="html">&lt;h1&gt;css + js + html&lt;/h1&gt;
 &lt;h2&gt;垂直居中&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;display&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;flex&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nt"&gt;justify-content&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;center&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;/span&gt;
