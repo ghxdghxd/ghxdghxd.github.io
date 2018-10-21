@@ -6,12 +6,11 @@
   <div class="details">
     <div class="left">
       12月 04, 2014
-      <span> | </span> <a href="/category/sheng-xin-shu-ju.html">生信数据</a>
+      <span> | </span> <a href="/category/sheng-wu-xin-xi.html">生物信息</a>
     </div>
     <div class="right">
-      <a class="fa fa-tag" href="/tag/ngs.html">NGS</a>
       <a class="fa fa-tag" href="/tag/fastq.html">fastq</a>
-      <a class="fa fa-tag" href="/tag/bioinfo.html">bioinfo</a>
+      <a class="fa fa-tag" href="/tag/format.html">format</a>
     </div>
   </div>
 </div>
@@ -43,21 +42,60 @@
 
 <h2>Fastq ID</h2>
 <p>illumina测序仪的ID行一般包含测序仪、运行编号、flowcell ID、lane ID、tile ID、横纵轴坐标、索引序列等等</p>
+<blockquote>
+<p><strong>@HWUSI-EAS100R:6:73:941:1973#0/1</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">HWUSI-EAS100R</th>
+<th>the unique instrument name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">6</td>
+<td>flowcell lane</td>
+</tr>
+<tr>
+<td align="center">73</td>
+<td>tile number within the flowcell lane</td>
+</tr>
+<tr>
+<td align="center">941</td>
+<td>‘x’-coordinate of the cluster within the tile</td>
+</tr>
+<tr>
+<td align="center">1973</td>
+<td>‘y’-coordinate of the cluster within the tile</td>
+</tr>
+<tr>
+<td align="center">#0</td>
+<td>index number for a multiplexed sample (0 for no indexing)</td>
+</tr>
+<tr>
+<td align="center">/1</td>
+<td>the member of a pair, /1 or /2 _(paired-end or mate-pair reads only)</td>
+</tr>
+</tbody>
+</table>
 <h2>质量信息</h2>
+<ol>
+<li>测序仪能够根据荧光信号的强弱, 给定一个碱基的错误概率(error probility, P)</li>
+<li>为方便记录, 节约磁盘空间, 把概率P转化为ASCII码(<a href="(http://binf.snipcademy.com/binf/img/lessons/dna-file-formats/ascii.svg)">共127个字符</a>)代表质量分数Q</li>
+<li>P越小,Q越大,质量越好</li>
+</ol>
+<p><strong>最常用的Phred质量转换公式：</strong>
+$$Q=-10log_{10}P$$</p>
 <ul>
-<li>质量信息代表一个碱基的错误概率的对数值</li>
-<li>Phred quality scores are logarithmically linked to error probabilities Phred</li>
-</ul>
-<p>$$Q=-10log_{10}P$$</p>
-<ul>
-<li>质量得分与错误概率的对应关系见下表：</li>
+<li>质量分数Q与错误概率P的对应关系见下表：</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>Phred Quality Score (Q)</th>
-<th>Probability of incorrect base call</th>
-<th>Base call accuracy (P)</th>
+<th>质量分数(Q)</th>
+<th>错误概率(P)</th>
+<th>准确率</th>
 </tr>
 </thead>
 <tbody>
@@ -88,39 +126,12 @@
 </tr>
 </tbody>
 </table>
-<p>除了Phred质量得分换算标准，还有就是Solexa标准：
+<p><strong>另外还有，Solexa标准：</strong>
 $$Q_{solexa-prior to v.1.3}=-10log_{10}\frac{P}{1-P}$$</p>
-<p>两种换算标准的比较：
-<img alt="compare" src="./images/fastq_quality_compare.png" /></p>
-<p>Relationship between Q and p using the Sanger (red) and Solexa (black)
-equations (described above). The vertical dotted line indicates p = 0.05, or
-equivalently, Q ≈ 13.</p>
 <ul>
-<li>对于每个碱基的质量编码标示，不同的软件采用不同的方案，目前有5种方案：</li>
-<li>Sanger，Phred quality score，值的范围从0到92，对应的ASCII码从33到126，但是对于测序数据（raw read data）质量得分通常小于60，序列拼接或者mapping可能用到更大的分数。</li>
-<li>Solexa/Illumina 1.0, Solexa/Illumina quality score，值的范围从-5到63，对应的ASCII码从59到126，对于测序数据，得分一般在-5到40之间；</li>
-<li>Illumina 1.3+，<a href="http://en.wikipedia.org/wiki/Phred_quality_score">Phred quality score</a>，值的范围从0到62对应的ASCII码从64到126，低于测序数据，得分在0到40之间；</li>
-<li>Illumina 1.5+，Phred quality score，但是0到2作为另外的标示，<a href="http://solexaqa.sourceforge.net/questions.htm#illumina">详见</a></li>
-<li>Illumina 1.8+</li>
+<li>对于每个碱基的质量编码标示，不同的软件采用不同的方案，目前统一用Phred33</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span>SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.....................................................</span>
-<span class="code-line">      ..........................XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX......................</span>
-<span class="code-line">      ...............................IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII......................</span>
-<span class="code-line">      .................................**J**JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ......................</span>
-<span class="code-line">      LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL....................................................</span>
-<span class="code-line">      !&quot;#$%&amp;&#39;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~</span>
-<span class="code-line">      |                         |    |        |                              |                     |</span>
-<span class="code-line">     33                        59   64       73                            104                   126</span>
-<span class="code-line">     S - Sanger        Phred+33,  raw reads typically (0, 40)</span>
-<span class="code-line">     X - Solexa        Solexa+64, raw reads typically (-5, 40)</span>
-<span class="code-line">     I - Illumina 1.3+ Phred+64,  raw reads typically (0, 40)</span>
-<span class="code-line">     J - Illumina 1.5+ Phred+64,  raw reads typically (3, 40)</span>
-<span class="code-line">        with 0=unused, 1=unused, 2=Read Segment Quality Control Indicator (bold)</span>
-<span class="code-line">        (Note: See discussion above).</span>
-<span class="code-line">     L - Illumina 1.8+ Phred+33,  raw reads typically (0, 41)</span>
-</pre></div>
-
-
+<p><img alt="Q" src="../images/fasq-quality-score.png" /></p>
 <h1>fastq 质量检测工具</h1>
 <ul>
 <li><a href="/BioKits/fastqc">fastQC</a></li>

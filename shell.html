@@ -6,11 +6,10 @@
   <div class="details">
     <div class="left">
       10月 12, 2016
-      <span> | </span> <a href="/category/gong-ju-ji.html">工具集</a>
+      <span> | </span> <a href="/category/xiao-chao-su-cha.html">小抄速查</a>
     </div>
     <div class="right">
       <a class="fa fa-tag" href="/tag/shell.html">shell</a>
-      <a class="fa fa-tag" href="/tag/bash.html">bash</a>
     </div>
   </div>
 </div>
@@ -19,7 +18,6 @@
     <ul class="message-container">
         <div class="message">
           <h1>常用命令</h1>
-<h2></h2>
 <div class="highlight"><pre><span class="code-line"><span></span>0表示标准输入</span>
 <span class="code-line">1表示标准输出</span>
 <span class="code-line">2表示标准错误输出</span>
@@ -30,15 +28,15 @@
 
 
 <h2>awk</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>    <span class="nv">$0</span>~/aaa/表示0包括aaa</span>
-<span class="code-line">    split <span class="o">(</span>string, array, field separator<span class="o">)</span></span>
-<span class="code-line">    split <span class="o">(</span>string, array<span class="o">)</span>  <span class="se">\-</span>-<span class="p">&amp;</span>gt<span class="p">;</span>如果第三个参数没有提供，awk就默认使用当前FS值。</span>
-<span class="code-line">    substr<span class="o">(</span>s,p<span class="o">)</span> 返回字符串s中从p开始的后缀部分</span>
-<span class="code-line">    substr<span class="o">(</span>s,p,n<span class="o">)</span> 返回字符串s中从p开始长度为n的后缀部分</span>
-<span class="code-line">    length函数返回整个记录中的字符数。</span>
-<span class="code-line">    gsub<span class="o">(</span>regular expression, subsitution string, target string<span class="o">)</span><span class="p">;</span></span>
-<span class="code-line">    index<span class="o">(</span>a,b<span class="o">)</span>, r返回b中a的位置，没有返回0</span>
-<span class="code-line">    <span class="k">for</span><span class="o">(</span><span class="nv">i</span><span class="o">=</span><span class="m">1</span><span class="p">;</span>i<span class="p">&amp;</span>lt<span class="p">;</span><span class="o">=</span>length<span class="o">(</span>a<span class="o">)</span><span class="p">;</span>i++<span class="o">)</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nv">$0</span>~/aaa/表示0包括aaa</span>
+<span class="code-line">split <span class="o">(</span>string, array, field separator<span class="o">)</span></span>
+<span class="code-line">split <span class="o">(</span>string, array<span class="o">)</span>  <span class="se">\-</span>-<span class="p">&amp;</span>gt<span class="p">;</span>如果第三个参数没有提供，awk就默认使用当前FS值。</span>
+<span class="code-line">substr<span class="o">(</span>s,p<span class="o">)</span> 返回字符串s中从p开始的后缀部分</span>
+<span class="code-line">substr<span class="o">(</span>s,p,n<span class="o">)</span> 返回字符串s中从p开始长度为n的后缀部分</span>
+<span class="code-line">length函数返回整个记录中的字符数。</span>
+<span class="code-line">gsub<span class="o">(</span>regular expression, subsitution string, target string<span class="o">)</span><span class="p">;</span></span>
+<span class="code-line">index<span class="o">(</span>a,b<span class="o">)</span>, r返回b中a的位置，没有返回0</span>
+<span class="code-line"><span class="k">for</span><span class="o">(</span><span class="nv">i</span><span class="o">=</span><span class="m">1</span><span class="p">;</span>i<span class="p">&amp;</span>lt<span class="p">;</span><span class="o">=</span>length<span class="o">(</span>a<span class="o">)</span><span class="p">;</span>i++<span class="o">)</span></span>
 </pre></div>
 
 
@@ -68,25 +66,25 @@
 
 
 <h2>sed</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>    sed -n <span class="s1">&#39;/A/,/B/p&#39;</span>  匹配A的行与匹配B的行之间的内容</span>
-<span class="code-line">    sed -n <span class="s1">&#39;2p,4,5p&#39;</span> 输出2 <span class="m">4</span>,5 行</span>
+<div class="highlight"><pre><span class="code-line"><span></span>sed -n <span class="s1">&#39;/A/,/B/p&#39;</span>  匹配A的行与匹配B的行之间的内容</span>
+<span class="code-line">sed -n <span class="s1">&#39;2p,4,5p&#39;</span> 输出2 <span class="m">4</span>,5 行</span>
 </pre></div>
 
 
 <h2>grep</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>    cat file  <span class="p">|</span> grep <span class="s1">&#39;[:space:]*#&#39;</span>匹配空格</span>
-<span class="code-line">    grep -P <span class="s1">&#39;\t&#39;</span> 匹配制表符</span>
-<span class="code-line">    grep -E <span class="s2">&quot;abc|123&quot;</span> myfile -n 两个关键词</span>
+<div class="highlight"><pre><span class="code-line"><span></span>cat file  <span class="p">|</span> grep <span class="s1">&#39;[:space:]*#&#39;</span>匹配空格</span>
+<span class="code-line">grep -P <span class="s1">&#39;\t&#39;</span> 匹配制表符</span>
+<span class="code-line">grep -E <span class="s2">&quot;abc|123&quot;</span> myfile -n 两个关键词</span>
 </pre></div>
 
 
 <h2>ln</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>    ln -s 源文件 目标文件</span>
+<div class="highlight"><pre><span class="code-line"><span></span>ln -s 源文件 目标文件</span>
 </pre></div>
 
 
 <h2>paste</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>    paste -s -d <span class="s1">&#39;\t&#39;</span>  多行合并成一行</span>
+<div class="highlight"><pre><span class="code-line"><span></span>paste -s -d <span class="s1">&#39;\t&#39;</span>  多行合并成一行</span>
 </pre></div>
 
 
@@ -96,14 +94,14 @@
 
 
 <h2>sort</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>    sort  -V 按染色体排序 <span class="m">1</span>，2，3，，，，X，Y</span>
+<div class="highlight"><pre><span class="code-line"><span></span>sort -V 按染色体排序 <span class="m">1</span>，2，3，，，，X，Y</span>
 </pre></div>
 
 
 <h2>unzip</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>    unzip -l zipfile   查看list</span>
-<span class="code-line">    unzip -p zipfile <span class="s2">&quot;*/getfile&quot;</span> <span class="p">|</span>less   查看指定文件</span>
-<span class="code-line">    unzip -d outdir    指定输出目录</span>
+<div class="highlight"><pre><span class="code-line"><span></span>unzip -l zipfile   查看list</span>
+<span class="code-line">unzip -p zipfile <span class="s2">&quot;*/getfile&quot;</span> <span class="p">|</span>less   查看指定文件</span>
+<span class="code-line">unzip -d outdir    指定输出目录</span>
 </pre></div>
 
 
@@ -113,8 +111,8 @@
 
 
 <h2>计算 expr</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>    expr <span class="m">1</span> + <span class="m">1</span></span>
-<span class="code-line">    expr</span>
+<div class="highlight"><pre><span class="code-line"><span></span>expr <span class="m">1</span> + <span class="m">1</span></span>
+<span class="code-line">expr</span>
 </pre></div>
 
 

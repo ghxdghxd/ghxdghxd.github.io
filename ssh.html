@@ -6,7 +6,7 @@
   <div class="details">
     <div class="left">
       11月 03, 2014
-      <span> | </span> <a href="/category/xi-tong-guan-li.html">系统管理</a>
+      <span> | </span> <a href="/category/xiao-chao-su-cha.html">小抄速查</a>
     </div>
     <div class="right">
       <a class="fa fa-tag" href="/tag/ssh.html">ssh</a>
@@ -43,21 +43,21 @@
 
 <h2>1. 关于SSH Server的整体设定，包含使用的port以及使用的密码演算方式</h2>
 <div class="highlight"><pre><span class="code-line"><span></span>Port <span class="m">22</span></span>
-<span class="code-line">    <span class="c1">#SSH预设使用22这个port，重复使用port使用多个端口</span></span>
+<span class="code-line"><span class="c1">#SSH预设使用22这个port，重复使用port使用多个端口</span></span>
 <span class="code-line">Protocol <span class="m">2</span>,1</span>
-<span class="code-line">    <span class="c1"># 选择的SSH协议版本，可以是1也可以是2，</span></span>
-<span class="code-line">    <span class="c1"># 如果要同时支持两者，就必须要使用 2,1 这个分隔了！</span></span>
+<span class="code-line"><span class="c1"># 选择的SSH协议版本，可以是1也可以是2，</span></span>
+<span class="code-line"><span class="c1"># 如果要同时支持两者，就必须要使用 2,1 这个分隔了！</span></span>
 <span class="code-line">ListenAddress <span class="m">192</span>.168.0.100</span>
-<span class="code-line">    <span class="c1"># 只监听来自 192.168.0.100 这个 IP 的SSH联机。</span></span>
-<span class="code-line">    <span class="c1"># 如果不使用设定的话，则预设所有接口均接受 SSH</span></span>
+<span class="code-line"><span class="c1"># 只监听来自 192.168.0.100 这个 IP 的SSH联机。</span></span>
+<span class="code-line"><span class="c1"># 如果不使用设定的话，则预设所有接口均接受 SSH</span></span>
 <span class="code-line">PidFile /var/run/sshd.pid</span>
-<span class="code-line">    <span class="c1"># 可以放置 SSHD 这个 PID 的档案！左列为默认值</span></span>
+<span class="code-line"><span class="c1"># 可以放置 SSHD 这个 PID 的档案！左列为默认值</span></span>
 <span class="code-line">LoginGraceTime <span class="m">600</span></span>
-<span class="code-line">    <span class="c1"># 当使用者连上 SSH server 之后，会出现输入密码的画面，</span></span>
-<span class="code-line">    <span class="c1"># 在该画面中，在多久时间内没有成功连上 SSH server ，</span></span>
-<span class="code-line">    <span class="c1"># 就断线！时间为秒！</span></span>
+<span class="code-line"><span class="c1"># 当使用者连上 SSH server 之后，会出现输入密码的画面，</span></span>
+<span class="code-line"><span class="c1"># 在该画面中，在多久时间内没有成功连上 SSH server ，</span></span>
+<span class="code-line"><span class="c1"># 就断线！时间为秒！</span></span>
 <span class="code-line">Compression yes</span>
-<span class="code-line">    <span class="c1"># 是否可以使用压缩指令？当然可以啰！</span></span>
+<span class="code-line"><span class="c1"># 是否可以使用压缩指令？当然可以啰！</span></span>
 </pre></div>
 
 
@@ -70,7 +70,7 @@
 
 <h3>2.1 关于 version 1 的一些设定！</h3>
 <div class="highlight"><pre><span class="code-line"><span></span>KeyRegenerationInterval <span class="m">3600</span></span>
-<span class="code-line">    <span class="c1"># 由前面联机的说明可以知道， version 1 会使用 server 的 Public Key ，那么如果这个 Public Key 被偷的话，岂不完蛋？所以需要每隔一段时间来重新建立一次！这里的时间为秒！</span></span>
+<span class="code-line"><span class="c1"># 由前面联机的说明可以知道， version 1 会使用 server 的 Public Key ，那么如果这个 Public Key 被偷的话，岂不完蛋？所以需要每隔一段时间来重新建立一次！这里的时间为秒！</span></span>
 <span class="code-line">ServerKeyBits <span class="m">768</span> 　　 <span class="c1"># 没错！这个就是 Server key 的长度！</span></span>
 </pre></div>
 
@@ -89,7 +89,7 @@
 <span class="code-line">　　　　　　　　　　　　　 <span class="c1"># 可以抵挡部分的木马程序！</span></span>
 <span class="code-line"><span class="c1"># RSAAuthentication yes　　 # 是否使用纯的 RSA 认证！？仅针对 version 1 ！</span></span>
 <span class="code-line">PubkeyAuthentication yes　 <span class="c1"># 是否允许 Public Key ？当然允许啦！只有 version 2</span></span>
-<span class="code-line">AuthorizedKeysFile      .ssh/authorized_keys</span>
+<span class="code-line">AuthorizedKeysFile  .ssh/authorized_keys</span>
 <span class="code-line">　　　　　　　　　　　　　 <span class="c1"># 上面这个在设定若要使用不需要密码登入的账号时，那么那个账号的存放档案所在档名！</span></span>
 </pre></div>
 

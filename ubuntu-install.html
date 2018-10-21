@@ -6,13 +6,12 @@
   <div class="details">
     <div class="left">
       11月 13, 2014
-      <span> | </span> <a href="/category/xi-tong-guan-li.html">系统管理</a>
+      <span> | </span> <a href="/category/xiao-chao-su-cha.html">小抄速查</a>
     </div>
     <div class="right">
       <a class="fa fa-tag" href="/tag/ubuntu.html">ubuntu</a>
       <a class="fa fa-tag" href="/tag/linux.html">linux</a>
       <a class="fa fa-tag" href="/tag/r.html">R</a>
-      <a class="fa fa-tag" href="/tag/install.html">install</a>
     </div>
   </div>
 </div>
@@ -22,7 +21,10 @@
         <div class="message">
           <h1>config ubuntu</h1>
 <h2>upgrade</h2>
-<p>sudo apt update &amp; sudo apt upgrade</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt update <span class="p">&amp;</span> sudo apt upgrade</span>
+</pre></div>
+
+
 <h2>chrome</h2>
 <div class="highlight"><pre><span class="code-line"><span></span>wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb</span>
 <span class="code-line">sudo apt -fy install ./google-chrome-stable_current_amd64.deb</span>
@@ -30,9 +32,12 @@
 
 
 <h2>git</h2>
-<p>sudo apt install git
-git config --global user.name "user name"
-git config --global user.email user@email.com</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt install git</span>
+<span class="code-line">git config --global user.name <span class="s2">&quot;user name&quot;</span></span>
+<span class="code-line">git config --global user.email user@email.com</span>
+</pre></div>
+
+
 <h2>guake</h2>
 <div class="highlight"><pre><span class="code-line"><span></span>sudo apt install python-dbus-dev</span>
 <span class="code-line">sudo apt install libutempter-dev</span>
@@ -44,12 +49,18 @@ git config --global user.email user@email.com</p>
 
 
 <h2>gnome-tweak-tool</h2>
-<p>sudo apt install gnome-tweak-tool
-sudo apt install gnome-shell-extension-dash-to-panel</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt install gnome-tweak-tool</span>
+<span class="code-line">sudo apt install gnome-shell-extension-dash-to-panel</span>
+</pre></div>
+
+
 <h2>wbpy</h2>
-<p>sudo apt install fcitx-table-wbpy
-im-config -s fcitx
-sudo cp /usr/share/fcitx/xdg/autostart/fcitx-autostart.desktop /etc/xdg/autostart/</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt install fcitx-table-wbpy</span>
+<span class="code-line">im-config -s fcitx</span>
+<span class="code-line">sudo cp /usr/share/fcitx/xdg/autostart/fcitx-autostart.desktop /etc/xdg/autostart/</span>
+</pre></div>
+
+
 <h2>zsh</h2>
 <div class="highlight"><pre><span class="code-line"><span></span>sudo apt install zsh</span>
 <span class="code-line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - <span class="p">|</span> zsh</span>
@@ -59,12 +70,20 @@ sudo cp /usr/share/fcitx/xdg/autostart/fcitx-autostart.desktop /etc/xdg/autostar
 
 
 <h2>change PATH language</h2>
-<p>export LANG=en_US
-xdg-user-dirs-gtk-update</p>
-<p>export LANG=zh_CN</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US</span>
+<span class="code-line">xdg-user-dirs-gtk-update</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>zh_CN</span>
+</pre></div>
+
+
 <h2>exFat</h2>
-<p>sudo apt instal exfat-fuse</p>
-<p>sudo apt install sshfs</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt instal exfat-fuse</span>
+<span class="code-line"></span>
+<span class="code-line">sudo apt install sshfs</span>
+</pre></div>
+
+
 <h2>anaconda</h2>
 <div class="highlight"><pre><span class="code-line"><span></span>wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh</span>
 <span class="code-line">bash Anaconda3-4.3.1-Linux-x86_64.sh<span class="p">|</span>sh</span>
@@ -72,11 +91,20 @@ xdg-user-dirs-gtk-update</p>
 
 
 <h2>synergy</h2>
-<p>sudo apt-get -fy install ./synergy-v1.8.8-stable-c30301e-Linux-x86_64.deb</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get -fy install ./synergy-v1.8.8-stable-c30301e-Linux-x86_64.deb</span>
+</pre></div>
+
+
 <h2>sublime</h2>
-<p>sudo apt-get -fy install ./sublime-text_build-3126_amd64.deb</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get -fy install ./sublime-text_build-3126_amd64.deb</span>
+</pre></div>
+
+
 <h2>atom</h2>
-<p>sudo apt-get -fy install ./atom-amd64.deb</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get -fy install ./atom-amd64.deb</span>
+</pre></div>
+
+
 <h2>youdao-dict</h2>
 <div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get -fy install ./youdao-dict_1.1.0-0-deepin_amd64.deb</span>
 <span class="code-line">wget https://pypi.python.org/packages/48/9a/bcf41728a0a81b3d76e2a873296c2912300c653f9e6453c760a50bd2ef93/python-xlib-0.19.tar.bz2</span>
@@ -85,18 +113,26 @@ xdg-user-dirs-gtk-update</p>
 
 <h2>ModuleNotFoundError</h2>
 <ul>
-<li>
-<p>No module named 'Xlib'
-  pip install python3_xlib</p>
-</li>
-<li>
-<p>No module named 'xdg'
-  pip install pyxdg</p>
-</li>
+<li>No module named 'Xlib'</li>
 </ul>
+<div class="highlight"><pre><span class="code-line"><span></span>pip install python3_xlib</span>
+</pre></div>
+
+
+<ul>
+<li>No module named 'xdg'</li>
+</ul>
+<div class="highlight"><pre><span class="code-line"><span></span>pip install pyxdg</span>
+</pre></div>
+
+
 <h2>wechat</h2>
-<p>sudo snap install electronic-wechat</p>
-<p>File failed to load: /extensions/MathZoom.js</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo snap install electronic-wechat</span>
+<span class="code-line"></span>
+<span class="code-line">File failed to load: /extensions/MathZoom.js</span>
+</pre></div>
+
+
 <h1><a href="R-and-Rstudio">install R</a></h1>
         </div>
         <!-- <div class="tool-box">
