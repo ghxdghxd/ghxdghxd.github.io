@@ -24,7 +24,7 @@ git submodule foreach git pull #拉取所有子模块
 
 例如我们要创建如下结构的项目
 
-```bash
+```text
 project
     |--moduleA
     |--readme.txt

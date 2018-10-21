@@ -118,9 +118,9 @@ mount /dev/sdc1 /extra
 
     在倒计时5秒时，按任意键出现下图，
     **选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统**
-    ![图1](images/manager1.png){:height="30%" width="30%"}
-    ![图2](images/manager2.png){:height="30%" width="30%"}
-    ![图3](images/manager3.jpg){:height="30%" width="30%"}
+    ![图1](images/manager1.png){:style="height:30%; width:30%;"}
+    ![图2](images/manager2.png){:style="height:30%; width:30%;"}
+    ![图3](images/manager3.jpg){:style="height:30%; width:30%;"}
 
 7. 重装节点
 

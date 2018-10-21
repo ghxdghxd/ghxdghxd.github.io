@@ -35,7 +35,7 @@ issue内各代码说明：
 登录后的公告消息, 比如：系统将会在某个时间进行维护
 
 ```sh
-[root@linux ~] vi /etc/motd
+vi /etc/motd
     Hello everyone,
     Our server will be maintained at
     please don't login at that time,thanks.

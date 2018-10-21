@@ -12,7 +12,9 @@ Summary: ubuntu常用安装与配置
 
 ## upgrade
 
+```sh
 sudo apt update & sudo apt upgrade
+```
 
 ## chrome
 
@@ -23,9 +25,11 @@ sudo apt -fy install ./google-chrome-stable_current_amd64.deb
 
 ## git
 
+```sh
 sudo apt install git
 git config --global user.name "user name"
 git config --global user.email user@email.com
+```
 
 ## guake
 
@@ -40,14 +44,18 @@ sudo ./dev.sh --install
 
 ## gnome-tweak-tool
 
+```sh
 sudo apt install gnome-tweak-tool
 sudo apt install gnome-shell-extension-dash-to-panel
+```
 
 ## wbpy
 
+```sh
 sudo apt install fcitx-table-wbpy
 im-config -s fcitx
 sudo cp /usr/share/fcitx/xdg/autostart/fcitx-autostart.desktop /etc/xdg/autostart/
+```
 
 ## zsh
 
@@ -60,16 +68,20 @@ sudo shutdown -r 0
 
 ## change PATH language
 
+```sh
 export LANG=en_US
 xdg-user-dirs-gtk-update
 
 export LANG=zh_CN
+```
 
 ## exFat
 
+```sh
 sudo apt instal exfat-fuse
 
 sudo apt install sshfs
+```
 
 ## anaconda
 
@@ -80,15 +92,21 @@ bash Anaconda3-4.3.1-Linux-x86_64.sh|sh
 
 ## synergy
 
+```sh
 sudo apt-get -fy install ./synergy-v1.8.8-stable-c30301e-Linux-x86_64.deb
+```
 
 ## sublime
 
+```sh
 sudo apt-get -fy install ./sublime-text_build-3126_amd64.deb
+```
 
 ## atom
 
+```sh
 sudo apt-get -fy install ./atom-amd64.deb
+```
 
 ## youdao-dict
 
@@ -100,15 +118,23 @@ wget https://pypi.python.org/packages/48/9a/bcf41728a0a81b3d76e2a873296c2912300c
 ## ModuleNotFoundError
 
 + No module named 'Xlib'
-  pip install python3_xlib
+
+```sh
+pip install python3_xlib
+```
 
 + No module named 'xdg'
-  pip install pyxdg
+
+```sh
+pip install pyxdg
+```
 
 ## wechat
 
+```sh
 sudo snap install electronic-wechat
 
 File failed to load: /extensions/MathZoom.js
+```
 
 # [install R](R-and-Rstudio)

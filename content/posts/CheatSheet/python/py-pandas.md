@@ -13,8 +13,8 @@ Summary: pandas的常用命令
 ## read_csv
 
 ```python
- pd.read_csv(file, sep="\t", header=None) # 第一行不设为列名
- bed_df = pd.read_table(file, dtype='object', name=['chr', 'start', 'pos', 'ref', 'alt'])
+pd.read_csv(file, sep="\t", header=None) # 第一行不设为列名
+bed_df = pd.read_table(file, dtype='object', name=['chr', 'start', 'pos', 'ref', 'alt'])
 ```
 
 ## cat 合并
@@ -25,18 +25,24 @@ Series(['a','b','c']).str.cat(['A','B','C'],sep=',')
 
 ## filter
 
-    mat[mat.index.map(lambda x:x in list)]
+```python
+mat[mat.index.map(lambda x:x in list)]
+```
 
 ## dataframe to list
 
-    mat.drop_duplicates().values.tolist()
+```python
+mat.drop_duplicates().values.tolist()
+```
 
 ## merge dataframe
 
+    #!python
     pd.connect([mat1, mat2, mat3], axis=1)  #axis=1 cbind, asis=0 rbind
 
 ## insert
 
+    #!python
     mat.insert(0, 'date', date) # insert in 0 col
 
 # pandas错误

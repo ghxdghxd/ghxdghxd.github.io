@@ -37,21 +37,21 @@ chkconfig sshd on
 
 ```sh
 Port 22
-    #SSH预设使用22这个port，重复使用port使用多个端口
+#SSH预设使用22这个port，重复使用port使用多个端口
 Protocol 2,1
-    # 选择的SSH协议版本，可以是1也可以是2，
-    # 如果要同时支持两者，就必须要使用 2,1 这个分隔了！
+# 选择的SSH协议版本，可以是1也可以是2，
+# 如果要同时支持两者，就必须要使用 2,1 这个分隔了！
 ListenAddress 192.168.0.100
-    # 只监听来自 192.168.0.100 这个 IP 的SSH联机。
-    # 如果不使用设定的话，则预设所有接口均接受 SSH
+# 只监听来自 192.168.0.100 这个 IP 的SSH联机。
+# 如果不使用设定的话，则预设所有接口均接受 SSH
 PidFile /var/run/sshd.pid
-    # 可以放置 SSHD 这个 PID 的档案！左列为默认值
+# 可以放置 SSHD 这个 PID 的档案！左列为默认值
 LoginGraceTime 600
-    # 当使用者连上 SSH server 之后，会出现输入密码的画面，
-    # 在该画面中，在多久时间内没有成功连上 SSH server ，
-    # 就断线！时间为秒！
+# 当使用者连上 SSH server 之后，会出现输入密码的画面，
+# 在该画面中，在多久时间内没有成功连上 SSH server ，
+# 就断线！时间为秒！
 Compression yes
-    # 是否可以使用压缩指令？当然可以啰！
+# 是否可以使用压缩指令？当然可以啰！
 ```
 
 ### 2. 说明主机的 Private Key 放置的档案，预设使用下面的档案即可！
@@ -66,7 +66,7 @@ HostKey /etc/ssh/ssh_host_dsa_key　　# SSH version 2 使用的 DSA 私钥
 
 ```sh
 KeyRegenerationInterval 3600
-    # 由前面联机的说明可以知道， version 1 会使用 server 的 Public Key ，那么如果这个 Public Key 被偷的话，岂不完蛋？所以需要每隔一段时间来重新建立一次！这里的时间为秒！
+# 由前面联机的说明可以知道， version 1 会使用 server 的 Public Key ，那么如果这个 Public Key 被偷的话，岂不完蛋？所以需要每隔一段时间来重新建立一次！这里的时间为秒！
 ServerKeyBits 768 　　 # 没错！这个就是 Server key 的长度！
 ```
 
@@ -88,7 +88,7 @@ StrictModes yes　　　　　　# 当使用者的 host key 改变之后，Serve
 　　　　　　　　　　　　　 # 可以抵挡部分的木马程序！
 # RSAAuthentication yes　　 # 是否使用纯的 RSA 认证！？仅针对 version 1 ！
 PubkeyAuthentication yes　 # 是否允许 Public Key ？当然允许啦！只有 version 2
-AuthorizedKeysFile      .ssh/authorized_keys
+AuthorizedKeysFile  .ssh/authorized_keys
 　　　　　　　　　　　　　 # 上面这个在设定若要使用不需要密码登入的账号时，那么那个账号的存放档案所在档名！
 ```
 

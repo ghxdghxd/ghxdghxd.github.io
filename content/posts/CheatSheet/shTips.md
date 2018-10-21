@@ -22,15 +22,15 @@ Summary: shell的常用命令
 ## awk
 
 ```sh
-    $0~/aaa/表示0包括aaa
-    split (string, array, field separator)
-    split (string, array)  \--&gt;如果第三个参数没有提供，awk就默认使用当前FS值。
-    substr(s,p) 返回字符串s中从p开始的后缀部分
-    substr(s,p,n) 返回字符串s中从p开始长度为n的后缀部分
-    length函数返回整个记录中的字符数。
-    gsub(regular expression, subsitution string, target string);
-    index(a,b), r返回b中a的位置，没有返回0
-    for(i=1;i&lt;=length(a);i++)
+$0~/aaa/表示0包括aaa
+split (string, array, field separator)
+split (string, array)  \--&gt;如果第三个参数没有提供，awk就默认使用当前FS值。
+substr(s,p) 返回字符串s中从p开始的后缀部分
+substr(s,p,n) 返回字符串s中从p开始长度为n的后缀部分
+length函数返回整个记录中的字符数。
+gsub(regular expression, subsitution string, target string);
+index(a,b), r返回b中a的位置，没有返回0
+for(i=1;i&lt;=length(a);i++)
 ```
 
 ### awk,getline,用于获得下一行
@@ -62,28 +62,28 @@ seq 10 | awk '{getline;getline;print $0}'
 ## sed
 
 ```sh
-    sed -n '/A/,/B/p'  匹配A的行与匹配B的行之间的内容
-    sed -n '2p,4,5p' 输出2 4,5 行
+sed -n '/A/,/B/p'  匹配A的行与匹配B的行之间的内容
+sed -n '2p,4,5p' 输出2 4,5 行
 ```
 
 ## grep
 
 ```sh
-    cat file  | grep '[:space:]*#'匹配空格
-    grep -P '\t' 匹配制表符
-    grep -E "abc|123" myfile -n 两个关键词
+cat file  | grep '[:space:]*#'匹配空格
+grep -P '\t' 匹配制表符
+grep -E "abc|123" myfile -n 两个关键词
 ```
 
 ## ln
 
 ```sh
-    ln -s 源文件 目标文件
+ln -s 源文件 目标文件
 ```
 
 ## paste
 
 ```sh
-    paste -s -d '\t'  多行合并成一行
+paste -s -d '\t'  多行合并成一行
 ```
 
 ## tr
@@ -95,15 +95,15 @@ tr -s ' ' 多个空格变一个
 ## sort
 
 ```sh
-    sort  -V 按染色体排序 1，2，3，，，，X，Y
+sort -V 按染色体排序 1，2，3，，，，X，Y
 ```
 
 ## unzip
 
 ```sh
-    unzip -l zipfile   查看list
-    unzip -p zipfile "*/getfile" |less   查看指定文件
-    unzip -d outdir    指定输出目录
+unzip -l zipfile   查看list
+unzip -p zipfile "*/getfile" |less   查看指定文件
+unzip -d outdir    指定输出目录
 ```
 
 ## gzip
@@ -115,8 +115,8 @@ gzip -t/--test 检测gz文件是否有错误
 ## 计算 expr
 
 ```sh
-    expr 1 + 1
-    expr
+expr 1 + 1
+expr
 ```
 
 ## 查看网速sar

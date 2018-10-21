@@ -22,11 +22,11 @@ ubuntu上遇到此问题，解决办法是安装 libutempter0,参考[这里](htt
 
 # 2. anaconda
 
-## 简介
++ 简介
 
 python 的管理工具
 
-## 问题
++ 问题
 
 1.matplotlib中文显示参数设置
 
