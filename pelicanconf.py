@@ -7,15 +7,17 @@ SITENAME = 'iKnowledgeBase'
 SITEURL = 'https://ghxdghxd.github.io'
 GITHUB_URL = 'https://github.com/ghxdghxd'
 PATH = 'content'
-PLACEHOLDER = "好记性不如烂键盘..."
+PLACEHOLDER = "好记性不如烂键盘···"
 TIMEZONE = 'Asia/Shanghai'
 DEFAULT_LANG = 'zh'
 
-STATIC_PATHS = ["pages", 'theme/images', "documents", 'images', 'favicon.ico']
+STATIC_PATHS = ["pages", "pdfs", 'images']
 
 EXTRA_PATH_METADATA = {
     # about.md生成到output下, 表示about.html的路径
-    'pages/about.md': {'path': 'about.html'}
+    'pages/about.md': {'path': 'about.html'},
+    'images/logo/favicon.ico': {'path': 'favicon.ico'},
+    'images/logo/user_picture.jpg': {'path': 'user_picture.jpg'},
 }
 
 PLUGIN_PATHS = ['plugins']
@@ -25,9 +27,9 @@ PLUGINS = ['tipue-search', "sitemap", "i18n_subsites", "pelican-algolia-search",
 THEME = "themes/webnote"
 DIRECT_TEMPLATES = ['index', "solar_system"]
 # title, link, font-awesome-id(http://fontawesome.io)
-MENUITEMS = [('主页', '.', 'fa-home'),
-             ('归档', 'archives.html', 'fa-archive'),
-             ("关于", "pages/about.html", "fa-user")]
+# MENUITEMS = [('主页', '.', 'fa-home'),
+#              ('归档', 'archives.html', 'fa-archive'),
+#              ("关于", "pages/about.html", "fa-user")]
 
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n'],
