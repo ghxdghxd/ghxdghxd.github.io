@@ -127,6 +127,11 @@ mount /dev/sdc1 /extra
         #!bash
         rocks set host pxeboot compute1 action=install
 
+8. 提交任务后，无运行时间,且qdel: Server could not connect to MOM
+
+    由于节点pbs_mom没运行
+    解决办法是进入节点后运行pbs_mom
+
 ## qmgr
 
 ```shell
