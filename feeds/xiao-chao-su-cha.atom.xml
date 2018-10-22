@@ -1840,6 +1840,11 @@ axes.unicode_minus，将True改为False&lt;/p&gt;
 
 
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提交任务后，无运行时间,且qdel: Server could not connect to MOM&lt;/p&gt;
+&lt;p&gt;由于节点pbs_mom没运行
+解决办法是进入节点后运行pbs_mom&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2&gt;qmgr&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;qmgr -c &lt;span class="s2"&gt;&amp;quot;print server&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# 输出server的属性&lt;/span&gt;&lt;/span&gt;
