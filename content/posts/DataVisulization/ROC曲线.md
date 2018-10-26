@@ -19,7 +19,7 @@ Summary: ROC曲线
 
 ROC分析的是二元分类模型（如阳性/阳性，有病/没病）：
 
-![ROC1](./images/ROC1.png)
+![ROC1](./images/ROC1.png){:style="width:50%"}
 
 # ROC空间
 
