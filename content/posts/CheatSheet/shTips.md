@@ -57,6 +57,14 @@ seq 10 | awk '{getline;getline;print $0}'
 6
 9
 10
+获得shell命令的结果
+注: 如果cmd出错,则res为上一行的结果，因此前面添加**res=\"\"**
+    出现awk (Too many open files), 需要 **close(cmd)**
+
+awk '{cmd="echo"$0; res="";
+    cmd|getline res;
+    print $res;
+    close (cmd)}' file
 ```
 
 ## sed
