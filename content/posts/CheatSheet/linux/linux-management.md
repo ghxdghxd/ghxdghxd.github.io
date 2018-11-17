@@ -140,6 +140,23 @@ qmgr -c "set server query_other_jobs = true" # qstat可以查看所有用户
 qmgr -c "set server auto_node_np = True" # 自动更新节点线程数
 ```
 
+## Draining system to allow starving job to run (qstat -s)
+
+队列中还有排队非常久的饥饿进程，为了更公平合理使用队列，所以将新提交的作业做置为排队状态以让出资源运行排队的饥饿作业
+
+修改/opt/torque/spool/sched_priv/sched_config
+
+before:
+help_starving_jobs true ALL
+
+after:
+help_starving_jobs false ALL
+
+```sh
+/opt/torque/init.d/pbs_sched pbs_mom pbs_server
+service pbs_server restart
+```
+
 ## multipath与iscsi操作
 
 + 硬件连接及硬盘灯(绿)

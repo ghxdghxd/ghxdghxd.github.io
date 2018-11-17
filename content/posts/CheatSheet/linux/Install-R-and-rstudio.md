@@ -16,9 +16,17 @@ Summary: ubuntu安装R与Rstudio的过程
 File failed to load: /extensions/MathZoom.js
 export CFLAGS="-I/share/apps/R_depends/include"
 export LDFLAGS="-L/share/apps/R_depends/lib"
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/apps/R_depends/lib
 ```
 
 <!--more-->
+
+## before
+
+```shell
+apt-get build-dep r-base-core
+```
 
 ## ./configure
 
@@ -206,4 +214,10 @@ R CMD INSTALL --no-test-load *packages*
 ./configure --enable-shared
 make
 make install
+```
+
+### semi-transparency is not supported on this device
+
+```shell
+sudo apt install libcairo2-dev
 ```
