@@ -55,6 +55,10 @@ mount /dev/sdc1 /extra
 
         cat /proc/cpuinfo|grep "cores"|sort -u
 
++ GPU计算卡
+
+        lspci | grep NVIDIA
+
 ## 硬盘
 
 + Raid0: 最少需要**2块**盘，没用冗余数据,不做备份，任何一块磁盘损坏都无法运行。n块磁盘（同类型）的阵列理论上读写速度是单块磁盘的n倍(实际达不到)，风险性也是单一n倍（实际更高），是磁盘阵列中存储性能最好的。适用于安全性不高，要求比较高性能的图形工作站或者个人站。
@@ -106,9 +110,15 @@ mount /dev/sdc1 /extra
 4. 添加用户**无法qusb要在/etc/group 添加用户**
 
         #!shell
-        useradd -g group name
+        useradd -g group name #/etc/passwd name:x:xxx:xxx::/export/home/casual:/bin/bash
         passwd name
-        rocks sync users #可更改/export/home/name 为 /home/name
+        rocks sync users #可更改/export/home/name 为 /home/name : /etc/passwd name:x:xxx:xxx::/home/casual:/bin/bash
+
+        #如果要修改用户名（未测试过）
+        usermod -l newName oldName
+        mv /export/home/newName /export/home/oldName
+        usermod -d /export/home/newName -m newName
+        rocks sync users
 
 5. 如果ssh compute 需要输入密码
 
@@ -209,7 +219,7 @@ service pbs_server restart
 
         #!shell
         /share /etc/auto.share --timeout=1200
-        /home  /etc/auto.home  --timeout=1200
+        /home /etc/auto.home  --timeout=1200
 
   + /etc/auto.share
 
@@ -271,3 +281,4 @@ vim /etc/grub.conf
 ![图4](images/manager4.png){:height="50%" width="50%"}
 
 # 使用 fail2ban 防御 SSH 服务器的暴力破解攻击
+
