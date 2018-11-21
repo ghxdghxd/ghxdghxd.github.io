@@ -1,7 +1,7 @@
 ---
 Title: ivreg工具变量回归
-Date: 2018/11/12 下午1:14:43
-Modified: 2018/11/12 下午1:14:43
+Date: 2018/11/12 13:14:43
+Modified: 2018/11/12 13:14:43
 Category: 统计建模
 Tags: IV
 Slug: ivreg
