@@ -26,3 +26,11 @@ scale_colour_manual(values = c("CHB" = '#E41A1C', "MXL" = "#377EB8", "CEU" = "#3
 ```R
 y=..count..
 ```
+
+## ylim(-100, 120) 可以产生中空圆图
+
+## geom_bar
+
+* position = "stack"
+* position = "dodge"
+* position = "identity"
