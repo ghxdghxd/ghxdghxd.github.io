@@ -1,0 +1,65 @@
+<div class="header">
+  <h1 class="page-title">
+    <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>
+    ggplot2应用与结构解析
+  </h1>
+  <div class="details">
+    <div class="left">
+      11月 01, 2018
+      <span> | </span> <a href="/category/shu-ju-ke-shi-hua.html">数据可视化</a>
+    </div>
+    <div class="right">
+      <a class="fa fa-tag" href="/tag/ggplot2.html">ggplot2</a>
+      <a class="fa fa-tag" href="/tag/r.html">R</a>
+    </div>
+  </div>
+</div>
+<div id="message-nano-wrapper" class="nano">
+  <div class="nano-content">
+    <ul class="message-container">
+        <div class="message">
+          <h1>tips</h1>
+<h2>多层的图例</h2>
+<div class="highlight"><pre><span class="code-line"><span></span>scale_colour_manual<span class="p">(</span>values <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;CHB&quot;</span> <span class="o">=</span> <span class="s">&#39;#E41A1C&#39;</span><span class="p">,</span> <span class="s">&quot;MXL&quot;</span> <span class="o">=</span> <span class="s">&quot;#377EB8&quot;</span><span class="p">,</span> <span class="s">&quot;CEU&quot;</span> <span class="o">=</span> <span class="s">&quot;#377EB8&quot;</span><span class="p">,</span></span>
+<span class="code-line">                    <span class="s">&quot;ASW&quot;</span> <span class="o">=</span> <span class="s">&quot;#984EA3&quot;</span><span class="p">,</span><span class="s">&quot;YRI&quot;</span><span class="o">=</span><span class="s">&quot;#FF7F00&quot;</span><span class="p">,</span> <span class="s">&quot;TCGA&quot;</span> <span class="o">=</span> <span class="s">&quot;gray&quot;</span><span class="p">),</span></span>
+<span class="code-line">                    breaks <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;TCGA&quot;</span><span class="p">,</span> <span class="s">&quot;CEU&quot;</span><span class="p">,</span> <span class="s">&quot;CHB&quot;</span><span class="p">,</span> <span class="s">&quot;ASW&quot;</span><span class="p">,</span> <span class="s">&quot;MXL&quot;</span><span class="p">,</span> <span class="s">&quot;YRI&quot;</span><span class="p">))</span></span>
+<span class="code-line"><span class="c1"># values 增加多图例</span></span>
+<span class="code-line"><span class="c1"># breaks 图例排序</span></span>
+</pre></div>
+
+
+<h2>count</h2>
+<div class="highlight"><pre><span class="code-line"><span></span>y<span class="o">=</span><span class="m">..</span>count..</span>
+</pre></div>
+        </div>
+        <!-- <div class="tool-box">
+          <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a>
+        </div> -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nano').overlayScrollbars({
+    scrollbars: {
+      autoHide: "leave",
+    }
+  });
+  $('.trigger-message-close').on('click', function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+    $('body').removeClass('show-main-overlay');
+  });
+  $('#message .header .left a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addDisjunctiveFacetRefinement("category", e.target.text).search();
+    
+  });
+  $('#message .header .right a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addFacetRefinement("tags", e.target.text).search();
+  });
+</script>

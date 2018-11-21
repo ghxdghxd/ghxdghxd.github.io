@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 小抄速查</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/xiao-chao-su-cha.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-10-26T15:30:00+08:00</updated><entry><title>gitlab的安装与配置</title><link href="https://ghxdghxd.github.io/gitlab.html" rel="alternate"></link><published>2018-10-20T11:20:00+08:00</published><updated>2018-10-26T15:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-10-20:/gitlab.html</id><summary type="html">&lt;p&gt;centos6 搭建私有git服务器&lt;/p&gt;</summary><content type="html">&lt;h1&gt;安装gitlab&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 小抄速查</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/xiao-chao-su-cha.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-11-05T12:23:52+08:00</updated><entry><title>libatk</title><link href="https://ghxdghxd.github.io/libatk.html" rel="alternate"></link><published>2018-11-05T12:23:52+08:00</published><updated>2018-11-05T12:23:52+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-05:/libatk.html</id><summary type="html">&lt;p&gt;/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0: undefined symbol: g_log_structured_standard&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0: undefined symbol: g_log_structured_standard&lt;/h1&gt;
+&lt;h2&gt;来源&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Rstudio visNetwork导出html动态图&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;解决&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# ubuntu&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;apt install libatk1.0-dev&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="error"></category><category term="libatk"></category></entry><entry><title>gitlab的安装与配置</title><link href="https://ghxdghxd.github.io/gitlab.html" rel="alternate"></link><published>2018-10-20T11:20:00+08:00</published><updated>2018-10-26T15:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-10-20:/gitlab.html</id><summary type="html">&lt;p&gt;centos6 搭建私有git服务器&lt;/p&gt;</summary><content type="html">&lt;h1&gt;安装gitlab&lt;/h1&gt;
 &lt;h2&gt;添加源到/etc/yum.repos.d/gitlab-ce.repo&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;[gitlab-ce]&lt;/span&gt;
 &lt;span class="code-line"&gt;name=Gitlab CE Repository&lt;/span&gt;

@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/</loc>
-<lastmod>2018-11-21T14:51:41-00:00</lastmod>
+<lastmod>2018-11-21T15:04:38-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -15,6 +15,27 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2014-12-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/ivreg.html</loc>
+<lastmod>2018-11-12T13:14:43+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/libatk.html</loc>
+<lastmod>2018-11-05T12:23:52+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/ggplot2.html</loc>
+<lastmod>2018-11-01T20:54:20+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -327,21 +348,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/category/shu-ju-ke-shi-hua.html</loc>
-<lastmod>2018-11-01T13:33:00+08:06</lastmod>
+<lastmod>2018-11-01T20:54:20+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/category/tong-ji-jian-mo.html</loc>
-<lastmod>2018-02-03T19:30:00+08:06</lastmod>
+<lastmod>2018-11-12T13:14:43+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://ghxdghxd.github.io/category/xiao-chao-su-cha.html</loc>
-<lastmod>2018-10-26T15:30:00+08:06</lastmod>
+<lastmod>2018-11-05T12:23:52+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -349,6 +370,41 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://ghxdghxd.github.io/category/za-ji.html</loc>
 <lastmod>2017-04-03T19:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/iv.html</loc>
+<lastmod>2018-11-12T13:14:43+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/error.html</loc>
+<lastmod>2018-11-05T12:23:52+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/libatk.html</loc>
+<lastmod>2018-11-05T12:23:52+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/ggplot2.html</loc>
+<lastmod>2018-11-01T20:54:20+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/r.html</loc>
+<lastmod>2018-11-01T20:54:20+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -475,13 +531,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://ghxdghxd.github.io/tag/markdown.html</loc>
 <lastmod>2016-10-20T16:30:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://ghxdghxd.github.io/tag/r.html</loc>
-<lastmod>2018-01-27T10:27:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -740,7 +789,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/author/jt-guo.html</loc>
-<lastmod>2018-11-01T13:33:00+08:06</lastmod>
+<lastmod>2018-11-12T13:14:43+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
