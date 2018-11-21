@@ -1,5 +1,279 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-07-05T19:30:00+08:00</updated><entry><title>ROC曲线</title><link href="https://ghxdghxd.github.io/ROC.html" rel="alternate"></link><published>2018-03-12T09:58:00+08:00</published><updated>2016-06-14T14:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-03-12:/ROC.html</id><summary type="html">&lt;p&gt;ROC曲线&lt;/p&gt;</summary><content type="html">&lt;h1&gt;ROC曲线&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-11-01T13:33:00+08:00</updated><entry><title>饼图</title><link href="https://ghxdghxd.github.io/pie_plot.html" rel="alternate"></link><published>2018-11-01T13:33:00+08:00</published><updated>2018-11-01T13:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-01:/pie_plot.html</id><summary type="html">&lt;p&gt;饼图的实现方法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;饼图&lt;/h1&gt;
+&lt;p&gt;图例设置
+labs(fill="fill-legend-title", )
+图例排列
+guides(fill = guide_legend(nrow = 1))&lt;/p&gt;</content><category term="pie"></category></entry><entry><title>gitlab的安装与配置</title><link href="https://ghxdghxd.github.io/gitlab.html" rel="alternate"></link><published>2018-10-20T11:20:00+08:00</published><updated>2018-10-26T15:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-10-20:/gitlab.html</id><summary type="html">&lt;p&gt;centos6 搭建私有git服务器&lt;/p&gt;</summary><content type="html">&lt;h1&gt;安装gitlab&lt;/h1&gt;
+&lt;h2&gt;添加源到/etc/yum.repos.d/gitlab-ce.repo&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;[gitlab-ce]&lt;/span&gt;
+&lt;span class="code-line"&gt;name=Gitlab CE Repository&lt;/span&gt;
+&lt;span class="code-line"&gt;baseurl=https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el6&lt;/span&gt;
+&lt;span class="code-line"&gt;gpgcheck=0&lt;/span&gt;
+&lt;span class="code-line"&gt;enabled=1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;yum安装&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;yum install gitlab-ce&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;配置gitlab&lt;/h1&gt;
+&lt;h2&gt;目录&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;/etc/gitlab/ ## 放置配置文件&lt;/span&gt;
+&lt;span class="code-line"&gt;/opt/gitlab/ ## 主目录&lt;/span&gt;
+&lt;span class="code-line"&gt;/var/opt/gitlab/ ## 各个组件&lt;/span&gt;
+&lt;span class="code-line"&gt;/var/log/gitlab/ ## 放置日志文件&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;设置IP地址&lt;/h2&gt;
+&lt;h3&gt;http配置&lt;/h3&gt;
+&lt;p&gt;修改/etc/gitlab/gitlab.rb&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#修改ip地址，**iptables 打开port**&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nv"&gt;external_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://xxx.xxx.xxx.xx:port&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;修改完成后，如果打开 "http:\/\/IP" 无法访问gitlab，可能是80端口冲突
+原因：Nginx默认使用了80端口。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决&lt;/strong&gt;：修改Apache的端口,&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;/etc/httpd/conf/httpd.conf，&lt;/span&gt;
+&lt;span class="code-line"&gt;Listen &lt;span class="m"&gt;8111&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;service httpd restart&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;https配置&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用自签名证书开启Https&lt;/p&gt;
+&lt;p&gt;证书目录/etc/gitlab/ssl, openssl创建证书&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改/etc/gitlab/gitlab.rb&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#修改ip地址，**iptables 打开port**&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nv"&gt;external_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://xxx.xxx.xxx.xx&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# gitlab 网站https：&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;nginx&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;redirect_http_to_https&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# gitlab ci 网站https：&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;ci_nginx&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;redirect_http_to_https&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;nginx&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ssl_certificate&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/etc/gitlab/ssl/xxx.xxx.xxx.xx.crt&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;nginx&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ssl_certificate_key&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/etc/gitlab/ssl/xxx.xxx.xxx.xx.key&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;sudo cp /etc/gitlab/ssl/*crt /etc/gitlab/trusted-certs&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;修改ssh端口&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;gitlab_rails[&amp;#39;gitlab_shell_ssh_port&amp;#39;] = 21386&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;修改gitlab存储目录&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;默认存储位置在/var/opt/gitlab/git-data/repositories，修改/etc/gitlab/gitlab.rb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;git_data_dirs({&lt;/span&gt;
+&lt;span class="code-line"&gt;    &amp;quot;default&amp;quot; =&amp;gt; {&lt;/span&gt;
+&lt;span class="code-line"&gt;      &amp;quot;path&amp;quot; =&amp;gt; &amp;quot;/usr/data/gitlab&amp;quot;&lt;/span&gt;
+&lt;span class="code-line"&gt;     }&lt;/span&gt;
+&lt;span class="code-line"&gt;})&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;开启gitlab-pages&lt;/h2&gt;
+&lt;p&gt;修改/etc/gitlab/gitlab.rb&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;pages_external_url &amp;quot;https://gitlab&amp;quot;&lt;/span&gt;
+&lt;span class="code-line"&gt;gitlab_pages[&amp;#39;enable&amp;#39;] = true&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;gitlab占内存过多&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#减少进程数,最小2&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;unicorn&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;worker_processes&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#减少数据库缓存,最大14GB，总内存 256M*5&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;postgresql&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;shared_buffers&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;256M&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#减少数据库并发数,默认8&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;postgresql&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;max_worker_processes&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#减少sidekiq并发数&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;sidekiq&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;concurrency&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;25&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;nginx&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;worker_processes&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;gitlab 的权限&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Guest&lt;/th&gt;
+&lt;th&gt;Reporter&lt;/th&gt;
+&lt;th&gt;Developer&lt;/th&gt;
+&lt;th&gt;Master&lt;/th&gt;
+&lt;th&gt;Owner&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Create new issues&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Leave comments&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pull the project code&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Download a project&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Create code snippets&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Create new merge requests&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Push changes to nonprotected branches&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Remove nonprotected branches&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Add tags&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Write a wiki&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Manage the issue tracker&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Add new team members&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Push changes to protected branches&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Manage the branch protection&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Manage Git tags&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Edit the project&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Add deploy keys to the project&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Configure the project hooks&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;td&gt;*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;/opt/gitlab/embedded/service/gitlab-rails/config/gitlab.yml&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo gitlab-ctl start    &lt;span class="c1"&gt;# 启动所有 gitlab 组件；&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;sudo gitlab-ctl stop        &lt;span class="c1"&gt;# 停止所有 gitlab 组件；&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;sudo gitlab-ctl restart        &lt;span class="c1"&gt;# 重启所有 gitlab 组件；&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;sudo gitlab-ctl status        &lt;span class="c1"&gt;# 查看服务状态；&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;sudo vim /etc/gitlab/gitlab.rb        &lt;span class="c1"&gt;# 修改默认的配置文件；&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;gitlab-rake gitlab:check &lt;span class="nv"&gt;SANITIZE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt; --trace    &lt;span class="c1"&gt;# 检查gitlab；&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;sudo gitlab-ctl tail        &lt;span class="c1"&gt;# 查看日志；&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="gitlab"></category></entry><entry><title>ROC曲线</title><link href="https://ghxdghxd.github.io/ROC.html" rel="alternate"></link><published>2018-03-12T09:58:00+08:00</published><updated>2016-06-14T14:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-03-12:/ROC.html</id><summary type="html">&lt;p&gt;ROC曲线&lt;/p&gt;</summary><content type="html">&lt;h1&gt;ROC曲线&lt;/h1&gt;
 &lt;p&gt;接收者操作特征曲线 （receiver operating characteristic curve），简称ROC曲线是一种坐标图式的分析工具，用于：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -10,7 +284,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;ROC分析的是二元分类模型（如阳性/阳性，有病/没病）：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="ROC1" src="./images/ROC1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ROC1" src="./images/ROC1.png" style="width:50%" /&gt;&lt;/p&gt;
 &lt;h1&gt;ROC空间&lt;/h1&gt;
 &lt;p&gt;ROC空间将伪阳性率（FPR）定义为 X 轴，真阳性率（TPR）定义为 Y 轴。&lt;/p&gt;
 &lt;p&gt;TPR：在所有实际为阳性的样本中，被正确地判断为阳性之比率。&lt;/p&gt;
@@ -1531,6 +1805,14 @@ You can open in universal-new-line mode to solve the error.&lt;/p&gt;
 &lt;span class="code-line"&gt;&lt;span class="m"&gt;6&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="m"&gt;9&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;获得shell命令的结果&lt;/span&gt;
+&lt;span class="code-line"&gt;注: 如果cmd出错,则res为上一行的结果，因此前面添加**res&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;\&amp;quot;&lt;/span&gt;**&lt;/span&gt;
+&lt;span class="code-line"&gt;    出现awk &lt;span class="o"&gt;(&lt;/span&gt;Too many open files&lt;span class="o"&gt;)&lt;/span&gt;, 需要 **close&lt;span class="o"&gt;(&lt;/span&gt;cmd&lt;span class="o"&gt;)&lt;/span&gt;**&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;awk &lt;span class="s1"&gt;&amp;#39;{cmd=&amp;quot;echo&amp;quot;$0; res=&amp;quot;&amp;quot;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s1"&gt;    cmd|getline res;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s1"&gt;    print $res;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s1"&gt;    close (cmd)}&amp;#39;&lt;/span&gt; file&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2444,6 +2726,13 @@ axes.unicode_minus，将True改为False&lt;/p&gt;
 
 
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GPU计算卡&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;lspci | grep NVIDIA&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;硬盘&lt;/h2&gt;
 &lt;ul&gt;
@@ -2525,9 +2814,15 @@ axes.unicode_minus，将True改为False&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;添加用户&lt;strong&gt;无法qusb要在/etc/group 添加用户&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;useradd -g group name&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;useradd -g group name &lt;span class="c1"&gt;#/etc/passwd name:x:xxx:xxx::/export/home/casual:/bin/bash&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;passwd name&lt;/span&gt;
-&lt;span class="code-line"&gt;rocks sync users &lt;span class="c1"&gt;#可更改/export/home/name 为 /home/name&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;rocks sync users &lt;span class="c1"&gt;#可更改/export/home/name 为 /home/name : /etc/passwd name:x:xxx:xxx::/home/casual:/bin/bash&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#如果要修改用户名（未测试过）&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;usermod -l newName oldName&lt;/span&gt;
+&lt;span class="code-line"&gt;mv /export/home/newName /export/home/oldName&lt;/span&gt;
+&lt;span class="code-line"&gt;usermod -d /export/home/newName -m newName&lt;/span&gt;
+&lt;span class="code-line"&gt;rocks sync users&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2564,6 +2859,18 @@ axes.unicode_minus，将True改为False&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;qmgr -c &lt;span class="s2"&gt;&amp;quot;print server&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# 输出server的属性&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;qmgr -c &lt;span class="s2"&gt;&amp;quot;set server query_other_jobs = true&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# qstat可以查看所有用户&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;qmgr -c &lt;span class="s2"&gt;&amp;quot;set server auto_node_np = True&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# 自动更新节点线程数&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Draining system to allow starving job to run (qstat -s)&lt;/h2&gt;
+&lt;p&gt;队列中还有排队非常久的饥饿进程，为了更公平合理使用队列，所以将新提交的作业做置为排队状态以让出资源运行排队的饥饿作业&lt;/p&gt;
+&lt;p&gt;修改/opt/torque/spool/sched_priv/sched_config&lt;/p&gt;
+&lt;p&gt;before:
+help_starving_jobs true ALL&lt;/p&gt;
+&lt;p&gt;after:
+help_starving_jobs false ALL&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;/opt/torque/init.d/pbs_sched pbs_mom pbs_server&lt;/span&gt;
+&lt;span class="code-line"&gt;service pbs_server restart&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2634,7 +2941,7 @@ axes.unicode_minus，将True改为False&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;/etc/auto.master&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;/share /etc/auto.share --timeout&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1200&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;/home  /etc/auto.home  --timeout&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1200&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;/home /etc/auto.home  --timeout&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1200&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2823,10 +3130,17 @@ $$Q_{solexa-prior to v.1.3}=-10log_{10}\frac{P}{1-P}$$&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;File failed to load: /extensions/MathZoom.js&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-I/share/apps/R_depends/include&amp;quot;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LDFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-L/share/apps/R_depends/lib&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LD_LIBRARY_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$LD_LIBRARY_PATH&lt;/span&gt;:/share/apps/R_depends/lib&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;!--more--&gt;
+
+&lt;h2&gt;before&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;apt-get build-dep r-base-core&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;h2&gt;./configure&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;./configure --prefix&lt;span class="o"&gt;=&lt;/span&gt;/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk&lt;/span&gt;
@@ -2987,6 +3301,11 @@ $$Q_{solexa-prior to v.1.3}=-10log_{10}\frac{P}{1-P}$$&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;./configure --enable-shared&lt;/span&gt;
 &lt;span class="code-line"&gt;make&lt;/span&gt;
 &lt;span class="code-line"&gt;make install&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;semi-transparency is not supported on this device&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo apt install libcairo2-dev&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category><category term="Rstudio"></category></entry><entry><title>fedora常用配置</title><link href="https://ghxdghxd.github.io/fedora-install.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2018-01-27T10:27:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/fedora-install.html</id><summary type="html">&lt;p&gt;fedora常用安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;config fedora&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo rm -rf /opt&lt;/span&gt;
 &lt;span class="code-line"&gt;sudo dnf install yum-utils&lt;/span&gt;

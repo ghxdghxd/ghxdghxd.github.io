@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 数据可视化</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/shu-ju-ke-shi-hua.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-03-12T09:58:00+08:00</updated><entry><title>ROC曲线</title><link href="https://ghxdghxd.github.io/ROC.html" rel="alternate"></link><published>2018-03-12T09:58:00+08:00</published><updated>2016-06-14T14:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-03-12:/ROC.html</id><summary type="html">&lt;p&gt;ROC曲线&lt;/p&gt;</summary><content type="html">&lt;h1&gt;ROC曲线&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 数据可视化</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/shu-ju-ke-shi-hua.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-11-01T13:33:00+08:00</updated><entry><title>饼图</title><link href="https://ghxdghxd.github.io/pie_plot.html" rel="alternate"></link><published>2018-11-01T13:33:00+08:00</published><updated>2018-11-01T13:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-01:/pie_plot.html</id><summary type="html">&lt;p&gt;饼图的实现方法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;饼图&lt;/h1&gt;
+&lt;p&gt;图例设置
+labs(fill="fill-legend-title", )
+图例排列
+guides(fill = guide_legend(nrow = 1))&lt;/p&gt;</content><category term="pie"></category></entry><entry><title>ROC曲线</title><link href="https://ghxdghxd.github.io/ROC.html" rel="alternate"></link><published>2018-03-12T09:58:00+08:00</published><updated>2016-06-14T14:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-03-12:/ROC.html</id><summary type="html">&lt;p&gt;ROC曲线&lt;/p&gt;</summary><content type="html">&lt;h1&gt;ROC曲线&lt;/h1&gt;
 &lt;p&gt;接收者操作特征曲线 （receiver operating characteristic curve），简称ROC曲线是一种坐标图式的分析工具，用于：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -10,7 +14,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;ROC分析的是二元分类模型（如阳性/阳性，有病/没病）：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="ROC1" src="./images/ROC1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ROC1" src="./images/ROC1.png" style="width:50%" /&gt;&lt;/p&gt;
 &lt;h1&gt;ROC空间&lt;/h1&gt;
 &lt;p&gt;ROC空间将伪阳性率（FPR）定义为 X 轴，真阳性率（TPR）定义为 Y 轴。&lt;/p&gt;
 &lt;p&gt;TPR：在所有实际为阳性的样本中，被正确地判断为阳性之比率。&lt;/p&gt;

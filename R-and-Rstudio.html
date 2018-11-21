@@ -25,10 +25,17 @@
 <div class="highlight"><pre><span class="code-line"><span></span>File failed to load: /extensions/MathZoom.js</span>
 <span class="code-line"><span class="nb">export</span> <span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-I/share/apps/R_depends/include&quot;</span></span>
 <span class="code-line"><span class="nb">export</span> <span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">&quot;-L/share/apps/R_depends/lib&quot;</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/share/apps/R_depends/lib</span>
 </pre></div>
 
 
 <!--more-->
+
+<h2>before</h2>
+<div class="highlight"><pre><span class="code-line"><span></span>apt-get build-dep r-base-core</span>
+</pre></div>
+
 
 <h2>./configure</h2>
 <div class="highlight"><pre><span class="code-line"><span></span>./configure --prefix<span class="o">=</span>/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk</span>
@@ -189,6 +196,11 @@
 <div class="highlight"><pre><span class="code-line"><span></span>./configure --enable-shared</span>
 <span class="code-line">make</span>
 <span class="code-line">make install</span>
+</pre></div>
+
+
+<h3>semi-transparency is not supported on this device</h3>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt install libcairo2-dev</span>
 </pre></div>
         </div>
         <!-- <div class="tool-box">

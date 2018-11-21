@@ -62,6 +62,14 @@
 <span class="code-line"><span class="m">6</span></span>
 <span class="code-line"><span class="m">9</span></span>
 <span class="code-line"><span class="m">10</span></span>
+<span class="code-line">获得shell命令的结果</span>
+<span class="code-line">注: 如果cmd出错,则res为上一行的结果，因此前面添加**res<span class="o">=</span><span class="se">\&quot;\&quot;</span>**</span>
+<span class="code-line">    出现awk <span class="o">(</span>Too many open files<span class="o">)</span>, 需要 **close<span class="o">(</span>cmd<span class="o">)</span>**</span>
+<span class="code-line"></span>
+<span class="code-line">awk <span class="s1">&#39;{cmd=&quot;echo&quot;$0; res=&quot;&quot;;</span></span>
+<span class="code-line"><span class="s1">    cmd|getline res;</span></span>
+<span class="code-line"><span class="s1">    print $res;</span></span>
+<span class="code-line"><span class="s1">    close (cmd)}&#39;</span> file</span>
 </pre></div>
 
 

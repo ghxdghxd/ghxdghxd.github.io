@@ -1,0 +1,322 @@
+<div class="header">
+  <h1 class="page-title">
+    <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>
+    gitlab的安装与配置
+  </h1>
+  <div class="details">
+    <div class="left">
+      10月 20, 2018
+      <span> | </span> <a href="/category/xiao-chao-su-cha.html">小抄速查</a>
+    </div>
+    <div class="right">
+      <a class="fa fa-tag" href="/tag/gitlab.html">gitlab</a>
+    </div>
+  </div>
+</div>
+<div id="message-nano-wrapper" class="nano">
+  <div class="nano-content">
+    <ul class="message-container">
+        <div class="message">
+          <h1>安装gitlab</h1>
+<h2>添加源到/etc/yum.repos.d/gitlab-ce.repo</h2>
+<div class="highlight"><pre><span class="code-line"><span></span>[gitlab-ce]</span>
+<span class="code-line">name=Gitlab CE Repository</span>
+<span class="code-line">baseurl=https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el6</span>
+<span class="code-line">gpgcheck=0</span>
+<span class="code-line">enabled=1</span>
+</pre></div>
+
+
+<h2>yum安装</h2>
+<div class="highlight"><pre><span class="code-line"><span></span>yum install gitlab-ce</span>
+</pre></div>
+
+
+<h1>配置gitlab</h1>
+<h2>目录</h2>
+<div class="highlight"><pre><span class="code-line"><span></span>/etc/gitlab/ ## 放置配置文件</span>
+<span class="code-line">/opt/gitlab/ ## 主目录</span>
+<span class="code-line">/var/opt/gitlab/ ## 各个组件</span>
+<span class="code-line">/var/log/gitlab/ ## 放置日志文件</span>
+</pre></div>
+
+
+<h2>设置IP地址</h2>
+<h3>http配置</h3>
+<p>修改/etc/gitlab/gitlab.rb</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1">#修改ip地址，**iptables 打开port**</span></span>
+<span class="code-line"><span class="nv">external_url</span> <span class="o">=</span> <span class="s1">&#39;http://xxx.xxx.xxx.xx:port&#39;</span></span>
+</pre></div>
+
+
+<p>修改完成后，如果打开 "http:\/\/IP" 无法访问gitlab，可能是80端口冲突
+原因：Nginx默认使用了80端口。</p>
+<p><strong>解决</strong>：修改Apache的端口,</p>
+<div class="highlight"><pre><span class="code-line"><span></span>/etc/httpd/conf/httpd.conf，</span>
+<span class="code-line">Listen <span class="m">8111</span></span>
+<span class="code-line">service httpd restart</span>
+</pre></div>
+
+
+<h3>https配置</h3>
+<ol>
+<li>
+<p>使用自签名证书开启Https</p>
+<p>证书目录/etc/gitlab/ssl, openssl创建证书</p>
+</li>
+<li>
+<p>修改/etc/gitlab/gitlab.rb</p>
+</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1">#修改ip地址，**iptables 打开port**</span></span>
+<span class="code-line"><span class="nv">external_url</span> <span class="o">=</span> <span class="s1">&#39;https://xxx.xxx.xxx.xx&#39;</span></span>
+<span class="code-line"><span class="c1"># gitlab 网站https：</span></span>
+<span class="code-line">nginx<span class="o">[</span><span class="s1">&#39;redirect_http_to_https&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nb">true</span></span>
+<span class="code-line"><span class="c1"># gitlab ci 网站https：</span></span>
+<span class="code-line">ci_nginx<span class="o">[</span><span class="s1">&#39;redirect_http_to_https&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nb">true</span></span>
+<span class="code-line"></span>
+<span class="code-line">nginx<span class="o">[</span><span class="s1">&#39;ssl_certificate&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;/etc/gitlab/ssl/xxx.xxx.xxx.xx.crt&quot;</span></span>
+<span class="code-line">nginx<span class="o">[</span><span class="s1">&#39;ssl_certificate_key&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;/etc/gitlab/ssl/xxx.xxx.xxx.xx.key&quot;</span></span>
+<span class="code-line"></span>
+<span class="code-line">sudo cp /etc/gitlab/ssl/*crt /etc/gitlab/trusted-certs</span>
+</pre></div>
+
+
+<h3>修改ssh端口</h3>
+<div class="highlight"><pre><span class="code-line"><span></span>gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 21386</span>
+</pre></div>
+
+
+<h2>修改gitlab存储目录</h2>
+<ul>
+<li>默认存储位置在/var/opt/gitlab/git-data/repositories，修改/etc/gitlab/gitlab.rb</li>
+</ul>
+<div class="highlight"><pre><span class="code-line"><span></span>git_data_dirs({</span>
+<span class="code-line">    &quot;default&quot; =&gt; {</span>
+<span class="code-line">      &quot;path&quot; =&gt; &quot;/usr/data/gitlab&quot;</span>
+<span class="code-line">     }</span>
+<span class="code-line">})</span>
+</pre></div>
+
+
+<h2>开启gitlab-pages</h2>
+<p>修改/etc/gitlab/gitlab.rb</p>
+<div class="highlight"><pre><span class="code-line"><span></span>pages_external_url &quot;https://gitlab&quot;</span>
+<span class="code-line">gitlab_pages[&#39;enable&#39;] = true</span>
+</pre></div>
+
+
+<h2>gitlab占内存过多</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1">#减少进程数,最小2</span></span>
+<span class="code-line">unicorn<span class="o">[</span><span class="s1">&#39;worker_processes&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="m">4</span></span>
+<span class="code-line"><span class="c1">#减少数据库缓存,最大14GB，总内存 256M*5</span></span>
+<span class="code-line">postgresql<span class="o">[</span><span class="s1">&#39;shared_buffers&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;256M&quot;</span></span>
+<span class="code-line"><span class="c1">#减少数据库并发数,默认8</span></span>
+<span class="code-line">postgresql<span class="o">[</span><span class="s1">&#39;max_worker_processes&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="m">5</span></span>
+<span class="code-line"><span class="c1">#减少sidekiq并发数</span></span>
+<span class="code-line">sidekiq<span class="o">[</span><span class="s1">&#39;concurrency&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="m">25</span></span>
+<span class="code-line"></span>
+<span class="code-line">nginx<span class="o">[</span><span class="s1">&#39;worker_processes&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="m">5</span></span>
+</pre></div>
+
+
+<h1>gitlab 的权限</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Guest</th>
+<th>Reporter</th>
+<th>Developer</th>
+<th>Master</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create new issues</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Leave comments</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Pull the project code</td>
+<td></td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Download a project</td>
+<td></td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Create code snippets</td>
+<td></td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Create new merge requests</td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Push changes to nonprotected branches</td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Remove nonprotected branches</td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Add tags</td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Write a wiki</td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Manage the issue tracker</td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Add new team members</td>
+<td></td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Push changes to protected branches</td>
+<td></td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Manage the branch protection</td>
+<td></td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Manage Git tags</td>
+<td></td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Edit the project</td>
+<td></td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Add deploy keys to the project</td>
+<td></td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+</tr>
+<tr>
+<td>Configure the project hooks</td>
+<td></td>
+<td></td>
+<td></td>
+<td>*</td>
+<td>*</td>
+</tr>
+</tbody>
+</table>
+<p>/opt/gitlab/embedded/service/gitlab-rails/config/gitlab.yml</p>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo gitlab-ctl start    <span class="c1"># 启动所有 gitlab 组件；</span></span>
+<span class="code-line">sudo gitlab-ctl stop        <span class="c1"># 停止所有 gitlab 组件；</span></span>
+<span class="code-line">sudo gitlab-ctl restart        <span class="c1"># 重启所有 gitlab 组件；</span></span>
+<span class="code-line">sudo gitlab-ctl status        <span class="c1"># 查看服务状态；</span></span>
+<span class="code-line">sudo vim /etc/gitlab/gitlab.rb        <span class="c1"># 修改默认的配置文件；</span></span>
+<span class="code-line">gitlab-rake gitlab:check <span class="nv">SANITIZE</span><span class="o">=</span><span class="nb">true</span> --trace    <span class="c1"># 检查gitlab；</span></span>
+<span class="code-line">sudo gitlab-ctl tail        <span class="c1"># 查看日志；</span></span>
+</pre></div>
+        </div>
+        <!-- <div class="tool-box">
+          <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a>
+        </div> -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nano').overlayScrollbars({
+    scrollbars: {
+      autoHide: "leave",
+    }
+  });
+  $('.trigger-message-close').on('click', function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+    $('body').removeClass('show-main-overlay');
+  });
+  $('#message .header .left a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addDisjunctiveFacetRefinement("category", e.target.text).search();
+    
+  });
+  $('#message .header .right a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addFacetRefinement("tags", e.target.text).search();
+  });
+</script>

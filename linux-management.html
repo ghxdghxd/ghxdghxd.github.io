@@ -138,6 +138,13 @@
 
 
 </li>
+<li>
+<p>GPU计算卡</p>
+<div class="highlight"><pre><span class="code-line"><span></span>lspci | grep NVIDIA</span>
+</pre></div>
+
+
+</li>
 </ul>
 <h2>硬盘</h2>
 <ul>
@@ -219,9 +226,15 @@
 </li>
 <li>
 <p>添加用户<strong>无法qusb要在/etc/group 添加用户</strong></p>
-<div class="highlight"><pre><span class="code-line"><span></span>useradd -g group name</span>
+<div class="highlight"><pre><span class="code-line"><span></span>useradd -g group name <span class="c1">#/etc/passwd name:x:xxx:xxx::/export/home/casual:/bin/bash</span></span>
 <span class="code-line">passwd name</span>
-<span class="code-line">rocks sync users <span class="c1">#可更改/export/home/name 为 /home/name</span></span>
+<span class="code-line">rocks sync users <span class="c1">#可更改/export/home/name 为 /home/name : /etc/passwd name:x:xxx:xxx::/home/casual:/bin/bash</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#如果要修改用户名（未测试过）</span></span>
+<span class="code-line">usermod -l newName oldName</span>
+<span class="code-line">mv /export/home/newName /export/home/oldName</span>
+<span class="code-line">usermod -d /export/home/newName -m newName</span>
+<span class="code-line">rocks sync users</span>
 </pre></div>
 
 
@@ -258,6 +271,18 @@
 <div class="highlight"><pre><span class="code-line"><span></span>qmgr -c <span class="s2">&quot;print server&quot;</span> <span class="c1"># 输出server的属性</span></span>
 <span class="code-line">qmgr -c <span class="s2">&quot;set server query_other_jobs = true&quot;</span> <span class="c1"># qstat可以查看所有用户</span></span>
 <span class="code-line">qmgr -c <span class="s2">&quot;set server auto_node_np = True&quot;</span> <span class="c1"># 自动更新节点线程数</span></span>
+</pre></div>
+
+
+<h2>Draining system to allow starving job to run (qstat -s)</h2>
+<p>队列中还有排队非常久的饥饿进程，为了更公平合理使用队列，所以将新提交的作业做置为排队状态以让出资源运行排队的饥饿作业</p>
+<p>修改/opt/torque/spool/sched_priv/sched_config</p>
+<p>before:
+help_starving_jobs true ALL</p>
+<p>after:
+help_starving_jobs false ALL</p>
+<div class="highlight"><pre><span class="code-line"><span></span>/opt/torque/init.d/pbs_sched pbs_mom pbs_server</span>
+<span class="code-line">service pbs_server restart</span>
 </pre></div>
 
 
@@ -328,7 +353,7 @@
 <li>
 <p>/etc/auto.master</p>
 <div class="highlight"><pre><span class="code-line"><span></span>/share /etc/auto.share --timeout<span class="o">=</span><span class="m">1200</span></span>
-<span class="code-line">/home  /etc/auto.home  --timeout<span class="o">=</span><span class="m">1200</span></span>
+<span class="code-line">/home /etc/auto.home  --timeout<span class="o">=</span><span class="m">1200</span></span>
 </pre></div>
 
 
