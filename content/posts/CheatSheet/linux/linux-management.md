@@ -282,3 +282,8 @@ vim /etc/grub.conf
 
 # 使用 fail2ban 防御 SSH 服务器的暴力破解攻击
 
+# install glibc
+
+```sh
+conda install -c asmeurer glibc
+```
