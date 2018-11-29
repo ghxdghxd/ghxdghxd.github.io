@@ -1446,6 +1446,7 @@ You can open in universal-new-line mode to solve the error.&lt;/p&gt;
 &lt;h2&gt;sed&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sed -n &lt;span class="s1"&gt;&amp;#39;/A/,/B/p&amp;#39;&lt;/span&gt;  匹配A的行与匹配B的行之间的内容&lt;/span&gt;
 &lt;span class="code-line"&gt;sed -n &lt;span class="s1"&gt;&amp;#39;2p,4,5p&amp;#39;&lt;/span&gt; 输出2 &lt;span class="m"&gt;4&lt;/span&gt;,5 行&lt;/span&gt;
+&lt;span class="code-line"&gt;sed &lt;span class="s2"&gt;&amp;quot;s/&lt;/span&gt;&lt;span class="nv"&gt;$a&lt;/span&gt;&lt;span class="s2"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;$b&lt;/span&gt;&lt;span class="s2"&gt;/g&amp;quot;&lt;/span&gt; 变量替换&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1488,6 +1489,27 @@ You can open in universal-new-line mode to solve the error.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;h2&gt;find&lt;/h2&gt;
+&lt;p&gt;find 按文件修改时间查找文件&lt;/p&gt;
+&lt;p&gt;----(+n)---------|------------(n)--------------|---------(-n)----
+   (n+1)&lt;em&gt;24H前   |    (n+1)&lt;/em&gt;24H ~ n&lt;em&gt;24H之间  |  n&lt;/em&gt;24H以内&lt;/p&gt;
+&lt;p&gt;-ctime -n    查找距现在 n&lt;em&gt;24H 内修改过的文件
+-ctime n    查找距现在 n&lt;/em&gt;24H 前, (n+1)&lt;em&gt;24H 内修改过的文件
+-ctime +n    查找距现在 (n+1)&lt;/em&gt;24H 前修改过的文件&lt;/p&gt;
+&lt;p&gt;[a|c|m]min    [最后访问|最后状态修改|最后内容修改]min 
+[a|c|m]time    [最后访问|最后状态修改|最后内容修改]time&lt;/p&gt;
+&lt;p&gt;linux 文件的几种时间 (以 find 为例):
+atime 最后一次访问时间, 如 ls, more 等, 但 chmod, chown, ls, stat 等不会修改些时间, 使用 ls -utl 可以按此时间顺序查看;
+ctime 最后一次状态修改时间, 如 chmod, chown 等状态时间改变但修改时间不会改变, 使用 stat file 可以查看;
+mtime 最后一次内容修改时间, 如 vi 保存后等, 修改时间发生改变的话, atime 和 ctime 也相应跟着发生改变.&lt;/p&gt;
+&lt;p&gt;注意: linux 里是不会记录文件的创建时间的, 除非这个文件自创建以来没有发生改变, 那么它的创建时间就是它的最后一次修改时间.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;ls -lt    ./  按修改时间顺序查看
+&lt;/em&gt;ls -lut ./ 按访问时间顺序查看 &lt;/p&gt;
+&lt;p&gt;[acm]time  计量单位是天，即24H
+[acm]min    计量单位是分钟
+find ./ -mtime 0  #查找一天内修改的文件
+find ./ -mtime -2 #查找2天内修改的文件，多了一个减号
+find ./ -mmin  -10  #查找距离现在10分钟内修改的文件&lt;/p&gt;
 &lt;h2&gt;计算 expr&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;expr &lt;span class="m"&gt;1&lt;/span&gt; + &lt;span class="m"&gt;1&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;expr&lt;/span&gt;
@@ -2296,7 +2318,10 @@ help_starving_jobs false ALL&lt;/p&gt;
 
 
 &lt;p&gt;&lt;img alt="图4" height="50%" src="images/manager4.png" width="50%" /&gt;&lt;/p&gt;
-&lt;h1&gt;使用 fail2ban 防御 SSH 服务器的暴力破解攻击&lt;/h1&gt;</content><category term="linux"></category><category term="centos"></category><category term="shell"></category><category term="hpc"></category><category term="rocks cluster"></category><category term="manage"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="https://ghxdghxd.github.io/R-and-Rstudio.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;ubuntu安装R与Rstudio的过程&lt;/p&gt;</summary><content type="html">&lt;h1&gt;install R&lt;/h1&gt;
+&lt;h1&gt;使用 fail2ban 防御 SSH 服务器的暴力破解攻击&lt;/h1&gt;
+&lt;h1&gt;install glibc&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;conda install -c asmeurer glibc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="centos"></category><category term="shell"></category><category term="hpc"></category><category term="rocks cluster"></category><category term="manage"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="https://ghxdghxd.github.io/R-and-Rstudio.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;ubuntu安装R与Rstudio的过程&lt;/p&gt;</summary><content type="html">&lt;h1&gt;install R&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;error&lt;/li&gt;
 &lt;/ul&gt;

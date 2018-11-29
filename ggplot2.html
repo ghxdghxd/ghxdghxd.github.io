@@ -18,7 +18,12 @@
   <div class="nano-content">
     <ul class="message-container">
         <div class="message">
-          <h1>tips</h1>
+          <ul>
+<li>ggplot2的一般代码</li>
+<li>ggtable的结构解析</li>
+<li>ggplot2的扩展</li>
+</ul>
+<h1>ggplot2一般应用</h1>
 <h2>多层的图例</h2>
 <div class="highlight"><pre><span class="code-line"><span></span>scale_colour_manual<span class="p">(</span>values <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;CHB&quot;</span> <span class="o">=</span> <span class="s">&#39;#E41A1C&#39;</span><span class="p">,</span> <span class="s">&quot;MXL&quot;</span> <span class="o">=</span> <span class="s">&quot;#377EB8&quot;</span><span class="p">,</span> <span class="s">&quot;CEU&quot;</span> <span class="o">=</span> <span class="s">&quot;#377EB8&quot;</span><span class="p">,</span></span>
 <span class="code-line">                    <span class="s">&quot;ASW&quot;</span> <span class="o">=</span> <span class="s">&quot;#984EA3&quot;</span><span class="p">,</span><span class="s">&quot;YRI&quot;</span><span class="o">=</span><span class="s">&quot;#FF7F00&quot;</span><span class="p">,</span> <span class="s">&quot;TCGA&quot;</span> <span class="o">=</span> <span class="s">&quot;gray&quot;</span><span class="p">),</span></span>
@@ -31,6 +36,72 @@
 <h2>count</h2>
 <div class="highlight"><pre><span class="code-line"><span></span>y<span class="o">=</span><span class="m">..</span>count..</span>
 </pre></div>
+
+
+<h2>ylim(-100, 120) 可以产生中空圆图</h2>
+<h2>geom_bar</h2>
+<ul>
+<li>position = "stack"</li>
+<li>position = "dodge"</li>
+<li>position = "identity"</li>
+</ul>
+<h1>ggtable结构解析</h1>
+<h2>ggplot2 格式转换 ggtable</h2>
+<div class="highlight"><pre><span class="code-line"><span></span>g <span class="o">&lt;-</span> ggplot_gtable<span class="p">(</span>ggplot_build<span class="p">(</span>p<span class="p">))</span></span>
+<span class="code-line"><span class="kp">head</span><span class="p">(</span>g<span class="p">)</span></span>
+<span class="code-line"><span class="c1">## TableGrob (6 x 13) &quot;layout&quot;: 6 grobs</span></span>
+<span class="code-line"><span class="c1">##   z     cells       name                                   grob</span></span>
+<span class="code-line"><span class="c1">## 1  3 (6-6,5-5) axis-t-1-1                         zeroGrob[NULL]</span></span>
+<span class="code-line"><span class="c1">## 2  3 (6-6,9-9) axis-t-2-1                         zeroGrob[NULL]</span></span>
+<span class="code-line"><span class="c1">## 3  4 (5-5,5-9)     xlab-t                         zeroGrob[NULL]</span></span>
+<span class="code-line"><span class="c1">## 4  9 (4-4,5-9)   subtitle zeroGrob[plot.subtitle..zeroGrob.3885]</span></span>
+<span class="code-line"><span class="c1">## 5 10 (3-3,5-9)      title    zeroGrob[plot.title..zeroGrob.3884]</span></span>
+<span class="code-line"><span class="c1">## 6 12 (2-2,2-2)        tag      zeroGrob[plot.tag..zeroGrob.3886]</span></span>
+</pre></div>
+
+
+<h2>grobs图形元素(graphical elements)</h2>
+<p><code>g$grobs</code>是包括<code>length(g)</code>个图形元素，每个grob是gtable定义的表格布局，它们能够相互重叠/堆叠成</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="kp">head</span><span class="p">(</span>g<span class="o">$</span>grobs<span class="p">)</span></span>
+<span class="code-line"><span class="c1">## [[1]]</span></span>
+<span class="code-line"><span class="c1">## rect[plot.background..rect.3889]</span></span>
+<span class="code-line"><span class="c1">## [[2]]</span></span>
+<span class="code-line"><span class="c1">## gTree[panel-1.gTree.3594]</span></span>
+<span class="code-line"><span class="c1">## [[3]]</span></span>
+<span class="code-line"><span class="c1">## gTree[panel-3.gTree.3620]</span></span>
+<span class="code-line"><span class="c1">## [[4]]</span></span>
+<span class="code-line"><span class="c1">## gTree[panel-5.gTree.3646]</span></span>
+<span class="code-line"><span class="c1">## [[5]]</span></span>
+<span class="code-line"><span class="c1">## gTree[panel-7.gTree.3672]</span></span>
+<span class="code-line"><span class="c1">## [[6]]</span></span>
+<span class="code-line"><span class="c1">## gTree[panel-2.gTree.3607]</span></span>
+</pre></div>
+
+
+<h2>layout图形元素位置的数据框, 保存每一个grob在图中的位置</h2>
+<ul>
+<li>t, l, b, r 分别是上左下右, z是绘制顺序</li>
+<li>name格式(2-4不一定有)</li>
+<li>图形的定义名称(panel, strip)</li>
+<li>上下左右位置</li>
+<li>从左到右顺序</li>
+<li>从上向下顺序</li>
+</ul>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="kp">head</span><span class="p">(</span>g<span class="o">$</span>layout<span class="p">)</span></span>
+<span class="code-line"><span class="c1">##     t l  b  r z clip       name</span></span>
+<span class="code-line"><span class="c1">## 58  1 1 30 13 0   on background</span></span>
+<span class="code-line"><span class="c1">## 1   8 5  8  5 1   on  panel-1-1</span></span>
+<span class="code-line"><span class="c1">## 2  13 5 13  5 1   on  panel-2-1</span></span>
+<span class="code-line"><span class="c1">## 3  18 5 18  5 1   on  panel-1-2</span></span>
+<span class="code-line"><span class="c1">## 4  23 5 23  5 1   on  panel-2-2</span></span>
+<span class="code-line"><span class="c1">## 5   8 9  8  9 1   on  panel-1-3</span></span>
+</pre></div>
+
+
+<ul>
+<li>widths, heights图形元素大小</li>
+</ul>
+<h1>ggplot2的扩展</h1>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

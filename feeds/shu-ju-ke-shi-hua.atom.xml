@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 数据可视化</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/shu-ju-ke-shi-hua.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-11-01T20:54:20+08:00</updated><entry><title>ggplot2应用与结构解析</title><link href="https://ghxdghxd.github.io/ggplot2.html" rel="alternate"></link><published>2018-11-01T20:54:20+08:00</published><updated>2018-11-01T20:54:20+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-01:/ggplot2.html</id><summary type="html">&lt;p&gt;ggplot2的一般应用，文件结构解析，添加扩展功能&lt;/p&gt;</summary><content type="html">&lt;h1&gt;tips&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 数据可视化</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/shu-ju-ke-shi-hua.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-11-01T20:54:20+08:00</updated><entry><title>ggplot2应用与结构解析</title><link href="https://ghxdghxd.github.io/ggplot2.html" rel="alternate"></link><published>2018-11-01T20:54:20+08:00</published><updated>2018-11-01T20:54:20+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-01:/ggplot2.html</id><summary type="html">&lt;p&gt;ggplot2的一般应用，文件结构解析，添加扩展功能&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;ggplot2的一般代码&lt;/li&gt;
+&lt;li&gt;ggtable的结构解析&lt;/li&gt;
+&lt;li&gt;ggplot2的扩展&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;ggplot2一般应用&lt;/h1&gt;
 &lt;h2&gt;多层的图例&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;scale_colour_manual&lt;span class="p"&gt;(&lt;/span&gt;values &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;CHB&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;#E41A1C&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;MXL&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#377EB8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;CEU&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#377EB8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;                    &lt;span class="s"&gt;&amp;quot;ASW&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#984EA3&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;YRI&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#FF7F00&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;TCGA&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;gray&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;/span&gt;
@@ -11,7 +16,73 @@
 
 &lt;h2&gt;count&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;y&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;..&lt;/span&gt;count..&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="ggplot2"></category><category term="R"></category></entry><entry><title>饼图</title><link href="https://ghxdghxd.github.io/pie_plot.html" rel="alternate"></link><published>2018-11-01T13:33:00+08:00</published><updated>2018-11-01T13:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-01:/pie_plot.html</id><summary type="html">&lt;p&gt;饼图的实现方法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;饼图&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;ylim(-100, 120) 可以产生中空圆图&lt;/h2&gt;
+&lt;h2&gt;geom_bar&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;position = "stack"&lt;/li&gt;
+&lt;li&gt;position = "dodge"&lt;/li&gt;
+&lt;li&gt;position = "identity"&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;ggtable结构解析&lt;/h1&gt;
+&lt;h2&gt;ggplot2 格式转换 ggtable&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;g &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot_gtable&lt;span class="p"&gt;(&lt;/span&gt;ggplot_build&lt;span class="p"&gt;(&lt;/span&gt;p&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;g&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## TableGrob (6 x 13) &amp;quot;layout&amp;quot;: 6 grobs&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;##   z     cells       name                                   grob&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 1  3 (6-6,5-5) axis-t-1-1                         zeroGrob[NULL]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 2  3 (6-6,9-9) axis-t-2-1                         zeroGrob[NULL]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 3  4 (5-5,5-9)     xlab-t                         zeroGrob[NULL]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 4  9 (4-4,5-9)   subtitle zeroGrob[plot.subtitle..zeroGrob.3885]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 5 10 (3-3,5-9)      title    zeroGrob[plot.title..zeroGrob.3884]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 6 12 (2-2,2-2)        tag      zeroGrob[plot.tag..zeroGrob.3886]&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;grobs图形元素(graphical elements)&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;g$grobs&lt;/code&gt;是包括&lt;code&gt;length(g)&lt;/code&gt;个图形元素，每个grob是gtable定义的表格布局，它们能够相互重叠/堆叠成&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;g&lt;span class="o"&gt;$&lt;/span&gt;grobs&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## [[1]]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## rect[plot.background..rect.3889]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## [[2]]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## gTree[panel-1.gTree.3594]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## [[3]]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## gTree[panel-3.gTree.3620]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## [[4]]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## gTree[panel-5.gTree.3646]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## [[5]]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## gTree[panel-7.gTree.3672]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## [[6]]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## gTree[panel-2.gTree.3607]&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;layout图形元素位置的数据框, 保存每一个grob在图中的位置&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;t, l, b, r 分别是上左下右, z是绘制顺序&lt;/li&gt;
+&lt;li&gt;name格式(2-4不一定有)&lt;/li&gt;
+&lt;li&gt;图形的定义名称(panel, strip)&lt;/li&gt;
+&lt;li&gt;上下左右位置&lt;/li&gt;
+&lt;li&gt;从左到右顺序&lt;/li&gt;
+&lt;li&gt;从上向下顺序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;g&lt;span class="o"&gt;$&lt;/span&gt;layout&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;##     t l  b  r z clip       name&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 58  1 1 30 13 0   on background&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 1   8 5  8  5 1   on  panel-1-1&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 2  13 5 13  5 1   on  panel-2-1&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 3  18 5 18  5 1   on  panel-1-2&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 4  23 5 23  5 1   on  panel-2-2&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 5   8 9  8  9 1   on  panel-1-3&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;widths, heights图形元素大小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;ggplot2的扩展&lt;/h1&gt;</content><category term="ggplot2"></category><category term="R"></category></entry><entry><title>饼图</title><link href="https://ghxdghxd.github.io/pie_plot.html" rel="alternate"></link><published>2018-11-01T13:33:00+08:00</published><updated>2018-11-01T13:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-01:/pie_plot.html</id><summary type="html">&lt;p&gt;饼图的实现方法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;饼图&lt;/h1&gt;
 &lt;p&gt;图例设置
 labs(fill="fill-legend-title", )
 图例排列

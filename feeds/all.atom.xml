@@ -11,7 +11,12 @@
 &lt;h2&gt;解决&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# ubuntu&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;apt install libatk1.0-dev&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="error"></category><category term="libatk"></category></entry><entry><title>ggplot2应用与结构解析</title><link href="https://ghxdghxd.github.io/ggplot2.html" rel="alternate"></link><published>2018-11-01T20:54:20+08:00</published><updated>2018-11-01T20:54:20+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-01:/ggplot2.html</id><summary type="html">&lt;p&gt;ggplot2的一般应用，文件结构解析，添加扩展功能&lt;/p&gt;</summary><content type="html">&lt;h1&gt;tips&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="error"></category><category term="libatk"></category></entry><entry><title>ggplot2应用与结构解析</title><link href="https://ghxdghxd.github.io/ggplot2.html" rel="alternate"></link><published>2018-11-01T20:54:20+08:00</published><updated>2018-11-01T20:54:20+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-01:/ggplot2.html</id><summary type="html">&lt;p&gt;ggplot2的一般应用，文件结构解析，添加扩展功能&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;ggplot2的一般代码&lt;/li&gt;
+&lt;li&gt;ggtable的结构解析&lt;/li&gt;
+&lt;li&gt;ggplot2的扩展&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;ggplot2一般应用&lt;/h1&gt;
 &lt;h2&gt;多层的图例&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;scale_colour_manual&lt;span class="p"&gt;(&lt;/span&gt;values &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;CHB&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;#E41A1C&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;MXL&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#377EB8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;CEU&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#377EB8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;                    &lt;span class="s"&gt;&amp;quot;ASW&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#984EA3&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;YRI&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#FF7F00&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;TCGA&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;gray&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;/span&gt;
@@ -23,7 +28,73 @@
 
 &lt;h2&gt;count&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;y&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;..&lt;/span&gt;count..&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="ggplot2"></category><category term="R"></category></entry><entry><title>饼图</title><link href="https://ghxdghxd.github.io/pie_plot.html" rel="alternate"></link><published>2018-11-01T13:33:00+08:00</published><updated>2018-11-01T13:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-01:/pie_plot.html</id><summary type="html">&lt;p&gt;饼图的实现方法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;饼图&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;ylim(-100, 120) 可以产生中空圆图&lt;/h2&gt;
+&lt;h2&gt;geom_bar&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;position = "stack"&lt;/li&gt;
+&lt;li&gt;position = "dodge"&lt;/li&gt;
+&lt;li&gt;position = "identity"&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;ggtable结构解析&lt;/h1&gt;
+&lt;h2&gt;ggplot2 格式转换 ggtable&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;g &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ggplot_gtable&lt;span class="p"&gt;(&lt;/span&gt;ggplot_build&lt;span class="p"&gt;(&lt;/span&gt;p&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;g&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## TableGrob (6 x 13) &amp;quot;layout&amp;quot;: 6 grobs&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;##   z     cells       name                                   grob&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 1  3 (6-6,5-5) axis-t-1-1                         zeroGrob[NULL]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 2  3 (6-6,9-9) axis-t-2-1                         zeroGrob[NULL]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 3  4 (5-5,5-9)     xlab-t                         zeroGrob[NULL]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 4  9 (4-4,5-9)   subtitle zeroGrob[plot.subtitle..zeroGrob.3885]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 5 10 (3-3,5-9)      title    zeroGrob[plot.title..zeroGrob.3884]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 6 12 (2-2,2-2)        tag      zeroGrob[plot.tag..zeroGrob.3886]&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;grobs图形元素(graphical elements)&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;g$grobs&lt;/code&gt;是包括&lt;code&gt;length(g)&lt;/code&gt;个图形元素，每个grob是gtable定义的表格布局，它们能够相互重叠/堆叠成&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;g&lt;span class="o"&gt;$&lt;/span&gt;grobs&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## [[1]]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## rect[plot.background..rect.3889]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## [[2]]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## gTree[panel-1.gTree.3594]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## [[3]]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## gTree[panel-3.gTree.3620]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## [[4]]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## gTree[panel-5.gTree.3646]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## [[5]]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## gTree[panel-7.gTree.3672]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## [[6]]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## gTree[panel-2.gTree.3607]&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;layout图形元素位置的数据框, 保存每一个grob在图中的位置&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;t, l, b, r 分别是上左下右, z是绘制顺序&lt;/li&gt;
+&lt;li&gt;name格式(2-4不一定有)&lt;/li&gt;
+&lt;li&gt;图形的定义名称(panel, strip)&lt;/li&gt;
+&lt;li&gt;上下左右位置&lt;/li&gt;
+&lt;li&gt;从左到右顺序&lt;/li&gt;
+&lt;li&gt;从上向下顺序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;g&lt;span class="o"&gt;$&lt;/span&gt;layout&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;##     t l  b  r z clip       name&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 58  1 1 30 13 0   on background&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 1   8 5  8  5 1   on  panel-1-1&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 2  13 5 13  5 1   on  panel-2-1&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 3  18 5 18  5 1   on  panel-1-2&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 4  23 5 23  5 1   on  panel-2-2&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;## 5   8 9  8  9 1   on  panel-1-3&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;widths, heights图形元素大小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;ggplot2的扩展&lt;/h1&gt;</content><category term="ggplot2"></category><category term="R"></category></entry><entry><title>饼图</title><link href="https://ghxdghxd.github.io/pie_plot.html" rel="alternate"></link><published>2018-11-01T13:33:00+08:00</published><updated>2018-11-01T13:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-01:/pie_plot.html</id><summary type="html">&lt;p&gt;饼图的实现方法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;饼图&lt;/h1&gt;
 &lt;p&gt;图例设置
 labs(fill="fill-legend-title", )
 图例排列
@@ -1843,6 +1914,7 @@ You can open in universal-new-line mode to solve the error.&lt;/p&gt;
 &lt;h2&gt;sed&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sed -n &lt;span class="s1"&gt;&amp;#39;/A/,/B/p&amp;#39;&lt;/span&gt;  匹配A的行与匹配B的行之间的内容&lt;/span&gt;
 &lt;span class="code-line"&gt;sed -n &lt;span class="s1"&gt;&amp;#39;2p,4,5p&amp;#39;&lt;/span&gt; 输出2 &lt;span class="m"&gt;4&lt;/span&gt;,5 行&lt;/span&gt;
+&lt;span class="code-line"&gt;sed &lt;span class="s2"&gt;&amp;quot;s/&lt;/span&gt;&lt;span class="nv"&gt;$a&lt;/span&gt;&lt;span class="s2"&gt;/&lt;/span&gt;&lt;span class="nv"&gt;$b&lt;/span&gt;&lt;span class="s2"&gt;/g&amp;quot;&lt;/span&gt; 变量替换&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1885,6 +1957,27 @@ You can open in universal-new-line mode to solve the error.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;h2&gt;find&lt;/h2&gt;
+&lt;p&gt;find 按文件修改时间查找文件&lt;/p&gt;
+&lt;p&gt;----(+n)---------|------------(n)--------------|---------(-n)----
+   (n+1)&lt;em&gt;24H前   |    (n+1)&lt;/em&gt;24H ~ n&lt;em&gt;24H之间  |  n&lt;/em&gt;24H以内&lt;/p&gt;
+&lt;p&gt;-ctime -n    查找距现在 n&lt;em&gt;24H 内修改过的文件
+-ctime n    查找距现在 n&lt;/em&gt;24H 前, (n+1)&lt;em&gt;24H 内修改过的文件
+-ctime +n    查找距现在 (n+1)&lt;/em&gt;24H 前修改过的文件&lt;/p&gt;
+&lt;p&gt;[a|c|m]min    [最后访问|最后状态修改|最后内容修改]min 
+[a|c|m]time    [最后访问|最后状态修改|最后内容修改]time&lt;/p&gt;
+&lt;p&gt;linux 文件的几种时间 (以 find 为例):
+atime 最后一次访问时间, 如 ls, more 等, 但 chmod, chown, ls, stat 等不会修改些时间, 使用 ls -utl 可以按此时间顺序查看;
+ctime 最后一次状态修改时间, 如 chmod, chown 等状态时间改变但修改时间不会改变, 使用 stat file 可以查看;
+mtime 最后一次内容修改时间, 如 vi 保存后等, 修改时间发生改变的话, atime 和 ctime 也相应跟着发生改变.&lt;/p&gt;
+&lt;p&gt;注意: linux 里是不会记录文件的创建时间的, 除非这个文件自创建以来没有发生改变, 那么它的创建时间就是它的最后一次修改时间.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;ls -lt    ./  按修改时间顺序查看
+&lt;/em&gt;ls -lut ./ 按访问时间顺序查看 &lt;/p&gt;
+&lt;p&gt;[acm]time  计量单位是天，即24H
+[acm]min    计量单位是分钟
+find ./ -mtime 0  #查找一天内修改的文件
+find ./ -mtime -2 #查找2天内修改的文件，多了一个减号
+find ./ -mmin  -10  #查找距离现在10分钟内修改的文件&lt;/p&gt;
 &lt;h2&gt;计算 expr&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;expr &lt;span class="m"&gt;1&lt;/span&gt; + &lt;span class="m"&gt;1&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;expr&lt;/span&gt;
@@ -3030,7 +3123,10 @@ help_starving_jobs false ALL&lt;/p&gt;
 
 
 &lt;p&gt;&lt;img alt="图4" height="50%" src="images/manager4.png" width="50%" /&gt;&lt;/p&gt;
-&lt;h1&gt;使用 fail2ban 防御 SSH 服务器的暴力破解攻击&lt;/h1&gt;</content><category term="linux"></category><category term="centos"></category><category term="shell"></category><category term="hpc"></category><category term="rocks cluster"></category><category term="manage"></category></entry><entry><title>FASTQ格式详解</title><link href="https://ghxdghxd.github.io/fastq-format.html" rel="alternate"></link><published>2014-12-04T10:20:00+08:00</published><updated>2015-03-06T16:12:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/fastq-format.html</id><summary type="html">&lt;p&gt;Fastq的格式&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;FASTQ&lt;/strong&gt;是基于文本的，保存生物序列（通常是核酸序列）和其测序质量信息的标准格式。
+&lt;h1&gt;使用 fail2ban 防御 SSH 服务器的暴力破解攻击&lt;/h1&gt;
+&lt;h1&gt;install glibc&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;conda install -c asmeurer glibc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="centos"></category><category term="shell"></category><category term="hpc"></category><category term="rocks cluster"></category><category term="manage"></category></entry><entry><title>FASTQ格式详解</title><link href="https://ghxdghxd.github.io/fastq-format.html" rel="alternate"></link><published>2014-12-04T10:20:00+08:00</published><updated>2015-03-06T16:12:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/fastq-format.html</id><summary type="html">&lt;p&gt;Fastq的格式&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;FASTQ&lt;/strong&gt;是基于文本的，保存生物序列（通常是核酸序列）和其测序质量信息的标准格式。
 其序列以及质量信息都是使用一个ASCII字符标示，最初由Sanger开发，目的是将FASTA序列与质量数据放到一起，目前已经成为高通量测序结果的事实标准。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1&gt;FASTQ基本格式(reads)&lt;/h1&gt;
