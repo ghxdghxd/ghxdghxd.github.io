@@ -8,9 +8,9 @@ Slug: linux-management
 Authors: JT Guo
 Summary: 常用的linux服务器管理
 ---
-# 常用操作
+# 电源配置
 
-## 电源
+>由于安装之初，未使用线标签标记，后续管理十分不便...
 
 |插座|1孔|2孔|3孔|4孔|5孔|6孔|7孔|8孔|
 |---|---|---|---|---|---|---|---|---|
@@ -18,6 +18,8 @@ Summary: 常用的linux服务器管理
 |3号|||8下|8上|7下|7上|大右|大左|
 |2号|4下|显|交下|5下|交上|5上|
 |1号|插座2号|小右|6左|外下|管上|6右|管下|小左|
+
+# 常用操作
 
 ## 清理内存
 
@@ -27,49 +29,21 @@ echo 1 > /proc/sys/vm/drop_caches
 
 ## [登录显示信息](terminal-announcement)
 
-## 158挂载swap
+## 添加外挂硬盘
 
 ```shell
 mount /dev/sdc1 /extra
 ```
 
-## 核心数
+## [CPU信息](cpuinfo)
 
-/proc/cpuinfo 用来存储cpu硬件信息
-一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core出来
-**逻辑CPU数量 = 物理cpu数量 × cpu 核数 x 2(如果支持并开启ht)**
-
-逻辑CPU|物理CPU|CPU核数
-:-----:|:-----:|:----:
-最大线程数|实际服务器插槽上的CPU数目|CPU核心数
-
-+ 逻辑CPU数
-
-        cat /proc/cpuinfo|grep "processor"|wc
-
-+ 物理CPU数
-
-        cat /proc/cpuinfo|grep "physical\ id"|sort -u|wc
-
-+ CPU核数
-
-        cat /proc/cpuinfo|grep "cores"|sort -u
-
-+ GPU计算卡
+## GPU计算卡
 
         lspci | grep NVIDIA
 
 ## 硬盘
 
-+ Raid0: 最少需要**2块**盘，没用冗余数据,不做备份，任何一块磁盘损坏都无法运行。n块磁盘（同类型）的阵列理论上读写速度是单块磁盘的n倍(实际达不到)，风险性也是单一n倍（实际更高），是磁盘阵列中存储性能最好的。适用于安全性不高，要求比较高性能的图形工作站或者个人站。
-
-+ Raid1：至少需要*2块**盘，磁盘数量是2的n倍，每一块磁盘要有对应的备份盘，利用率是50%，只要有一对磁盘没有损坏就可以正常使用。n组磁盘（2n块同类型磁盘）的阵列理论上读取速度是单块磁盘的n倍（实际达不到），风险性是单一磁盘的n分之一（实际更低）。换盘后需要长时间的镜像同步，不影响外界访问，但整个系统性能下降。磁盘控制器负载比较大。适用于安全性较高，且能较快恢复数据的场合。
-
-+ Raid10：至少需要**4块**盘，磁盘数量也是2的n倍。既有数据镜像备份，也能保证较高的读写速度。成本比较大。
-
-+ Raid3：至少需要**3块**盘（2块盘没有校验的意义）。将数据存放在n+1块盘上，有效空间是n块盘的总和，最后一块存储校验信息。数据被分割存储在n块盘上，任一数据盘出现问题，可由其他数据盘通过校正监测恢复数据（可以带伤工作），换数据盘需要重新恢复完整的校验容错信息。对阵列写入时会重写校验盘的内容，对校验盘的负载较大，读写速度相较于Raid0较慢，适用于读取多而写入少的应用环境，比如数据库和web服务器。使用容错算法和分块的大小决定了Raid3在通常情况下用于大文件且安全性要求较高的应用，比如视频编辑、硬盘播出机、大型数据库等。
-
-+ Raid5：至少需要**3块**盘，读取速度接近Raid0，但是安全性更高。安全性上接近Raid1，但是磁盘的利用率更高。可以认为是Raid0和Raid1的一个折中方案。只允许有一块盘出错，可以通过另外多块盘来计算出故障盘的数据，故障之后必须尽快更换。比Raid0+1的磁盘利用率高，是目前比较常用的一种方案。
+[磁盘阵列简介](raid)
 
 + 配置
   + commput0
@@ -93,7 +67,7 @@ mount /dev/sdc1 /extra
     + 4T \* 5块 >>> 16T
     + 8T \* 5块 >>> 30T
 
-## rocks
+## rocks常用命令
 
 1. 所有节点运行
 
@@ -135,7 +109,7 @@ mount /dev/sdc1 /extra
 7. 重装节点
 
         #!bash
-        rocks set host pxeboot compute1 action=install
+        rocks set host boot compute1 action=install
 
 8. 提交任务后，无运行时间,且qdel: Server could not connect to MOM
 
@@ -280,10 +254,28 @@ vim /etc/grub.conf
 
 ![图4](images/manager4.png){:height="50%" width="50%"}
 
-# 使用 fail2ban 防御 SSH 服务器的暴力破解攻击
+# [使用 fail2ban 防御 SSH 服务器的暴力破解攻击](fail2ban)
 
 # install glibc
 
 ```sh
 conda install -c asmeurer glibc
+```
+
+## /lib64/libc.so.6软链接
+
+当libc.so.6被升级或被删除后，ls, mv等命令无法使用, 现在如下错误：
+
+```sh
+/bin/ls: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+```
+
+通过使用LD_PRELOAD解决，方法如下：
+
+```sh
+先删除连接 ：
+# cd /lib64
+# LD_PRELOAD=/lib64/libc-2.3.6.so.bak rm libc.so.6
+建立新连接 ：
+# LD_PRELOAD=/lib64/libc-2.3.6.so.bak ln -s /lib64/libc-2.3.6.so.bak libc.so.6
 ```

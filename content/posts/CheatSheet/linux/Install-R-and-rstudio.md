@@ -31,7 +31,8 @@ apt-get build-dep r-base-core
 ## ./configure
 
 ```shell
-./configure --prefix=/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk
+./configure --prefix=/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk \
+--with-blas --with-lapack # 提高矩阵速度
 ```
 
 ### 1. configure: error: No F77 compiler found
