@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 小抄速查</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/xiao-chao-su-cha.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-11-05T12:23:52+08:00</updated><entry><title>libatk</title><link href="https://ghxdghxd.github.io/libatk.html" rel="alternate"></link><published>2018-11-05T12:23:52+08:00</published><updated>2018-11-05T12:23:52+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-05:/libatk.html</id><summary type="html">&lt;p&gt;/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0: undefined symbol: g_log_structured_standard&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0: undefined symbol: g_log_structured_standard&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 小抄速查</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/xiao-chao-su-cha.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-12-01T11:01:47+08:00</updated><entry><title>libatk</title><link href="https://ghxdghxd.github.io/libatk.html" rel="alternate"></link><published>2018-11-05T12:23:52+08:00</published><updated>2018-11-05T12:23:52+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-05:/libatk.html</id><summary type="html">&lt;p&gt;/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0: undefined symbol: g_log_structured_standard&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0: undefined symbol: g_log_structured_standard&lt;/h1&gt;
 &lt;h2&gt;来源&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Rstudio visNetwork导出html动态图&lt;/li&gt;
@@ -600,7 +600,254 @@
 &lt;li&gt;将宿主机的/var/data挂载到容器中的/data: docker run -tdi -v /var/data:/data centos&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;如果ls: cannot open directory '.': Permission denied
-修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled&lt;/p&gt;</content><category term="docker"></category></entry><entry><title>终端显示颜色</title><link href="https://ghxdghxd.github.io/terminal-color.html" rel="alternate"></link><published>2017-01-03T10:20:00+08:00</published><updated>2017-01-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-03:/terminal-color.html</id><summary type="html">&lt;p&gt;终端显示颜色&lt;/p&gt;</summary><content type="html">&lt;p&gt;echo显示带颜色，需要使用参数-e
+修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled&lt;/p&gt;</content><category term="docker"></category></entry><entry><title>预防SSH服务器暴力破解</title><link href="https://ghxdghxd.github.io/fail2ban.html" rel="alternate"></link><published>2017-03-05T11:19:47+08:00</published><updated>2017-03-05T11:19:47+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-05:/fail2ban.html</id><summary type="html">&lt;p&gt;fail2ban 防御 SSH 服务器的暴力破解攻击&lt;/p&gt;</summary><content type="html">&lt;h1&gt;原因&lt;/h1&gt;
+&lt;p&gt;前两天，以及更早的一段时间内，很多人抱怨，远程登录服务器时经常断线，严重到秒退。
+起初，以为是SSH配置问题，浪费大量时间对SSH检查，重装，配置...
+然后，查看/var/log/secure登录日志，发现多个IP的进攻，
+所以，安装fail2ban防御
+以下，抄自网络...&lt;/p&gt;
+&lt;h1&gt;fail2ban 防御 SSH 服务器的暴力破解攻击&lt;/h1&gt;
+&lt;p&gt;对于SSH服务的常见的攻击就是暴力破解攻击——远程攻击者通过不同的密码来无限次地进行登录尝试。当然SSH可以设置使用非密码验证验证方式来对抗这种攻击，例如&lt;a href="http://xmodulo.com/how-to-force-ssh-login-via-public-key-authentication.html"&gt;公钥验证&lt;/a&gt;或者&lt;a href="http://linux.cn/article-3725-1.html"&gt;双重验证&lt;/a&gt;。将不同的验证方法的优劣处先放在一边，如果我们必须使用密码验证方式怎么办？你是如何保护你的SSH 服务器免遭暴力破解攻击的呢？&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.fail2ban.org/"&gt;fail2ban&lt;/a&gt; 是 Linux上的一个著名的入侵保护的开源框架，它会监控多个系统的日志文件（例如：/var/log/auth.log 或者/var/log/secure）并根据检测到的任何可疑的行为自动触发不同的防御动作。事实上，fail2ban 在防御对SSH服务器的暴力密码破解上非常有用。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/fail2ban/fail2ban.git&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; fail2ban&lt;/span&gt;
+&lt;span class="code-line"&gt;python3 setup.py install&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;cp files/debian-initd /etc/init.d/fail2ban&lt;/span&gt;
+&lt;span class="code-line"&gt;update-rc.d fail2ban defaults&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;cp files/redhat-initd /etc/init.d/fail2ban&lt;/span&gt;
+&lt;span class="code-line"&gt;chkconfig fail2ban on&lt;/span&gt;
+&lt;span class="code-line"&gt;service fail2ban start&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;为SSH服务器配置Fail2ban&lt;/h2&gt;
+&lt;p&gt;编辑其配置文件 /etc/fail2ban/jail.conf。
+在配置文件的“[DEFAULT]”区，你可以在此定义所有受监控的服务的默认参数，另外在特定服务的配置部分，你可以为每个服务（例如SSH，Apache等）设置特定的配置来覆盖默认的参数配置。&lt;/p&gt;
+&lt;p&gt;在针对服务的监狱区（在[DEFAULT]区后面的地方），你需要定义一个[ssh-
+iptables]区，这里用来定义SSH相关的监狱配置。真正的禁止IP地址的操作是通过iptables完成的。&lt;/p&gt;
+&lt;p&gt;下面是一个包含“ssh-iptables”监狱配置的/etc/fail2ban/jail.conf的文件样例。当然根据你的需要，你也可以指定其他的应用监狱。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;$ sudo vi /etc/fail2ban/jail.local&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;1&lt;/span&gt;. &lt;span class="o"&gt;[&lt;/span&gt;DEFAULT&lt;span class="o"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;2&lt;/span&gt;. &lt;span class="c1"&gt;# 以空格分隔的列表，可以是 IP 地址、CIDR 前缀或者 DNS 主机名&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;3&lt;/span&gt;. &lt;span class="c1"&gt;# 用于指定哪些地址可以忽略 fail2ban 防御&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;4&lt;/span&gt;. &lt;span class="nv"&gt;ignoreip&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;127&lt;/span&gt;.0.0.1 &lt;span class="m"&gt;172&lt;/span&gt;.31.0.0/24 &lt;span class="m"&gt;10&lt;/span&gt;.10.0.0/24 &lt;span class="m"&gt;192&lt;/span&gt;.168.0.0/24&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;5&lt;/span&gt;.  &lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;6&lt;/span&gt;. &lt;span class="c1"&gt;# 客户端主机被禁止的时长（秒）&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;7&lt;/span&gt;. &lt;span class="nv"&gt;bantime&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;86400&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;8&lt;/span&gt;.  &lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;9&lt;/span&gt;. &lt;span class="c1"&gt;# 客户端主机被禁止前允许失败的次数&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;10&lt;/span&gt;. &lt;span class="nv"&gt;maxretry&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;11&lt;/span&gt;.  &lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;12&lt;/span&gt;. &lt;span class="c1"&gt;# 查找失败次数的时长（秒）&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;13&lt;/span&gt;. &lt;span class="nv"&gt;findtime&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;600&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;14&lt;/span&gt;.  &lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;15&lt;/span&gt;. &lt;span class="nv"&gt;mta&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; sendmail&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;16&lt;/span&gt;.  &lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;17&lt;/span&gt;. &lt;span class="o"&gt;[&lt;/span&gt;ssh-iptables&lt;span class="o"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;18&lt;/span&gt;. &lt;span class="nv"&gt;enabled&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;19&lt;/span&gt;. &lt;span class="nv"&gt;filter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; sshd&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;20&lt;/span&gt;. &lt;span class="nv"&gt;action&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; iptables&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;SSH, &lt;span class="nv"&gt;port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;ssh, &lt;span class="nv"&gt;protocol&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;tcp&lt;span class="o"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;21&lt;/span&gt;. sendmail-whois&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;SSH, &lt;span class="nv"&gt;dest&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;your@email.com, &lt;span class="nv"&gt;sender&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;fail2ban@email.com&lt;span class="o"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;22&lt;/span&gt;. &lt;span class="c1"&gt;# Debian 系的发行版&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;23&lt;/span&gt;. &lt;span class="nv"&gt;logpath&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; /var/log/auth.log&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;24&lt;/span&gt;. &lt;span class="c1"&gt;# Red Hat 系的发行版&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;25&lt;/span&gt;. &lt;span class="nv"&gt;logpath&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; /var/log/secure&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;26&lt;/span&gt;. &lt;span class="c1"&gt;# ssh 服务的最大尝试次数&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;27&lt;/span&gt;. &lt;span class="nv"&gt;maxretry&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;根据上述配置，fail2ban会自动禁止在最近10分钟内有超过3次访问尝试失败的任意IP地址。一旦被禁，这个IP地址将会在24小时内一直被禁止访问 SSH
+服务。这个事件也会通过sendemail发送邮件通知。
+一旦配置文件准备就绪，按照以下方式重启fail2ban服务。
+在 Debian, Ubuntu 或 CentOS/RHEL 6:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  sudo service fail2ban restart&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在 Fedora 或 CentOS/RHEL 7:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  sudo systemctl restart fail2ban&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;为了验证fail2ban成功运行，使用参数'ping'来运行fail2ban-client 命令。
+如果fail2ban服务正常运行，你可以看到“pong（嘭）”作为响应。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  1. $ sudo fail2ban-client ping&lt;/span&gt;
+&lt;span class="code-line"&gt;  2. Server replied: pong&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;测试 fail2ban 保护SSH免遭暴力破解攻击&lt;/h2&gt;
+&lt;p&gt;为了测试fail2ban是否能正常工作，尝试通过使用错误的密码来用SSH连接到服务器模拟一个暴力破解攻击。与此同时，监控
+/var/log/fail2ban.log，该文件记录在fail2ban中发生的任何敏感事件。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  1. $ sudo tail -f /var/log/fail2ban.log&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;根据上述的日志文件，Fail2ban通过检测IP地址的多次失败登录尝试，禁止了一个IP地址192.168.1.8。&lt;/p&gt;
+&lt;h3&gt;检查fail2ban状态并解禁被锁住的IP地址&lt;/h3&gt;
+&lt;p&gt;由于fail2ban的“ssh-iptables”监狱使用iptables来阻塞问题IP地址，你可以通过以下方式来检测当前iptables来验证禁止规则。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  1. $ sudo iptables --list -n&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;  1. Chain INPUT (policy ACCEPT)&lt;/span&gt;
+&lt;span class="code-line"&gt;  2. target     prot opt source               destination&lt;/span&gt;
+&lt;span class="code-line"&gt;  3. fail2ban-SSH  tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:22&lt;/span&gt;
+&lt;span class="code-line"&gt;  4.  &lt;/span&gt;
+&lt;span class="code-line"&gt;  5. Chain FORWARD (policy ACCEPT)&lt;/span&gt;
+&lt;span class="code-line"&gt;  6. target     prot opt source               destination&lt;/span&gt;
+&lt;span class="code-line"&gt;  7.  &lt;/span&gt;
+&lt;span class="code-line"&gt;  8. Chain OUTPUT (policy ACCEPT)&lt;/span&gt;
+&lt;span class="code-line"&gt;  9. target     prot opt source               destination&lt;/span&gt;
+&lt;span class="code-line"&gt;  10.  &lt;/span&gt;
+&lt;span class="code-line"&gt;  11. Chain fail2ban-SSH (1 references)&lt;/span&gt;
+&lt;span class="code-line"&gt;  12. target     prot opt source               destination&lt;/span&gt;
+&lt;span class="code-line"&gt;  13. DROP       all  --  192.168.1.8          0.0.0.0/0&lt;/span&gt;
+&lt;span class="code-line"&gt;  14. RETURN     all  --  0.0.0.0/0            0.0.0.0/0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果你想要从fail2ban中解锁某个IP地址，你可以使用iptables命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  sudo iptables -D fail2ban-SSH -s 192.168.1.8 -j DROP&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;当然你可以使用上述的iptables命令手动地检验和管理fail2ban的IP阻塞列表，但实际上有一个适当的方法就是使用fail2ban-
+client命令行工具。这个命令不仅允许你对"ssh-iptables"监狱进行管理，同时也是一个标准的命令行接口，可以管理其他类型的fail2ban监狱。&lt;/p&gt;
+&lt;p&gt;为了检验fail2ban状态（会显示出当前活动的监狱列表）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  sudo fail2ban-client status&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;为了检验一个特定监狱的状态（例如ssh-iptables):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  sudo fail2ban-client status ssh-iptables&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上面的命令会显示出被禁止IP地址列表。&lt;/p&gt;
+&lt;p&gt;为了解锁特定的IP地址：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  sudo fail2ban-client set ssh-iptables unbanip 192.168.1.8&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意，如果你停止了Fail2ban 服务，那么所有的IP地址都会被解锁。当你重启 Fail2ban，它会从/etc/log/secure(或
+/var/log/auth.log)中找到异常的IP地址列表，如果这些异常地址的发生时间仍然在禁止时间内，那么Fail2ban会重新将这些IP地址禁止。&lt;/p&gt;
+&lt;h2&gt;设置 Fail2ban 自动启动&lt;/h2&gt;
+&lt;p&gt;一旦你成功地测试了fail2ban之后，最后一个步骤就是在你的服务器上让其在开机时自动启动。在基于Debian的发行版中，fail2ban已经默认让自动启动生效。在基于Red-
+Hat的发行版中，按照下面的方式让自动启动生效。&lt;/p&gt;
+&lt;p&gt;在 CentOS/RHEL 6中:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  sudo chkconfig fail2ban on&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在 Fedora 或 CentOS/RHEL 7:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  sudo systemctl enable fail2ban&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="fail2ban"></category><category term="linux"></category></entry><entry><title>CPU信息</title><link href="https://ghxdghxd.github.io/cpuinfo.html" rel="alternate"></link><published>2017-03-01T09:19:22+08:00</published><updated>2018-12-01T11:01:47+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-01:/cpuinfo.html</id><summary type="html">&lt;p&gt;Linux中CPU info简介&lt;/p&gt;</summary><content type="html">&lt;h1&gt;CPU的结构&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Fig.1" src="images/cpu.png" style="height:30%; width:30%;" /&gt;&lt;/p&gt;
+&lt;h1&gt;CPU相关信息&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;lscpu&lt;/code&gt;从sysfs和/proc/cpuinfo收集cpu体系结构信息&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;Architecture:          x86_64               &lt;span class="c1"&gt;# 架构&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;CPU op-mode&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;:        &lt;span class="m"&gt;32&lt;/span&gt;-bit, &lt;span class="m"&gt;64&lt;/span&gt;-bit       &lt;span class="c1"&gt;# CPU 运行模式&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;Byte Order:            Little Endian        &lt;span class="c1"&gt;# 字节序&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;CPU&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;:                &lt;span class="m"&gt;64&lt;/span&gt;                   &lt;span class="c1"&gt;# 逻辑CPU数(线程数) = 物理cpu(physical id)数量 * cpu内核(core id)数 * 单核多线程(thread, 如果支持并开启HT)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;On-line CPU&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt; list:   &lt;span class="m"&gt;0&lt;/span&gt;-63                 &lt;span class="c1"&gt;# 在线CPU列表id&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;Thread&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt; per core:    &lt;span class="m"&gt;2&lt;/span&gt;                    &lt;span class="c1"&gt;# 每个核心线程数&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;Core&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt; per socket:    &lt;span class="m"&gt;8&lt;/span&gt;                    &lt;span class="c1"&gt;# 每个cpu插槽的核数==每颗物理cpu核数&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;Socket&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;:             &lt;span class="m"&gt;4&lt;/span&gt;                    &lt;span class="c1"&gt;# cpu插槽数&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;NUMA node&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;:          &lt;span class="m"&gt;4&lt;/span&gt;                    &lt;span class="c1"&gt;# NUMA节点数&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;Vendor ID:             GenuineIntel         &lt;span class="c1"&gt;# cpu品牌&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;CPU family:            &lt;span class="m"&gt;6&lt;/span&gt;                    &lt;span class="c1"&gt;# cpu系列&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;Model:                 &lt;span class="m"&gt;62&lt;/span&gt;                   &lt;span class="c1"&gt;# CPU型号&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;Stepping:              &lt;span class="m"&gt;4&lt;/span&gt;                    &lt;span class="c1"&gt;# 步进&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;CPU MHz:               &lt;span class="m"&gt;1200&lt;/span&gt;.000             &lt;span class="c1"&gt;# cpu主频(可能是平均值)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;BogoMIPS:              &lt;span class="m"&gt;4599&lt;/span&gt;.40&lt;/span&gt;
+&lt;span class="code-line"&gt;Virtualization:        VT-x                 &lt;span class="c1"&gt;# cpu支持的虚拟化技术&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;L1d cache:             32K&lt;/span&gt;
+&lt;span class="code-line"&gt;L1i cache:             32K&lt;/span&gt;
+&lt;span class="code-line"&gt;L2 cache:              256K&lt;/span&gt;
+&lt;span class="code-line"&gt;L3 cache:              16384K&lt;/span&gt;
+&lt;span class="code-line"&gt;NUMA node0 CPU&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;:     &lt;span class="m"&gt;0&lt;/span&gt;-7,32-39            &lt;span class="c1"&gt;# 每个NUMA节点包括的线程&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;NUMA node1 CPU&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;:     &lt;span class="m"&gt;8&lt;/span&gt;-15,40-47&lt;/span&gt;
+&lt;span class="code-line"&gt;NUMA node2 CPU&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;:     &lt;span class="m"&gt;16&lt;/span&gt;-23,48-55&lt;/span&gt;
+&lt;span class="code-line"&gt;NUMA node3 CPU&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;:     &lt;span class="m"&gt;24&lt;/span&gt;-31,56-63&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;每个逻辑CPU的详细信息：/proc/cpuinfo&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;processor       : &lt;span class="m"&gt;0&lt;/span&gt;                                            &lt;span class="c1"&gt;# 逻辑CPU（线程）的编号, 从 0 到 最大线程数-1&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;vendor_id       : GenuineIntel                                 &lt;span class="c1"&gt;# 品牌&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;cpu family      : &lt;span class="m"&gt;6&lt;/span&gt;                                            &lt;span class="c1"&gt;# cpu系列&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;model           : &lt;span class="m"&gt;62&lt;/span&gt;                                           &lt;span class="c1"&gt;# CPU型号&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;model name      : Intel&lt;span class="o"&gt;(&lt;/span&gt;R&lt;span class="o"&gt;)&lt;/span&gt; Xeon&lt;span class="o"&gt;(&lt;/span&gt;R&lt;span class="o"&gt;)&lt;/span&gt; CPU E5-4610 v2 @ &lt;span class="m"&gt;2&lt;/span&gt;.30GHz    &lt;span class="c1"&gt;# CPU名称与频率&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;stepping        : &lt;span class="m"&gt;4&lt;/span&gt;                                            &lt;span class="c1"&gt;# 步进&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;cpu MHz         : &lt;span class="m"&gt;1200&lt;/span&gt;.000                                     &lt;span class="c1"&gt;# 当前线程的实时频率&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;cache size      : &lt;span class="m"&gt;16384&lt;/span&gt; KB&lt;/span&gt;
+&lt;span class="code-line"&gt;physical id     : &lt;span class="m"&gt;0&lt;/span&gt;                                            &lt;span class="c1"&gt;# 物理CPU编号，从 0 到 主板CPU插槽数-1。拥有相同 physical id 的所有逻辑处理器共享同一个物理插座。&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;siblings        : &lt;span class="m"&gt;16&lt;/span&gt;                                           &lt;span class="c1"&gt;# 此物理CPU的逻辑CPU数(或线程数) = 物理CPU核心数 * 单核多线程&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;core id         : &lt;span class="m"&gt;0&lt;/span&gt;                                            &lt;span class="c1"&gt;# 此物理CPU内的，核心编号， 从 0 到 核心数-1。所有带有相同 core id 的逻辑处理器均位于同一个处理器内核上。&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;cpu cores       : &lt;span class="m"&gt;8&lt;/span&gt;                                            &lt;span class="c1"&gt;# 此物理CPU内的核心数&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;apicid          : &lt;span class="m"&gt;0&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;initial apicid  : &lt;span class="m"&gt;0&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;fpu             : yes&lt;/span&gt;
+&lt;span class="code-line"&gt;fpu_exception   : yes&lt;/span&gt;
+&lt;span class="code-line"&gt;cpuid level     : &lt;span class="m"&gt;13&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;wp              : yes&lt;/span&gt;
+&lt;span class="code-line"&gt;flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm consta&lt;/span&gt;
+&lt;span class="code-line"&gt;bogomips        : &lt;span class="m"&gt;4600&lt;/span&gt;.23&lt;/span&gt;
+&lt;span class="code-line"&gt;clflush size    : &lt;span class="m"&gt;64&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;cache_alignment : &lt;span class="m"&gt;64&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;address sizes   : &lt;span class="m"&gt;46&lt;/span&gt; bits physical, &lt;span class="m"&gt;48&lt;/span&gt; bits virtual&lt;/span&gt;
+&lt;span class="code-line"&gt;power management:&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;如果有一个以上逻辑处理器拥有相同的 core id 和 physical id，则说明系统支持超线程（HT）技术。&lt;/li&gt;
+&lt;li&gt;如果有两个或两个以上的逻辑处理器拥有相同的 physical id，但是 core id 不同，则说明这是一个多内核处理器。cpu cores 条目也可以表示是否支持多内核。&lt;/li&gt;
+&lt;li&gt;判断CPU是否64位，检查cpuinfo中的flags区段，看是否有lm (long mode)标识。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;cpu MHz是动态变化的&lt;/strong&gt;：因为CPU不工作时，降率能够降低热量与风扇噪音。
+  查看CPU 时实动态频率&lt;code&gt;cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;逻辑CPU&lt;/th&gt;
+&lt;th align="center"&gt;物理CPU&lt;/th&gt;
+&lt;th align="center"&gt;CPU核数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;最大线程数&lt;/td&gt;
+&lt;td align="center"&gt;实际服务器插槽上的CPU数目&lt;/td&gt;
+&lt;td align="center"&gt;CPU核心数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;逻辑CPU数&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;cat /proc/cpuinfo|grep &amp;quot;processor&amp;quot;|wc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;物理CPU数&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;cat /proc/cpuinfo|grep &amp;quot;physical\ id&amp;quot;|sort -u|wc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CPU核数&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;cat /proc/cpuinfo|grep &amp;quot;cores&amp;quot;|sort -u&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="cpuinfo"></category></entry><entry><title>终端显示颜色</title><link href="https://ghxdghxd.github.io/terminal-color.html" rel="alternate"></link><published>2017-01-03T10:20:00+08:00</published><updated>2017-01-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-03:/terminal-color.html</id><summary type="html">&lt;p&gt;终端显示颜色&lt;/p&gt;</summary><content type="html">&lt;p&gt;echo显示带颜色，需要使用参数-e
 格式如下:
 echo -e "\033[字背景颜色;文字颜色m字符串\033[0m"
 例如:
@@ -719,7 +966,24 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;td&gt;显示光标&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</content><category term="linux"></category><category term="color"></category></entry><entry><title>git的一般用法</title><link href="https://ghxdghxd.github.io/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
+&lt;/table&gt;</content><category term="linux"></category><category term="color"></category></entry><entry><title>磁盘阵列</title><link href="https://ghxdghxd.github.io/raid.html" rel="alternate"></link><published>2016-11-06T18:29:36+08:00</published><updated>2017-05-02T23:45:22+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-06:/raid.html</id><summary type="html">&lt;p&gt;各种磁盘阵列的简介&lt;/p&gt;</summary><content type="html">&lt;h1&gt;磁盘阵列（Redundant Arrays of Independent Drives，RAID）&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Raid0: 最少需要&lt;strong&gt;2块&lt;/strong&gt;盘，没用冗余数据,不做备份，任何一块磁盘损坏都无法运行。n块磁盘（同类型）的阵列理论上读写速度是单块磁盘的n倍(实际达不到)，风险性也是单一n倍（实际更高），是磁盘阵列中存储性能最好的。适用于安全性不高，要求比较高性能的图形工作站或者个人站。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Raid1：至少需要&lt;em&gt;2块&lt;/em&gt;*盘，磁盘数量是2的n倍，每一块磁盘要有对应的备份盘，利用率是50%，只要有一对磁盘没有损坏就可以正常使用。n组磁盘（2n块同类型磁盘）的阵列理论上读取速度是单块磁盘的n倍（实际达不到），风险性是单一磁盘的n分之一（实际更低）。换盘后需要长时间的镜像同步，不影响外界访问，但整个系统性能下降。磁盘控制器负载比较大。适用于安全性较高，且能较快恢复数据的场合。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Raid10：至少需要&lt;strong&gt;4块&lt;/strong&gt;盘，磁盘数量也是2的n倍。既有数据镜像备份，也能保证较高的读写速度。成本比较大。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Raid3：至少需要&lt;strong&gt;3块&lt;/strong&gt;盘（2块盘没有校验的意义）。将数据存放在n+1块盘上，有效空间是n块盘的总和，最后一块存储校验信息。数据被分割存储在n块盘上，任一数据盘出现问题，可由其他数据盘通过校正监测恢复数据（可以带伤工作），换数据盘需要重新恢复完整的校验容错信息。对阵列写入时会重写校验盘的内容，对校验盘的负载较大，读写速度相较于Raid0较慢，适用于读取多而写入少的应用环境，比如数据库和web服务器。使用容错算法和分块的大小决定了Raid3在通常情况下用于大文件且安全性要求较高的应用，比如视频编辑、硬盘播出机、大型数据库等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Raid5：至少需要&lt;strong&gt;3块&lt;/strong&gt;盘，读取速度接近Raid0，但是安全性更高。安全性上接近Raid1，但是磁盘的利用率更高。可以认为是Raid0和Raid1的一个折中方案。只允许有一块盘出错，可以通过另外多块盘来计算出故障盘的数据，故障之后必须尽快更换。比Raid0+1的磁盘利用率高，是目前比较常用的一种方案。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="raid"></category></entry><entry><title>git的一般用法</title><link href="https://ghxdghxd.github.io/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
 &lt;h2&gt;1 建立仓库&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;远程&lt;/li&gt;
@@ -1490,13 +1754,15 @@ You can open in universal-new-line mode to solve the error.&lt;/p&gt;
 
 
 &lt;h2&gt;find&lt;/h2&gt;
+&lt;p&gt;按大小
+find . -size +50M&lt;/p&gt;
 &lt;p&gt;find 按文件修改时间查找文件&lt;/p&gt;
 &lt;p&gt;----(+n)---------|------------(n)--------------|---------(-n)----
    (n+1)&lt;em&gt;24H前   |    (n+1)&lt;/em&gt;24H ~ n&lt;em&gt;24H之间  |  n&lt;/em&gt;24H以内&lt;/p&gt;
 &lt;p&gt;-ctime -n    查找距现在 n&lt;em&gt;24H 内修改过的文件
 -ctime n    查找距现在 n&lt;/em&gt;24H 前, (n+1)&lt;em&gt;24H 内修改过的文件
 -ctime +n    查找距现在 (n+1)&lt;/em&gt;24H 前修改过的文件&lt;/p&gt;
-&lt;p&gt;[a|c|m]min    [最后访问|最后状态修改|最后内容修改]min 
+&lt;p&gt;[a|c|m]min    [最后访问|最后状态修改|最后内容修改]min
 [a|c|m]time    [最后访问|最后状态修改|最后内容修改]time&lt;/p&gt;
 &lt;p&gt;linux 文件的几种时间 (以 find 为例):
 atime 最后一次访问时间, 如 ls, more 等, 但 chmod, chown, ls, stat 等不会修改些时间, 使用 ls -utl 可以按此时间顺序查看;
@@ -1504,7 +1770,7 @@ ctime 最后一次状态修改时间, 如 chmod, chown 等状态时间改变但�
 mtime 最后一次内容修改时间, 如 vi 保存后等, 修改时间发生改变的话, atime 和 ctime 也相应跟着发生改变.&lt;/p&gt;
 &lt;p&gt;注意: linux 里是不会记录文件的创建时间的, 除非这个文件自创建以来没有发生改变, 那么它的创建时间就是它的最后一次修改时间.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;ls -lt    ./  按修改时间顺序查看
-&lt;/em&gt;ls -lut ./ 按访问时间顺序查看 &lt;/p&gt;
+&lt;/em&gt;ls -lut ./ 按访问时间顺序查看&lt;/p&gt;
 &lt;p&gt;[acm]time  计量单位是天，即24H
 [acm]min    计量单位是分钟
 find ./ -mtime 0  #查找一天内修改的文件
@@ -1922,8 +2188,10 @@ axes.unicode_minus，将True改为False&lt;/p&gt;
 &lt;span class="code-line"&gt;    Our server will be maintained at&lt;/span&gt;
 &lt;span class="code-line"&gt;    please don&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;t login at that time,thanks.&lt;/span&gt;
 &lt;span class="code-line"&gt;    那么当用户登录的时候，就会显示设置的内容了。&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/linux-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2017-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/linux-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用操作&lt;/h1&gt;
-&lt;h2&gt;电源&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/linux-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2017-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/linux-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;h1&gt;电源配置&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由于安装之初，未使用线标签标记，后续管理十分不便...&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -1985,87 +2253,28 @@ axes.unicode_minus，将True改为False&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h1&gt;常用操作&lt;/h1&gt;
 &lt;h2&gt;清理内存&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt; &amp;gt; /proc/sys/vm/drop_caches&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;&lt;a href="terminal-announcement"&gt;登录显示信息&lt;/a&gt;&lt;/h2&gt;
-&lt;h2&gt;158挂载swap&lt;/h2&gt;
+&lt;h2&gt;添加外挂硬盘&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;mount /dev/sdc1 /extra&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;核心数&lt;/h2&gt;
-&lt;p&gt;/proc/cpuinfo 用来存储cpu硬件信息
-一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core出来
-&lt;strong&gt;逻辑CPU数量 = 物理cpu数量 × cpu 核数 x 2(如果支持并开启ht)&lt;/strong&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align="center"&gt;逻辑CPU&lt;/th&gt;
-&lt;th align="center"&gt;物理CPU&lt;/th&gt;
-&lt;th align="center"&gt;CPU核数&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;最大线程数&lt;/td&gt;
-&lt;td align="center"&gt;实际服务器插槽上的CPU数目&lt;/td&gt;
-&lt;td align="center"&gt;CPU核心数&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;逻辑CPU数&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;cat /proc/cpuinfo|grep &amp;quot;processor&amp;quot;|wc&lt;/span&gt;
+&lt;h2&gt;&lt;a href="cpuinfo"&gt;CPU信息&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;GPU计算卡&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;    lspci | grep NVIDIA&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;物理CPU数&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;cat /proc/cpuinfo|grep &amp;quot;physical\ id&amp;quot;|sort -u|wc&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;CPU核数&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;cat /proc/cpuinfo|grep &amp;quot;cores&amp;quot;|sort -u&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;GPU计算卡&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;lspci | grep NVIDIA&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;h2&gt;硬盘&lt;/h2&gt;
+&lt;p&gt;&lt;a href="raid"&gt;磁盘阵列简介&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Raid0: 最少需要&lt;strong&gt;2块&lt;/strong&gt;盘，没用冗余数据,不做备份，任何一块磁盘损坏都无法运行。n块磁盘（同类型）的阵列理论上读写速度是单块磁盘的n倍(实际达不到)，风险性也是单一n倍（实际更高），是磁盘阵列中存储性能最好的。适用于安全性不高，要求比较高性能的图形工作站或者个人站。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Raid1：至少需要&lt;em&gt;2块&lt;/em&gt;*盘，磁盘数量是2的n倍，每一块磁盘要有对应的备份盘，利用率是50%，只要有一对磁盘没有损坏就可以正常使用。n组磁盘（2n块同类型磁盘）的阵列理论上读取速度是单块磁盘的n倍（实际达不到），风险性是单一磁盘的n分之一（实际更低）。换盘后需要长时间的镜像同步，不影响外界访问，但整个系统性能下降。磁盘控制器负载比较大。适用于安全性较高，且能较快恢复数据的场合。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Raid10：至少需要&lt;strong&gt;4块&lt;/strong&gt;盘，磁盘数量也是2的n倍。既有数据镜像备份，也能保证较高的读写速度。成本比较大。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Raid3：至少需要&lt;strong&gt;3块&lt;/strong&gt;盘（2块盘没有校验的意义）。将数据存放在n+1块盘上，有效空间是n块盘的总和，最后一块存储校验信息。数据被分割存储在n块盘上，任一数据盘出现问题，可由其他数据盘通过校正监测恢复数据（可以带伤工作），换数据盘需要重新恢复完整的校验容错信息。对阵列写入时会重写校验盘的内容，对校验盘的负载较大，读写速度相较于Raid0较慢，适用于读取多而写入少的应用环境，比如数据库和web服务器。使用容错算法和分块的大小决定了Raid3在通常情况下用于大文件且安全性要求较高的应用，比如视频编辑、硬盘播出机、大型数据库等。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Raid5：至少需要&lt;strong&gt;3块&lt;/strong&gt;盘，读取速度接近Raid0，但是安全性更高。安全性上接近Raid1，但是磁盘的利用率更高。可以认为是Raid0和Raid1的一个折中方案。只允许有一块盘出错，可以通过另外多块盘来计算出故障盘的数据，故障之后必须尽快更换。比Raid0+1的磁盘利用率高，是目前比较常用的一种方案。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;配置&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;配置&lt;/li&gt;
 &lt;li&gt;commput0&lt;ul&gt;
 &lt;li&gt;[2.10GHz] * 4 * 8核/CPU * 2线程/核 = 64&lt;/li&gt;
 &lt;li&gt;1T * 6块 &amp;gt;&amp;gt;&amp;gt; 3T(raid10), 1.9T+792G未知&lt;/li&gt;
@@ -2101,7 +2310,7 @@ axes.unicode_minus，将True改为False&lt;/p&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;rocks&lt;/h2&gt;
+&lt;h2&gt;rocks常用命令&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;所有节点运行&lt;/p&gt;
@@ -2156,7 +2365,7 @@ axes.unicode_minus，将True改为False&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;重装节点&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;rocks &lt;span class="nb"&gt;set&lt;/span&gt; host pxeboot compute1 &lt;span class="nv"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;install&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;rocks &lt;span class="nb"&gt;set&lt;/span&gt; host boot compute1 &lt;span class="nv"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;install&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2318,9 +2527,24 @@ help_starving_jobs false ALL&lt;/p&gt;
 
 
 &lt;p&gt;&lt;img alt="图4" height="50%" src="images/manager4.png" width="50%" /&gt;&lt;/p&gt;
-&lt;h1&gt;使用 fail2ban 防御 SSH 服务器的暴力破解攻击&lt;/h1&gt;
+&lt;h1&gt;&lt;a href="fail2ban"&gt;使用 fail2ban 防御 SSH 服务器的暴力破解攻击&lt;/a&gt;&lt;/h1&gt;
 &lt;h1&gt;install glibc&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;conda install -c asmeurer glibc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;/lib64/libc.so.6软链接&lt;/h2&gt;
+&lt;p&gt;当libc.so.6被升级或被删除后，ls, mv等命令无法使用, 现在如下错误：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;/bin/ls: error &lt;span class="k"&gt;while&lt;/span&gt; loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;通过使用LD_PRELOAD解决，方法如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;先删除连接 ：&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# cd /lib64&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# LD_PRELOAD=/lib64/libc-2.3.6.so.bak rm libc.so.6&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;建立新连接 ：&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# LD_PRELOAD=/lib64/libc-2.3.6.so.bak ln -s /lib64/libc-2.3.6.so.bak libc.so.6&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="centos"></category><category term="shell"></category><category term="hpc"></category><category term="rocks cluster"></category><category term="manage"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="https://ghxdghxd.github.io/R-and-Rstudio.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;ubuntu安装R与Rstudio的过程&lt;/p&gt;</summary><content type="html">&lt;h1&gt;install R&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;error&lt;/li&gt;
@@ -2341,7 +2565,8 @@ help_starving_jobs false ALL&lt;/p&gt;
 
 
 &lt;h2&gt;./configure&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;./configure --prefix&lt;span class="o"&gt;=&lt;/span&gt;/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;./configure --prefix&lt;span class="o"&gt;=&lt;/span&gt;/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk &lt;span class="se"&gt;\&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;--with-blas --with-lapack &lt;span class="c1"&gt;# 提高矩阵速度&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

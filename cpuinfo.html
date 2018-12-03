@@ -1,0 +1,156 @@
+<div class="header">
+  <h1 class="page-title">
+    <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>
+    CPU信息
+  </h1>
+  <div class="details">
+    <div class="left">
+      3月 01, 2017
+      <span> | </span> <a href="/category/xiao-chao-su-cha.html">小抄速查</a>
+    </div>
+    <div class="right">
+      <a class="fa fa-tag" href="/tag/cpuinfo.html">cpuinfo</a>
+    </div>
+  </div>
+</div>
+<div id="message-nano-wrapper" class="nano">
+  <div class="nano-content">
+    <ul class="message-container">
+        <div class="message">
+          <h1>CPU的结构</h1>
+<p><img alt="Fig.1" src="images/cpu.png" style="height:30%; width:30%;" /></p>
+<h1>CPU相关信息</h1>
+<p><code>lscpu</code>从sysfs和/proc/cpuinfo收集cpu体系结构信息</p>
+<div class="highlight"><pre><span class="code-line"><span></span>Architecture:          x86_64               <span class="c1"># 架构</span></span>
+<span class="code-line">CPU op-mode<span class="o">(</span>s<span class="o">)</span>:        <span class="m">32</span>-bit, <span class="m">64</span>-bit       <span class="c1"># CPU 运行模式</span></span>
+<span class="code-line">Byte Order:            Little Endian        <span class="c1"># 字节序</span></span>
+<span class="code-line">CPU<span class="o">(</span>s<span class="o">)</span>:                <span class="m">64</span>                   <span class="c1"># 逻辑CPU数(线程数) = 物理cpu(physical id)数量 * cpu内核(core id)数 * 单核多线程(thread, 如果支持并开启HT)</span></span>
+<span class="code-line">On-line CPU<span class="o">(</span>s<span class="o">)</span> list:   <span class="m">0</span>-63                 <span class="c1"># 在线CPU列表id</span></span>
+<span class="code-line">Thread<span class="o">(</span>s<span class="o">)</span> per core:    <span class="m">2</span>                    <span class="c1"># 每个核心线程数</span></span>
+<span class="code-line">Core<span class="o">(</span>s<span class="o">)</span> per socket:    <span class="m">8</span>                    <span class="c1"># 每个cpu插槽的核数==每颗物理cpu核数</span></span>
+<span class="code-line">Socket<span class="o">(</span>s<span class="o">)</span>:             <span class="m">4</span>                    <span class="c1"># cpu插槽数</span></span>
+<span class="code-line">NUMA node<span class="o">(</span>s<span class="o">)</span>:          <span class="m">4</span>                    <span class="c1"># NUMA节点数</span></span>
+<span class="code-line">Vendor ID:             GenuineIntel         <span class="c1"># cpu品牌</span></span>
+<span class="code-line">CPU family:            <span class="m">6</span>                    <span class="c1"># cpu系列</span></span>
+<span class="code-line">Model:                 <span class="m">62</span>                   <span class="c1"># CPU型号</span></span>
+<span class="code-line">Stepping:              <span class="m">4</span>                    <span class="c1"># 步进</span></span>
+<span class="code-line">CPU MHz:               <span class="m">1200</span>.000             <span class="c1"># cpu主频(可能是平均值)</span></span>
+<span class="code-line">BogoMIPS:              <span class="m">4599</span>.40</span>
+<span class="code-line">Virtualization:        VT-x                 <span class="c1"># cpu支持的虚拟化技术</span></span>
+<span class="code-line">L1d cache:             32K</span>
+<span class="code-line">L1i cache:             32K</span>
+<span class="code-line">L2 cache:              256K</span>
+<span class="code-line">L3 cache:              16384K</span>
+<span class="code-line">NUMA node0 CPU<span class="o">(</span>s<span class="o">)</span>:     <span class="m">0</span>-7,32-39            <span class="c1"># 每个NUMA节点包括的线程</span></span>
+<span class="code-line">NUMA node1 CPU<span class="o">(</span>s<span class="o">)</span>:     <span class="m">8</span>-15,40-47</span>
+<span class="code-line">NUMA node2 CPU<span class="o">(</span>s<span class="o">)</span>:     <span class="m">16</span>-23,48-55</span>
+<span class="code-line">NUMA node3 CPU<span class="o">(</span>s<span class="o">)</span>:     <span class="m">24</span>-31,56-63</span>
+</pre></div>
+
+
+<h1>每个逻辑CPU的详细信息：/proc/cpuinfo</h1>
+<div class="highlight"><pre><span class="code-line"><span></span>processor       : <span class="m">0</span>                                            <span class="c1"># 逻辑CPU（线程）的编号, 从 0 到 最大线程数-1</span></span>
+<span class="code-line">vendor_id       : GenuineIntel                                 <span class="c1"># 品牌</span></span>
+<span class="code-line">cpu family      : <span class="m">6</span>                                            <span class="c1"># cpu系列</span></span>
+<span class="code-line">model           : <span class="m">62</span>                                           <span class="c1"># CPU型号</span></span>
+<span class="code-line">model name      : Intel<span class="o">(</span>R<span class="o">)</span> Xeon<span class="o">(</span>R<span class="o">)</span> CPU E5-4610 v2 @ <span class="m">2</span>.30GHz    <span class="c1"># CPU名称与频率</span></span>
+<span class="code-line">stepping        : <span class="m">4</span>                                            <span class="c1"># 步进</span></span>
+<span class="code-line">cpu MHz         : <span class="m">1200</span>.000                                     <span class="c1"># 当前线程的实时频率</span></span>
+<span class="code-line">cache size      : <span class="m">16384</span> KB</span>
+<span class="code-line">physical id     : <span class="m">0</span>                                            <span class="c1"># 物理CPU编号，从 0 到 主板CPU插槽数-1。拥有相同 physical id 的所有逻辑处理器共享同一个物理插座。</span></span>
+<span class="code-line">siblings        : <span class="m">16</span>                                           <span class="c1"># 此物理CPU的逻辑CPU数(或线程数) = 物理CPU核心数 * 单核多线程</span></span>
+<span class="code-line">core id         : <span class="m">0</span>                                            <span class="c1"># 此物理CPU内的，核心编号， 从 0 到 核心数-1。所有带有相同 core id 的逻辑处理器均位于同一个处理器内核上。</span></span>
+<span class="code-line">cpu cores       : <span class="m">8</span>                                            <span class="c1"># 此物理CPU内的核心数</span></span>
+<span class="code-line">apicid          : <span class="m">0</span></span>
+<span class="code-line">initial apicid  : <span class="m">0</span></span>
+<span class="code-line">fpu             : yes</span>
+<span class="code-line">fpu_exception   : yes</span>
+<span class="code-line">cpuid level     : <span class="m">13</span></span>
+<span class="code-line">wp              : yes</span>
+<span class="code-line">flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm consta</span>
+<span class="code-line">bogomips        : <span class="m">4600</span>.23</span>
+<span class="code-line">clflush size    : <span class="m">64</span></span>
+<span class="code-line">cache_alignment : <span class="m">64</span></span>
+<span class="code-line">address sizes   : <span class="m">46</span> bits physical, <span class="m">48</span> bits virtual</span>
+<span class="code-line">power management:</span>
+</pre></div>
+
+
+<ol>
+<li>如果有一个以上逻辑处理器拥有相同的 core id 和 physical id，则说明系统支持超线程（HT）技术。</li>
+<li>如果有两个或两个以上的逻辑处理器拥有相同的 physical id，但是 core id 不同，则说明这是一个多内核处理器。cpu cores 条目也可以表示是否支持多内核。</li>
+<li>判断CPU是否64位，检查cpuinfo中的flags区段，看是否有lm (long mode)标识。</li>
+<li><strong>cpu MHz是动态变化的</strong>：因为CPU不工作时，降率能够降低热量与风扇噪音。
+  查看CPU 时实动态频率<code>cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq</code></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">逻辑CPU</th>
+<th align="center">物理CPU</th>
+<th align="center">CPU核数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">最大线程数</td>
+<td align="center">实际服务器插槽上的CPU数目</td>
+<td align="center">CPU核心数</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>逻辑CPU数</p>
+<div class="highlight"><pre><span class="code-line"><span></span>cat /proc/cpuinfo|grep &quot;processor&quot;|wc</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>物理CPU数</p>
+<div class="highlight"><pre><span class="code-line"><span></span>cat /proc/cpuinfo|grep &quot;physical\ id&quot;|sort -u|wc</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>CPU核数</p>
+<div class="highlight"><pre><span class="code-line"><span></span>cat /proc/cpuinfo|grep &quot;cores&quot;|sort -u</span>
+</pre></div>
+
+
+</li>
+</ul>
+        </div>
+        <!-- <div class="tool-box">
+          <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a>
+        </div> -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nano').overlayScrollbars({
+    scrollbars: {
+      autoHide: "leave",
+    }
+  });
+  $('.trigger-message-close').on('click', function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+    $('body').removeClass('show-main-overlay');
+  });
+  $('#message .header .left a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addDisjunctiveFacetRefinement("category", e.target.text).search();
+    
+  });
+  $('#message .header .right a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addFacetRefinement("tags", e.target.text).search();
+  });
+</script>

@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/</loc>
-<lastmod>2018-11-29T17:29:48-00:00</lastmod>
+<lastmod>2018-12-03T20:29:45-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -95,8 +95,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://ghxdghxd.github.io/fail2ban.html</loc>
+<lastmod>2017-03-05T11:19:47+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>https://ghxdghxd.github.io/mpileup.html</loc>
 <lastmod>2017-03-04T14:33:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/cpuinfo.html</loc>
+<lastmod>2018-12-01T11:01:47+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
@@ -111,6 +125,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://ghxdghxd.github.io/terminal-color.html</loc>
 <lastmod>2017-01-03T19:30:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/raid.html</loc>
+<lastmod>2017-05-02T23:45:22+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
@@ -362,7 +383,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/category/xiao-chao-su-cha.html</loc>
-<lastmod>2018-11-05T12:23:52+08:06</lastmod>
+<lastmod>2018-12-01T11:01:47+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -473,6 +494,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://ghxdghxd.github.io/tag/fail2ban.html</loc>
+<lastmod>2017-03-05T11:19:47+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://ghxdghxd.github.io/tag/samtools.html</loc>
 <lastmod>2017-03-04T14:38:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -487,6 +515,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://ghxdghxd.github.io/tag/cpuinfo.html</loc>
+<lastmod>2018-12-01T11:01:47+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://ghxdghxd.github.io/tag/ctdna.html</loc>
 <lastmod>2017-01-09T15:59:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -496,6 +531,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://ghxdghxd.github.io/tag/color.html</loc>
 <lastmod>2017-01-03T19:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/raid.html</loc>
+<lastmod>2017-05-02T23:45:22+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -789,7 +831,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://ghxdghxd.github.io/author/jt-guo.html</loc>
-<lastmod>2018-11-12T13:14:43+08:06</lastmod>
+<lastmod>2018-12-01T11:01:47+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

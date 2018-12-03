@@ -22,8 +22,10 @@
   <div class="nano-content">
     <ul class="message-container">
         <div class="message">
-          <h1>常用操作</h1>
-<h2>电源</h2>
+          <h1>电源配置</h1>
+<blockquote>
+<p>由于安装之初，未使用线标签标记，后续管理十分不便...</p>
+</blockquote>
 <table>
 <thead>
 <tr>
@@ -85,87 +87,28 @@
 </tr>
 </tbody>
 </table>
+<h1>常用操作</h1>
 <h2>清理内存</h2>
 <div class="highlight"><pre><span class="code-line"><span></span><span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/vm/drop_caches</span>
 </pre></div>
 
 
 <h2><a href="terminal-announcement">登录显示信息</a></h2>
-<h2>158挂载swap</h2>
+<h2>添加外挂硬盘</h2>
 <div class="highlight"><pre><span class="code-line"><span></span>mount /dev/sdc1 /extra</span>
 </pre></div>
 
 
-<h2>核心数</h2>
-<p>/proc/cpuinfo 用来存储cpu硬件信息
-一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core出来
-<strong>逻辑CPU数量 = 物理cpu数量 × cpu 核数 x 2(如果支持并开启ht)</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">逻辑CPU</th>
-<th align="center">物理CPU</th>
-<th align="center">CPU核数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">最大线程数</td>
-<td align="center">实际服务器插槽上的CPU数目</td>
-<td align="center">CPU核心数</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>
-<p>逻辑CPU数</p>
-<div class="highlight"><pre><span class="code-line"><span></span>cat /proc/cpuinfo|grep &quot;processor&quot;|wc</span>
+<h2><a href="cpuinfo">CPU信息</a></h2>
+<h2>GPU计算卡</h2>
+<div class="highlight"><pre><span class="code-line"><span></span>    lspci | grep NVIDIA</span>
 </pre></div>
 
 
-</li>
-<li>
-<p>物理CPU数</p>
-<div class="highlight"><pre><span class="code-line"><span></span>cat /proc/cpuinfo|grep &quot;physical\ id&quot;|sort -u|wc</span>
-</pre></div>
-
-
-</li>
-<li>
-<p>CPU核数</p>
-<div class="highlight"><pre><span class="code-line"><span></span>cat /proc/cpuinfo|grep &quot;cores&quot;|sort -u</span>
-</pre></div>
-
-
-</li>
-<li>
-<p>GPU计算卡</p>
-<div class="highlight"><pre><span class="code-line"><span></span>lspci | grep NVIDIA</span>
-</pre></div>
-
-
-</li>
-</ul>
 <h2>硬盘</h2>
+<p><a href="raid">磁盘阵列简介</a></p>
 <ul>
-<li>
-<p>Raid0: 最少需要<strong>2块</strong>盘，没用冗余数据,不做备份，任何一块磁盘损坏都无法运行。n块磁盘（同类型）的阵列理论上读写速度是单块磁盘的n倍(实际达不到)，风险性也是单一n倍（实际更高），是磁盘阵列中存储性能最好的。适用于安全性不高，要求比较高性能的图形工作站或者个人站。</p>
-</li>
-<li>
-<p>Raid1：至少需要<em>2块</em>*盘，磁盘数量是2的n倍，每一块磁盘要有对应的备份盘，利用率是50%，只要有一对磁盘没有损坏就可以正常使用。n组磁盘（2n块同类型磁盘）的阵列理论上读取速度是单块磁盘的n倍（实际达不到），风险性是单一磁盘的n分之一（实际更低）。换盘后需要长时间的镜像同步，不影响外界访问，但整个系统性能下降。磁盘控制器负载比较大。适用于安全性较高，且能较快恢复数据的场合。</p>
-</li>
-<li>
-<p>Raid10：至少需要<strong>4块</strong>盘，磁盘数量也是2的n倍。既有数据镜像备份，也能保证较高的读写速度。成本比较大。</p>
-</li>
-<li>
-<p>Raid3：至少需要<strong>3块</strong>盘（2块盘没有校验的意义）。将数据存放在n+1块盘上，有效空间是n块盘的总和，最后一块存储校验信息。数据被分割存储在n块盘上，任一数据盘出现问题，可由其他数据盘通过校正监测恢复数据（可以带伤工作），换数据盘需要重新恢复完整的校验容错信息。对阵列写入时会重写校验盘的内容，对校验盘的负载较大，读写速度相较于Raid0较慢，适用于读取多而写入少的应用环境，比如数据库和web服务器。使用容错算法和分块的大小决定了Raid3在通常情况下用于大文件且安全性要求较高的应用，比如视频编辑、硬盘播出机、大型数据库等。</p>
-</li>
-<li>
-<p>Raid5：至少需要<strong>3块</strong>盘，读取速度接近Raid0，但是安全性更高。安全性上接近Raid1，但是磁盘的利用率更高。可以认为是Raid0和Raid1的一个折中方案。只允许有一块盘出错，可以通过另外多块盘来计算出故障盘的数据，故障之后必须尽快更换。比Raid0+1的磁盘利用率高，是目前比较常用的一种方案。</p>
-</li>
-<li>
-<p>配置</p>
-</li>
+<li>配置</li>
 <li>commput0<ul>
 <li>[2.10GHz] * 4 * 8核/CPU * 2线程/核 = 64</li>
 <li>1T * 6块 &gt;&gt;&gt; 3T(raid10), 1.9T+792G未知</li>
@@ -201,7 +144,7 @@
 </ul>
 </li>
 </ul>
-<h2>rocks</h2>
+<h2>rocks常用命令</h2>
 <ol>
 <li>
 <p>所有节点运行</p>
@@ -256,7 +199,7 @@
 </li>
 <li>
 <p>重装节点</p>
-<div class="highlight"><pre><span class="code-line"><span></span>rocks <span class="nb">set</span> host pxeboot compute1 <span class="nv">action</span><span class="o">=</span>install</span>
+<div class="highlight"><pre><span class="code-line"><span></span>rocks <span class="nb">set</span> host boot compute1 <span class="nv">action</span><span class="o">=</span>install</span>
 </pre></div>
 
 
@@ -418,9 +361,24 @@ help_starving_jobs false ALL</p>
 
 
 <p><img alt="图4" height="50%" src="images/manager4.png" width="50%" /></p>
-<h1>使用 fail2ban 防御 SSH 服务器的暴力破解攻击</h1>
+<h1><a href="fail2ban">使用 fail2ban 防御 SSH 服务器的暴力破解攻击</a></h1>
 <h1>install glibc</h1>
 <div class="highlight"><pre><span class="code-line"><span></span>conda install -c asmeurer glibc</span>
+</pre></div>
+
+
+<h2>/lib64/libc.so.6软链接</h2>
+<p>当libc.so.6被升级或被删除后，ls, mv等命令无法使用, 现在如下错误：</p>
+<div class="highlight"><pre><span class="code-line"><span></span>/bin/ls: error <span class="k">while</span> loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory</span>
+</pre></div>
+
+
+<p>通过使用LD_PRELOAD解决，方法如下：</p>
+<div class="highlight"><pre><span class="code-line"><span></span>先删除连接 ：</span>
+<span class="code-line"><span class="c1"># cd /lib64</span></span>
+<span class="code-line"><span class="c1"># LD_PRELOAD=/lib64/libc-2.3.6.so.bak rm libc.so.6</span></span>
+<span class="code-line">建立新连接 ：</span>
+<span class="code-line"><span class="c1"># LD_PRELOAD=/lib64/libc-2.3.6.so.bak ln -s /lib64/libc-2.3.6.so.bak libc.so.6</span></span>
 </pre></div>
         </div>
         <!-- <div class="tool-box">
