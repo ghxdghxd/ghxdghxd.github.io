@@ -39,7 +39,17 @@ mount /dev/sdc1 /extra
 
 ## GPU计算卡
 
-        lspci | grep NVIDIA
+### 查看GPU型号
+
+        sudo lspci | grep NVIDIA
+
+### 安装驱动
+
+```sh
+wget http://cn.download.nvidia.com/tesla/410.79/NVIDIA-Linux-x86_64-410.79.run
+chmod a+x NVIDIA-Linux-x86_64-410.79.run
+
+```
 
 ## 硬盘
 
@@ -278,4 +288,12 @@ conda install -c asmeurer glibc
 # LD_PRELOAD=/lib64/libc-2.3.6.so.bak rm libc.so.6
 建立新连接 ：
 # LD_PRELOAD=/lib64/libc-2.3.6.so.bak ln -s /lib64/libc-2.3.6.so.bak libc.so.6
+```
+
+## screen
+
+切换用户后，screen出现如下提示：Cannot open your terminal '/dev/pts/38' - please check
+
+```sh
+script /dev/null #更新 tty，再执行screen
 ```

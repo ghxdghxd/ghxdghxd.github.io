@@ -74,3 +74,22 @@ $$Q_{solexa-prior to v.1.3}=-10log_{10}\frac{P}{1-P}$$
 # fastq 质量检测工具
 
 * [fastQC](/BioKits/fastqc)
+
+## 结果
+
+1. Per base sequence quality
+    * 任一位置的下四分位数(黄色)低于10或者中位数(红线)低于25，出现“警告”；
+    * 任一位置的下四分位数(黄色)低于5或者中位数(红线)低于20，出现“失败，Fail”。
+2. Per tile sequence quality
+    检查reads中每一个碱基位置在不同的测序小孔之间的偏离度，蓝色代表偏离度小, 质量好，越红代表偏离度越大，质量越差。
+3. Per sequence quality scores
+    reads质量的分布, 当峰值小于27时，警告； 当峰值小于20时，fail。
+4. Per base sequence content 碱基（A,T,C,G）含量图
+    * 理论上: A,T,C,G的比例都接近于25%
+    * 测序的时候，测序仪状态不稳定,**比例差异大**
+    * 当任一位置的A/T比例与G/C比例相差超过10%，报”WARN”；当任 一位置的A/T比例与G/C比例相差超过20%，报”FAIL”。
+5. Per sequence GC content CG含量
+    * 蓝线是程序根据经验分布给出的理论值，红色是真实值，两者接近为最好
+    * 当红色的线出现双峰，基本肯定是混入了其他物种的DNA序列
+6. Sequence Length Distribution reads读长
+    当测序的长度不同时，如果很严重，则表明测序仪在此次测序过程中产生的数据不可信
