@@ -1671,34 +1671,28 @@ You can open in universal-new-line mode to solve the error.&lt;/p&gt;
 &lt;span class="code-line"&gt;gsub&lt;span class="o"&gt;(&lt;/span&gt;regular expression, subsitution string, target string&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;index&lt;span class="o"&gt;(&lt;/span&gt;a,b&lt;span class="o"&gt;)&lt;/span&gt;, r返回b中a的位置，没有返回0&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;i&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;length&lt;span class="o"&gt;(&lt;/span&gt;a&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;i++&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;awk &lt;span class="s1"&gt;&amp;#39;!a[$1&amp;quot; &amp;quot;$2]++{print}&amp;#39;&lt;/span&gt; &lt;span class="c1"&gt;# 以第一列与第二列去重&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;awk &lt;span class="s1"&gt;&amp;#39;a[$1&amp;quot; &amp;quot;$2]++{print}&amp;#39;&lt;/span&gt; &lt;span class="c1"&gt;# 以第一列与第二列去重，只显示重复行&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;awk,getline,用于获得下一行&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;输出奇数，&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#输出奇数，&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{print $0;getline}&amp;#39;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;7&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;9&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;输出偶数&lt;/span&gt;
-&lt;span class="code-line"&gt;seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{getline;print $0}&amp;#39;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;6&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;8&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;输出三行,如果后面没有足够的行，则输出最后一行&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#输出偶数&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{getline;print $0}&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#从第三行开始，每三行输出一次,如果后面没有足够的行，则输出最后一行&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{getline;getline;print $0}&amp;#39;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="m"&gt;6&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="m"&gt;9&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;获得shell命令的结果&lt;/span&gt;
-&lt;span class="code-line"&gt;注: 如果cmd出错,则res为上一行的结果，因此前面添加**res&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;\&amp;quot;&lt;/span&gt;**&lt;/span&gt;
-&lt;span class="code-line"&gt;    出现awk &lt;span class="o"&gt;(&lt;/span&gt;Too many open files&lt;span class="o"&gt;)&lt;/span&gt;, 需要 **close&lt;span class="o"&gt;(&lt;/span&gt;cmd&lt;span class="o"&gt;)&lt;/span&gt;**&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 获得shell命令的结果&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 注: 如果cmd出错,则res为上一行的结果，因此前面添加**res=\&amp;quot;\&amp;quot;**&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#     出现awk (Too many open files), 需要 **close(cmd)**&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;awk &lt;span class="s1"&gt;&amp;#39;{cmd=&amp;quot;echo&amp;quot;$0; res=&amp;quot;&amp;quot;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="s1"&gt;    cmd|getline res;&lt;/span&gt;&lt;/span&gt;
@@ -2267,7 +2261,14 @@ axes.unicode_minus，将True改为False&lt;/p&gt;
 
 &lt;h2&gt;&lt;a href="cpuinfo"&gt;CPU信息&lt;/a&gt;&lt;/h2&gt;
 &lt;h2&gt;GPU计算卡&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;    lspci | grep NVIDIA&lt;/span&gt;
+&lt;h3&gt;查看GPU型号&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;    sudo lspci | grep NVIDIA&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;安装驱动&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;wget http://cn.download.nvidia.com/tesla/410.79/NVIDIA-Linux-x86_64-410.79.run&lt;/span&gt;
+&lt;span class="code-line"&gt;chmod a+x NVIDIA-Linux-x86_64-410.79.run&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2545,6 +2546,12 @@ help_starving_jobs false ALL&lt;/p&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# LD_PRELOAD=/lib64/libc-2.3.6.so.bak rm libc.so.6&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;建立新连接 ：&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# LD_PRELOAD=/lib64/libc-2.3.6.so.bak ln -s /lib64/libc-2.3.6.so.bak libc.so.6&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;screen&lt;/h2&gt;
+&lt;p&gt;切换用户后，screen出现如下提示：Cannot open your terminal '/dev/pts/38' - please check&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;script /dev/null &lt;span class="c1"&gt;#更新 tty，再执行screen&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="centos"></category><category term="shell"></category><category term="hpc"></category><category term="rocks cluster"></category><category term="manage"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="https://ghxdghxd.github.io/R-and-Rstudio.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;ubuntu安装R与Rstudio的过程&lt;/p&gt;</summary><content type="html">&lt;h1&gt;install R&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;error&lt;/li&gt;
@@ -2729,6 +2736,12 @@ help_starving_jobs false ALL&lt;/p&gt;
 
 &lt;h3&gt;semi-transparency is not supported on this device&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo apt install libcairo2-dev&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;configure: error: missing required header GL/gl.h, configure: error: missing required header GL/glu.h&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo apt install mesa-common-dev&lt;/span&gt;
+&lt;span class="code-line"&gt;sudo apt install libglu1-mesa-dev&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category><category term="Rstudio"></category></entry><entry><title>fedora常用配置</title><link href="https://ghxdghxd.github.io/fedora-install.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2018-01-27T10:27:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/fedora-install.html</id><summary type="html">&lt;p&gt;fedora常用安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;config fedora&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo rm -rf /opt&lt;/span&gt;
 &lt;span class="code-line"&gt;sudo dnf install yum-utils&lt;/span&gt;

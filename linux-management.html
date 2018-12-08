@@ -101,7 +101,14 @@
 
 <h2><a href="cpuinfo">CPU信息</a></h2>
 <h2>GPU计算卡</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>    lspci | grep NVIDIA</span>
+<h3>查看GPU型号</h3>
+<div class="highlight"><pre><span class="code-line"><span></span>    sudo lspci | grep NVIDIA</span>
+</pre></div>
+
+
+<h3>安装驱动</h3>
+<div class="highlight"><pre><span class="code-line"><span></span>wget http://cn.download.nvidia.com/tesla/410.79/NVIDIA-Linux-x86_64-410.79.run</span>
+<span class="code-line">chmod a+x NVIDIA-Linux-x86_64-410.79.run</span>
 </pre></div>
 
 
@@ -379,6 +386,12 @@ help_starving_jobs false ALL</p>
 <span class="code-line"><span class="c1"># LD_PRELOAD=/lib64/libc-2.3.6.so.bak rm libc.so.6</span></span>
 <span class="code-line">建立新连接 ：</span>
 <span class="code-line"><span class="c1"># LD_PRELOAD=/lib64/libc-2.3.6.so.bak ln -s /lib64/libc-2.3.6.so.bak libc.so.6</span></span>
+</pre></div>
+
+
+<h2>screen</h2>
+<p>切换用户后，screen出现如下提示：Cannot open your terminal '/dev/pts/38' - please check</p>
+<div class="highlight"><pre><span class="code-line"><span></span>script /dev/null <span class="c1">#更新 tty，再执行screen</span></span>
 </pre></div>
         </div>
         <!-- <div class="tool-box">

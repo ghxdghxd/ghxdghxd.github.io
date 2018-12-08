@@ -1,5 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 生物信息</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/sheng-wu-xin-xi.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2017-03-04T14:38:00+08:00</updated><entry><title>mpileup格式</title><link href="https://ghxdghxd.github.io/mpileup.html" rel="alternate"></link><published>2017-03-04T14:38:00+08:00</published><updated>2017-03-04T14:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-04:/mpileup.html</id><summary type="html">&lt;p&gt;samtools mpileup的格式&lt;/p&gt;</summary><content type="html">&lt;h1&gt;mpileup&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 生物信息</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/sheng-wu-xin-xi.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-12-01T14:30:07+08:00</updated><entry><title>ATAC测序</title><link href="https://ghxdghxd.github.io/ATACseq.html" rel="alternate"></link><published>2018-12-01T14:30:07+08:00</published><updated>2018-12-01T14:30:07+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-12-01:/ATACseq.html</id><summary type="html">&lt;p&gt;简介ATAC的原理及分析方法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;概念&lt;/h1&gt;
+&lt;h2&gt;染色质开放区域&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;染色质分为常染色质和异染色质，常染色质折叠压缩程度低，处于伸展状态；异染色质折叠压缩程度高，处于聚缩状态。&lt;/li&gt;
+&lt;li&gt;常染色质(“打开的染色质”)，称为开放染色质（open chromatin）&lt;ul&gt;
+&lt;li&gt;染色质打开后，有足够的区域允许一些调控蛋白（比如转录因子和辅因子）与DNA结合; 如DNA复制、基因转录&lt;/li&gt;
+&lt;li&gt;染色质的这种特性，叫做染色质的可接近性（chromatin accessibility）&lt;/li&gt;
+&lt;li&gt;通过研究细胞特定状态下开放的染色质区域可以在 DNA 水平上了解其转录调控。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;DNA转座，是一种把DNA序列从染色体的一个区域搬运到另外一个区域的现象，这一过程就由转座酶参与完成。&lt;/li&gt;
+&lt;li&gt;Tn5转座酶: "标签片段化工具"，Tn5转座体可将其衔接子负载整合到可接近的染色质区域，而空间位阻较不可接近的染色质使得转座不可能发生。&lt;ul&gt;
+&lt;li&gt;特异性识别转座子两端反向重复的ME序列(Mosaic End)，形成转座复合体后随机的将转座子插入靶DNA中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1&gt;ATAC的原理&lt;/h1&gt;
+&lt;p&gt;ATAC-seq是利用Tn5转座酶把将携带已知DNA序列标签的转座复合物，加入到细胞核中，再利用已知序列的标签进行PCR建库测序，来获得开放染色质区域。&lt;/p&gt;
+&lt;h2&gt;ATAC建库&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;illumina建库试剂盒（TruePrepTM Index Kit V2）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Tn5转座子，切割开放染色质，在DNA两端添加如下序列，其中加粗斜体部分紧挨着文库的插入片段序列&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Read1 5' ----&amp;gt; 3'
+    TCGTCGGCAGCGTC&lt;strong&gt;AGATGTGTATAAGAGACAG&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Read2 5' ----&amp;gt; 3'
+    GTCTCGTGGGCTCGG&lt;strong&gt;AGATGTGTATAAGAGACAG&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;PCR扩增连接测序接头P5、P7, 以锚定在flowcell芯片上的接头,进行测序
+    &lt;img alt="atac" src="/images/atac1.png" style="width: 60%;" /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;P5
+    AATGATACGGCGACCACCGAGATCTACAC-&lt;strong&gt;i5&lt;/strong&gt;-TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG&lt;/li&gt;
+&lt;li&gt;P7
+    CAAGCAGAAGACGGCATACGAGAT-&lt;strong&gt;i7&lt;/strong&gt;-GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;完整结构&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="atac2" src="/images/atac2.png" style="width: 60%;" /&gt;&lt;/p&gt;
+&lt;p&gt;5’-AATGATACGGCGACCACCGAGATCTACAC-&lt;strong&gt;i5&lt;/strong&gt;-TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG-NNNNNN-CTGTCTCTTATACACATCTCCGAGCCCACGAGAC-&lt;strong&gt;i7&lt;/strong&gt;-ATCTCGTATGCCGTCTTCTGCTTG-3’&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;i5&lt;/strong&gt;, &lt;strong&gt;i7&lt;/strong&gt;为8个碱基序列，&lt;strong&gt;NNNNNN&lt;/strong&gt;: 目标区域序列&lt;/p&gt;
+&lt;h2&gt;ATAC分析&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;去接头&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;cat NexteraPE-PE.fa&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# &amp;gt;PrefixNX/1&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# AGATGTGTATAAGAGACAG&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# &amp;gt;PrefixNX/2&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# AGATGTGTATAAGAGACAG&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# &amp;gt;Trans1&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# &amp;gt;Trans1_rc&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# CTGTCTCTTATACACATCTGACGCTGCCGACGA&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# &amp;gt;Trans2&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# &amp;gt;Trans2_rc&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# CTGTCTCTTATACACATCTCCGAGCCCACGAGAC&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;skewer -f sanger -t &lt;span class="m"&gt;20&lt;/span&gt; -m pe -x NexteraPE-PE.fa --quiet -o &amp;lt;sampleName&amp;gt; &amp;lt;R1.fastq.gz&amp;gt; &amp;lt;R2.fastq.gz&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="ATAC"></category></entry><entry><title>mpileup格式</title><link href="https://ghxdghxd.github.io/mpileup.html" rel="alternate"></link><published>2017-03-04T14:38:00+08:00</published><updated>2017-03-04T14:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-04:/mpileup.html</id><summary type="html">&lt;p&gt;samtools mpileup的格式&lt;/p&gt;</summary><content type="html">&lt;h1&gt;mpileup&lt;/h1&gt;
 &lt;p&gt;mpileup 结果中的 &amp;gt;, &amp;lt;; 代表reference skip, 基因组上没有的序列，  the reference position is
 bridged by reference skip.&lt;/p&gt;
 &lt;p&gt;计算depth要减去reference skip数目&lt;/p&gt;</content><category term="samtools"></category><category term="mpileup"></category></entry><entry><title>循环肿瘤DNA</title><link href="https://ghxdghxd.github.io/ctDNA.html" rel="alternate"></link><published>2017-01-09T15:59:00+08:00</published><updated>2017-01-09T15:59:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-09:/ctDNA.html</id><summary type="html">&lt;p&gt;循环肿瘤DNA&lt;/p&gt;</summary><content type="html">&lt;p&gt;循环肿瘤DNA，英文叫：circulating tumor DNA，简称ctDNA。
@@ -549,44 +617,11 @@ crest第一步从原始的bam结果中提取出soft-clipped reads，第二步用
 &lt;p&gt;4.&lt;strong&gt;cDNA&lt;/strong&gt;：通过mRNA反转录所得，与mRNA序列互补的单链DNA或者与mRNA对应的DNA双链；&lt;/p&gt;
 &lt;p&gt;5.&lt;strong&gt;EST&lt;/strong&gt;：表达序列标签，是指从一个随机选择的cDNA 克隆，进行5’端和3’端单一次测序挑选出来获得的短的cDNA部分序列, 代表一个完整基因的一小部分，在数据库中其长度一般从20 到7000bp 不等，平均长度为360
 ±120bp。由于cDNA文库的复杂性和测序的随机性，有时多个EST代表同一基因或基因组，将其归类形成EST簇（EST cluster)；&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align="center"&gt;过程&lt;/th&gt;
-&lt;th align="center"&gt;模板&lt;/th&gt;
-&lt;th align="center"&gt;原料&lt;/th&gt;
-&lt;th align="center"&gt;特点&lt;/th&gt;
-&lt;th align="center"&gt;引物&lt;/th&gt;
-&lt;th align="center"&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;DNA复制&lt;/td&gt;
-&lt;td align="center"&gt;双链DNA&lt;/td&gt;
-&lt;td align="center"&gt;四种dNTP&lt;/td&gt;
-&lt;td align="center"&gt;合成的新链与模板链一模一样，半保留复制&lt;/td&gt;
-&lt;td align="center"&gt;需要&lt;/td&gt;
-&lt;td align="center"&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;转录&lt;/td&gt;
-&lt;td align="center"&gt;双链DNA&lt;/td&gt;
-&lt;td align="center"&gt;四种NTP&lt;/td&gt;
-&lt;td align="center"&gt;合成的新链除了把DNA上的T改为U外，其他一样，半不连续转录&lt;/td&gt;
-&lt;td align="center"&gt;不需要&lt;/td&gt;
-&lt;td align="center"&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align="center"&gt;翻译&lt;/td&gt;
-&lt;td align="center"&gt;mRNA&lt;/td&gt;
-&lt;td align="center"&gt;20种游离的氨基酸&lt;/td&gt;
-&lt;td align="center"&gt;3个碱基决定一个氨基酸&lt;/td&gt;
-&lt;td align="center"&gt;&lt;/td&gt;
-&lt;td align="center"&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;</content><category term="genome"></category></entry><entry><title>如何根据测序数据计算出数据量以及测序深度？</title><link href="https://ghxdghxd.github.io/NGS-coverage.html" rel="alternate"></link><published>2014-12-04T16:35:00+08:00</published><updated>2016-02-29T20:40:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/NGS-coverage.html</id><summary type="html">&lt;p&gt;根据测序数据(reads)统计数据量以及测序深度&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+&lt;p&gt;过程|模板|原料|特点|引物
+:---:|:---:|:---:|:---:|:---:|:---:
+DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保留复制|需要
+转录|双链DNA|四种NTP|合成的新链除了把DNA上的T改为U外，其他一样，半不连续转录|不需要
+翻译|mRNA|20种游离的氨基酸|3个碱基决定一个氨基酸|&lt;/p&gt;</content><category term="genome"></category></entry><entry><title>如何根据测序数据计算出数据量以及测序深度？</title><link href="https://ghxdghxd.github.io/NGS-coverage.html" rel="alternate"></link><published>2014-12-04T16:35:00+08:00</published><updated>2016-02-29T20:40:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/NGS-coverage.html</id><summary type="html">&lt;p&gt;根据测序数据(reads)统计数据量以及测序深度&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
 &lt;li&gt;数据量大小&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;单端测序&lt;/strong&gt; 数据量 = reads长度 * reads数
@@ -713,4 +748,29 @@ $$Q_{solexa-prior to v.1.3}=-10log_{10}\frac{P}{1-P}$$&lt;/p&gt;
 &lt;h1&gt;fastq 质量检测工具&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="/BioKits/fastqc"&gt;fastQC&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="fastq"></category><category term="format"></category></entry></feed>
+&lt;/ul&gt;
+&lt;h2&gt;结果&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Per base sequence quality&lt;ul&gt;
+&lt;li&gt;任一位置的下四分位数(黄色)低于10或者中位数(红线)低于25，出现“警告”；&lt;/li&gt;
+&lt;li&gt;任一位置的下四分位数(黄色)低于5或者中位数(红线)低于20，出现“失败，Fail”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Per tile sequence quality
+    检查reads中每一个碱基位置在不同的测序小孔之间的偏离度，蓝色代表偏离度小, 质量好，越红代表偏离度越大，质量越差。&lt;/li&gt;
+&lt;li&gt;Per sequence quality scores
+    reads质量的分布, 当峰值小于27时，警告； 当峰值小于20时，fail。&lt;/li&gt;
+&lt;li&gt;Per base sequence content 碱基（A,T,C,G）含量图&lt;ul&gt;
+&lt;li&gt;理论上: A,T,C,G的比例都接近于25%&lt;/li&gt;
+&lt;li&gt;测序的时候，测序仪状态不稳定,&lt;strong&gt;比例差异大&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;当任一位置的A/T比例与G/C比例相差超过10%，报”WARN”；当任 一位置的A/T比例与G/C比例相差超过20%，报”FAIL”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Per sequence GC content CG含量&lt;ul&gt;
+&lt;li&gt;蓝线是程序根据经验分布给出的理论值，红色是真实值，两者接近为最好&lt;/li&gt;
+&lt;li&gt;当红色的线出现双峰，基本肯定是混入了其他物种的DNA序列&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Sequence Length Distribution reads读长
+    当测序的长度不同时，如果很严重，则表明测序仪在此次测序过程中产生的数据不可信&lt;/li&gt;
+&lt;/ol&gt;</content><category term="fastq"></category><category term="format"></category></entry></feed>

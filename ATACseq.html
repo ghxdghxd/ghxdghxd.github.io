@@ -1,0 +1,120 @@
+<div class="header">
+  <h1 class="page-title">
+    <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>
+    ATAC测序
+  </h1>
+  <div class="details">
+    <div class="left">
+      12月 01, 2018
+      <span> | </span> <a href="/category/sheng-wu-xin-xi.html">生物信息</a>
+    </div>
+    <div class="right">
+      <a class="fa fa-tag" href="/tag/atac.html">ATAC</a>
+    </div>
+  </div>
+</div>
+<div id="message-nano-wrapper" class="nano">
+  <div class="nano-content">
+    <ul class="message-container">
+        <div class="message">
+          <h1>概念</h1>
+<h2>染色质开放区域</h2>
+<ol>
+<li>染色质分为常染色质和异染色质，常染色质折叠压缩程度低，处于伸展状态；异染色质折叠压缩程度高，处于聚缩状态。</li>
+<li>常染色质(“打开的染色质”)，称为开放染色质（open chromatin）<ul>
+<li>染色质打开后，有足够的区域允许一些调控蛋白（比如转录因子和辅因子）与DNA结合; 如DNA复制、基因转录</li>
+<li>染色质的这种特性，叫做染色质的可接近性（chromatin accessibility）</li>
+<li>通过研究细胞特定状态下开放的染色质区域可以在 DNA 水平上了解其转录调控。</li>
+</ul>
+</li>
+<li>DNA转座，是一种把DNA序列从染色体的一个区域搬运到另外一个区域的现象，这一过程就由转座酶参与完成。</li>
+<li>Tn5转座酶: "标签片段化工具"，Tn5转座体可将其衔接子负载整合到可接近的染色质区域，而空间位阻较不可接近的染色质使得转座不可能发生。<ul>
+<li>特异性识别转座子两端反向重复的ME序列(Mosaic End)，形成转座复合体后随机的将转座子插入靶DNA中</li>
+</ul>
+</li>
+</ol>
+<h1>ATAC的原理</h1>
+<p>ATAC-seq是利用Tn5转座酶把将携带已知DNA序列标签的转座复合物，加入到细胞核中，再利用已知序列的标签进行PCR建库测序，来获得开放染色质区域。</p>
+<h2>ATAC建库</h2>
+<blockquote>
+<p>illumina建库试剂盒（TruePrepTM Index Kit V2）</p>
+</blockquote>
+<ol>
+<li>
+<p>Tn5转座子，切割开放染色质，在DNA两端添加如下序列，其中加粗斜体部分紧挨着文库的插入片段序列</p>
+<ul>
+<li>Read1 5' ----&gt; 3'
+    TCGTCGGCAGCGTC<strong>AGATGTGTATAAGAGACAG</strong></li>
+<li>Read2 5' ----&gt; 3'
+    GTCTCGTGGGCTCGG<strong>AGATGTGTATAAGAGACAG</strong></li>
+</ul>
+</li>
+<li>
+<p>PCR扩增连接测序接头P5、P7, 以锚定在flowcell芯片上的接头,进行测序
+    <img alt="atac" src="/images/atac1.png" style="width: 60%;" /></p>
+<ul>
+<li>P5
+    AATGATACGGCGACCACCGAGATCTACAC-<strong>i5</strong>-TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG</li>
+<li>P7
+    CAAGCAGAAGACGGCATACGAGAT-<strong>i7</strong>-GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG</li>
+</ul>
+</li>
+<li>
+<p>完整结构</p>
+</li>
+</ol>
+<p><img alt="atac2" src="/images/atac2.png" style="width: 60%;" /></p>
+<p>5’-AATGATACGGCGACCACCGAGATCTACAC-<strong>i5</strong>-TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG-NNNNNN-CTGTCTCTTATACACATCTCCGAGCCCACGAGAC-<strong>i7</strong>-ATCTCGTATGCCGTCTTCTGCTTG-3’</p>
+<p><strong>i5</strong>, <strong>i7</strong>为8个碱基序列，<strong>NNNNNN</strong>: 目标区域序列</p>
+<h2>ATAC分析</h2>
+<ol>
+<li>去接头</li>
+</ol>
+<div class="highlight"><pre><span class="code-line"><span></span>cat NexteraPE-PE.fa</span>
+<span class="code-line"><span class="c1"># &gt;PrefixNX/1</span></span>
+<span class="code-line"><span class="c1"># AGATGTGTATAAGAGACAG</span></span>
+<span class="code-line"><span class="c1"># &gt;PrefixNX/2</span></span>
+<span class="code-line"><span class="c1"># AGATGTGTATAAGAGACAG</span></span>
+<span class="code-line"><span class="c1"># &gt;Trans1</span></span>
+<span class="code-line"><span class="c1"># TCGTCGGCAGCGTCAGATGTGTATAAGAGACAG</span></span>
+<span class="code-line"><span class="c1"># &gt;Trans1_rc</span></span>
+<span class="code-line"><span class="c1"># CTGTCTCTTATACACATCTGACGCTGCCGACGA</span></span>
+<span class="code-line"><span class="c1"># &gt;Trans2</span></span>
+<span class="code-line"><span class="c1"># GTCTCGTGGGCTCGGAGATGTGTATAAGAGACAG</span></span>
+<span class="code-line"><span class="c1"># &gt;Trans2_rc</span></span>
+<span class="code-line"><span class="c1"># CTGTCTCTTATACACATCTCCGAGCCCACGAGAC</span></span>
+<span class="code-line"></span>
+<span class="code-line">skewer -f sanger -t <span class="m">20</span> -m pe -x NexteraPE-PE.fa --quiet -o &lt;sampleName&gt; &lt;R1.fastq.gz&gt; &lt;R2.fastq.gz&gt;</span>
+</pre></div>
+        </div>
+        <!-- <div class="tool-box">
+          <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a>
+        </div> -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nano').overlayScrollbars({
+    scrollbars: {
+      autoHide: "leave",
+    }
+  });
+  $('.trigger-message-close').on('click', function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+    $('body').removeClass('show-main-overlay');
+  });
+  $('#message .header .left a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addDisjunctiveFacetRefinement("category", e.target.text).search();
+    
+  });
+  $('#message .header .right a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addFacetRefinement("tags", e.target.text).search();
+  });
+</script>

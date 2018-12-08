@@ -37,34 +37,28 @@
 <span class="code-line">gsub<span class="o">(</span>regular expression, subsitution string, target string<span class="o">)</span><span class="p">;</span></span>
 <span class="code-line">index<span class="o">(</span>a,b<span class="o">)</span>, r返回b中a的位置，没有返回0</span>
 <span class="code-line"><span class="k">for</span><span class="o">(</span><span class="nv">i</span><span class="o">=</span><span class="m">1</span><span class="p">;</span>i<span class="p">&amp;</span>lt<span class="p">;</span><span class="o">=</span>length<span class="o">(</span>a<span class="o">)</span><span class="p">;</span>i++<span class="o">)</span></span>
+<span class="code-line">awk <span class="s1">&#39;!a[$1&quot; &quot;$2]++{print}&#39;</span> <span class="c1"># 以第一列与第二列去重</span></span>
+<span class="code-line">awk <span class="s1">&#39;a[$1&quot; &quot;$2]++{print}&#39;</span> <span class="c1"># 以第一列与第二列去重，只显示重复行</span></span>
 </pre></div>
 
 
 <h3>awk,getline,用于获得下一行</h3>
-<div class="highlight"><pre><span class="code-line"><span></span>输出奇数，</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1">#输出奇数，</span></span>
 <span class="code-line">seq <span class="m">10</span> <span class="p">|</span> awk <span class="s1">&#39;{print $0;getline}&#39;</span></span>
-<span class="code-line"><span class="m">1</span></span>
-<span class="code-line"><span class="m">3</span></span>
-<span class="code-line"><span class="m">5</span></span>
-<span class="code-line"><span class="m">7</span></span>
-<span class="code-line"><span class="m">9</span></span>
-<span class="code-line">输出偶数</span>
-<span class="code-line">seq <span class="m">10</span> <span class="p">|</span> awk <span class="s1">&#39;{getline;print $0}&#39;</span></span>
-<span class="code-line"><span class="m">2</span></span>
-<span class="code-line"><span class="m">4</span></span>
-<span class="code-line"><span class="m">6</span></span>
-<span class="code-line"><span class="m">8</span></span>
-<span class="code-line"><span class="m">10</span></span>
 <span class="code-line"></span>
-<span class="code-line">输出三行,如果后面没有足够的行，则输出最后一行</span>
+<span class="code-line"><span class="c1">#输出偶数</span></span>
+<span class="code-line">seq <span class="m">10</span> <span class="p">|</span> awk <span class="s1">&#39;{getline;print $0}&#39;</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#从第三行开始，每三行输出一次,如果后面没有足够的行，则输出最后一行</span></span>
 <span class="code-line">seq <span class="m">10</span> <span class="p">|</span> awk <span class="s1">&#39;{getline;getline;print $0}&#39;</span></span>
 <span class="code-line"><span class="m">3</span></span>
 <span class="code-line"><span class="m">6</span></span>
 <span class="code-line"><span class="m">9</span></span>
 <span class="code-line"><span class="m">10</span></span>
-<span class="code-line">获得shell命令的结果</span>
-<span class="code-line">注: 如果cmd出错,则res为上一行的结果，因此前面添加**res<span class="o">=</span><span class="se">\&quot;\&quot;</span>**</span>
-<span class="code-line">    出现awk <span class="o">(</span>Too many open files<span class="o">)</span>, 需要 **close<span class="o">(</span>cmd<span class="o">)</span>**</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># 获得shell命令的结果</span></span>
+<span class="code-line"><span class="c1"># 注: 如果cmd出错,则res为上一行的结果，因此前面添加**res=\&quot;\&quot;**</span></span>
+<span class="code-line"><span class="c1">#     出现awk (Too many open files), 需要 **close(cmd)**</span></span>
 <span class="code-line"></span>
 <span class="code-line">awk <span class="s1">&#39;{cmd=&quot;echo&quot;$0; res=&quot;&quot;;</span></span>
 <span class="code-line"><span class="s1">    cmd|getline res;</span></span>
