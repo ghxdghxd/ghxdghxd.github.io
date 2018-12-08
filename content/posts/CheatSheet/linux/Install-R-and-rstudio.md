@@ -222,3 +222,10 @@ make install
 ```shell
 sudo apt install libcairo2-dev
 ```
+
+### configure: error: missing required header GL/gl.h, configure: error: missing required header GL/glu.h
+
+```shell
+sudo apt install mesa-common-dev
+sudo apt install libglu1-mesa-dev
+```

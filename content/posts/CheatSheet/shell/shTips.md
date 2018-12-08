@@ -31,35 +31,29 @@ length函数返回整个记录中的字符数。
 gsub(regular expression, subsitution string, target string);
 index(a,b), r返回b中a的位置，没有返回0
 for(i=1;i&lt;=length(a);i++)
+awk '!a[$1" "$2]++{print}' # 以第一列与第二列去重
+awk 'a[$1" "$2]++{print}' # 以第一列与第二列去重，只显示重复行
 ```
 
 ### awk,getline,用于获得下一行
 
 ```sh
-输出奇数，
+#输出奇数，
 seq 10 | awk '{print $0;getline}'
-1
-3
-5
-7
-9
-输出偶数
-seq 10 | awk '{getline;print $0}'
-2
-4
-6
-8
-10
 
-输出三行,如果后面没有足够的行，则输出最后一行
+#输出偶数
+seq 10 | awk '{getline;print $0}'
+
+#从第三行开始，每三行输出一次,如果后面没有足够的行，则输出最后一行
 seq 10 | awk '{getline;getline;print $0}'
 3
 6
 9
 10
-获得shell命令的结果
-注: 如果cmd出错,则res为上一行的结果，因此前面添加**res=\"\"**
-    出现awk (Too many open files), 需要 **close(cmd)**
+
+# 获得shell命令的结果
+# 注: 如果cmd出错,则res为上一行的结果，因此前面添加**res=\"\"**
+#     出现awk (Too many open files), 需要 **close(cmd)**
 
 awk '{cmd="echo"$0; res="";
     cmd|getline res;
