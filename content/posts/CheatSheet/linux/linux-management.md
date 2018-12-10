@@ -249,6 +249,17 @@ ln -s /share/apps/gcc-5.3.0/lib64/libstdc++.so.6.0.21 libstdc++.so.6
 strings /usr/lib/libstdc++.so.6 | grep
 ```
 
+## showq
+
+出现错误：
+ERROR:    cannot send request to server xmu.cn:42559 (server may not be running)
+ERROR:    cannot request service (status)
+
+```shell
+cp /opt/maui/sbin/maui /etc/init.d
+/etc/init.d/maui start
+```
+
 # CentOS 6.5 升级内核
 
 ```shell
