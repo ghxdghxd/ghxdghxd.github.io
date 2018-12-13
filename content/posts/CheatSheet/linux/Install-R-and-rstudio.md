@@ -229,3 +229,14 @@ sudo apt install libcairo2-dev
 sudo apt install mesa-common-dev
 sudo apt install libglu1-mesa-dev
 ```
+
+### install units based on udunits2
+
+```shell
+conda install udunits2
+```
+
+```R
+install.packages(install.packages("units",
+    configure.args="--with-udunits2-lib=/share/apps/anaconda3/lib --with-udunits2-include=/share/apps/anaconda3/include"))
+```
