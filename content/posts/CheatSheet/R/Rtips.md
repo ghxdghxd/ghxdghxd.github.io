@@ -10,8 +10,23 @@ Summary: R的常用命令
 ---
 # R的常用命令
 
-## R
+## 字符串操作
+
+### 替换sub, gsub, chart
+
+```R
+chartr("Ab","aB",text)
+```
+
+### 查找grep, grepl
+
+* 向量操作
+* grep返回index
+* grepl返回TRUE/FALSE
+
+## R动态变量
 
 ```r
-    动态生成变量，并赋值， assign(x, value)
+#动态生成变量，并赋值
+assign(x, value)
 ```

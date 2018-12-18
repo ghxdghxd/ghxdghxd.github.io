@@ -71,3 +71,18 @@ cat NexteraPE-PE.fa
 
 skewer -f sanger -t 20 -m pe -x NexteraPE-PE.fa --quiet -o <sampleName> <R1.fastq.gz> <R2.fastq.gz>
 ```
+
+## macs2
+
+the result saved in narrowPeak BED file, header is:
+
++ 1st: chromosome name
++ 2nd: start position of peak
++ 3rd: end position of peak
++ 4th: name of peak
++ 5th: integer score for display in genome browser (e.g. UCSC浏览器显示的灰度)
++ 6th: strand, either "." (=no strand) or "+" or "-"
++ 7th: fold-change
++ 8th: -log10pvalue
++ 9th: -log10qvalue
++ 10th: relative summit position to peak start

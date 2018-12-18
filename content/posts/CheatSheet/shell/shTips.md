@@ -19,47 +19,7 @@ Summary: shell的常用命令
 &>file 意思是把 标准输出 和 标准错误输出 都重定向到文件file中
 ```
 
-## awk
-
-```sh
-$0~/aaa/表示0包括aaa
-split (string, array, field separator)
-split (string, array)  \--&gt;如果第三个参数没有提供，awk就默认使用当前FS值。
-substr(s,p) 返回字符串s中从p开始的后缀部分
-substr(s,p,n) 返回字符串s中从p开始长度为n的后缀部分
-length函数返回整个记录中的字符数。
-gsub(regular expression, subsitution string, target string);
-index(a,b), r返回b中a的位置，没有返回0
-for(i=1;i&lt;=length(a);i++)
-awk '!a[$1" "$2]++{print}' # 以第一列与第二列去重
-awk 'a[$1" "$2]++{print}' # 以第一列与第二列去重，只显示重复行
-```
-
-### awk,getline,用于获得下一行
-
-```sh
-#输出奇数，
-seq 10 | awk '{print $0;getline}'
-
-#输出偶数
-seq 10 | awk '{getline;print $0}'
-
-#从第三行开始，每三行输出一次,如果后面没有足够的行，则输出最后一行
-seq 10 | awk '{getline;getline;print $0}'
-3
-6
-9
-10
-
-# 获得shell命令的结果
-# 注: 如果cmd出错,则res为上一行的结果，因此前面添加**res=\"\"**
-#     出现awk (Too many open files), 需要 **close(cmd)**
-
-awk '{cmd="echo"$0; res="";
-    cmd|getline res;
-    print $res;
-    close (cmd)}' file
-```
+## [awk](awk)
 
 ## sed
 
