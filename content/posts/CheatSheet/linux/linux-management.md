@@ -58,24 +58,29 @@ chmod a+x NVIDIA-Linux-x86_64-410.79.run
 + 配置
   + commput0
     + [2.10GHz] * 4 \* 8核/CPU * 2线程/核 = 64
-    + 1T \* 6块 >>> 3T(raid10), 1.9T+792G未知
+    + 1T \* 6块 >>> 3T(raid10), 485M boot + 1.9T root + 781G /export/swap
+    + sda1, sda3, sdb1
   + compute1-4
     + [2.60GHz] * 4 * 6核/CPU * 2线程/核 = 48
     + TeslaK20Xm GPU ，cuda核心数 2688， 内存6G
+    + /state/partition1 每个计算节点的私有空间
   + compute5
     + [2.60GHz] * 4 * 6核/CPU * 2线程/核 = 48
+    + /state/partition1 每个计算节点的私有空间
   + compute6
     + [2.20GHz] * 4 * 6核/CPU * 2线程/核 = 48
+    + /state/partition1 每个计算节点的私有空间
   + compute7-8
     + [2.30GHz] * 4 * 8核/CPU * 2线程/核 = 64
+    + /state/partition1 每个计算节点的私有空间
   + 数据线(raid5)
-    + 3T \* 3块 >>> 6T
-    + 4T \* 6块 >>> 18T
-    + 8T \* 3块 >>> 15T
+    + 3T \* 3块 >>> 6T, sdd1
+    + 4T \* 6块 >>> 18T, sdc1, sdc2
+    + 8T \* 3块 >>> 15T, sde1
   + 网线(raid5)
-    + 4T \* 5块 >>> 16T
-    + 4T \* 5块 >>> 16T
-    + 8T \* 5块 >>> 30T
+    + 4T \* 5块 >>> 16T, /dev/mapper/mpathep1
+    + 4T \* 5块 >>> 16T, /dev/mapper/mpathfp1
+    + 8T \* 5块 >>> 30T, /dev/mapper/mpathhp1
 
 ## rocks常用命令
 
@@ -216,6 +221,7 @@ service pbs_server restart
         data3 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
         data4 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
         data5 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
+        swap -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
 
 + 修复分区(未完)
 
