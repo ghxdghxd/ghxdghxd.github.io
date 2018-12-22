@@ -1,7 +1,7 @@
 ---
 Title: 集群管理笔记
 Date: 2014-12-04 16:10:16
-Modified: 2017-03-09 22:07:02
+Modified: 2018-03-09 22:07:02
 Category: 小抄速查
 Tags: linux, centos, shell, hpc, rocks cluster, manage
 Slug: linux-management
@@ -32,7 +32,8 @@ echo 1 > /proc/sys/vm/drop_caches
 ## 添加外挂硬盘
 
 ```shell
-mount /dev/sdc1 /extra
+mount /dev/sdc1 /extra          #158
+mount /dev/sdb1 /export/swap/   #162
 ```
 
 ## [CPU信息](cpuinfo)
@@ -41,19 +42,20 @@ mount /dev/sdc1 /extra
 
 ### 查看GPU型号
 
-        sudo lspci | grep NVIDIA
+```sh
+sudo lspci | grep NVIDIA
+```
 
 ### 安装驱动
 
 ```sh
 wget http://cn.download.nvidia.com/tesla/410.79/NVIDIA-Linux-x86_64-410.79.run
 chmod a+x NVIDIA-Linux-x86_64-410.79.run
-
 ```
 
-## 硬盘
+## [磁盘阵列简介](raid)
 
-[磁盘阵列简介](raid)
+## 系统配置(CPU + GPU + raid)
 
 + 配置
   + commput0
@@ -84,52 +86,65 @@ chmod a+x NVIDIA-Linux-x86_64-410.79.run
 
 ## rocks常用命令
 
-1. 所有节点运行
+### 所有节点运行
 
-        rocks run host "hostname"
+```sh
+rocks run host "hostname"
+```
 
-2. 同步配制
+### 同步配制
 
-        rocks sync config
+```sh
+rocks sync config
+```
 
-3. 要先重启管理节点然后计算机节点,否则导致数据不同步
+### 要先重启管理节点然后计算机节点,否则导致数据不同步
 
-        rocks run host "/etc/init.d/pbs_mom restart"
+```sh
+rocks run host "/etc/init.d/pbs_mom restart"
+```
 
-4. 添加用户**无法qusb要在/etc/group 添加用户**
+### 添加用户**无法qusb要在/etc/group 添加用户**
 
-        #!shell
-        useradd -g group name #/etc/passwd name:x:xxx:xxx::/export/home/casual:/bin/bash
-        passwd name
-        rocks sync users #可更改/export/home/name 为 /home/name : /etc/passwd name:x:xxx:xxx::/home/casual:/bin/bash
+```shell
+useradd -g group name 
+#/etc/passwd name:x:xxx:xxx::/export/home/casual:/bin/bash
+passwd name
+rocks sync users 
+#可更改/export/home/name 为
+#/home/name : /etc/passwd name:x:xxx:xxx::/home/casual:/bin/bash
 
-        #如果要修改用户名（未测试过）
-        usermod -l newName oldName
-        mv /export/home/newName /export/home/oldName
-        usermod -d /export/home/newName -m newName
-        rocks sync users
+#如果要修改用户名（未测试过）
+usermod -l newName oldName
+mv /export/home/newName /export/home/oldName
+usermod -d /export/home/newName -m newName
+rocks sync users
+```
 
-5. 如果ssh compute 需要输入密码
+### 如果ssh compute 需要输入密码
 
-        rm -rf ~/.ssh #然后 退出登录 再登陆 会自动生成新密钥
+```sh
+rm -rf ~/.ssh #然后 退出登录 再登陆 会自动生成新密钥
+```
 
-6. 进入单用户模式
+### 节点进入单用户模式
 
-    在倒计时5秒时，按任意键出现下图，
-    **选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统**
-    ![图1](images/manager1.png){:style="height:30%; width:30%;"}
-    ![图2](images/manager2.png){:style="height:30%; width:30%;"}
-    ![图3](images/manager3.jpg){:style="height:30%; width:30%;"}
+在倒计时5秒时，按任意键出现下图，
+**选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统**
+![图1](images/manager1.png){:style="height:30%; width:30%;"}
+![图2](images/manager2.png){:style="height:30%; width:30%;"}
+![图3](images/manager3.jpg){:style="height:30%; width:30%;"}
 
-7. 重装节点
+### 重装节点
 
-        #!bash
-        rocks set host boot compute1 action=install
+```sh
+rocks set host boot compute1 action=install
+```
 
-8. 提交任务后，无运行时间,且qdel: Server could not connect to MOM
+### 提交任务后，无运行时间,且qdel: Server could not connect to MOM
 
-    由于节点pbs_mom没运行
-    解决办法是进入节点后运行pbs_mom
+由于节点pbs_mom没运行
+解决办法是进入节点后运行pbs_mom
 
 ## qmgr
 
@@ -210,7 +225,7 @@ service pbs_server restart
         /share /etc/auto.share --timeout=1200
         /home /etc/auto.home  --timeout=1200
 
-  + /etc/auto.share
+  + /etc/auto.share 如果要增加新存储，需要添加，如swap
 
         #!shell
         apps -nfsvers=3 -soft,intr,timeo=9999  xmu.local:/export/&
@@ -222,6 +237,18 @@ service pbs_server restart
         data4 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
         data5 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
         swap -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
+
+  + /etc/exportfs 如果要增加新存储，需要添加，如swap
+
+        #!shell
+        /export 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/data0 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/data1 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/data2 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/data3 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/data4 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/data5 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/swap 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
 
 + 修复分区(未完)
 
