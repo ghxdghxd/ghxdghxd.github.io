@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-12-01T14:30:07+08:00</updated><entry><title>ATAC测序</title><link href="https://ghxdghxd.github.io/ATACseq.html" rel="alternate"></link><published>2018-12-01T14:30:07+08:00</published><updated>2018-12-01T14:30:07+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-12-01:/ATACseq.html</id><summary type="html">&lt;p&gt;简介ATAC的原理及分析方法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;概念&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/all.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-12-18T22:30:24+08:00</updated><entry><title>ATAC测序</title><link href="https://ghxdghxd.github.io/ATACseq.html" rel="alternate"></link><published>2018-12-01T14:30:07+08:00</published><updated>2018-12-01T14:30:07+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-12-01:/ATACseq.html</id><summary type="html">&lt;p&gt;简介ATAC的原理及分析方法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;概念&lt;/h1&gt;
 &lt;h2&gt;染色质开放区域&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;染色质分为常染色质和异染色质，常染色质折叠压缩程度低，处于伸展状态；异染色质折叠压缩程度高，处于聚缩状态。&lt;/li&gt;
@@ -67,7 +67,23 @@
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# CTGTCTCTTATACACATCTCCGAGCCCACGAGAC&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;skewer -f sanger -t &lt;span class="m"&gt;20&lt;/span&gt; -m pe -x NexteraPE-PE.fa --quiet -o &amp;lt;sampleName&amp;gt; &amp;lt;R1.fastq.gz&amp;gt; &amp;lt;R2.fastq.gz&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="ATAC"></category></entry><entry><title>ivreg工具变量回归</title><link href="https://ghxdghxd.github.io/ivreg.html" rel="alternate"></link><published>2018-11-12T13:14:43+08:00</published><updated>2018-11-12T13:14:43+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-12:/ivreg.html</id><summary type="html">&lt;p&gt;why are the R-squared negative in Two-stage least-squares (2SLS) estimates or instrumental variables (IV) estimates?&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;macs2&lt;/h2&gt;
+&lt;p&gt;the result saved in narrowPeak BED file, header is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1st: chromosome name&lt;/li&gt;
+&lt;li&gt;2nd: start position of peak&lt;/li&gt;
+&lt;li&gt;3rd: end position of peak&lt;/li&gt;
+&lt;li&gt;4th: name of peak&lt;/li&gt;
+&lt;li&gt;5th: integer score for display in genome browser (e.g. UCSC浏览器显示的灰度)&lt;/li&gt;
+&lt;li&gt;6th: strand, either "." (=no strand) or "+" or "-"&lt;/li&gt;
+&lt;li&gt;7th: fold-change&lt;/li&gt;
+&lt;li&gt;8th: -log10pvalue&lt;/li&gt;
+&lt;li&gt;9th: -log10qvalue&lt;/li&gt;
+&lt;li&gt;10th: relative summit position to peak start&lt;/li&gt;
+&lt;/ul&gt;</content><category term="ATAC"></category></entry><entry><title>ivreg工具变量回归</title><link href="https://ghxdghxd.github.io/ivreg.html" rel="alternate"></link><published>2018-11-12T13:14:43+08:00</published><updated>2018-11-12T13:14:43+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-12:/ivreg.html</id><summary type="html">&lt;p&gt;why are the R-squared negative in Two-stage least-squares (2SLS) estimates or instrumental variables (IV) estimates?&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;&lt;a href="https://www.stata.com/support/faqs/statistics/two-stage-least-squares/"&gt;参考1&lt;/a&gt;
 &lt;a href="https://stats.stackexchange.com/questions/139782/why-report-r-squared-in-instrumental-variables-estimation"&gt;参考2&lt;/a&gt;
 &lt;a href="https://zhuanlan.zhihu.com/p/19756603"&gt;参考3&lt;/a&gt;&lt;/p&gt;
@@ -1282,13 +1298,13 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;p&gt;Raid1：至少需要&lt;em&gt;2块&lt;/em&gt;*盘，磁盘数量是2的n倍，每一块磁盘要有对应的备份盘，利用率是50%，只要有一对磁盘没有损坏就可以正常使用。n组磁盘（2n块同类型磁盘）的阵列理论上读取速度是单块磁盘的n倍（实际达不到），风险性是单一磁盘的n分之一（实际更低）。换盘后需要长时间的镜像同步，不影响外界访问，但整个系统性能下降。磁盘控制器负载比较大。适用于安全性较高，且能较快恢复数据的场合。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Raid10：至少需要&lt;strong&gt;4块&lt;/strong&gt;盘，磁盘数量也是2的n倍。既有数据镜像备份，也能保证较高的读写速度。成本比较大。&lt;/p&gt;
+&lt;p&gt;Raid10：至少需要&lt;strong&gt;4块&lt;/strong&gt;盘，磁盘数量也是2的n倍。既有数据镜像备份，也能保证较高的读写速度。成本比较大。&lt;strong&gt;容量 = 每块硬盘容量 * n/2&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Raid3：至少需要&lt;strong&gt;3块&lt;/strong&gt;盘（2块盘没有校验的意义）。将数据存放在n+1块盘上，有效空间是n块盘的总和，最后一块存储校验信息。数据被分割存储在n块盘上，任一数据盘出现问题，可由其他数据盘通过校正监测恢复数据（可以带伤工作），换数据盘需要重新恢复完整的校验容错信息。对阵列写入时会重写校验盘的内容，对校验盘的负载较大，读写速度相较于Raid0较慢，适用于读取多而写入少的应用环境，比如数据库和web服务器。使用容错算法和分块的大小决定了Raid3在通常情况下用于大文件且安全性要求较高的应用，比如视频编辑、硬盘播出机、大型数据库等。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Raid5：至少需要&lt;strong&gt;3块&lt;/strong&gt;盘，读取速度接近Raid0，但是安全性更高。安全性上接近Raid1，但是磁盘的利用率更高。可以认为是Raid0和Raid1的一个折中方案。只允许有一块盘出错，可以通过另外多块盘来计算出故障盘的数据，故障之后必须尽快更换。比Raid0+1的磁盘利用率高，是目前比较常用的一种方案。&lt;/p&gt;
+&lt;p&gt;Raid5：至少需要&lt;strong&gt;3块&lt;/strong&gt;盘，读取速度接近Raid0，但是安全性更高。安全性上接近Raid1，但是磁盘的利用率更高。可以认为是Raid0和Raid1的一个折中方案。只允许有一块盘出错，可以通过另外多块盘来计算出故障盘的数据，故障之后必须尽快更换。比Raid0+1的磁盘利用率高，是目前比较常用的一种方案。&lt;strong&gt;容量 = 每块硬盘容量 * (n-2)&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</content><category term="raid"></category></entry><entry><title>BRCA基因检测</title><link href="https://ghxdghxd.github.io/BRCA.html" rel="alternate"></link><published>2016-11-03T20:10:00+08:00</published><updated>2016-11-03T20:31:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/BRCA.html</id><summary type="html">&lt;p&gt;BRCA的基因检测&lt;/p&gt;</summary><content type="html">&lt;h1&gt;背景&lt;/h1&gt;
 &lt;p&gt;一方面，BRCA是抑癌基因，突变后容易得肿瘤，另一方面，BRCA可以修复DNA损伤。而DNA两条自我修复途径：&lt;/p&gt;
@@ -2079,9 +2095,121 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;span class="code-line"&gt;-&lt;/span&gt;
 &lt;span class="code-line"&gt;.&lt;/span&gt;
 &lt;span class="code-line"&gt;!&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="markdown"></category></entry><entry><title>R</title><link href="https://ghxdghxd.github.io/R.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-01-13T10:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/R.html</id><summary type="html">&lt;p&gt;R的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;R的常用命令&lt;/h1&gt;
-&lt;h2&gt;R&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;    动态生成变量，并赋值， &lt;span class="kp"&gt;assign&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;,&lt;/span&gt; value&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="markdown"></category></entry><entry><title>awk使用记录</title><link href="https://ghxdghxd.github.io/awk.html" rel="alternate"></link><published>2016-10-12T22:12:00+08:00</published><updated>2018-12-18T22:30:24+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/awk.html</id><summary type="html">&lt;p&gt;awk的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;awk日常用法&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;$0&lt;/span&gt;~/aaa/表示0包括aaa&lt;/span&gt;
+&lt;span class="code-line"&gt;split &lt;span class="o"&gt;(&lt;/span&gt;string, array, field separator&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;split &lt;span class="o"&gt;(&lt;/span&gt;string, array&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="se"&gt;\-&lt;/span&gt;-&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt;如果第三个参数没有提供，awk就默认使用当前FS值。&lt;/span&gt;
+&lt;span class="code-line"&gt;substr&lt;span class="o"&gt;(&lt;/span&gt;s,p&lt;span class="o"&gt;)&lt;/span&gt; 返回字符串s中从p开始的后缀部分&lt;/span&gt;
+&lt;span class="code-line"&gt;substr&lt;span class="o"&gt;(&lt;/span&gt;s,p,n&lt;span class="o"&gt;)&lt;/span&gt; 返回字符串s中从p开始长度为n的后缀部分&lt;/span&gt;
+&lt;span class="code-line"&gt;length函数返回整个记录中的字符数。&lt;/span&gt;
+&lt;span class="code-line"&gt;gsub&lt;span class="o"&gt;(&lt;/span&gt;regular expression, subsitution string, target string&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;index&lt;span class="o"&gt;(&lt;/span&gt;a,b&lt;span class="o"&gt;)&lt;/span&gt;, r返回b中a的位置，没有返回0&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;i&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;length&lt;span class="o"&gt;(&lt;/span&gt;a&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;i++&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;awk &lt;span class="s1"&gt;&amp;#39;!a[$1&amp;quot; &amp;quot;$2]++{print}&amp;#39;&lt;/span&gt; &lt;span class="c1"&gt;# 以第一列与第二列去重&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;awk &lt;span class="s1"&gt;&amp;#39;a[$1&amp;quot; &amp;quot;$2]++{print}&amp;#39;&lt;/span&gt; &lt;span class="c1"&gt;# 以第一列与第二列去重，只显示重复行&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;awk,getline,用于获得下一行&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#输出奇数，&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{print $0;getline}&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#输出偶数&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{getline;print $0}&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#从第三行开始，每三行输出一次,如果后面没有足够的行，则输出最后一行&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{getline;getline;print $0}&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;6&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;9&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 获得shell命令的结果&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 注: 如果cmd出错,则res为上一行的结果，因此前面添加**res=\&amp;quot;\&amp;quot;**&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#     出现awk (Too many open files), 需要 **close(cmd)**&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;awk &lt;span class="s1"&gt;&amp;#39;{cmd=&amp;quot;echo&amp;quot;$0; res=&amp;quot;&amp;quot;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s1"&gt;    cmd|getline res;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s1"&gt;    print $res;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s1"&gt;    close (cmd)}&amp;#39;&lt;/span&gt; file&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;awk传参&lt;/h2&gt;
+&lt;h3&gt;方法一&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;awk &lt;span class="s1"&gt;&amp;#39;{print a, b}&amp;#39;&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;111&lt;/span&gt; &lt;span class="nv"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;222&lt;/span&gt; yourfile&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;注意, 变量位置要在 file 名之前, 否则就不能调用. 例如:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;awk &lt;span class="s1"&gt;&amp;#39;{print a, b}&amp;#39;&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;111&lt;/span&gt; file1 &lt;span class="nv"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;222&lt;/span&gt; file2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;file1 不能调用 b=222.
+还有, 于BEGIN{}中是不能调用这些的variable.
+要用之后所讲的第二种方法才可解决.&lt;/p&gt;
+&lt;h3&gt;方法二&lt;/h3&gt;
+&lt;p&gt;对每一个变量加一个 &lt;code&gt;-v&lt;/code&gt; 作传递&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;awk –v &lt;span class="nv"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;111&lt;/span&gt; –v &lt;span class="nv"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;222&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{print a,b}&amp;#39;&lt;/span&gt; yourfile&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;方法三&lt;/h3&gt;
+&lt;p&gt;对于&lt;strong&gt;字符类型&lt;/strong&gt;，使用 双引号 + 单引号 + 变量&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;awk &lt;span class="s1"&gt;&amp;#39;{print &amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$LOGNAME&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;quot;}&amp;#39;&lt;/span&gt; yourfile&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是,对于&lt;strong&gt;浮点类型&lt;/strong&gt;，&lt;strong&gt;使用方法会有出入&lt;/strong&gt;, 问题如下&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;用三个变量&lt;code&gt;a, b, c&lt;/code&gt;分别筛选&lt;code&gt;test&lt;/code&gt;文本的3列&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.25&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nv"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.1&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nv"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.05&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;cat test.txt&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 0.185260877381154 0.339233950224672   0.872786159229803&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 0.185260877381154 0.339233950224672   0.0257941397953021&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 0.185260877381154 0.339233950224672   0.43720505769949&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 0.185260877381154 0.339233950224672   1.94370007597298e-05&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果，用双引号 + 单引号 + 变量, 只筛选出一行&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;awk &lt;span class="s1"&gt;&amp;#39;$1&amp;lt;&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$a&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;quot; &amp;amp;&amp;amp; $2&amp;gt;&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;quot; &amp;amp;&amp;amp; $3&amp;lt;&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$c&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;quot; {OFS=&amp;quot;\t&amp;quot;;print $0}&amp;#39;&lt;/span&gt; test.txt&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 0.185260877381154 0.339233950224672   0.0257941397953021&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果，只用单引号 + 变量， 筛选出两行&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;awk &lt;span class="s1"&gt;&amp;#39;$1&amp;lt;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$a&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; &amp;amp;&amp;amp; $2&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; &amp;amp;&amp;amp; $3&amp;lt;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$c&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; {OFS=&amp;quot;\t&amp;quot;;print $0}&amp;#39;&lt;/span&gt; test.txt&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 0.185260877381154 0.339233950224672   0.0257941397953021&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 0.185260877381154 0.339233950224672   1.94370007597298e-05&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;很明显，单引号 + 变量 结果正确，用echo打印两行命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;$1&amp;lt;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$a&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; &amp;amp;&amp;amp; $2&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; &amp;amp;&amp;amp; $3&amp;lt;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$c&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; {OFS=&amp;quot;\t&amp;quot;;print $0}&amp;#39;&lt;/span&gt; test.txt&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# awk $1&amp;lt;0.25 &amp;amp;&amp;amp; $2&amp;gt;0.1 &amp;amp;&amp;amp; $3&amp;lt;0.05 {OFS=&amp;quot;   &amp;quot;;print $0} test.txt&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;$1&amp;lt;&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$a&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;quot; &amp;amp;&amp;amp; $2&amp;gt;&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;quot; &amp;amp;&amp;amp; $3&amp;lt;&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$c&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;quot; {OFS=&amp;quot;\t&amp;quot;;print $0}&amp;#39;&lt;/span&gt; test.txt&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# awk $1&amp;lt;&amp;quot;0.25&amp;quot; &amp;amp;&amp;amp; $2&amp;gt;&amp;quot;0.1&amp;quot; &amp;amp;&amp;amp; $3&amp;lt;&amp;quot;0.05&amp;quot; {OFS=&amp;quot; &amp;quot;;print $0} test.txt&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="awk"></category><category term="shell"></category><category term="linux"></category></entry><entry><title>R</title><link href="https://ghxdghxd.github.io/R.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-01-13T10:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/R.html</id><summary type="html">&lt;p&gt;R的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;R的常用命令&lt;/h1&gt;
+&lt;h2&gt;字符串操作&lt;/h2&gt;
+&lt;h3&gt;替换sub, gsub, chart&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;chartr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Ab&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;aB&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;text&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;查找grep, grepl&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;向量操作&lt;/li&gt;
+&lt;li&gt;grep返回index&lt;/li&gt;
+&lt;li&gt;grepl返回TRUE/FALSE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;R动态变量&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#动态生成变量，并赋值&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="kp"&gt;assign&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;,&lt;/span&gt; value&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category></entry><entry><title>计算机字符编码</title><link href="https://ghxdghxd.github.io/Unicode.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-02-28T11:10:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/Unicode.html</id><summary type="html">&lt;p&gt;计算机字符编码&lt;/p&gt;</summary><content type="html">&lt;h1&gt;计算机系统通用的字符编码&lt;/h1&gt;
 &lt;h2&gt;数据结构(字符)&lt;/h2&gt;
 &lt;p&gt;在计算机内存中，统一使用Unicode编码；当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码。&lt;br /&gt;
@@ -2197,46 +2325,7 @@ You can open in universal-new-line mode to solve the error.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;awk&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;$0&lt;/span&gt;~/aaa/表示0包括aaa&lt;/span&gt;
-&lt;span class="code-line"&gt;split &lt;span class="o"&gt;(&lt;/span&gt;string, array, field separator&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;split &lt;span class="o"&gt;(&lt;/span&gt;string, array&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="se"&gt;\-&lt;/span&gt;-&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt;如果第三个参数没有提供，awk就默认使用当前FS值。&lt;/span&gt;
-&lt;span class="code-line"&gt;substr&lt;span class="o"&gt;(&lt;/span&gt;s,p&lt;span class="o"&gt;)&lt;/span&gt; 返回字符串s中从p开始的后缀部分&lt;/span&gt;
-&lt;span class="code-line"&gt;substr&lt;span class="o"&gt;(&lt;/span&gt;s,p,n&lt;span class="o"&gt;)&lt;/span&gt; 返回字符串s中从p开始长度为n的后缀部分&lt;/span&gt;
-&lt;span class="code-line"&gt;length函数返回整个记录中的字符数。&lt;/span&gt;
-&lt;span class="code-line"&gt;gsub&lt;span class="o"&gt;(&lt;/span&gt;regular expression, subsitution string, target string&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;index&lt;span class="o"&gt;(&lt;/span&gt;a,b&lt;span class="o"&gt;)&lt;/span&gt;, r返回b中a的位置，没有返回0&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;i&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;lt&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;length&lt;span class="o"&gt;(&lt;/span&gt;a&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;i++&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;awk &lt;span class="s1"&gt;&amp;#39;!a[$1&amp;quot; &amp;quot;$2]++{print}&amp;#39;&lt;/span&gt; &lt;span class="c1"&gt;# 以第一列与第二列去重&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;awk &lt;span class="s1"&gt;&amp;#39;a[$1&amp;quot; &amp;quot;$2]++{print}&amp;#39;&lt;/span&gt; &lt;span class="c1"&gt;# 以第一列与第二列去重，只显示重复行&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;awk,getline,用于获得下一行&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#输出奇数，&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{print $0;getline}&amp;#39;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#输出偶数&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{getline;print $0}&amp;#39;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#从第三行开始，每三行输出一次,如果后面没有足够的行，则输出最后一行&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;seq &lt;span class="m"&gt;10&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;{getline;getline;print $0}&amp;#39;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;6&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;9&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 获得shell命令的结果&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 注: 如果cmd出错,则res为上一行的结果，因此前面添加**res=\&amp;quot;\&amp;quot;**&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#     出现awk (Too many open files), 需要 **close(cmd)**&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;awk &lt;span class="s1"&gt;&amp;#39;{cmd=&amp;quot;echo&amp;quot;$0; res=&amp;quot;&amp;quot;;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="s1"&gt;    cmd|getline res;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="s1"&gt;    print $res;&lt;/span&gt;&lt;/span&gt;
-&lt;span class="code-line"&gt;&lt;span class="s1"&gt;    close (cmd)}&amp;#39;&lt;/span&gt; file&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;h2&gt;&lt;a href="awk"&gt;awk&lt;/a&gt;&lt;/h2&gt;
 &lt;h2&gt;sed&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sed -n &lt;span class="s1"&gt;&amp;#39;/A/,/B/p&amp;#39;&lt;/span&gt;  匹配A的行与匹配B的行之间的内容&lt;/span&gt;
 &lt;span class="code-line"&gt;sed -n &lt;span class="s1"&gt;&amp;#39;2p,4,5p&amp;#39;&lt;/span&gt; 输出2 &lt;span class="m"&gt;4&lt;/span&gt;,5 行&lt;/span&gt;
@@ -2982,11 +3071,44 @@ axes.unicode_minus，将True改为False&lt;/p&gt;
 &lt;p&gt;4.&lt;strong&gt;cDNA&lt;/strong&gt;：通过mRNA反转录所得，与mRNA序列互补的单链DNA或者与mRNA对应的DNA双链；&lt;/p&gt;
 &lt;p&gt;5.&lt;strong&gt;EST&lt;/strong&gt;：表达序列标签，是指从一个随机选择的cDNA 克隆，进行5’端和3’端单一次测序挑选出来获得的短的cDNA部分序列, 代表一个完整基因的一小部分，在数据库中其长度一般从20 到7000bp 不等，平均长度为360
 ±120bp。由于cDNA文库的复杂性和测序的随机性，有时多个EST代表同一基因或基因组，将其归类形成EST簇（EST cluster)；&lt;/p&gt;
-&lt;p&gt;过程|模板|原料|特点|引物
-:---:|:---:|:---:|:---:|:---:|:---:
-DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保留复制|需要
-转录|双链DNA|四种NTP|合成的新链除了把DNA上的T改为U外，其他一样，半不连续转录|不需要
-翻译|mRNA|20种游离的氨基酸|3个碱基决定一个氨基酸|&lt;/p&gt;</content><category term="genome"></category></entry><entry><title>如何根据测序数据计算出数据量以及测序深度？</title><link href="https://ghxdghxd.github.io/NGS-coverage.html" rel="alternate"></link><published>2014-12-04T16:35:00+08:00</published><updated>2016-02-29T20:40:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/NGS-coverage.html</id><summary type="html">&lt;p&gt;根据测序数据(reads)统计数据量以及测序深度&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;过程&lt;/th&gt;
+&lt;th align="center"&gt;模板&lt;/th&gt;
+&lt;th align="center"&gt;原料&lt;/th&gt;
+&lt;th align="center"&gt;特点&lt;/th&gt;
+&lt;th align="center"&gt;引物&lt;/th&gt;
+&lt;th align="center"&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;DNA复制&lt;/td&gt;
+&lt;td align="center"&gt;双链DNA&lt;/td&gt;
+&lt;td align="center"&gt;四种dNTP&lt;/td&gt;
+&lt;td align="center"&gt;合成的新链与模板链一模一样，半保留复制&lt;/td&gt;
+&lt;td align="center"&gt;需要&lt;/td&gt;
+&lt;td align="center"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;转录&lt;/td&gt;
+&lt;td align="center"&gt;双链DNA&lt;/td&gt;
+&lt;td align="center"&gt;四种NTP&lt;/td&gt;
+&lt;td align="center"&gt;合成的新链除了把DNA上的T改为U外，其他一样，半不连续转录&lt;/td&gt;
+&lt;td align="center"&gt;不需要&lt;/td&gt;
+&lt;td align="center"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;翻译&lt;/td&gt;
+&lt;td align="center"&gt;mRNA&lt;/td&gt;
+&lt;td align="center"&gt;20种游离的氨基酸&lt;/td&gt;
+&lt;td align="center"&gt;3个碱基决定一个氨基酸&lt;/td&gt;
+&lt;td align="center"&gt;&lt;/td&gt;
+&lt;td align="center"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</content><category term="genome"></category></entry><entry><title>如何根据测序数据计算出数据量以及测序深度？</title><link href="https://ghxdghxd.github.io/NGS-coverage.html" rel="alternate"></link><published>2014-12-04T16:35:00+08:00</published><updated>2016-02-29T20:40:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/NGS-coverage.html</id><summary type="html">&lt;p&gt;根据测序数据(reads)统计数据量以及测序深度&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
 &lt;li&gt;数据量大小&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;单端测序&lt;/strong&gt; 数据量 = reads长度 * reads数
@@ -3022,7 +3144,7 @@ DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保�
 &lt;span class="code-line"&gt;    Our server will be maintained at&lt;/span&gt;
 &lt;span class="code-line"&gt;    please don&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;t login at that time,thanks.&lt;/span&gt;
 &lt;span class="code-line"&gt;    那么当用户登录的时候，就会显示设置的内容了。&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/linux-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2017-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/linux-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;h1&gt;电源配置&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/linux-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2018-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/linux-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;h1&gt;电源配置&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;由于安装之初，未使用线标签标记，后续管理十分不便...&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -3095,14 +3217,15 @@ DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保�
 
 &lt;h2&gt;&lt;a href="terminal-announcement"&gt;登录显示信息&lt;/a&gt;&lt;/h2&gt;
 &lt;h2&gt;添加外挂硬盘&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;mount /dev/sdc1 /extra&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;mount /dev/sdc1 /extra          &lt;span class="c1"&gt;#158&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;mount /dev/sdb1 /export/swap/   &lt;span class="c1"&gt;#162&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;&lt;a href="cpuinfo"&gt;CPU信息&lt;/a&gt;&lt;/h2&gt;
 &lt;h2&gt;GPU计算卡&lt;/h2&gt;
 &lt;h3&gt;查看GPU型号&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;    sudo lspci | grep NVIDIA&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo lspci &lt;span class="p"&gt;|&lt;/span&gt; grep NVIDIA&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3112,73 +3235,73 @@ DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保�
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;硬盘&lt;/h2&gt;
-&lt;p&gt;&lt;a href="raid"&gt;磁盘阵列简介&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href="raid"&gt;磁盘阵列简介&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;系统配置(CPU + GPU + raid)&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;配置&lt;/li&gt;
 &lt;li&gt;commput0&lt;ul&gt;
 &lt;li&gt;[2.10GHz] * 4 * 8核/CPU * 2线程/核 = 64&lt;/li&gt;
-&lt;li&gt;1T * 6块 &amp;gt;&amp;gt;&amp;gt; 3T(raid10), 1.9T+792G未知&lt;/li&gt;
+&lt;li&gt;1T * 6块 &amp;gt;&amp;gt;&amp;gt; 3T(raid10), 485M boot + 1.9T root + 781G /export/swap&lt;/li&gt;
+&lt;li&gt;sda1, sda3, sdb1&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;compute1-4&lt;ul&gt;
 &lt;li&gt;[2.60GHz] * 4 * 6核/CPU * 2线程/核 = 48&lt;/li&gt;
 &lt;li&gt;TeslaK20Xm GPU ，cuda核心数 2688， 内存6G&lt;/li&gt;
+&lt;li&gt;/state/partition1 每个计算节点的私有空间&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;compute5&lt;ul&gt;
 &lt;li&gt;[2.60GHz] * 4 * 6核/CPU * 2线程/核 = 48&lt;/li&gt;
+&lt;li&gt;/state/partition1 每个计算节点的私有空间&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;compute6&lt;ul&gt;
 &lt;li&gt;[2.20GHz] * 4 * 6核/CPU * 2线程/核 = 48&lt;/li&gt;
+&lt;li&gt;/state/partition1 每个计算节点的私有空间&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;compute7-8&lt;ul&gt;
 &lt;li&gt;[2.30GHz] * 4 * 8核/CPU * 2线程/核 = 64&lt;/li&gt;
+&lt;li&gt;/state/partition1 每个计算节点的私有空间&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;数据线(raid5)&lt;ul&gt;
-&lt;li&gt;3T * 3块 &amp;gt;&amp;gt;&amp;gt; 6T&lt;/li&gt;
-&lt;li&gt;4T * 6块 &amp;gt;&amp;gt;&amp;gt; 18T&lt;/li&gt;
-&lt;li&gt;8T * 3块 &amp;gt;&amp;gt;&amp;gt; 15T&lt;/li&gt;
+&lt;li&gt;3T * 3块 &amp;gt;&amp;gt;&amp;gt; 6T, sdd1&lt;/li&gt;
+&lt;li&gt;4T * 6块 &amp;gt;&amp;gt;&amp;gt; 18T, sdc1, sdc2&lt;/li&gt;
+&lt;li&gt;8T * 3块 &amp;gt;&amp;gt;&amp;gt; 15T, sde1&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;网线(raid5)&lt;ul&gt;
-&lt;li&gt;4T * 5块 &amp;gt;&amp;gt;&amp;gt; 16T&lt;/li&gt;
-&lt;li&gt;4T * 5块 &amp;gt;&amp;gt;&amp;gt; 16T&lt;/li&gt;
-&lt;li&gt;8T * 5块 &amp;gt;&amp;gt;&amp;gt; 30T&lt;/li&gt;
+&lt;li&gt;4T * 5块 &amp;gt;&amp;gt;&amp;gt; 16T, /dev/mapper/mpathep1&lt;/li&gt;
+&lt;li&gt;4T * 5块 &amp;gt;&amp;gt;&amp;gt; 16T, /dev/mapper/mpathfp1&lt;/li&gt;
+&lt;li&gt;8T * 5块 &amp;gt;&amp;gt;&amp;gt; 30T, /dev/mapper/mpathhp1&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;rocks常用命令&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;所有节点运行&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;rocks run host &amp;quot;hostname&amp;quot;&lt;/span&gt;
+&lt;h3&gt;所有节点运行&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;rocks run host &lt;span class="s2"&gt;&amp;quot;hostname&amp;quot;&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;同步配制&lt;/p&gt;
+&lt;h3&gt;同步配制&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;rocks sync config&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;要先重启管理节点然后计算机节点,否则导致数据不同步&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;rocks run host &amp;quot;/etc/init.d/pbs_mom restart&amp;quot;&lt;/span&gt;
+&lt;h3&gt;要先重启管理节点然后计算机节点,否则导致数据不同步&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;rocks run host &lt;span class="s2"&gt;&amp;quot;/etc/init.d/pbs_mom restart&amp;quot;&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;添加用户&lt;strong&gt;无法qusb要在/etc/group 添加用户&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;useradd -g group name &lt;span class="c1"&gt;#/etc/passwd name:x:xxx:xxx::/export/home/casual:/bin/bash&lt;/span&gt;&lt;/span&gt;
+&lt;h3&gt;添加用户&lt;strong&gt;无法qusb要在/etc/group 添加用户&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;useradd -g group name &lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#/etc/passwd name:x:xxx:xxx::/export/home/casual:/bin/bash&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;passwd name&lt;/span&gt;
-&lt;span class="code-line"&gt;rocks sync users &lt;span class="c1"&gt;#可更改/export/home/name 为 /home/name : /etc/passwd name:x:xxx:xxx::/home/casual:/bin/bash&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;rocks sync users &lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#可更改/export/home/name 为&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;#/home/name : /etc/passwd name:x:xxx:xxx::/home/casual:/bin/bash&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;#如果要修改用户名（未测试过）&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;usermod -l newName oldName&lt;/span&gt;
@@ -3188,35 +3311,25 @@ DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保�
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;如果ssh compute 需要输入密码&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;rm -rf ~/.ssh #然后 退出登录 再登陆 会自动生成新密钥&lt;/span&gt;
+&lt;h3&gt;如果ssh compute 需要输入密码&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;rm -rf ~/.ssh &lt;span class="c1"&gt;#然后 退出登录 再登陆 会自动生成新密钥&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;进入单用户模式&lt;/p&gt;
+&lt;h3&gt;节点进入单用户模式&lt;/h3&gt;
 &lt;p&gt;在倒计时5秒时，按任意键出现下图，
 &lt;strong&gt;选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统&lt;/strong&gt;
 &lt;img alt="图1" src="images/manager1.png" style="height:30%; width:30%;" /&gt;
 &lt;img alt="图2" src="images/manager2.png" style="height:30%; width:30%;" /&gt;
 &lt;img alt="图3" src="images/manager3.jpg" style="height:30%; width:30%;" /&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;重装节点&lt;/p&gt;
+&lt;h3&gt;重装节点&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;rocks &lt;span class="nb"&gt;set&lt;/span&gt; host boot compute1 &lt;span class="nv"&gt;action&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;install&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;提交任务后，无运行时间,且qdel: Server could not connect to MOM&lt;/p&gt;
+&lt;h3&gt;提交任务后，无运行时间,且qdel: Server could not connect to MOM&lt;/h3&gt;
 &lt;p&gt;由于节点pbs_mom没运行
 解决办法是进入节点后运行pbs_mom&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
 &lt;h2&gt;qmgr&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;qmgr -c &lt;span class="s2"&gt;&amp;quot;print server&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# 输出server的属性&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;qmgr -c &lt;span class="s2"&gt;&amp;quot;set server query_other_jobs = true&amp;quot;&lt;/span&gt; &lt;span class="c1"&gt;# qstat可以查看所有用户&lt;/span&gt;&lt;/span&gt;
@@ -3309,7 +3422,7 @@ help_starving_jobs false ALL&lt;/p&gt;
 
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;/etc/auto.share&lt;/p&gt;
+&lt;p&gt;/etc/auto.share 如果要增加新存储，需要添加，如swap&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;apps -nfsvers&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt; -soft,intr,timeo&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;9999&lt;/span&gt;  xmu.local:/export/&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;#bio  -nfsvers=3 -soft,intr,timeo=9999  xmu:/export/&amp;amp;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;data0 -nfsvers&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt; -soft,intr,timeo&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;9999&lt;/span&gt; xmu.local:/export/&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
@@ -3318,6 +3431,21 @@ help_starving_jobs false ALL&lt;/p&gt;
 &lt;span class="code-line"&gt;data3 -nfsvers&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt; -soft,intr,timeo&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;9999&lt;/span&gt; xmu.local:/export/&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;data4 -nfsvers&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt; -soft,intr,timeo&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;9999&lt;/span&gt; xmu.local:/export/&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;data5 -nfsvers&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt; -soft,intr,timeo&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;9999&lt;/span&gt; xmu.local:/export/&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;swap -nfsvers&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt; -soft,intr,timeo&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;9999&lt;/span&gt; xmu.local:/export/&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/etc/exportfs 如果要增加新存储，需要添加，如swap&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;/export &lt;span class="m"&gt;10&lt;/span&gt;.1.1.1&lt;span class="o"&gt;(&lt;/span&gt;rw,async,no_root_squash&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.1.1.0/255.255.255.0&lt;span class="o"&gt;(&lt;/span&gt;rw,async&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;/export/data0 &lt;span class="m"&gt;10&lt;/span&gt;.1.1.1&lt;span class="o"&gt;(&lt;/span&gt;rw,async,no_root_squash&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.1.1.0/255.255.255.0&lt;span class="o"&gt;(&lt;/span&gt;rw,async&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;/export/data1 &lt;span class="m"&gt;10&lt;/span&gt;.1.1.1&lt;span class="o"&gt;(&lt;/span&gt;rw,async,no_root_squash&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.1.1.0/255.255.255.0&lt;span class="o"&gt;(&lt;/span&gt;rw,async&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;/export/data2 &lt;span class="m"&gt;10&lt;/span&gt;.1.1.1&lt;span class="o"&gt;(&lt;/span&gt;rw,async,no_root_squash&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.1.1.0/255.255.255.0&lt;span class="o"&gt;(&lt;/span&gt;rw,async&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;/export/data3 &lt;span class="m"&gt;10&lt;/span&gt;.1.1.1&lt;span class="o"&gt;(&lt;/span&gt;rw,async,no_root_squash&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.1.1.0/255.255.255.0&lt;span class="o"&gt;(&lt;/span&gt;rw,async&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;/export/data4 &lt;span class="m"&gt;10&lt;/span&gt;.1.1.1&lt;span class="o"&gt;(&lt;/span&gt;rw,async,no_root_squash&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.1.1.0/255.255.255.0&lt;span class="o"&gt;(&lt;/span&gt;rw,async&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;/export/data5 &lt;span class="m"&gt;10&lt;/span&gt;.1.1.1&lt;span class="o"&gt;(&lt;/span&gt;rw,async,no_root_squash&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.1.1.0/255.255.255.0&lt;span class="o"&gt;(&lt;/span&gt;rw,async&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;/export/swap &lt;span class="m"&gt;10&lt;/span&gt;.1.1.1&lt;span class="o"&gt;(&lt;/span&gt;rw,async,no_root_squash&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.1.1.0/255.255.255.0&lt;span class="o"&gt;(&lt;/span&gt;rw,async&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3352,6 +3480,15 @@ help_starving_jobs false ALL&lt;/p&gt;
 &lt;span class="code-line"&gt;rm /usr/lib64/libstdc++.so.6&lt;/span&gt;
 &lt;span class="code-line"&gt;ln -s /share/apps/gcc-5.3.0/lib64/libstdc++.so.6.0.21 libstdc++.so.6&lt;/span&gt;
 &lt;span class="code-line"&gt;strings /usr/lib/libstdc++.so.6 &lt;span class="p"&gt;|&lt;/span&gt; grep&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;showq&lt;/h2&gt;
+&lt;p&gt;出现错误：
+ERROR:    cannot send request to server xmu.cn:42559 (server may not be running)
+ERROR:    cannot request service (status)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;cp /opt/maui/sbin/maui /etc/init.d&lt;/span&gt;
+&lt;span class="code-line"&gt;/etc/init.d/maui start&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -3724,6 +3861,16 @@ $$Q_{solexa-prior to v.1.3}=-10log_{10}\frac{P}{1-P}$$&lt;/p&gt;
 &lt;h3&gt;configure: error: missing required header GL/gl.h, configure: error: missing required header GL/glu.h&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo apt install mesa-common-dev&lt;/span&gt;
 &lt;span class="code-line"&gt;sudo apt install libglu1-mesa-dev&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;install units based on udunits2&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;conda install udunits2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;install.packages&lt;span class="p"&gt;(&lt;/span&gt;install.packages&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;units&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    configure.args&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;--with-udunits2-lib=/share/apps/anaconda3/lib --with-udunits2-include=/share/apps/anaconda3/include&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category><category term="Rstudio"></category></entry><entry><title>fedora常用配置</title><link href="https://ghxdghxd.github.io/fedora-install.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2018-01-27T10:27:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/fedora-install.html</id><summary type="html">&lt;p&gt;fedora常用安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;config fedora&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo rm -rf /opt&lt;/span&gt;
 &lt;span class="code-line"&gt;sudo dnf install yum-utils&lt;/span&gt;

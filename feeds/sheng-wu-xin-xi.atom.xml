@@ -67,7 +67,23 @@
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# CTGTCTCTTATACACATCTCCGAGCCCACGAGAC&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;skewer -f sanger -t &lt;span class="m"&gt;20&lt;/span&gt; -m pe -x NexteraPE-PE.fa --quiet -o &amp;lt;sampleName&amp;gt; &amp;lt;R1.fastq.gz&amp;gt; &amp;lt;R2.fastq.gz&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="ATAC"></category></entry><entry><title>mpileup格式</title><link href="https://ghxdghxd.github.io/mpileup.html" rel="alternate"></link><published>2017-03-04T14:38:00+08:00</published><updated>2017-03-04T14:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-04:/mpileup.html</id><summary type="html">&lt;p&gt;samtools mpileup的格式&lt;/p&gt;</summary><content type="html">&lt;h1&gt;mpileup&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;macs2&lt;/h2&gt;
+&lt;p&gt;the result saved in narrowPeak BED file, header is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1st: chromosome name&lt;/li&gt;
+&lt;li&gt;2nd: start position of peak&lt;/li&gt;
+&lt;li&gt;3rd: end position of peak&lt;/li&gt;
+&lt;li&gt;4th: name of peak&lt;/li&gt;
+&lt;li&gt;5th: integer score for display in genome browser (e.g. UCSC浏览器显示的灰度)&lt;/li&gt;
+&lt;li&gt;6th: strand, either "." (=no strand) or "+" or "-"&lt;/li&gt;
+&lt;li&gt;7th: fold-change&lt;/li&gt;
+&lt;li&gt;8th: -log10pvalue&lt;/li&gt;
+&lt;li&gt;9th: -log10qvalue&lt;/li&gt;
+&lt;li&gt;10th: relative summit position to peak start&lt;/li&gt;
+&lt;/ul&gt;</content><category term="ATAC"></category></entry><entry><title>mpileup格式</title><link href="https://ghxdghxd.github.io/mpileup.html" rel="alternate"></link><published>2017-03-04T14:38:00+08:00</published><updated>2017-03-04T14:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-04:/mpileup.html</id><summary type="html">&lt;p&gt;samtools mpileup的格式&lt;/p&gt;</summary><content type="html">&lt;h1&gt;mpileup&lt;/h1&gt;
 &lt;p&gt;mpileup 结果中的 &amp;gt;, &amp;lt;; 代表reference skip, 基因组上没有的序列，  the reference position is
 bridged by reference skip.&lt;/p&gt;
 &lt;p&gt;计算depth要减去reference skip数目&lt;/p&gt;</content><category term="samtools"></category><category term="mpileup"></category></entry><entry><title>循环肿瘤DNA</title><link href="https://ghxdghxd.github.io/ctDNA.html" rel="alternate"></link><published>2017-01-09T15:59:00+08:00</published><updated>2017-01-09T15:59:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-09:/ctDNA.html</id><summary type="html">&lt;p&gt;循环肿瘤DNA&lt;/p&gt;</summary><content type="html">&lt;p&gt;循环肿瘤DNA，英文叫：circulating tumor DNA，简称ctDNA。
@@ -617,11 +633,44 @@ crest第一步从原始的bam结果中提取出soft-clipped reads，第二步用
 &lt;p&gt;4.&lt;strong&gt;cDNA&lt;/strong&gt;：通过mRNA反转录所得，与mRNA序列互补的单链DNA或者与mRNA对应的DNA双链；&lt;/p&gt;
 &lt;p&gt;5.&lt;strong&gt;EST&lt;/strong&gt;：表达序列标签，是指从一个随机选择的cDNA 克隆，进行5’端和3’端单一次测序挑选出来获得的短的cDNA部分序列, 代表一个完整基因的一小部分，在数据库中其长度一般从20 到7000bp 不等，平均长度为360
 ±120bp。由于cDNA文库的复杂性和测序的随机性，有时多个EST代表同一基因或基因组，将其归类形成EST簇（EST cluster)；&lt;/p&gt;
-&lt;p&gt;过程|模板|原料|特点|引物
-:---:|:---:|:---:|:---:|:---:|:---:
-DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保留复制|需要
-转录|双链DNA|四种NTP|合成的新链除了把DNA上的T改为U外，其他一样，半不连续转录|不需要
-翻译|mRNA|20种游离的氨基酸|3个碱基决定一个氨基酸|&lt;/p&gt;</content><category term="genome"></category></entry><entry><title>如何根据测序数据计算出数据量以及测序深度？</title><link href="https://ghxdghxd.github.io/NGS-coverage.html" rel="alternate"></link><published>2014-12-04T16:35:00+08:00</published><updated>2016-02-29T20:40:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/NGS-coverage.html</id><summary type="html">&lt;p&gt;根据测序数据(reads)统计数据量以及测序深度&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align="center"&gt;过程&lt;/th&gt;
+&lt;th align="center"&gt;模板&lt;/th&gt;
+&lt;th align="center"&gt;原料&lt;/th&gt;
+&lt;th align="center"&gt;特点&lt;/th&gt;
+&lt;th align="center"&gt;引物&lt;/th&gt;
+&lt;th align="center"&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;DNA复制&lt;/td&gt;
+&lt;td align="center"&gt;双链DNA&lt;/td&gt;
+&lt;td align="center"&gt;四种dNTP&lt;/td&gt;
+&lt;td align="center"&gt;合成的新链与模板链一模一样，半保留复制&lt;/td&gt;
+&lt;td align="center"&gt;需要&lt;/td&gt;
+&lt;td align="center"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;转录&lt;/td&gt;
+&lt;td align="center"&gt;双链DNA&lt;/td&gt;
+&lt;td align="center"&gt;四种NTP&lt;/td&gt;
+&lt;td align="center"&gt;合成的新链除了把DNA上的T改为U外，其他一样，半不连续转录&lt;/td&gt;
+&lt;td align="center"&gt;不需要&lt;/td&gt;
+&lt;td align="center"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align="center"&gt;翻译&lt;/td&gt;
+&lt;td align="center"&gt;mRNA&lt;/td&gt;
+&lt;td align="center"&gt;20种游离的氨基酸&lt;/td&gt;
+&lt;td align="center"&gt;3个碱基决定一个氨基酸&lt;/td&gt;
+&lt;td align="center"&gt;&lt;/td&gt;
+&lt;td align="center"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</content><category term="genome"></category></entry><entry><title>如何根据测序数据计算出数据量以及测序深度？</title><link href="https://ghxdghxd.github.io/NGS-coverage.html" rel="alternate"></link><published>2014-12-04T16:35:00+08:00</published><updated>2016-02-29T20:40:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/NGS-coverage.html</id><summary type="html">&lt;p&gt;根据测序数据(reads)统计数据量以及测序深度&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
 &lt;li&gt;数据量大小&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;单端测序&lt;/strong&gt; 数据量 = reads长度 * reads数

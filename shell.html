@@ -27,46 +27,7 @@
 </pre></div>
 
 
-<h2>awk</h2>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="nv">$0</span>~/aaa/表示0包括aaa</span>
-<span class="code-line">split <span class="o">(</span>string, array, field separator<span class="o">)</span></span>
-<span class="code-line">split <span class="o">(</span>string, array<span class="o">)</span>  <span class="se">\-</span>-<span class="p">&amp;</span>gt<span class="p">;</span>如果第三个参数没有提供，awk就默认使用当前FS值。</span>
-<span class="code-line">substr<span class="o">(</span>s,p<span class="o">)</span> 返回字符串s中从p开始的后缀部分</span>
-<span class="code-line">substr<span class="o">(</span>s,p,n<span class="o">)</span> 返回字符串s中从p开始长度为n的后缀部分</span>
-<span class="code-line">length函数返回整个记录中的字符数。</span>
-<span class="code-line">gsub<span class="o">(</span>regular expression, subsitution string, target string<span class="o">)</span><span class="p">;</span></span>
-<span class="code-line">index<span class="o">(</span>a,b<span class="o">)</span>, r返回b中a的位置，没有返回0</span>
-<span class="code-line"><span class="k">for</span><span class="o">(</span><span class="nv">i</span><span class="o">=</span><span class="m">1</span><span class="p">;</span>i<span class="p">&amp;</span>lt<span class="p">;</span><span class="o">=</span>length<span class="o">(</span>a<span class="o">)</span><span class="p">;</span>i++<span class="o">)</span></span>
-<span class="code-line">awk <span class="s1">&#39;!a[$1&quot; &quot;$2]++{print}&#39;</span> <span class="c1"># 以第一列与第二列去重</span></span>
-<span class="code-line">awk <span class="s1">&#39;a[$1&quot; &quot;$2]++{print}&#39;</span> <span class="c1"># 以第一列与第二列去重，只显示重复行</span></span>
-</pre></div>
-
-
-<h3>awk,getline,用于获得下一行</h3>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1">#输出奇数，</span></span>
-<span class="code-line">seq <span class="m">10</span> <span class="p">|</span> awk <span class="s1">&#39;{print $0;getline}&#39;</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="c1">#输出偶数</span></span>
-<span class="code-line">seq <span class="m">10</span> <span class="p">|</span> awk <span class="s1">&#39;{getline;print $0}&#39;</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="c1">#从第三行开始，每三行输出一次,如果后面没有足够的行，则输出最后一行</span></span>
-<span class="code-line">seq <span class="m">10</span> <span class="p">|</span> awk <span class="s1">&#39;{getline;getline;print $0}&#39;</span></span>
-<span class="code-line"><span class="m">3</span></span>
-<span class="code-line"><span class="m">6</span></span>
-<span class="code-line"><span class="m">9</span></span>
-<span class="code-line"><span class="m">10</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="c1"># 获得shell命令的结果</span></span>
-<span class="code-line"><span class="c1"># 注: 如果cmd出错,则res为上一行的结果，因此前面添加**res=\&quot;\&quot;**</span></span>
-<span class="code-line"><span class="c1">#     出现awk (Too many open files), 需要 **close(cmd)**</span></span>
-<span class="code-line"></span>
-<span class="code-line">awk <span class="s1">&#39;{cmd=&quot;echo&quot;$0; res=&quot;&quot;;</span></span>
-<span class="code-line"><span class="s1">    cmd|getline res;</span></span>
-<span class="code-line"><span class="s1">    print $res;</span></span>
-<span class="code-line"><span class="s1">    close (cmd)}&#39;</span> file</span>
-</pre></div>
-
-
+<h2><a href="awk">awk</a></h2>
 <h2>sed</h2>
 <div class="highlight"><pre><span class="code-line"><span></span>sed -n <span class="s1">&#39;/A/,/B/p&#39;</span>  匹配A的行与匹配B的行之间的内容</span>
 <span class="code-line">sed -n <span class="s1">&#39;2p,4,5p&#39;</span> 输出2 <span class="m">4</span>,5 行</span>

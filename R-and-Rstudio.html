@@ -209,6 +209,16 @@
 <div class="highlight"><pre><span class="code-line"><span></span>sudo apt install mesa-common-dev</span>
 <span class="code-line">sudo apt install libglu1-mesa-dev</span>
 </pre></div>
+
+
+<h3>install units based on udunits2</h3>
+<div class="highlight"><pre><span class="code-line"><span></span>conda install udunits2</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="code-line"><span></span>install.packages<span class="p">(</span>install.packages<span class="p">(</span><span class="s">&quot;units&quot;</span><span class="p">,</span></span>
+<span class="code-line">    configure.args<span class="o">=</span><span class="s">&quot;--with-udunits2-lib=/share/apps/anaconda3/lib --with-udunits2-include=/share/apps/anaconda3/include&quot;</span><span class="p">))</span></span>
+</pre></div>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

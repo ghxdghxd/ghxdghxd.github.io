@@ -86,6 +86,22 @@
 <span class="code-line"></span>
 <span class="code-line">skewer -f sanger -t <span class="m">20</span> -m pe -x NexteraPE-PE.fa --quiet -o &lt;sampleName&gt; &lt;R1.fastq.gz&gt; &lt;R2.fastq.gz&gt;</span>
 </pre></div>
+
+
+<h2>macs2</h2>
+<p>the result saved in narrowPeak BED file, header is:</p>
+<ul>
+<li>1st: chromosome name</li>
+<li>2nd: start position of peak</li>
+<li>3rd: end position of peak</li>
+<li>4th: name of peak</li>
+<li>5th: integer score for display in genome browser (e.g. UCSC浏览器显示的灰度)</li>
+<li>6th: strand, either "." (=no strand) or "+" or "-"</li>
+<li>7th: fold-change</li>
+<li>8th: -log10pvalue</li>
+<li>9th: -log10qvalue</li>
+<li>10th: relative summit position to peak start</li>
+</ul>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

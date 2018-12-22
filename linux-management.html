@@ -95,14 +95,15 @@
 
 <h2><a href="terminal-announcement">登录显示信息</a></h2>
 <h2>添加外挂硬盘</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>mount /dev/sdc1 /extra</span>
+<div class="highlight"><pre><span class="code-line"><span></span>mount /dev/sdc1 /extra          <span class="c1">#158</span></span>
+<span class="code-line">mount /dev/sdb1 /export/swap/   <span class="c1">#162</span></span>
 </pre></div>
 
 
 <h2><a href="cpuinfo">CPU信息</a></h2>
 <h2>GPU计算卡</h2>
 <h3>查看GPU型号</h3>
-<div class="highlight"><pre><span class="code-line"><span></span>    sudo lspci | grep NVIDIA</span>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo lspci <span class="p">|</span> grep NVIDIA</span>
 </pre></div>
 
 
@@ -112,73 +113,73 @@
 </pre></div>
 
 
-<h2>硬盘</h2>
-<p><a href="raid">磁盘阵列简介</a></p>
+<h2><a href="raid">磁盘阵列简介</a></h2>
+<h2>系统配置(CPU + GPU + raid)</h2>
 <ul>
 <li>配置</li>
 <li>commput0<ul>
 <li>[2.10GHz] * 4 * 8核/CPU * 2线程/核 = 64</li>
-<li>1T * 6块 &gt;&gt;&gt; 3T(raid10), 1.9T+792G未知</li>
+<li>1T * 6块 &gt;&gt;&gt; 3T(raid10), 485M boot + 1.9T root + 781G /export/swap</li>
+<li>sda1, sda3, sdb1</li>
 </ul>
 </li>
 <li>compute1-4<ul>
 <li>[2.60GHz] * 4 * 6核/CPU * 2线程/核 = 48</li>
 <li>TeslaK20Xm GPU ，cuda核心数 2688， 内存6G</li>
+<li>/state/partition1 每个计算节点的私有空间</li>
 </ul>
 </li>
 <li>compute5<ul>
 <li>[2.60GHz] * 4 * 6核/CPU * 2线程/核 = 48</li>
+<li>/state/partition1 每个计算节点的私有空间</li>
 </ul>
 </li>
 <li>compute6<ul>
 <li>[2.20GHz] * 4 * 6核/CPU * 2线程/核 = 48</li>
+<li>/state/partition1 每个计算节点的私有空间</li>
 </ul>
 </li>
 <li>compute7-8<ul>
 <li>[2.30GHz] * 4 * 8核/CPU * 2线程/核 = 64</li>
+<li>/state/partition1 每个计算节点的私有空间</li>
 </ul>
 </li>
 <li>数据线(raid5)<ul>
-<li>3T * 3块 &gt;&gt;&gt; 6T</li>
-<li>4T * 6块 &gt;&gt;&gt; 18T</li>
-<li>8T * 3块 &gt;&gt;&gt; 15T</li>
+<li>3T * 3块 &gt;&gt;&gt; 6T, sdd1</li>
+<li>4T * 6块 &gt;&gt;&gt; 18T, sdc1, sdc2</li>
+<li>8T * 3块 &gt;&gt;&gt; 15T, sde1</li>
 </ul>
 </li>
 <li>网线(raid5)<ul>
-<li>4T * 5块 &gt;&gt;&gt; 16T</li>
-<li>4T * 5块 &gt;&gt;&gt; 16T</li>
-<li>8T * 5块 &gt;&gt;&gt; 30T</li>
+<li>4T * 5块 &gt;&gt;&gt; 16T, /dev/mapper/mpathep1</li>
+<li>4T * 5块 &gt;&gt;&gt; 16T, /dev/mapper/mpathfp1</li>
+<li>8T * 5块 &gt;&gt;&gt; 30T, /dev/mapper/mpathhp1</li>
 </ul>
 </li>
 </ul>
 <h2>rocks常用命令</h2>
-<ol>
-<li>
-<p>所有节点运行</p>
-<div class="highlight"><pre><span class="code-line"><span></span>rocks run host &quot;hostname&quot;</span>
+<h3>所有节点运行</h3>
+<div class="highlight"><pre><span class="code-line"><span></span>rocks run host <span class="s2">&quot;hostname&quot;</span></span>
 </pre></div>
 
 
-</li>
-<li>
-<p>同步配制</p>
+<h3>同步配制</h3>
 <div class="highlight"><pre><span class="code-line"><span></span>rocks sync config</span>
 </pre></div>
 
 
-</li>
-<li>
-<p>要先重启管理节点然后计算机节点,否则导致数据不同步</p>
-<div class="highlight"><pre><span class="code-line"><span></span>rocks run host &quot;/etc/init.d/pbs_mom restart&quot;</span>
+<h3>要先重启管理节点然后计算机节点,否则导致数据不同步</h3>
+<div class="highlight"><pre><span class="code-line"><span></span>rocks run host <span class="s2">&quot;/etc/init.d/pbs_mom restart&quot;</span></span>
 </pre></div>
 
 
-</li>
-<li>
-<p>添加用户<strong>无法qusb要在/etc/group 添加用户</strong></p>
-<div class="highlight"><pre><span class="code-line"><span></span>useradd -g group name <span class="c1">#/etc/passwd name:x:xxx:xxx::/export/home/casual:/bin/bash</span></span>
+<h3>添加用户<strong>无法qusb要在/etc/group 添加用户</strong></h3>
+<div class="highlight"><pre><span class="code-line"><span></span>useradd -g group name </span>
+<span class="code-line"><span class="c1">#/etc/passwd name:x:xxx:xxx::/export/home/casual:/bin/bash</span></span>
 <span class="code-line">passwd name</span>
-<span class="code-line">rocks sync users <span class="c1">#可更改/export/home/name 为 /home/name : /etc/passwd name:x:xxx:xxx::/home/casual:/bin/bash</span></span>
+<span class="code-line">rocks sync users </span>
+<span class="code-line"><span class="c1">#可更改/export/home/name 为</span></span>
+<span class="code-line"><span class="c1">#/home/name : /etc/passwd name:x:xxx:xxx::/home/casual:/bin/bash</span></span>
 <span class="code-line"></span>
 <span class="code-line"><span class="c1">#如果要修改用户名（未测试过）</span></span>
 <span class="code-line">usermod -l newName oldName</span>
@@ -188,35 +189,25 @@
 </pre></div>
 
 
-</li>
-<li>
-<p>如果ssh compute 需要输入密码</p>
-<div class="highlight"><pre><span class="code-line"><span></span>rm -rf ~/.ssh #然后 退出登录 再登陆 会自动生成新密钥</span>
+<h3>如果ssh compute 需要输入密码</h3>
+<div class="highlight"><pre><span class="code-line"><span></span>rm -rf ~/.ssh <span class="c1">#然后 退出登录 再登陆 会自动生成新密钥</span></span>
 </pre></div>
 
 
-</li>
-<li>
-<p>进入单用户模式</p>
+<h3>节点进入单用户模式</h3>
 <p>在倒计时5秒时，按任意键出现下图，
 <strong>选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统</strong>
 <img alt="图1" src="images/manager1.png" style="height:30%; width:30%;" />
 <img alt="图2" src="images/manager2.png" style="height:30%; width:30%;" />
 <img alt="图3" src="images/manager3.jpg" style="height:30%; width:30%;" /></p>
-</li>
-<li>
-<p>重装节点</p>
+<h3>重装节点</h3>
 <div class="highlight"><pre><span class="code-line"><span></span>rocks <span class="nb">set</span> host boot compute1 <span class="nv">action</span><span class="o">=</span>install</span>
 </pre></div>
 
 
-</li>
-<li>
-<p>提交任务后，无运行时间,且qdel: Server could not connect to MOM</p>
+<h3>提交任务后，无运行时间,且qdel: Server could not connect to MOM</h3>
 <p>由于节点pbs_mom没运行
 解决办法是进入节点后运行pbs_mom</p>
-</li>
-</ol>
 <h2>qmgr</h2>
 <div class="highlight"><pre><span class="code-line"><span></span>qmgr -c <span class="s2">&quot;print server&quot;</span> <span class="c1"># 输出server的属性</span></span>
 <span class="code-line">qmgr -c <span class="s2">&quot;set server query_other_jobs = true&quot;</span> <span class="c1"># qstat可以查看所有用户</span></span>
@@ -309,7 +300,7 @@ help_starving_jobs false ALL</p>
 
 </li>
 <li>
-<p>/etc/auto.share</p>
+<p>/etc/auto.share 如果要增加新存储，需要添加，如swap</p>
 <div class="highlight"><pre><span class="code-line"><span></span>apps -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span>  xmu.local:/export/<span class="p">&amp;</span></span>
 <span class="code-line"><span class="c1">#bio  -nfsvers=3 -soft,intr,timeo=9999  xmu:/export/&amp;</span></span>
 <span class="code-line">data0 -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span> xmu.local:/export/<span class="p">&amp;</span></span>
@@ -318,6 +309,21 @@ help_starving_jobs false ALL</p>
 <span class="code-line">data3 -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span> xmu.local:/export/<span class="p">&amp;</span></span>
 <span class="code-line">data4 -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span> xmu.local:/export/<span class="p">&amp;</span></span>
 <span class="code-line">data5 -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span> xmu.local:/export/<span class="p">&amp;</span></span>
+<span class="code-line">swap -nfsvers<span class="o">=</span><span class="m">3</span> -soft,intr,timeo<span class="o">=</span><span class="m">9999</span> xmu.local:/export/<span class="p">&amp;</span></span>
+</pre></div>
+
+
+</li>
+<li>
+<p>/etc/exportfs 如果要增加新存储，需要添加，如swap</p>
+<div class="highlight"><pre><span class="code-line"><span></span>/export <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
+<span class="code-line">/export/data0 <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
+<span class="code-line">/export/data1 <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
+<span class="code-line">/export/data2 <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
+<span class="code-line">/export/data3 <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
+<span class="code-line">/export/data4 <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
+<span class="code-line">/export/data5 <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
+<span class="code-line">/export/swap <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
 </pre></div>
 
 
@@ -352,6 +358,15 @@ help_starving_jobs false ALL</p>
 <span class="code-line">rm /usr/lib64/libstdc++.so.6</span>
 <span class="code-line">ln -s /share/apps/gcc-5.3.0/lib64/libstdc++.so.6.0.21 libstdc++.so.6</span>
 <span class="code-line">strings /usr/lib/libstdc++.so.6 <span class="p">|</span> grep</span>
+</pre></div>
+
+
+<h2>showq</h2>
+<p>出现错误：
+ERROR:    cannot send request to server xmu.cn:42559 (server may not be running)
+ERROR:    cannot request service (status)</p>
+<div class="highlight"><pre><span class="code-line"><span></span>cp /opt/maui/sbin/maui /etc/init.d</span>
+<span class="code-line">/etc/init.d/maui start</span>
 </pre></div>
 
 
