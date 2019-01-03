@@ -9,7 +9,7 @@ GITHUB_URL = 'https://github.com/ghxdghxd'
 PATH = 'content'
 PLACEHOLDER = "好记性不如烂键盘···"
 TIMEZONE = 'Asia/Shanghai'
-DEFAULT_LANG = 'zh'
+DEFAULT_LANG = 'en'
 
 STATIC_PATHS = ["pages", "pdfs", 'images']
 
