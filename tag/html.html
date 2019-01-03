@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+<meta charset="UTF-8">
+<title>iKnowledgeBase</title>
+<meta name="viewport" content="width=device-width">
+
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="/theme/css/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+  crossorigin="anonymous">
+<link rel="stylesheet" href="/theme/css/solar_system.css">
+<link rel="stylesheet" href="/theme/css/slideout.css">
+<link rel="stylesheet" href="/theme/css/OverlayScrollbars.css">
+<!-- highlight code-->
+<link href="/theme/css/pygment.css" rel="stylesheet">
+</head>
+
+<body class="show-message">
+
+<aside id="sidebar" class="nano">
+  <div class="nano-content">
+    <div class="logo-container">
+      <span class="logo glyphicon">
+        <img src="/user_picture.jpg" alt="User picture" style="border-radius: 50%;width: 50%;">
+      </span>
+      JT Guo
+    </div>
+    <div id="disjunctiveFacets">
+    </div>
+    <div id="facets">
+    </div>
+    <div class="bottom-padding"></div>
+  </div>
+</aside>
+
+<main id="main">
+  <div class="overlay"></div>
+  <header class="header">
+    <h1 class="page-title">
+      <a class="sidebar-toggle-btn trigger-toggle-sidebar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line line-angle1"></span>
+        <span class="line line-angle2"></span>
+      </a>
+      iKnowledgeBase
+    </h1>
+    <div class="search-box">
+      <input id="searchBox" placeholder="好记性不如烂键盘···" autocomplete="off">
+      <span class="icon glyphicon glyphicon-search"></span>
+    </div>
+    <div id="currentRefinements"></div>
+  </header>
+  <div id="main-nano-wrapper" class="nano">
+    <div class="nano-content">
+      <ul id="hits" class="message-list">
+<li>
+  <a class="title" href="css.html">前端</a>
+  <div class="subject">
+    <p>前端的记录</p>
+  </div>
+  <div class="col col-2">
+    <div class="date">2010/12/03</div>
+  </div>
+</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<div id="message">
+</div>
+
+<script>
+//Config
+var applicationID = "IPQCQ37UM5";
+var apiKey = "c48a17b2da7c0c3214355ba8bd3101e4";
+var indexName = "webNotes_search";
+</script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.js"></script>
+<script src="/theme/js/OverlayScrollbars.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch-helper@2.26.1/dist/algoliasearch.helper.min.js"></script>
+<script src="/theme/js/algolia_helper.js"></script>
+<script src="/theme/js/index.js"></script>
+
+</body>
+
+</html>

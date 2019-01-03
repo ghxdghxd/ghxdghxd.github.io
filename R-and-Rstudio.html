@@ -219,6 +219,13 @@
 <div class="highlight"><pre><span class="code-line"><span></span>install.packages<span class="p">(</span>install.packages<span class="p">(</span><span class="s">&quot;units&quot;</span><span class="p">,</span></span>
 <span class="code-line">    configure.args<span class="o">=</span><span class="s">&quot;--with-udunits2-lib=/share/apps/anaconda3/lib --with-udunits2-include=/share/apps/anaconda3/include&quot;</span><span class="p">))</span></span>
 </pre></div>
+
+
+<h2>URL 'https://cran.r-project.org/CRAN_mirrors.csv': status was 'Problem with the SSL CA cert (path? access rights?)</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="m">.</span>Renviron</span>
+<span class="code-line">curl<span class="o">-</span>config <span class="o">--</span>ca</span>
+<span class="code-line"><span class="kp">Sys.setenv</span><span class="p">(</span>CURL_CA_BUNDLE <span class="o">=</span> <span class="s">&quot;/share/apps/anaconda3/ssl/cacert.pem&quot;</span><span class="p">)</span></span>
+</pre></div>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

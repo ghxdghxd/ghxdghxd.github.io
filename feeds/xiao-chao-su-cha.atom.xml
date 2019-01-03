@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 小抄速查</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/xiao-chao-su-cha.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-12-18T22:30:24+08:00</updated><entry><title>libatk</title><link href="https://ghxdghxd.github.io/libatk.html" rel="alternate"></link><published>2018-11-05T12:23:52+08:00</published><updated>2018-11-05T12:23:52+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-05:/libatk.html</id><summary type="html">&lt;p&gt;/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0: undefined symbol: g_log_structured_standard&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0: undefined symbol: g_log_structured_standard&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 小抄速查</title><link href="https://ghxdghxd.github.io/JuPyR/" rel="alternate"></link><link href="https://ghxdghxd.github.io/JuPyR/feeds/xiao-chao-su-cha.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/JuPyR/</id><updated>2018-12-30T12:56:05+08:00</updated><entry><title>julia 1.0 的并行计算</title><link href="https://ghxdghxd.github.io/JuPyR/julia-distributed.html" rel="alternate"></link><published>2018-12-29T12:56:05+08:00</published><updated>2018-12-30T12:56:05+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-12-29:/JuPyR/julia-distributed.html</id><summary type="html">&lt;p&gt;julia 1.0 的并行实现及存在的问题&lt;/p&gt;</summary><content type="html">&lt;h1&gt;julia的&lt;a href="https://docs.juliacn.com/latest/manual/parallel-computing"&gt;并行&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;julia的主进程&lt;code&gt;id&lt;/code&gt;为 1(提供 Julia 交互环境的进程的 id 永远是1)&lt;/strong&gt;
+julia中的并行进程，称为&lt;code&gt;worker&lt;/code&gt;，
+&lt;code&gt;julia -p 2&lt;/code&gt;表示申请2个&lt;code&gt;workers&lt;/code&gt;进行并行计算，那么&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;workers&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c"&gt;# 查看所有workers的id，&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c"&gt;#19-element Array{Int64,1}:&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c"&gt;# 2&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c"&gt;# 3&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="n"&gt;nworkers&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c"&gt;# 查看workers的数目&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c"&gt;# 2&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="n"&gt;nprocs&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c"&gt;# 查看所有进程数目，nworkers + 主进程(id=1)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c"&gt;# 3&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="n"&gt;myid&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c"&gt;# 当前workers的id&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c"&gt;# 1&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;map与pmap&lt;/h2&gt;
+&lt;h3&gt;map串行&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dat&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dat&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="k"&gt;end&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dat&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;x_list&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;pmap并行&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@everywhere&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dat&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dat&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="k"&gt;end&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="n"&gt;pmap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dat&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;x_list&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="julia"></category><category term="distributed"></category></entry><entry><title>libatk</title><link href="https://ghxdghxd.github.io/JuPyR/libatk.html" rel="alternate"></link><published>2018-11-05T12:23:52+08:00</published><updated>2018-11-05T12:23:52+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-11-05:/JuPyR/libatk.html</id><summary type="html">&lt;p&gt;/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0: undefined symbol: g_log_structured_standard&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0: undefined symbol: g_log_structured_standard&lt;/h1&gt;
 &lt;h2&gt;来源&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Rstudio visNetwork导出html动态图&lt;/li&gt;
@@ -7,7 +40,7 @@
 &lt;h2&gt;解决&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# ubuntu&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;apt install libatk1.0-dev&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="error"></category><category term="libatk"></category></entry><entry><title>gitlab的安装与配置</title><link href="https://ghxdghxd.github.io/gitlab.html" rel="alternate"></link><published>2018-10-20T11:20:00+08:00</published><updated>2018-10-26T15:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-10-20:/gitlab.html</id><summary type="html">&lt;p&gt;centos6 搭建私有git服务器&lt;/p&gt;</summary><content type="html">&lt;h1&gt;安装gitlab&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="error"></category><category term="libatk"></category></entry><entry><title>gitlab的安装与配置</title><link href="https://ghxdghxd.github.io/JuPyR/gitlab.html" rel="alternate"></link><published>2018-10-20T11:20:00+08:00</published><updated>2018-10-26T15:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-10-20:/JuPyR/gitlab.html</id><summary type="html">&lt;p&gt;centos6 搭建私有git服务器&lt;/p&gt;</summary><content type="html">&lt;h1&gt;安装gitlab&lt;/h1&gt;
 &lt;h2&gt;添加源到/etc/yum.repos.d/gitlab-ce.repo&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;[gitlab-ce]&lt;/span&gt;
 &lt;span class="code-line"&gt;name=Gitlab CE Repository&lt;/span&gt;
@@ -277,7 +310,7 @@
 &lt;span class="code-line"&gt;sudo vim /etc/gitlab/gitlab.rb        &lt;span class="c1"&gt;# 修改默认的配置文件；&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;gitlab-rake gitlab:check &lt;span class="nv"&gt;SANITIZE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt; --trace    &lt;span class="c1"&gt;# 检查gitlab；&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;sudo gitlab-ctl tail        &lt;span class="c1"&gt;# 查看日志；&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="gitlab"></category></entry><entry><title>git submodule的用法</title><link href="https://ghxdghxd.github.io/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="gitlab"></category></entry><entry><title>git submodule的用法</title><link href="https://ghxdghxd.github.io/JuPyR/git-submodule.html" rel="alternate"></link><published>2018-02-03T10:20:00+08:00</published><updated>2018-02-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-02-03:/JuPyR/git-submodule.html</id><summary type="html">&lt;p&gt;参考 http://www.cnblogs.com/nicksheng/p/6201711.html， 用于项目 中的 项目&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;git clone &amp;lt;repository&amp;gt; --recursive &lt;span class="c1"&gt;#递归的方式克隆整个项目&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;git submodule add projectB.git projectB &lt;span class="c1"&gt;#添加子模块&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;git submodule init &lt;span class="c1"&gt;#初始化子模块&lt;/span&gt;&lt;/span&gt;
@@ -419,7 +452,7 @@
 &lt;span class="code-line"&gt;git status&lt;/span&gt;
 &lt;span class="code-line"&gt;git commit -m&lt;span class="s2"&gt;&amp;quot;remove submodule&amp;quot;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;git push origin master&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category><category term="submodule"></category></entry><entry><title>archlinux安装与配置</title><link href="https://ghxdghxd.github.io/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-12-03:/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;archlinux安装&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category><category term="submodule"></category></entry><entry><title>archlinux安装与配置</title><link href="https://ghxdghxd.github.io/JuPyR/archlinux.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-12-03:/JuPyR/archlinux.html</id><summary type="html">&lt;p&gt;archlinux的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;archlinux安装&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# u盘启动后&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 连接网络&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;wifi-memu&lt;/span&gt;
@@ -503,7 +536,7 @@
 &lt;span class="code-line"&gt;pacman -S gnome gnome-tweak-tool&lt;/span&gt;
 &lt;span class="code-line"&gt;pacman -S ttf-ubuntu&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 可选&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category></entry><entry><title>docker安装与配置</title><link href="https://ghxdghxd.github.io/docker.html" rel="alternate"></link><published>2017-11-03T10:20:00+08:00</published><updated>2017-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-11-03:/docker.html</id><summary type="html">&lt;p&gt;docker的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;docker&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category></entry><entry><title>docker安装与配置</title><link href="https://ghxdghxd.github.io/JuPyR/docker.html" rel="alternate"></link><published>2017-11-03T10:20:00+08:00</published><updated>2017-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-11-03:/JuPyR/docker.html</id><summary type="html">&lt;p&gt;docker的简单安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;docker&lt;/h1&gt;
 &lt;h2&gt;centos yum install docker&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;tee /etc/yum.repos.d/docker.repo &lt;span class="s"&gt;&amp;lt;&amp;lt;-&amp;#39;EOF&amp;#39;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="s"&gt;[dockerrepo]&lt;/span&gt;&lt;/span&gt;
@@ -600,7 +633,7 @@
 &lt;li&gt;将宿主机的/var/data挂载到容器中的/data: docker run -tdi -v /var/data:/data centos&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;如果ls: cannot open directory '.': Permission denied
-修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled&lt;/p&gt;</content><category term="docker"></category></entry><entry><title>预防SSH服务器暴力破解</title><link href="https://ghxdghxd.github.io/fail2ban.html" rel="alternate"></link><published>2017-03-05T11:19:47+08:00</published><updated>2017-03-05T11:19:47+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-05:/fail2ban.html</id><summary type="html">&lt;p&gt;fail2ban 防御 SSH 服务器的暴力破解攻击&lt;/p&gt;</summary><content type="html">&lt;h1&gt;原因&lt;/h1&gt;
+修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled&lt;/p&gt;</content><category term="docker"></category></entry><entry><title>预防SSH服务器暴力破解</title><link href="https://ghxdghxd.github.io/JuPyR/fail2ban.html" rel="alternate"></link><published>2017-03-05T11:19:47+08:00</published><updated>2017-03-05T11:19:47+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-05:/JuPyR/fail2ban.html</id><summary type="html">&lt;p&gt;fail2ban 防御 SSH 服务器的暴力破解攻击&lt;/p&gt;</summary><content type="html">&lt;h1&gt;原因&lt;/h1&gt;
 &lt;p&gt;前两天，以及更早的一段时间内，很多人抱怨，远程登录服务器时经常断线，严重到秒退。
 起初，以为是SSH配置问题，浪费大量时间对SSH检查，重装，配置...
 然后，查看/var/log/secure登录日志，发现多个IP的进攻，
@@ -743,7 +776,7 @@ Hat的发行版中，按照下面的方式让自动启动生效。&lt;/p&gt;
 
 &lt;p&gt;在 Fedora 或 CentOS/RHEL 7:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;  sudo systemctl enable fail2ban&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="fail2ban"></category><category term="linux"></category></entry><entry><title>CPU信息</title><link href="https://ghxdghxd.github.io/cpuinfo.html" rel="alternate"></link><published>2017-03-01T09:19:22+08:00</published><updated>2018-12-01T11:01:47+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-01:/cpuinfo.html</id><summary type="html">&lt;p&gt;Linux中CPU info简介&lt;/p&gt;</summary><content type="html">&lt;h1&gt;CPU的结构&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="fail2ban"></category><category term="linux"></category></entry><entry><title>CPU信息</title><link href="https://ghxdghxd.github.io/JuPyR/cpuinfo.html" rel="alternate"></link><published>2017-03-01T09:19:22+08:00</published><updated>2018-12-01T11:01:47+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-01:/JuPyR/cpuinfo.html</id><summary type="html">&lt;p&gt;Linux中CPU info简介&lt;/p&gt;</summary><content type="html">&lt;h1&gt;CPU的结构&lt;/h1&gt;
 &lt;p&gt;&lt;img alt="Fig.1" src="images/cpu.png" style="height:30%; width:30%;" /&gt;&lt;/p&gt;
 &lt;h1&gt;CPU相关信息&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;lscpu&lt;/code&gt;从sysfs和/proc/cpuinfo收集cpu体系结构信息&lt;/p&gt;
@@ -847,7 +880,7 @@ Hat的发行版中，按照下面的方式让自动启动生效。&lt;/p&gt;
 
 
 &lt;/li&gt;
-&lt;/ul&gt;</content><category term="cpuinfo"></category></entry><entry><title>终端显示颜色</title><link href="https://ghxdghxd.github.io/terminal-color.html" rel="alternate"></link><published>2017-01-03T10:20:00+08:00</published><updated>2017-01-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-03:/terminal-color.html</id><summary type="html">&lt;p&gt;终端显示颜色&lt;/p&gt;</summary><content type="html">&lt;p&gt;echo显示带颜色，需要使用参数-e
+&lt;/ul&gt;</content><category term="cpuinfo"></category></entry><entry><title>终端显示颜色</title><link href="https://ghxdghxd.github.io/JuPyR/terminal-color.html" rel="alternate"></link><published>2017-01-03T10:20:00+08:00</published><updated>2017-01-03T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-03:/JuPyR/terminal-color.html</id><summary type="html">&lt;p&gt;终端显示颜色&lt;/p&gt;</summary><content type="html">&lt;p&gt;echo显示带颜色，需要使用参数-e
 格式如下:
 echo -e "\033[字背景颜色;文字颜色m字符串\033[0m"
 例如:
@@ -966,7 +999,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;td&gt;显示光标&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</content><category term="linux"></category><category term="color"></category></entry><entry><title>磁盘阵列</title><link href="https://ghxdghxd.github.io/raid.html" rel="alternate"></link><published>2016-11-06T18:29:36+08:00</published><updated>2017-05-02T23:45:22+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-06:/raid.html</id><summary type="html">&lt;p&gt;各种磁盘阵列的简介&lt;/p&gt;</summary><content type="html">&lt;h1&gt;磁盘阵列（Redundant Arrays of Independent Drives，RAID）&lt;/h1&gt;
+&lt;/table&gt;</content><category term="linux"></category><category term="color"></category></entry><entry><title>磁盘阵列</title><link href="https://ghxdghxd.github.io/JuPyR/raid.html" rel="alternate"></link><published>2016-11-06T18:29:36+08:00</published><updated>2017-05-02T23:45:22+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-06:/JuPyR/raid.html</id><summary type="html">&lt;p&gt;各种磁盘阵列的简介&lt;/p&gt;</summary><content type="html">&lt;h1&gt;磁盘阵列（Redundant Arrays of Independent Drives，RAID）&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Raid0: 最少需要&lt;strong&gt;2块&lt;/strong&gt;盘，没用冗余数据,不做备份，任何一块磁盘损坏都无法运行。n块磁盘（同类型）的阵列理论上读写速度是单块磁盘的n倍(实际达不到)，风险性也是单一n倍（实际更高），是磁盘阵列中存储性能最好的。适用于安全性不高，要求比较高性能的图形工作站或者个人站。&lt;/p&gt;
@@ -983,7 +1016,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;li&gt;
 &lt;p&gt;Raid5：至少需要&lt;strong&gt;3块&lt;/strong&gt;盘，读取速度接近Raid0，但是安全性更高。安全性上接近Raid1，但是磁盘的利用率更高。可以认为是Raid0和Raid1的一个折中方案。只允许有一块盘出错，可以通过另外多块盘来计算出故障盘的数据，故障之后必须尽快更换。比Raid0+1的磁盘利用率高，是目前比较常用的一种方案。&lt;strong&gt;容量 = 每块硬盘容量 * (n-2)&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</content><category term="raid"></category></entry><entry><title>git的一般用法</title><link href="https://ghxdghxd.github.io/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
+&lt;/ul&gt;</content><category term="raid"></category></entry><entry><title>git的一般用法</title><link href="https://ghxdghxd.github.io/JuPyR/git.html" rel="alternate"></link><published>2016-11-03T10:20:00+08:00</published><updated>2016-11-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/JuPyR/git.html</id><summary type="html">&lt;p&gt;git的一般用法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Git用法&lt;/h1&gt;
 &lt;h2&gt;1 建立仓库&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;远程&lt;/li&gt;
@@ -1163,7 +1196,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 在git创建的项目中换行符为LF，而执行git add时，系统会提示LF将被转换为CRLF。
 解决的办法很简单，禁止git的自动转换即可。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;git config --global core.autocrlf &lt;span class="nb"&gt;false&lt;/span&gt; //禁用自动转换&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>markdown格式详解</title><link href="https://ghxdghxd.github.io/markdown.html" rel="alternate"></link><published>2016-10-20T16:00:00+08:00</published><updated>2016-10-20T16:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-20:/markdown.html</id><summary type="html">&lt;p&gt;markdown格式详解&lt;/p&gt;</summary><content type="html">&lt;h1&gt;1 概述&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="git"></category></entry><entry><title>markdown格式详解</title><link href="https://ghxdghxd.github.io/JuPyR/markdown.html" rel="alternate"></link><published>2016-10-20T16:00:00+08:00</published><updated>2016-10-20T16:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-20:/JuPyR/markdown.html</id><summary type="html">&lt;p&gt;markdown格式详解&lt;/p&gt;</summary><content type="html">&lt;h1&gt;1 概述&lt;/h1&gt;
 &lt;p&gt;&lt;a href="http://zh.wikipedia.org/wiki/Markdown" title="Wiki: Markdown"&gt;Wiki: Markdown&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John Gruber）。&lt;br /&gt;
 它使用易读易写的纯文本格式编写文档，然后转换成有效的 XHTML（或者 HTML）文档。&lt;br /&gt;
@@ -1543,7 +1576,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;span class="code-line"&gt;-&lt;/span&gt;
 &lt;span class="code-line"&gt;.&lt;/span&gt;
 &lt;span class="code-line"&gt;!&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="markdown"></category></entry><entry><title>awk使用记录</title><link href="https://ghxdghxd.github.io/awk.html" rel="alternate"></link><published>2016-10-12T22:12:00+08:00</published><updated>2018-12-18T22:30:24+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/awk.html</id><summary type="html">&lt;p&gt;awk的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;awk日常用法&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="markdown"></category></entry><entry><title>awk使用记录</title><link href="https://ghxdghxd.github.io/JuPyR/awk.html" rel="alternate"></link><published>2016-10-12T22:12:00+08:00</published><updated>2018-12-18T22:30:24+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/JuPyR/awk.html</id><summary type="html">&lt;p&gt;awk的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;awk日常用法&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;$0&lt;/span&gt;~/aaa/表示0包括aaa&lt;/span&gt;
 &lt;span class="code-line"&gt;split &lt;span class="o"&gt;(&lt;/span&gt;string, array, field separator&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;split &lt;span class="o"&gt;(&lt;/span&gt;string, array&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="se"&gt;\-&lt;/span&gt;-&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;gt&lt;span class="p"&gt;;&lt;/span&gt;如果第三个参数没有提供，awk就默认使用当前FS值。&lt;/span&gt;
@@ -1642,7 +1675,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;$1&amp;lt;&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$a&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;quot; &amp;amp;&amp;amp; $2&amp;gt;&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;quot; &amp;amp;&amp;amp; $3&amp;lt;&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$c&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;quot; {OFS=&amp;quot;\t&amp;quot;;print $0}&amp;#39;&lt;/span&gt; test.txt&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# awk $1&amp;lt;&amp;quot;0.25&amp;quot; &amp;amp;&amp;amp; $2&amp;gt;&amp;quot;0.1&amp;quot; &amp;amp;&amp;amp; $3&amp;lt;&amp;quot;0.05&amp;quot; {OFS=&amp;quot; &amp;quot;;print $0} test.txt&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="awk"></category><category term="shell"></category><category term="linux"></category></entry><entry><title>R</title><link href="https://ghxdghxd.github.io/R.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-01-13T10:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/R.html</id><summary type="html">&lt;p&gt;R的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;R的常用命令&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="awk"></category><category term="shell"></category><category term="linux"></category></entry><entry><title>R</title><link href="https://ghxdghxd.github.io/JuPyR/R.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-01-13T10:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/JuPyR/R.html</id><summary type="html">&lt;p&gt;R的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;R的常用命令&lt;/h1&gt;
 &lt;h2&gt;字符串操作&lt;/h2&gt;
 &lt;h3&gt;替换sub, gsub, chart&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;chartr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Ab&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;aB&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;text&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
@@ -1658,7 +1691,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;h2&gt;R动态变量&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#动态生成变量，并赋值&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="kp"&gt;assign&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;,&lt;/span&gt; value&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category></entry><entry><title>计算机字符编码</title><link href="https://ghxdghxd.github.io/Unicode.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-02-28T11:10:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/Unicode.html</id><summary type="html">&lt;p&gt;计算机字符编码&lt;/p&gt;</summary><content type="html">&lt;h1&gt;计算机系统通用的字符编码&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category></entry><entry><title>计算机字符编码</title><link href="https://ghxdghxd.github.io/JuPyR/Unicode.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-02-28T11:10:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/JuPyR/Unicode.html</id><summary type="html">&lt;p&gt;计算机字符编码&lt;/p&gt;</summary><content type="html">&lt;h1&gt;计算机系统通用的字符编码&lt;/h1&gt;
 &lt;h2&gt;数据结构(字符)&lt;/h2&gt;
 &lt;p&gt;在计算机内存中，统一使用Unicode编码；当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码。&lt;br /&gt;
 用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件：&lt;/p&gt;
@@ -1692,7 +1725,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;decode的作用是将其他编码的字符串转换成unicode编码，如str1.decode('gb2312')，表示将gb2312编码的字符串str1转换成unicode编码&lt;/p&gt;</content><category term="Unicode"></category><category term="UTF-8"></category></entry><entry><title>pandas</title><link href="https://ghxdghxd.github.io/pandas.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-03-20T13:21:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/pandas.html</id><summary type="html">&lt;p&gt;pandas的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用&lt;/h1&gt;
+&lt;p&gt;decode的作用是将其他编码的字符串转换成unicode编码，如str1.decode('gb2312')，表示将gb2312编码的字符串str1转换成unicode编码&lt;/p&gt;</content><category term="Unicode"></category><category term="UTF-8"></category></entry><entry><title>pandas</title><link href="https://ghxdghxd.github.io/JuPyR/pandas.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-03-20T13:21:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/JuPyR/pandas.html</id><summary type="html">&lt;p&gt;pandas的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用&lt;/h1&gt;
 &lt;h2&gt;read_csv&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sep&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 第一行不设为列名&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="n"&gt;bed_df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;object&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;chr&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;start&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ref&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;alt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;/span&gt;
@@ -1754,7 +1787,7 @@ echo -e "\033[41;37m TonyZhang \033[0m"
 &lt;p&gt;If your second-to-last line includes an '\r' break.
 You can open in universal-new-line mode to solve the error.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;test.csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;rU&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category><category term="pandas"></category></entry><entry><title>python</title><link href="https://ghxdghxd.github.io/python.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-02-28T11:10:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/python.html</id><summary type="html">&lt;p&gt;python的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;python优化&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category><category term="pandas"></category></entry><entry><title>python</title><link href="https://ghxdghxd.github.io/JuPyR/python.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-02-28T11:10:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/JuPyR/python.html</id><summary type="html">&lt;p&gt;python的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;python优化&lt;/h1&gt;
 &lt;h2&gt;做一个pythonic的人&lt;/h2&gt;
 &lt;h3&gt;1. 枚举&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;enumerate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iterable&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;/span&gt;
@@ -1763,7 +1796,7 @@ You can open in universal-new-line mode to solve the error.&lt;/p&gt;
 
 
 &lt;h3&gt;2. python -m cProfile&lt;/h3&gt;
-&lt;h3&gt;3. time -p bash test.sh/python test.py&lt;/h3&gt;</content><category term="python"></category></entry><entry><title>shell</title><link href="https://ghxdghxd.github.io/shell.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-05-28T11:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/shell.html</id><summary type="html">&lt;p&gt;shell的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
+&lt;h3&gt;3. time -p bash test.sh/python test.py&lt;/h3&gt;</content><category term="python"></category></entry><entry><title>shell</title><link href="https://ghxdghxd.github.io/JuPyR/shell.html" rel="alternate"></link><published>2016-10-12T21:52:00+08:00</published><updated>2018-05-28T11:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-12:/JuPyR/shell.html</id><summary type="html">&lt;p&gt;shell的常用命令&lt;/p&gt;</summary><content type="html">&lt;h1&gt;常用命令&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;0表示标准输入&lt;/span&gt;
 &lt;span class="code-line"&gt;1表示标准输出&lt;/span&gt;
 &lt;span class="code-line"&gt;2表示标准错误输出&lt;/span&gt;
@@ -1868,7 +1901,7 @@ find ./ -mmin  -10  #查找距离现在10分钟内修改的文件&lt;/p&gt;
 &lt;span class="code-line"&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;array&lt;/span&gt;&lt;span class="p"&gt;[@]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="c1"&gt;# 数组全部&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="si"&gt;${#&lt;/span&gt;&lt;span class="nv"&gt;array&lt;/span&gt;&lt;span class="p"&gt;[@]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="c1"&gt;# 数组长度&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;array&lt;/span&gt;&lt;span class="p"&gt;[0]&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="c1"&gt;# 数组元素 0 1 2&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="shell"></category></entry><entry><title>算法复杂度</title><link href="https://ghxdghxd.github.io/timeO.html" rel="alternate"></link><published>2016-06-21T19:57:00+08:00</published><updated>2017-07-25T11:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-06-21:/timeO.html</id><summary type="html">&lt;p&gt;漂亮的大 O 速查表, 计算机科学里面常见算法的时间和空间的大 OBig-O 复杂度&lt;/p&gt;</summary><content type="html">&lt;h1&gt;&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="shell"></category></entry><entry><title>算法复杂度</title><link href="https://ghxdghxd.github.io/JuPyR/timeO.html" rel="alternate"></link><published>2016-06-21T19:57:00+08:00</published><updated>2017-07-25T11:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-06-21:/JuPyR/timeO.html</id><summary type="html">&lt;p&gt;漂亮的大 O 速查表, 计算机科学里面常见算法的时间和空间的大 OBig-O 复杂度&lt;/p&gt;</summary><content type="html">&lt;h1&gt;&lt;/h1&gt;
 &lt;p&gt;原文章在&lt;a href="https://linux.cn/article-7480-1.html"&gt;这里&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;图例&lt;/h2&gt;
 &lt;table&gt;
@@ -2140,7 +2173,7 @@ find ./ -mmin  -10  #查找距离现在10分钟内修改的文件&lt;/p&gt;
 &lt;/table&gt;
 
 &lt;h2&gt;大 O 复杂度图表&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="BigO" src="../images/BigO.png" /&gt;&lt;/p&gt;</content><category term="time"></category></entry><entry><title>Java parallelGCThreads的选择</title><link href="https://ghxdghxd.github.io/Java-parallelGCThreads.html" rel="alternate"></link><published>2016-01-08T15:31:01+08:00</published><updated>2016-12-30T16:20:13+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-01-08:/Java-parallelGCThreads.html</id><summary type="html">&lt;p&gt;Java parallelGCThreads的选择&lt;/p&gt;</summary><content type="html">&lt;h1&gt;1.含义&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="BigO" src="../images/BigO.png" /&gt;&lt;/p&gt;</content><category term="time"></category></entry><entry><title>Java parallelGCThreads的选择</title><link href="https://ghxdghxd.github.io/JuPyR/Java-parallelGCThreads.html" rel="alternate"></link><published>2016-01-08T15:31:01+08:00</published><updated>2016-12-30T16:20:13+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-01-08:/JuPyR/Java-parallelGCThreads.html</id><summary type="html">&lt;p&gt;Java parallelGCThreads的选择&lt;/p&gt;</summary><content type="html">&lt;h1&gt;1.含义&lt;/h1&gt;
 &lt;p&gt;ParallelGCThreads，表示JVM在进行并行GC的时候，用于GC的线程数，-XX:ParallelGCThreads=43，表示配置GC线程数为43。&lt;/p&gt;
 &lt;h1&gt;2.JVM相关接口&lt;/h1&gt;
 &lt;p&gt;JVM中，关于ParallelGCThreads的计算代码如下：&lt;/p&gt;
@@ -2205,7 +2238,7 @@ find ./ -mmin  -10  #查找距离现在10分钟内修改的文件&lt;/p&gt;
 &lt;span class="code-line"&gt;④ 如果物理CPU所能够支持线程数大于8，则ParallelGCThreads的值为8加上一个调整值，调整值的计算方式为：物理CPU所支持的线程数减去8所得值的5/8或者5/16，JVM会根据实际的情况来选择具体是乘以5/8还是5/16。&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;比如，在64线程的x86 CPU上，如果用户未指定ParallelGCThreads的值，则默认的计算方式为：ParallelGCThreads = 8 + (64 - 8) * (5/8) = 8 + 35 = 43。&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="Java"></category></entry><entry><title>linux好用软件集</title><link href="https://ghxdghxd.github.io/linux-soft.html" rel="alternate"></link><published>2015-02-03T10:20:00+08:00</published><updated>2018-07-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-02-03:/linux-soft.html</id><summary type="html">&lt;p&gt;自己用的linux软件以及遇到的问题整理&lt;/p&gt;</summary><content type="html">&lt;h1&gt;1. guake terminal&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="Java"></category></entry><entry><title>linux好用软件集</title><link href="https://ghxdghxd.github.io/JuPyR/linux-soft.html" rel="alternate"></link><published>2015-02-03T10:20:00+08:00</published><updated>2018-07-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-02-03:/JuPyR/linux-soft.html</id><summary type="html">&lt;p&gt;自己用的linux软件以及遇到的问题整理&lt;/p&gt;</summary><content type="html">&lt;h1&gt;1. guake terminal&lt;/h1&gt;
 &lt;h2&gt;简介&lt;/h2&gt;
 &lt;p&gt;guake terminal， 一个下拉式终端&lt;a href="https://github.com/Guake/guake"&gt;这里下载&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;问题&lt;/h2&gt;
@@ -2229,7 +2262,7 @@ find ./ -mmin  -10  #查找距离现在10分钟内修改的文件&lt;/p&gt;
 font.family          :sans-serif
 font.sans-serif     : SimHei, DejaVu Serif（后面还有很多，略去）
 axes.unicode_minus，将True改为False&lt;/p&gt;
-&lt;p&gt;删除~/.cache/matplotlib字体缓存&lt;/p&gt;</content><category term="linux"></category><category term="software"></category></entry><entry><title>登录终端信息</title><link href="https://ghxdghxd.github.io/terminal-announcement.html" rel="alternate"></link><published>2014-12-04T16:20:00+08:00</published><updated>2016-03-09T22:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/terminal-announcement.html</id><summary type="html">&lt;p&gt;登录终端显示提示信息&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/etc/issue&lt;/h1&gt;
+&lt;p&gt;删除~/.cache/matplotlib字体缓存&lt;/p&gt;</content><category term="linux"></category><category term="software"></category></entry><entry><title>登录终端信息</title><link href="https://ghxdghxd.github.io/JuPyR/terminal-announcement.html" rel="alternate"></link><published>2014-12-04T16:20:00+08:00</published><updated>2016-03-09T22:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/JuPyR/terminal-announcement.html</id><summary type="html">&lt;p&gt;登录终端显示提示信息&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/etc/issue&lt;/h1&gt;
 &lt;p&gt;在终端接口登录时候的提示字符,例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;root@linux ~&lt;span class="o"&gt;]&lt;/span&gt; cat /etc/issue&lt;/span&gt;
 &lt;span class="code-line"&gt;CentOS release &lt;span class="m"&gt;5&lt;/span&gt;.6 &lt;span class="o"&gt;(&lt;/span&gt;Final&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
@@ -2255,7 +2288,7 @@ axes.unicode_minus，将True改为False&lt;/p&gt;
 &lt;span class="code-line"&gt;    Our server will be maintained at&lt;/span&gt;
 &lt;span class="code-line"&gt;    please don&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;t login at that time,thanks.&lt;/span&gt;
 &lt;span class="code-line"&gt;    那么当用户登录的时候，就会显示设置的内容了。&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/linux-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2018-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/linux-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;h1&gt;电源配置&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="terminal"></category></entry><entry><title>集群管理笔记</title><link href="https://ghxdghxd.github.io/JuPyR/linux-management.html" rel="alternate"></link><published>2014-12-04T16:10:16+08:00</published><updated>2018-03-09T22:07:02+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/JuPyR/linux-management.html</id><summary type="html">&lt;p&gt;常用的linux服务器管理&lt;/p&gt;</summary><content type="html">&lt;h1&gt;电源配置&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;由于安装之初，未使用线标签标记，后续管理十分不便...&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2640,7 +2673,7 @@ ERROR:    cannot request service (status)&lt;/p&gt;
 &lt;h2&gt;screen&lt;/h2&gt;
 &lt;p&gt;切换用户后，screen出现如下提示：Cannot open your terminal '/dev/pts/38' - please check&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;script /dev/null &lt;span class="c1"&gt;#更新 tty，再执行screen&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="centos"></category><category term="shell"></category><category term="hpc"></category><category term="rocks cluster"></category><category term="manage"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="https://ghxdghxd.github.io/R-and-Rstudio.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;ubuntu安装R与Rstudio的过程&lt;/p&gt;</summary><content type="html">&lt;h1&gt;install R&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="centos"></category><category term="shell"></category><category term="hpc"></category><category term="rocks cluster"></category><category term="manage"></category></entry><entry><title>R与Rstudio的安装过程（ubuntu）</title><link href="https://ghxdghxd.github.io/JuPyR/R-and-Rstudio.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2017-02-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/JuPyR/R-and-Rstudio.html</id><summary type="html">&lt;p&gt;ubuntu安装R与Rstudio的过程&lt;/p&gt;</summary><content type="html">&lt;h1&gt;install R&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;error&lt;/li&gt;
 &lt;/ul&gt;
@@ -2840,7 +2873,14 @@ ERROR:    cannot request service (status)&lt;/p&gt;
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;install.packages&lt;span class="p"&gt;(&lt;/span&gt;install.packages&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;units&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;    configure.args&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;--with-udunits2-lib=/share/apps/anaconda3/lib --with-udunits2-include=/share/apps/anaconda3/include&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category><category term="Rstudio"></category></entry><entry><title>fedora常用配置</title><link href="https://ghxdghxd.github.io/fedora-install.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2018-01-27T10:27:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/fedora-install.html</id><summary type="html">&lt;p&gt;fedora常用安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;config fedora&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;URL 'https://cran.r-project.org/CRAN_mirrors.csv': status was 'Problem with the SSL CA cert (path? access rights?)&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="m"&gt;.&lt;/span&gt;Renviron&lt;/span&gt;
+&lt;span class="code-line"&gt;curl&lt;span class="o"&gt;-&lt;/span&gt;config &lt;span class="o"&gt;--&lt;/span&gt;ca&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="kp"&gt;Sys.setenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;CURL_CA_BUNDLE &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/share/apps/anaconda3/ssl/cacert.pem&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="R"></category><category term="Rstudio"></category></entry><entry><title>fedora常用配置</title><link href="https://ghxdghxd.github.io/JuPyR/fedora-install.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2018-01-27T10:27:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/JuPyR/fedora-install.html</id><summary type="html">&lt;p&gt;fedora常用安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;config fedora&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo rm -rf /opt&lt;/span&gt;
 &lt;span class="code-line"&gt;sudo dnf install yum-utils&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
@@ -3015,7 +3055,7 @@ ERROR:    cannot request service (status)&lt;/p&gt;
 
 
 &lt;h1&gt;install R&lt;/h1&gt;
-&lt;p&gt;参考&lt;a href="R-and-Rstudio"&gt;这里&lt;/a&gt;&lt;/p&gt;</content><category term="fedora"></category><category term="linux"></category><category term="R"></category></entry><entry><title>ubuntu常用配置</title><link href="https://ghxdghxd.github.io/ubuntu-install.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2017-12-28T08:05:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/ubuntu-install.html</id><summary type="html">&lt;p&gt;ubuntu常用安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;config ubuntu&lt;/h1&gt;
+&lt;p&gt;参考&lt;a href="R-and-Rstudio"&gt;这里&lt;/a&gt;&lt;/p&gt;</content><category term="fedora"></category><category term="linux"></category><category term="R"></category></entry><entry><title>ubuntu常用配置</title><link href="https://ghxdghxd.github.io/JuPyR/ubuntu-install.html" rel="alternate"></link><published>2014-11-13T10:20:00+08:00</published><updated>2017-12-28T08:05:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-13:/JuPyR/ubuntu-install.html</id><summary type="html">&lt;p&gt;ubuntu常用安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;config ubuntu&lt;/h1&gt;
 &lt;h2&gt;upgrade&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;sudo apt update &lt;span class="p"&gt;&amp;amp;&lt;/span&gt; sudo apt upgrade&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -3129,7 +3169,7 @@ ERROR:    cannot request service (status)&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h1&gt;&lt;a href="R-and-Rstudio"&gt;install R&lt;/a&gt;&lt;/h1&gt;</content><category term="ubuntu"></category><category term="linux"></category><category term="R"></category></entry><entry><title>分区挂载</title><link href="https://ghxdghxd.github.io/mount.html" rel="alternate"></link><published>2014-11-03T00:20:00+08:00</published><updated>2017-10-21T20:52:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-03:/mount.html</id><summary type="html">&lt;p&gt;mount挂载说明&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/etc/fstab&lt;/h1&gt;
+&lt;h1&gt;&lt;a href="R-and-Rstudio"&gt;install R&lt;/a&gt;&lt;/h1&gt;</content><category term="ubuntu"></category><category term="linux"></category><category term="R"></category></entry><entry><title>分区挂载</title><link href="https://ghxdghxd.github.io/JuPyR/mount.html" rel="alternate"></link><published>2014-11-03T00:20:00+08:00</published><updated>2017-10-21T20:52:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-03:/JuPyR/mount.html</id><summary type="html">&lt;p&gt;mount挂载说明&lt;/p&gt;</summary><content type="html">&lt;h1&gt;/etc/fstab&lt;/h1&gt;
 &lt;p&gt;运维都知道的文件，若想把mount的disk和dir设置为每次开机自动加载，那么就要把相关信息写到这个文件中。当用”mount -a“命令自动mount的时候，也会去读这个文件。例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nv"&gt;LABEL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;/span&gt;
@@ -3174,7 +3214,7 @@ ERROR:    cannot request service (status)&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;blkid usb &lt;span class="c1"&gt;#查看uuid&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# 修改/etc/fstab&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nv"&gt;UUID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;54A3-36E3 /home/aData exfat defaults,uid&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;,gid&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1000&lt;/span&gt;,umask&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;022&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="mount"></category></entry><entry><title>ssh安装与配置</title><link href="https://ghxdghxd.github.io/ssh.html" rel="alternate"></link><published>2014-11-03T00:20:00+08:00</published><updated>2018-01-13T11:01:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-03:/ssh.html</id><summary type="html">&lt;p&gt;ssh安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;相关文档&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="linux"></category><category term="mount"></category></entry><entry><title>ssh安装与配置</title><link href="https://ghxdghxd.github.io/JuPyR/ssh.html" rel="alternate"></link><published>2014-11-03T00:20:00+08:00</published><updated>2018-01-13T11:01:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-11-03:/JuPyR/ssh.html</id><summary type="html">&lt;p&gt;ssh安装与配置&lt;/p&gt;</summary><content type="html">&lt;h1&gt;相关文档&lt;/h1&gt;
 &lt;h2&gt;SSH安装&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 备份&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;sudo cp -rf /etc/ssh /etc/ssh_bak&lt;/span&gt;
@@ -3297,7 +3337,7 @@ ERROR:    cannot request service (status)&lt;/p&gt;
 
 &lt;h3&gt;5. 关于 SFTP 服务的设定项目！&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;Subsystem       sftp    /usr/lib/ssh/sftp-server&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="ssh"></category><category term="linux"></category></entry><entry><title>前端</title><link href="https://ghxdghxd.github.io/css.html" rel="alternate"></link><published>2010-12-03T10:20:00+08:00</published><updated>2010-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2010-12-03:/css.html</id><summary type="html">&lt;p&gt;前端的记录&lt;/p&gt;</summary><content type="html">&lt;h1&gt;css + js + html&lt;/h1&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="ssh"></category><category term="linux"></category></entry><entry><title>前端</title><link href="https://ghxdghxd.github.io/JuPyR/css.html" rel="alternate"></link><published>2010-12-03T10:20:00+08:00</published><updated>2010-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2010-12-03:/JuPyR/css.html</id><summary type="html">&lt;p&gt;前端的记录&lt;/p&gt;</summary><content type="html">&lt;h1&gt;css + js + html&lt;/h1&gt;
 &lt;h2&gt;垂直居中&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;display&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;flex&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="nt"&gt;justify-content&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;center&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;/span&gt;

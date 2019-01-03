@@ -1,0 +1,86 @@
+<div class="header">
+  <h1 class="page-title">
+    <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>
+    julia 1.0 的并行计算
+  </h1>
+  <div class="details">
+    <div class="left">
+      12月 29, 2018
+      <span> | </span> <a href="/category/xiao-chao-su-cha.html">小抄速查</a>
+    </div>
+    <div class="right">
+      <a class="fa fa-tag" href="/tag/julia.html">julia</a>
+      <a class="fa fa-tag" href="/tag/distributed.html">distributed</a>
+    </div>
+  </div>
+</div>
+<div id="message-nano-wrapper" class="nano">
+  <div class="nano-content">
+    <ul class="message-container">
+        <div class="message">
+          <h1>julia的<a href="https://docs.juliacn.com/latest/manual/parallel-computing">并行</a></h1>
+<p><strong>julia的主进程<code>id</code>为 1(提供 Julia 交互环境的进程的 id 永远是1)</strong>
+julia中的并行进程，称为<code>worker</code>，
+<code>julia -p 2</code>表示申请2个<code>workers</code>进行并行计算，那么</p>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="n">workers</span><span class="p">()</span> <span class="c"># 查看所有workers的id，</span></span>
+<span class="code-line"><span class="c">#19-element Array{Int64,1}:</span></span>
+<span class="code-line"><span class="c"># 2</span></span>
+<span class="code-line"><span class="c"># 3</span></span>
+<span class="code-line"><span class="n">nworkers</span><span class="p">()</span> <span class="c"># 查看workers的数目</span></span>
+<span class="code-line"><span class="c"># 2</span></span>
+<span class="code-line"><span class="n">nprocs</span><span class="p">()</span> <span class="c"># 查看所有进程数目，nworkers + 主进程(id=1)</span></span>
+<span class="code-line"><span class="c"># 3</span></span>
+<span class="code-line"><span class="n">myid</span><span class="p">()</span> <span class="c"># 当前workers的id</span></span>
+<span class="code-line"><span class="c"># 1</span></span>
+</pre></div>
+
+
+<h2>map与pmap</h2>
+<h3>map串行</h3>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="k">function</span> <span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dat</span><span class="p">)</span></span>
+<span class="code-line">    <span class="k">return</span><span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="n">x</span><span class="p">])</span></span>
+<span class="code-line"><span class="k">end</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">map</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dat</span><span class="p">),</span> <span class="n">x_list</span><span class="p">)</span></span>
+</pre></div>
+
+
+<h3>pmap并行</h3>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nd">@everywhere</span> <span class="k">function</span> <span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dat</span><span class="p">)</span></span>
+<span class="code-line">    <span class="k">return</span><span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="n">x</span><span class="p">])</span></span>
+<span class="code-line"><span class="k">end</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">pmap</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dat</span><span class="p">),</span> <span class="n">x_list</span><span class="p">)</span></span>
+</pre></div>
+        </div>
+        <!-- <div class="tool-box">
+          <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a>
+        </div> -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nano').overlayScrollbars({
+    scrollbars: {
+      autoHide: "leave",
+    }
+  });
+  $('.trigger-message-close').on('click', function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+    $('body').removeClass('show-main-overlay');
+  });
+  $('#message .header .left a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addDisjunctiveFacetRefinement("category", e.target.text).search();
+    
+  });
+  $('#message .header .right a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addFacetRefinement("tags", e.target.text).search();
+  });
+</script>
