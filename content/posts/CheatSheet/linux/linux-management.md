@@ -107,10 +107,10 @@ rocks run host "/etc/init.d/pbs_mom restart"
 ### 添加用户**无法qusb要在/etc/group 添加用户**
 
 ```shell
-useradd -g group name 
+useradd -g group name
 #/etc/passwd name:x:xxx:xxx::/export/home/casual:/bin/bash
 passwd name
-rocks sync users 
+rocks sync users
 #可更改/export/home/name 为
 #/home/name : /etc/passwd name:x:xxx:xxx::/home/casual:/bin/bash
 
@@ -139,6 +139,9 @@ rm -rf ~/.ssh #然后 退出登录 再登陆 会自动生成新密钥
 
 ```sh
 rocks set host boot compute1 action=install
+ssh compute-0-6 /boot/kickstart/cluster-kickstart
+# 登录节点后，运行如下
+/boot/kickstart/cluster-kickstart-pxe
 ```
 
 ### 提交任务后，无运行时间,且qdel: Server could not connect to MOM
@@ -341,3 +344,15 @@ conda install -c asmeurer glibc
 ```sh
 script /dev/null #更新 tty，再执行screen
 ```
+
+## tensorflow
+
+```sh
+/share/apps/glibc.2.17/lib/ld-linux-x86-64.so.2 --library-path /share/apps/glibc.2.17/lib/lib:$LD_LIBRARY_PATH /share/apps/anaconda3/bin/python
+```
+
+## 检查EDAC错误的方法
+
+grep "[0-9]" /sys/devices/system/edac/mc/mc*/csrow*/ch*_ce_count
+
+如果数值为0 表示正常 其他表示异常
