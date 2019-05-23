@@ -28,6 +28,9 @@ myid() # 当前workers的id
 # 1
 ```
 
+> julia的并行函数中，最好不要在println，可能会出现如下提示，并且主进程会被终止
+> Warning: Forcibly interrupting busy workers
+
 ## map与pmap
 
 ### map串行
