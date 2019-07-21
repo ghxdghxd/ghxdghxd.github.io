@@ -96,25 +96,6 @@ bash Anaconda3-4.3.1-Linux-x86_64.sh|sh
 sudo apt-get -fy install ./synergy-v1.8.8-stable-c30301e-Linux-x86_64.deb
 ```
 
-## sublime
-
-```sh
-sudo apt-get -fy install ./sublime-text_build-3126_amd64.deb
-```
-
-## atom
-
-```sh
-sudo apt-get -fy install ./atom-amd64.deb
-```
-
-## youdao-dict
-
-```sh
-sudo apt-get -fy install ./youdao-dict_1.1.0-0-deepin_amd64.deb
-wget https://pypi.python.org/packages/48/9a/bcf41728a0a81b3d76e2a873296c2912300c653f9e6453c760a50bd2ef93/python-xlib-0.19.tar.bz2
-```
-
 ## ModuleNotFoundError
 
 + No module named 'Xlib'
@@ -127,14 +108,6 @@ pip install python3_xlib
 
 ```sh
 pip install pyxdg
-```
-
-## wechat
-
-```sh
-sudo snap install electronic-wechat
-
-File failed to load: /extensions/MathZoom.js
 ```
 
 # [install R](R-and-Rstudio)

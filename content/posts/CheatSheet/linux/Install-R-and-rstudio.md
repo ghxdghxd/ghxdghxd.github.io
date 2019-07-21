@@ -8,7 +8,7 @@ Slug: R-and-Rstudio
 Authors: JT Guo
 Summary: ubuntu安装R与Rstudio的过程
 ---
-# install R
+## install R
 
 + error
 
@@ -31,7 +31,7 @@ apt-get build-dep r-base-core
 ## ./configure
 
 ```shell
-./configure --prefix=/opt/R-3.3.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk \
+./configure --prefix=/opt/R-3.6.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk \
 --with-blas --with-lapack # 提高矩阵速度
 ```
 
@@ -175,6 +175,13 @@ sudo apt-get install libgstreamer-plugins-base0.10-0
 export RSTUDIO_WHICH_R="/opt/R-3.3.1/bin/R" 添加到/etc/profile或~/.profile
 ```
 
+### rstudio: error while loading shared libraries: libssl.so.1.0.0: cannot open shared object file: No such file or directory
+
+```sh
+wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb
+dpkg -i ./libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb
+```
+
 ### run R
 
 ### Error in grid.Call(L_textBounds, as.graphicsAnnot(xlabel),xlabel),x x, x$y, :无法载入X11字面为2,大小为20的字形-*-courier-%s-%s-*-*-%d-*-*-*-*-*-*-*
@@ -241,7 +248,7 @@ install.packages(install.packages("units",
     configure.args="--with-udunits2-lib=/share/apps/anaconda3/lib --with-udunits2-include=/share/apps/anaconda3/include"))
 ```
 
-## URL 'https://cran.r-project.org/CRAN_mirrors.csv': status was 'Problem with the SSL CA cert (path? access rights?)
+## URL <https://cran.r-project.org/CRAN_mirrors.csv>: status was 'Problem with the SSL CA cert (path? access rights?)
 
 ```R
 .Renviron
