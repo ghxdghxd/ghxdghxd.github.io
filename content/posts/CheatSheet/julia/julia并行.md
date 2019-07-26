@@ -44,7 +44,7 @@ end
 map(x -> run(x, dat), x_list)
 ```
 
-### pmap并行
+### pmap并行,默认可能为1个物理CPU(如8线程)
 
 ```julia
 @everywhere function run(x, dat)

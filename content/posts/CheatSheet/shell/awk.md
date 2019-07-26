@@ -50,6 +50,23 @@ awk '{cmd="echo"$0; res="";
     close (cmd)}' file
 ```
 
+## awk排序
+
+* asort  是对数组的值进行排序，并且会丢掉原先键值
+* asorti 是对数组的键值进行排序，生成<序号，键值>关联数组
+
+```sh
+awk '{a[$1]=$2}END{slen=asort(a,b);for(i=1;i<=slen;i++) print i"\t"a[i]"\t"b[i]}' test
+```
+
+asort对数组a的值进行排序，把排序后的下标存入新生成的数组b中，丢弃数组a下标值，再把数组a的长度赋值给变量slen
+
+```sh
+awk '{a[$1]=$2}END{slen=asorti(a,b);for(i=1;i<=slen;i++) print i"\t"b[i]"\t"a[b[i]]}' test
+```
+
+asorti对数组a的下标进行排序，并把排序后的下标存入新生成的数组b中，并把数组a的长度赋值给变量l
+
 ## awk传参
 
 ### 方法一

@@ -52,6 +52,9 @@ sudo apt install gnome-shell-extension-dash-to-panel
 ## wbpy
 
 ```sh
+sudo apt-get purge ibus
+sudo apt-get autoremove
+
 sudo apt install fcitx-table-wbpy
 im-config -s fcitx
 sudo cp /usr/share/fcitx/xdg/autostart/fcitx-autostart.desktop /etc/xdg/autostart/
