@@ -1,0 +1,73 @@
+<div class="header">
+  <h1 class="page-title">
+    <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>
+    Seafile
+  </h1>
+  <div class="details">
+    <div class="left">
+      7月 31, 2019
+      <span> | </span> <a href="/category/linux.html">linux</a>
+    </div>
+    <div class="right">
+      <a class="fa fa-tag" href="/tag/seafile.html">seafile</a>
+    </div>
+  </div>
+</div>
+<div id="message-nano-wrapper" class="nano">
+  <div class="nano-content">
+    <ul class="message-container">
+        <div class="message">
+          <h1>首先</h1>
+<p>查看 8082端口有没有开</p>
+<div class="highlight"><pre><span class="code-line"><span></span>service iptables status</span>
+</pre></div>
+
+
+<h1>备份与恢复</h1>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># backup</span></span>
+<span class="code-line">mysqldump -h <span class="m">127</span>.0.0.1 -uroot -p<span class="o">[</span>root_passwd<span class="o">]</span> --opt ccnet-db &gt; ~jintao/ccnet-db.sql.<span class="sb">`</span>date +<span class="s2">&quot;%Y-%m-%d-%H-%M-%S&quot;</span><span class="sb">`</span></span>
+<span class="code-line">mysqldump -h <span class="m">127</span>.0.0.1 -uroot -p<span class="o">[</span>root_passwd<span class="o">]</span> --opt seafile-db &gt; ~jintao/seafile-db.sql.<span class="sb">`</span>date +<span class="s2">&quot;%Y-%m-%d-%H-%M-%S&quot;</span><span class="sb">`</span></span>
+<span class="code-line">mysqldump -h <span class="m">127</span>.0.0.1 -uroot -p<span class="o">[</span>root_passwd<span class="o">]</span> --opt seahub-db &gt; ~jintao/seahub-db.sql.<span class="sb">`</span>date +<span class="s2">&quot;%Y-%m-%d-%H-%M-%S&quot;</span><span class="sb">`</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># recovery</span></span>
+<span class="code-line">mysql -uroot -p<span class="o">[</span>root_passwd<span class="o">]</span> ccnet-db &lt; ccnet-db.sql.2013-10-19-16-00-05</span>
+<span class="code-line">mysql -uroot -p<span class="o">[</span>root_passwd<span class="o">]</span> seafile-db &lt; seafile-db.sql.2013-10-19-16-00-20</span>
+<span class="code-line">mysql -uroot -p<span class="o">[</span>root_passwd<span class="o">]</span> seahub-db &lt; seahub-db.sql.2013-10-19-16-01-05</span>
+</pre></div>
+
+
+<h1>gunicorn.conf</h1>
+<div class="highlight"><pre><span class="code-line"><span></span>bind = &quot;0.0.0.0:8000&quot;</span>
+</pre></div>
+        </div>
+        <!-- <div class="tool-box">
+          <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a>
+        </div> -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nano').overlayScrollbars({
+    scrollbars: {
+      autoHide: "leave",
+    }
+  });
+  $('.trigger-message-close').on('click', function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+    $('body').removeClass('show-main-overlay');
+  });
+  $('#message .header .left a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addDisjunctiveFacetRefinement("category", e.target.text).search();
+    
+  });
+  $('#message .header .right a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addFacetRefinement("tags", e.target.text).search();
+  });
+</script>

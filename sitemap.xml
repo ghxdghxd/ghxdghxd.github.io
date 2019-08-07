@@ -4,883 +4,960 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/</loc>
-<lastmod>2019-01-03T23:27:06-00:00</lastmod>
+<loc>https://ghxdghxd.github.io/</loc>
+<lastmod>2019-08-07T22:52:22-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/pages/about.html</loc>
+<loc>https://ghxdghxd.github.io/pages/about.html</loc>
 <lastmod>2014-12-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/julia-distributed.html</loc>
+<loc>https://ghxdghxd.github.io/唯一ID.html</loc>
+<lastmod>2019-01-21T15:13:23+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/seafile.html</loc>
+<lastmod>2019-07-31T19:30:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/ggvis.html</loc>
+<lastmod>2019-01-15T10:43:58+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/julia-distributed.html</loc>
 <lastmod>2018-12-30T12:56:05+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/ATACseq.html</loc>
+<loc>https://ghxdghxd.github.io/ATACseq.html</loc>
 <lastmod>2018-12-01T14:30:07+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/ivreg.html</loc>
+<loc>https://ghxdghxd.github.io/ivreg.html</loc>
 <lastmod>2018-11-12T13:14:43+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/libatk.html</loc>
+<loc>https://ghxdghxd.github.io/libatk.html</loc>
 <lastmod>2018-11-05T12:23:52+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/ggplot2.html</loc>
+<loc>https://ghxdghxd.github.io/ggplot2.html</loc>
 <lastmod>2018-11-01T20:54:20+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/pie_plot.html</loc>
+<loc>https://ghxdghxd.github.io/pie_plot.html</loc>
 <lastmod>2018-11-01T13:33:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/gitlab.html</loc>
+<loc>https://ghxdghxd.github.io/gitlab.html</loc>
 <lastmod>2018-10-26T15:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/ROC.html</loc>
+<loc>https://ghxdghxd.github.io/ROC.html</loc>
 <lastmod>2016-06-14T14:02:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/git-submodule.html</loc>
+<loc>https://ghxdghxd.github.io/git-submodule.html</loc>
 <lastmod>2018-02-03T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/meta.html</loc>
+<loc>https://ghxdghxd.github.io/meta.html</loc>
 <lastmod>2018-02-03T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/archlinux.html</loc>
+<loc>https://ghxdghxd.github.io/archlinux.html</loc>
 <lastmod>2017-12-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/docker.html</loc>
+<loc>https://ghxdghxd.github.io/pelican.html</loc>
+<lastmod>2017-12-05T19:30:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/docker.html</loc>
 <lastmod>2017-11-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tennis-racquet.html</loc>
+<loc>https://ghxdghxd.github.io/tennis-racquet.html</loc>
 <lastmod>2017-04-03T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/fail2ban.html</loc>
+<loc>https://ghxdghxd.github.io/fail2ban.html</loc>
 <lastmod>2017-03-05T11:19:47+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/mpileup.html</loc>
+<loc>https://ghxdghxd.github.io/mpileup.html</loc>
 <lastmod>2017-03-04T14:33:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/cpuinfo.html</loc>
+<loc>https://ghxdghxd.github.io/cpuinfo.html</loc>
 <lastmod>2018-12-01T11:01:47+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/ctDNA.html</loc>
+<loc>https://ghxdghxd.github.io/ctDNA.html</loc>
 <lastmod>2017-01-09T15:59:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/terminal-color.html</loc>
+<loc>https://ghxdghxd.github.io/terminal-color.html</loc>
 <lastmod>2017-01-03T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/raid.html</loc>
+<loc>https://ghxdghxd.github.io/raid.html</loc>
 <lastmod>2017-05-02T23:45:22+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/BRCA.html</loc>
+<loc>https://ghxdghxd.github.io/BRCA.html</loc>
 <lastmod>2016-11-03T20:31:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/hotnet2.html</loc>
+<loc>https://ghxdghxd.github.io/hotnet2.html</loc>
 <lastmod>2016-11-18T11:07:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/git.html</loc>
+<loc>https://ghxdghxd.github.io/git.html</loc>
 <lastmod>2016-11-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/variant.html</loc>
+<loc>https://ghxdghxd.github.io/variant.html</loc>
 <lastmod>2016-12-27T21:28:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/markdown.html</loc>
+<loc>https://ghxdghxd.github.io/markdown.html</loc>
 <lastmod>2016-10-20T16:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/awk.html</loc>
+<loc>https://ghxdghxd.github.io/awk.html</loc>
 <lastmod>2018-12-18T22:30:24+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/R.html</loc>
+<loc>https://ghxdghxd.github.io/R.html</loc>
 <lastmod>2018-01-13T10:02:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/Unicode.html</loc>
+<loc>https://ghxdghxd.github.io/Unicode.html</loc>
 <lastmod>2018-02-28T11:10:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/pandas.html</loc>
+<loc>https://ghxdghxd.github.io/pandas.html</loc>
 <lastmod>2018-03-20T13:21:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/python.html</loc>
+<loc>https://ghxdghxd.github.io/python.html</loc>
 <lastmod>2018-02-28T11:10:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/shell.html</loc>
+<loc>https://ghxdghxd.github.io/shell.html</loc>
 <lastmod>2018-05-28T11:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/timeO.html</loc>
+<loc>https://ghxdghxd.github.io/timeO.html</loc>
 <lastmod>2017-07-25T11:02:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/Java-parallelGCThreads.html</loc>
+<loc>https://ghxdghxd.github.io/Java-parallelGCThreads.html</loc>
 <lastmod>2016-12-30T16:20:13+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/QQplot.html</loc>
+<loc>https://ghxdghxd.github.io/QQplot.html</loc>
 <lastmod>2015-12-27T19:57:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/cfDNA.html</loc>
+<loc>https://ghxdghxd.github.io/cfDNA.html</loc>
 <lastmod>2015-12-25T20:31:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/mutation.html</loc>
+<loc>https://ghxdghxd.github.io/mutation.html</loc>
 <lastmod>2016-08-30T10:03:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/HGVS.html</loc>
+<loc>https://ghxdghxd.github.io/HGVS.html</loc>
 <lastmod>2015-09-29T11:09:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/the-sense.html</loc>
+<loc>https://ghxdghxd.github.io/the-sense.html</loc>
 <lastmod>2015-08-03T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/MutSigCV.html</loc>
+<loc>https://ghxdghxd.github.io/MutSigCV.html</loc>
 <lastmod>2016-09-23T10:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/CREST.html</loc>
+<loc>https://ghxdghxd.github.io/CREST.html</loc>
 <lastmod>2015-12-24T14:02:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/DHS.html</loc>
+<loc>https://ghxdghxd.github.io/DHS.html</loc>
 <lastmod>2015-02-03T13:27:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/linux-soft.html</loc>
+<loc>https://ghxdghxd.github.io/linux-soft.html</loc>
 <lastmod>2018-07-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/hunman-genome.html</loc>
+<loc>https://ghxdghxd.github.io/hunman-genome.html</loc>
 <lastmod>2016-03-17T10:33:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/NGS-coverage.html</loc>
+<loc>https://ghxdghxd.github.io/NGS-coverage.html</loc>
 <lastmod>2016-02-29T20:40:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/terminal-announcement.html</loc>
+<loc>https://ghxdghxd.github.io/terminal-announcement.html</loc>
 <lastmod>2016-03-09T22:07:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/linux-management.html</loc>
+<loc>https://ghxdghxd.github.io/linux-management.html</loc>
 <lastmod>2018-03-09T22:07:02+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/fastq-format.html</loc>
+<loc>https://ghxdghxd.github.io/fastq-format.html</loc>
 <lastmod>2015-03-06T16:12:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/R-and-Rstudio.html</loc>
+<loc>https://ghxdghxd.github.io/R-and-Rstudio.html</loc>
 <lastmod>2017-02-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/fedora-install.html</loc>
+<loc>https://ghxdghxd.github.io/fedora-install.html</loc>
 <lastmod>2018-01-27T10:27:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/ubuntu-install.html</loc>
+<loc>https://ghxdghxd.github.io/ubuntu-install.html</loc>
 <lastmod>2017-12-28T08:05:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/mount.html</loc>
+<loc>https://ghxdghxd.github.io/mount.html</loc>
 <lastmod>2017-10-21T20:52:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/ssh.html</loc>
+<loc>https://ghxdghxd.github.io/ssh.html</loc>
 <lastmod>2018-01-13T11:01:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/css.html</loc>
+<loc>https://ghxdghxd.github.io/css.html</loc>
 <lastmod>2010-12-05T19:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/category/sheng-wu-xin-xi.html</loc>
+<loc>https://ghxdghxd.github.io/category/fen-lei.html</loc>
+<lastmod>2019-10-21T15:13:23+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/category/linux.html</loc>
+<lastmod>2019-07-31T19:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/category/python.html</loc>
+<lastmod>2017-12-05T19:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/category/sheng-wu-xin-xi.html</loc>
 <lastmod>2018-12-01T14:30:07+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/category/shu-ju-ke-shi-hua.html</loc>
-<lastmod>2018-11-01T20:54:20+08:06</lastmod>
+<loc>https://ghxdghxd.github.io/category/shu-ju-ke-shi-hua.html</loc>
+<lastmod>2019-01-15T10:43:58+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/category/tong-ji-jian-mo.html</loc>
+<loc>https://ghxdghxd.github.io/category/tong-ji-jian-mo.html</loc>
 <lastmod>2018-11-12T13:14:43+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/category/xiao-chao-su-cha.html</loc>
+<loc>https://ghxdghxd.github.io/category/xiao-chao-su-cha.html</loc>
 <lastmod>2018-12-30T12:56:05+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/category/za-ji.html</loc>
+<loc>https://ghxdghxd.github.io/category/za-ji.html</loc>
 <lastmod>2017-04-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/julia.html</loc>
+<loc>https://ghxdghxd.github.io/tag/biao-qian.html</loc>
+<lastmod>2019-10-21T15:13:23+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/seafile.html</loc>
+<lastmod>2019-07-31T19:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/ggvis.html</loc>
+<lastmod>2019-01-15T10:43:58+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/r.html</loc>
+<lastmod>2019-01-15T10:43:58+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/julia.html</loc>
 <lastmod>2018-12-30T12:56:05+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/distributed.html</loc>
+<loc>https://ghxdghxd.github.io/tag/distributed.html</loc>
 <lastmod>2018-12-30T12:56:05+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/atac.html</loc>
+<loc>https://ghxdghxd.github.io/tag/atac.html</loc>
 <lastmod>2018-12-01T14:30:07+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/iv.html</loc>
+<loc>https://ghxdghxd.github.io/tag/iv.html</loc>
 <lastmod>2018-11-12T13:14:43+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/error.html</loc>
+<loc>https://ghxdghxd.github.io/tag/error.html</loc>
 <lastmod>2018-11-05T12:23:52+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/libatk.html</loc>
+<loc>https://ghxdghxd.github.io/tag/libatk.html</loc>
 <lastmod>2018-11-05T12:23:52+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/ggplot2.html</loc>
+<loc>https://ghxdghxd.github.io/tag/ggplot2.html</loc>
 <lastmod>2018-11-01T20:54:20+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/r.html</loc>
-<lastmod>2018-11-01T20:54:20+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/pie.html</loc>
+<loc>https://ghxdghxd.github.io/tag/pie.html</loc>
 <lastmod>2018-11-01T13:33:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/gitlab.html</loc>
+<loc>https://ghxdghxd.github.io/tag/gitlab.html</loc>
 <lastmod>2018-10-26T15:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/roc.html</loc>
+<loc>https://ghxdghxd.github.io/tag/roc.html</loc>
 <lastmod>2018-03-12T09:58:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/git.html</loc>
+<loc>https://ghxdghxd.github.io/tag/git.html</loc>
 <lastmod>2018-02-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/submodule.html</loc>
+<loc>https://ghxdghxd.github.io/tag/submodule.html</loc>
 <lastmod>2018-02-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/meta.html</loc>
+<loc>https://ghxdghxd.github.io/tag/meta.html</loc>
 <lastmod>2018-02-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/linux.html</loc>
+<loc>https://ghxdghxd.github.io/tag/linux.html</loc>
 <lastmod>2018-12-18T22:30:24+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/docker.html</loc>
+<loc>https://ghxdghxd.github.io/tag/pelican.html</loc>
+<lastmod>2017-12-05T19:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://ghxdghxd.github.io/tag/docker.html</loc>
 <lastmod>2017-11-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/wang-qiu.html</loc>
+<loc>https://ghxdghxd.github.io/tag/wang-qiu.html</loc>
 <lastmod>2017-04-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/fail2ban.html</loc>
+<loc>https://ghxdghxd.github.io/tag/fail2ban.html</loc>
 <lastmod>2017-03-05T11:19:47+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/samtools.html</loc>
+<loc>https://ghxdghxd.github.io/tag/samtools.html</loc>
 <lastmod>2017-03-04T14:38:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/mpileup.html</loc>
+<loc>https://ghxdghxd.github.io/tag/mpileup.html</loc>
 <lastmod>2017-03-04T14:38:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/cpuinfo.html</loc>
+<loc>https://ghxdghxd.github.io/tag/cpuinfo.html</loc>
 <lastmod>2018-12-01T11:01:47+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/ctdna.html</loc>
+<loc>https://ghxdghxd.github.io/tag/ctdna.html</loc>
 <lastmod>2017-01-09T15:59:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/color.html</loc>
+<loc>https://ghxdghxd.github.io/tag/color.html</loc>
 <lastmod>2017-01-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/raid.html</loc>
+<loc>https://ghxdghxd.github.io/tag/raid.html</loc>
 <lastmod>2017-05-02T23:45:22+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/brca.html</loc>
+<loc>https://ghxdghxd.github.io/tag/brca.html</loc>
 <lastmod>2016-11-03T20:31:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/genetic-test.html</loc>
+<loc>https://ghxdghxd.github.io/tag/genetic-test.html</loc>
 <lastmod>2016-11-03T20:31:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/hotnet2.html</loc>
+<loc>https://ghxdghxd.github.io/tag/hotnet2.html</loc>
 <lastmod>2016-11-18T11:07:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/variant.html</loc>
+<loc>https://ghxdghxd.github.io/tag/variant.html</loc>
 <lastmod>2016-12-27T21:28:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/markdown.html</loc>
+<loc>https://ghxdghxd.github.io/tag/markdown.html</loc>
 <lastmod>2016-10-20T16:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/awk.html</loc>
+<loc>https://ghxdghxd.github.io/tag/awk.html</loc>
 <lastmod>2018-12-18T22:30:24+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/shell.html</loc>
+<loc>https://ghxdghxd.github.io/tag/shell.html</loc>
 <lastmod>2018-12-18T22:30:24+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/unicode.html</loc>
+<loc>https://ghxdghxd.github.io/tag/unicode.html</loc>
 <lastmod>2018-02-28T11:10:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/utf-8.html</loc>
+<loc>https://ghxdghxd.github.io/tag/utf-8.html</loc>
 <lastmod>2018-02-28T11:10:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/python.html</loc>
+<loc>https://ghxdghxd.github.io/tag/python.html</loc>
 <lastmod>2018-03-20T13:21:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/pandas.html</loc>
+<loc>https://ghxdghxd.github.io/tag/pandas.html</loc>
 <lastmod>2018-03-20T13:21:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/time.html</loc>
+<loc>https://ghxdghxd.github.io/tag/time.html</loc>
 <lastmod>2017-07-25T11:02:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/java.html</loc>
+<loc>https://ghxdghxd.github.io/tag/java.html</loc>
 <lastmod>2016-12-30T16:20:13+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/qqplot.html</loc>
+<loc>https://ghxdghxd.github.io/tag/qqplot.html</loc>
 <lastmod>2015-12-27T19:57:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/cfdna.html</loc>
+<loc>https://ghxdghxd.github.io/tag/cfdna.html</loc>
 <lastmod>2015-12-25T20:31:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/ctc.html</loc>
+<loc>https://ghxdghxd.github.io/tag/ctc.html</loc>
 <lastmod>2015-12-25T20:31:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/mutation.html</loc>
+<loc>https://ghxdghxd.github.io/tag/mutation.html</loc>
 <lastmod>2016-08-30T10:03:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/hgvs.html</loc>
+<loc>https://ghxdghxd.github.io/tag/hgvs.html</loc>
 <lastmod>2015-09-29T11:09:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/snp.html</loc>
+<loc>https://ghxdghxd.github.io/tag/snp.html</loc>
 <lastmod>2015-09-29T11:09:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/zi-shuo.html</loc>
+<loc>https://ghxdghxd.github.io/tag/zi-shuo.html</loc>
 <lastmod>2015-08-03T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/mutsig.html</loc>
+<loc>https://ghxdghxd.github.io/tag/mutsig.html</loc>
 <lastmod>2016-09-23T10:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/crest.html</loc>
+<loc>https://ghxdghxd.github.io/tag/crest.html</loc>
 <lastmod>2015-12-24T14:02:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/dna.html</loc>
+<loc>https://ghxdghxd.github.io/tag/dna.html</loc>
 <lastmod>2015-02-03T13:27:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/dhs.html</loc>
+<loc>https://ghxdghxd.github.io/tag/dhs.html</loc>
 <lastmod>2015-02-03T13:27:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/software.html</loc>
+<loc>https://ghxdghxd.github.io/tag/software.html</loc>
 <lastmod>2018-07-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/genome.html</loc>
+<loc>https://ghxdghxd.github.io/tag/genome.html</loc>
 <lastmod>2016-03-17T10:33:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/coverage.html</loc>
+<loc>https://ghxdghxd.github.io/tag/coverage.html</loc>
 <lastmod>2016-02-29T20:40:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/terminal.html</loc>
+<loc>https://ghxdghxd.github.io/tag/terminal.html</loc>
 <lastmod>2016-03-09T22:07:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/centos.html</loc>
+<loc>https://ghxdghxd.github.io/tag/centos.html</loc>
 <lastmod>2018-03-09T22:07:02+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/hpc.html</loc>
+<loc>https://ghxdghxd.github.io/tag/hpc.html</loc>
 <lastmod>2018-03-09T22:07:02+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/rocks-cluster.html</loc>
+<loc>https://ghxdghxd.github.io/tag/rocks-cluster.html</loc>
 <lastmod>2018-03-09T22:07:02+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/manage.html</loc>
+<loc>https://ghxdghxd.github.io/tag/manage.html</loc>
 <lastmod>2018-03-09T22:07:02+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/fastq.html</loc>
+<loc>https://ghxdghxd.github.io/tag/fastq.html</loc>
 <lastmod>2015-03-06T16:12:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/format.html</loc>
+<loc>https://ghxdghxd.github.io/tag/format.html</loc>
 <lastmod>2015-03-06T16:12:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/rstudio.html</loc>
+<loc>https://ghxdghxd.github.io/tag/rstudio.html</loc>
 <lastmod>2017-02-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/fedora.html</loc>
+<loc>https://ghxdghxd.github.io/tag/fedora.html</loc>
 <lastmod>2018-01-27T10:27:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/ubuntu.html</loc>
+<loc>https://ghxdghxd.github.io/tag/ubuntu.html</loc>
 <lastmod>2017-12-28T08:05:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/mount.html</loc>
+<loc>https://ghxdghxd.github.io/tag/mount.html</loc>
 <lastmod>2017-10-21T20:52:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/ssh.html</loc>
+<loc>https://ghxdghxd.github.io/tag/ssh.html</loc>
 <lastmod>2018-01-13T11:01:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/css.html</loc>
+<loc>https://ghxdghxd.github.io/tag/css.html</loc>
 <lastmod>2010-12-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/js.html</loc>
+<loc>https://ghxdghxd.github.io/tag/js.html</loc>
 <lastmod>2010-12-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/tag/html.html</loc>
+<loc>https://ghxdghxd.github.io/tag/html.html</loc>
 <lastmod>2010-12-05T19:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://ghxdghxd.github.io/JuPyR/author/jt-guo.html</loc>
-<lastmod>2018-12-30T12:56:05+08:06</lastmod>
+<loc>https://ghxdghxd.github.io/author/jt-guo.html</loc>
+<lastmod>2019-10-21T15:13:23+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

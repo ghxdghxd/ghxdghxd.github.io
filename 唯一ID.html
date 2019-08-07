@@ -1,0 +1,62 @@
+<div class="header">
+  <h1 class="page-title">
+    <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>
+    jupyter
+  </h1>
+  <div class="details">
+    <div class="left">
+      10月 21, 2019
+      <span> | </span> <a href="/category/fen-lei.html">分类</a>
+    </div>
+    <div class="right">
+      <a class="fa fa-tag" href="/tag/biao-qian.html">标签</a>
+    </div>
+  </div>
+</div>
+<div id="message-nano-wrapper" class="nano">
+  <div class="nano-content">
+    <ul class="message-container">
+        <div class="message">
+          <h1>jupyter 添加 kernel</h1>
+<h2>add julia</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nb">ENV</span><span class="p">[</span><span class="s">&quot;JUPYTER&quot;</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;PATH-To-julia&quot;</span></span>
+<span class="code-line"><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;IJulia&quot;</span><span class="p">)</span></span>
+</pre></div>
+
+
+<h2>add R</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;IRkernel&quot;</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">IRkernel</span><span class="o">::</span><span class="nf">installspec</span><span class="p">()</span></span>
+</pre></div>
+        </div>
+        <!-- <div class="tool-box">
+          <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a>
+        </div> -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nano').overlayScrollbars({
+    scrollbars: {
+      autoHide: "leave",
+    }
+  });
+  $('.trigger-message-close').on('click', function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+    $('body').removeClass('show-main-overlay');
+  });
+  $('#message .header .left a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addDisjunctiveFacetRefinement("category", e.target.text).search();
+    
+  });
+  $('#message .header .right a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addFacetRefinement("tags", e.target.text).search();
+  });
+</script>

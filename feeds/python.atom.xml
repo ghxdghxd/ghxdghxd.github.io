@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - Python</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/python.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2017-12-05T19:30:00+08:00</updated><entry><title>pelican</title><link href="https://ghxdghxd.github.io/pelican.html" rel="alternate"></link><published>2017-12-03T10:20:00+08:00</published><updated>2017-12-05T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-12-03:/pelican.html</id><summary type="html">&lt;p&gt;pelican install&lt;/p&gt;</summary><content type="html">&lt;h1&gt;pelican&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;pip install pelican markdown&lt;/span&gt;
+&lt;span class="code-line"&gt;pip install bs4&lt;/span&gt;
+&lt;span class="code-line"&gt;pip install algoliasearch&lt;/span&gt;
+&lt;span class="code-line"&gt;pip install Pygments&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;pip install ghp-import &lt;span class="c1"&gt;# make github&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="pelican"></category></entry></feed>

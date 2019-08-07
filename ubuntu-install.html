@@ -55,7 +55,10 @@
 
 
 <h2>wbpy</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt install fcitx-table-wbpy</span>
+<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get purge ibus</span>
+<span class="code-line">sudo apt-get autoremove</span>
+<span class="code-line"></span>
+<span class="code-line">sudo apt install fcitx-table-wbpy</span>
 <span class="code-line">im-config -s fcitx</span>
 <span class="code-line">sudo cp /usr/share/fcitx/xdg/autostart/fcitx-autostart.desktop /etc/xdg/autostart/</span>
 </pre></div>
@@ -95,22 +98,6 @@
 </pre></div>
 
 
-<h2>sublime</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get -fy install ./sublime-text_build-3126_amd64.deb</span>
-</pre></div>
-
-
-<h2>atom</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get -fy install ./atom-amd64.deb</span>
-</pre></div>
-
-
-<h2>youdao-dict</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get -fy install ./youdao-dict_1.1.0-0-deepin_amd64.deb</span>
-<span class="code-line">wget https://pypi.python.org/packages/48/9a/bcf41728a0a81b3d76e2a873296c2912300c653f9e6453c760a50bd2ef93/python-xlib-0.19.tar.bz2</span>
-</pre></div>
-
-
 <h2>ModuleNotFoundError</h2>
 <ul>
 <li>No module named 'Xlib'</li>
@@ -123,13 +110,6 @@
 <li>No module named 'xdg'</li>
 </ul>
 <div class="highlight"><pre><span class="code-line"><span></span>pip install pyxdg</span>
-</pre></div>
-
-
-<h2>wechat</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo snap install electronic-wechat</span>
-<span class="code-line"></span>
-<span class="code-line">File failed to load: /extensions/MathZoom.js</span>
 </pre></div>
 
 

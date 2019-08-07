@@ -35,7 +35,7 @@
 <p><strong>定义：</strong>当且仅当一个变异使用了尽可能少的核苷酸, 并且没有一个等位基因的长度为0时, 称该变异为简约的.</p>
 <p><strong>并定义：</strong>如果每个等位基因的最左侧核苷酸相同, 且移除该核苷酸并不会导致空等位基因, 则称该变异在左侧有多余核苷酸.</p>
 <p><strong>例</strong>：如下实例中, 多核苷酸多态性在前三种表示上都有多余核苷酸, 而第四种表示上则是简约的. 当一个变异在左侧具有多余核苷酸时, 称该变异为左侧未简约, 并需要进行左切除. 同理, 右侧未简约也需要进行由切除. 简约性在INDELs一样体现, 在左对齐章节将做示范.</p>
-<p><img alt="标准化1" src="images/variant.normalization.1.png" /></p>
+<p><img alt="标准化1" src="images/variant.normalization.1.png"></p>
 <p>图中展示了多核苷酸多态性的多种展示,
 <strong>最左列</strong>用颜色区分了四种可能存在的不同表示方式.
 <strong>右边一列</strong>展示了在VCF文件中的相应表示.
@@ -57,7 +57,7 @@
 <li><font style: "color=blue"> 蓝色的变异是左对齐的, 但是左侧并不简约.褐红色的变异是左对齐并且简约的.</li>
 <li><font style: "color=brown"> 褐红色的变异是左对齐并且简约的</li>
 </ul>
-<p><img alt="标准化2" src="images/variant.normalization.2.png" /></p>
+<p><img alt="标准化2" src="images/variant.normalization.2.png"></p>
 <p>图中展示了CA微卫星(Short Tendem Repeat)的多种表示方式,
 <strong>最左列</strong>用颜色区分了五种可能存在的不同表示方式.
 <strong>右边一列</strong>展示了在VCF文件中的相应表示.
@@ -115,7 +115,7 @@
 <h3>3.5、标准化的算法</h3>
 <p>现在我们知道了如何区分一个变异是否标准化, 我们只需要操作变异表达方式, 直到最后侧的核苷酸不同并且去除左侧多余的核苷酸, 即可得到一个标准化后的变异表达.
 标准化双等位基因和多等位基因的算法表示如下:</p>
-<p><img alt="标准化3" src="images/variant.normalization.3.png" /></p>
+<p><img alt="标准化3" src="images/variant.normalization.3.png"></p>
 <p>1到8行进行了左对齐操作并且保证右侧简约. 9到11行保证左侧的简约.</p>
 <h2>4、比较</h2>
 <p>2014年5月20号</p>

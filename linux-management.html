@@ -174,10 +174,10 @@
 
 
 <h3>添加用户<strong>无法qusb要在/etc/group 添加用户</strong></h3>
-<div class="highlight"><pre><span class="code-line"><span></span>useradd -g group name </span>
+<div class="highlight"><pre><span class="code-line"><span></span>useradd -g group name</span>
 <span class="code-line"><span class="c1">#/etc/passwd name:x:xxx:xxx::/export/home/casual:/bin/bash</span></span>
 <span class="code-line">passwd name</span>
-<span class="code-line">rocks sync users </span>
+<span class="code-line">rocks sync users</span>
 <span class="code-line"><span class="c1">#可更改/export/home/name 为</span></span>
 <span class="code-line"><span class="c1">#/home/name : /etc/passwd name:x:xxx:xxx::/home/casual:/bin/bash</span></span>
 <span class="code-line"></span>
@@ -197,11 +197,14 @@
 <h3>节点进入单用户模式</h3>
 <p>在倒计时5秒时，按任意键出现下图，
 <strong>选择如图，按e进入编辑, 最后加上１,回车,按b,root进入系统</strong>
-<img alt="图1" src="images/manager1.png" style="height:30%; width:30%;" />
-<img alt="图2" src="images/manager2.png" style="height:30%; width:30%;" />
-<img alt="图3" src="images/manager3.jpg" style="height:30%; width:30%;" /></p>
+<img alt="图1" src="images/manager1.png" style="height:30%; width:30%;">
+<img alt="图2" src="images/manager2.png" style="height:30%; width:30%;">
+<img alt="图3" src="images/manager3.jpg" style="height:30%; width:30%;"></p>
 <h3>重装节点</h3>
 <div class="highlight"><pre><span class="code-line"><span></span>rocks <span class="nb">set</span> host boot compute1 <span class="nv">action</span><span class="o">=</span>install</span>
+<span class="code-line">ssh compute-0-6 /boot/kickstart/cluster-kickstart</span>
+<span class="code-line"><span class="c1"># 登录节点后，运行如下</span></span>
+<span class="code-line">/boot/kickstart/cluster-kickstart-pxe</span>
 </pre></div>
 
 
@@ -229,57 +232,58 @@ help_starving_jobs false ALL</p>
 
 <h2>multipath与iscsi操作</h2>
 <ul>
-<li>硬件连接及硬盘灯(绿)</li>
-<li>
-<p>确定服务开启:</p>
-<div class="highlight"><pre><span class="code-line"><span></span>service iscsi restart</span>
+<li>硬件连接及硬盘灯(绿), 可以插拔一下试试</li>
+<li>确定服务开启:</li>
+</ul>
+<div class="highlight"><pre><span class="code-line"><span></span>        service iscsi restart</span>
 </pre></div>
 
 
-</li>
-<li>
-<p>查看iscsi发现记录</p>
-<div class="highlight"><pre><span class="code-line"><span></span>iscsiadm -m node</span>
+<ul>
+<li>查看iscsi发现记录</li>
+</ul>
+<div class="highlight"><pre><span class="code-line"><span></span>        iscsiadm -m node</span>
 </pre></div>
 
 
-</li>
-<li>
-<p>发现iscsi存储：</p>
-<div class="highlight"><pre><span class="code-line"><span></span>iscsiadm -m discovery -t st -p 10.1.1.100:3260</span>
-<span class="code-line">iscsiadm -m discovery -t st -p 10.1.1.101:3260</span>
-<span class="code-line">iscsiadm -m discovery -t st -p 10.1.1.102:3260</span>
-<span class="code-line">iscsiadm -m discovery -t st -p 10.1.1.103:3260</span>
+<ul>
+<li>发现iscsi存储：</li>
+</ul>
+<div class="highlight"><pre><span class="code-line"><span></span>        iscsiadm -m discovery -t st -p <span class="m">10</span>.1.1.100:3260</span>
+<span class="code-line">        iscsiadm -m discovery -t st -p <span class="m">10</span>.1.1.101:3260</span>
+<span class="code-line">        iscsiadm -m discovery -t st -p <span class="m">10</span>.1.1.102:3260</span>
+<span class="code-line">        iscsiadm -m discovery -t st -p <span class="m">10</span>.1.1.103:3260</span>
 </pre></div>
 
 
-</li>
-<li>
-<p>multipath操作</p>
-<div class="highlight"><pre><span class="code-line"><span></span>multipath -ll <span class="c1">#查看</span></span>
-<span class="code-line">multipath -v2  <span class="c1">#自动更新路径</span></span>
-<span class="code-line">multipath -f mpathg <span class="c1"># 删除路径</span></span>
-<span class="code-line">service multipathd restart <span class="c1">#重启确认/dev/mapper下有硬盘连接</span></span>
-<span class="code-line"><span class="c1"># 挂载</span></span>
-<span class="code-line">mount /dev/mapper/mpathep1 /export/data2</span>
-<span class="code-line">mount /dev/mapper/mpathfp1 /export/data3</span>
-<span class="code-line">mount /dev/mapper/mpathhp1 /export/data4</span>
+<ul>
+<li>multipath操作</li>
+</ul>
+<div class="highlight"><pre><span class="code-line"><span></span>        /sbin/mpathconf --enable <span class="c1"># 生成配置文件/etc/multipath.conf, DM multipath kernel driver not loaded</span></span>
+<span class="code-line">        multipath -ll <span class="c1"># 查看路径</span></span>
+<span class="code-line">        multipath -v2 <span class="c1"># 自动更新路径（当/dev/mapper没有链接，可以更新路径试试）</span></span>
+<span class="code-line">        multipath -f mpathg <span class="c1"># 删除路径</span></span>
+<span class="code-line">        service multipathd restart <span class="c1">#重启确认/dev/mapper下有硬盘连接</span></span>
+<span class="code-line">        <span class="c1"># 挂载</span></span>
+<span class="code-line">        mount /dev/mapper/mpathep1 /export/data2</span>
+<span class="code-line">        mount /dev/mapper/mpathfp1 /export/data3</span>
+<span class="code-line">        mount /dev/mapper/mpathhp1 /export/data4</span>
 </pre></div>
 
 
-</li>
-<li>
-<p>挂载fstab</p>
-<div class="highlight"><pre><span class="code-line"><span></span>/dev/sdc1 /export/data0 ext4 defaults 1 1</span>
-<span class="code-line">/dev/sdc2 /export/data1 ext4 defaults 1 1</span>
-<span class="code-line">/dev/sde1 /export/data5 ext4 defaults 1 1</span>
-<span class="code-line">/dev/mapper/mpathhp1 /export/data4 xfs defaults,_netdev 0 0</span>
-<span class="code-line">/dev/mapper/mpathep1 /export/data2 xfs defaults,_netdev 0 0</span>
-<span class="code-line">/dev/mapper/mpathfp1 /export/data3 xfs defaults,_netdev 0 0</span>
+<ul>
+<li>挂载fstab</li>
+</ul>
+<div class="highlight"><pre><span class="code-line"><span></span>        /dev/sdc1 /export/data0 ext4 defaults <span class="m">1</span> <span class="m">1</span></span>
+<span class="code-line">        /dev/sdc2 /export/data1 ext4 defaults <span class="m">1</span> <span class="m">1</span></span>
+<span class="code-line">        /dev/sde1 /export/data5 ext4 defaults <span class="m">1</span> <span class="m">1</span></span>
+<span class="code-line">        /dev/mapper/mpathhp1 /export/data4 xfs defaults,_netdev <span class="m">0</span> <span class="m">0</span></span>
+<span class="code-line">        /dev/mapper/mpathep1 /export/data2 xfs defaults,_netdev <span class="m">0</span> <span class="m">0</span></span>
+<span class="code-line">        /dev/mapper/mpathfp1 /export/data3 xfs defaults,_netdev <span class="m">0</span> <span class="m">0</span></span>
 </pre></div>
 
 
-</li>
+<ul>
 <li>
 <p>autofs自动挂载</p>
 <p>autofs一般与ldap、nfs协作实现远程home目录。</p>
@@ -346,7 +350,7 @@ help_starving_jobs false ALL</p>
 
 
 <p>2.重新运行任务</p>
-<div class="highlight"><pre><span class="code-line"><span></span>    qrerun</span>
+<div class="highlight"><pre><span class="code-line"><span></span>    <span class="n">qrerun</span></span>
 </pre></div>
 
 
@@ -382,7 +386,7 @@ ERROR:    cannot request service (status)</p>
 </pre></div>
 
 
-<p><img alt="图4" height="50%" src="images/manager4.png" width="50%" /></p>
+<p><img alt="图4" height="50%" src="images/manager4.png" width="50%"></p>
 <h1><a href="fail2ban">使用 fail2ban 防御 SSH 服务器的暴力破解攻击</a></h1>
 <h1>install glibc</h1>
 <div class="highlight"><pre><span class="code-line"><span></span>conda install -c asmeurer glibc</span>
@@ -407,6 +411,19 @@ ERROR:    cannot request service (status)</p>
 <h2>screen</h2>
 <p>切换用户后，screen出现如下提示：Cannot open your terminal '/dev/pts/38' - please check</p>
 <div class="highlight"><pre><span class="code-line"><span></span>script /dev/null <span class="c1">#更新 tty，再执行screen</span></span>
+</pre></div>
+
+
+<h2>tensorflow</h2>
+<div class="highlight"><pre><span class="code-line"><span></span>/share/apps/glibc.2.17/lib/ld-linux-x86-64.so.2 --library-path /share/apps/glibc.2.17/lib/lib:<span class="nv">$LD_LIBRARY_PATH</span> /share/apps/anaconda3/bin/python</span>
+</pre></div>
+
+
+<h2>检查EDAC错误的方法</h2>
+<p>grep "[0-9]" /sys/devices/system/edac/mc/mc<em>/csrow</em>/ch*_ce_count</p>
+<p>如果数值为0 表示正常 其他表示异常</p>
+<h2>端口</h2>
+<div class="highlight"><pre><span class="code-line"><span></span>netstat -tunlp</span>
 </pre></div>
         </div>
         <!-- <div class="tool-box">

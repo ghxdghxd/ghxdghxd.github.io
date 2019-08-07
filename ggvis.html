@@ -1,0 +1,64 @@
+<div class="header">
+  <h1 class="page-title">
+    <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>
+    ggvis使用
+  </h1>
+  <div class="details">
+    <div class="left">
+      1月 15, 2019
+      <span> | </span> <a href="/category/shu-ju-ke-shi-hua.html">数据可视化</a>
+    </div>
+    <div class="right">
+      <a class="fa fa-tag" href="/tag/ggvis.html">ggvis</a>
+      <a class="fa fa-tag" href="/tag/r.html">R</a>
+    </div>
+  </div>
+</div>
+<div id="message-nano-wrapper" class="nano">
+  <div class="nano-content">
+    <ul class="message-container">
+        <div class="message">
+          <h1>ggvis</h1>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="n">mtcars</span> <span class="o">%&gt;%</span> <span class="nf">ggvis</span><span class="p">(</span><span class="o">~</span><span class="n">wt</span><span class="p">,</span> <span class="o">~</span><span class="n">mpg</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">layer_points</span><span class="p">(</span><span class="n">size</span> <span class="o">:=</span> <span class="m">25</span><span class="p">,</span> <span class="n">shape</span> <span class="o">:=</span> <span class="s">&quot;diamond&quot;</span><span class="p">,</span> <span class="n">stroke</span> <span class="o">:=</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="n">fill</span> <span class="o">:=</span> <span class="kc">NA</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">mtcars</span> <span class="o">%&gt;%</span> <span class="nf">ggvis</span><span class="p">(</span><span class="o">~</span><span class="n">wt</span><span class="p">,</span> <span class="o">~</span><span class="n">mpg</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="o">~</span><span class="nf">factor</span><span class="p">(</span><span class="n">cyl</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="nf">layer_points</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="nf">group_by</span><span class="p">(</span><span class="n">cyl</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">layer_model_predictions</span><span class="p">(</span><span class="n">model</span> <span class="o">=</span> <span class="s">&quot;lm&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span></span>
+</pre></div>
+
+
+<h2>多个legend</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="nf">add_relative_scales</span><span class="p">()</span> <span class="o">%&gt;%</span></span>
+<span class="code-line">    <span class="nf">add_legend</span><span class="p">(</span><span class="s">&quot;fill&quot;</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;-log10(qvalue)&quot;</span><span class="p">,</span></span>
+<span class="code-line">               <span class="n">properties</span> <span class="o">=</span> <span class="nf">legend_props</span><span class="p">(</span><span class="n">legend</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span> <span class="n">x</span> <span class="o">=</span> <span class="nf">scaled_value</span><span class="p">(</span><span class="s">&quot;x_rel&quot;</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> <span class="n">y</span> <span class="o">=</span> <span class="nf">scaled_value</span><span class="p">(</span><span class="s">&quot;y_rel&quot;</span><span class="p">,</span> <span class="m">0.7</span><span class="p">))))</span></span>
+</pre></div>
+        </div>
+        <!-- <div class="tool-box">
+          <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a>
+        </div> -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nano').overlayScrollbars({
+    scrollbars: {
+      autoHide: "leave",
+    }
+  });
+  $('.trigger-message-close').on('click', function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+    $('body').removeClass('show-main-overlay');
+  });
+  $('#message .header .left a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addDisjunctiveFacetRefinement("category", e.target.text).search();
+    
+  });
+  $('#message .header .right a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addFacetRefinement("tags", e.target.text).search();
+  });
+</script>

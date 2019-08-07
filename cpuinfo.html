@@ -18,7 +18,7 @@
     <ul class="message-container">
         <div class="message">
           <h1>CPU的结构</h1>
-<p><img alt="Fig.1" src="images/cpu.png" style="height:30%; width:30%;" /></p>
+<p><img alt="Fig.1" src="images/cpu.png" style="height:30%; width:30%;"></p>
 <h1>CPU相关信息</h1>
 <p><code>lscpu</code>从sysfs和/proc/cpuinfo收集cpu体系结构信息</p>
 <div class="highlight"><pre><span class="code-line"><span></span>Architecture:          x86_64               <span class="c1"># 架构</span></span>
@@ -102,21 +102,21 @@
 <ul>
 <li>
 <p>逻辑CPU数</p>
-<div class="highlight"><pre><span class="code-line"><span></span>cat /proc/cpuinfo|grep &quot;processor&quot;|wc</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">cpuinfo</span><span class="o">|</span><span class="n">grep</span> <span class="ss">&quot;processor&quot;</span><span class="o">|</span><span class="n">wc</span></span>
 </pre></div>
 
 
 </li>
 <li>
 <p>物理CPU数</p>
-<div class="highlight"><pre><span class="code-line"><span></span>cat /proc/cpuinfo|grep &quot;physical\ id&quot;|sort -u|wc</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">cpuinfo</span><span class="o">|</span><span class="n">grep</span> <span class="ss">&quot;physical\ id&quot;</span><span class="o">|</span><span class="n">sort</span> <span class="o">-</span><span class="n">u</span><span class="o">|</span><span class="n">wc</span></span>
 </pre></div>
 
 
 </li>
 <li>
 <p>CPU核数</p>
-<div class="highlight"><pre><span class="code-line"><span></span>cat /proc/cpuinfo|grep &quot;cores&quot;|sort -u</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">cpuinfo</span><span class="o">|</span><span class="n">grep</span> <span class="ss">&quot;cores&quot;</span><span class="o">|</span><span class="n">sort</span> <span class="o">-</span><span class="n">u</span></span>
 </pre></div>
 
 

@@ -59,6 +59,21 @@
 </pre></div>
 
 
+<h2>awk排序</h2>
+<ul>
+<li>asort  是对数组的值进行排序，并且会丢掉原先键值</li>
+<li>asorti 是对数组的键值进行排序，生成&lt;序号，键值&gt;关联数组</li>
+</ul>
+<div class="highlight"><pre><span class="code-line"><span></span>awk <span class="s1">&#39;{a[$1]=$2}END{slen=asort(a,b);for(i=1;i&lt;=slen;i++) print i&quot;\t&quot;a[i]&quot;\t&quot;b[i]}&#39;</span> <span class="nb">test</span></span>
+</pre></div>
+
+
+<p>asort对数组a的值进行排序，把排序后的下标存入新生成的数组b中，丢弃数组a下标值，再把数组a的长度赋值给变量slen</p>
+<div class="highlight"><pre><span class="code-line"><span></span>awk <span class="s1">&#39;{a[$1]=$2}END{slen=asorti(a,b);for(i=1;i&lt;=slen;i++) print i&quot;\t&quot;b[i]&quot;\t&quot;a[b[i]]}&#39;</span> <span class="nb">test</span></span>
+</pre></div>
+
+
+<p>asorti对数组a的下标进行排序，并把排序后的下标存入新生成的数组b中，并把数组a的长度赋值给变量l</p>
 <h2>awk传参</h2>
 <h3>方法一</h3>
 <div class="highlight"><pre><span class="code-line"><span></span>awk <span class="s1">&#39;{print a, b}&#39;</span> <span class="nv">a</span><span class="o">=</span><span class="m">111</span> <span class="nv">b</span><span class="o">=</span><span class="m">222</span> yourfile</span>

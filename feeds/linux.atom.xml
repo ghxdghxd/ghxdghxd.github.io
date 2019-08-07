@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - linux</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/linux.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2019-07-31T19:30:00+08:00</updated><entry><title>Seafile</title><link href="https://ghxdghxd.github.io/seafile.html" rel="alternate"></link><published>2019-07-31T10:20:00+08:00</published><updated>2019-07-31T19:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2019-07-31:/seafile.html</id><summary type="html">&lt;p&gt;seafile&lt;/p&gt;</summary><content type="html">&lt;h1&gt;首先&lt;/h1&gt;
+&lt;p&gt;查看 8082端口有没有开&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;service iptables status&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;备份与恢复&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# backup&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;mysqldump -h &lt;span class="m"&gt;127&lt;/span&gt;.0.0.1 -uroot -p&lt;span class="o"&gt;[&lt;/span&gt;root_passwd&lt;span class="o"&gt;]&lt;/span&gt; --opt ccnet-db &amp;gt; ~jintao/ccnet-db.sql.&lt;span class="sb"&gt;`&lt;/span&gt;date +&lt;span class="s2"&gt;&amp;quot;%Y-%m-%d-%H-%M-%S&amp;quot;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;mysqldump -h &lt;span class="m"&gt;127&lt;/span&gt;.0.0.1 -uroot -p&lt;span class="o"&gt;[&lt;/span&gt;root_passwd&lt;span class="o"&gt;]&lt;/span&gt; --opt seafile-db &amp;gt; ~jintao/seafile-db.sql.&lt;span class="sb"&gt;`&lt;/span&gt;date +&lt;span class="s2"&gt;&amp;quot;%Y-%m-%d-%H-%M-%S&amp;quot;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;mysqldump -h &lt;span class="m"&gt;127&lt;/span&gt;.0.0.1 -uroot -p&lt;span class="o"&gt;[&lt;/span&gt;root_passwd&lt;span class="o"&gt;]&lt;/span&gt; --opt seahub-db &amp;gt; ~jintao/seahub-db.sql.&lt;span class="sb"&gt;`&lt;/span&gt;date +&lt;span class="s2"&gt;&amp;quot;%Y-%m-%d-%H-%M-%S&amp;quot;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# recovery&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;mysql -uroot -p&lt;span class="o"&gt;[&lt;/span&gt;root_passwd&lt;span class="o"&gt;]&lt;/span&gt; ccnet-db &amp;lt; ccnet-db.sql.2013-10-19-16-00-05&lt;/span&gt;
+&lt;span class="code-line"&gt;mysql -uroot -p&lt;span class="o"&gt;[&lt;/span&gt;root_passwd&lt;span class="o"&gt;]&lt;/span&gt; seafile-db &amp;lt; seafile-db.sql.2013-10-19-16-00-20&lt;/span&gt;
+&lt;span class="code-line"&gt;mysql -uroot -p&lt;span class="o"&gt;[&lt;/span&gt;root_passwd&lt;span class="o"&gt;]&lt;/span&gt; seahub-db &amp;lt; seahub-db.sql.2013-10-19-16-01-05&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;gunicorn.conf&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;bind = &amp;quot;0.0.0.0:8000&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="seafile"></category></entry></feed>

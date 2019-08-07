@@ -81,71 +81,71 @@ iptables]区，这里用来定义SSH相关的监狱配置。真正的禁止IP地
 服务。这个事件也会通过sendemail发送邮件通知。
 一旦配置文件准备就绪，按照以下方式重启fail2ban服务。
 在 Debian, Ubuntu 或 CentOS/RHEL 6:</p>
-<div class="highlight"><pre><span class="code-line"><span></span>  sudo service fail2ban restart</span>
+<div class="highlight"><pre><span class="code-line"><span></span>  <span class="n">sudo</span> <span class="n">service</span> <span class="n">fail2ban</span> <span class="k">restart</span></span>
 </pre></div>
 
 
 <p>在 Fedora 或 CentOS/RHEL 7:</p>
-<div class="highlight"><pre><span class="code-line"><span></span>  sudo systemctl restart fail2ban</span>
+<div class="highlight"><pre><span class="code-line"><span></span>  <span class="n">sudo</span> <span class="n">systemctl</span> <span class="k">restart</span> <span class="n">fail2ban</span></span>
 </pre></div>
 
 
 <p>为了验证fail2ban成功运行，使用参数'ping'来运行fail2ban-client 命令。
 如果fail2ban服务正常运行，你可以看到“pong（嘭）”作为响应。</p>
-<div class="highlight"><pre><span class="code-line"><span></span>  1. $ sudo fail2ban-client ping</span>
-<span class="code-line">  2. Server replied: pong</span>
+<div class="highlight"><pre><span class="code-line"><span></span>  <span class="mi">1</span><span class="p">.</span> <span class="err">$</span> <span class="n">sudo</span> <span class="n">fail2ban</span><span class="o">-</span><span class="n">client</span> <span class="n">ping</span></span>
+<span class="code-line">  <span class="mi">2</span><span class="p">.</span> <span class="n">Server</span> <span class="n">replied</span><span class="p">:</span> <span class="n">pong</span></span>
 </pre></div>
 
 
 <h2>测试 fail2ban 保护SSH免遭暴力破解攻击</h2>
 <p>为了测试fail2ban是否能正常工作，尝试通过使用错误的密码来用SSH连接到服务器模拟一个暴力破解攻击。与此同时，监控
 /var/log/fail2ban.log，该文件记录在fail2ban中发生的任何敏感事件。</p>
-<div class="highlight"><pre><span class="code-line"><span></span>  1. $ sudo tail -f /var/log/fail2ban.log</span>
+<div class="highlight"><pre><span class="code-line"><span></span>  <span class="mi">1</span><span class="p">.</span> <span class="err">$</span> <span class="n">sudo</span> <span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">fail2ban</span><span class="p">.</span><span class="n">log</span></span>
 </pre></div>
 
 
 <p>根据上述的日志文件，Fail2ban通过检测IP地址的多次失败登录尝试，禁止了一个IP地址192.168.1.8。</p>
 <h3>检查fail2ban状态并解禁被锁住的IP地址</h3>
 <p>由于fail2ban的“ssh-iptables”监狱使用iptables来阻塞问题IP地址，你可以通过以下方式来检测当前iptables来验证禁止规则。</p>
-<div class="highlight"><pre><span class="code-line"><span></span>  1. $ sudo iptables --list -n</span>
+<div class="highlight"><pre><span class="code-line"><span></span>  <span class="mi">1</span>. $ <span class="nv">sudo</span> <span class="nv">iptables</span> <span class="o">--</span><span class="nv">list</span> <span class="o">-</span><span class="nv">n</span></span>
 <span class="code-line"></span>
-<span class="code-line">  1. Chain INPUT (policy ACCEPT)</span>
-<span class="code-line">  2. target     prot opt source               destination</span>
-<span class="code-line">  3. fail2ban-SSH  tcp  --  0.0.0.0/0            0.0.0.0/0           tcp dpt:22</span>
-<span class="code-line">  4.  </span>
-<span class="code-line">  5. Chain FORWARD (policy ACCEPT)</span>
-<span class="code-line">  6. target     prot opt source               destination</span>
-<span class="code-line">  7.  </span>
-<span class="code-line">  8. Chain OUTPUT (policy ACCEPT)</span>
-<span class="code-line">  9. target     prot opt source               destination</span>
-<span class="code-line">  10.  </span>
-<span class="code-line">  11. Chain fail2ban-SSH (1 references)</span>
-<span class="code-line">  12. target     prot opt source               destination</span>
-<span class="code-line">  13. DROP       all  --  192.168.1.8          0.0.0.0/0</span>
-<span class="code-line">  14. RETURN     all  --  0.0.0.0/0            0.0.0.0/0</span>
+<span class="code-line">  <span class="mi">1</span>. <span class="nv">Chain</span> <span class="nv">INPUT</span> <span class="ss">(</span><span class="nv">policy</span> <span class="nv">ACCEPT</span><span class="ss">)</span></span>
+<span class="code-line">  <span class="mi">2</span>. <span class="nv">target</span>     <span class="nv">prot</span> <span class="nv">opt</span> <span class="nv">source</span>               <span class="nv">destination</span></span>
+<span class="code-line">  <span class="mi">3</span>. <span class="nv">fail2ban</span><span class="o">-</span><span class="nv">SSH</span>  <span class="nv">tcp</span>  <span class="o">--</span>  <span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">0</span>            <span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">0</span>           <span class="nv">tcp</span> <span class="nv">dpt</span>:<span class="mi">22</span></span>
+<span class="code-line">  <span class="mi">4</span>.  </span>
+<span class="code-line">  <span class="mi">5</span>. <span class="nv">Chain</span> <span class="nv">FORWARD</span> <span class="ss">(</span><span class="nv">policy</span> <span class="nv">ACCEPT</span><span class="ss">)</span></span>
+<span class="code-line">  <span class="mi">6</span>. <span class="nv">target</span>     <span class="nv">prot</span> <span class="nv">opt</span> <span class="nv">source</span>               <span class="nv">destination</span></span>
+<span class="code-line">  <span class="mi">7</span>.  </span>
+<span class="code-line">  <span class="mi">8</span>. <span class="nv">Chain</span> <span class="nv">OUTPUT</span> <span class="ss">(</span><span class="nv">policy</span> <span class="nv">ACCEPT</span><span class="ss">)</span></span>
+<span class="code-line">  <span class="mi">9</span>. <span class="nv">target</span>     <span class="nv">prot</span> <span class="nv">opt</span> <span class="nv">source</span>               <span class="nv">destination</span></span>
+<span class="code-line">  <span class="mi">10</span>.  </span>
+<span class="code-line">  <span class="mi">11</span>. <span class="nv">Chain</span> <span class="nv">fail2ban</span><span class="o">-</span><span class="nv">SSH</span> <span class="ss">(</span><span class="mi">1</span> <span class="nv">references</span><span class="ss">)</span></span>
+<span class="code-line">  <span class="mi">12</span>. <span class="nv">target</span>     <span class="nv">prot</span> <span class="nv">opt</span> <span class="nv">source</span>               <span class="nv">destination</span></span>
+<span class="code-line">  <span class="mi">13</span>. <span class="nv">DROP</span>       <span class="nv">all</span>  <span class="o">--</span>  <span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">1</span>.<span class="mi">8</span>          <span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">0</span></span>
+<span class="code-line">  <span class="mi">14</span>. <span class="k">RETURN</span>     <span class="nv">all</span>  <span class="o">--</span>  <span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">0</span>            <span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">0</span></span>
 </pre></div>
 
 
 <p>如果你想要从fail2ban中解锁某个IP地址，你可以使用iptables命令：</p>
-<div class="highlight"><pre><span class="code-line"><span></span>  sudo iptables -D fail2ban-SSH -s 192.168.1.8 -j DROP</span>
+<div class="highlight"><pre><span class="code-line"><span></span>  <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">D</span> <span class="n">fail2ban</span><span class="o">-</span><span class="n">SSH</span> <span class="o">-</span><span class="n">s</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">8</span> <span class="o">-</span><span class="n">j</span> <span class="k">DROP</span></span>
 </pre></div>
 
 
 <p>当然你可以使用上述的iptables命令手动地检验和管理fail2ban的IP阻塞列表，但实际上有一个适当的方法就是使用fail2ban-
 client命令行工具。这个命令不仅允许你对"ssh-iptables"监狱进行管理，同时也是一个标准的命令行接口，可以管理其他类型的fail2ban监狱。</p>
 <p>为了检验fail2ban状态（会显示出当前活动的监狱列表）：</p>
-<div class="highlight"><pre><span class="code-line"><span></span>  sudo fail2ban-client status</span>
+<div class="highlight"><pre><span class="code-line"><span></span>  <span class="n">sudo</span> <span class="n">fail2ban</span><span class="o">-</span><span class="n">client</span> <span class="n">status</span></span>
 </pre></div>
 
 
 <p>为了检验一个特定监狱的状态（例如ssh-iptables):</p>
-<div class="highlight"><pre><span class="code-line"><span></span>  sudo fail2ban-client status ssh-iptables</span>
+<div class="highlight"><pre><span class="code-line"><span></span>  <span class="n">sudo</span> <span class="n">fail2ban</span><span class="o">-</span><span class="n">client</span> <span class="n">status</span> <span class="n">ssh</span><span class="o">-</span><span class="n">iptables</span></span>
 </pre></div>
 
 
 <p>上面的命令会显示出被禁止IP地址列表。</p>
 <p>为了解锁特定的IP地址：</p>
-<div class="highlight"><pre><span class="code-line"><span></span>  sudo fail2ban-client set ssh-iptables unbanip 192.168.1.8</span>
+<div class="highlight"><pre><span class="code-line"><span></span>  <span class="n">sudo</span> <span class="n">fail2ban</span><span class="o">-</span><span class="n">client</span> <span class="k">set</span> <span class="n">ssh</span><span class="o">-</span><span class="n">iptables</span> <span class="n">unbanip</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">8</span></span>
 </pre></div>
 
 
@@ -155,12 +155,12 @@ client命令行工具。这个命令不仅允许你对"ssh-iptables"监狱进行
 <p>一旦你成功地测试了fail2ban之后，最后一个步骤就是在你的服务器上让其在开机时自动启动。在基于Debian的发行版中，fail2ban已经默认让自动启动生效。在基于Red-
 Hat的发行版中，按照下面的方式让自动启动生效。</p>
 <p>在 CentOS/RHEL 6中:</p>
-<div class="highlight"><pre><span class="code-line"><span></span>  sudo chkconfig fail2ban on</span>
+<div class="highlight"><pre><span class="code-line"><span></span>  <span class="n">sudo</span> <span class="n">chkconfig</span> <span class="n">fail2ban</span> <span class="k">on</span></span>
 </pre></div>
 
 
 <p>在 Fedora 或 CentOS/RHEL 7:</p>
-<div class="highlight"><pre><span class="code-line"><span></span>  sudo systemctl enable fail2ban</span>
+<div class="highlight"><pre><span class="code-line"><span></span>  <span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">fail2ban</span></span>
 </pre></div>
         </div>
         <!-- <div class="tool-box">

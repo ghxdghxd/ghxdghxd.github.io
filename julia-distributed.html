@@ -35,6 +35,10 @@ julia中的并行进程，称为<code>worker</code>，
 </pre></div>
 
 
+<blockquote>
+<p>julia的并行函数中，最好不要在println，可能会出现如下提示，并且主进程会被终止
+Warning: Forcibly interrupting busy workers</p>
+</blockquote>
 <h2>map与pmap</h2>
 <h3>map串行</h3>
 <div class="highlight"><pre><span class="code-line"><span></span><span class="k">function</span> <span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dat</span><span class="p">)</span></span>
@@ -45,7 +49,7 @@ julia中的并行进程，称为<code>worker</code>，
 </pre></div>
 
 
-<h3>pmap并行</h3>
+<h3>pmap并行,默认可能为1个物理CPU(如8线程)</h3>
 <div class="highlight"><pre><span class="code-line"><span></span><span class="nd">@everywhere</span> <span class="k">function</span> <span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dat</span><span class="p">)</span></span>
 <span class="code-line">    <span class="k">return</span><span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="n">x</span><span class="p">])</span></span>
 <span class="code-line"><span class="k">end</span></span>
