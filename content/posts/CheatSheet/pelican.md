@@ -16,4 +16,6 @@ pip install pelican markdown
 pip install bs4
 pip install algoliasearch
 pip install Pygments
+
+pip install ghp-import # make github
 ```
