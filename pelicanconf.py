@@ -74,9 +74,14 @@ SOCIAL = (('You can add links in your config file', '#'),
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-# MARKDOWN = {
-#     'extensions': ['codehilite(css_class=highlight, linenums=False)', 'extra']
-# }
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight','linenums': 'False'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+    },
+    'output_format': 'html5',
+}
 
 # algolia search config
 import os
