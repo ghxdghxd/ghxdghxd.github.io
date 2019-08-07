@@ -176,42 +176,52 @@ service pbs_server restart
 
 ## multipath与iscsi操作
 
-+ 硬件连接及硬盘灯(绿)
++ 硬件连接及硬盘灯(绿), 可以插拔一下试试
 + 确定服务开启:
 
+```sh
         service iscsi restart
+```
 
 + 查看iscsi发现记录
 
+```sh
         iscsiadm -m node
+```
 
 + 发现iscsi存储：
 
+```sh
         iscsiadm -m discovery -t st -p 10.1.1.100:3260
         iscsiadm -m discovery -t st -p 10.1.1.101:3260
         iscsiadm -m discovery -t st -p 10.1.1.102:3260
         iscsiadm -m discovery -t st -p 10.1.1.103:3260
+```
 
 + multipath操作
 
-        #!shell
-        multipath -ll #查看
-        multipath -v2  #自动更新路径
+```sh
+        /sbin/mpathconf --enable # 生成配置文件/etc/multipath.conf, DM multipath kernel driver not loaded
+        multipath -ll # 查看路径
+        multipath -v2 # 自动更新路径（当/dev/mapper没有链接，可以更新路径试试）
         multipath -f mpathg # 删除路径
         service multipathd restart #重启确认/dev/mapper下有硬盘连接
         # 挂载
         mount /dev/mapper/mpathep1 /export/data2
         mount /dev/mapper/mpathfp1 /export/data3
         mount /dev/mapper/mpathhp1 /export/data4
+```
 
 + 挂载fstab
 
+```sh
         /dev/sdc1 /export/data0 ext4 defaults 1 1
         /dev/sdc2 /export/data1 ext4 defaults 1 1
         /dev/sde1 /export/data5 ext4 defaults 1 1
         /dev/mapper/mpathhp1 /export/data4 xfs defaults,_netdev 0 0
         /dev/mapper/mpathep1 /export/data2 xfs defaults,_netdev 0 0
         /dev/mapper/mpathfp1 /export/data3 xfs defaults,_netdev 0 0
+```
 
 + autofs自动挂载
 
@@ -356,3 +366,9 @@ script /dev/null #更新 tty，再执行screen
 grep "[0-9]" /sys/devices/system/edac/mc/mc*/csrow*/ch*_ce_count
 
 如果数值为0 表示正常 其他表示异常
+
+## 端口
+
+```sh
+netstat -tunlp
+```

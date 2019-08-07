@@ -31,7 +31,7 @@ LABEL=/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto 0 2
 
 这个文件是/proc/self/mounts的软链接，/proc下面的文件都是保存在内存中的，是内核自动生成的。所以/proc/mounts比/etc/mtab文件能更加真实的反映当前mount的情况
 
-# 场景应用：
+# 场景应用
 
 服务器中有一块盘因为有坏道，被umount了，通过"df -h"就查看不到这块盘的信息了。
 或者你使用"chmod 000 /dir",把这块盘设为不能读不能写。
