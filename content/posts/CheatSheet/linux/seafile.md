@@ -36,3 +36,15 @@ mysql -uroot -p[root_passwd] seahub-db < seahub-db.sql.2013-10-19-16-01-05
 ```text
 bind = "0.0.0.0:8000"
 ```
+
+# webDav
+
+> seafdav.conf
+
+```text
+[WEBDAV]
+enabled = false
+port = 8080
+fastcgi = false
+share_name = /
+```

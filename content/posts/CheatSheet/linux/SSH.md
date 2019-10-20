@@ -45,16 +45,16 @@ ListenAddress 192.168.0.100
 # 只监听来自 192.168.0.100 这个 IP 的SSH联机。
 # 如果不使用设定的话，则预设所有接口均接受 SSH
 PidFile /var/run/sshd.pid
-# 可以放置 SSHD 这个 PID 的档案！左列为默认值
+# 可以放置 SSHD 这个 PID 的档案,左列为默认值
 LoginGraceTime 600
 # 当使用者连上 SSH server 之后，会出现输入密码的画面，
 # 在该画面中，在多久时间内没有成功连上 SSH server ，
 # 就断线！时间为秒！
 Compression yes
-# 是否可以使用压缩指令？当然可以啰！
+# 是否可以使用压缩指令？当然可以啰
 ```
 
-### 2. 说明主机的 Private Key 放置的档案，预设使用下面的档案即可！
+### 2. 说明主机的 Private Key 放置的档案，预设使用下面的档案即可
 
 ```sh
 HostKey /etc/ssh/ssh_host_key　　　　# SSH version 1 使用的私钥
@@ -62,7 +62,7 @@ HostKey /etc/ssh/ssh_host_rsa_key　　# SSH version 2 使用的 RSA 私钥
 HostKey /etc/ssh/ssh_host_dsa_key　　# SSH version 2 使用的 DSA 私钥
 ```
 
-### 2.1 关于 version 1 的一些设定！
+### 2.1 关于 version 1 的一些设定
 
 ```sh
 KeyRegenerationInterval 3600
@@ -70,14 +70,14 @@ KeyRegenerationInterval 3600
 ServerKeyBits 768 　　 # 没错！这个就是 Server key 的长度！
 ```
 
-### 3. 关于登录文件的讯息数据放置与 daemon 的名称！
+### 3. 关于登录文件的讯息数据放置与 daemon 的名称
 
 ```sh
 SyslogFacility AUTH　　　　　　　　　# 当有人使用 SSH 登入系统的时候，SSH会记录资讯，这个信息要记录在什么 daemon name 底下？预设是以 AUTH 来设定的，即是 /var/log/secure 里面！什么？忘记了！回到 Linux 基础去翻一下其它可用的 daemon name 为：DAEMON,USER,AUTH,LOCAL0,LOCAL1,LOCAL2,LOCAL3,LOCAL4,LOCAL5,
 LogLevel INFO　　# 登录记录的等级！嘿嘿！任何讯息！同样的，忘记了就回去参考！
 ```
 
-### 4. 安全设定项目！极重要！
+### 4. 安全设定项目！极重要
 
 #### 4.1 登入设定部分
 
@@ -106,7 +106,7 @@ ChallengeResponseAuthentication yes  # 挑战任何的密码认证！所以，�
 #PAMAuthenticationViaKbdInt yes      # 是否启用其它的 PAM 模块！启用这个模块将会导致 PasswordAuthentication 设定失效！
 ```
 
-#### 4.3 与 Kerberos 有关的参数设定！因为我们没有 Kerberos 主机，所以底下不用设定！
+#### 4.3 与 Kerberos 有关的参数设定！因为我们没有 Kerberos 主机，所以底下不用设定
 
 ```sh
 #KerberosAuthentication no
@@ -115,7 +115,7 @@ ChallengeResponseAuthentication yes  # 挑战任何的密码认证！所以，�
 #KerberosTgtPassing no
 ```
 
-#### 4.4 底下是有关在 X-Window 底下使用的相关设定！
+#### 4.4 底下是有关在 X-Window 底下使用的相关设定
 
 ```sh
 X11Forwarding yes
@@ -123,7 +123,7 @@ X11Forwarding yes
 #X11UseLocalhost yes
 ```
 
-#### 4.5 登入后的项目：
+#### 4.5 登入后的项目
 
 ```sh
 PrintMotd no              # 登入后是否显示出一些信息呢？例如上次登入的时间、地点等等，预设是 yes ，但是，如果为了安全，可以考虑改为 no ！
@@ -133,7 +133,7 @@ UsePrivilegeSeparation yes # 使用者的权限设定项目！就设定为 yes �
 MaxStartups 10　　　　　　# 同时允许几个尚未登入的联机画面？当我们连上 SSH ，但是尚未输入密码时，这个时候就是我们所谓的联机画面啦！在这个联机画面中，为了保护主机，所以需要设定最大值，预设最多十个联机画面，而已经建立联机的不计算在这十个当中
 ```
 
-#### 4.6 关于使用者抵挡的设定项目：
+#### 4.6 关于使用者抵挡的设定项目
 
 ```sh
 DenyUsers *　　　　　　　 # 设定受抵挡的使用者名称，如果是全部的使用者，那就是全部
@@ -142,7 +142,7 @@ DenyUsers test
 DenyGroups test　　　　　 # 与 DenyUsers 相同！仅抵挡几个群组而已！
 ```
 
-### 5. 关于 SFTP 服务的设定项目！
+### 5. 关于 SFTP 服务的设定项目
 
 ```sh
 Subsystem       sftp    /usr/lib/ssh/sftp-server

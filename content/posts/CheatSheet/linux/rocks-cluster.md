@@ -4,13 +4,11 @@ Date: 2014-12-04 16:10:16
 Modified: 2018-03-09 22:07:02
 Category: 小抄速查
 Tags: linux, centos, shell, hpc, rocks cluster, manage
-Slug: linux-management
+Slug: rocks-cluster
 Authors: JT Guo
 Summary: 常用的linux服务器管理
 ---
 # 电源配置
-
->由于安装之初，未使用线标签标记，后续管理十分不便...
 
 |插座|1孔|2孔|3孔|4孔|5孔|6孔|7孔|8孔|
 |---|---|---|---|---|---|---|---|---|
@@ -20,6 +18,24 @@ Summary: 常用的linux服务器管理
 |1号|插座2号|小右|6左|外下|管上|6右|管下|小左|
 
 # 常用操作
+
+## 查看服务器型号、序列号
+
+```shell
+dmidecode|grep "System Information" -A9|egrep "Manufacturer|Product|Serial"
+```
+
+## 查看内存的插槽数,已经使用多少插槽.每条内存多大
+
+```shell
+dmidecode|grep -A5 "Memory Device"|grep Size|grep -v Range
+```
+
+## 查看内存的频率
+
+```shell
+dmidecode|grep -A16 "Memory Device"|grep 'Speed'
+```
 
 ## 清理内存
 
@@ -57,28 +73,33 @@ chmod a+x NVIDIA-Linux-x86_64-410.79.run
 
 ## 系统配置(CPU + GPU + raid)
 
-+ 配置
+```sh
+lsblk
+/opt/MegaRAID/MegaCli/MegaCli64 -cfgdsply -aALL
+```
+
++ 配置列表
   + commput0
     + [2.10GHz] * 4 \* 8核/CPU * 2线程/核 = 64
     + 1T \* 6块 >>> 3T(raid10), 485M boot + 1.9T root + 781G /export/swap
     + sda1, sda3, sdb1
   + compute1-4
-    + [2.60GHz] * 4 * 6核/CPU * 2线程/核 = 48
+    + [2.60GHz] \* 4 \* 6核/CPU \* 2线程/核 = 48
     + TeslaK20Xm GPU ，cuda核心数 2688， 内存6G
     + /state/partition1 每个计算节点的私有空间
   + compute5
-    + [2.60GHz] * 4 * 6核/CPU * 2线程/核 = 48
+    + [2.60GHz] \* 4 \* 6核/CPU \* 2线程/核 = 48
     + /state/partition1 每个计算节点的私有空间
   + compute6
-    + [2.20GHz] * 4 * 6核/CPU * 2线程/核 = 48
+    + [2.20GHz] \* 4 \* 6核/CPU \* 2线程/核 = 48
     + /state/partition1 每个计算节点的私有空间
   + compute7-8
-    + [2.30GHz] * 4 * 8核/CPU * 2线程/核 = 64
+    + [2.30GHz] \* 4 \* 8核/CPU \* 2线程/核 = 64
     + /state/partition1 每个计算节点的私有空间
   + 数据线(raid5)
-    + 3T \* 3块 >>> 6T, sdd1
-    + 4T \* 6块 >>> 18T, sdc1, sdc2
-    + 8T \* 3块 >>> 15T, sde1
+    + 3T \* 3块 >>> 6T, sdd1(export)
+    + 4T \* 6块 >>> 18T, sdc1(data0), sdc2(data1)
+    + 8T \* 3块 >>> 15T, sde1(data5)
   + 网线(raid5)
     + 4T \* 5块 >>> 16T, /dev/mapper/mpathep1
     + 4T \* 5块 >>> 16T, /dev/mapper/mpathfp1
@@ -229,18 +250,20 @@ service pbs_server restart
 
   + 确认/export/*,一般重启服务
 
-        #!shell
+```shell
         service autofs restart
+```
 
   + /etc/auto.master
 
-        #!shell
+```shell
         /share /etc/auto.share --timeout=1200
         /home /etc/auto.home  --timeout=1200
+```
 
   + /etc/auto.share 如果要增加新存储，需要添加，如swap
 
-        #!shell
+```text
         apps -nfsvers=3 -soft,intr,timeo=9999  xmu.local:/export/&
         #bio  -nfsvers=3 -soft,intr,timeo=9999  xmu:/export/&
         data0 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
@@ -250,10 +273,11 @@ service pbs_server restart
         data4 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
         data5 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
         swap -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
+```
 
   + /etc/exportfs 如果要增加新存储，需要添加，如swap
 
-        #!shell
+```shell
         /export 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
         /export/data0 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
         /export/data1 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
@@ -262,13 +286,15 @@ service pbs_server restart
         /export/data4 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
         /export/data5 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
         /export/swap 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+```
 
 + 修复分区(未完)
 
-        #!shell
+```shell
         exportfs -rv #重新扫描/etc/exports
         exportfs -u /export/data2       #umount分区
         xfs_check /dev/mapper/mpathep1;echo $? #显示0表示已umount
+```
 
 ## qsub
 
@@ -281,7 +307,9 @@ qusb -l nodes=1:n1:ppn=+1:n2
 
 2.重新运行任务
 
+```sh
         qrerun
+```
 
 3.lib
 
@@ -372,3 +400,8 @@ grep "[0-9]" /sys/devices/system/edac/mc/mc*/csrow*/ch*_ce_count
 ```sh
 netstat -tunlp
 ```
+
+## PBS日志
+
+> /opt/torque/spool
+> /opt/gridview/pbs/dispatcher
