@@ -168,7 +168,7 @@ ssh compute-0-6 /boot/kickstart/cluster-kickstart
 ### 提交任务后，无运行时间,且qdel: Server could not connect to MOM
 
 由于节点pbs_mom没运行
-解决办法是进入节点后运行pbs_mom
+解决办法是进入节点后kill pbs_mom重新运行pbs_mom
 
 ## qmgr
 
@@ -249,21 +249,21 @@ service pbs_server restart
     autofs一般与ldap、nfs协作实现远程home目录。
 
   + 确认/export/*,一般重启服务
-
-```shell
+  
+  ```shell
         service autofs restart
-```
+  ```
 
   + /etc/auto.master
 
-```shell
+  ```text
         /share /etc/auto.share --timeout=1200
         /home /etc/auto.home  --timeout=1200
-```
+  ```
 
   + /etc/auto.share 如果要增加新存储，需要添加，如swap
-
-```text
+  
+  ```text
         apps -nfsvers=3 -soft,intr,timeo=9999  xmu.local:/export/&
         #bio  -nfsvers=3 -soft,intr,timeo=9999  xmu:/export/&
         data0 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
@@ -273,11 +273,11 @@ service pbs_server restart
         data4 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
         data5 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
         swap -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&
-```
+  ```
 
   + /etc/exportfs 如果要增加新存储，需要添加，如swap
 
-```shell
+  ```text
         /export 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
         /export/data0 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
         /export/data1 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
@@ -286,7 +286,7 @@ service pbs_server restart
         /export/data4 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
         /export/data5 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
         /export/swap 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
-```
+  ```
 
 + 修复分区(未完)
 

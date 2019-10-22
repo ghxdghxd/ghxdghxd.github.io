@@ -134,7 +134,30 @@ logpath = /var/log/secure
 
 ## 挂载存储服务
 
+### 添加nfs共享路径
+
+> /etc/exports
+
 ```shell
+/public *(rw,async,insecure,no_root_squash,no_subtree_check)
+/share  *(rw,async,insecure,no_root_squash,no_subtree_check)
+/share/swap *(rw,async,insecure,no_root_squash,no_subtree_check)
+/share/data0    *(rw,fsid=1,async,insecure,no_root_squash,no_subtree_check)
+/share/data1    *(rw,fsid=2,async,insecure,no_root_squash,no_subtree_check)
+/share/data2    *(rw,async,insecure,no_root_squash,no_subtree_check)
+/share/data3    *(rw,async,insecure,no_root_squash,no_subtree_check)
+/share/data4    *(rw,async,insecure,no_root_squash,no_subtree_check)
+/share/data5    *(rw,fsid=3,async,insecure,no_root_squash,no_subtree_check)
+
+exportfs -r # 重新共享所有目录
+```
+
+### 挂载分区
+
+```shell
+mount /dev/sdc1 /share/swap     # raid0硬盘
+
+# nas存储
 service iscsi restart
 systemctl start multipathd.service
 
@@ -149,11 +172,15 @@ multipath -ll # 查看路径
 multipath -v2 # 自动更新路径（当/dev/mapper没有链接，可以更新路径试试）
 service multipathd restart #重启确认/dev/mapper下有硬盘连接
 # 挂载
-mount /dev/mapper/mpatha1 /public/data2
-mount /dev/mapper/mpathb1 /public/data3
-mount /dev/mapper/mpathc1 /public/data4
+mount /dev/mapper/mpatha1 /share/data2
+mount /dev/mapper/mpathb1 /share/data3
+mount /dev/mapper/mpathc1 /share/data4
 
-sshfs -o allow_other -o transform_symlinks -o reconnect -o follow_symlinks -o gid=100 -o umask=022 IP:/share/data0 /public/data0
-sshfs -o allow_other -o transform_symlinks -o reconnect -o follow_symlinks -o gid=100 -o umask=022 IP:/share/data0 /public/data0
-sshfs -o allow_other -o transform_symlinks -o reconnect -o follow_symlinks -o gid=100 -o umask=022 IP:/share/data0 /public/data0
+sshfs -o allow_other -o transform_symlinks -o reconnect -o follow_symlinks -o gid=100 -o umask=022 $IP:/share/data0 /share/data0
+sshfs -o allow_other -o transform_symlinks -o reconnect -o follow_symlinks -o gid=100 -o umask=022 $IP:/share/data1 /share/data1
+sshfs -o allow_other -o transform_symlinks -o reconnect -o follow_symlinks -o gid=100 -o umask=022 $IP:/share/data5 /share/data5
+
+clusconf -yd "mount admin:/share /share"
 ```
+
+## 安装R-3.6.1
