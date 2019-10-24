@@ -9,12 +9,66 @@ Authors: JT Guo
 Summary: seafile
 ---
 
-# 首先
+# docker 安装 seafile
 
-查看 8082端口有没有开
+```shell
+yum install docker-compose -y
+wget https://download.seafile.com/d/320e8adf90fa43ad8fee/files/?p=/docker/docker-compose.yml
 
-```sh
-service iptables status
+# 修改
+MySQL root 用户的密码 (MYSQL_ROOT_PASSWORD and DB_ROOT_PASSWD)
+持久化存储 MySQL 数据的 volumes 目录 (volumes)
+/public/tool/seafile/seafile-mysql/db:/var/lib/mysql
+持久化存储 Seafile 数据的 volumes 目录 (volumes)
+/public/tool/seafile/seafile-data:/shared
+
+ports:
+    - "1951:80"   # 网页与客户端登录
+    - "8082:8082" # 文件上传下载 ==> seahub_settings.py
+
+SEAFILE_SERVER_HOSTNAME=IP
+
+docker-compose up -d
+
+# 升级
+docker-compose pull
+docker-compose up -d
+```
+
+# 首先配置
+
+>/public/tool/seafile/seafile-data/seafile/conf
+
+## gunicorn.conf
+
+```text
+bind = "0.0.0.0:8000"
+```
+
+## seafdav.conf
+
+授权第三方应用利用 WebDAV 协议访问团队的文件
+
+```text
+[WEBDAV]
+enabled = true
+port = 8080
+fastcgi = true
+share_name = /
+```
+
+## seafile.conf
+
+```text
+[quota]
+# 单位为 GB
+default = 2
+```
+
+## seahub_settings.py
+
+```text
+FILE_SERVER_ROOT = "http://IP:8082"
 ```
 
 # 备份与恢复
@@ -29,22 +83,4 @@ mysqldump -h 127.0.0.1 -uroot -p[root_passwd] --opt seahub-db > ~jintao/seahub-d
 mysql -uroot -p[root_passwd] ccnet-db < ccnet-db.sql.2013-10-19-16-00-05
 mysql -uroot -p[root_passwd] seafile-db < seafile-db.sql.2013-10-19-16-00-20
 mysql -uroot -p[root_passwd] seahub-db < seahub-db.sql.2013-10-19-16-01-05
-```
-
-# gunicorn.conf
-
-```text
-bind = "0.0.0.0:8000"
-```
-
-# webDav
-
-> seafdav.conf
-
-```text
-[WEBDAV]
-enabled = false
-port = 8080
-fastcgi = false
-share_name = /
 ```

@@ -53,6 +53,13 @@ firewall-cmd --get-zones     #查看是所有zone
 # block dmz drop external home internal public trusted work
 firewall-cmd --get-default-zone      #查看默认zone
 # public
+firewall-cmd --zone=public --list-ports     #查看public的端口
+# 10/tcp
+firewall-cmd --zone=public --add-port=22/tcp --permanent    #添加端口，删除用--remove-port
+# success
+firewall-cmd --zone=public --add-port=100-500/tcp --permanent   #批量开放端口
+firewall-cmd --zone=public --query-port=22/tcp  #查看端口是否生效
+# yes
 firewall-cmd --set-default-zone=work     #将默认的zone修改为work
 # success
 firewall-cmd --get-zone-of-interface=em1    # 查看网卡em1的zone
@@ -183,4 +190,30 @@ sshfs -o allow_other -o transform_symlinks -o reconnect -o follow_symlinks -o gi
 clusconf -yd "mount admin:/share /share"
 ```
 
-## 安装R-3.6.1
+## clussoft
+
+> /etc/profile.d/clussoft-env.sh
+
+```text
+export CLUSSOFT_HOME=/public/tool/clussoft-2.4
+export PATH=$CLUSSOFT_HOME:$PATH
+```
+
+```shel
+clussoft -d /public/software    #安装目录
+clussoft -p nodelist            #节点列表
+```
+
+所有软件均安装到/public/software，添加modulefile到/public/software/modules
+
+```text
+#%Module1.0
+module-whatis   "software..."
+
+conflict apps
+
+set             APPS_HOME                /public/software/apps/R/3.6.1
+
+setenv          APPS_ROOT               /public/software/apps/R/3.6.1
+prepend-path    PATH                    ${APPS_HOME}/bin
+```

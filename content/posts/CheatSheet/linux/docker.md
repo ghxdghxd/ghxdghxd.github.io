@@ -13,10 +13,19 @@ Summary: docker的简单安装与配置
 ## centos yum install docker
 
 ```shell
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum install docker-ce
+
+# 修改源 /etc/docker/daemon.json
+{"registry-mirrors": ["http://hub-mirror.c.163.com", "https://docker.mirrors.ustc.edu.cn"]}
+systemctl daemon-reload
+systemctl restart docker
+
+######## OR ####################
 tee /etc/yum.repos.d/docker.repo <<-'EOF'
 [dockerrepo]
 name=Docker Repository
-baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/
+baseurl=https://yum.dockerproject.org/repo/main/centos/7/
 enabled=1
 gpgcheck=1
 gpgkey=https://yum.dockerproject.org/gpg
@@ -68,7 +77,12 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-
 
 ### 启动docker
 
-    service docker start
+```shell
+service docker start
+
+systemctl enable docker # 如果想添加到开机启动
+systemctl start docker  # 启动docker服务
+```
 
 ### 添加用户
 
