@@ -25,6 +25,24 @@ scale_colour_manual(values = c("CHB" = '#E41A1C', "MXL" = "#377EB8", "CEU" = "#3
 # breaks 图例排序
 ```
 
+## 隐藏legend
+
+```R
+geom_point(show.legend = F)
+```
+
+## legend图标的大小
+
+```R
+guides(color = guide_legend(override.aes = list(size = 5)))
+```
+
+## 帮帮图 dotchart
+
+```R
+geom_point() + geom_segment()
+```
+
 ## count
 
 ```R
@@ -99,3 +117,17 @@ head(g$layout)
 * widths, heights图形元素大小
 
 # ggplot2的扩展
+
+## 图中图
+
+```r
+p + annotation_custom(ggplotGrob(p1), xmin = 1, xmax = 10, ymin = 1)
+```
+
+# ggsci
+
+查看颜色代码
+
+```r
+scales::show_col(pal_d3("category10")(10))
+```
