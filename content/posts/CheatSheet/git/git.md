@@ -212,3 +212,15 @@ core.quotepath设为false的话，就不会对0x80以上的字符进行quote。�
 ```bash
 git config --global core.autocrlf false //禁用自动转换
 ```
+
+## permission changes are ignored
+
+WSL与window git的权限不同，会提示modified
+
+```sh
+# For the current repository
+git config core.filemode false
+
+# Globally
+git config --global core.filemode false
+```
