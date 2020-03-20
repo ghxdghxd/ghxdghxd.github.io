@@ -82,7 +82,7 @@ export LANG=zh_CN
 ## exFat
 
 ```sh
-sudo apt instal exfat-fuse
+sudo apt install exfat-fuse
 
 sudo apt install sshfs
 ```
