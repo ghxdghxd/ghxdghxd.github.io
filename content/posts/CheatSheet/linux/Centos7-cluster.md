@@ -21,7 +21,12 @@ service network restart
 ## 每个节点手动挂载/public
 
 ```shell
+ssh node1
 mount admin:/public /public
+
+# OR
+
+clusconf -yd mount admin:/public /public
 ```
 
 ## clussoft安装软件
