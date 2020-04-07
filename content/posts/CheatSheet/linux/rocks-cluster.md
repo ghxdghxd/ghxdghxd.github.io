@@ -159,7 +159,18 @@ rm -rf ~/.ssh #然后 退出登录 再登陆 会自动生成新密钥
 ### 重装节点
 
 ```sh
-rocks set host boot compute1 action=install
+#重装所有节点
+rocks run host '/boot/kickstart/cluster-kickstart'
+
+#计算节点网络启动重新安装系统
+rocks set host pxeboot compute-0-1 action=install
+#计算节点网络启动直接进入系统，这个可在集群断电之后子节点重启直接进入grub的情况下使用
+rocks set host pxeboot compute-0-1 action=os
+
+# **重装节点**
+rocks set host boot compute-0-1 action=install
+ssh compute-0-1 "shutdown -r now"
+
 ssh compute-0-6 /boot/kickstart/cluster-kickstart
 # 登录节点后，运行如下
 /boot/kickstart/cluster-kickstart-pxe
@@ -405,3 +416,16 @@ netstat -tunlp
 
 > /opt/torque/spool
 > /opt/gridview/pbs/dispatcher
+
+## 计算节点无法获取管理节点配置 /etc/auto.home等
+
+```sh
+# 在计算节点运行
+411get -a-ll
+# 出现错误
+Error: Could not get file 'http://10.1.1.1:372/411.d//': 400 Bad
+
+# 在/etc/httpd/conf/httpd.conf添加
+# HttpProtocolOptions Unsafe
+service httpd restart
+```
