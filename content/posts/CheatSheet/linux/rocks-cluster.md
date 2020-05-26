@@ -247,6 +247,7 @@ service pbs_server restart
 + 挂载fstab
 
 ```sh
+        /dev/sdb1 /export/swap ext4 defaults 1 1
         /dev/sdc1 /export/data0 ext4 defaults 1 1
         /dev/sdc2 /export/data1 ext4 defaults 1 1
         /dev/sde1 /export/data5 ext4 defaults 1 1
