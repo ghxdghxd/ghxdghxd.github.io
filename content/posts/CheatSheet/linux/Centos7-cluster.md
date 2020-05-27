@@ -60,7 +60,8 @@ firewall-cmd --get-default-zone      #查看默认zone
 # public
 firewall-cmd --zone=public --list-ports     #查看public的端口
 # 10/tcp
-firewall-cmd --zone=public --add-port=22/tcp --permanent    #添加端口，删除用--remove-port
+firewall-cmd --zone=public --add-port=22/tcp --permanent        #添加端口
+firewall-cmd --zone=public --remove-port=22/tcp --permanent     #删除端口
 # success
 firewall-cmd --zone=public --add-port=100-500/tcp --permanent   #批量开放端口
 firewall-cmd --zone=public --query-port=22/tcp  #查看端口是否生效
@@ -91,13 +92,15 @@ firewall-cmd --zone=public --add-service=http    # 把http服务临时添加到p
 firewall-cmd --zone=public --add-service=http --permanent # 把http服务永久添加到public的zone下
 ```
 
-## Centos7 更改SSH端口, 禁止root登录
+## SSH配置
+
+### 更改SSH端口
 
 ```shell
 vi /etc/ssh/sshd_config
 Port22      # 去除注释
 Port 200    # 并添加新端口
-PermitRootLogin no  #禁止root
+# PermitRootLogin no  #禁止root
 
 # 防火墙打开新端口
 firewall-cmd --zone=public --add-port=22/tcp --permanent
@@ -105,6 +108,25 @@ firewall-cmd --zone=public --add-port=200/tcp --permanent
 firewall-cmd --reload #重新加载
 systemctl restart sshd.service
 # 测试修改端口以后的ssh连接，重新注释掉Port 22
+```
+
+* 更改22端口，则clusconf -au user无法同步到节点，因为其默认为22端口，需要在节点/etc/ssh/ssh_config添加，不同IP监听不同端口
+
+```shell
+ListenAddress 外网IP:修改端口
+ListenAddress 内网IP:22
+```
+
+### 禁用root登录，配置root在指定IP登录
+
+* 注意禁止root登录后，一定开放内网登录，否则clusconf -au user无法同步到节点
+
+首先去掉`PermitRootLogin yes`注释，改为`PermitRootLogin no`，
+然后在/etc/ssh/sshd_config*最后的Match模块*处添加如下参数（*配置文件中参数的位置一定不要更改顺序，否则sshd服务无法启动*）
+
+```text
+Match Address 10.1.1.0/24,
+    PermitRootLogin yes
 ```
 
 ## [使用 fail2ban 防御 SSH 服务器的暴力破解攻击](fail2ban)
@@ -146,25 +168,14 @@ logpath = /var/log/secure
 
 ## 挂载存储服务
 
-### 添加nfs共享路径
+存储分为两部分, 采用不同挂载方式，需按下面的顺序挂载
 
-> /etc/exports
+* data2-4为multipath路径: admin挂载后通过nfs共享出去（100M/s)
+* data0-1,5为162的nfs共享：各nodes可直接挂载(100M/s)
 
-```shell
-/public *(rw,async,insecure,no_root_squash,no_subtree_check)
-/share  *(rw,async,insecure,no_root_squash,no_subtree_check)
-/share/swap *(rw,async,insecure,no_root_squash,no_subtree_check)
-/share/data0    *(rw,fsid=1,async,insecure,no_root_squash,no_subtree_check)
-/share/data1    *(rw,fsid=2,async,insecure,no_root_squash,no_subtree_check)
-/share/data2    *(rw,async,insecure,no_root_squash,no_subtree_check)
-/share/data3    *(rw,async,insecure,no_root_squash,no_subtree_check)
-/share/data4    *(rw,async,insecure,no_root_squash,no_subtree_check)
-/share/data5    *(rw,fsid=3,async,insecure,no_root_squash,no_subtree_check)
+### 首先admin挂载multipath分区与162的nfs分区
 
-exportfs -r # 重新共享所有目录
-```
-
-### 挂载分区
+* multipath
 
 ```shell
 mount /dev/sdc1 /share/swap     # raid0硬盘
@@ -187,12 +198,43 @@ service multipathd restart #重启确认/dev/mapper下有硬盘连接
 mount /dev/mapper/mpatha1 /share/data2
 mount /dev/mapper/mpathb1 /share/data3
 mount /dev/mapper/mpathc1 /share/data4
+```
 
-sshfs -o allow_other -o transform_symlinks -o reconnect -o follow_symlinks -o gid=100 -o umask=022 $IP:/share/data0 /share/data0
-sshfs -o allow_other -o transform_symlinks -o reconnect -o follow_symlinks -o gid=100 -o umask=022 $IP:/share/data1 /share/data1
-sshfs -o allow_other -o transform_symlinks -o reconnect -o follow_symlinks -o gid=100 -o umask=022 $IP:/share/data5 /share/data5
+* 162的nfs
 
-clusconf -yd "mount admin:/share /share"
+```shell
+tee /public/tool/mount_nfs.sh <<-'EOF'
+mount -o nfsvers=3 10.1.1.1:/export/data0 /share/data0
+mount -o nfsvers=3 10.1.1.1:/export/data1 /share/data1
+mount -o nfsvers=3 10.1.1.1:/export/data5 /share/data5
+EOF
+
+bash /public/tool/mount_nfs.sh
+```
+
+### 然后admin添加nfs共享路径
+
+> **data0,1,5不要共享，否则在nodes上无法访问/share**
+> /etc/exports
+
+```shell
+/public *(rw,async,insecure,no_root_squash,no_subtree_check)
+/share  *(rw,async,insecure,no_root_squash,no_subtree_check)
+/share/swap *(rw,async,insecure,no_root_squash,no_subtree_check)
+#/share/data0    *(rw,fsid=1,async,insecure,no_root_squash,no_subtree_check)
+#/share/data1    *(rw,fsid=2,async,insecure,no_root_squash,no_subtree_check)
+/share/data2    *(rw,async,insecure,no_root_squash,no_subtree_check)
+/share/data3    *(rw,async,insecure,no_root_squash,no_subtree_check)
+/share/data4    *(rw,async,insecure,no_root_squash,no_subtree_check)
+#/share/data5    *(rw,fsid=3,async,insecure,no_root_squash,no_subtree_check)
+
+exportfs -avr # 重新共享所有目录
+```
+
+### 最后各nodes挂载nfs
+
+```shell
+clusconf -yd "mount admin:/share /share;bash /public/tool/mount_nfs.sh"
 ```
 
 ## clussoft

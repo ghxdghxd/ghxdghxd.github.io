@@ -255,3 +255,9 @@ install.packages(install.packages("units",
 curl-config --ca
 Sys.setenv(CURL_CA_BUNDLE = "/share/apps/anaconda3/ssl/cacert.pem")
 ```
+
+### reinstall packages installed in R-3.5 subdir into R-3.6
+
+```R
+install.packages(list.files(path = "~/R/x86_64-pc-linux-gnu-library/3.5"))
+```
