@@ -80,7 +80,7 @@ lsblk
 
 + 配置列表
   + commput0
-    + [2.10GHz] * 4 \* 8核/CPU * 2线程/核 = 64
+    + [2.10GHz] \* 4 \* 8核/CPU \* 2线程/核 = 64
     + 1T \* 6块 >>> 3T(raid10), 485M boot + 1.9T root + 781G /export/swap
     + sda1, sda3, sdb1
   + compute1-4
