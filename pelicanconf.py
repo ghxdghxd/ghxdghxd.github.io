@@ -3,7 +3,8 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'JT Guo'
-SITENAME = 'iKnowledgeBase'
+# SITENAME = 'iKnowledgeBase'
+SITENAME = 'iGase'
 SITEURL = 'https://ghxdghxd.github.io'
 GITHUB_URL = 'https://github.com/ghxdghxd'
 PATH = 'content'

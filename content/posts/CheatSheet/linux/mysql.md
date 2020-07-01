@@ -1,3 +1,14 @@
+---
+Title: 安装mysql
+Date: 2020-1-20 11:20
+Modified: 2020-07-10 15:30
+Category: 小抄速查
+Tags: mysql,linux
+Slug: mysql
+Authors: JT Guo
+Summary: mysql安装
+---
+
 # docker install mysql
 
 ```sh
