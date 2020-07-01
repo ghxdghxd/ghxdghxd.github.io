@@ -46,7 +46,7 @@ sudo ./dev.sh --install
 
 ```sh
 sudo apt install gnome-tweak-tool
-sudo apt install gnome-shell-extension-dash-to-panel
+# https://extensions.gnome.org/extension/307/dash-to-dock/
 ```
 
 ## wbpy
@@ -60,11 +60,17 @@ im-config -s fcitx
 sudo cp /usr/share/fcitx/xdg/autostart/fcitx-autostart.desktop /etc/xdg/autostart/
 ```
 
+## jianguoyun
+
+```sh
+https://www.jianguoyun.com/s/downloads/linux#build_from_src
+```
+
 ## zsh
 
 ```sh
 sudo apt install zsh
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 apt install autojump
 chsh -s `which zsh`
 sudo shutdown -r 0

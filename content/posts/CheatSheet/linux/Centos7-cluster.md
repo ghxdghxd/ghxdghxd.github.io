@@ -264,3 +264,12 @@ set             APPS_HOME                /public/software/apps/R/3.6.1
 setenv          APPS_ROOT               /public/software/apps/R/3.6.1
 prepend-path    PATH                    ${APPS_HOME}/bin
 ```
+
+# 禁用 gridview 相关服务的自启动
+
+```text
+# 查看所有自启动服务
+chkconfig --list
+# 关闭 gridview_platform 服务自启
+chkconfig gridview_platform off
+```

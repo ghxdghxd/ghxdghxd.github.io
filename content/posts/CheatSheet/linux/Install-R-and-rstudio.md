@@ -62,6 +62,8 @@ sudo apt-get install zlib1g-dev
 ### 5. checking whether bzip2 support suffices
 
 ```shell
+sudo apt-get install libbz2-dev
+
 wget <http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz>
 tar xvf bzip2-1.0.6.tar.gz
 cd bzip2-1.0.6
@@ -93,6 +95,8 @@ make &amp; sudo make install
 ### 8. libcurl &gt;= 7.28.0 library and headers are required with support for https
 
 ```shell
+sudo apt install libcurl4-openssl-dev
+
 wget https://www.openssl.org/source/openssl-1.1.0b.tar.gz
 tar xvf openssl-1.1.0b.tar.gz
 cd openssl-1.1.0b
@@ -120,6 +124,8 @@ sudo apt-get install texlive
 ### 11. configure: WARNING: neither inconsolata.sty nor zi4.sty found: PDF vignettes and package manuals will not be rendered optimally
 
 ```shell
+sudo apt-get install texlive-fonts-extra
+
 wget <http://mirrors.ctan.org/install/fonts/inconsolata.tds.zip>
 sudo mv inconsolata.tds.zip /usr/share/texlive/texmf-dist/tex/latex
 cd /usr/share/texlive/texmf-dist/tex/latex
@@ -148,7 +154,7 @@ CC='gcc -fPIC'
 sudo make install
 ```
 
-### 2./usr/bin/ld: cannot find -lbz2 ;  collect2: error: ld returned 1 exit status
+### 2./usr/bin/ld: cannot find -lbz2 ; collect2: error: ld returned 1 exit status
 
 ```shell
 sudo apt-get install libbz2-dev
@@ -169,10 +175,18 @@ wget <https://cran.r-project.org/doc/manuals/r-release/NEWS.pdf>
 ## install rstudio
 
 ```shell
+export RSTUDIO_WHICH_R="/opt/R-3.3.1/bin/R" 添加到/etc/profile或~/.profile
+sudo apt --fix-broken install libclang-10-dev
+sudo apt --fix-broken install libclang-dev
+wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.3.959-amd64.deb
+sudo dpkg -i ./rstudio-1.3.959-amd64.deb
+
+.config/RStudio/desktop.ini
+desktop.renderingEngine=desktop
+
 sudo apt-get install libjpeg62-dev
 sudo apt-get install libgstreamer0.10-0
 sudo apt-get install libgstreamer-plugins-base0.10-0
-export RSTUDIO_WHICH_R="/opt/R-3.3.1/bin/R" 添加到/etc/profile或~/.profile
 ```
 
 ### rstudio: error while loading shared libraries: libssl.so.1.0.0: cannot open shared object file: No such file or directory

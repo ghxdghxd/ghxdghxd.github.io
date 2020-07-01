@@ -35,6 +35,10 @@ docker-compose pull
 docker-compose up -d
 ```
 
+## 不显示头像
+
+系统管理，设置，更改SERVICE_URL为"http://IP:port", 然后重启seafile
+
 # 首先配置
 
 >/public/tool/seafile/seafile-data/seafile/conf
