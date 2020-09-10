@@ -60,7 +60,7 @@ im-config -s fcitx
 sudo cp /usr/share/fcitx/xdg/autostart/fcitx-autostart.desktop /etc/xdg/autostart/
 ```
 
-## jianguoyun
+## 坚果云
 
 ```sh
 https://www.jianguoyun.com/s/downloads/linux#build_from_src

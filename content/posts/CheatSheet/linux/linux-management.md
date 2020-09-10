@@ -382,3 +382,12 @@ grep "[0-9]" /sys/devices/system/edac/mc/mc*/csrow*/ch*_ce_count
 ```sh
 netstat -tunlp
 ```
+
+## 文件数目限制
+
+> /etc/security/limits.conf
+
+```txt
+user1           soft    nofile          10240
+user1           hard    nofile          10240
+```

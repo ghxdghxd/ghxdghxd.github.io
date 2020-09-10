@@ -31,6 +31,8 @@ apt-get build-dep r-base-core
 ## ./configure
 
 ```shell
+sudo apt install tcl-dev
+sudo apt install tk-dev
 ./configure --prefix=/opt/R-3.6.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk \
 --with-blas --with-lapack # 提高矩阵速度
 ```

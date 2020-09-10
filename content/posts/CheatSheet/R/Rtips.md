@@ -30,3 +30,10 @@ chartr("Ab","aB",text)
 #动态生成变量，并赋值
 assign(x, value)
 ```
+
+## 显示颜色
+
+```R
+library(scales)
+show_col(pal_d3("category10")(10)[c(1:6,8)])
+```
