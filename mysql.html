@@ -1,0 +1,73 @@
+<div class="header">
+  <h1 class="page-title">
+    <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>
+    安装mysql
+  </h1>
+  <div class="details">
+    <div class="left">
+      1月 20, 2020
+      <span> | </span> <a href="/category/xiao-chao-su-cha.html">小抄速查</a>
+    </div>
+    <div class="right">
+      <a class="fa fa-tag" href="/tag/mysql.html">mysql</a>
+      <a class="fa fa-tag" href="/tag/linux.html">linux</a>
+    </div>
+  </div>
+</div>
+<div id="message-nano-wrapper" class="nano">
+  <div class="nano-content">
+    <ul class="message-container">
+        <div class="message">
+          <h1>docker install mysql</h1>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo docker pull mysql</span>
+<span class="code-line">sudo docker run -p <span class="m">3306</span>:3306 --name mysql <span class="se">\</span></span>
+<span class="code-line">    -v /public/tool/docker-mysql/conf:/etc/mysql/conf.d <span class="se">\</span></span>
+<span class="code-line">    -v /public/tool/docker-mysql/logs:/logs <span class="se">\</span></span>
+<span class="code-line">    -v /public/tool/docker-mysql/data:/var/lib/mysql <span class="se">\</span></span>
+<span class="code-line">    -e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="m">123456</span> -d mysql</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#进入容器</span></span>
+<span class="code-line">docker <span class="nb">exec</span> -it mysql bash</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#登录mysql</span></span>
+<span class="code-line">mysql -h localhost -u root -p</span>
+<span class="code-line">ALTER USER <span class="s1">&#39;root&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;123456&#39;</span><span class="p">;</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#添加远程登录用户</span></span>
+<span class="code-line">CREATE USER <span class="s1">&#39;user&#39;</span>@<span class="s1">&#39;%&#39;</span> IDENTIFIED WITH mysql_native_password BY <span class="s1">&#39;123456&#39;</span><span class="p">;</span></span>
+<span class="code-line">GRANT ALL PRIVILEGES ON *.* TO <span class="s1">&#39;user&#39;</span>@<span class="s1">&#39;%&#39;</span><span class="p">;</span></span>
+<span class="code-line"></span>
+<span class="code-line">mysql -h IP -p3306 -u user -p123456</span>
+<span class="code-line"></code></pre></div>
+        </div>
+        <!-- <div class="tool-box">
+          <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a>
+        </div> -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nano').overlayScrollbars({
+    scrollbars: {
+      autoHide: "leave",
+    }
+  });
+  $('.trigger-message-close').on('click', function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+    $('body').removeClass('show-main-overlay');
+  });
+  $('#message .header .left a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addDisjunctiveFacetRefinement("category", e.target.text).search();
+    
+  });
+  $('#message .header .right a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addFacetRefinement("tags", e.target.text).search();
+  });
+</script>

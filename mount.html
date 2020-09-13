@@ -20,16 +20,16 @@
         <div class="message">
           <h1>/etc/fstab</h1>
 <p>运维都知道的文件，若想把mount的disk和dir设置为每次开机自动加载，那么就要把相关信息写到这个文件中。当用”mount -a“命令自动mount的时候，也会去读这个文件。例如：</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="nv">LABEL</span><span class="o">=</span>/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto <span class="m">0</span> <span class="m">2</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nv">LABEL</span><span class="o">=</span>/hadoop/9 /hadoop/9 ext3 defaults,noatime,nodiratime,noauto <span class="m">0</span> <span class="m">2</span></span>
 <span class="code-line"><span class="nv">LABEL</span><span class="o">=</span>/hadoop/10 /hadoop/10 ext3 defaults,noatime,nodiratime,noauto <span class="m">0</span> <span class="m">2</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h1>/etc/mtab</h1>
 <p>这个文件主要是用mount命令的时候，系统根据实际mount的情况生成的数据，例如：</p>
-<div class="highlight"><pre><span class="code-line"><span></span>/dev/sdb1 /hadoop/9 ext3 rw,noatime,nodiratime <span class="m">0</span> <span class="m">0</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>/dev/sdb1 /hadoop/9 ext3 rw,noatime,nodiratime <span class="m">0</span> <span class="m">0</span></span>
 <span class="code-line">/dev/sdc1 /hadoop/10 ext3 rw,noatime,nodiratime <span class="m">0</span> <span class="m">0</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h1>/proc/mounts</h1>
@@ -39,7 +39,7 @@
 或者你使用"chmod 000 /dir",把这块盘设为不能读不能写。
 这时如果你管理了1000台服务器，你需要知道你的服务器中哪些盘是被umount了，你会怎么做？
 这里分享一个SHELL脚本，可以给你提供思路：</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="k">function</span> check_disks <span class="o">{</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="k">function</span> check_disks <span class="o">{</span></span>
 <span class="code-line">  <span class="k">for</span> m in <span class="sb">`</span>awk <span class="s1">&#39;$3~/ext3/ {printf&quot; %s &quot;,$2}&#39;</span> /etc/fstab<span class="sb">`</span> <span class="p">;</span> <span class="k">do</span></span>
 <span class="code-line">    <span class="nv">fsdev</span><span class="o">=</span><span class="s2">&quot;&quot;</span></span>
 <span class="code-line">    <span class="nv">fsdev</span><span class="o">=</span><span class="sb">`</span>awk -v <span class="nv">m</span><span class="o">=</span><span class="nv">$m</span> <span class="s1">&#39;$2==m {print $1}&#39;</span> /proc/mounts<span class="sb">`</span><span class="p">;</span></span>
@@ -55,15 +55,15 @@
 <span class="code-line">    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$msg_</span><span class="s2">&quot;</span> <span class="p">;</span> <span class="nb">exit</span> <span class="m">2</span></span>
 <span class="code-line">  <span class="k">fi</span></span>
 <span class="code-line"><span class="o">}</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <p>脚本首先通过比较/etc/fstab和/proc/mounts中的不同之处，得到被umount的盘，然后再把ro(read only)的盘也分析出来。</p>
 <h1>挂载usb到指定位置</h1>
-<div class="highlight"><pre><span class="code-line"><span></span>blkid usb <span class="c1">#查看uuid</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>blkid usb <span class="c1">#查看uuid</span></span>
 <span class="code-line"><span class="c1"># 修改/etc/fstab</span></span>
 <span class="code-line"><span class="nv">UUID</span><span class="o">=</span>54A3-36E3 /home/aData exfat defaults,uid<span class="o">=</span><span class="m">1000</span>,gid<span class="o">=</span><span class="m">1000</span>,umask<span class="o">=</span><span class="m">022</span> <span class="m">0</span> <span class="m">0</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

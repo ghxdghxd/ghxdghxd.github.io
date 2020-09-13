@@ -21,96 +21,102 @@
         <div class="message">
           <h1>config ubuntu</h1>
 <h2>upgrade</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt update <span class="p">&amp;</span> sudo apt upgrade</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo apt update <span class="p">&amp;</span> sudo apt upgrade</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>chrome</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb</span>
 <span class="code-line">sudo apt -fy install ./google-chrome-stable_current_amd64.deb</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>git</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt install git</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo apt install git</span>
 <span class="code-line">git config --global user.name <span class="s2">&quot;user name&quot;</span></span>
 <span class="code-line">git config --global user.email user@email.com</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>guake</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt install python-dbus-dev</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo apt install python-dbus-dev</span>
 <span class="code-line">sudo apt install libutempter-dev</span>
 <span class="code-line">sudo apt-get install automake libgconf2-dev python-glade2 libtool python-keybinder</span>
 <span class="code-line">git clone https://github.com/Guake/guake.git</span>
 <span class="code-line"><span class="nb">cd</span> guake</span>
 <span class="code-line">sudo ./dev.sh --install</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>gnome-tweak-tool</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt install gnome-tweak-tool</span>
-<span class="code-line">sudo apt install gnome-shell-extension-dash-to-panel</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo apt install gnome-tweak-tool</span>
+<span class="code-line"><span class="c1"># https://extensions.gnome.org/extension/307/dash-to-dock/</span></span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>wbpy</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get purge ibus</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo apt-get purge ibus</span>
 <span class="code-line">sudo apt-get autoremove</span>
 <span class="code-line"></span>
 <span class="code-line">sudo apt install fcitx-table-wbpy</span>
 <span class="code-line">im-config -s fcitx</span>
 <span class="code-line">sudo cp /usr/share/fcitx/xdg/autostart/fcitx-autostart.desktop /etc/xdg/autostart/</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
+
+
+<h2>坚果云</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code>https://www.jianguoyun.com/s/downloads/linux#build_from_src</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>zsh</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt install zsh</span>
-<span class="code-line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - <span class="p">|</span> zsh</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo apt install zsh</span>
+<span class="code-line">sh -c <span class="s2">&quot;</span><span class="k">$(</span>wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="k">)</span><span class="s2">&quot;</span></span>
+<span class="code-line">apt install autojump</span>
 <span class="code-line">chsh -s <span class="sb">`</span>which zsh<span class="sb">`</span></span>
 <span class="code-line">sudo shutdown -r <span class="m">0</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>change PATH language</h2>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US</span>
 <span class="code-line">xdg-user-dirs-gtk-update</span>
 <span class="code-line"></span>
 <span class="code-line"><span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>zh_CN</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>exFat</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt instal exfat-fuse</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo apt install exfat-fuse</span>
 <span class="code-line"></span>
 <span class="code-line">sudo apt install sshfs</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>anaconda</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh</span>
 <span class="code-line">bash Anaconda3-4.3.1-Linux-x86_64.sh<span class="p">|</span>sh</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>synergy</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt-get -fy install ./synergy-v1.8.8-stable-c30301e-Linux-x86_64.deb</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo apt-get -fy install ./synergy-v1.8.8-stable-c30301e-Linux-x86_64.deb</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>ModuleNotFoundError</h2>
 <ul>
 <li>No module named 'Xlib'</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span>pip install python3_xlib</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>pip install python3_xlib</span>
+<span class="code-line"></code></pre></div>
 
 
 <ul>
 <li>No module named 'xdg'</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span>pip install pyxdg</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>pip install pyxdg</span>
+<span class="code-line"></code></pre></div>
 
 
 <h1><a href="R-and-Rstudio">install R</a></h1>

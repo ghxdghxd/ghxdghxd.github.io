@@ -85,6 +85,21 @@
 </tbody>
 </table>
 <h1>常用操作</h1>
+<h2>查看服务器型号、序列号</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code>dmidecode<span class="p">|</span>grep <span class="s2">&quot;System Information&quot;</span> -A9<span class="p">|</span>egrep <span class="s2">&quot;Manufacturer|Product|Serial&quot;</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>查看内存的插槽数,已经使用多少插槽.每条内存多大</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code>dmidecode<span class="p">|</span>grep -A5 <span class="s2">&quot;Memory Device&quot;</span><span class="p">|</span>grep Size<span class="p">|</span>grep -v Range</span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>查看内存的频率</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code>dmidecode<span class="p">|</span>grep -A16 <span class="s2">&quot;Memory Device&quot;</span><span class="p">|</span>grep <span class="s1">&#39;Speed&#39;</span></span>
+<span class="code-line"></code></pre></div>
+
+
 <h2>清理内存</h2>
 <div class="highlight"><pre><span class="code-line"><span></span><code><span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/vm/drop_caches</span>
 <span class="code-line"></code></pre></div>
@@ -118,7 +133,7 @@
 
 
 <ul>
-<li>配置</li>
+<li>配置列表</li>
 <li>commput0<ul>
 <li>[2.10GHz] * 4 * 8核/CPU * 2线程/核 = 64</li>
 <li>1T * 6块 &gt;&gt;&gt; 3T(raid10), 485M boot + 1.9T root + 781G /export/swap</li>
@@ -203,7 +218,18 @@
 <img alt="图2" src="images/manager2.png" style="height:30%; width:30%;">
 <img alt="图3" src="images/manager3.jpg" style="height:30%; width:30%;"></p>
 <h3>重装节点</h3>
-<div class="highlight"><pre><span class="code-line"><span></span><code>rocks <span class="nb">set</span> host boot compute1 <span class="nv">action</span><span class="o">=</span>install</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1">#重装所有节点</span></span>
+<span class="code-line">rocks run host <span class="s1">&#39;/boot/kickstart/cluster-kickstart&#39;</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#计算节点网络启动重新安装系统</span></span>
+<span class="code-line">rocks <span class="nb">set</span> host pxeboot compute-0-1 <span class="nv">action</span><span class="o">=</span>install</span>
+<span class="code-line"><span class="c1">#计算节点网络启动直接进入系统，这个可在集群断电之后子节点重启直接进入grub的情况下使用</span></span>
+<span class="code-line">rocks <span class="nb">set</span> host pxeboot compute-0-1 <span class="nv">action</span><span class="o">=</span>os</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># **重装节点**</span></span>
+<span class="code-line">rocks <span class="nb">set</span> host boot compute-0-1 <span class="nv">action</span><span class="o">=</span>install</span>
+<span class="code-line">ssh compute-0-1 <span class="s2">&quot;shutdown -r now&quot;</span></span>
+<span class="code-line"></span>
 <span class="code-line">ssh compute-0-6 /boot/kickstart/cluster-kickstart</span>
 <span class="code-line"><span class="c1"># 登录节点后，运行如下</span></span>
 <span class="code-line">/boot/kickstart/cluster-kickstart-pxe</span>
@@ -212,7 +238,7 @@
 
 <h3>提交任务后，无运行时间,且qdel: Server could not connect to MOM</h3>
 <p>由于节点pbs_mom没运行
-解决办法是进入节点后运行pbs_mom</p>
+解决办法是进入节点后kill pbs_mom重新运行pbs_mom</p>
 <h2>qmgr</h2>
 <div class="highlight"><pre><span class="code-line"><span></span><code>qmgr -c <span class="s2">&quot;print server&quot;</span> <span class="c1"># 输出server的属性</span></span>
 <span class="code-line">qmgr -c <span class="s2">&quot;set server query_other_jobs = true&quot;</span> <span class="c1"># qstat可以查看所有用户</span></span>
@@ -276,7 +302,8 @@ help_starving_jobs false ALL</p>
 <ul>
 <li>挂载fstab</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span><code>        /dev/sdc1 /export/data0 ext4 defaults <span class="m">1</span> <span class="m">1</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>        /dev/sdb1 /export/swap ext4 defaults <span class="m">1</span> <span class="m">1</span></span>
+<span class="code-line">        /dev/sdc1 /export/data0 ext4 defaults <span class="m">1</span> <span class="m">1</span></span>
 <span class="code-line">        /dev/sdc2 /export/data1 ext4 defaults <span class="m">1</span> <span class="m">1</span></span>
 <span class="code-line">        /dev/sde1 /export/data5 ext4 defaults <span class="m">1</span> <span class="m">1</span></span>
 <span class="code-line">        /dev/mapper/mpathhp1 /export/data4 xfs defaults,_netdev <span class="m">0</span> <span class="m">0</span></span>
@@ -294,47 +321,39 @@ help_starving_jobs false ALL</p>
 <p>确认/export/*,一般重启服务</p>
 </li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span><code>        service autofs restart</span>
-<span class="code-line"></code></pre></div>
-
-
+<p><code>shell
+        service autofs restart</code></p>
 <ul>
 <li>/etc/auto.master</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span><code>        /share /etc/auto.share --timeout<span class="o">=</span><span class="m">1200</span></span>
-<span class="code-line">        /home /etc/auto.home  --timeout<span class="o">=</span><span class="m">1200</span></span>
-<span class="code-line"></code></pre></div>
-
-
+<p><code>text
+        /share /etc/auto.share --timeout=1200
+        /home /etc/auto.home  --timeout=1200</code></p>
 <ul>
 <li>/etc/auto.share 如果要增加新存储，需要添加，如swap</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span><code>        apps -nfsvers=3 -soft,intr,timeo=9999  xmu.local:/export/&amp;</span>
-<span class="code-line">        #bio  -nfsvers=3 -soft,intr,timeo=9999  xmu:/export/&amp;</span>
-<span class="code-line">        data0 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;</span>
-<span class="code-line">        data1 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;</span>
-<span class="code-line">        data2 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;</span>
-<span class="code-line">        data3 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;</span>
-<span class="code-line">        data4 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;</span>
-<span class="code-line">        data5 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;</span>
-<span class="code-line">        swap -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;</span>
-<span class="code-line"></code></pre></div>
-
-
+<p><code>text
+        apps -nfsvers=3 -soft,intr,timeo=9999  xmu.local:/export/&amp;
+        #bio  -nfsvers=3 -soft,intr,timeo=9999  xmu:/export/&amp;
+        data0 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;
+        data1 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;
+        data2 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;
+        data3 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;
+        data4 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;
+        data5 -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;
+        swap -nfsvers=3 -soft,intr,timeo=9999 xmu.local:/export/&amp;</code></p>
 <ul>
 <li>/etc/exportfs 如果要增加新存储，需要添加，如swap</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span><code>        /export <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
-<span class="code-line">        /export/data0 <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
-<span class="code-line">        /export/data1 <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
-<span class="code-line">        /export/data2 <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
-<span class="code-line">        /export/data3 <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
-<span class="code-line">        /export/data4 <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
-<span class="code-line">        /export/data5 <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
-<span class="code-line">        /export/swap <span class="m">10</span>.1.1.1<span class="o">(</span>rw,async,no_root_squash<span class="o">)</span> <span class="m">10</span>.1.1.0/255.255.255.0<span class="o">(</span>rw,async<span class="o">)</span></span>
-<span class="code-line"></code></pre></div>
-
-
+<p><code>text
+        /export 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/data0 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/data1 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/data2 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/data3 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/data4 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/data5 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)
+        /export/swap 10.1.1.1(rw,async,no_root_squash) 10.1.1.0/255.255.255.0(rw,async)</code></p>
 <ul>
 <li>修复分区(未完)</li>
 </ul>
@@ -429,12 +448,20 @@ ERROR:    cannot request service (status)</p>
 <span class="code-line"></code></pre></div>
 
 
-<h2>文件数目限制</h2>
+<h2>PBS日志</h2>
 <blockquote>
-<p>/etc/security/limits.conf</p>
+<p>/opt/torque/spool
+/opt/gridview/pbs/dispatcher</p>
 </blockquote>
-<div class="highlight"><pre><span class="code-line"><span></span><code><span class="err">user1           soft    nofile          10240</span></span>
-<span class="code-line"><span class="err">user1           hard    nofile          10240</span></span>
+<h2>计算节点无法获取管理节点配置 /etc/auto.home等</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1"># 在计算节点运行</span></span>
+<span class="code-line">411get -a-ll</span>
+<span class="code-line"><span class="c1"># 出现错误</span></span>
+<span class="code-line">Error: Could not get file <span class="s1">&#39;http://10.1.1.1:372/411.d//&#39;</span>: <span class="m">400</span> Bad</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># 在/etc/httpd/conf/httpd.conf添加</span></span>
+<span class="code-line"><span class="c1"># HttpProtocolOptions Unsafe</span></span>
+<span class="code-line">service httpd restart</span>
 <span class="code-line"></code></pre></div>
         </div>
         <!-- <div class="tool-box">

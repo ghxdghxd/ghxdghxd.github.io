@@ -20,8 +20,8 @@
           <h1>R的常用命令</h1>
 <h2>字符串操作</h2>
 <h3>替换sub, gsub, chart</h3>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="nf">chartr</span><span class="p">(</span><span class="s">&quot;Ab&quot;</span><span class="p">,</span><span class="s">&quot;aB&quot;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nf">chartr</span><span class="p">(</span><span class="s">&quot;Ab&quot;</span><span class="p">,</span><span class="s">&quot;aB&quot;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span></span>
+<span class="code-line"></code></pre></div>
 
 
 <h3>查找grep, grepl</h3>
@@ -31,9 +31,15 @@
 <li>grepl返回TRUE/FALSE</li>
 </ul>
 <h2>R动态变量</h2>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1">#动态生成变量，并赋值</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1">#动态生成变量，并赋值</span></span>
 <span class="code-line"><span class="nf">assign</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
+
+
+<h2>显示颜色</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">scales</span><span class="p">)</span></span>
+<span class="code-line"><span class="nf">show_col</span><span class="p">(</span><span class="nf">pal_d3</span><span class="p">(</span><span class="s">&quot;category10&quot;</span><span class="p">)(</span><span class="m">10</span><span class="p">)</span><span class="nf">[c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="m">8</span><span class="p">)</span><span class="n">]</span><span class="p">)</span></span>
+<span class="code-line"></code></pre></div>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

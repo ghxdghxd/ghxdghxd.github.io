@@ -22,42 +22,43 @@
 <ul>
 <li>远程</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span>git remote add origin git@github.com:ghxdghxd<span class="nv">$NAME</span>.git</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>git remote add origin git@github.com:ghxdghxd<span class="nv">$NAME</span>.git</span>
+<span class="code-line"></code></pre></div>
 
 
 <ul>
 <li>本地(初始化)</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span>git init</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>git init</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>2 常用操作</h2>
 <ul>
 <li>拉取</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span>git pull origin master</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>git pull origin master</span>
+<span class="code-line"></code></pre></div>
 
 
 <ul>
 <li>提交</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span>git add *.py</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>git add *.py</span>
 <span class="code-line">git commit -m <span class="s2">&quot;message&quot;</span></span>
 <span class="code-line">git push origin master/dev/develop</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <!--more-->
 
 <ul>
-<li>重命令与删除</li>
+<li>重命名、删除与撤销本地所有修改</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span>git rm</span>
-<span class="code-line">git mv</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>git mv</span>
+<span class="code-line">git rm</span>
+<span class="code-line">git checkout .</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>3 分支操作</h2>
@@ -81,7 +82,7 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span class="code-line"><span></span>git branch  /-a/r       <span class="c1"># 查看本地/全部/远程分支</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>git branch  /-a/r       <span class="c1"># 查看本地/全部/远程分支</span></span>
 <span class="code-line">git branch <span class="o">[</span>name<span class="o">]</span>       <span class="c1"># 建立分支</span></span>
 <span class="code-line">git branch -d <span class="o">[</span>name<span class="o">]</span>    <span class="c1"># 删除本地分支</span></span>
 <span class="code-line">git push origin --delete <span class="o">[</span>name<span class="o">]</span>         <span class="c1"># 删除远程分支</span></span>
@@ -93,12 +94,12 @@
 <span class="code-line"><span class="c1"># 删除远程分支后，本地未同步的问题</span></span>
 <span class="code-line">git remote show origin      <span class="c1"># 可以查看remote地址，远程分支，还有本地分支与之相对应关系等信息</span></span>
 <span class="code-line">git remote prune origin     <span class="c1"># 删除了那些远程仓库不存在的分支</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
-<h2>push命令用于将本地分支的更新，推送到远程主机。</h2>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">&lt;</span><span class="err">远程主机名</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="err">本地分支名</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="err">远程分支名</span><span class="o">&gt;</span></span>
-</pre></div>
+<h2>push命令用于将本地分支的更新，推送到远程主机</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code>    git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span>
+<span class="code-line"></code></pre></div>
 
 
 <p>git pull类似:
@@ -106,69 +107,69 @@
 <p>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，
 所以git pull是&lt;远程分支&gt;:&lt;本地分支&gt;，而git push是&lt;本地分支&gt;:&lt;远程分支&gt;。
 如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支(通常两者同名)，如果该远程分支不存在，则会被新建。</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>    git push origin master</span>
+<span class="code-line"></code></pre></div>
 
 
 <p>上面命令表示，将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。</p>
 <p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="p">:</span><span class="n">master</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>    git push origin :master</span>
+<span class="code-line"></code></pre></div>
 
 
 <p>等同于</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="c1">--delete master</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>    git push origin --delete master</span>
+<span class="code-line"></code></pre></div>
 
 
 <p>上面命令表示删除origin主机的master分支。</p>
 <p>如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>    git push origin</span>
+<span class="code-line"></code></pre></div>
 
 
 <p>上面命令表示，将当前分支推送到origin主机的对应分支。</p>
 <p>如果当前分支只有一个追踪分支，那么主机名都可以省略。</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">git</span> <span class="n">push</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>    git push</span>
+<span class="code-line"></code></pre></div>
 
 
 <p>如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">master</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>    git push -u origin master</span>
+<span class="code-line"></code></pre></div>
 
 
 <p>上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。</p>
 <p>不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用git config命令。</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">git</span> <span class="n">config</span> <span class="c1">--global push.default matching</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>    git config --global push.default matching</span>
+<span class="code-line"></code></pre></div>
 
 
 <p>或者</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">git</span> <span class="n">config</span> <span class="c1">--global push.default simple</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>    git config --global push.default simple</span>
+<span class="code-line"></code></pre></div>
 
 
 <p>还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">git</span> <span class="n">push</span> <span class="c1">--all origin</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>    git push --all origin</span>
+<span class="code-line"></code></pre></div>
 
 
 <p>上面命令表示，将所有本地分支都推送到origin主机。</p>
 <p>如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用–force选项。</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">git</span> <span class="n">push</span> <span class="c1">--force origin</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>    git push --force origin</span>
+<span class="code-line"></code></pre></div>
 
 
 <p>上面命令使用–force选项，结果导致在远程主机产生一个”非直进式”的合并(non-fast-forward merge)。除非你很确定要这样做，否则应该尽量避免使用–force选项。</p>
 <p>最后，git push不会推送标签(tag)，除非使用–tags选项。</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="c1">--tags</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>    git push origin --tags</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>中文乱码</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>git config --global core.quotepath <span class="nb">false</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>git config --global core.quotepath <span class="nb">false</span></span>
+<span class="code-line"></code></pre></div>
 
 
 <p>core.quotepath设为false的话，就不会对0x80以上的字符进行quote。中文显示正常。</p>
@@ -196,8 +197,18 @@
 <p>这是因为在Windows中的换行符为CRLF，而在Linux中的换行符为LF。
 在git创建的项目中换行符为LF，而执行git add时，系统会提示LF将被转换为CRLF。
 解决的办法很简单，禁止git的自动转换即可。</p>
-<div class="highlight"><pre><span class="code-line"><span></span>git config --global core.autocrlf <span class="nb">false</span> //禁用自动转换</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>git config --global core.autocrlf <span class="nb">false</span> //禁用自动转换</span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>permission changes are ignored</h2>
+<p>WSL与window git的权限不同，会提示modified</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1"># For the current repository</span></span>
+<span class="code-line">git config core.filemode <span class="nb">false</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Globally</span></span>
+<span class="code-line">git config --global core.filemode <span class="nb">false</span></span>
+<span class="code-line"></code></pre></div>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

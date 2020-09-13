@@ -1,0 +1,106 @@
+<div class="header">
+  <h1 class="page-title">
+    <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>
+    scrapy下载数据
+  </h1>
+  <div class="details">
+    <div class="left">
+      12月 03, 2010
+      <span> | </span> <a href="/category/python.html">Python</a>
+    </div>
+    <div class="right">
+      <a class="fa fa-tag" href="/tag/python.html">python</a>
+      <a class="fa fa-tag" href="/tag/scrapy.html">scrapy</a>
+    </div>
+  </div>
+</div>
+<div id="message-nano-wrapper" class="nano">
+  <div class="nano-content">
+    <ul class="message-container">
+        <div class="message">
+          <h1>使用scrapy下载数据</h1>
+<h2>新建项目</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nb">cd</span> TCGATumorFusions_scrapy</span>
+<span class="code-line">scrapy startproject TumorFusions .  <span class="c1">#当前目录新建项目</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>定义Item</h2>
+<blockquote>
+<p>./TumorFusions/items.py
+要抓取的内容</p>
+</blockquote>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="kn">import</span> <span class="nn">scrapy</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">class</span> <span class="nc">TumorfusionsItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span></span>
+<span class="code-line">    <span class="c1"># define the fields for your item here like:</span></span>
+<span class="code-line">    <span class="c1"># name = scrapy.Field()</span></span>
+<span class="code-line">    <span class="n">Cancer</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span></span>
+<span class="code-line">    <span class="n">TCGA_sampleID</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span></span>
+<span class="code-line">    <span class="n">FusionPair</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span></span>
+<span class="code-line">    <span class="n">E</span><span class="o">-</span><span class="n">value</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span></span>
+<span class="code-line">    <span class="n">Frame</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span></span>
+<span class="code-line">    <span class="n">phosphorylation</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span></span>
+<span class="code-line">    <span class="n">ubiquitination</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span></span>
+<span class="code-line">    <span class="n">WGS</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>建立spider</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nb">cd</span> TumorFusions/spiders</span>
+<span class="code-line">scrapy genspider qtlbase_spider mulinlab.tmu.edu.cn     <span class="c1">#建立spider</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="kn">import</span> <span class="nn">scrapy</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">class</span> <span class="nc">TumorfusionsSpiderSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span></span>
+<span class="code-line">    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;TumorFusions_spider&#39;</span>    <span class="c1">#爬虫的名字</span></span>
+<span class="code-line">    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tumorfusions.org&#39;</span><span class="p">]</span>  <span class="c1">#允许的域名</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="n">cancer_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;BRCA&#39;</span><span class="p">,</span> <span class="s1">&#39;COAD&#39;</span><span class="p">,</span> <span class="s1">&#39;ESCA&#39;</span><span class="p">,</span> <span class="s2">&quot;GBM&quot;</span><span class="p">,</span> <span class="s2">&quot;KIRC&quot;</span><span class="p">,</span> <span class="s2">&quot;LIHC&quot;</span><span class="p">,</span> <span class="s2">&quot;LUAD&quot;</span><span class="p">,</span> <span class="s2">&quot;OV&quot;</span><span class="p">,</span> <span class="s2">&quot;PRAD&quot;</span><span class="p">,</span> <span class="s2">&quot;STAD&quot;</span><span class="p">,</span> <span class="s2">&quot;THCA&quot;</span><span class="p">,</span> <span class="s2">&quot;UCEC&quot;</span><span class="p">,</span></span>
+<span class="code-line">        <span class="s1">&#39;ACC&#39;</span><span class="p">,</span> <span class="s2">&quot;BLCA&quot;</span><span class="p">,</span> <span class="s2">&quot;CESC&quot;</span><span class="p">,</span> <span class="s2">&quot;CHOL&quot;</span><span class="p">,</span> <span class="s2">&quot;DLBC&quot;</span><span class="p">,</span> <span class="s2">&quot;HNSC&quot;</span><span class="p">,</span> <span class="s2">&quot;KICH&quot;</span><span class="p">,</span> <span class="s2">&quot;KIRP&quot;</span><span class="p">,</span> <span class="s2">&quot;LAML&quot;</span><span class="p">,</span> <span class="s2">&quot;LGG&quot;</span><span class="p">,</span><span class="s2">&quot;LUSC&quot;</span><span class="p">,</span> <span class="s2">&quot;MESO&quot;</span><span class="p">,</span> <span class="s2">&quot;PAAD&quot;</span><span class="p">,</span></span>
+<span class="code-line">        <span class="s2">&quot;PCPG&quot;</span><span class="p">,</span> <span class="s2">&quot;READ&quot;</span><span class="p">,</span> <span class="s2">&quot;SARC&quot;</span><span class="p">,</span> <span class="s2">&quot;SKCM&quot;</span><span class="p">,</span><span class="s2">&quot;TGCT&quot;</span><span class="p">,</span><span class="s2">&quot;THYM&quot;</span><span class="p">,</span><span class="s2">&quot;UCS&quot;</span><span class="p">,</span><span class="s2">&quot;UVM&quot;</span><span class="p">]</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://tumorfusions.org/Fusions!cancerType?cancerType=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cancer_list</span><span class="p">]</span>   <span class="c1">#入口url</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span></span>
+<span class="code-line">        <span class="k">pass</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<div class="highlight"><pre><span class="code-line"><span></span><code>scrapy crawl TumorFusions_spider -o output.csv</span>
+<span class="code-line"></code></pre></div>
+        </div>
+        <!-- <div class="tool-box">
+          <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a>
+        </div> -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nano').overlayScrollbars({
+    scrollbars: {
+      autoHide: "leave",
+    }
+  });
+  $('.trigger-message-close').on('click', function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+    $('body').removeClass('show-main-overlay');
+  });
+  $('#message .header .left a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addDisjunctiveFacetRefinement("category", e.target.text).search();
+    
+  });
+  $('#message .header .right a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addFacetRefinement("tags", e.target.text).search();
+  });
+</script>

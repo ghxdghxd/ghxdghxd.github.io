@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>iKnowledgeBase - 生物信息</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/sheng-wu-xin-xi.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-12-01T14:30:07+08:00</updated><entry><title>ATAC测序</title><link href="https://ghxdghxd.github.io/ATACseq.html" rel="alternate"></link><published>2018-12-01T14:30:07+08:00</published><updated>2018-12-01T14:30:07+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-12-01:/ATACseq.html</id><summary type="html">&lt;p&gt;简介ATAC的原理及分析方法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;概念&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>GInfo - 生物信息</title><link href="https://ghxdghxd.github.io/" rel="alternate"></link><link href="https://ghxdghxd.github.io/feeds/sheng-wu-xin-xi.atom.xml" rel="self"></link><id>https://ghxdghxd.github.io/</id><updated>2018-12-01T14:30:07+08:00</updated><entry><title>ATAC测序</title><link href="https://ghxdghxd.github.io/ATACseq.html" rel="alternate"></link><published>2018-12-01T14:30:07+08:00</published><updated>2018-12-01T14:30:07+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2018-12-01:/ATACseq.html</id><summary type="html">&lt;p&gt;简介ATAC的原理及分析方法&lt;/p&gt;</summary><content type="html">&lt;h1&gt;概念&lt;/h1&gt;
 &lt;h2&gt;染色质开放区域&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;染色质分为常染色质和异染色质，常染色质折叠压缩程度低，处于伸展状态；异染色质折叠压缩程度高，处于聚缩状态。&lt;/li&gt;
@@ -52,7 +52,7 @@
 &lt;ol&gt;
 &lt;li&gt;去接头&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;cat NexteraPE-PE.fa&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cat NexteraPE-PE.fa&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# &amp;gt;PrefixNX/1&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# AGATGTGTATAAGAGACAG&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# &amp;gt;PrefixNX/2&lt;/span&gt;&lt;/span&gt;
@@ -67,7 +67,7 @@
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# CTGTCTCTTATACACATCTCCGAGCCCACGAGAC&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;skewer -f sanger -t &lt;span class="m"&gt;20&lt;/span&gt; -m pe -x NexteraPE-PE.fa --quiet -o &amp;lt;sampleName&amp;gt; &amp;lt;R1.fastq.gz&amp;gt; &amp;lt;R2.fastq.gz&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;macs2&lt;/h2&gt;
@@ -83,95 +83,10 @@
 &lt;li&gt;8th: -log10pvalue&lt;/li&gt;
 &lt;li&gt;9th: -log10qvalue&lt;/li&gt;
 &lt;li&gt;10th: relative summit position to peak start&lt;/li&gt;
-&lt;/ul&gt;</content><category term="ATAC"></category></entry><entry><title>mpileup格式</title><link href="https://ghxdghxd.github.io/mpileup.html" rel="alternate"></link><published>2017-03-04T14:38:00+08:00</published><updated>2017-03-04T14:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-04:/mpileup.html</id><summary type="html">&lt;p&gt;samtools mpileup的格式&lt;/p&gt;</summary><content type="html">&lt;h1&gt;mpileup&lt;/h1&gt;
+&lt;/ul&gt;</content><category term="生物信息"></category><category term="ATAC"></category></entry><entry><title>mpileup格式</title><link href="https://ghxdghxd.github.io/mpileup.html" rel="alternate"></link><published>2017-03-04T14:38:00+08:00</published><updated>2017-03-04T14:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-03-04:/mpileup.html</id><summary type="html">&lt;p&gt;samtools mpileup的格式&lt;/p&gt;</summary><content type="html">&lt;h1&gt;mpileup&lt;/h1&gt;
 &lt;p&gt;mpileup 结果中的 &amp;gt;, &amp;lt;; 代表reference skip, 基因组上没有的序列，  the reference position is
 bridged by reference skip.&lt;/p&gt;
-&lt;p&gt;计算depth要减去reference skip数目&lt;/p&gt;</content><category term="samtools"></category><category term="mpileup"></category></entry><entry><title>循环肿瘤DNA</title><link href="https://ghxdghxd.github.io/ctDNA.html" rel="alternate"></link><published>2017-01-09T15:59:00+08:00</published><updated>2017-01-09T15:59:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2017-01-09:/ctDNA.html</id><summary type="html">&lt;p&gt;循环肿瘤DNA&lt;/p&gt;</summary><content type="html">&lt;p&gt;循环肿瘤DNA，英文叫：circulating tumor DNA，简称ctDNA。
-对ctDNA进行测序，是目前很火的LiquidBiopsy（液体活检）中的一种。  &lt;/p&gt;
-&lt;p&gt;在今天的讲解当中，我们会主要参考Nature Medicine杂志，在2014年4月刊登的AaronNewman（下称：Aaron）等人写的一篇文章。  &lt;/p&gt;
-&lt;p&gt;这篇文章的题目是：《An ultrasensitive method for quantitatingcirculating tumor DNA with
-broad patient coverage》，同时，我们也会结合国内一些服务公司的实际操作方法，来介绍ctDNA测序。  &lt;/p&gt;
-&lt;p&gt;Aaron给他们的实验方法起了一个专有名词：CAncer PersonalizedProfiling by deep SEQuencing，简称：CAPP-
-Seq。  &lt;/p&gt;
-&lt;h1&gt;意义&lt;/h1&gt;
-&lt;p&gt;首先，我们来说一下ctDNA测序的临床意义。&lt;br&gt;
-1.减少病人的开刀痛苦，只要抽血，不必开刀，就可以做检测。&lt;br&gt;
-2.增加可检测的病人范围，对于不适合做开刀手术的病人。例如，已经发生肿瘤全身转移的病人。也可以用测ctDNA的方法来测肿瘤的基因突变。&lt;br&gt;
-3.只抽血（而不必开刀），所以取样很方便。所以它可以应用于肿瘤病人的病情随访，并可以多次取样。&lt;/p&gt;
-&lt;h1&gt;原理&lt;/h1&gt;
-&lt;p&gt;正常细胞和肿瘤细胞都会破裂，细胞破裂之后，细胞中的DNA就会被释放到体液当中去。其中进入血液的这部分DNA，就称为血液游离DNA。那么，它也被称作血浆游离DNA，或者cell
-free DNA，简称cfDNA。&lt;/p&gt;
-&lt;p&gt;这些DNA片段的长度，主要集中在100BP~240BP之间，大部分在170BP左右，把血液当中游离的DNA抽提出来，建成DNA测序的文库。用探针杂交、或者PCR扩增等方法，把其中与肿瘤相关的DNA富集出来，进行高通量测序。&lt;/p&gt;
-&lt;p&gt;然后再进行数据分析，看哪些基因有突变。接着根据基因突变的信息，来决定下一步的治疗方法&lt;/p&gt;
-&lt;p&gt;这就是ctDNA测序的核心原理。  &lt;/p&gt;
-&lt;h2&gt;难点&lt;/h2&gt;
-&lt;p&gt;从原理上，ctDNA测序，简单易懂，但是在实际的操作过程当中，需要克服一系列的技术难点。&lt;/p&gt;
-&lt;p&gt;第一个难点，是在全部的血浆游离DNA当中，ctDNA只占很小的一部分，大约只有万分之几到千分之几。其余的，都是正常细胞的DNA。一般而言，肿瘤早期，ctDNA占全部游离DNA的比例会更低一些，到肿瘤晚期，ctDNA占全部游离DNA的比例会高一些。但是要检测到千分之几、万分之几的突变，总是一件困难的事情  &lt;/p&gt;
-&lt;p&gt;第二个难点，是血液当中的游离DNA量很少，大约每一毫升的血浆当中，只会有十几纳克（ng）的游离DNA。通过比较好的、专用的DNA抽提试剂盒，从一毫升的血浆当中，大约可以抽提到10^-9个纳克（ng，10^-9）左右的游离DNA，每一个正常的、人的细胞，大约含有3.3个皮克(pg，10^-12)的基因组DNA。也就是说1个ng的基因组DNA，相当于来源于300个细胞的DNA量。&lt;/p&gt;
-&lt;p&gt;目前国内做ctDNA测序的科研实践当中，一般是一次抽10个毫升的血，从中可以分离到约5到6毫升的血浆。从这5~6毫升的血浆当中，可以抽提到约
-50ng~60ng 的游离DNA。60个ng的DNA，大约相当于来自18000个细胞的基因组DNA。&lt;/p&gt;
-&lt;p&gt;综合上面所说，ctDNA 测序的两大难点：
-第一，是突变信号相对于背景信号来说，信号强度极低，只有万分之几，到千分之几。
-第二，是样本量极其有限，必须在几十个ng的游离DNA当中，找到突变信息。&lt;/p&gt;
-&lt;h2&gt;实验设计&lt;/h2&gt;
-&lt;p&gt;所以，在整个 ctDNA 测序的实践过程当中，所有的实验步骤，都是围绕上述2个难点，来进行设计的。  &lt;/p&gt;
-&lt;p&gt;首先，我们来说采血。  &lt;/p&gt;
-&lt;p&gt;如果采血完成后，马上可以分离血浆，并抽提游离DNA，那么可以用常规的枸橼酸钠、或者EDTA抗凝采血管来采血。但是，不要用肝素采血管来进行采血，因为肝素是多种DNA修饰酶的强抑制剂，而后面的DNA建库过程当中，要用到多种DNA修饰酶，所以不要用肝素采血管来进行采血。  &lt;/p&gt;
-&lt;p&gt;如果另一种情况，血液要经过一段时间的保存、运输后，才能达到中央实验室，进行血浆分离，并抽提游离DNA的话，那么建议采用 Streck
-公司出品的专用的采血管来进行抽血。Streck 的采血管有以下两个特点：&lt;br&gt;
-第1，它可以防止血液当中的游离DNA降解&lt;br&gt;
-第2，它可以防止血液当中的白细胞破裂  &lt;/p&gt;
-&lt;p&gt;因为血液当中的游离DNA很少，而白细胞很多，如果白细胞破裂，那会大大增加测序当中的本底值，所以，防止白细胞破裂是非常必要的。  &lt;/p&gt;
-&lt;p&gt;第二步，是抽提血浆游离DNA。在Aaron的文章当中，是用Qiagen公司出的QIAamp  Circulating Nucleic Acid
-Kit来进行DNA抽提的。这是一个专门用来抽提血浆游离DNA的专用试剂盒。  &lt;/p&gt;
-&lt;p&gt;第三步，是用抽提好的DNA来构建文库。在 Aaron 的文章当中，是用 KAPA 公司的出的 KAPA Library Preparation Kit
-来进行文库构建的。  &lt;/p&gt;
-&lt;p&gt;第四步，是用捕获试剂盒来对文库进行杂交捕获。在 Aaron 的文章当中，是设计了一个针对139个肿瘤相关基因的捕获 Panel。这个 Panel
-的覆盖范围是125个KB的大小。  &lt;/p&gt;
-&lt;p&gt;在这个 Panel 当中，包括按照 hg19 参考基因组序列，设计目标区域。这些区域可以用于检测点突变、和插入缺失突变。同时，对于 ALK 和 ROS1
-这两个基因当中，常见的、易发生融合基因突变的突变位点，也设计了相应的捕获探针，目的是可以更好地检测到融合基因突变。  &lt;/p&gt;
-&lt;p&gt;捕获探针是请 Roche 公司旗下的 Nimblegen 公司合成的。  &lt;/p&gt;
-&lt;p&gt;第五步，捕获好的文库，用高保真聚合酶进行扩增。Aaron 的文章当中，是用 KAPA 公司的KAPA HiFi Hot Start Ready Mix
-酶，配合Illumina公司的文库接头，进行文库的PCR扩增。然后用 Qiagen 公司的 QIAquick PCR Purification Kit，对
-PCR 扩增产物进行纯化。  &lt;/p&gt;
-&lt;p&gt;第六步，扩增好的文库，用 HiSeq 2000 测序仪，进行读长为双端各100碱基的高通量DNA测序，这里要特别说明一下，ctDNA
-的测序深度是非常深的。一般情况下，会测到上万倍、甚至几万倍的测序深度。在Aaron 的文章当中，平均每个ctDNA
-样本，是测2.1G的数据。也就是说，测序的数据量，相当于捕获目标区域大小的17000倍。  &lt;/p&gt;
-&lt;p&gt;第七步，是把测序得到的序列，进行生物信息学分析。在ctDNA的数据分析当中，有一些与传统的捕获测序分析过程不一样的参数设定。  &lt;/p&gt;
-&lt;p&gt;第一点，就是去除 duplicaton 的过滤条件是不一样的。所谓duplication，就是因为上机测序前的 PCR
-扩增，导致一个原始的模板复制出许多个拷贝来。这些复制出来的拷贝，被测序过程多次测到，这就叫 duplication。因为 ctDNA
-的测序深度很深，达到上万倍，所以会有大量的 duplication。在 Aaron 的文章当中，duplication
-的比例，会高达50%~70%。也就是说，每10个读到的序列当中，有5个到7个是重复的。  &lt;/p&gt;
-&lt;p&gt;传统的测序分析当中，如果2条序列的起始位置、和结束位置都一样，就判定这2个序列是 duplication。但是，在 Aaron
-的方法当中，如果两条序列的起始、和结束位置是一样的，但是，其中有一个碱基的差别（SNV），则不认为这两条序列是
-duplication。这样做，可以尽可能地保留测序结果当中，测到的序列的多样性。也就保证了检测的灵敏度。  &lt;/p&gt;
-&lt;p&gt;第二点，是判定点突变（SNV），Aaron采用的置信条件，与通常的方法也不同。Aaron 一定要这个突变的碱基的测序的质量值（Phred quality
-score）高于30，才确定这个突变是一个真的突变（SNV），测序得到的碱基质量值（Phred quality
-score）是测序仪的分析程序，对一个碱基的可信度的通用判定标准。如果这个值高于30，则这个碱基读错的可能性，低于千分之一，Aaron
-通过设置这样一个置信条件，来减少因为测序误差，可能带来的误判。这样，也就提高了检测分析结果的特异性。  &lt;/p&gt;
-&lt;p&gt;这就是 ctDNA 测序检测的方法。  &lt;/p&gt;
-&lt;h2&gt;结果&lt;/h2&gt;
-&lt;p&gt;介绍完方法，我们接下来介绍 Aaron的实验结果。&lt;/p&gt;
-&lt;p&gt;Aaron 检测了13个非小细胞肺癌病人的35份游离 DNA 样本，和5个正常人的游离 DNA 样本。  &lt;/p&gt;
-&lt;p&gt;同时，也检测了病人的肿瘤样本、和germline 样本（外周血白细胞DNA），把测序的结果进行数据分析。以肿瘤样本中检测到的突变为阳性标准，画出 ROC
-曲线。  &lt;/p&gt;
-&lt;p&gt;这里，我们简单介绍一下 ROC 曲线，ROC 曲线的英文是: Receiver Operating Characteristic
-(ROC)，ROC的横轴，是100%减掉特异性得到的值，纵轴是敏感性的值。  &lt;/p&gt;
-&lt;p&gt;ROC 曲线越靠近图型的左上角，则这个检测的较果越好，它的灵敏性、和特异性都好。反之，ROC
-曲线越接近对角线，则检测的效果越差，会有很多的假阴性、和假阳性。  &lt;/p&gt;
-&lt;p&gt;ROC 曲线下方部分的面积，占整个座标矩型面积的比例，叫 AUC 值，Area Under Curve (AUC)。AUC
-值的取值范围在：0.5-1之间。越接近1，则这个检测的分辨效果越好，越接近0.5，则分辨效果越差。  &lt;/p&gt;
-&lt;p&gt;AUC 值是评判一个方法好坏的重要标准。  &lt;/p&gt;
-&lt;p&gt;更多介绍 ROC 曲线的内容，有兴趣同学可以在微信公众号【陈巍学基因】当中，回复“ROC”三个字，就可以看到更详细的介绍了。  &lt;/p&gt;
-&lt;p&gt;回到 Aaron 的实验结果，我们来看这条蓝色的曲线，这是全部13个病人的结果。可以看到这条曲线是比较接近图的左上角的，它的 AUC 值，达到了0.95。  &lt;/p&gt;
-&lt;p&gt;这13个病人当中，包括了4个癌症 I 期的病人，和9个癌症 II 期到 IV 期的病人，如果只看这9个癌症II 期到 IV
-期的病人的结果（红色曲线），AUC值达到0.99。  &lt;/p&gt;
-&lt;p&gt;这两个数值，0.95和0.99的 AUC 值，都说明：CAPP-seq 是一个相当好的检测肿瘤基因突变的方法。  &lt;/p&gt;
-&lt;p&gt;在 Aaron 的文章当中，对肿瘤的体积与 CAPP-seq 方法检测到的突变的数量，也进行了分析。共9个病人进行了 CT 或者 PET-CT的检测。  &lt;/p&gt;
-&lt;p&gt;来看肿瘤的体积大小，并同时做 CAPP-seq
-的检测。检测的结果如果所示，肿瘤的体积，与每毫升血液中检测到的突变量数，呈现出十分明显的相关性。R^2值达到0.89，P值达到0.0002。&lt;/p&gt;
-&lt;h2&gt;结论&lt;/h2&gt;
-&lt;p&gt;文章的数据表明：针对游离 DNA 进行高深度的靶向DNA 测序，会是未来一个很有前景的肿瘤临床基因检测手段。  &lt;/p&gt;</content><category term="ctDNA"></category></entry><entry><title>BRCA基因检测</title><link href="https://ghxdghxd.github.io/BRCA.html" rel="alternate"></link><published>2016-11-03T20:10:00+08:00</published><updated>2016-11-03T20:31:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/BRCA.html</id><summary type="html">&lt;p&gt;BRCA的基因检测&lt;/p&gt;</summary><content type="html">&lt;h1&gt;背景&lt;/h1&gt;
+&lt;p&gt;计算depth要减去reference skip数目&lt;/p&gt;</content><category term="生物信息"></category><category term="samtools"></category><category term="mpileup"></category></entry><entry><title>BRCA基因检测</title><link href="https://ghxdghxd.github.io/BRCA.html" rel="alternate"></link><published>2016-11-03T20:10:00+08:00</published><updated>2016-11-03T20:31:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/BRCA.html</id><summary type="html">&lt;p&gt;BRCA的基因检测&lt;/p&gt;</summary><content type="html">&lt;h1&gt;背景&lt;/h1&gt;
 &lt;p&gt;一方面，BRCA是抑癌基因，突变后容易得肿瘤，另一方面，BRCA可以修复DNA损伤。而DNA两条自我修复途径：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -185,7 +100,7 @@ score）是测序仪的分析程序，对一个碱基的可信度的通用判定
 &lt;h1&gt;BRCA体细胞突变检测现况&lt;/h1&gt;
 &lt;p&gt;在乳腺癌、卵巢癌中检测到的BRCA 1/2 突变，其中20%左右是由于体突变引起。体细胞突变的检测需要正常组织做对照，常用血细胞做对照（如TCGA
 癌症研究）。研究发现，体细胞突变与胚系突变的卵巢癌，乳腺癌病人在生存、预后方面没有明显的差异，并且都可以用奥拉帕利进行治疗。但是相对于胚系突变，体细胞突变检测难度大些。检测的难度和准确性主要受样本类型、癌症细胞含量以及突变比例（具有BRCA
-1/2 体细胞突变的癌细胞占所有癌细胞的比例）等影响。因此，针对BRCA基因体细胞突变的检测技术还在完善中。&lt;/p&gt;</content><category term="BRCA"></category><category term="Genetic Test"></category></entry><entry><title>hotnet2</title><link href="https://ghxdghxd.github.io/hotnet2.html" rel="alternate"></link><published>2016-11-03T19:01:00+08:00</published><updated>2016-11-18T11:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/hotnet2.html</id><summary type="html">&lt;p&gt;hotnet2的简介&lt;/p&gt;</summary><content type="html">&lt;p&gt;hotnet2是一种新型计算机算法，能够筛选庞大的遗传数据，发现相互作用基因，而这些基因一旦突变就会导致多种癌症的发生发展。&lt;/p&gt;
+1/2 体细胞突变的癌细胞占所有癌细胞的比例）等影响。因此，针对BRCA基因体细胞突变的检测技术还在完善中。&lt;/p&gt;</content><category term="生物信息"></category><category term="BRCA"></category><category term="Genetic Test"></category></entry><entry><title>hotnet2</title><link href="https://ghxdghxd.github.io/hotnet2.html" rel="alternate"></link><published>2016-11-03T19:01:00+08:00</published><updated>2016-11-18T11:07:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-11-03:/hotnet2.html</id><summary type="html">&lt;p&gt;hotnet2的简介&lt;/p&gt;</summary><content type="html">&lt;p&gt;hotnet2是一种新型计算机算法，能够筛选庞大的遗传数据，发现相互作用基因，而这些基因一旦突变就会导致多种癌症的发生发展。&lt;/p&gt;
 &lt;h1&gt;背景&lt;/h1&gt;
 &lt;p&gt;预先定义一个合理的基因集合或组合的统计需求&lt;/p&gt;
 &lt;p&gt;标准化分析突变相关通路及蛋白复合物的方法&lt;/p&gt;
@@ -220,7 +135,7 @@ score）是测序仪的分析程序，对一个碱基的可信度的通用判定
 &lt;p&gt;ks Minimum subnetwork size&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;sampleToTypes： 样本类型&lt;/li&gt;
-&lt;/ul&gt;</content><category term="hotnet2"></category></entry><entry><title>变异标准化</title><link href="https://ghxdghxd.github.io/variant.html" rel="alternate"></link><published>2016-10-20T20:10:00+08:00</published><updated>2016-12-27T21:28:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-20:/variant.html</id><summary type="html">&lt;p&gt;突变的标准化概念及标准&lt;/p&gt;</summary><content type="html">&lt;h1&gt;介绍&lt;/h1&gt;
+&lt;/ul&gt;</content><category term="生物信息"></category><category term="hotnet2"></category></entry><entry><title>变异标准化</title><link href="https://ghxdghxd.github.io/variant.html" rel="alternate"></link><published>2016-10-20T20:10:00+08:00</published><updated>2016-12-27T21:28:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2016-10-20:/variant.html</id><summary type="html">&lt;p&gt;突变的标准化概念及标准&lt;/p&gt;</summary><content type="html">&lt;h1&gt;介绍&lt;/h1&gt;
 &lt;p&gt;VCF(Variant Call Format)格式文件是一种灵活的格式, 可以用来表示SNPs、INDELs及CNVs等很多种变异类型.但,&lt;strong&gt;VCF文件中的变异表达在参考型和突变型的表示上具有不唯一性&lt;/strong&gt;，一次失败的识别很容易造成错误的分析.&lt;/p&gt;
 &lt;p&gt;变异标准化(variant normalization)，不仅适用于双等位基因同时适用于多等位基因.&lt;/p&gt;
 &lt;h1&gt;定义&lt;/h1&gt;
@@ -365,18 +280,18 @@ score）是测序仪的分析程序，对一个碱基的可信度的通用判定
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;使用的命令为:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;bcftools norm -f ref.fa in.vcf -O z &amp;gt; out.vcf.gz&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;bcftools norm -f ref.fa in.vcf -O z &amp;gt; out.vcf.gz&lt;/span&gt;
 &lt;span class="code-line"&gt;java -jar GenomeAnalysisTK.jar -T LeftAlignAndTrimVariants --trimAlleles -R&lt;/span&gt;
 &lt;span class="code-line"&gt;ref.fa --variant in.vcf.gz -o out.vcf.gz&lt;/span&gt;
 &lt;span class="code-line"&gt;vt normalize -r ref.vcf.gz -o out.vcf.gz&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;使用的版本为:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;bcftools v0.2.0-rc8-5-g0e06231 &lt;span class="o"&gt;(&lt;/span&gt;using htslib &lt;span class="m"&gt;0&lt;/span&gt;.2.0-rc8-6-gd49dfa6&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;bcftools v0.2.0-rc8-5-g0e06231 &lt;span class="o"&gt;(&lt;/span&gt;using htslib &lt;span class="m"&gt;0&lt;/span&gt;.2.0-rc8-6-gd49dfa6&lt;span class="o"&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;GATK v3.1-1-g07a4bf8&lt;/span&gt;
 &lt;span class="code-line"&gt;vt normalize v0.5&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;5、一个该标准化算法失效的例子&lt;/h2&gt;
@@ -400,7 +315,7 @@ score）是测序仪的分析程序，对一个碱基的可信度的通用判定
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;在不同的情况下可能得到不同的答案.&lt;/p&gt;
-&lt;p&gt;An example of inconsistent variant representation due to using vt normalize&lt;/p&gt;</content><category term="variant"></category></entry><entry><title>cfDNA,ctDNA,CTC</title><link href="https://ghxdghxd.github.io/cfDNA.html" rel="alternate"></link><published>2015-12-25T11:24:00+08:00</published><updated>2015-12-25T20:31:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-12-25:/cfDNA.html</id><summary type="html">&lt;p&gt;肿瘤的近亲--cfDNA,ctDNA,CTC&lt;/p&gt;</summary><content type="html">&lt;h1&gt;肿瘤的近亲--cfDNA,ctDNA,CTC&lt;/h1&gt;
+&lt;p&gt;An example of inconsistent variant representation due to using vt normalize&lt;/p&gt;</content><category term="生物信息"></category><category term="variant"></category></entry><entry><title>cfDNA,ctDNA,CTC</title><link href="https://ghxdghxd.github.io/cfDNA.html" rel="alternate"></link><published>2015-12-25T11:24:00+08:00</published><updated>2015-12-25T20:31:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-12-25:/cfDNA.html</id><summary type="html">&lt;p&gt;肿瘤的近亲--cfDNA,ctDNA,CTC&lt;/p&gt;</summary><content type="html">&lt;h1&gt;肿瘤的近亲--cfDNA,ctDNA,CTC&lt;/h1&gt;
 &lt;p&gt;全称循环游离DNA（Circulating free DNA），是指存在于循环血中的DNA片段。cfDNA可以来源于凋亡、坏死的细胞释放释放的DNA片段；细胞以囊泡的形式分泌到循环血中的DNA片段；外源微生物的DNA片段（如病毒DNA）等。它既可以是来自于体内正常的细胞，也可能是来自肿瘤细胞，或者外源微生物。早在1948年来自法国的两位学者Mandeland
 Métais提出cell-free nucleic acid(cfNA)这一概念，但直到1994年科学家在肿瘤患者的血液中发现了携带有RAS基因突变的DNA片段这一概念才引起了科学家的重视。&lt;/p&gt;
 &lt;p&gt;与传统的穿刺活检相比，循环游离DNA的检测又被称为液体活检（liquid
@@ -414,28 +329,28 @@ Prospective Investigation into Cancer andNutrition
 of Circulating Tumor DNA in Early-and Late-Stage Human Malignancies&lt;/p&gt;
 &lt;p&gt;&lt;img alt="ctDNA" src="images/ctDNA.png"&gt;&lt;/p&gt;
 &lt;p&gt;CTC (circulatingtumor cell)循环肿瘤细胞。循环肿瘤细胞（CTCs）被认为是一种来源于肿瘤原发灶或是转移灶的，在特定条件下释放入外周血液循环的一些肿瘤细胞。这些细胞的含量非常稀少具有肿瘤细胞的特殊表型，在肿瘤发生转移之前的过程既可出现。因此CTCs也被认为是一种转移的前体细胞，是肿瘤获得侵袭性能力的体现。而如今对CTCs的无创性检测和监视，可以为肿瘤的早期诊断、疗效评估及靶向药物的设计提供一条非常有效的途径。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="CTC" src="images/CTC.jpg"&gt;&lt;/p&gt;</content><category term="cfDNA"></category><category term="ctDNA"></category><category term="CTC"></category></entry><entry><title>突变分类及定义功能</title><link href="https://ghxdghxd.github.io/mutation.html" rel="alternate"></link><published>2015-11-05T16:59:00+08:00</published><updated>2016-08-30T10:03:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-11-05:/mutation.html</id><summary type="html">&lt;p&gt;突变的标准化概念及标准&lt;/p&gt;</summary><content type="html">&lt;h1&gt;概念&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="CTC" src="images/CTC.jpg"&gt;&lt;/p&gt;</content><category term="生物信息"></category><category term="cfDNA"></category><category term="ctDNA"></category><category term="CTC"></category></entry><entry><title>突变分类及定义功能</title><link href="https://ghxdghxd.github.io/mutation.html" rel="alternate"></link><published>2015-11-05T16:59:00+08:00</published><updated>2016-08-30T10:03:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-11-05:/mutation.html</id><summary type="html">&lt;p&gt;突变的标准化概念及标准&lt;/p&gt;</summary><content type="html">&lt;h1&gt;概念&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;突变与变异是两个截然不同的概念&lt;/strong&gt;。&lt;strong&gt;变异&lt;/strong&gt;一般是指物种在漫长的自然选择压力下，由于“适者生存”的原则而使自身遗传基因发生的某些有益于自身完善于生存环境而生存、发展的变化。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;突变&lt;/strong&gt;则是指物种遗传基因在某些物理、化学、生物因素作用下，短期内发生的某些基因序列的变化。就人体而言，突变一般是对人体十分有害的。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;突变可以分为3大类型&lt;/strong&gt;：点突变（point mutation）、染色体突变(chromosomal mutation)和基因组突变(genomic mutation)。 &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;突变可以分为3大类型&lt;/strong&gt;：点突变（point mutation）、染色体突变(chromosomal mutation)和基因组突变(genomic mutation)。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;其中以点突变最为常见和重要，包括转换(transition)、颠换（transversion）、插入(insertion)和缺失(deletion)几种类型，前两种属于碱基置换(basesubstitution)，后两种属于移码突变(frame shift mutation) 。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;substitution（替换）和delection/addition(添加/缺失），估计就是碱基置换、移码、缺失和插入，只是翻译不同，这种分类有点笼统了，适合用于定义{基因突变是指DNA分子中发生碱基对的替换、增添和缺失，而引起的基因结构的改变，它包括单个碱基改变所引起的点突变（point mutation），或多个碱基的缺失、重复和插入。}   &lt;/p&gt;
-&lt;p&gt;不过更笼统的是按照遗传信息的改变方式，分为错义、无义两类。   &lt;/p&gt;
-&lt;p&gt;我看的分类复杂点。我看过的是类似是这个分类，你去看下网站。好象是上海一个大学的。   &lt;/p&gt;
-&lt;p&gt;基因突变的类型 &lt;br&gt;
-&lt;a href="http://genetics.sjtu.edu.cn/genetics/21.01.htm"&gt;http://genetics.sjtu.edu.cn/genetics/21.01.htm&lt;/a&gt;   &lt;/p&gt;
-&lt;p&gt;突变的原因   &lt;/p&gt;
-&lt;p&gt;&lt;a href="http://genetics.sjtu.edu.cn/genetics/21.02.htm"&gt;http://genetics.sjtu.edu.cn/genetics/21.02.htm&lt;/a&gt;   &lt;/p&gt;
-&lt;p&gt;根据基因结构的改变方式不同，可将基因突变分为四种类型： &lt;br&gt;
-（1）点突变 由某位点一对减基改变造成的。其包括两种形式：转换和颠换。点突变的不同效应为：①同义突变；②错义突变；③无义突变；④终止密码突变。 &lt;br&gt;
-（2）移码突变 某位点增添或减少1～2对碱基造成的。 &lt;br&gt;
-（3）缺失突变 基因内部缺失某个DNA小段造成的。 &lt;br&gt;
-（4）插入突变 基因内部增添一小段外源DNA造成的。   &lt;/p&gt;
-&lt;p&gt;基因突变是随机发生的。它可以发生在生物个体发育的任何时期和生物体的任何细胞。一般来说，在生物个体发育的过程中，基因突变发生的时期越迟，生物体表现突变的部分就越少。例如，植物的叶芽如果在发育的早期发生基因突变，那么由这个叶芽长成的枝条，上面着生的叶、花和果实都有可能与其他枝条不同。如果基因突变发生在花芽分化时，那么，将来可能只在一朵花或一个花序上表现出变异。 &lt;br&gt;
-基因突变可以发生在体细胞中，也可以发生在生殖细胞中。发生在生殖细胞中的突变，可以通过受精作用直接传递给后代。发生在体细胞中的突变，一般是不能传递给后代的。 &lt;br&gt;
-基因突变在生物界中是普遍存在的。无论是低等生物，还是高等的动植物以及人，都可能发生基因突变。基因突变在自然界的物种中广泛存在。例如，棉花的短果枝、水稻的矮杆、糯性，果蝇的白眼、残翅，家鸽羽毛的灰红色，以及人的色肓、糖尿病、白化病等遗传病，都是突变性状。自然条件下发生的基因突变叫做自然突变，人为条件下诱发产生的基因突变叫做诱发突变。   &lt;/p&gt;
+&lt;p&gt;substitution（替换）和delection/addition(添加/缺失），估计就是碱基置换、移码、缺失和插入，只是翻译不同，这种分类有点笼统了，适合用于定义{基因突变是指DNA分子中发生碱基对的替换、增添和缺失，而引起的基因结构的改变，它包括单个碱基改变所引起的点突变（point mutation），或多个碱基的缺失、重复和插入。}&lt;/p&gt;
+&lt;p&gt;不过更笼统的是按照遗传信息的改变方式，分为错义、无义两类。&lt;/p&gt;
+&lt;p&gt;我看的分类复杂点。我看过的是类似是这个分类，你去看下网站。好象是上海一个大学的。&lt;/p&gt;
+&lt;p&gt;基因突变的类型
+&lt;a href="http://genetics.sjtu.edu.cn/genetics/21.01.htm"&gt;http://genetics.sjtu.edu.cn/genetics/21.01.htm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;突变的原因&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://genetics.sjtu.edu.cn/genetics/21.02.htm"&gt;http://genetics.sjtu.edu.cn/genetics/21.02.htm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;根据基因结构的改变方式不同，可将基因突变分为四种类型：
+（1）点突变 由某位点一对减基改变造成的。其包括两种形式：转换和颠换。点突变的不同效应为：①同义突变；②错义突变；③无义突变；④终止密码突变。
+（2）移码突变 某位点增添或减少1～2对碱基造成的。
+（3）缺失突变 基因内部缺失某个DNA小段造成的。
+（4）插入突变 基因内部增添一小段外源DNA造成的。&lt;/p&gt;
+&lt;p&gt;基因突变是随机发生的。它可以发生在生物个体发育的任何时期和生物体的任何细胞。一般来说，在生物个体发育的过程中，基因突变发生的时期越迟，生物体表现突变的部分就越少。例如，植物的叶芽如果在发育的早期发生基因突变，那么由这个叶芽长成的枝条，上面着生的叶、花和果实都有可能与其他枝条不同。如果基因突变发生在花芽分化时，那么，将来可能只在一朵花或一个花序上表现出变异。
+基因突变可以发生在体细胞中，也可以发生在生殖细胞中。发生在生殖细胞中的突变，可以通过受精作用直接传递给后代。发生在体细胞中的突变，一般是不能传递给后代的。
+基因突变在生物界中是普遍存在的。无论是低等生物，还是高等的动植物以及人，都可能发生基因突变。基因突变在自然界的物种中广泛存在。例如，棉花的短果枝、水稻的矮杆、糯性，果蝇的白眼、残翅，家鸽羽毛的灰红色，以及人的色肓、糖尿病、白化病等遗传病，都是突变性状。自然条件下发生的基因突变叫做自然突变，人为条件下诱发产生的基因突变叫做诱发突变。&lt;/p&gt;
 &lt;p&gt;绝大多数的人类遗传病，就是由基因突变造成的，这些病对人类健康构成了严重威胁。又如，植物中常见的白化苗，也是基因突变形成的。这种苗由于缺乏叶绿素，不能进行光合作用制造有机物，最终导致死亡。但是，也有少数基因突变是有利的。例如，植物的抗病性突变、耐旱性突变、微生物的抗药性突变等，都是有利于生物生存的。&lt;/p&gt;
 &lt;p&gt;nonsense mutation 无义突变：使原本可制造蛋白质的密码变成停止密码&lt;/p&gt;
 &lt;p&gt;missense mutation 错义突变：使密码所对应氨基酸改变&lt;/p&gt;
@@ -545,7 +460,7 @@ of Circulating Tumor DNA in Early-and Late-Stage Human Malignancies&lt;/p&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3&gt;Functional role&lt;/h3&gt;
+&lt;h2&gt;Functional role&lt;/h2&gt;
 &lt;p&gt;By default, all variants are included in the output regardless of predicted
 functional effect. If you would like to keep only variants that have a
 particular type of effect, you can uncheck the checkboxes of other effect
@@ -559,35 +474,10 @@ types. The detailed functional effect predictions are categorized as follows:&lt
 &lt;li&gt;&lt;strong&gt;intron:&lt;/strong&gt; &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001627"&gt;intron_variant&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;splice site or splice region:&lt;/strong&gt; &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001575"&gt;splice_donor_variant&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001574"&gt;splice_acceptor_variant&lt;/a&gt;, &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001630"&gt;splice_region_variant&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;exon of non-coding gene:&lt;/strong&gt; &lt;a href="http://sequenceontology.org/browser/current_release/term/SO:0001792"&gt;non_coding_exon_variant&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="mutation"></category></entry><entry><title>HGVS Names和refSNP ID</title><link href="https://ghxdghxd.github.io/HGVS.html" rel="alternate"></link><published>2015-09-29T11:09:00+08:00</published><updated>2015-09-29T11:09:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-09-29:/HGVS.html</id><summary type="html">&lt;p&gt;HGVS Names和refSNP ID&lt;/p&gt;</summary><content type="html">&lt;p&gt;在NCBI(美国国立生物技术信息中心)网站上经常会看到“HGVS Names”和“refSNP ID”的字样，这两个都是用于命名SNP(single
-nucleotide polymorphism，单核苷酸多态性)的方法。&lt;/p&gt;
-&lt;p&gt;HGVS是Human Genome Variation Society(人类基因组变异协会)的简称，是一个非政府的民间学术组织，其官方网站的&lt;a href="http://www.hgvs.org"&gt;网址&lt;/a&gt;。HGVS命名SNP法的规则是标出引用的核酸序列号(Reference Sequence, RefSeq)和SNP在该核酸序列中的位置，例如：NG_000004.3:g.247167G&amp;gt;A，其中红色的部分是核酸序列接受号，绿色的部分是该单核苷酸多态性位点在该核酸序列中的位置，G&amp;gt;A表示原始碱基是G，突变碱基是A。这样的命名方法有利于找出所在基因序列中的位置，当向引物公司提交设计和购买申请时都会用到。&lt;/p&gt;
-&lt;p&gt;在文献中出现的等位基因常见的标注方式，CYP3A5*3(6986A&amp;gt;G或A6986G)，其实这就是一种非常不正规的用HGVS
-Names标注SNP位置的方法，很明显，由于缺少引用核酸序列的接受号，因此读者无法从这样的表示在GenBank中查到对应的信息。这是个历史遗留问题，责任也不能全怪原文的作者标注不明，甚至有些时候，由于最初发现并报道该基因位点的文章由于没有被NCBI收录，导致有许多用此法标注的的SNP位点，其引用的RefSeq号竟然丢失了！HGVS正是做着弥补此事的工作，但是由于数据量太大，HGVS目前所完成的只是其中的一部分。所幸NCBI也看到了此事的重大意义，正在接手此事，现在在GenBank的SNP数据库的查询返回结果页的右上角已经可以看到其整理的HGVS
-Names了，例如：&lt;a href="http://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?rs=776746"&gt;&lt;strong&gt;查询CYP3A5*3的结果&lt;/strong&gt;&lt;/a&gt;。在该结果我们看到并没有标出6986A&amp;gt;G的HGVS命名，说明该数据库尚须完善。&lt;/p&gt;
-&lt;p&gt;GenBank官方的refSNP ID单核苷酸多态性命名法是相对比较完善的命名体系，命名方法是rs+7位阿拉伯数字，例如：CYP3A5&lt;em&gt;3的refSNP
-ID是rs776746，如果已知一个SNP的refSNP
-ID，那么就可以在GenBank的SNP数据库中搜索到相关的信息和在基因组中的位置了。这里是&lt;a href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=snp"&gt;&lt;strong&gt;GenBank的SNP数据库查询地址&lt;/strong&gt;&lt;/a&gt;，例如，要查找CYP3A5&lt;/em&gt;3在GenBank中的信息，只要在该搜索框中输入“
-rs776746 ”进行查找即可。下面是该查询返回的结果，如图：&lt;/p&gt;
-&lt;p&gt;&lt;img alt="image" src="http://u.jimdo.com/www102/o/se19ec0f28937288f/img/iac1a9acbed828ae0/1279201754/std/image.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;在该返回结果中可以看到给出了CYP3A5*3位点两侧少量的碱基序列，其下方给出了HGVS
-Names的链接，我们点击该链接，然后在接下来的网页点击“FASTA”链接即可获得该SNP所在的核苷酸碱基序列了，但是有些时候HGVS
-Names引用的核酸碱基序列较长，本示例中引用的核酸碱基序列就有几千万碱基之多，光下载都需要很长的时间，更别说在浏览器中打开了。此时可以点击上图中的红色“rs776746”链接，看看是否有其他引用核苷酸碱基序列较短的HGVS
-Names，在打开的页面的右上角可以看到有四个HGVS Names，如下：&lt;/p&gt;
-&lt;p&gt;NG_000004.3:g.247167G&amp;gt;A&lt;/p&gt;
-&lt;p&gt;NG_007938.1:g.12083G&amp;gt;A&lt;/p&gt;
-&lt;p&gt;NM_000777.2:c.219-237G&amp;gt;A&lt;/p&gt;
-&lt;p&gt;NT_007933.14:g.24504815C&amp;gt;T&lt;/p&gt;
-&lt;p&gt;其中，前两个很短，估计引用的核酸序列也较短，可以用来查看对应的核苷酸碱基序列，第三个样子有些怪，其实就是不规则命名遗留下来的，除了便于查询外，已经没有什么实际意义了。以第一个HGVS
-Names为例，首先打开&lt;a href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=nuccore"&gt;&lt;strong&gt;GenBank的Nucleotide查询数据库&lt;/strong&gt;&lt;/a&gt;，在搜索框中输入核苷酸碱基序列“
-NG_000004.3
-”，点击“go”键执行搜索，在返回的结果页点击“FASTA”链接，即可获得该SNP所在的核苷酸碱基序列了。在打开该序列的所在页面中，利用前面在SNP数据库中查到的该SNP的序列片段，依次点击IE浏览器菜单栏上的：编辑
-- 在该页上查找 - 输入一段碱基序列，即可找到该SNP在此核苷酸碱基序列中的具体位置了，还可以通过点击该页面上的&lt;/p&gt;
-&lt;p&gt;“More Formats”链接 - "GenBank(full)"链接，通过网页中给出的碱基序列的位置编号来找到该SNP 所在的位置。&lt;/p&gt;
-&lt;p&gt;可能有很多人会存在这样的疑问，例如，在文献中看到类似CYP3A5*3(6986A&amp;gt;G)这样的等位基因名称，但此时还不知道它的refSNP ID，该如何找到该SNP在GenBank中所在的位置呢？遇到这种情况也只有在Google上碰碰运气了，因为有的文献作者会对这种残缺的HGVS Names的SNP在文章中同时标出其refSNP ID，查询的方法是在Google中输入“该SNP的HGVS Names + refSNP ID”进行查找即可，例如：&lt;a href="http://www.google.cn/search?hl=zh-CN&amp;amp;newwindow=1&amp;amp;q="&gt;g"++++"refSNP+ID"&amp;amp;btnG=Google+搜索&amp;amp;meta=&amp;amp;aq=f&amp;amp;oq="target="_blank" style="color: rgb(0, 6, 220);"&amp;gt;&lt;strong&gt;搜索CYP3A5*3(6986A&amp;gt;G)&lt;/strong&gt;&lt;/a&gt;，如果没有找到满意的检索结果，也可以直接在上文提到的GenBank的SNP数据库的搜索框中直接输入该SNP所在的基因名称+Homosapiens（人类），例如输入“ CYP3A5  Homo sapiens "[这里需要说明的是目前只有人类的等位基因才会给出HGVS Names]，执行搜索后会返回很多该基因的SNP，每个SNP除标有refSNP ID之外，还常标出数个HGVS Names，这时就可以直接利用浏览器的网页查找功能搜索如“_599A&amp;gt;G”，_来找到对应的refSNP ID了。这里推荐的一个小窍门是，假如返回的SNP数量较多的话，可以将每页显示结果的数量设置的多一些（选择show后面的数值），会减少很多反复翻页的麻烦。&lt;/p&gt;</content><category term="HGVS"></category><category term="SNP"></category></entry><entry><title>MutSigCV的问题</title><link href="https://ghxdghxd.github.io/MutSigCV.html" rel="alternate"></link><published>2015-04-28T16:47:00+08:00</published><updated>2016-09-23T10:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-04-28:/MutSigCV.html</id><summary type="html">&lt;p&gt;MutSigCV的简介&lt;/p&gt;</summary><content type="html">&lt;p&gt;A tab-delimited report of significant mutations, listed in descending order from most significant to least significant.
+&lt;/ul&gt;</content><category term="生物信息"></category><category term="mutation"></category></entry><entry><title>MutSigCV的问题</title><link href="https://ghxdghxd.github.io/MutSigCV.html" rel="alternate"></link><published>2015-04-28T16:47:00+08:00</published><updated>2016-09-23T10:30:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-04-28:/MutSigCV.html</id><summary type="html">&lt;p&gt;MutSigCV的简介&lt;/p&gt;</summary><content type="html">&lt;p&gt;A tab-delimited report of significant mutations, listed in descending order from most significant to least significant.
 The "nnei","x", and "X" values in the MutSig output analysis give insight into how the background mutation rate is calculated for a given gene.  nnei gives the number of neighboring genes that are pooled together to compute the background mutation rate for that gene; these genes are not necessarily adjacent on the genome, but rather they have nearby covariate values. x gives the number of mutated bases in these neighboring genes that are either silent or non-coding, while X gives the total number of bases related to these neighboring genes.&lt;/p&gt;
 &lt;p&gt;According to the original MutSigCV article, olfactory receptors (ORs) can show up as significant due to the heterogeneity in the mutational processes in cancer (authors' hypothesis)(Lawrence et al. "Mutational heterogeneity in cancer and the search for new cancer-associted genes", Nature, 2013). Certain genes, like ORs, can accumulate mutations faster than others, even if their biology is not potentially oncogenic. Therefore, assuming a uniform rate of background mutations/aberrations (GISTIC/JISTIC) is somewhat wrong, no?&lt;/p&gt;
-&lt;p&gt;肿瘤异质性的突变过程， 一些基因，如ORs，虽然对肿瘤没有功能影响，但因为能够迅速积累突变，而被鉴定出来。&lt;/p&gt;</content><category term="mutsig"></category></entry><entry><title>CREST的问题</title><link href="https://ghxdghxd.github.io/CREST.html" rel="alternate"></link><published>2015-03-12T09:58:00+08:00</published><updated>2015-12-24T14:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-03-12:/CREST.html</id><summary type="html">&lt;p&gt;CREST用来发现结构变异&lt;/p&gt;</summary><content type="html">&lt;p&gt;运行CREST时，报错如下错误：
+&lt;p&gt;肿瘤异质性的突变过程， 一些基因，如ORs，虽然对肿瘤没有功能影响，但因为能够迅速积累突变，而被鉴定出来。&lt;/p&gt;</content><category term="生物信息"></category><category term="mutsig"></category></entry><entry><title>CREST的问题</title><link href="https://ghxdghxd.github.io/CREST.html" rel="alternate"></link><published>2015-03-12T09:58:00+08:00</published><updated>2015-12-24T14:02:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-03-12:/CREST.html</id><summary type="html">&lt;p&gt;CREST用来发现结构变异&lt;/p&gt;</summary><content type="html">&lt;p&gt;运行CREST时，报错如下错误：
 Couldn't connect to 192.168.81.177 9000
 Connection refused
 Sorry, the BLAT/iPCR server seems to be down.  Please try again later.
@@ -595,10 +485,10 @@ crest第一步从原始的bam结果中提取出soft-clipped reads，第二步用
 这里报这个错误，是因为没有配置好服务器。
 配置服务器命令：/share/backup/user/bin/blatSuite-34/gfServer start 192.168.81.177 9000 /path_to_2bit_file/hg19.fa.2bit &amp;amp; （后面的&amp;amp;将此命令放入后台执行）
 程序输出Server ready for queries!的提示后，服务器可用。
-服务器配置完成后，可以用/share/backup/bin/bin/blatSuite-34/gfClient测试可否连接上服务器。若能正常连接上，则crest可正常运行。&lt;/p&gt;</content><category term="CREST"></category></entry><entry><title>脱氧核糖核酸酶高敏感位点</title><link href="https://ghxdghxd.github.io/DHS.html" rel="alternate"></link><published>2015-02-03T13:27:00+08:00</published><updated>2015-02-03T13:27:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-02-03:/DHS.html</id><summary type="html">&lt;p&gt;脱氧核糖核酸酶高敏感位点的简介&lt;/p&gt;</summary><content type="html">&lt;p&gt;脱氧核糖核酸酶高敏感位点（DNase Hypersensitive Site，DHS），也就是DNA酶高敏感位点，是DNA上容易被DNA酶识别的位点。&lt;/p&gt;
+服务器配置完成后，可以用/share/backup/bin/bin/blatSuite-34/gfClient测试可否连接上服务器。若能正常连接上，则crest可正常运行。&lt;/p&gt;</content><category term="生物信息"></category><category term="CREST"></category></entry><entry><title>脱氧核糖核酸酶高敏感位点</title><link href="https://ghxdghxd.github.io/DHS.html" rel="alternate"></link><published>2015-02-03T13:27:00+08:00</published><updated>2015-02-03T13:27:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2015-02-03:/DHS.html</id><summary type="html">&lt;p&gt;脱氧核糖核酸酶高敏感位点的简介&lt;/p&gt;</summary><content type="html">&lt;p&gt;脱氧核糖核酸酶高敏感位点（DNase Hypersensitive Site，DHS），也就是DNA酶高敏感位点，是DNA上容易被DNA酶识别的位点。&lt;/p&gt;
 &lt;p&gt;中文名脱氧核糖核酸酶高敏感位点&lt;/p&gt;
 &lt;p&gt;外文名DNase Hypersensitive Site，DHS&lt;/p&gt;
-&lt;p&gt;DHS一般对应染色体上比较松弛的区段，这中松弛的特性可以提供酶去与之结合的物理条件，而那些转录活性比较强的DNA区段一般也是松弛的，因此可以通过生物信息学的方法，预测与DHS结合的转录因子信息，为DNA的功能和活性提供了重要线索。&lt;/p&gt;</content><category term="DNA"></category><category term="DHS"></category></entry><entry><title>人类基因组</title><link href="https://ghxdghxd.github.io/hunman-genome.html" rel="alternate"></link><published>2014-12-05T11:38:00+08:00</published><updated>2016-03-17T10:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-05:/hunman-genome.html</id><summary type="html">&lt;p&gt;人类参考基因组的记录&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="hg" src="images/human_genome.png"&gt;&lt;/p&gt;
+&lt;p&gt;DHS一般对应染色体上比较松弛的区段，这中松弛的特性可以提供酶去与之结合的物理条件，而那些转录活性比较强的DNA区段一般也是松弛的，因此可以通过生物信息学的方法，预测与DHS结合的转录因子信息，为DNA的功能和活性提供了重要线索。&lt;/p&gt;</content><category term="生物信息"></category><category term="DNA"></category><category term="DHS"></category></entry><entry><title>人类基因组</title><link href="https://ghxdghxd.github.io/hunman-genome.html" rel="alternate"></link><published>2014-12-05T11:38:00+08:00</published><updated>2016-03-17T10:33:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-05:/hunman-genome.html</id><summary type="html">&lt;p&gt;人类参考基因组的记录&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="hg" src="images/human_genome.png"&gt;&lt;/p&gt;
 &lt;h1&gt;参考序列&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;XY染色体上相同序列 &lt;strong&gt;PAR1&lt;/strong&gt; &lt;strong&gt;PAR2&lt;/strong&gt;&lt;/li&gt;
@@ -637,7 +527,7 @@ crest第一步从原始的bam结果中提取出soft-clipped reads，第二步用
 :---:|:---:|:---:|:---:|:---:|:---:
 DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保留复制|需要
 转录|双链DNA|四种NTP|合成的新链除了把DNA上的T改为U外，其他一样，半不连续转录|不需要
-翻译|mRNA|20种游离的氨基酸|3个碱基决定一个氨基酸|&lt;/p&gt;</content><category term="genome"></category></entry><entry><title>如何根据测序数据计算出数据量以及测序深度？</title><link href="https://ghxdghxd.github.io/NGS-coverage.html" rel="alternate"></link><published>2014-12-04T16:35:00+08:00</published><updated>2016-02-29T20:40:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/NGS-coverage.html</id><summary type="html">&lt;p&gt;根据测序数据(reads)统计数据量以及测序深度&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+翻译|mRNA|20种游离的氨基酸|3个碱基决定一个氨基酸|&lt;/p&gt;</content><category term="生物信息"></category><category term="genome"></category></entry><entry><title>如何根据测序数据计算出数据量以及测序深度？</title><link href="https://ghxdghxd.github.io/NGS-coverage.html" rel="alternate"></link><published>2014-12-04T16:35:00+08:00</published><updated>2016-02-29T20:40:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/NGS-coverage.html</id><summary type="html">&lt;p&gt;根据测序数据(reads)统计数据量以及测序深度&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
 &lt;li&gt;数据量大小&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;单端测序&lt;/strong&gt; 数据量 = reads长度 * reads数
@@ -647,7 +537,7 @@ DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保�
 &lt;p&gt;测序深度 = 数据量大小 / 参考基因组大小&lt;/p&gt;
 &lt;p&gt;3.测序与物理覆盖度&lt;/p&gt;
 &lt;p&gt;在PE测序文库中&lt;/p&gt;
-&lt;p&gt;&lt;img alt="coverage" src="images/coverage.png"&gt;&lt;/p&gt;</content><category term="coverage"></category></entry><entry><title>FASTQ格式详解</title><link href="https://ghxdghxd.github.io/fastq-format.html" rel="alternate"></link><published>2014-12-04T10:20:00+08:00</published><updated>2015-03-06T16:12:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/fastq-format.html</id><summary type="html">&lt;p&gt;Fastq的格式&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;FASTQ&lt;/strong&gt;是基于文本的，保存生物序列（通常是核酸序列）和其测序质量信息的标准格式。
+&lt;p&gt;&lt;img alt="coverage" src="images/coverage.png"&gt;&lt;/p&gt;</content><category term="生物信息"></category><category term="coverage"></category></entry><entry><title>FASTQ格式详解</title><link href="https://ghxdghxd.github.io/fastq-format.html" rel="alternate"></link><published>2014-12-04T10:20:00+08:00</published><updated>2015-03-06T16:12:00+08:00</updated><author><name>JT Guo</name></author><id>tag:ghxdghxd.github.io,2014-12-04:/fastq-format.html</id><summary type="html">&lt;p&gt;Fastq的格式&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;FASTQ&lt;/strong&gt;是基于文本的，保存生物序列（通常是核酸序列）和其测序质量信息的标准格式。
 其序列以及质量信息都是使用一个ASCII字符标示，最初由Sanger开发，目的是将FASTA序列与质量数据放到一起，目前已经成为高通量测序结果的事实标准。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;FASTQ基本格式(reads)&lt;/h1&gt;
@@ -662,11 +552,11 @@ DNA复制|双链DNA|四种dNTP|合成的新链与模板链一模一样，半保�
 &lt;li&gt;第三行以‘+’开头，后面是序列标示符、描述信息，或者什么也不加&lt;/li&gt;
 &lt;li&gt;第四行，是质量信息，和第二行的序列相对应，每一个序列都有一个质量评分，根据评分体系的不同，每个字符的含义表示的数字也不相同。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;1 @SEQ_ID&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;1 @SEQ_ID&lt;/span&gt;
 &lt;span class="code-line"&gt;2 GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT&lt;/span&gt;
 &lt;span class="code-line"&gt;3 \+&lt;/span&gt;
 &lt;span class="code-line"&gt;4 !&amp;#39;&amp;#39;*((((***+))%%%++)(%%%%).1***-+*&amp;#39;&amp;#39;))**55CCF&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;CCCCCCC65&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="code-line"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Fastq ID&lt;/h2&gt;
@@ -789,4 +679,4 @@ $$Q_{solexa-prior to v.1.3}=-10log_{10}\frac{P}{1-P}$$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;Sequence Length Distribution reads读长
     当测序的长度不同时，如果很严重，则表明测序仪在此次测序过程中产生的数据不可信&lt;/li&gt;
-&lt;/ol&gt;</content><category term="fastq"></category><category term="format"></category></entry></feed>
+&lt;/ol&gt;</content><category term="生物信息"></category><category term="fastq"></category><category term="format"></category></entry></feed>

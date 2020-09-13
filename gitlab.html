@@ -18,44 +18,144 @@
     <ul class="message-container">
         <div class="message">
           <h1>安装gitlab</h1>
+<div class="highlight"><pre><span class="code-line"><span></span><code>docker run --detach <span class="se">\</span></span>
+<span class="code-line"><span class="c1"># 设置主机名或域名</span></span>
+<span class="code-line">  --hostname <span class="s2">&quot;IP&quot;</span> <span class="se">\</span></span>
+<span class="code-line"><span class="c1"># 添加配置，确保网页端git clone的地址显示正确,如</span></span>
+<span class="code-line"><span class="c1"># ssh://git@IP:{git_port+2}/user/repo.git</span></span>
+<span class="code-line"><span class="c1"># http://IP:{git_port}/user/repo.git</span></span>
+<span class="code-line">  --env <span class="nv">GITLAB_OMNIBUS_CONFIG</span><span class="o">=</span><span class="s2">&quot;external_url &#39;http://IP:port&#39;; gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = {git_port+2}; nginx[&#39;listen_port&#39;] = 80;&quot;</span> <span class="se">\</span></span>
+<span class="code-line"><span class="c1"># 端口映射；容器内的443,git_port,22端口分别映射到宿主机的444,git_port,git_port+2端口</span></span>
+<span class="code-line">  --publish <span class="m">444</span>:443 --publish <span class="o">{</span>git_port<span class="o">}</span>:<span class="o">{</span>git_port<span class="o">}</span> --publish <span class="o">{</span>git_port+2<span class="o">}</span>:22 <span class="se">\</span></span>
+<span class="code-line"><span class="c1"># gitlab-ce 的镜像运行成为一个容器，这里是对容器的命名</span></span>
+<span class="code-line">  --name gitlab <span class="se">\</span></span>
+<span class="code-line"><span class="c1"># 设置重启方式，always 代表一直开启，服务器开机后也会自动开启的</span></span>
+<span class="code-line">  --restart always <span class="se">\</span></span>
+<span class="code-line"><span class="c1"># 将 gitlab 的配置文件目录映射到 /public/tool/gitlab/config 目录中</span></span>
+<span class="code-line">  --volume /public/tool/gitlab/config:/etc/gitlab <span class="se">\</span></span>
+<span class="code-line"><span class="c1"># 将 gitlab 的log文件目录映射到 /public/tool/gitlab/logs 目录中</span></span>
+<span class="code-line">  --volume /public/tool/gitlab/logs:/var/log/gitlab <span class="se">\</span></span>
+<span class="code-line"><span class="c1"># 将 gitlab 的数据文件目录映射到 /public/tool/gitlab/data 目录中</span></span>
+<span class="code-line">  --volume /public/tool/gitlab/data:/var/opt/gitlab <span class="se">\</span></span>
+<span class="code-line"><span class="c1"># 需要运行的镜像</span></span>
+<span class="code-line">  gitlab/gitlab-ce:latest</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># 查看日志</span></span>
+<span class="code-line">docker logs -f --tail <span class="m">10</span> gitlab</span>
+<span class="code-line"></span>
+<span class="code-line">docker start gitlab</span>
+<span class="code-line"><span class="c1"># 关闭 gitlab</span></span>
+<span class="code-line">docker stop gitlab</span>
+<span class="code-line"><span class="c1"># 重启 gitlab</span></span>
+<span class="code-line">docker restart gitlab</span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># 升级 gitlab</span></span>
+<span class="code-line"><span class="c1"># 不同版本, 会导致无法启动，无法恢复备份（gitlab高版本与低版本备份不兼容）</span></span>
+<span class="code-line"><span class="c1"># 升级顺序 https://docs.gitlab.com/ee/policy/maintenance.html#upgrade-recommendations</span></span>
+<span class="code-line">docker stop gitlab</span>
+<span class="code-line">docker rm gitlab</span>
+<span class="code-line">docker pull gitlab/gitlab-ce:latest</span>
+<span class="code-line"></span>
+<span class="code-line">docker run --detach <span class="se">\</span></span>
+<span class="code-line">--hostname <span class="s2">&quot;IP&quot;</span> <span class="se">\</span></span>
+<span class="code-line">--env <span class="nv">GITLAB_OMNIBUS_CONFIG</span><span class="o">=</span><span class="s2">&quot;external_url &#39;http://IP:{git_port}&#39;; gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = {git_port+2};&quot;</span> <span class="se">\</span></span>
+<span class="code-line">--publish <span class="m">443</span>:443 --publish <span class="o">{</span>git_port<span class="o">}</span>:<span class="o">{</span>git_port<span class="o">}</span> --publish <span class="o">{</span>git_port+2<span class="o">}</span>:22 <span class="se">\</span></span>
+<span class="code-line">--name gitlab <span class="se">\</span></span>
+<span class="code-line">--restart always <span class="se">\</span></span>
+<span class="code-line">--volume /public/tool/gitlab/config:/etc/gitlab <span class="se">\</span></span>
+<span class="code-line">--volume /public/tool/gitlab/logs:/var/log/gitlab <span class="se">\</span></span>
+<span class="code-line">--volume /public/tool/gitlab/data:/var/opt/gitlab <span class="se">\</span></span>
+<span class="code-line">gitlab/gitlab-ce:latest</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#备份</span></span>
+<span class="code-line">docker <span class="nb">exec</span> -t gitlab gitlab-rake gitlab:backup:create <span class="c1">#数据保存在gitlab/data/backups</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#备份数据拷贝到新的gitlab/data/backups下面，然后恢复</span></span>
+<span class="code-line">docker <span class="nb">exec</span> -t gitlab gitlab-rake gitlab:backup:restore <span class="nv">RAILS_ENV</span><span class="o">=</span>production</span>
+<span class="code-line"></code></pre></div>
+
+
+<h1>docker-compose</h1>
+<div class="highlight"><pre><span class="code-line"><span></span><code>version: <span class="s2">&quot;3&quot;</span></span>
+<span class="code-line"></span>
+<span class="code-line">services:</span>
+<span class="code-line">  web:</span>
+<span class="code-line">    image: <span class="s1">&#39;gitlab/gitlab-ce:old&#39;</span></span>
+<span class="code-line">    container_name: gitlab_test</span>
+<span class="code-line">    restart: always</span>
+<span class="code-line">    hostname: <span class="s1">&#39;121.192.180.20&#39;</span></span>
+<span class="code-line">    environment:</span>
+<span class="code-line">        GITLAB_OMNIBUS_CONFIG: <span class="p">|</span></span>
+<span class="code-line">            external_url <span class="s1">&#39;http://121.192.180.20:7910&#39;</span></span>
+<span class="code-line">            gitlab_rails<span class="o">[</span><span class="s1">&#39;gitlab_shell_ssh_port&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="m">7912</span></span>
+<span class="code-line">            <span class="c1"># email setting</span></span>
+<span class="code-line">            gitlab_rails<span class="o">[</span><span class="s1">&#39;smtp_enable&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nb">true</span></span>
+<span class="code-line">            gitlab_rails<span class="o">[</span><span class="s1">&#39;smtp_address&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;smtp.163.com&quot;</span></span>
+<span class="code-line">            gitlab_rails<span class="o">[</span><span class="s1">&#39;smtp_port&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="m">465</span></span>
+<span class="code-line">            gitlab_rails<span class="o">[</span><span class="s1">&#39;smtp_user_name&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;nidshm_xmu@163.com&quot;</span></span>
+<span class="code-line">            gitlab_rails<span class="o">[</span><span class="s1">&#39;smtp_password&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;ZZRYSTPNMVVSWFOL&quot;</span></span>
+<span class="code-line">            gitlab_rails<span class="o">[</span><span class="s1">&#39;smtp_domain&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;smtp.163.com&quot;</span></span>
+<span class="code-line">            gitlab_rails<span class="o">[</span><span class="s1">&#39;smtp_authentication&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;login&quot;</span></span>
+<span class="code-line">            gitlab_rails<span class="o">[</span><span class="s1">&#39;smtp_enable_starttls_auto&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nb">true</span></span>
+<span class="code-line">            gitlab_rails<span class="o">[</span><span class="s1">&#39;smtp_tls&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nb">true</span></span>
+<span class="code-line">            gitlab_rails<span class="o">[</span><span class="s1">&#39;gitlab_email_from&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;nidshm_xmu@163.com&quot;</span></span>
+<span class="code-line">            user<span class="o">[</span><span class="s2">&quot;git_user_email&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;nidshm_xmu@163.com&quot;</span></span>
+<span class="code-line">    ports:</span>
+<span class="code-line">        - <span class="s1">&#39;7910:7910&#39;</span></span>
+<span class="code-line">        - <span class="s1">&#39;7912:22&#39;</span></span>
+<span class="code-line">    volumes:</span>
+<span class="code-line">        - <span class="s1">&#39;/public/tool/docker-gitlab/config:/etc/gitlab&#39;</span></span>
+<span class="code-line">        - <span class="s1">&#39;/public/tool/docker-gitlab/logs:/var/log/gitlab&#39;</span></span>
+<span class="code-line">        - <span class="s1">&#39;/public/tool/docker-gitlab/data:/var/opt/gitlab&#39;</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line">gitlab-rails console</span>
+<span class="code-line"><span class="c1">#进入控制台，然后发送测试邮件</span></span>
+<span class="code-line"><span class="c1"># Notify.test_email({收件者邮箱地址},{邮件主题},{邮件内容}).deliver_now</span></span>
+<span class="code-line">Notify.test_email<span class="o">(</span><span class="s1">&#39;610604952@qq.com&#39;</span>, <span class="s1">&#39;Hello World&#39;</span>, <span class="s1">&#39;This is a message&#39;</span><span class="o">)</span>.deliver_now</span>
+<span class="code-line"></code></pre></div>
+
+
 <h2>添加源到/etc/yum.repos.d/gitlab-ce.repo</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>[gitlab-ce]</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>[gitlab-ce]</span>
 <span class="code-line">name=Gitlab CE Repository</span>
 <span class="code-line">baseurl=https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el6</span>
 <span class="code-line">gpgcheck=0</span>
 <span class="code-line">enabled=1</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>yum安装</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>yum install gitlab-ce</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>yum install gitlab-ce</span>
+<span class="code-line"></code></pre></div>
 
 
 <h1>配置gitlab</h1>
 <h2>目录</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>/etc/gitlab/ ## 放置配置文件</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>/etc/gitlab/ ## 放置配置文件</span>
 <span class="code-line">/opt/gitlab/ ## 主目录</span>
 <span class="code-line">/var/opt/gitlab/ ## 各个组件</span>
 <span class="code-line">/var/log/gitlab/ ## 放置日志文件</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>设置IP地址</h2>
 <h3>http配置</h3>
 <p>修改/etc/gitlab/gitlab.rb</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1">#修改ip地址，**iptables 打开port**</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1">#修改ip地址，**iptables 打开port**</span></span>
 <span class="code-line"><span class="nv">external_url</span> <span class="o">=</span> <span class="s1">&#39;http://xxx.xxx.xxx.xx:port&#39;</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <p>修改完成后，如果打开 "http:\/\/IP" 无法访问gitlab，可能是80端口冲突
 原因：Nginx默认使用了80端口。</p>
 <p><strong>解决</strong>：修改Apache的端口,</p>
-<div class="highlight"><pre><span class="code-line"><span></span>/etc/httpd/conf/httpd.conf，</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>/etc/httpd/conf/httpd.conf，</span>
 <span class="code-line">Listen <span class="m">8111</span></span>
 <span class="code-line">service httpd restart</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h3>https配置</h3>
@@ -68,7 +168,7 @@
 <p>修改/etc/gitlab/gitlab.rb</p>
 </li>
 </ol>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1">#修改ip地址，**iptables 打开port**</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1">#修改ip地址，**iptables 打开port**</span></span>
 <span class="code-line"><span class="nv">external_url</span> <span class="o">=</span> <span class="s1">&#39;https://xxx.xxx.xxx.xx&#39;</span></span>
 <span class="code-line"><span class="c1"># gitlab 网站https：</span></span>
 <span class="code-line">nginx<span class="o">[</span><span class="s1">&#39;redirect_http_to_https&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="nb">true</span></span>
@@ -79,35 +179,35 @@
 <span class="code-line">nginx<span class="o">[</span><span class="s1">&#39;ssl_certificate_key&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;/etc/gitlab/ssl/xxx.xxx.xxx.xx.key&quot;</span></span>
 <span class="code-line"></span>
 <span class="code-line">sudo cp /etc/gitlab/ssl/*crt /etc/gitlab/trusted-certs</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h3>修改ssh端口</h3>
-<div class="highlight"><pre><span class="code-line"><span></span>gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 21386</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 21386</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>修改gitlab存储目录</h2>
 <ul>
 <li>默认存储位置在/var/opt/gitlab/git-data/repositories，修改/etc/gitlab/gitlab.rb</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span>git_data_dirs({</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>git_data_dirs({</span>
 <span class="code-line">    &quot;default&quot; =&gt; {</span>
 <span class="code-line">      &quot;path&quot; =&gt; &quot;/usr/data/gitlab&quot;</span>
 <span class="code-line">     }</span>
 <span class="code-line">})</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>开启gitlab-pages</h2>
 <p>修改/etc/gitlab/gitlab.rb</p>
-<div class="highlight"><pre><span class="code-line"><span></span>pages_external_url &quot;https://gitlab&quot;</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>pages_external_url &quot;https://gitlab&quot;</span>
 <span class="code-line">gitlab_pages[&#39;enable&#39;] = true</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>gitlab占内存过多</h2>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1">#减少进程数,最小2</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1">#减少进程数,最小2</span></span>
 <span class="code-line">unicorn<span class="o">[</span><span class="s1">&#39;worker_processes&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="m">4</span></span>
 <span class="code-line"><span class="c1">#减少数据库缓存,最大14GB，总内存 256M*5</span></span>
 <span class="code-line">postgresql<span class="o">[</span><span class="s1">&#39;shared_buffers&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;256M&quot;</span></span>
@@ -117,7 +217,7 @@
 <span class="code-line">sidekiq<span class="o">[</span><span class="s1">&#39;concurrency&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="m">25</span></span>
 <span class="code-line"></span>
 <span class="code-line">nginx<span class="o">[</span><span class="s1">&#39;worker_processes&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="m">5</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h1>gitlab 的权限</h1>
@@ -280,14 +380,14 @@
 </tbody>
 </table>
 <p>/opt/gitlab/embedded/service/gitlab-rails/config/gitlab.yml</p>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo gitlab-ctl start    <span class="c1"># 启动所有 gitlab 组件；</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo gitlab-ctl start    <span class="c1"># 启动所有 gitlab 组件；</span></span>
 <span class="code-line">sudo gitlab-ctl stop        <span class="c1"># 停止所有 gitlab 组件；</span></span>
 <span class="code-line">sudo gitlab-ctl restart        <span class="c1"># 重启所有 gitlab 组件；</span></span>
 <span class="code-line">sudo gitlab-ctl status        <span class="c1"># 查看服务状态；</span></span>
 <span class="code-line">sudo vim /etc/gitlab/gitlab.rb        <span class="c1"># 修改默认的配置文件；</span></span>
 <span class="code-line">gitlab-rake gitlab:check <span class="nv">SANITIZE</span><span class="o">=</span><span class="nb">true</span> --trace    <span class="c1"># 检查gitlab；</span></span>
 <span class="code-line">sudo gitlab-ctl tail        <span class="c1"># 查看日志；</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

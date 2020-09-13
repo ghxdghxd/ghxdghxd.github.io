@@ -21,57 +21,57 @@
 <p>ParallelGCThreads，表示JVM在进行并行GC的时候，用于GC的线程数，-XX:ParallelGCThreads=43，表示配置GC线程数为43。</p>
 <h1>2.JVM相关接口</h1>
 <p>JVM中，关于ParallelGCThreads的计算代码如下：</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">unsigned</span> <span class="kt">int</span> <span class="n">VM_Version</span><span class="o">::</span><span class="n">calc_parallel_worker_threads</span><span class="o">()</span> <span class="o">{</span></span>
-<span class="code-line">  <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">result</span><span class="o">;</span></span>
-<span class="code-line">  <span class="k">if</span> <span class="o">(</span><span class="n">is_M_series</span><span class="o">())</span> <span class="o">{</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="n">unsigned</span> <span class="kt">int</span> <span class="n">VM_Version</span><span class="p">::</span><span class="n">calc_parallel_worker_threads</span><span class="p">()</span> <span class="p">{</span></span>
+<span class="code-line">  <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">result</span><span class="p">;</span></span>
+<span class="code-line">  <span class="k">if</span> <span class="p">(</span><span class="n">is_M_series</span><span class="p">())</span> <span class="p">{</span></span>
 <span class="code-line">    <span class="c1">// for now, use same gc thread calculation for M-series as for niagara-plus</span></span>
 <span class="code-line">    <span class="c1">// in future, we may want to tweak parameters for nof_parallel_worker_thread</span></span>
-<span class="code-line">    <span class="n">result</span> <span class="o">=</span> <span class="n">nof_parallel_worker_threads</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">16</span><span class="o">,</span> <span class="mi">8</span><span class="o">);</span></span>
-<span class="code-line">  <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">is_niagara_plus</span><span class="o">())</span> <span class="o">{</span></span>
-<span class="code-line">    <span class="n">result</span> <span class="o">=</span> <span class="n">nof_parallel_worker_threads</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">16</span><span class="o">,</span> <span class="mi">8</span><span class="o">);</span></span>
-<span class="code-line">  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span></span>
-<span class="code-line">    <span class="n">result</span> <span class="o">=</span> <span class="n">nof_parallel_worker_threads</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">8</span><span class="o">);</span></span>
-<span class="code-line">  <span class="o">}</span></span>
-<span class="code-line">  <span class="k">return</span> <span class="n">result</span><span class="o">;</span></span>
-<span class="code-line"><span class="o">}</span></span>
-<span class="code-line"><span class="n">unsigned</span> <span class="kt">int</span> <span class="n">Abstract_VM_Version</span><span class="o">::</span><span class="n">parallel_worker_threads</span><span class="o">()</span> <span class="o">{</span></span>
-<span class="code-line">  <span class="k">if</span> <span class="o">(!</span><span class="n">_parallel_worker_threads_initialized</span><span class="o">)</span> <span class="o">{</span></span>
-<span class="code-line">    <span class="k">if</span> <span class="o">(</span><span class="n">FLAG_IS_DEFAULT</span><span class="o">(</span><span class="n">ParallelGCThreads</span><span class="o">))</span> <span class="o">{</span></span>
-<span class="code-line">      <span class="n">_parallel_worker_threads</span> <span class="o">=</span> <span class="n">VM_Version</span><span class="o">::</span><span class="n">calc_parallel_worker_threads</span><span class="o">();</span></span>
-<span class="code-line">    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span></span>
-<span class="code-line">      <span class="n">_parallel_worker_threads</span> <span class="o">=</span> <span class="n">ParallelGCThreads</span><span class="o">;</span></span>
-<span class="code-line">    <span class="o">}</span></span>
-<span class="code-line">    <span class="n">_parallel_worker_threads_initialized</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span></span>
-<span class="code-line">  <span class="o">}</span></span>
-<span class="code-line">  <span class="k">return</span> <span class="n">_parallel_worker_threads</span><span class="o">;</span></span>
-<span class="code-line"><span class="o">}</span></span>
-<span class="code-line"><span class="n">unsigned</span> <span class="kt">int</span> <span class="n">Abstract_VM_Version</span><span class="o">::</span><span class="n">calc_parallel_worker_threads</span><span class="o">()</span> <span class="o">{</span></span>
-<span class="code-line">  <span class="k">return</span> <span class="n">nof_parallel_worker_threads</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">8</span><span class="o">);</span></span>
-<span class="code-line"><span class="o">}</span></span>
-<span class="code-line"><span class="n">unsigned</span> <span class="kt">int</span> <span class="n">Abstract_VM_Version</span><span class="o">::</span><span class="n">nof_parallel_worker_threads</span><span class="o">(</span></span>
-<span class="code-line">  <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">num</span><span class="o">,</span></span>
-<span class="code-line">  <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">den</span><span class="o">,</span></span>
-<span class="code-line">  <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">switch_pt</span><span class="o">)</span> <span class="o">{</span></span>
-<span class="code-line">  <span class="k">if</span> <span class="o">(</span><span class="n">FLAG_IS_DEFAULT</span><span class="o">(</span><span class="n">ParallelGCThreads</span><span class="o">))</span> <span class="o">{</span></span>
-<span class="code-line">    <span class="k">assert</span><span class="o">(</span><span class="n">ParallelGCThreads</span> <span class="o">==</span> <span class="mi">0</span><span class="o">,</span> <span class="s">&quot;Default ParallelGCThreads is not 0&quot;</span><span class="o">);</span></span>
+<span class="code-line">    <span class="n">result</span> <span class="o">=</span> <span class="n">nof_parallel_worker_threads</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span></span>
+<span class="code-line">  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_niagara_plus</span><span class="p">())</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="n">result</span> <span class="o">=</span> <span class="n">nof_parallel_worker_threads</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span></span>
+<span class="code-line">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="n">result</span> <span class="o">=</span> <span class="n">nof_parallel_worker_threads</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span></span>
+<span class="code-line">  <span class="p">}</span></span>
+<span class="code-line">  <span class="k">return</span> <span class="n">result</span><span class="p">;</span></span>
+<span class="code-line"><span class="p">}</span></span>
+<span class="code-line"><span class="n">unsigned</span> <span class="kt">int</span> <span class="n">Abstract_VM_Version</span><span class="p">::</span><span class="n">parallel_worker_threads</span><span class="p">()</span> <span class="p">{</span></span>
+<span class="code-line">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_parallel_worker_threads_initialized</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="k">if</span> <span class="p">(</span><span class="n">FLAG_IS_DEFAULT</span><span class="p">(</span><span class="n">ParallelGCThreads</span><span class="p">))</span> <span class="p">{</span></span>
+<span class="code-line">      <span class="n">_parallel_worker_threads</span> <span class="o">=</span> <span class="n">VM_Version</span><span class="p">::</span><span class="n">calc_parallel_worker_threads</span><span class="p">();</span></span>
+<span class="code-line">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></span>
+<span class="code-line">      <span class="n">_parallel_worker_threads</span> <span class="o">=</span> <span class="n">ParallelGCThreads</span><span class="p">;</span></span>
+<span class="code-line">    <span class="p">}</span></span>
+<span class="code-line">    <span class="n">_parallel_worker_threads_initialized</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span></span>
+<span class="code-line">  <span class="p">}</span></span>
+<span class="code-line">  <span class="k">return</span> <span class="n">_parallel_worker_threads</span><span class="p">;</span></span>
+<span class="code-line"><span class="p">}</span></span>
+<span class="code-line"><span class="n">unsigned</span> <span class="kt">int</span> <span class="n">Abstract_VM_Version</span><span class="p">::</span><span class="n">calc_parallel_worker_threads</span><span class="p">()</span> <span class="p">{</span></span>
+<span class="code-line">  <span class="k">return</span> <span class="n">nof_parallel_worker_threads</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span></span>
+<span class="code-line"><span class="p">}</span></span>
+<span class="code-line"><span class="n">unsigned</span> <span class="kt">int</span> <span class="n">Abstract_VM_Version</span><span class="p">::</span><span class="n">nof_parallel_worker_threads</span><span class="p">(</span></span>
+<span class="code-line">  <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">num</span><span class="p">,</span></span>
+<span class="code-line">  <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">den</span><span class="p">,</span></span>
+<span class="code-line">  <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">switch_pt</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">  <span class="k">if</span> <span class="p">(</span><span class="n">FLAG_IS_DEFAULT</span><span class="p">(</span><span class="n">ParallelGCThreads</span><span class="p">))</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="k">assert</span><span class="p">(</span><span class="n">ParallelGCThreads</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Default ParallelGCThreads is not 0&quot;</span><span class="p">);</span></span>
 <span class="code-line">    <span class="c1">// For very large machines, there are diminishing returns</span></span>
 <span class="code-line">    <span class="c1">// for large numbers of worker threads.  Instead of</span></span>
 <span class="code-line">    <span class="c1">// hogging the whole system, use a fraction of the workers for every</span></span>
 <span class="code-line">    <span class="c1">// processor after the first 8.  For example, on a 72 cpu machine</span></span>
 <span class="code-line">    <span class="c1">// and a chosen fraction of 5/8</span></span>
 <span class="code-line">    <span class="c1">// use 8 + (72 - 8) * (5/8) == 48 worker threads.</span></span>
-<span class="code-line">    <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">ncpus</span> <span class="o">=</span> <span class="o">(</span><span class="n">unsigned</span> <span class="kt">int</span><span class="o">)</span> <span class="n">os</span><span class="o">::</span><span class="n">active_processor_count</span><span class="o">();</span></span>
-<span class="code-line">    <span class="k">return</span> <span class="o">(</span><span class="n">ncpus</span> <span class="o">&lt;=</span> <span class="n">switch_pt</span><span class="o">)</span> <span class="o">?</span></span>
-<span class="code-line">      <span class="n">ncpus</span> <span class="o">:</span> <span class="o">(</span><span class="n">switch_pt</span> <span class="o">+</span> <span class="o">((</span><span class="n">ncpus</span> <span class="o">-</span> <span class="n">switch_pt</span><span class="o">)</span> <span class="o">*</span> <span class="n">num</span><span class="o">)</span> <span class="o">/</span> <span class="n">den</span><span class="o">);</span></span>
-<span class="code-line">  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span></span>
-<span class="code-line">    <span class="k">return</span> <span class="n">ParallelGCThreads</span><span class="o">;</span></span>
-<span class="code-line">  <span class="o">}</span></span>
-<span class="code-line"><span class="o">}</span></span>
-</pre></div>
+<span class="code-line">    <span class="n">unsigned</span> <span class="kt">int</span> <span class="n">ncpus</span> <span class="o">=</span> <span class="p">(</span><span class="n">unsigned</span> <span class="kt">int</span><span class="p">)</span> <span class="n">os</span><span class="p">::</span><span class="n">active_processor_count</span><span class="p">();</span></span>
+<span class="code-line">    <span class="k">return</span> <span class="p">(</span><span class="n">ncpus</span> <span class="o">&lt;=</span> <span class="n">switch_pt</span><span class="p">)</span> <span class="o">?</span></span>
+<span class="code-line">      <span class="n">ncpus</span> <span class="p">:</span> <span class="p">(</span><span class="n">switch_pt</span> <span class="o">+</span> <span class="p">((</span><span class="n">ncpus</span> <span class="o">-</span> <span class="n">switch_pt</span><span class="p">)</span> <span class="o">*</span> <span class="n">num</span><span class="p">)</span> <span class="o">/</span> <span class="n">den</span><span class="p">);</span></span>
+<span class="code-line">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="k">return</span> <span class="n">ParallelGCThreads</span><span class="p">;</span></span>
+<span class="code-line">  <span class="p">}</span></span>
+<span class="code-line"><span class="p">}</span></span>
+<span class="code-line"></code></pre></div>
 
 
 <h1>3.计算方法</h1>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="err">上面列出了与</span><span class="n">ParallelGCThreads计算相关的几个核心接口</span><span class="err">，其中，最主要关注</span><span class="n">nof_parallel_worker_threads接口</span><span class="err">，该接口中给出了计算</span><span class="n">ParallelGCThreads值的具体算法</span><span class="err">，具体如下：</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="err">上面列出了与</span><span class="n">ParallelGCThreads计算相关的几个核心接口</span><span class="err">，其中，最主要关注</span><span class="n">nof_parallel_worker_threads接口</span><span class="err">，该接口中给出了计算</span><span class="n">ParallelGCThreads值的具体算法</span><span class="err">，具体如下：</span></span>
 <span class="code-line"></span>
 <span class="code-line"><span class="err">①</span> <span class="err">如果用户显示指定了</span><span class="n">ParallelGCThreads</span><span class="err">，则使用用户指定的值。</span></span>
 <span class="code-line"></span>
@@ -82,7 +82,7 @@
 <span class="code-line"><span class="err">④</span> <span class="err">如果物理</span><span class="n">CPU所能够支持线程数大于8</span><span class="err">，则</span><span class="n">ParallelGCThreads的值为8加上一个调整值</span><span class="err">，调整值的计算方式为：物理</span><span class="n">CPU所支持的线程数减去8所得值的5</span><span class="o">/</span><span class="mi">8</span><span class="err">或者</span><span class="mi">5</span><span class="o">/</span><span class="mi">16</span><span class="err">，</span><span class="n">JVM会根据实际的情况来选择具体是乘以5</span><span class="o">/</span><span class="mi">8</span><span class="err">还是</span><span class="mi">5</span><span class="o">/</span><span class="mi">16</span><span class="err">。</span></span>
 <span class="code-line"></span>
 <span class="code-line"><span class="err">比如，在</span><span class="mi">64</span><span class="err">线程的</span><span class="n">x86</span> <span class="n">CPU上</span><span class="err">，如果用户未指定</span><span class="n">ParallelGCThreads的值</span><span class="err">，则默认的计算方式为：</span><span class="n">ParallelGCThreads</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">+</span> <span class="p">(</span><span class="mi">64</span> <span class="o">-</span> <span class="mi">8</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">5</span><span class="o">/</span><span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">35</span> <span class="o">=</span> <span class="mi">43</span><span class="err">。</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

@@ -22,7 +22,7 @@
 <p><strong>julia的主进程<code>id</code>为 1(提供 Julia 交互环境的进程的 id 永远是1)</strong>
 julia中的并行进程，称为<code>worker</code>，
 <code>julia -p 2</code>表示申请2个<code>workers</code>进行并行计算，那么</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">workers</span><span class="p">()</span> <span class="c"># 查看所有workers的id，</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="n">workers</span><span class="p">()</span> <span class="c"># 查看所有workers的id，</span></span>
 <span class="code-line"><span class="c">#19-element Array{Int64,1}:</span></span>
 <span class="code-line"><span class="c"># 2</span></span>
 <span class="code-line"><span class="c"># 3</span></span>
@@ -32,7 +32,7 @@ julia中的并行进程，称为<code>worker</code>，
 <span class="code-line"><span class="c"># 3</span></span>
 <span class="code-line"><span class="n">myid</span><span class="p">()</span> <span class="c"># 当前workers的id</span></span>
 <span class="code-line"><span class="c"># 1</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <blockquote>
@@ -41,21 +41,21 @@ Warning: Forcibly interrupting busy workers</p>
 </blockquote>
 <h2>map与pmap</h2>
 <h3>map串行</h3>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="k">function</span> <span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dat</span><span class="p">)</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="k">function</span> <span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dat</span><span class="p">)</span></span>
 <span class="code-line">    <span class="k">return</span><span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="n">x</span><span class="p">])</span></span>
 <span class="code-line"><span class="k">end</span></span>
 <span class="code-line"></span>
 <span class="code-line"><span class="n">map</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dat</span><span class="p">),</span> <span class="n">x_list</span><span class="p">)</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h3>pmap并行,默认可能为1个物理CPU(如8线程)</h3>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="nd">@everywhere</span> <span class="k">function</span> <span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dat</span><span class="p">)</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nd">@everywhere</span> <span class="k">function</span> <span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dat</span><span class="p">)</span></span>
 <span class="code-line">    <span class="k">return</span><span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="n">x</span><span class="p">])</span></span>
 <span class="code-line"><span class="k">end</span></span>
 <span class="code-line"></span>
 <span class="code-line"><span class="n">pmap</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dat</span><span class="p">),</span> <span class="n">x_list</span><span class="p">)</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

@@ -21,7 +21,7 @@
 <p><img alt="Fig.1" src="images/cpu.png" style="height:30%; width:30%;"></p>
 <h1>CPU相关信息</h1>
 <p><code>lscpu</code>从sysfs和/proc/cpuinfo收集cpu体系结构信息</p>
-<div class="highlight"><pre><span class="code-line"><span></span>Architecture:          x86_64               <span class="c1"># 架构</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>Architecture:          x86_64               <span class="c1"># 架构</span></span>
 <span class="code-line">CPU op-mode<span class="o">(</span>s<span class="o">)</span>:        <span class="m">32</span>-bit, <span class="m">64</span>-bit       <span class="c1"># CPU 运行模式</span></span>
 <span class="code-line">Byte Order:            Little Endian        <span class="c1"># 字节序</span></span>
 <span class="code-line">CPU<span class="o">(</span>s<span class="o">)</span>:                <span class="m">64</span>                   <span class="c1"># 逻辑CPU数(线程数) = 物理cpu(physical id)数量 * cpu内核(core id)数 * 单核多线程(thread, 如果支持并开启HT)</span></span>
@@ -45,11 +45,11 @@
 <span class="code-line">NUMA node1 CPU<span class="o">(</span>s<span class="o">)</span>:     <span class="m">8</span>-15,40-47</span>
 <span class="code-line">NUMA node2 CPU<span class="o">(</span>s<span class="o">)</span>:     <span class="m">16</span>-23,48-55</span>
 <span class="code-line">NUMA node3 CPU<span class="o">(</span>s<span class="o">)</span>:     <span class="m">24</span>-31,56-63</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h1>每个逻辑CPU的详细信息：/proc/cpuinfo</h1>
-<div class="highlight"><pre><span class="code-line"><span></span>processor       : <span class="m">0</span>                                            <span class="c1"># 逻辑CPU（线程）的编号, 从 0 到 最大线程数-1</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>processor       : <span class="m">0</span>                                            <span class="c1"># 逻辑CPU（线程）的编号, 从 0 到 最大线程数-1</span></span>
 <span class="code-line">vendor_id       : GenuineIntel                                 <span class="c1"># 品牌</span></span>
 <span class="code-line">cpu family      : <span class="m">6</span>                                            <span class="c1"># cpu系列</span></span>
 <span class="code-line">model           : <span class="m">62</span>                                           <span class="c1"># CPU型号</span></span>
@@ -73,7 +73,7 @@
 <span class="code-line">cache_alignment : <span class="m">64</span></span>
 <span class="code-line">address sizes   : <span class="m">46</span> bits physical, <span class="m">48</span> bits virtual</span>
 <span class="code-line">power management:</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <ol>
@@ -102,22 +102,22 @@
 <ul>
 <li>
 <p>逻辑CPU数</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">cpuinfo</span><span class="o">|</span><span class="n">grep</span> <span class="ss">&quot;processor&quot;</span><span class="o">|</span><span class="n">wc</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="err">cat /proc/cpuinfo|grep &quot;processor&quot;|wc</span></span>
+<span class="code-line"></code></pre></div>
 
 
 </li>
 <li>
 <p>物理CPU数</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">cpuinfo</span><span class="o">|</span><span class="n">grep</span> <span class="ss">&quot;physical\ id&quot;</span><span class="o">|</span><span class="n">sort</span> <span class="o">-</span><span class="n">u</span><span class="o">|</span><span class="n">wc</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="err">cat /proc/cpuinfo|grep &quot;physical\ id&quot;|sort -u|wc</span></span>
+<span class="code-line"></code></pre></div>
 
 
 </li>
 <li>
 <p>CPU核数</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">cpuinfo</span><span class="o">|</span><span class="n">grep</span> <span class="ss">&quot;cores&quot;</span><span class="o">|</span><span class="n">sort</span> <span class="o">-</span><span class="n">u</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="err">cat /proc/cpuinfo|grep &quot;cores&quot;|sort -u</span></span>
+<span class="code-line"></code></pre></div>
 
 
 </li>

@@ -18,7 +18,7 @@
     <ul class="message-container">
         <div class="message">
           <h1>archlinux安装</h1>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># u盘启动后</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1"># u盘启动后</span></span>
 <span class="code-line"><span class="c1"># 连接网络</span></span>
 <span class="code-line">wifi-memu</span>
 <span class="code-line">mount /dev/sda1 /mnt</span>
@@ -29,26 +29,26 @@
 <span class="code-line">pacstrap -i /mnt base base-devel</span>
 <span class="code-line"><span class="c1">#生成挂载文件fstab</span></span>
 <span class="code-line">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>archlinux 初步配置</h2>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1">#切换到archlinux</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1">#切换到archlinux</span></span>
 <span class="code-line">arch-chroot /mnt /bin/bash</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <ul>
 <li>本地语言</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span>vi /etc/locale.gen</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>vi /etc/locale.gen</span>
 <span class="code-line">    en_US.UTF-8 UTF-8</span>
 <span class="code-line">    zh_CN.UTF-8 UTF-8</span>
 <span class="code-line"></span>
 <span class="code-line"><span class="c1">#生效</span></span>
 <span class="code-line">locale-gen</span>
 <span class="code-line"><span class="nb">echo</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 &gt; /etc/locale.conf</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <!--more-->
@@ -56,44 +56,44 @@
 <ul>
 <li>时区</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span>
 <span class="code-line"><span class="c1"># 或</span></span>
 <span class="code-line"><span class="c1"># 按提示选择时区</span></span>
 <span class="code-line">tzselect</span>
 <span class="code-line"><span class="c1">#设置硬件时间</span></span>
 <span class="code-line">hwclock --systohc --utc</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <ul>
 <li>grub引导系统</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 支持grub和EFI，可只选grup</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1"># 支持grub和EFI，可只选grup</span></span>
 <span class="code-line">pacman -S grub efibootmgr</span>
 <span class="code-line">grub-install --target<span class="o">=</span>i386-pc --recheck --debug /dev/sda</span>
 <span class="code-line">grup-mkconfig -o /boot/grub/grub.cfg</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <ul>
 <li>主机名</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="nb">echo</span> Garch &gt;&gt; /etc/hostname</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nb">echo</span> Garch &gt;&gt; /etc/hostname</span>
+<span class="code-line"></code></pre></div>
 
 
 <ul>
 <li>网络配置</li>
 </ul>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 有线</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1"># 有线</span></span>
 <span class="code-line">systemctl <span class="nb">enable</span> dhcpcd.service</span>
 <span class="code-line"><span class="c1"># 无线</span></span>
 <span class="code-line">pacman -S iw wpa_supplicant dialog</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>archlinux 配置</h2>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 最小安装</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1"># 最小安装</span></span>
 <span class="code-line"><span class="c1"># X桌面</span></span>
 <span class="code-line">pacman -S xorg-server</span>
 <span class="code-line"><span class="c1"># 显卡驱动</span></span>
@@ -101,7 +101,7 @@
 <span class="code-line">pacman -S gnome gnome-tweak-tool</span>
 <span class="code-line">pacman -S ttf-ubuntu</span>
 <span class="code-line"><span class="c1"># 可选</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

@@ -162,18 +162,18 @@
 </tbody>
 </table>
 <p>使用的命令为:</p>
-<div class="highlight"><pre><span class="code-line"><span></span>bcftools norm -f ref.fa in.vcf -O z &gt; out.vcf.gz</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>bcftools norm -f ref.fa in.vcf -O z &gt; out.vcf.gz</span>
 <span class="code-line">java -jar GenomeAnalysisTK.jar -T LeftAlignAndTrimVariants --trimAlleles -R</span>
 <span class="code-line">ref.fa --variant in.vcf.gz -o out.vcf.gz</span>
 <span class="code-line">vt normalize -r ref.vcf.gz -o out.vcf.gz</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <p>使用的版本为:</p>
-<div class="highlight"><pre><span class="code-line"><span></span>bcftools v0.2.0-rc8-5-g0e06231 <span class="o">(</span>using htslib <span class="m">0</span>.2.0-rc8-6-gd49dfa6<span class="o">)</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>bcftools v0.2.0-rc8-5-g0e06231 <span class="o">(</span>using htslib <span class="m">0</span>.2.0-rc8-6-gd49dfa6<span class="o">)</span></span>
 <span class="code-line">GATK v3.1-1-g07a4bf8</span>
 <span class="code-line">vt normalize v0.5</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>5、一个该标准化算法失效的例子</h2>

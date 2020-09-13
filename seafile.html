@@ -17,14 +17,66 @@
   <div class="nano-content">
     <ul class="message-container">
         <div class="message">
-          <h1>首先</h1>
-<p>查看 8082端口有没有开</p>
-<div class="highlight"><pre><span class="code-line"><span></span>service iptables status</span>
-</pre></div>
+          <h1>docker 安装 seafile</h1>
+<div class="highlight"><pre><span class="code-line"><span></span><code>yum install docker-compose -y</span>
+<span class="code-line">wget https://download.seafile.com/d/320e8adf90fa43ad8fee/files/?p<span class="o">=</span>/docker/docker-compose.yml</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># 修改</span></span>
+<span class="code-line">MySQL root 用户的密码 <span class="o">(</span>MYSQL_ROOT_PASSWORD and DB_ROOT_PASSWD<span class="o">)</span></span>
+<span class="code-line">持久化存储 MySQL 数据的 volumes 目录 <span class="o">(</span>volumes<span class="o">)</span></span>
+<span class="code-line">/public/tool/seafile/seafile-mysql/db:/var/lib/mysql</span>
+<span class="code-line">持久化存储 Seafile 数据的 volumes 目录 <span class="o">(</span>volumes<span class="o">)</span></span>
+<span class="code-line">/public/tool/seafile/seafile-data:/shared</span>
+<span class="code-line"></span>
+<span class="code-line">ports:</span>
+<span class="code-line">    - <span class="s2">&quot;1951:80&quot;</span>   <span class="c1"># 网页与客户端登录</span></span>
+<span class="code-line">    - <span class="s2">&quot;8082:8082&quot;</span> <span class="c1"># 文件上传下载 ==&gt; seahub_settings.py</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nv">SEAFILE_SERVER_HOSTNAME</span><span class="o">=</span>IP</span>
+<span class="code-line"></span>
+<span class="code-line">docker-compose up -d</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># 升级</span></span>
+<span class="code-line">docker-compose pull</span>
+<span class="code-line">docker-compose up -d</span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>不显示头像</h2>
+<p>系统管理，设置，更改SERVICE_URL为"http://IP:port", 然后重启seafile</p>
+<h1>首先配置</h1>
+<blockquote>
+<p>/public/tool/seafile/seafile-data/seafile/conf</p>
+</blockquote>
+<h2>gunicorn.conf</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code>bind = &quot;0.0.0.0:8000&quot;</span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>seafdav.conf</h2>
+<p>授权第三方应用利用 WebDAV 协议访问团队的文件</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>[WEBDAV]</span>
+<span class="code-line">enabled = true</span>
+<span class="code-line">port = 8080</span>
+<span class="code-line">fastcgi = true</span>
+<span class="code-line">share_name = /</span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>seafile.conf</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code>[quota]</span>
+<span class="code-line"># 单位为 GB</span>
+<span class="code-line">default = 2</span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>seahub_settings.py</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code>FILE_SERVER_ROOT = &quot;http://IP:8082&quot;</span>
+<span class="code-line"></code></pre></div>
 
 
 <h1>备份与恢复</h1>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># backup</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1"># backup</span></span>
 <span class="code-line">mysqldump -h <span class="m">127</span>.0.0.1 -uroot -p<span class="o">[</span>root_passwd<span class="o">]</span> --opt ccnet-db &gt; ~jintao/ccnet-db.sql.<span class="sb">`</span>date +<span class="s2">&quot;%Y-%m-%d-%H-%M-%S&quot;</span><span class="sb">`</span></span>
 <span class="code-line">mysqldump -h <span class="m">127</span>.0.0.1 -uroot -p<span class="o">[</span>root_passwd<span class="o">]</span> --opt seafile-db &gt; ~jintao/seafile-db.sql.<span class="sb">`</span>date +<span class="s2">&quot;%Y-%m-%d-%H-%M-%S&quot;</span><span class="sb">`</span></span>
 <span class="code-line">mysqldump -h <span class="m">127</span>.0.0.1 -uroot -p<span class="o">[</span>root_passwd<span class="o">]</span> --opt seahub-db &gt; ~jintao/seahub-db.sql.<span class="sb">`</span>date +<span class="s2">&quot;%Y-%m-%d-%H-%M-%S&quot;</span><span class="sb">`</span></span>
@@ -33,12 +85,7 @@
 <span class="code-line">mysql -uroot -p<span class="o">[</span>root_passwd<span class="o">]</span> ccnet-db &lt; ccnet-db.sql.2013-10-19-16-00-05</span>
 <span class="code-line">mysql -uroot -p<span class="o">[</span>root_passwd<span class="o">]</span> seafile-db &lt; seafile-db.sql.2013-10-19-16-00-20</span>
 <span class="code-line">mysql -uroot -p<span class="o">[</span>root_passwd<span class="o">]</span> seahub-db &lt; seahub-db.sql.2013-10-19-16-01-05</span>
-</pre></div>
-
-
-<h1>gunicorn.conf</h1>
-<div class="highlight"><pre><span class="code-line"><span></span>bind = &quot;0.0.0.0:8000&quot;</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

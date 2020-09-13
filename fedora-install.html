@@ -20,86 +20,86 @@
     <ul class="message-container">
         <div class="message">
           <h1>config fedora</h1>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo rm -rf /opt</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo rm -rf /opt</span>
 <span class="code-line">sudo dnf install yum-utils</span>
 <span class="code-line"></span>
 <span class="code-line">* package-cleanup --oldkernels</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>RPM Fusion Free/Nonfree源, FZUG源</h2>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="nv">version</span><span class="o">=</span><span class="m">27</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nv">version</span><span class="o">=</span><span class="m">27</span></span>
 <span class="code-line">sudo dnf config-manager --add-repo<span class="o">=</span>http://mirrors.aliyun.com/repo/fedora.repo</span>
 <span class="code-line">sudo dnf install http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-<span class="nv">$version</span>.noarch.rpm -y</span>
 <span class="code-line">sudo dnf install http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-<span class="nv">$version</span>.noarch.rpm -y</span>
 <span class="code-line">sudo dnf install https://repo.fdzh.org/FZUG/free/<span class="nv">$version</span>/x86_64/noarch/fzug-release-<span class="nv">$version</span>-0.2.noarch.rpm -y</span>
 <span class="code-line">sudo dnf makecache</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>upgrade</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo dnf check-update <span class="p">&amp;</span> sudo dnf upgrade</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo dnf check-update <span class="p">&amp;</span> sudo dnf upgrade</span>
 <span class="code-line">sudo dnf install sqlite</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>disable Wayland</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>/etc/gdm/custom.conf</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>/etc/gdm/custom.conf</span>
 <span class="code-line"><span class="nv">WaylandEnable</span><span class="o">=</span><span class="nb">false</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>chrome</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm  </span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm  </span>
 <span class="code-line">sudo dnf install ./google-chrome-stable_current_x86_64.rpm  </span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>git</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo dnf install git</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo dnf install git</span>
 <span class="code-line">git config --global user.name username</span>
 <span class="code-line">git config --global user.email email</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>guake</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo dnf install guake</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo dnf install guake</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>gnome-tweak-tool</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo dnf install gnome-tweak-tool</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo dnf install gnome-tweak-tool</span>
 <span class="code-line">sudo dnf install chrome-gnome-shell</span>
 <span class="code-line">dashtodocky</span>
 <span class="code-line">Topicons plus</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>wbpy</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo dnf install fcitx-table-chinese</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo dnf install fcitx-table-chinese</span>
 <span class="code-line">sudo dnf install fcitx-configtool</span>
 <span class="code-line">sudo dnf install im-chooser</span>
 <span class="code-line">im-chooser</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>zsh</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo apt install zsh</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo apt install zsh</span>
 <span class="code-line">wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - <span class="p">|</span> zsh</span>
 <span class="code-line">chsh -s /bin/zsh</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>change PATH language</h2>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US</span>
 <span class="code-line">xdg-user-dirs-gtk-update</span>
 <span class="code-line"><span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>zh_CN</span>
 <span class="code-line">reboot</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>install ubuntu fonts</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo dnf install ttmkfdir</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo dnf install ttmkfdir</span>
 <span class="code-line"><span class="nv">fontname</span><span class="o">=</span>ubuntu-font-family-0.83</span>
 <span class="code-line">wget http://font.ubuntu.com/download/<span class="nv">$fontname</span>.zip</span>
 <span class="code-line">mkdir /tmp/<span class="nv">$fontname</span></span>
@@ -110,38 +110,38 @@
 <span class="code-line"><span class="nb">cd</span> /usr/share/fonts/ubuntu</span>
 <span class="code-line">ttmkfdir &gt; fonts.dir</span>
 <span class="code-line">fc-cache -fv</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>exFat &amp; sshfs</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo dnf install exfat-utils</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo dnf install exfat-utils</span>
 <span class="code-line">sudo dnf install fuse-exfat</span>
 <span class="code-line">sudo apt install sshfs</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>synergy</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>wget https://binaries.symless.com/v1.8.8/synergy-v1.8.8-stable-25a8cb2-Linux-x86_64.rpm</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>wget https://binaries.symless.com/v1.8.8/synergy-v1.8.8-stable-25a8cb2-Linux-x86_64.rpm</span>
 <span class="code-line">sudo dnf install ./synergy-v1.8.8-stable-25a8cb2-Linux-x86_64.rpm</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>sublime text</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg</span>
 <span class="code-line">sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo</span>
 <span class="code-line">sudo dnf update</span>
 <span class="code-line">sudo dnf install sublime-text</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>anaconda</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>wget https://repo.continuum.io/archive/Anaconda3-5.0.0.1-Linux-x86_64.sh</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>wget https://repo.continuum.io/archive/Anaconda3-5.0.0.1-Linux-x86_64.sh</span>
 <span class="code-line">bash Anaconda3-4.3.1-Linux-x86_64.sh<span class="p">|</span>sh</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>zotero</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>wget https://download.zotero.org/client/release/5.0.23/https://download.zotero.org/client/release/5.0.23/Zotero-5.0.23_linux-x86_64.tar.bz2</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>wget https://download.zotero.org/client/release/5.0.23/https://download.zotero.org/client/release/5.0.23/Zotero-5.0.23_linux-x86_64.tar.bz2</span>
 <span class="code-line">tar xvf Zotero-5.0.23_linux-x86_64.tar.bz2</span>
 <span class="code-line">sudo mv Zotero_linux-x86_64/</span>
 <span class="code-line"></span>
@@ -150,23 +150,23 @@
 <span class="code-line">git clone https://github.com/jlegewie/zotfile.git</span>
 <span class="code-line"><span class="nb">cd</span> zotfile</span>
 <span class="code-line">make</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>wewechat</h2>
 <h2>thunderbird</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo dnf install thunderbird-enigmail</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo dnf install thunderbird-enigmail</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>atom</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo dnf --assumeyes install make gcc gcc-c++ glibc-devel git-core libsecret-devel rpmdevtools libX11-devel libxkbfile-devel</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo dnf --assumeyes install make gcc gcc-c++ glibc-devel git-core libsecret-devel rpmdevtools libX11-devel libxkbfile-devel</span>
 <span class="code-line">sudo dnf install ./atom.x86_64.rpm</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>wordpress</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sudo dnf install -y php php-mysqlnd mysql mysql-server mysql-devel workpress</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sudo dnf install -y php php-mysqlnd mysql mysql-server mysql-devel workpress</span>
 <span class="code-line"></span>
 <span class="code-line">sudo systemctl <span class="nb">enable</span> httpd.service mariadb.service</span>
 <span class="code-line">sudo systemctl start httpd.service mariadb.service</span>
@@ -178,19 +178,19 @@
 <span class="code-line"></span>
 <span class="code-line">sudo firewall-cmd --add-service<span class="o">=</span>http --permanent</span>
 <span class="code-line">sudo firewall-cmd --reload  </span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>ModuleNotFoundError: No module named 'Xlib'</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>pip install python3_xlib</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>pip install python3_xlib</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>ModuleNotFoundError: No module named 'xdg'</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>pip install pyxdg</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>pip install pyxdg</span>
 <span class="code-line"></span>
 <span class="code-line">File failed to load: /extensions/MathZoom.jsrs</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h1>install R</h1>

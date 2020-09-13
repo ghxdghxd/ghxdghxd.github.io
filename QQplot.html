@@ -25,14 +25,14 @@ plot的X和Y轴主要是代表各个SNP的-lg P values。预测的线是一条�
 <p>Q-Q plot主要要点：</p>
 <p>预测的虚线为什么是45°出来的呢？因为预测的线实际是通过在QQ图中第一象限作图得出。理论上一个点A在该图上的位置应该是A预测值=A实际值，转化为坐标就是A（x，y）x=y。所以预测的线是一条从原点发出的45°线。</p>
 <p>观测值的点的坐标是怎么得出来的。同样设点A的坐标是（x，y）x为预测值，y为实际观测值。查了一下R 中qq plot的算法是这样的</p>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">pvals</span> <span class="o">&lt;-</span> <span class="nf">read.table</span><span class="p">(</span><span class="s">&quot;DGI_chr3_pvals.txt&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="n">pvals</span> <span class="o">&lt;-</span> <span class="nf">read.table</span><span class="p">(</span><span class="s">&quot;DGI_chr3_pvals.txt&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span></span>
 <span class="code-line"></span>
 <span class="code-line"><span class="n">observed</span> <span class="o">&lt;-</span> <span class="nf">sort</span><span class="p">(</span><span class="n">pvals</span><span class="o">$</span><span class="n">PVAL</span><span class="p">)</span></span>
 <span class="code-line"><span class="n">lobs</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="p">(</span><span class="nf">log10</span><span class="p">(</span><span class="n">observed</span><span class="p">))</span></span>
 <span class="code-line"></span>
 <span class="code-line"><span class="n">expected</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">observed</span><span class="p">))</span></span>
 <span class="code-line"><span class="n">lexp</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="p">(</span><span class="nf">log10</span><span class="p">(</span><span class="n">expected</span> <span class="o">/</span> <span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">expected</span><span class="p">)</span><span class="m">+1</span><span class="p">)))</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <p>具体解释是这样的，先把P值从小到大排序。lobs代表纵坐标，lexp代表横坐标，纵坐标就是观测P值的-

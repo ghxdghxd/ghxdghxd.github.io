@@ -19,10 +19,19 @@
         <div class="message">
           <h1>docker</h1>
 <h2>centos yum install docker</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-&#39;EOF&#39;</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span>
+<span class="code-line">yum install docker-ce</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># 修改源 /etc/docker/daemon.json</span></span>
+<span class="code-line"><span class="o">{</span><span class="s2">&quot;registry-mirrors&quot;</span>: <span class="o">[</span><span class="s2">&quot;http://hub-mirror.c.163.com&quot;</span>, <span class="s2">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span><span class="o">]}</span></span>
+<span class="code-line">systemctl daemon-reload</span>
+<span class="code-line">systemctl restart docker</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">######## OR ####################</span></span>
+<span class="code-line">tee /etc/yum.repos.d/docker.repo <span class="s">&lt;&lt;-&#39;EOF&#39;</span></span>
 <span class="code-line"><span class="s">[dockerrepo]</span></span>
 <span class="code-line"><span class="s">name=Docker Repository</span></span>
-<span class="code-line"><span class="s">baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/</span></span>
+<span class="code-line"><span class="s">baseurl=https://yum.dockerproject.org/repo/main/centos/7/</span></span>
 <span class="code-line"><span class="s">enabled=1</span></span>
 <span class="code-line"><span class="s">gpgcheck=1</span></span>
 <span class="code-line"><span class="s">gpgkey=https://yum.dockerproject.org/gpg</span></span>
@@ -37,13 +46,13 @@
 <span class="code-line"></span>
 <span class="code-line">rocks run host <span class="s2">&quot;yum install docker-engine&quot;</span></span>
 <span class="code-line">rocks run host <span class="s2">&quot;sed -i &#39;s/other_args=\&quot;\&quot;/other_args=\&quot;--graph=\/share\/apps\/docker\&quot;/g&#39; /etc/sysconfig/docker&quot;</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <!--more-->
 
 <h2>手动安装</h2>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 手动安装centos6.5 一些需要安装</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1"># 手动安装centos6.5 一些需要安装</span></span>
 <span class="code-line">yum remove docker-engine</span>
 <span class="code-line"><span class="nb">cd</span> /share/apps/until/docker/</span>
 <span class="code-line">yum install ./lua-filesystem-1.4.2-1.el6.x86_64.rpm</span>
@@ -55,27 +64,30 @@
 <span class="code-line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo</span>
 <span class="code-line">yum install device-mapper-event-libs</span>
 <span class="code-line">service docker restart</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h3>安装错误</h3>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 下面错误：</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1"># 下面错误：</span></span>
 <span class="code-line">/usr/bin/docker: relocation error: /usr/bin/docker: symbol dm_task_get_info_with_deferred_remove, version Base not defined in file libdevmapper.so.1.02 with link <span class="nb">time</span> reference</span>
 <span class="code-line">fix: $ sudo yum install device-mapper-event-libs</span>
 <span class="code-line"><span class="c1"># 如果无法安装，重新更新</span></span>
 <span class="code-line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo</span>
 <span class="code-line"><span class="c1"># 然后再安装</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>docker应用</h2>
 <h3>启动docker</h3>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="n">service</span> <span class="n">docker</span> <span class="k">start</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>service docker start</span>
+<span class="code-line"></span>
+<span class="code-line">systemctl <span class="nb">enable</span> docker <span class="c1"># 如果想添加到开机启动</span></span>
+<span class="code-line">systemctl start docker  <span class="c1"># 启动docker服务</span></span>
+<span class="code-line"></code></pre></div>
 
 
 <h3>添加用户</h3>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># 添加docker group：</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1"># 添加docker group：</span></span>
 <span class="code-line">sudo groupadd docker</span>
 <span class="code-line"></span>
 <span class="code-line"><span class="c1"># 将当前用户添加到docker组：</span></span>
@@ -85,11 +97,11 @@
 <span class="code-line">sudo service docker restart</span>
 <span class="code-line"><span class="c1"># 开机启动</span></span>
 <span class="code-line">chkconfig docker on</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h3>修改镜像和容器的存放路径</h3>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="c1"># /etc/sysconfig/docker加入：</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="c1"># /etc/sysconfig/docker加入：</span></span>
 <span class="code-line"><span class="nv">other_args</span><span class="o">=</span><span class="s2">&quot;--graph=/data/docker&quot;</span></span>
 <span class="code-line"></span>
 <span class="code-line"><span class="c1"># 停止Docker服务</span></span>
@@ -102,7 +114,7 @@
 <span class="code-line">service docker start</span>
 <span class="code-line"><span class="c1"># 测试Docker服务</span></span>
 <span class="code-line">docker info</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h3>用法</h3>

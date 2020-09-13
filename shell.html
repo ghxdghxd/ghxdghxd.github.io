@@ -18,60 +18,61 @@
     <ul class="message-container">
         <div class="message">
           <h1>常用命令</h1>
-<div class="highlight"><pre><span class="code-line"><span></span>0表示标准输入</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>0表示标准输入</span>
 <span class="code-line">1表示标准输出</span>
 <span class="code-line">2表示标准错误输出</span>
 <span class="code-line">&gt; 默认为标准输出重定向，与 <span class="m">1</span>&gt; 相同</span>
 <span class="code-line"><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> 意思是把 标准错误输出 重定向到 标准输出.</span>
 <span class="code-line"><span class="p">&amp;</span>&gt;file 意思是把 标准输出 和 标准错误输出 都重定向到文件file中</span>
-</pre></div>
+<span class="code-line">shift<span class="o">(</span><span class="nb">shift</span> <span class="m">1</span><span class="o">)</span> 命令每执行一次，变量的个数<span class="o">(</span><span class="nv">$#</span><span class="o">)</span>减一</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2><a href="awk">awk</a></h2>
 <h2>sed</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sed -n <span class="s1">&#39;/A/,/B/p&#39;</span>  匹配A的行与匹配B的行之间的内容</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sed -n <span class="s1">&#39;/A/,/B/p&#39;</span>  匹配A的行与匹配B的行之间的内容</span>
 <span class="code-line">sed -n <span class="s1">&#39;2p,4,5p&#39;</span> 输出2 <span class="m">4</span>,5 行</span>
 <span class="code-line">sed <span class="s2">&quot;s/</span><span class="nv">$a</span><span class="s2">/</span><span class="nv">$b</span><span class="s2">/g&quot;</span> 变量替换</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>grep</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>cat file  <span class="p">|</span> grep <span class="s1">&#39;[:space:]*#&#39;</span>匹配空格</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>cat file  <span class="p">|</span> grep <span class="s1">&#39;[:space:]*#&#39;</span>匹配空格</span>
 <span class="code-line">grep -P <span class="s1">&#39;\t&#39;</span> 匹配制表符</span>
 <span class="code-line">grep -E <span class="s2">&quot;abc|123&quot;</span> myfile -n 两个关键词</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>ln</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>ln -s 源文件 目标文件</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>ln -s 源文件 目标文件</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>paste</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>paste -s -d <span class="s1">&#39;\t&#39;</span>  多行合并成一行</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>paste -s -d <span class="s1">&#39;\t&#39;</span>  多行合并成一行</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>tr</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>tr -s <span class="s1">&#39; &#39;</span> 多个空格变一个</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>tr -s <span class="s1">&#39; &#39;</span> 多个空格变一个</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>sort</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sort -V 按染色体排序 <span class="m">1</span>，2，3，，，，X，Y</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sort -V 按染色体排序 <span class="m">1</span>，2，3，，，，X，Y</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>unzip</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>unzip -l zipfile   查看list</span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>unzip -l zipfile   查看list</span>
 <span class="code-line">unzip -p zipfile <span class="s2">&quot;*/getfile&quot;</span> <span class="p">|</span>less   查看指定文件</span>
 <span class="code-line">unzip -d outdir    指定输出目录</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>gzip</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>gzip -t/--test 检测gz文件是否有错误</span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>gzip -t/--test 检测gz文件是否有错误</span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>find</h2>
@@ -98,14 +99,14 @@ find ./ -mtime 0  #查找一天内修改的文件
 find ./ -mtime -2 #查找2天内修改的文件，多了一个减号
 find ./ -mmin  -10  #查找距离现在10分钟内修改的文件</p>
 <h2>计算 expr</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>expr <span class="m">1</span> + <span class="m">1</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code>expr <span class="m">1</span> + <span class="m">1</span></span>
 <span class="code-line">expr</span>
-</pre></div>
+<span class="code-line"></code></pre></div>
 
 
 <h2>查看网速sar</h2>
-<div class="highlight"><pre><span class="code-line"><span></span>sar -n DEV <span class="m">1</span> <span class="m">100</span></span>
-</pre></div>
+<div class="highlight"><pre><span class="code-line"><span></span><code>sar -n DEV <span class="m">1</span> <span class="m">100</span></span>
+<span class="code-line"></code></pre></div>
 
 
 <h2>sudo !!命令</h2>
@@ -118,11 +119,11 @@ find ./ -mmin  -10  #查找距离现在10分钟内修改的文件</p>
 <h2>shuf n1</h2>
 <p>随机从一个文件或文件夹中选择行/文件/文件夹。首先使用ls命令来显示文件夹的内容。</p>
 <h2>数组</h2>
-<div class="highlight"><pre><span class="code-line"><span></span><span class="nv">array</span><span class="o">=(</span><span class="sb">`</span>cat test.txt<span class="p">|</span>cut -f <span class="m">1</span><span class="sb">`</span><span class="o">)</span></span>
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="nv">array</span><span class="o">=(</span><span class="sb">`</span>cat test.txt<span class="p">|</span>cut -f <span class="m">1</span><span class="sb">`</span><span class="o">)</span></span>
 <span class="code-line"><span class="si">${</span><span class="nv">array</span><span class="p">[@]</span><span class="si">}</span> <span class="c1"># 数组全部</span></span>
 <span class="code-line"><span class="si">${#</span><span class="nv">array</span><span class="p">[@]</span><span class="si">}</span> <span class="c1"># 数组长度</span></span>
 <span class="code-line"><span class="si">${</span><span class="nv">array</span><span class="p">[0]</span><span class="si">}</span> <span class="c1"># 数组元素 0 1 2</span></span>
-</pre></div>
+<span class="code-line"></code></pre></div>
         </div>
         <!-- <div class="tool-box">
           <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>

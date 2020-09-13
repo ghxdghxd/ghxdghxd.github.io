@@ -1,0 +1,303 @@
+<div class="header">
+  <h1 class="page-title">
+    <a class="icon circle-icon glyphicon glyphicon-chevron-left trigger-message-close"></a>
+    Centos7 cluster
+  </h1>
+  <div class="details">
+    <div class="left">
+      10月 18, 2019
+      <span> | </span> <a href="/category/xiao-chao-su-cha.html">小抄速查</a>
+    </div>
+    <div class="right">
+      <a class="fa fa-tag" href="/tag/linux.html">linux</a>
+      <a class="fa fa-tag" href="/tag/centos.html">centos</a>
+      <a class="fa fa-tag" href="/tag/shell.html">shell</a>
+      <a class="fa fa-tag" href="/tag/hpc.html">hpc</a>
+      <a class="fa fa-tag" href="/tag/clusconf.html">clusconf</a>
+    </div>
+  </div>
+</div>
+<div id="message-nano-wrapper" class="nano">
+  <div class="nano-content">
+    <ul class="message-container">
+        <div class="message">
+          <h1>集群扩容后, 安装曙光管理系统</h1>
+<h2>配置IP</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code>vi /etc/sysconfig/network-scripts/ifcfg-em1</span>
+<span class="code-line">service network restart</span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>每个节点手动挂载/public</h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code>ssh node1</span>
+<span class="code-line">mount admin:/public /public</span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># OR</span></span>
+<span class="code-line"></span>
+<span class="code-line">clusconf -yd mount admin:/public /public</span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>clussoft安装软件</h2>
+<blockquote>
+<p>/public/tool/clussoft-2.4
+配置文件在/public/tool/clussoft-2.4/misc</p>
+</blockquote>
+<div class="highlight"><pre><span class="code-line"><span></span><code>./clussoft -i htop-gnu-2.1.0</span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>Centos7登陆就会创建一个叫做perl5的目录</h2>
+<p>只需要将/etc/profile.d/perl-homedir.sh文件中的PERL_HOMEDIR=1改为PERL_HOMEDIR=0即可。
+原因是perl会默认为每个用户加载local::lib，如果你不需要则无需加载。而用户登陆时会执行/etc/profile文件，此文件又会执行/etc/profile.d/*.sh</p>
+<h2>epel是社区强烈打造的免费开源发行软件包版本库</h2>
+<p>yum install epel-release -y</p>
+<h2>Centos7 防火墙升级为firewall</h2>
+<h3>firewalld关于zone的操作</h3>
+<blockquote>
+<p>配置区域/etc/firewalld/zones/</p>
+</blockquote>
+<div class="highlight"><pre><span class="code-line"><span></span><code>firewall-cmd --get-zones     <span class="c1">#查看是所有zone</span></span>
+<span class="code-line"><span class="c1"># block dmz drop external home internal public trusted work</span></span>
+<span class="code-line">firewall-cmd --get-default-zone      <span class="c1">#查看默认zone</span></span>
+<span class="code-line"><span class="c1"># public</span></span>
+<span class="code-line">firewall-cmd --zone<span class="o">=</span>public --list-ports     <span class="c1">#查看public的端口</span></span>
+<span class="code-line"><span class="c1"># 10/tcp</span></span>
+<span class="code-line">firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span><span class="m">22</span>/tcp --permanent        <span class="c1">#添加端口</span></span>
+<span class="code-line">firewall-cmd --zone<span class="o">=</span>public --remove-port<span class="o">=</span><span class="m">22</span>/tcp --permanent     <span class="c1">#删除端口</span></span>
+<span class="code-line"><span class="c1"># success</span></span>
+<span class="code-line">firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span><span class="m">100</span>-500/tcp --permanent   <span class="c1">#批量开放端口</span></span>
+<span class="code-line">firewall-cmd --zone<span class="o">=</span>public --query-port<span class="o">=</span><span class="m">22</span>/tcp  <span class="c1">#查看端口是否生效</span></span>
+<span class="code-line"><span class="c1"># yes</span></span>
+<span class="code-line">firewall-cmd --set-default-zone<span class="o">=</span>work     <span class="c1">#将默认的zone修改为work</span></span>
+<span class="code-line"><span class="c1"># success</span></span>
+<span class="code-line">firewall-cmd --get-zone-of-interface<span class="o">=</span>em1    <span class="c1"># 查看网卡em1的zone</span></span>
+<span class="code-line"><span class="c1"># no zone</span></span>
+<span class="code-line">firewall-cmd --zone<span class="o">=</span>public --add-interface<span class="o">=</span>em1 --permanent <span class="c1"># 给网卡em1增加zone</span></span>
+<span class="code-line"><span class="c1"># success</span></span>
+<span class="code-line">firewall-cmd --zone<span class="o">=</span>trusted --change-interface<span class="o">=</span>em2 <span class="c1"># 修改指定网卡的zone, 防止影响torque的通信（无法调度任务），所以设置直接信任内网网卡</span></span>
+<span class="code-line"><span class="c1"># success</span></span>
+<span class="code-line">firewall-cmd --get-active-zones  <span class="c1">#查看系统中所有网卡所在的zone</span></span>
+<span class="code-line"><span class="c1"># public</span></span>
+<span class="code-line"><span class="c1">#   interfaces: em1</span></span>
+<span class="code-line"><span class="c1"># trusted</span></span>
+<span class="code-line"><span class="c1">#   interfaces: em2</span></span>
+<span class="code-line">firewall-cmd --reload <span class="c1">#重新加载</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<h3>firewalld关于service的操作</h3>
+<div class="highlight"><pre><span class="code-line"><span></span><code>firewall-cmd --get-service          <span class="c1"># 查看所有的service</span></span>
+<span class="code-line">firewall-cmd --list-service         <span class="c1"># 查看当前zone下的service</span></span>
+<span class="code-line">firewall-cmd --zone<span class="o">=</span>public --list-service   <span class="c1"># 查看指定zone下的service</span></span>
+<span class="code-line">firewall-cmd --zone<span class="o">=</span>public --add-service<span class="o">=</span>http    <span class="c1"># 把http服务临时添加到public的zone下</span></span>
+<span class="code-line">firewall-cmd --zone<span class="o">=</span>public --add-service<span class="o">=</span>http --permanent <span class="c1"># 把http服务永久添加到public的zone下</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>SSH配置</h2>
+<h3>更改SSH端口</h3>
+<div class="highlight"><pre><span class="code-line"><span></span><code>vi /etc/ssh/sshd_config</span>
+<span class="code-line">Port22      <span class="c1"># 去除注释</span></span>
+<span class="code-line">Port <span class="m">200</span>    <span class="c1"># 并添加新端口</span></span>
+<span class="code-line"><span class="c1"># PermitRootLogin no  #禁止root</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># 防火墙打开新端口</span></span>
+<span class="code-line">firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span><span class="m">22</span>/tcp --permanent</span>
+<span class="code-line">firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span><span class="m">200</span>/tcp --permanent</span>
+<span class="code-line">firewall-cmd --reload <span class="c1">#重新加载</span></span>
+<span class="code-line">systemctl restart sshd.service</span>
+<span class="code-line"><span class="c1"># 测试修改端口以后的ssh连接，重新注释掉Port 22</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<ul>
+<li>更改22端口，则clusconf -au user无法同步到节点，因为其默认为22端口，需要在节点/etc/ssh/ssh_config添加，不同IP监听不同端口</li>
+</ul>
+<div class="highlight"><pre><span class="code-line"><span></span><code>ListenAddress 外网IP:修改端口</span>
+<span class="code-line">ListenAddress 内网IP:22</span>
+<span class="code-line"></code></pre></div>
+
+
+<h3>禁用root登录，配置root在指定IP登录</h3>
+<ul>
+<li>注意禁止root登录后，一定开放内网登录，否则clusconf -au user无法同步到节点</li>
+</ul>
+<p>首先去掉<code>PermitRootLogin yes</code>注释，改为<code>PermitRootLogin no</code>，
+然后在/etc/ssh/sshd_config<em>最后的Match模块</em>处添加如下参数（<em>配置文件中参数的位置一定不要更改顺序，否则sshd服务无法启动</em>）</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>Match Address 10.1.1.0/24,</span>
+<span class="code-line">    PermitRootLogin yes</span>
+<span class="code-line"></code></pre></div>
+
+
+<h2><a href="fail2ban">使用 fail2ban 防御 SSH 服务器的暴力破解攻击</a></h2>
+<div class="highlight"><pre><span class="code-line"><span></span><code>git clone https://github.com/fail2ban/fail2ban.git</span>
+<span class="code-line"><span class="nb">cd</span> fail2ban</span>
+<span class="code-line">python setup.py install</span>
+<span class="code-line"></span>
+<span class="code-line">cp files/redhat-initd /etc/init.d/fail2ban</span>
+<span class="code-line"><span class="c1"># 设置fail2ban服务为自启动服务</span></span>
+<span class="code-line">chkconfig fail2ban on</span>
+<span class="code-line"><span class="c1">#启动fail2ban服务</span></span>
+<span class="code-line">service fail2ban start</span>
+<span class="code-line"></code></pre></div>
+
+
+<div class="highlight"><pre><span class="code-line"><span></span><code>touch /etc/fail2ban/jail.d/jail.local</span>
+<span class="code-line">vi /etc/fail2ban/jail.d/jail.local</span>
+<span class="code-line"></span>
+<span class="code-line">[DEFAULT]</span>
+<span class="code-line">bantime = 24h # 客户端主机被禁止的时长（24h）</span>
+<span class="code-line">maxretry = 5   # 客户端主机被禁止前允许失败的次数</span>
+<span class="code-line">findtime = 10m # 查找失败次数的时长（秒）</span>
+<span class="code-line"></span>
+<span class="code-line"># 屏蔽IP所使用的方法，下面使用firewalld屏蔽端口</span>
+<span class="code-line"># 这里banaction必须用firewallcmd-ipset,这是fiewalll支持的关键，如果是用Iptables请不要这样填写</span>
+<span class="code-line"># /etc/fail2ban/action.d/firewallcmd-ipset.conf</span>
+<span class="code-line">banaction = firewallcmd-ipset</span>
+<span class="code-line">banaction_allports = firewallcmd-allports</span>
+<span class="code-line"></span>
+<span class="code-line">[sshd]</span>
+<span class="code-line">enabled = true</span>
+<span class="code-line">#/etc/fail2ban/filter.d/sshd.conf</span>
+<span class="code-line">filter = sshd</span>
+<span class="code-line">port = ssh</span>
+<span class="code-line">logpath = /var/log/secure</span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>挂载存储服务</h2>
+<p>存储分为两部分, 采用不同挂载方式，需按下面的顺序挂载</p>
+<ul>
+<li>data2-4为multipath路径: admin挂载后通过nfs共享出去（100M/s)</li>
+<li>data0-1,5为162的nfs共享：各nodes可直接挂载(100M/s)</li>
+</ul>
+<h3>首先admin挂载multipath分区与162的nfs分区</h3>
+<ul>
+<li>multipath</li>
+</ul>
+<div class="highlight"><pre><span class="code-line"><span></span><code>mount /dev/sdc1 /share/swap     <span class="c1"># raid0硬盘</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># nas存储</span></span>
+<span class="code-line">service iscsi restart</span>
+<span class="code-line">systemctl start multipathd.service</span>
+<span class="code-line"></span>
+<span class="code-line">iscsiadm -m node</span>
+<span class="code-line">iscsiadm -m discovery -t st -p <span class="m">10</span>.1.1.100:3260</span>
+<span class="code-line">iscsiadm -m discovery -t st -p <span class="m">10</span>.1.1.101:3260</span>
+<span class="code-line">iscsiadm -m discovery -t st -p <span class="m">10</span>.1.1.102:3260</span>
+<span class="code-line">iscsiadm -m discovery -t st -p <span class="m">10</span>.1.1.103:3260</span>
+<span class="code-line"></span>
+<span class="code-line">/sbin/mpathconf --enable <span class="c1"># 生成配置文件/etc/multipath.conf, DM multipath kernel driver not loaded</span></span>
+<span class="code-line">multipath -ll <span class="c1"># 查看路径</span></span>
+<span class="code-line">multipath -v2 <span class="c1"># 自动更新路径（当/dev/mapper没有链接，可以更新路径试试）</span></span>
+<span class="code-line">service multipathd restart <span class="c1">#重启确认/dev/mapper下有硬盘连接</span></span>
+<span class="code-line"><span class="c1"># 挂载</span></span>
+<span class="code-line">mount /dev/mapper/mpatha1 /share/data2</span>
+<span class="code-line">mount /dev/mapper/mpathb1 /share/data3</span>
+<span class="code-line">mount /dev/mapper/mpathc1 /share/data4</span>
+<span class="code-line"></code></pre></div>
+
+
+<ul>
+<li>162的nfs</li>
+</ul>
+<div class="highlight"><pre><span class="code-line"><span></span><code>tee /public/tool/mount_nfs.sh <span class="s">&lt;&lt;-&#39;EOF&#39;</span></span>
+<span class="code-line"><span class="s">mount -o nfsvers=3 10.1.1.1:/export/data0 /share/data0</span></span>
+<span class="code-line"><span class="s">mount -o nfsvers=3 10.1.1.1:/export/data1 /share/data1</span></span>
+<span class="code-line"><span class="s">mount -o nfsvers=3 10.1.1.1:/export/data5 /share/data5</span></span>
+<span class="code-line"><span class="s">EOF</span></span>
+<span class="code-line"></span>
+<span class="code-line">bash /public/tool/mount_nfs.sh</span>
+<span class="code-line"></code></pre></div>
+
+
+<h3>然后admin添加nfs共享路径</h3>
+<blockquote>
+<p><strong>data0,1,5不要共享，否则在nodes上无法访问/share</strong>
+/etc/exports</p>
+</blockquote>
+<div class="highlight"><pre><span class="code-line"><span></span><code>/public *<span class="o">(</span>rw,async,insecure,no_root_squash,no_subtree_check<span class="o">)</span></span>
+<span class="code-line">/share  *<span class="o">(</span>rw,async,insecure,no_root_squash,no_subtree_check<span class="o">)</span></span>
+<span class="code-line">/share/swap *<span class="o">(</span>rw,async,insecure,no_root_squash,no_subtree_check<span class="o">)</span></span>
+<span class="code-line"><span class="c1">#/share/data0    *(rw,fsid=1,async,insecure,no_root_squash,no_subtree_check)</span></span>
+<span class="code-line"><span class="c1">#/share/data1    *(rw,fsid=2,async,insecure,no_root_squash,no_subtree_check)</span></span>
+<span class="code-line">/share/data2    *<span class="o">(</span>rw,async,insecure,no_root_squash,no_subtree_check<span class="o">)</span></span>
+<span class="code-line">/share/data3    *<span class="o">(</span>rw,async,insecure,no_root_squash,no_subtree_check<span class="o">)</span></span>
+<span class="code-line">/share/data4    *<span class="o">(</span>rw,async,insecure,no_root_squash,no_subtree_check<span class="o">)</span></span>
+<span class="code-line"><span class="c1">#/share/data5    *(rw,fsid=3,async,insecure,no_root_squash,no_subtree_check)</span></span>
+<span class="code-line"></span>
+<span class="code-line">exportfs -avr <span class="c1"># 重新共享所有目录</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<h3>最后各nodes挂载nfs</h3>
+<div class="highlight"><pre><span class="code-line"><span></span><code>clusconf -yd <span class="s2">&quot;mount admin:/share /share;bash /public/tool/mount_nfs.sh&quot;</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<h2>clussoft</h2>
+<blockquote>
+<p>/etc/profile.d/clussoft-env.sh</p>
+</blockquote>
+<div class="highlight"><pre><span class="code-line"><span></span><code>export CLUSSOFT_HOME=/public/tool/clussoft-2.4</span>
+<span class="code-line">export PATH=$CLUSSOFT_HOME:$PATH</span>
+<span class="code-line"></code></pre></div>
+
+
+<div class="highlight"><pre><span class="code-line"><span></span><code><span class="err">clussoft -d /public/software    #安装目录</span></span>
+<span class="code-line"><span class="err">clussoft -p nodelist            #节点列表</span></span>
+<span class="code-line"></code></pre></div>
+
+
+<p>所有软件均安装到/public/software，添加modulefile到/public/software/modules</p>
+<div class="highlight"><pre><span class="code-line"><span></span><code>#%Module1.0</span>
+<span class="code-line">module-whatis   &quot;software...&quot;</span>
+<span class="code-line"></span>
+<span class="code-line">conflict apps</span>
+<span class="code-line"></span>
+<span class="code-line">set             APPS_HOME                /public/software/apps/R/3.6.1</span>
+<span class="code-line"></span>
+<span class="code-line">setenv          APPS_ROOT               /public/software/apps/R/3.6.1</span>
+<span class="code-line">prepend-path    PATH                    ${APPS_HOME}/bin</span>
+<span class="code-line"></code></pre></div>
+
+
+<h1>禁用 gridview 相关服务的自启动</h1>
+<div class="highlight"><pre><span class="code-line"><span></span><code># 查看所有自启动服务</span>
+<span class="code-line">chkconfig --list</span>
+<span class="code-line"># 关闭 gridview_platform 服务自启</span>
+<span class="code-line">chkconfig gridview_platform off</span>
+<span class="code-line"></code></pre></div>
+        </div>
+        <!-- <div class="tool-box">
+          <a href="#" class="circle-icon small glyphicon glyphicon-share-alt"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-remove"></a>
+          <a href="#" class="circle-icon small red-hover glyphicon glyphicon-flag"></a>
+        </div> -->
+    </ul>
+  </div>
+</div>
+
+<script>
+  $('.nano').overlayScrollbars({
+    scrollbars: {
+      autoHide: "leave",
+    }
+  });
+  $('.trigger-message-close').on('click', function () {
+    $('body').removeClass('show-message');
+    $('#main .message-list li').removeClass('active');
+    messageIsOpen = false;
+    $('body').removeClass('show-main-overlay');
+  });
+  $('#message .header .left a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addDisjunctiveFacetRefinement("category", e.target.text).search();
+    
+  });
+  $('#message .header .right a').on('click', function (e) {
+    e.preventDefault();
+    helper.setQuery().clearRefinements().addFacetRefinement("tags", e.target.text).search();
+  });
+</script>
