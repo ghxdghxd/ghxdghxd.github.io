@@ -22,9 +22,17 @@ MySQL root 用户的密码 (MYSQL_ROOT_PASSWORD and DB_ROOT_PASSWD)
 持久化存储 Seafile 数据的 volumes 目录 (volumes)
 /public/tool/seafile/seafile-data:/shared
 
+# 开启webdav, seafile/seafile-data/seafile/conf/seafdav.confco
+[WEBDAV]
+enabled = true
+port = 8080
+fastcgi = true
+share_name = /
+
 ports:
-    - "1951:80"   # 网页与客户端登录
+    - "sea:80"   # 网页与客户端登录
     - "8082:8082" # 文件上传下载 ==> seahub_settings.py
+    - "dav:8080"    # webdav
 
 SEAFILE_SERVER_HOSTNAME=IP
 
@@ -32,6 +40,7 @@ docker-compose up -d
 
 # 升级
 docker-compose pull
+docker-compose down
 docker-compose up -d
 ```
 

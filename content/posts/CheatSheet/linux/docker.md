@@ -120,6 +120,7 @@ docker info
 ### 用法
 
 + 查看镜像 docker images
++ 删除镜像 docker rmi IMAGE_ID
 + 查找镜像 docker search
 + 查看容器 docker ps -a
 + 运行容器 docker run
