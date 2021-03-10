@@ -13,11 +13,15 @@ Summary: ubuntu安装R与Rstudio的过程
 + error
 
 ```bash
-File failed to load: /extensions/MathZoom.js
-export CFLAGS="-I/share/apps/R_depends/include"
-export LDFLAGS="-L/share/apps/R_depends/lib"
+R_HOME=/public/software/apps/R/4.0.3
+R_depends=/public/software/apps/R/depends
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/apps/R_depends/lib
+
+File failed to load: /extensions/MathZoom.js
+export CFLAGS="-I$R_depends/include"
+export LDFLAGS="-L$R_depends/lib"
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$R_depends/lib
 ```
 
 <!--more-->
@@ -33,7 +37,7 @@ apt-get build-dep r-base-core
 ```shell
 sudo apt install tcl-dev
 sudo apt install tk-dev
-./configure --prefix=/opt/R-3.6.1 --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk \
+./configure --prefix=$R_HOME --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk --with-pcre1 \
 --with-blas --with-lapack # 提高矩阵速度
 ```
 
@@ -87,9 +91,9 @@ sudo apt-get install liblzma-dev
 ### 7. configure: error: pcre &gt;= 8.10
 
 ```shell
-wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.39.tar.gz
-tar xvf pcre-8.39.tar.gz
-cd pcre-8.39
+wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.44.tar.gz
+tar xvf pcre-8.44.tar.gz
+cd pcre-8.44
 ./configure --enable-utf8 --prefix=$R_depends
 make &amp; sudo make install
 ```
@@ -97,6 +101,7 @@ make &amp; sudo make install
 ### 8. libcurl &gt;= 7.28.0 library and headers are required with support for https
 
 ```shell
+# 用系统默认版
 sudo apt install libcurl4-openssl-dev
 
 wget https://www.openssl.org/source/openssl-1.1.0b.tar.gz
@@ -140,6 +145,13 @@ sudo mktexlsr
 ```shell
 sudo apt-get install libpng16-dev
 sudo apt-get install libtiff5-dev
+
+https://sourceforge.net/projects/libpng/files/libpng16/1.6.37/libpng-1.6.37.tar.gz/download
+
+cd libpng-1.6.37
+./configure --prefix=/public/software/apps/R/depends/
+make check
+make install
 ```
 
 ## make

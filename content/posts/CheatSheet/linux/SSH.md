@@ -86,6 +86,7 @@ PermitRootLogin no　　 　# 是否允许 root 登入！预设是允许的，�
 UserLogin no　　　　　　　# 在 SSH 底下本来就不接受 login 这个程序的登入！
 StrictModes yes　　　　　　# 当使用者的 host key 改变之后，Server 就不接受联机，
 　　　　　　　　　　　　　 # 可以抵挡部分的木马程序！
+MaxAuthTries 6　　　　　　# 高确保SSH MaxAuthTries设置最大密码尝试失败次数3-6，建议为4：
 # RSAAuthentication yes　　 # 是否使用纯的 RSA 认证！？仅针对 version 1 ！
 PubkeyAuthentication yes　 # 是否允许 Public Key ？当然允许啦！只有 version 2
 AuthorizedKeysFile  .ssh/authorized_keys
@@ -146,4 +147,35 @@ DenyGroups test　　　　　 # 与 DenyUsers 相同！仅抵挡几个群组而
 
 ```sh
 Subsystem       sftp    /usr/lib/ssh/sftp-server
+```
+
+```sh
+#! /bin/bash
+awk '/Failed/{print $(NF-3)}' /var/log/secure|sort|uniq -c|awk '{print $2"="$1;}' |grep -v "^59.77" > /public/tool/ssh_deny/sshPrevent_black.txt
+DEFINE="3"
+for i in `cat /public/tool/ssh_deny/sshPrevent_black.txt`
+do
+        IP=`echo $i |awk -F= '{print $1}'`
+        NUM=`echo $i|awk -F= '{print $2}'`
+        if [ $NUM -gt $DEFINE ];
+        then
+         grep $IP /etc/hosts.deny > /dev/null
+          if [ $? -gt 0 ];
+          then
+          echo "sshd:$IP" >> /etc/hosts.deny
+          fi
+        fi
+done
+
+grep "authentication failure" /var/log/secure|awk '{split($14,a,"=");if(a[2]~/[0-9]/){print a[2]}}'|sort|uniq -c|awk 'NF==2{print $2"="$1;}'|\
+    grep -v "^59.77"> /public/tool/ssh_deny/sshPrevent_black_rootlogin.txt
+for i in `cat /public/tool/ssh_deny/sshPrevent_black_rootlogin.txt`
+do
+    IP=`echo $i |awk -F= '{print $1}'`
+    grep $IP /etc/hosts.deny > /dev/null
+    if [ $? -gt 0 ];
+        then
+        echo "sshd:$IP" >> /etc/hosts.deny
+    fi
+done
 ```

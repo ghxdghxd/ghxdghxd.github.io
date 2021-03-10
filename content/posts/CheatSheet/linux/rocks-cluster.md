@@ -209,6 +209,8 @@ service pbs_server restart
 ## multipath与iscsi操作
 
 + 硬件连接及硬盘灯(绿), 可以插拔一下试试
++ ADMIN@10.1.1.120 supermicr
++ 10.1.1.108 inforternd
 + 确定服务开启:
 
 ```sh

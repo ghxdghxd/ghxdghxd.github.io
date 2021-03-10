@@ -23,10 +23,12 @@ service network restart
 ```shell
 ssh node1
 mount admin:/public /public
+mount admin:/public/extra /public/extra
 
 # OR
 
 clusconf -yd mount admin:/public /public
+clusconf -yd mount admin:/public/extra /public/extra
 ```
 
 ## clussoft安装软件
@@ -73,6 +75,8 @@ firewall-cmd --get-zone-of-interface=em1    # 查看网卡em1的zone
 firewall-cmd --zone=public --add-interface=em1 --permanent # 给网卡em1增加zone
 # success
 firewall-cmd --zone=trusted --change-interface=em2 # 修改指定网卡的zone, 防止影响torque的通信（无法调度任务），所以设置直接信任内网网卡
+# success
+firewall-cmd --permanent --add-rich-rule='rule protocol value=icmp drop' #禁止ping
 # success
 firewall-cmd --get-active-zones  #查看系统中所有网卡所在的zone
 # public
@@ -184,11 +188,17 @@ mount /dev/sdc1 /share/swap     # raid0硬盘
 service iscsi restart
 systemctl start multipathd.service
 
+# /etc/multipath.conf 配置路径的规则
+# 如果user_friendly_names yes,则配置:
+# /etc/multipath/bindings
+
 iscsiadm -m node
 iscsiadm -m discovery -t st -p 10.1.1.100:3260
 iscsiadm -m discovery -t st -p 10.1.1.101:3260
 iscsiadm -m discovery -t st -p 10.1.1.102:3260
 iscsiadm -m discovery -t st -p 10.1.1.103:3260
+
+lsscsi -ds #发现新增加的网络硬盘
 
 /sbin/mpathconf --enable # 生成配置文件/etc/multipath.conf, DM multipath kernel driver not loaded
 multipath -ll # 查看路径
@@ -212,6 +222,22 @@ EOF
 bash /public/tool/mount_nfs.sh
 ```
 
+* synology
+
+```sh
+#本地打开localhost:7000,访问synology群晖页面
+ssh -CfNg -L 7070:10.1.1.104:5000 name@ip
+
+iscsiadm -m discovery -t st -p 10.1.1.104:3260
+iscsiadm -m discovery -t st -p 10.1.1.105:3260
+
+iscsiadm -m session
+iscsiadm -m node --targetname "iqn.2000-01.com.synology:rs2418.Target-1.d3339b73b7" --portal "10.1.1.104" --login
+lsscsi -ds #发现新增加的网络硬盘
+
+UUID=e83e7403-99d5-4079-94c8-d2073a8ad661 /share/data6 xfs defaults,_netdev 0 0
+```
+
 ### 然后admin添加nfs共享路径
 
 > **data0,1,5不要共享，否则在nodes上无法访问/share**
@@ -227,6 +253,7 @@ bash /public/tool/mount_nfs.sh
 /share/data3    *(rw,async,insecure,no_root_squash,no_subtree_check)
 /share/data4    *(rw,async,insecure,no_root_squash,no_subtree_check)
 #/share/data5    *(rw,fsid=3,async,insecure,no_root_squash,no_subtree_check)
+/share/data6    *(rw,async,insecure,no_root_squash,no_subtree_check)
 
 exportfs -avr # 重新共享所有目录
 ```
@@ -272,4 +299,45 @@ prepend-path    PATH                    ${APPS_HOME}/bin
 chkconfig --list
 # 关闭 gridview_platform 服务自启
 chkconfig gridview_platform off
+```
+
+# vncserver
+
+```sh
+yum install vnc-server
+sudo cp /usr/lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@.service
+firewall-cmd --zone=public --add-port=5901/tcp --permanent
+firewall-cmd --reload
+sudo systemctl daemon-reload
+service vncserver start
+```
+
+# acl权限问题
+
+## 开启acl权限
+
+1. 修改mount选项：
+
+```sh
+vi /etc/fstab
+# /dev/mapper/vg_server1-logs       /home         ext4    defaults,acl       0
+mount -o remount /home
+```
+
+2. 使用tune2fs修改文件系统信息：
+
+> tune2fs开启acl后已是永久有效，无需再改fstab的mount选项：
+
+```sh
+tune2fs -o acl /dev/vda3           #修改文件系统自身信息来设置acl选项
+tune2fs -o ^acl /dev/vda3          #取消acl选项
+```
+
+## 文件夹添加用户读写权限
+
+```sh
+getfacl bobdir/                    #查看权限
+setfacl -m u:joe:rx bobdir/        #给某个用户设置权限
+setfacl -m g:aclgp1:rx bobdir/     #给某个组设置权限
+setfacl -x g:aclgp1 bobdir/        #取消某项权限 
 ```

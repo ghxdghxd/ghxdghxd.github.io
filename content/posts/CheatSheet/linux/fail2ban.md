@@ -183,3 +183,10 @@ Hat的发行版中，按照下面的方式让自动启动生效。
 ```shell
 sudo chkconfig fail2ban on          # 在 CentOS/RHEL 6
 sudo systemctl enable fail2ban      # 在 Fedora 或 CentOS/RHEL 7
+```
+
+## 无法启动
+
+```text
+可能是没有文件夹/var/run/fail2ban
+```
