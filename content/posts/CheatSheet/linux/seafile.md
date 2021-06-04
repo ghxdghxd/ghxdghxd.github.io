@@ -42,6 +42,9 @@ docker-compose up -d
 docker-compose pull
 docker-compose down
 docker-compose up -d
+
+# 清理缓存
+docker exec 9bb836e6b5d1 /scripts/gc.sh
 ```
 
 ## 不显示头像

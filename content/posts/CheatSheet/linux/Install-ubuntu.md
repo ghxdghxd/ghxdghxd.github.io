@@ -16,6 +16,28 @@ Summary: ubuntu常用安装与配置
 sudo apt update & sudo apt upgrade
 ```
 
+## nvidia
+
+固定内核与nvidia版本
+
+```sh
+apt install linux-image-5.4.0-67-generic
+apt install linux-modules-nvidia-450-5.4.0-67-generic
+apt install nvidia-driver-450 nvidia-dkms-450 nvidia-kernel-common-450 nvidia-kernel-source-450 nvidia-utils-450 xserver-xorg-video-nvidia-450 libnvidia-common-450 libnvidia-gl-450
+
+# 切换显卡
+prime-select intel
+prime-select nvidia
+
+#删除旧内核
+dpkg --purge linux-image-xx.xx.x-xx-generic
+#锁定内核版本
+#关闭内核的自动更新，锁定内核版本
+sudo apt-mark hold linux-image-generic linux-headers-generic
+#解锁，启用自动更新
+sudo apt-mark unhold linux-image-generic linux-headers-generic
+```
+
 ## chrome
 
 ```sh
@@ -64,6 +86,22 @@ sudo cp /usr/share/fcitx/xdg/autostart/fcitx-autostart.desktop /etc/xdg/autostar
 
 ```sh
 https://www.jianguoyun.com/s/downloads/linux#build_from_src
+
+# 针对64位系统：nutstore_linux_dist_x64.tar.gz
+wget https://www.jianguoyun.com/static/exe/installer/nutstore_linux_dist_x64.tar.gz -O /tmp/nutstore_bin.tar.gz
+# 解压缩二进制组件包
+mkdir -p ~/.nutstore/dist && tar zxf /tmp/nutstore_bin.tar.gz -C ~/.nutstore/dist
+#安装坚果云菜单和图标
+~/.nutstore/dist/bin/install_core.sh
+```
+
+## seafile
+
+```sh
+#For Ubuntu 20.04
+sudo bash -c "echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/seafile-keyring.asc] https://linux-clients.seafile.com/seafile-deb/focal/ stable main' > /etc/apt/sources.list.d/seafile.list"
+sudo apt update
+sudo apt install -y seafile-gui
 ```
 
 ## zsh

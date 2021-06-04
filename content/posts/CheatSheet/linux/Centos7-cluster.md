@@ -18,17 +18,17 @@ vi /etc/sysconfig/network-scripts/ifcfg-em1
 service network restart
 ```
 
-## 每个节点手动挂载/public
+## 每个节点手动挂载/public, /share
 
 ```shell
 ssh node1
 mount admin:/public /public
-mount admin:/public/extra /public/extra
+mount admin:/share/swap /share/swap
 
 # OR
 
 clusconf -yd mount admin:/public /public
-clusconf -yd mount admin:/public/extra /public/extra
+clusconf -yd mount admin:/share/swap /share/swap
 ```
 
 ## clussoft安装软件
@@ -235,6 +235,7 @@ iscsiadm -m session
 iscsiadm -m node --targetname "iqn.2000-01.com.synology:rs2418.Target-1.d3339b73b7" --portal "10.1.1.104" --login
 lsscsi -ds #发现新增加的网络硬盘
 
+mount --uuid=e83e7403-99d5-4079-94c8-d2073a8ad661 /share/data6
 UUID=e83e7403-99d5-4079-94c8-d2073a8ad661 /share/data6 xfs defaults,_netdev 0 0
 ```
 
@@ -340,4 +341,14 @@ getfacl bobdir/                    #查看权限
 setfacl -m u:joe:rx bobdir/        #给某个用户设置权限
 setfacl -m g:aclgp1:rx bobdir/     #给某个组设置权限
 setfacl -x g:aclgp1 bobdir/        #取消某项权限 
+```
+
+## 免费证书
+
+```sh
+# 生成证书
+~/.acme.sh/acme.sh --issue -d xmbd.tk -d *.xmbd.tk --dns dns_dp
+
+# 更新证书
+~/.acme.sh/acme.sh --renew -d xmbd.tk -d *.xmbd.tk --dns dns_dp --force
 ```

@@ -91,11 +91,11 @@ sudo apt-get install liblzma-dev
 ### 7. configure: error: pcre &gt;= 8.10
 
 ```shell
-wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.44.tar.gz
+wget https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.gz
 tar xvf pcre-8.44.tar.gz
 cd pcre-8.44
 ./configure --enable-utf8 --prefix=$R_depends
-make &amp; sudo make install
+make &amp; sudo make install  # 安装后添加include
 ```
 
 ### 8. libcurl &gt;= 7.28.0 library and headers are required with support for https
@@ -154,6 +154,15 @@ make check
 make install
 ```
 
+### 13. loading shared libraries: libicuuc.so.66: cannot open shared object file: No such file or directory
+> ../../lib/libR.so: undefined reference to `ucol_strcollIter_58'
+
+```shell
+#download https://github.com/unicode-org/icu/releases/tag/release-58-3
+tar xvf icu4c-58_3-src.tgz
+
+```
+
 ## make
 
 ### 1./usr/local/lib/libbz2.a: 无法添加符号: 错误的值
@@ -206,8 +215,8 @@ sudo apt-get install libgstreamer-plugins-base0.10-0
 ### rstudio: error while loading shared libraries: libssl.so.1.0.0: cannot open shared object file: No such file or directory
 
 ```sh
-wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb
-dpkg -i ./libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb
+wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2g-1ubuntu4_amd64.deb
+dpkg -i ./libssl1.0.0_1.0.2g-1ubuntu4_amd64.deb
 ```
 
 ### run R

@@ -44,3 +44,26 @@ show_col(pal_d3("category10")(10)[c(1:6,8)])
 # 依次合并
 geno <- Reduce(function(x, y, ...) merge(x, y, ...), geno)
 ```
+
+## kmeans cluster
+
+```R
+#要是没有这个包的话，首先需要安装一下
+#install.packages("factoextra")
+#载入包
+library(factoextra)
+# 载入数据
+data("USArrests") 
+# 数据进行标准化
+df <- scale(USArrests) 
+# 查看数据的前五行
+head(df, n = 5)
+               Murder   Assault   UrbanPop         Rape
+Alabama    1.24256408 0.7828393 -0.5209066 -0.003416473
+Alaska     0.50786248 1.1068225 -1.2117642  2.484202941
+Arizona    0.07163341 1.4788032  0.9989801  1.042878388
+Arkansas   0.23234938 0.2308680 -1.0735927 -0.184916602
+California 0.27826823 1.2628144  1.7589234  2.067820292
+#确定最佳聚类数目
+fviz_nbclust(df, kmeans, method = "wss") + geom_vline(xintercept = 4, linetype = 2)
+```
