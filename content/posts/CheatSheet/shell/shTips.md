@@ -103,8 +103,8 @@ mtime 最后一次内容修改时间, 如 vi 保存后等, 修改时间发生改
 *ls -lt    ./  按修改时间顺序查看
 *ls -lut ./ 按访问时间顺序查看
 
-[acm]time  计量单位是天，即24H
-[acm]min    计量单位是分钟
+[a|c|m]time  计量单位是天，即24H
+[a|c|m]min    计量单位是分钟
 find ./ -mtime 0  #查找一天内修改的文件
 find ./ -mtime -2 #查找2天内修改的文件，多了一个减号
 find ./ -mmin  -10  #查找距离现在10分钟内修改的文件
@@ -147,4 +147,18 @@ array=(`cat test.txt|cut -f 1`)
 ${array[@]} # 数组全部
 ${#array[@]} # 数组长度
 ${array[0]} # 数组元素 0 1 2
+```
+
+## parallel
+
+```shell
+
+```
+
+## terminal
+
+```sh
+stty echo   #无法显示输入
+
+stty sane   #无法回车
 ```

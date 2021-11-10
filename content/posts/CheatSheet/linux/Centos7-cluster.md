@@ -20,6 +20,12 @@ service network restart
 
 ## 每个节点手动挂载/public, /share
 
++ 配置列表
+  + admin
+    + [2.10GHz] \* 4 \* 8核/CPU \* 2线程/核 = 64
+    + 1T \* 4块 >>> 3T(raid5), 959 centos-root + 1.8T public
+    + 1T \* 2块 >>> 1.9T(raid0) /share/swap
+
 ```shell
 ssh node1
 mount admin:/public /public
@@ -29,6 +35,24 @@ mount admin:/share/swap /share/swap
 
 clusconf -yd mount admin:/public /public
 clusconf -yd mount admin:/share/swap /share/swap
+```
+
+### --set-nfs
+
+>/opt/gridview/clusconf/etc/nfs.cfg
+
+```shell
+各节点手动挂载, mount node1:/export/tmp1 /share/tmp1
+
+## keyword NFSDIR list the path will be shared by nfs
+## according the sequence:hostname(IP) path(Nfs Server) MountPoint(nfs client)
+##         server      serverPath     serverOptions                  MountPoint      mountOption
+#NFSDIR    node1       /public       *(rw,no_root_squash,no_subtree_check,async)      /public         "-o nfsvers=3" 
+NFSDIR     node1       /export/tmp1  *(rw,no_root_squash,no_subtree_check,async)      /share/tmp1     "-o nfsvers=3"
+#NFSDIR    node1       /public2      *(rw,no_root_squash,no_subtree_check,async)      /public2        "-o nfsvers=3"
+#NFSDIR    inode40     /data2        *(rw,no_root_squash,no_subtree_check,async)      /data2          "-o nfsvers=3"
+## list the nfs directory binded with /home by mount --bind /yourpath /home
+#BINDHOME  /public/home
 ```
 
 ## clussoft安装软件
@@ -198,6 +222,8 @@ iscsiadm -m discovery -t st -p 10.1.1.101:3260
 iscsiadm -m discovery -t st -p 10.1.1.102:3260
 iscsiadm -m discovery -t st -p 10.1.1.103:3260
 
+iscsiadm -m node --targetname "iqn.2002-10.com.infortrend:raid.uid317474.012" --portal 10.1.1.101 --login
+
 lsscsi -ds #发现新增加的网络硬盘
 
 /sbin/mpathconf --enable # 生成配置文件/etc/multipath.conf, DM multipath kernel driver not loaded
@@ -225,7 +251,7 @@ bash /public/tool/mount_nfs.sh
 * synology
 
 ```sh
-#本地打开localhost:7000,访问synology群晖页面
+#本地打开localhost:7070,访问synology群晖页面
 ssh -CfNg -L 7070:10.1.1.104:5000 name@ip
 
 iscsiadm -m discovery -t st -p 10.1.1.104:3260
@@ -263,6 +289,23 @@ exportfs -avr # 重新共享所有目录
 
 ```shell
 clusconf -yd "mount admin:/share /share;bash /public/tool/mount_nfs.sh"
+```
+
+### 挂载nodes1上的nfs
+
+```shell
+# in node1
+mount /dev/sdb1 /share1/tmp1
+
+cat /etc/exports
+# /export/tmp1 *(rw,no_root_squash,no_subtree_check,async)
+
+# in head node
+mount node1:/share1/tmp1 /share1/tmp1
+for i in 2 3;
+do
+clusconf -n $i -yd "mount node1:/share1/tmp1 /share1/tmp1"
+done
 ```
 
 ## clussoft
@@ -319,11 +362,11 @@ service vncserver start
 
 1. 修改mount选项：
 
-```sh
-vi /etc/fstab
-# /dev/mapper/vg_server1-logs       /home         ext4    defaults,acl       0
-mount -o remount /home
-```
+    ```sh
+    vi /etc/fstab
+    # /dev/mapper/vg_server1-logs       /home         ext4    defaults,acl       0
+    mount -o remount /home
+    ```
 
 2. 使用tune2fs修改文件系统信息：
 
@@ -346,9 +389,38 @@ setfacl -x g:aclgp1 bobdir/        #取消某项权限
 ## 免费证书
 
 ```sh
+# 下载
+wget -O - https://get.acme.sh |sh
+# 注册
+~/.acme.sh/acme.sh --register-account -m guojt-4451@163.com
 # 生成证书
 ~/.acme.sh/acme.sh --issue -d xmbd.tk -d *.xmbd.tk --dns dns_dp
-
+~/.acme.sh/acme.sh --issue -d xmbd.net.cn -d *.xmbd.net.cn --dns dns_dp
 # 更新证书
 ~/.acme.sh/acme.sh --renew -d xmbd.tk -d *.xmbd.tk --dns dns_dp --force
+```
+
+## 清除 硬盘raid信息ddf_raid_member
+
+```sh
+适用lsblk命令可以查看当先系统下的磁盘相关信息及磁盘大小
+
+删除对应磁盘下的分区
+以删除sda 的sda1 sda2分区为例
+进入：#parted /dev/sda
+查看：（parted）p
+删除：（parted）rm 1
+（parted）rm 2
+
+
+通常raid卡的信息会放在最后一个柱面即最后63个扇区
+使用dd命令打印最后63个扇区到aaa中
+dd if=/dev/sdb of=aaa bs=512 skip=$(( $(blockdev --getsz /dev/sdb) - 63 )) count=63
+使用hexedit查看aaa
+将这63个扇区置零, dd if=/dev/zero of=/dev/sdb bs=512 seek=$(( $(blockdev --getsz /dev/sdb) - 63 )) count=63
+重新查看aaa, dd if=/dev/sdb of=aaa bs=512 skip=$(( $(blockdev --getsz /dev/sdb) - 63 )) count=63
+
+# 有坏块
+重建进行修复: mkfs.ext4 -S /dev/sdb1
+重建完成后进行修复：fsck.ext4 -y /dev/sdb1
 ```

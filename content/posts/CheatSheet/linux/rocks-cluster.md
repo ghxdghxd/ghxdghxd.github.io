@@ -209,8 +209,8 @@ service pbs_server restart
 ## multipath与iscsi操作
 
 + 硬件连接及硬盘灯(绿), 可以插拔一下试试
-+ ADMIN@10.1.1.120 supermicr
-+ 10.1.1.108 inforternd
++ ADMIN@10.1.1.120 supermicr, IMPI
++ 10.1.1.108 inforternd, 无SSL
 + 确定服务开启:
 
 ```sh
@@ -431,4 +431,18 @@ Error: Could not get file 'http://10.1.1.1:372/411.d//': 400 Bad
 # 在/etc/httpd/conf/httpd.conf添加
 # HttpProtocolOptions Unsafe
 service httpd restart
+```
+
+# 出现结构需要清理 (structure needs cleaning)
+
+```text
+1)首先df -t 查看出错的挂载点对应的文件系统和文件系统类型
+2)然后umount这个文件系统
+比如:umount /dev/sda1 
+3)然后根据文件系统类型不同操作不同 
+比如ext4:
+fsck.ext4 /dev/sda1
+或者xfs:
+xfs_repair /dev/sda1
+4)最后重启reboot
 ```

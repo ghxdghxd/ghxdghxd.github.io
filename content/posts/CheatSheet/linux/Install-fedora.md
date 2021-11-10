@@ -157,6 +157,8 @@ cp /share/apps/Zotero_linux-x86_64/zotero.desktop /usr/share/applications
 git clone https://github.com/jlegewie/zotfile.git
 cd zotfile
 make
+
+安装xpdf, 提取pdf元数据
 ```
 
 ## wewechat

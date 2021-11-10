@@ -16,9 +16,17 @@ Summary: ubuntu常用安装与配置
 sudo apt update & sudo apt upgrade
 ```
 
+## disable wayland
+
+```sh
+gedit /etc/gdm3/custom.conf
+# WaylandEnable=false
+```
+
 ## nvidia
 
 固定内核与nvidia版本
+> https://developer.download.nvidia.cn/compute/cuda/repos
 
 ```sh
 apt install linux-image-5.4.0-67-generic
@@ -93,6 +101,11 @@ wget https://www.jianguoyun.com/static/exe/installer/nutstore_linux_dist_x64.tar
 mkdir -p ~/.nutstore/dist && tar zxf /tmp/nutstore_bin.tar.gz -C ~/.nutstore/dist
 #安装坚果云菜单和图标
 ~/.nutstore/dist/bin/install_core.sh
+
+# can't import g
+sudo ln -s /usr/lib/python3/dist-packages/gi/_gi.cpython-{36m,37m}-x86_64-linux-gnu.so
+sed -i 's/env //g' ~/.nutstore/dist/bin/nutstore-pydaemon.py
+# can't import appindicator
 ```
 
 ## seafile

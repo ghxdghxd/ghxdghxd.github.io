@@ -110,6 +110,13 @@ gitlab-rails console
 #进入控制台，然后发送测试邮件
 # Notify.test_email({收件者邮箱地址},{邮件主题},{邮件内容}).deliver_now
 Notify.test_email('email', 'Hello World', 'This is a message').deliver_now
+
+# 升级 gitlab
+# 不同版本, 会导致无法启动，无法恢复备份（gitlab高版本与低版本备份不兼容）
+# 升级顺序 https://docs.gitlab.com/ee/policy/maintenance.html#upgrade-recommendations
+# 依次修改 docker-compose.yaml 的镜像版本，每次仅升级一个次版本号：
+docker-compose up -d --build
+
 ```
 
 ## 添加源到/etc/yum.repos.d/gitlab-ce.repo

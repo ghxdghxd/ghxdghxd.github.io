@@ -35,8 +35,7 @@ apt-get build-dep r-base-core
 ## ./configure
 
 ```shell
-sudo apt install tcl-dev
-sudo apt install tk-dev
+sudo apt install tcl-dev tk-dev
 ./configure --prefix=$R_HOME --enable-R-shlib --with-libpng --with-jpeglib --with-libtiff --with-x --with-tcltk --with-pcre1 \
 --with-blas --with-lapack # 提高矩阵速度
 ```
@@ -155,6 +154,7 @@ make install
 ```
 
 ### 13. loading shared libraries: libicuuc.so.66: cannot open shared object file: No such file or directory
+
 > ../../lib/libR.so: undefined reference to `ucol_strcollIter_58'
 
 ```shell
