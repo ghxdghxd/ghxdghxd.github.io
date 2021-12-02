@@ -363,6 +363,9 @@ systemctl start slurmd
 
 #如果sinfo -R出现Low RealMemory的问题,直接
 scontrol update NodeName=compute0[2-3,5] State=idle
+
+#节点出现draining, 直接
+Set the node to a DOWN state and then return it to service ("scontrol update NodeName=<node> State=down Reason=hung_proc" and "scontrol update NodeName=<node> State=resume").
 ```
 
 ## 添加用户
