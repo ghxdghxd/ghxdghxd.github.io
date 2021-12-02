@@ -1,3 +1,14 @@
+---
+Title: Slurm-cluster
+Date: 2021-12-02 10:20
+Modified: 2021-12-02 16:35
+Category: linux
+Tags: slurm
+Slug: slurm
+Authors: JT Guo
+Summary: install slurm
+---
+
 # install and configure
 
 cenntOS最小化安装；升级软件补丁，内核；关闭SELinux和防火墙。
