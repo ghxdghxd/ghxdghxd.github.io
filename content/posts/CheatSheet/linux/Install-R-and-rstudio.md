@@ -22,6 +22,12 @@ export CFLAGS="-I$R_depends/include"
 export LDFLAGS="-L$R_depends/lib"
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$R_depends/lib
+
+#错误: C++17 standard requested but CXX17 is not defined
+# ~/.R/Makevars
+CXX14FLAGS=-O3 -march=native -mtune=native -fPIC
+CXX14=g++
+CXX17=g++
 ```
 
 <!--more-->

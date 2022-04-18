@@ -76,6 +76,11 @@ chmod a+x NVIDIA-Linux-x86_64-410.79.run
 ```sh
 lsblk
 /opt/MegaRAID/MegaCli/MegaCli64 -cfgdsply -aALL
+
+两块raid卡
+H700
+H800小存储
+162 为 raid10
 ```
 
 + 配置列表
@@ -106,6 +111,13 @@ lsblk
     + 8T \* 5块 >>> 30T, /dev/mapper/mpathhp1
 
 ## rocks常用命令
+
+### 删除节点
+
+```sh
+rocks remove host compute-0-6
+rocks sync config
+```
 
 ### 所有节点运行
 

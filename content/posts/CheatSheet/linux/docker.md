@@ -126,7 +126,8 @@ docker info
 + 删除镜像 docker rmi IMAGE_ID
 + 查找镜像 docker search
 + 查看容器 docker ps -a
-+ 运行容器 docker run
++ 运行容器 docker run -dit --name CONTAINER_ID IMAGE_NAME:v1 /bin/bash
+
 + 进入窗口 docker exec -it IMAGE_ID /bin/bash
 + 将宿主机的/var/data挂载到容器中的/data: docker run -tdi -v /var/data:/data centos
 
@@ -134,3 +135,21 @@ docker info
 修改/etc/sysconfig/docker，OPTIONS去掉--selinux-enabled
 
 如果主机修改ip后, 需要service docker restart
+
+#### 建立dockerhub仓库
+
+```sh
+#拉取系统
+docker pull centos:7
+#启动境象
+docker run -dit --name centos7 centos:7 /bin/bash
+#进入系统
+docker exec -it centos7 /bin/bash
+#安装软件
+# 打包
+docker export 9cd882067705 | docker import - workspace:v1
+# 标记
+docker tag workspace:v1 ghxdghxd/workspace:v1
+# 推送
+docker push ghxdghxd/workspace:v1
+```

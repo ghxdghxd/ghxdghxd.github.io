@@ -22,7 +22,7 @@ MySQL root 用户的密码 (MYSQL_ROOT_PASSWORD and DB_ROOT_PASSWD)
 持久化存储 Seafile 数据的 volumes 目录 (volumes)
 /public/tool/seafile/seafile-data:/shared
 
-# 开启webdav, seafile/seafile-data/seafile/conf/seafdav.confco
+# 开启webdav, seafile/seafile-data/seafile/conf/seafdav.conf
 [WEBDAV]
 enabled = true
 port = 8080
@@ -39,7 +39,7 @@ SEAFILE_SERVER_HOSTNAME=IP
 docker-compose up -d
 
 # 升级
-docker-compose pull
+docker pull seafileltd/seafile-mc:latest
 docker-compose down
 docker-compose up -d
 
@@ -51,9 +51,15 @@ docker exec 9bb836e6b5d1 /scripts/gc.sh
 
 系统管理，设置，更改SERVICE_URL为"http://IP:port", 然后重启seafile
 
-# 首先配置
+# 首先配置(以下手动部署)
 
 >/public/tool/seafile/seafile-data/seafile/conf
+
+## ccnet.conf
+
+```text
+SERVICE_URL = http://IP:8000
+```
 
 ## gunicorn.conf
 
@@ -76,6 +82,9 @@ share_name = /
 ## seafile.conf
 
 ```text
+[fileserver]
+worker_threads = 5
+
 [quota]
 # 单位为 GB
 default = 2
@@ -84,7 +93,7 @@ default = 2
 ## seahub_settings.py
 
 ```text
-FILE_SERVER_ROOT = "http://IP:8082"
+FILE_SERVER_ROOT = "http://IP:8082/seafhttp"
 ```
 
 # 备份与恢复

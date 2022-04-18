@@ -31,6 +31,12 @@ chartr("Ab","aB",text)
 assign(x, value)
 ```
 
+## 去除已加载的包
+
+```R
+detach("package:ggplot2")
+```
+
 ## 显示颜色
 
 ```R
@@ -43,6 +49,12 @@ show_col(pal_d3("category10")(10)[c(1:6,8)])
 ```R
 # 依次合并
 geno <- Reduce(function(x, y, ...) merge(x, y, ...), geno)
+```
+
+## 分割列表
+
+```R
+indexs = parallel::splitIndices(length(files), length(files)/50)
 ```
 
 ## kmeans cluster

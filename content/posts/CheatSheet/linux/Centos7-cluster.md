@@ -107,7 +107,7 @@ firewall-cmd --get-active-zones  #查看系统中所有网卡所在的zone
 #   interfaces: em1
 # trusted
 #   interfaces: em2
-firewall-cmd --reload #重新加载
+firewall-cmd --reload #重新加载防火墙并保留状态信息
 ```
 
 ### firewalld关于service的操作
@@ -265,6 +265,22 @@ mount --uuid=e83e7403-99d5-4079-94c8-d2073a8ad661 /share/data6
 UUID=e83e7403-99d5-4079-94c8-d2073a8ad661 /share/data6 xfs defaults,_netdev 0 0
 ```
 
+添加端口转发,访问群晖
+
+```sh
+firewall-cmd --query-masquerade                                 # 检查是否允许伪装IP，返回no表示没开启，反之开启伪装IP
+firewall-cmd --add-masquerade --permanent                       # 允许防火墙伪装IP, --permanent 永久生效
+
+port=XXXXX
+IP=10.1.1.104
+firewall-cmd --zone=public --add-port=${port}/tcp --permanent      #添加端口, 永久生效
+
+firewall-cmd --permanent --zone=public --add-forward-port=port=${port}:proto=tcp:toaddr=10.1.1.104:toport=5000
+
+firewall-cmd --reload
+
+```
+
 ### 然后admin添加nfs共享路径
 
 > **data0,1,5不要共享，否则在nodes上无法访问/share**
@@ -288,7 +304,7 @@ exportfs -avr # 重新共享所有目录
 ### 最后各nodes挂载nfs
 
 ```shell
-clusconf -yd "mount admin:/share /share;bash /public/tool/mount_nfs.sh"
+clusconf -yd "mount admin:/public /public;mount admin:/share /share;bash /public/tool/mount_nfs.sh"
 ```
 
 ### 挂载nodes1上的nfs

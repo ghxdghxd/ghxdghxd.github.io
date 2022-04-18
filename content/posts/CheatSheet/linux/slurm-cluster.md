@@ -58,6 +58,12 @@ systemctl restart network
 
     firewall-cmd --zone=trusted --change-interface=em2 # 修改指定网卡的zone, 防止影响torque的通信（无法调度任务），所以设置直接信任内网网卡
     firewall-cmd --reload
+
+    #可以打开内网所有端口
+    firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.1.1.0/24 accept'
+
+    #保存配置
+    firewall-cmd --runtime-to-permanent
     ```
 
 2. 计算节点配置
@@ -69,7 +75,7 @@ systemctl restart network
     DNS1=与管理节点相同
     DNS2=与管理节点相同
 
-    systemctl  restart network
+    systemctl restart network
     ```
 
 ### 安装EPEL源
@@ -348,7 +354,7 @@ cp etc/slurm.conf.example /usr/local/etc/slurm.conf #配置文件https://www.ity
 cp etc/cgroup.conf.example /usr/local/etc/cgroup.conf #计算节点必需
 
 #COMPUTE NODES
-NodeName=compute0[1-5] CPUs=48 RealMemory=257747 Sockets=4 CoresPerSocket=6 ThreadsPerCore=2 State=UNKNsOWN
+NodeName=compute0[1-5] CPUs=48 RealMemory=257747 Sockets=4 CoresPerSocket=6 ThreadsPerCore=2 State=UNKNOWN
 NodeName=compute0[6-7] CPUs=64 RealMemory=257747 Sockets=4 CoresPerSocket=8 ThreadsPerCore=2 State=UNKNOWN
 PartitionName=CPU Nodes=ALL Default=YES MaxTime=INFINITE State=UP
     # 说明，上面的slurm.conf末尾NodeName配置中， Procs是该节点能使用的CPU数，
@@ -372,11 +378,22 @@ systemctl start slurmctld
 systemctl start slurmdbd
 systemctl start slurmd
 
+# 节点状态不对,查看Reason
+scontrol show node
+
 #如果sinfo -R出现Low RealMemory的问题,直接
 scontrol update NodeName=compute0[2-3,5] State=idle
 
-#节点出现draining, 直接
+# 节点出现draining, 直接
 Set the node to a DOWN state and then return it to service ("scontrol update NodeName=<node> State=down Reason=hung_proc" and "scontrol update NodeName=<node> State=resume").
+
+# 出现completing,无法申请节点
+scontrol update NodeName=<node> State=DOWN Reason=hung_proc
+# /etc/init.d/slurm restart
+scontrol update NodeName=<node> State=resume
+
+#取消所有任务
+squeue | awk 'NR>1{print $1}' | xargs -n 1 scancel
 ```
 
 ## 添加用户
@@ -438,7 +455,8 @@ setenv          APPS_ROOT               $2
 prepend-path    PATH                    $2/bin
 prepend-path    LIBRARY_PATH            $2/lib
 prepend-path    LD_LIBRARY_PATH         $2/lib
-prepend-path    LD_INCLUDE_PATH         $2/include
+prepend-path    C_INCLUDE_PATH          $2/include
+prepend-path    CPLUS_INCLUDE_PATH      $2/include
 prepend-path    MANPATH                 $2/share/man
 INCLUDE
 EOF
